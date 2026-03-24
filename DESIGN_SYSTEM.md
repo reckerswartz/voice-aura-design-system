@@ -548,13 +548,23 @@ Fonts: **IBM Plex Serif**, **IBM Plex Sans**, **IBM Plex Mono** — all from [Go
 
 ### Open-Source Asset Sources
 
-| Platform | License | Best For |
-|----------|---------|----------|
-| [Lucide](https://lucide.dev/) | MIT | UI icons |
-| [Phosphor](https://phosphoricons.com/) | MIT | Extended icon needs |
-| [unDraw](https://undraw.co/) | CC0 | Feature illustrations |
-| [SVG Repo](https://svgrepo.com/) | Varies | SVG assets |
-| [Hero Patterns](https://heropatterns.com/) | Free | Background patterns |
+| Platform | License | Best For | Attribution |
+|----------|---------|----------|-------------|
+| [Lucide](https://lucide.dev/) | ISC/MIT | UI icons (primary) | No |
+| [Phosphor](https://phosphoricons.com/) | MIT | Extended icon needs | No |
+| [Heroicons](https://heroicons.com/) | MIT | Alternative UI icons | No |
+| [Tabler Icons](https://tabler.io/icons) | MIT | Rare/specific icons (5,800+) | No |
+| [unDraw](https://undraw.co/) | CC0 | Feature illustrations | No |
+| [OpenPeeps](https://www.openpeeps.com/) | CC0 | People illustrations | No |
+| [Freepik](https://www.freepik.com/) | Free+attribution | Polished vectors, marketing art | **Yes (free tier)** |
+| [Flaticon](https://www.flaticon.com/) | Free+attribution | Specialized/decorative icons | **Yes (free tier)** |
+| [Storyset](https://storyset.com/) | Free+attribution | Animated illustrations | **Yes** |
+| [SVG Repo](https://svgrepo.com/) | Varies | SVG assets | Check per asset |
+| [Hero Patterns](https://heropatterns.com/) | Free | Background patterns | No |
+| [Unsplash](https://unsplash.com/) | Free | Hero/stock photos | No (appreciated) |
+| [Pexels](https://www.pexels.com/) | Free | Alternative stock photos | No (appreciated) |
+
+> See [ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md) for detailed sourcing workflows, file format guidelines, naming conventions, and platform-specific usage instructions.
 
 ---
 

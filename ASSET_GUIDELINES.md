@@ -1,6 +1,6 @@
 # Voice Aura — Asset & Resource Guidelines
 
-> A complete reference for icons, illustrations, patterns, fonts, and visual assets used in the Voice Aura design system.
+> A complete reference for icons, illustrations, patterns, fonts, and visual assets used in the Voice Aura design system — including where to source them, how to prepare them, and when to use each type.
 
 ---
 
@@ -13,10 +13,14 @@
 5. [Illustrations & Mockups](#illustrations--mockups)
 6. [Typography & Fonts](#typography--fonts)
 7. [Open-Source Platforms & Sources](#open-source-platforms--sources)
-8. [Color Application for Assets](#color-application-for-assets)
-9. [Sizing & Spacing Guidelines](#sizing--spacing-guidelines)
-10. [Accessibility](#accessibility)
-11. [Licensing Summary](#licensing-summary)
+8. [Asset Sourcing Workflow](#asset-sourcing-workflow)
+9. [File Format & Optimization Guidelines](#file-format--optimization-guidelines)
+10. [Naming Conventions](#naming-conventions)
+11. [Color Application for Assets](#color-application-for-assets)
+12. [Sizing & Spacing Guidelines](#sizing--spacing-guidelines)
+13. [Accessibility](#accessibility)
+14. [Performance Considerations](#performance-considerations)
+15. [Licensing Summary](#licensing-summary)
 
 ---
 
@@ -337,7 +341,80 @@ For additional illustrations (feature pages, empty states, onboarding, error pag
 5. Save to `assets/illustrations/`
 6. Edit the SVG to replace any remaining off-brand colors
 
-#### 2. SVG Repo
+#### 2. Freepik
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [freepik.com](https://www.freepik.com/) |
+| **License** | Free tier requires attribution; Premium tier does not |
+| **Attribution** | **Required for free assets** — add to footer or credits page |
+| **Commercial Use** | Yes (both free and premium) |
+| **Format** | SVG, AI, EPS, PNG, PSD |
+| **Best For** | Polished illustrations, flat vectors, background patterns, stock photos |
+
+**Best search terms:** `audio waveform flat`, `voice assistant minimal`, `podcast illustration flat`, `sound wave pattern`, `microphone line art`, `speech bubble flat`
+
+**How to use:**
+1. Search freepik.com and filter by **Free** and **Vectors** (for SVG/AI)
+2. Download the asset and check the license on the download page
+3. Open in a vector editor (Figma, Illustrator, or Inkscape)
+4. Recolor to Voice Aura palette (see [Color Application](#color-application-for-assets))
+5. Export as optimized SVG
+6. Save to `assets/illustrations/` or `assets/patterns/`
+7. **If free license:** Add attribution (e.g., `Designed by [author] / Freepik`) to your project credits
+
+> **Attribution format for free Freepik assets:**
+> ```html
+> <!-- In footer or credits page -->
+> <a href="https://www.freepik.com">Designed by [AuthorName] / Freepik</a>
+> ```
+
+#### 3. Flaticon (by Freepik — Icon-Specific)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [flaticon.com](https://www.flaticon.com/) |
+| **License** | Free with attribution; Premium without |
+| **Attribution** | **Required for free icons** |
+| **Commercial Use** | Yes |
+| **Format** | SVG, PNG, EPS, PSD |
+| **Best For** | Specialized icons not found in Lucide (e.g., language flags, industry-specific icons) |
+
+**When to use Flaticon over Lucide:**
+- You need a very specific icon that Lucide/Phosphor lack (e.g., a dubbing icon, a specific flag)
+- You need filled/colored icons for marketing pages (not app UI)
+- The icon will be used decoratively, not as a core UI element
+
+**How to use:**
+1. Search flaticon.com and filter by **Free** and **SVG**
+2. Prefer **Outline** or **Linear** style to match Lucide
+3. Download SVG and recolor strokes to `#1A1919` or `currentColor`
+4. Set stroke-width to `1.5` or `2` to match Lucide consistency
+5. Save to `assets/icons/` with a descriptive name
+6. Add attribution if using the free license
+
+#### 4. Storyset (by Freepik — Animated Illustrations)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [storyset.com](https://storyset.com/) |
+| **License** | Free with attribution |
+| **Attribution** | Required — link to Storyset |
+| **Commercial Use** | Yes |
+| **Format** | SVG (static and animated) |
+| **Best For** | Onboarding flows, empty states, error pages, marketing pages |
+
+**Best search terms:** `podcast`, `voice`, `audio`, `technology`, `recording`
+
+**How to use:**
+1. Search storyset.com and pick a style: **Pana** (soft), **Bro** (bold), or **Amico** (minimal)
+2. Customize the primary color to `#0478FF`
+3. Toggle layers on/off for simplicity
+4. Download static SVG or animated SVG
+5. Save to `assets/illustrations/`
+6. For animated versions, embed the `<svg>` inline in your HTML
+
+#### 5. SVG Repo
 
 | Property | Detail |
 |----------|--------|
@@ -355,7 +432,7 @@ For additional illustrations (feature pages, empty states, onboarding, error pag
 3. Recolor paths to use Voice Aura brand colors
 4. Save to `assets/illustrations/` or `assets/icons/`
 
-#### 3. Hero Patterns (Background Patterns)
+#### 6. Hero Patterns (Background Patterns)
 
 | Property | Detail |
 |----------|--------|
@@ -371,6 +448,65 @@ For additional illustrations (feature pages, empty states, onboarding, error pag
 2. Set the foreground color to `#1A1919` and opacity to 0.03-0.06
 3. Copy the CSS
 4. Apply as a background to your section element
+
+#### 7. Heroicons
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [heroicons.com](https://heroicons.com/) |
+| **License** | MIT |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | SVG (Outline, Solid, Mini variants) |
+| **Best For** | Clean UI icons with a slightly bolder feel than Lucide |
+
+**When to use Heroicons over Lucide:**
+- Only when Lucide and Phosphor lack a specific icon
+- Prefer the **Outline** variant (24x24) to match Voice Aura's stroke-based style
+- Heroicons use `stroke-width="1.5"` by default, which matches Voice Aura's preferred weight
+
+```bash
+npm install @heroicons/react   # React
+```
+
+```html
+<!-- Direct SVG (outline variant) -->
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+     stroke-width="1.5" stroke="currentColor" class="va-icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M..."/>
+</svg>
+```
+
+#### 8. Tabler Icons
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [tabler.io/icons](https://tabler.io/icons) |
+| **License** | MIT |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Icon Count** | 5,800+ |
+| **Format** | SVG |
+| **Best For** | Largest MIT-licensed collection; fallback for rare icons |
+
+**When to use:** Only when Lucide, Phosphor, and Heroicons all lack the specific icon you need.
+
+#### 9. OpenPeeps (Hand-Drawn People Illustrations)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [openpeeps.com](https://www.openpeeps.com/) |
+| **License** | CC0 (Public Domain) |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | SVG, PNG |
+| **Best For** | Testimonial sections, team pages, about pages, user avatars |
+
+**How to use:**
+1. Download the library from openpeeps.com
+2. Mix and match heads, bodies, and accessories in Figma
+3. Export as SVG
+4. Recolor strokes to `#1A1919` for consistency
 
 ---
 
@@ -438,6 +574,211 @@ npm install @ibm/plex
 - **Buttons & labels:** IBM Plex Sans, Medium (500) or SemiBold (600)
 - **Code snippets:** IBM Plex Mono, Regular (400)
 - **Never** mix other typefaces into the Voice Aura design system.
+
+---
+
+## Open-Source Platforms & Sources
+
+### Icon Platform Hierarchy
+
+Use these platforms in order of preference when looking for icons:
+
+| Priority | Platform | License | Icon Count | Style Match |
+|----------|----------|---------|------------|-------------|
+| 1 | **Lucide** | ISC/MIT | 1,600+ | Exact match (primary library) |
+| 2 | **Phosphor** | MIT | 9,000+ | Very close (weight variants) |
+| 3 | **Heroicons** | MIT | 300+ | Close (stroke-width: 1.5) |
+| 4 | **Tabler Icons** | MIT | 5,800+ | Good (stroke-width: 2) |
+| 5 | **Flaticon** | Free+attribution | Millions | Varies — filter for outline/linear |
+
+### Illustration Platform Hierarchy
+
+| Priority | Platform | License | Best For |
+|----------|----------|---------|----------|
+| 1 | **unDraw** | CC0 | Feature illustrations, empty states |
+| 2 | **Storyset** | Free+attribution | Animated illustrations, onboarding |
+| 3 | **OpenPeeps** | CC0 | People illustrations, testimonials |
+| 4 | **Freepik** | Free+attribution | Polished vectors, marketing |
+| 5 | **SVG Repo** | Varies | Miscellaneous SVG assets |
+
+### Photo & Image Sources
+
+| Platform | License | Best For |
+|----------|---------|----------|
+| **Unsplash** | Free (custom) | Hero backgrounds, editorial photos |
+| **Pexels** | Free (custom) | Alternative stock photos |
+| **Pixabay** | Free (custom) | Icons, vectors, and photos |
+
+> All three platforms allow free commercial use without attribution, but crediting the photographer is appreciated.
+
+---
+
+## Asset Sourcing Workflow
+
+Follow this step-by-step process when adding any new asset to the design system:
+
+### Step 1: Check Existing Assets First
+
+```
+assets/icons/      → Do we already have this icon?
+assets/patterns/   → Do we already have this pattern?
+assets/illustrations/ → Do we already have this illustration?
+```
+
+### Step 2: Search Primary Sources
+
+Use the [Icon Platform Hierarchy](#icon-platform-hierarchy) or [Illustration Platform Hierarchy](#illustration-platform-hierarchy) above.
+
+### Step 3: Verify the License
+
+Before downloading, confirm the license:
+
+| License Type | Can Use? | Attribution? | Notes |
+|--------------|----------|--------------|-------|
+| CC0 / Public Domain | Yes | No | Best option |
+| MIT / ISC | Yes | No | Include license file if redistributing |
+| Apache 2.0 | Yes | No | Include NOTICE file if redistributing |
+| SIL OFL 1.1 | Yes (fonts) | No (usage) | Cannot sell font files alone |
+| CC BY 4.0 | Yes | **Yes** | Must credit author |
+| Freepik Free | Yes | **Yes** | Must link to Freepik |
+| GPL | Caution | Yes | May affect project license — avoid if possible |
+| No license stated | **No** | — | Do not use without written permission |
+
+### Step 4: Download & Prepare
+
+1. **Download** the asset in SVG format when possible
+2. **Open** in a text editor or vector tool
+3. **Clean up** the SVG:
+   - Remove unnecessary metadata, comments, and editor artifacts
+   - Remove `width` and `height` attributes (use `viewBox` instead)
+   - Remove inline `style` elements — use classes or attributes
+4. **Recolor** to match the Voice Aura palette (see [Color Application](#color-application-for-assets))
+5. **Optimize** the SVG (see [File Format & Optimization](#file-format--optimization-guidelines))
+
+### Step 5: Save & Document
+
+1. Save to the correct directory (see [Asset Directory Structure](#asset-directory-structure))
+2. Follow [Naming Conventions](#naming-conventions)
+3. If the asset requires attribution, add it to the project's attribution file or credits section
+
+### Step 6: Test
+
+1. Verify the asset renders correctly in the browser
+2. Check accessibility (alt text, aria-labels)
+3. Test at different sizes and on different backgrounds
+4. Verify `prefers-reduced-motion` if the asset is animated
+
+---
+
+## File Format & Optimization Guidelines
+
+### Choosing the Right Format
+
+| Format | Use Case | Advantages | Disadvantages |
+|--------|----------|------------|---------------|
+| **SVG** | Icons, logos, patterns, illustrations | Scalable, small size, CSS-styleable | Complex images can be large |
+| **WebP** | Photos, complex images | 25-35% smaller than JPEG | Not editable as vector |
+| **PNG** | Screenshots, images needing transparency | Lossless, wide support | Larger file size |
+| **JPEG** | Hero backgrounds, large photos | Small file size | No transparency, lossy |
+| **AVIF** | Next-gen photo format | 50% smaller than JPEG | Limited browser support |
+| **WOFF2** | Web fonts | Best compression for fonts | Font-specific format |
+
+### SVG Optimization
+
+Always optimize SVGs before adding them to the project:
+
+**Using SVGO (recommended):**
+
+```bash
+# Install
+npm install -g svgo
+
+# Optimize a single file
+svgo input.svg -o output.svg
+
+# Optimize all SVGs in a directory
+svgo -f assets/icons/ -o assets/icons/
+
+# With custom config (preserve viewBox, remove dimensions)
+svgo input.svg -o output.svg --config='{ "plugins": [
+  { "name": "removeViewBox", "active": false },
+  { "name": "removeDimensions", "active": true }
+]}'
+```
+
+**Using SVGOMG (browser-based):**
+- Visit [jakearchibald.github.io/svgomg/](https://jakearchibald.github.io/svgomg/)
+- Paste or upload your SVG
+- Toggle options (keep viewBox, remove dimensions, precision 2)
+- Download the optimized SVG
+
+### SVG Best Practices
+
+```xml
+<!-- Good: Uses viewBox, no fixed dimensions, currentColor -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+</svg>
+
+<!-- Bad: Fixed dimensions, hardcoded colors, inline styles -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+  <path style="fill: #000000;" d="M12 1a3 3 0 0 0-3 3v8..."/>
+</svg>
+```
+
+### Image Optimization
+
+For raster images (photos, screenshots):
+
+```bash
+# Convert to WebP (using cwebp)
+cwebp -q 80 input.png -o output.webp
+
+# Responsive images in HTML
+<picture>
+  <source srcset="hero.avif" type="image/avif">
+  <source srcset="hero.webp" type="image/webp">
+  <img src="hero.jpg" alt="..." loading="lazy" width="1200" height="600">
+</picture>
+```
+
+---
+
+## Naming Conventions
+
+### File Naming Rules
+
+| Asset Type | Pattern | Example |
+|------------|---------|---------|
+| Lucide icons | `{icon-name}.svg` | `microphone.svg` |
+| Custom icons | `{descriptive-name}.svg` | `waveform-pulse.svg` |
+| Brand logos | `logo-{variant}.svg` | `logo-horizontal.svg` |
+| Patterns | `{pattern-name}.svg` | `halftone-dots.svg` |
+| Illustrations | `{scene-description}.svg` | `voice-studio-mockup.svg` |
+| Photos | `{subject}-{size}.{ext}` | `hero-background-1200.webp` |
+
+### General Rules
+
+- Use **lowercase** and **kebab-case** (hyphens, not underscores)
+- Be **descriptive** — `audio-waveform.svg` not `icon1.svg`
+- Include **variant** in the name when applicable — `logo-dark.svg`, `logo-light.svg`
+- Do **not** include size in icon names (size is controlled via CSS)
+- Do **not** include color in the name (color is applied via CSS)
+
+### Directory Placement
+
+```
+assets/
+├── brand/           ← Logos, wordmarks, brand marks
+├── fonts/           ← Self-hosted font files (WOFF2)
+├── icons/
+│   ├── lucide/      ← Icons from Lucide library
+│   └── (root)       ← Custom icons, third-party icons
+├── illustrations/   ← Scene illustrations, mockups, diagrams
+└── patterns/        ← Background patterns, textures, dividers
+```
 
 ---
 
@@ -564,18 +905,75 @@ White:              #FFFFFF  (backgrounds, negative space)
 
 ---
 
+## Performance Considerations
+
+### Icon Loading Strategy
+
+| Method | Best For | Performance |
+|--------|----------|-------------|
+| **Inline SVG** | Icons that need CSS styling, interactive icons | Best — no HTTP request |
+| **SVG sprite** | Pages with many repeated icons | Good — single HTTP request |
+| **`<img>` tag** | Decorative illustrations | Good — cacheable, lazy-loadable |
+| **CSS `background-image`** | Patterns, textures | Good — cacheable |
+| **Icon font** | Not recommended | Poor — loads all icons regardless of usage |
+
+### Lazy Loading
+
+```html
+<!-- Lazy-load illustrations below the fold -->
+<img src="feature-illustration.svg" alt="..." loading="lazy" decoding="async">
+
+<!-- Eagerly load hero/above-the-fold images -->
+<img src="hero-illustration.svg" alt="..." loading="eager" fetchpriority="high">
+```
+
+### Font Loading Performance
+
+```html
+<!-- Preconnect to Google Fonts (already in sample.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Use font-display: swap to avoid FOIT (Flash of Invisible Text) -->
+```
+
+When self-hosting fonts, use `font-display: swap` in all `@font-face` declarations to ensure text remains visible while fonts load.
+
+### Size Budgets
+
+| Asset Type | Max Size | Notes |
+|------------|----------|-------|
+| Individual icon SVG | 2 KB | Optimize with SVGO |
+| Illustration SVG | 50 KB | Simplify complex paths |
+| Pattern SVG | 5 KB | Keep tile-based and simple |
+| Hero photo (WebP) | 200 KB | Use responsive `srcset` |
+| Total page SVG weight | 100 KB | Inline only what's above the fold |
+| Web font (per weight) | 30 KB (WOFF2) | Subset if possible |
+
+---
+
 ## Licensing Summary
 
 All assets in the Voice Aura design system are open-source or custom-created.
 
 | Asset | License | Attribution Required | Commercial Use |
 |-------|---------|---------------------|----------------|
-| **Lucide Icons** | MIT | No | Yes |
+| **Lucide Icons** | ISC/MIT | No | Yes |
 | **Phosphor Icons** | MIT | No | Yes |
+| **Heroicons** | MIT | No | Yes |
+| **Tabler Icons** | MIT | No | Yes |
 | **IBM Plex Fonts** | SIL OFL 1.1 | No (for use); Yes (for redistribution) | Yes |
 | **unDraw Illustrations** | CC0 1.0 | No | Yes |
+| **OpenPeeps** | CC0 | No | Yes |
 | **Hero Patterns** | Free (custom) | No | Yes |
 | **SVG Repo** | Varies (CC0/MIT) | Check per asset | Most yes |
+| **Freepik (free tier)** | Freepik License | **Yes** — link to Freepik | Yes |
+| **Freepik (premium)** | Freepik Premium | No | Yes |
+| **Flaticon (free tier)** | Flaticon License | **Yes** — link to Flaticon | Yes |
+| **Storyset** | Freepik License | **Yes** — link to Storyset | Yes |
+| **Unsplash** | Unsplash License | No (appreciated) | Yes |
+| **Pexels** | Pexels License | No (appreciated) | Yes |
+| **Pixabay** | Pixabay License | No (appreciated) | Yes |
 | **Custom Brand SVGs** | Part of design system (ISC) | N/A | Yes |
 
 ### License Files
@@ -584,6 +982,7 @@ When redistributing the design system, include:
 - `LICENSE` — ISC license for the design system code
 - Credit Lucide in your project's acknowledgments (appreciated but not required)
 - IBM Plex OFL license if self-hosting fonts
+- Attribution for any Freepik/Flaticon/Storyset free-tier assets used
 
 ---
 
@@ -592,14 +991,20 @@ When redistributing the design system, include:
 | I need... | Where to look |
 |-----------|---------------|
 | A UI icon (mic, play, settings) | `assets/icons/lucide/` or [lucide.dev](https://lucide.dev/) |
+| A rare/specific icon | [Phosphor](https://phosphoricons.com/) → [Heroicons](https://heroicons.com/) → [Tabler](https://tabler.io/icons) |
+| A specialized/decorative icon | [Flaticon](https://www.flaticon.com/) (attribution required for free) |
 | The Voice Aura logo | `assets/brand/logo-*.svg` |
 | A background texture | `@include va-halftone-overlay()` or `assets/patterns/` |
 | A section separator | `assets/patterns/wave-divider.svg` |
-| An illustration for a feature | [undraw.co](https://undraw.co/) → save to `assets/illustrations/` |
+| A feature illustration | [unDraw](https://undraw.co/) → `assets/illustrations/` |
+| An animated illustration | [Storyset](https://storyset.com/) (attribution required) |
+| A polished vector illustration | [Freepik](https://www.freepik.com/) (attribution required for free) |
+| People illustrations | [OpenPeeps](https://www.openpeeps.com/) → `assets/illustrations/` |
 | A device mockup | `assets/illustrations/*-mockup.svg` |
 | Custom audio/voice icon | `assets/icons/waveform.svg`, `microphone.svg`, etc. |
 | Font files | Google Fonts CDN or `npm install @ibm/plex` |
-| A background pattern | [heropatterns.com](https://heropatterns.com/) |
+| A background pattern | [Hero Patterns](https://heropatterns.com/) |
+| A hero/stock photo | [Unsplash](https://unsplash.com/) or [Pexels](https://www.pexels.com/) |
 
 ---
 
