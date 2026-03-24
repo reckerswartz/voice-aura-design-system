@@ -16,6 +16,15 @@
 //
 // All classes use the `.va-bg-*` namespace for backgrounds and
 // `.va-pattern-*` for positioned overlay patterns.
+//
+// CSS Custom Property API (runtime customisation):
+//   Every pattern exposes `--va-pattern-opacity` for runtime opacity control.
+//   Glow patterns expose `--va-glow-color` and `--va-glow-size`.
+//   Mask-based patterns expose `--va-mask-size` and `--va-mask-center`.
+//   Set these on the element or a parent to override without SCSS changes:
+//
+//   <section class="va-pattern-halftone" style="--va-pattern-opacity: 0.3;">
+//   <div class="va-bg-glow" style="--va-glow-size: 800px; --va-glow-color: rgba(4,120,255,0.1);">
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -35,6 +44,7 @@
 .va-pattern-halftone {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::before {
     content: "";
@@ -46,7 +56,7 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center bottom;
-    opacity: 1;
+    opacity: var(--va-pattern-opacity, 1);
 
     @media (max-width: 767.98px) {
       background-size: 200% auto;
@@ -128,6 +138,7 @@
 .va-pattern-waveform-bg {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::after {
     content: "";
@@ -142,12 +153,12 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    opacity: 0.5;
+    opacity: var(--va-pattern-opacity, 0.5);
 
     @media (max-width: 767.98px) {
       height: 50px;
       bottom: 40%;
-      opacity: 0.3;
+      opacity: var(--va-pattern-opacity, 0.3);
     }
   }
 }
@@ -162,6 +173,7 @@
 
 .va-pattern-noise {
   position: relative;
+  contain: layout style;
 
   &::after {
     content: "";
@@ -172,10 +184,10 @@
     background-image: url("../../assets/patterns/noise-texture.svg");
     background-repeat: repeat;
     background-size: 200px 200px;
-    opacity: 0.5;
+    opacity: var(--va-pattern-opacity, 0.5);
 
     @media (max-width: 767.98px) {
-      opacity: 0.3;
+      opacity: var(--va-pattern-opacity, 0.3);
     }
   }
 
@@ -201,28 +213,31 @@
 .va-bg-glow {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::before {
     content: "";
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: var(--va-glow-size, 600px);
+    height: var(--va-glow-size, 600px);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(
-      circle,
-      rgba($va-primary-blue, 0.06) 0%,
-      rgba($va-primary-blue, 0.02) 40%,
-      transparent 70%
+    background: var(--va-glow-color,
+      radial-gradient(
+        circle,
+        rgba($va-primary-blue, 0.06) 0%,
+        rgba($va-primary-blue, 0.02) 40%,
+        transparent 70%
+      )
     );
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     @media (max-width: 767.98px) {
-      width: 400px;
-      height: 400px;
+      width: var(--va-glow-size, 400px);
+      height: var(--va-glow-size, 400px);
     }
   }
 
@@ -376,6 +391,7 @@
 
 .va-bg-dots {
   position: relative;
+  contain: layout style;
 
   &::before {
     content: "";
@@ -388,17 +404,18 @@
       rgba($va-near-black, 0.07) 1px,
       transparent 1px
     );
-    background-size: ($va-grid-unit * 3) ($va-grid-unit * 3); // 24px grid
+    background-size: var(--va-dot-spacing, #{$va-grid-unit * 3}) var(--va-dot-spacing, #{$va-grid-unit * 3}); // 24px grid
     mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
       rgba(0, 0, 0, 0.35) 0%,
       transparent 70%
     );
     -webkit-mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
       rgba(0, 0, 0, 0.35) 0%,
       transparent 70%
     );
+    opacity: var(--va-pattern-opacity, 1);
   }
 
   > * {
@@ -547,6 +564,7 @@
 .va-pattern-circuit {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::before {
     content: "";
@@ -558,11 +576,11 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center center;
-    opacity: 1;
+    opacity: var(--va-pattern-opacity, 1);
 
     @media (max-width: 767.98px) {
       background-size: 180% auto;
-      opacity: 0.7;
+      opacity: var(--va-pattern-opacity, 0.7);
     }
   }
 
@@ -596,12 +614,13 @@
 .va-pattern-rings {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::before {
     content: "";
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: var(--va-ring-size, 600px);
+    height: var(--va-ring-size, 600px);
     pointer-events: none;
     z-index: 0;
     background-image: url("../../assets/patterns/concentric-rings.svg");
@@ -610,11 +629,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
+    opacity: var(--va-pattern-opacity, 1);
 
     @media (max-width: 767.98px) {
-      width: 360px;
-      height: 360px;
+      width: var(--va-ring-size, 360px);
+      height: var(--va-ring-size, 360px);
     }
   }
 
@@ -658,6 +677,7 @@
 
 .va-bg-grid-lines {
   position: relative;
+  contain: layout style;
 
   &::before {
     content: "";
@@ -668,13 +688,14 @@
     background-image: url("../../assets/patterns/grid-lines.svg");
     background-repeat: repeat;
     background-size: 48px 48px;
+    opacity: var(--va-pattern-opacity, 1);
     mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
       rgba(0, 0, 0, 0.4) 0%,
       transparent 70%
     );
     -webkit-mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
       rgba(0, 0, 0, 0.4) 0%,
       transparent 70%
     );
@@ -707,6 +728,7 @@
 
 .va-pattern-diagonal {
   position: relative;
+  contain: layout style;
 
   &::after {
     content: "";
@@ -717,10 +739,10 @@
     background-image: url("../../assets/patterns/diagonal-lines.svg");
     background-repeat: repeat;
     background-size: 40px 40px;
-    opacity: 1;
+    opacity: var(--va-pattern-opacity, 1);
 
     @media (max-width: 767.98px) {
-      opacity: 0.6;
+      opacity: var(--va-pattern-opacity, 0.6);
     }
   }
 
@@ -747,6 +769,7 @@
 .va-bg-mesh {
   position: relative;
   overflow: hidden;
+  contain: layout style;
 
   &::before {
     content: "";
@@ -758,10 +781,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    opacity: 1;
+    opacity: var(--va-pattern-opacity, 1);
 
     @media (max-width: 767.98px) {
-      opacity: 0.6;
+      opacity: var(--va-pattern-opacity, 0.6);
     }
   }
 

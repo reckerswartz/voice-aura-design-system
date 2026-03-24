@@ -78,6 +78,9 @@
     <a href="#hover">Hover Effects</a>
     <a href="#responsive">Responsive Transitions</a>
     <a href="#waveform">Waveform Bars</a>
+    <a href="#custom-props">Custom Properties</a>
+    <a href="#presets">Animation Presets</a>
+    <a href="#skeleton">Loading Skeleton</a>
     <a href="#usage">Usage Guide</a>
   </nav>
 
@@ -934,6 +937,336 @@ class="va-scroll-stagger"
   background-size: 100% auto;
   background-repeat: no-repeat;
 }</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- CSS CUSTOM PROPERTIES API                                           -->
+  <!-- ================================================================== -->
+  <section class="ref-section" id="custom-props">
+    <h2 class="ref-title">CSS Custom Properties API</h2>
+    <p class="ref-subtitle">Override pattern behaviour at runtime without touching SCSS. Set these on the element or any ancestor.</p>
+
+    <div class="ref-grid">
+
+      <!-- --va-pattern-opacity -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-halftone" style="background:#F9FAFB; --va-pattern-opacity: 0.3;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">--va-pattern-opacity</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">Controls pattern overlay opacity. Works on all <code>.va-pattern-*</code> and <code>.va-bg-*</code> patterns.</p>
+          <div class="ref-card__code">&lt;section class="va-pattern-halftone"
+  style="--va-pattern-opacity: 0.3;"&gt;
+  ...
+&lt;/section&gt;
+
+Default: varies per pattern (1, 0.5, etc.)</div>
+        </div>
+      </div>
+
+      <!-- --va-glow-size & --va-glow-color -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-glow" style="background:#F9FAFB; --va-glow-size: 400px;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">--va-glow-size / --va-glow-color</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">Controls glow circle diameter and gradient. Works on <code>.va-bg-glow</code>.</p>
+          <div class="ref-card__code">&lt;div class="va-bg-glow"
+  style="--va-glow-size: 800px;
+         --va-glow-color: radial-gradient(circle,
+           rgba(4,120,255,.1) 0%, transparent 70%);"&gt;
+
+Default size: 600px desktop, 400px mobile</div>
+        </div>
+      </div>
+
+      <!-- --va-mask-size & --va-mask-center -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-dots" style="background:#F9FAFB; --va-mask-size: 90% 80%; --va-mask-center: 30% 50%;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">--va-mask-size / --va-mask-center</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">Controls radial fade-out mask shape and origin. Works on <code>.va-bg-dots</code> and <code>.va-bg-grid-lines</code>.</p>
+          <div class="ref-card__code">&lt;section class="va-bg-dots"
+  style="--va-mask-size: 90% 80%;
+         --va-mask-center: 30% 50%;"&gt;
+
+Default: 70% 60% at 50% 50%</div>
+        </div>
+      </div>
+
+      <!-- --va-ring-size -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-rings" style="background:#F9FAFB; --va-ring-size: 300px;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">--va-ring-size</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">Controls the diameter of concentric rings. Works on <code>.va-pattern-rings</code>.</p>
+          <div class="ref-card__code">&lt;section class="va-pattern-rings"
+  style="--va-ring-size: 800px;"&gt;
+
+Default: 600px desktop, 360px mobile</div>
+        </div>
+      </div>
+
+      <!-- --va-dot-spacing -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-dots va-bg-dots--full" style="background:#F9FAFB; --va-dot-spacing: 12px;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">--va-dot-spacing</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">Controls dot grid spacing. Works on <code>.va-bg-dots</code>.</p>
+          <div class="ref-card__code">&lt;section class="va-bg-dots"
+  style="--va-dot-spacing: 12px;"&gt;
+
+Default: 24px (3 grid units)</div>
+        </div>
+      </div>
+
+      <!-- Summary table -->
+      <div class="ref-card" style="grid-column: 1 / -1;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">All Custom Properties</div>
+          <div class="ref-card__code">--va-pattern-opacity   All patterns         Default varies
+--va-glow-size         .va-bg-glow          600px / 400px
+--va-glow-color        .va-bg-glow          radial-gradient(...)
+--va-ring-size         .va-pattern-rings    600px / 360px
+--va-dot-spacing       .va-bg-dots          24px
+--va-mask-size         .va-bg-dots,         70% 60%
+                       .va-bg-grid-lines
+--va-mask-center       .va-bg-dots,         50% 50%
+                       .va-bg-grid-lines</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- NAMED ANIMATION PRESETS                                             -->
+  <!-- ================================================================== -->
+  <section class="ref-section" id="presets">
+    <h2 class="ref-title">Animation Presets</h2>
+    <p class="ref-subtitle">Pre-built entrance combos with tuned timing for common page sections. Drop-in replacements for composing <code>.va-animate-*</code> + delays manually.</p>
+
+    <div class="ref-grid">
+
+      <!-- Hero entrance -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-entrance-hero"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-entrance-hero','va-entrance-hero')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hero Headline</div>
+          <p class="ref-card__desc">Slow dramatic fade-up. 0.7s, custom ease.</p>
+          <div class="ref-card__code">class="va-entrance-hero"</div>
+        </div>
+      </div>
+
+      <!-- Hero subtitle -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-entrance-hero-sub" style="width:120px; height:16px; border-radius:8px;"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-entrance-hero-sub','va-entrance-hero-sub')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hero Subtitle</div>
+          <p class="ref-card__desc">Delayed fade-up. 0.6s + 0.15s delay.</p>
+          <div class="ref-card__code">class="va-entrance-hero-sub"</div>
+        </div>
+      </div>
+
+      <!-- Hero CTA -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-entrance-hero-cta" style="width:120px; height:48px; border-radius:8px;"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-entrance-hero-cta','va-entrance-hero-cta')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hero CTA</div>
+          <p class="ref-card__desc">Delayed scale-in for buttons. 0.5s + 0.3s delay.</p>
+          <div class="ref-card__code">class="va-entrance-hero-cta"</div>
+        </div>
+      </div>
+
+      <!-- Feature entrance -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-entrance-feature is-visible" style="width:100px; height:100px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Feature Text</div>
+          <p class="ref-card__desc">Slides from left on desktop, up on mobile. Scroll-triggered.</p>
+          <div class="ref-card__code">class="va-entrance-feature"
+(add .is-visible via JS)</div>
+        </div>
+      </div>
+
+      <!-- Feature visual -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-entrance-feature-visual is-visible" style="width:100px; height:100px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Feature Visual</div>
+          <p class="ref-card__desc">Enters from opposite side with slight delay. Scroll-triggered.</p>
+          <div class="ref-card__code">class="va-entrance-feature-visual"
+(add .is-visible via JS)</div>
+        </div>
+      </div>
+
+      <!-- Card entrance -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-entrance-card is-visible" style="width:80px; height:80px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Card Entrance</div>
+          <p class="ref-card__desc">Quick fade-up for grid items. Use inside <code>.va-stagger-group</code>.</p>
+          <div class="ref-card__code">class="va-entrance-card"
+(add .is-visible via JS)</div>
+        </div>
+      </div>
+
+      <!-- Badge entrance -->
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div id="demo-entrance-badge" style="display:inline-block; padding:.35rem 1rem; background:#EEF2FF; border-radius:50rem; font-size:.8rem; color:#0478FF; font-weight:600;">NEW</div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-entrance-badge','va-entrance-badge')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Badge Pop</div>
+          <p class="ref-card__desc">Bouncy scale-in for badges and tags. 0.3s.</p>
+          <div class="ref-card__code">class="va-entrance-badge"</div>
+        </div>
+      </div>
+
+      <!-- Preset recipe -->
+      <div class="ref-card" style="grid-column: 1 / -1;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hero Section Recipe</div>
+          <div class="ref-card__code">&lt;section class="va-hero va-pattern-halftone va-pattern-waveform-bg"&gt;
+  &lt;span class="va-entrance-badge"&gt;NEW FEATURE&lt;/span&gt;
+  &lt;h1 class="va-entrance-hero"&gt;Headline&lt;/h1&gt;
+  &lt;p class="va-entrance-hero-sub"&gt;Subtext&lt;/p&gt;
+  &lt;div class="va-entrance-hero-cta"&gt;
+    &lt;button&gt;Primary&lt;/button&gt;
+    &lt;button&gt;Secondary&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- LOADING SKELETON                                                    -->
+  <!-- ================================================================== -->
+  <section class="ref-section" id="skeleton">
+    <h2 class="ref-title">Loading Skeleton</h2>
+    <p class="ref-subtitle">Shimmer placeholders for async-loaded content. Replaces empty space with animated loading indicators.</p>
+
+    <div class="ref-grid">
+
+      <!-- Default skeleton -->
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex; align-items:center; justify-content:center; background:#F9FAFB; padding:1.5rem;">
+          <div class="va-skeleton" style="width:200px; height:24px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Default</div>
+          <p class="ref-card__desc">Generic rectangular shimmer placeholder.</p>
+          <div class="ref-card__code">&lt;div class="va-skeleton"
+  style="width:200px; height:24px;"&gt;
+&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <!-- Circle skeleton -->
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex; align-items:center; justify-content:center; background:#F9FAFB; padding:1.5rem;">
+          <div class="va-skeleton va-skeleton--circle" style="width:48px; height:48px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Circle</div>
+          <p class="ref-card__desc">Avatar / icon placeholder.</p>
+          <div class="ref-card__code">class="va-skeleton va-skeleton--circle"</div>
+        </div>
+      </div>
+
+      <!-- Text skeleton -->
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex; flex-direction:column; justify-content:center; background:#F9FAFB; padding:1.5rem 2rem;">
+          <div class="va-skeleton va-skeleton--text"></div>
+          <div class="va-skeleton va-skeleton--text"></div>
+          <div class="va-skeleton va-skeleton--text"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Text Lines</div>
+          <p class="ref-card__desc">Paragraph placeholder. Last child auto-shrinks to 60%.</p>
+          <div class="ref-card__code">&lt;div class="va-skeleton va-skeleton--text"&gt;&lt;/div&gt;
+&lt;div class="va-skeleton va-skeleton--text"&gt;&lt;/div&gt;
+&lt;div class="va-skeleton va-skeleton--text"&gt;&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <!-- Card skeleton -->
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex; align-items:center; justify-content:center; background:#F9FAFB; padding:1rem;">
+          <div class="va-skeleton va-skeleton--card" style="max-width:240px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Card</div>
+          <p class="ref-card__desc">Full card placeholder (200px tall).</p>
+          <div class="ref-card__code">class="va-skeleton va-skeleton--card"</div>
+        </div>
+      </div>
+
+      <!-- Image skeleton -->
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex; align-items:center; justify-content:center; background:#F9FAFB; padding:1rem;">
+          <div class="va-skeleton va-skeleton--image" style="max-width:240px;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Image</div>
+          <p class="ref-card__desc">Image placeholder (160px tall).</p>
+          <div class="ref-card__code">class="va-skeleton va-skeleton--image"</div>
+        </div>
+      </div>
+
+      <!-- Skeleton composition -->
+      <div class="ref-card" style="grid-column: 1 / -1;">
+        <div class="ref-card__preview" style="display:flex; gap:1rem; align-items:flex-start; background:#F9FAFB; padding:1.5rem 2rem;">
+          <div class="va-skeleton va-skeleton--circle" style="width:48px; height:48px; flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div class="va-skeleton va-skeleton--text" style="width:40%; margin-bottom:.75rem;"></div>
+            <div class="va-skeleton va-skeleton--text"></div>
+            <div class="va-skeleton va-skeleton--text"></div>
+          </div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Composed Card Skeleton</div>
+          <p class="ref-card__desc">Combine variants to build realistic loading states.</p>
+          <div class="ref-card__code">&lt;div style="display:flex; gap:1rem;"&gt;
+  &lt;div class="va-skeleton va-skeleton--circle"
+       style="width:48px; height:48px;"&gt;&lt;/div&gt;
+  &lt;div style="flex:1;"&gt;
+    &lt;div class="va-skeleton va-skeleton--text"
+         style="width:40%;"&gt;&lt;/div&gt;
+    &lt;div class="va-skeleton va-skeleton--text"&gt;&lt;/div&gt;
+    &lt;div class="va-skeleton va-skeleton--text"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
         </div>
       </div>
 

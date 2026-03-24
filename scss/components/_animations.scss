@@ -843,3 +843,146 @@
                 gap 0.3s ease-in-out;
   }
 }
+
+// --------------------------------------------------------------------------
+// 20. Named Animation Composition Presets
+// --------------------------------------------------------------------------
+// Pre-built animation combos for common page sections. These bundle
+// entrance animation, delay, duration, and easing into a single class
+// so every hero / feature / card entrance is consistent.
+//
+// Usage:
+//   <h1 class="va-entrance-hero">Headline</h1>
+//   <div class="va-entrance-feature">Feature card</div>
+//   <article class="va-entrance-card">Blog card</article>
+
+// Hero: slow, dramatic fade-up for headline text
+.va-entrance-hero {
+  animation: va-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+// Hero subtitle: slightly delayed, softer entrance
+.va-entrance-hero-sub {
+  animation: va-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+// Hero CTA: delayed scale-in for action buttons
+.va-entrance-hero-cta {
+  animation: va-scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+// Feature section: medium entrance from side (adapts on mobile)
+.va-entrance-feature {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @media (max-width: 767.98px) {
+    transform: translateY(20px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// Feature visual: enters from opposite side
+.va-entrance-feature-visual {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+
+  @media (max-width: 767.98px) {
+    transform: translateY(20px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// Card: quick fade-up for grid items (use inside .va-stagger-group)
+.va-entrance-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Badge / tag: subtle scale-in pop
+.va-entrance-badge {
+  animation: va-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+// --------------------------------------------------------------------------
+// 21. Loading Skeleton Animation
+// --------------------------------------------------------------------------
+// Shimmer / skeleton-loading placeholder for content that hasn't arrived.
+// Useful for async-loaded cards, images, and text blocks.
+//
+// Usage:
+//   <div class="va-skeleton" style="width:200px; height:24px;"></div>
+//   <div class="va-skeleton va-skeleton--circle" style="width:48px; height:48px;"></div>
+//   <div class="va-skeleton va-skeleton--text"></div>
+//   <div class="va-skeleton va-skeleton--card"></div>
+
+@keyframes va-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.va-skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba($va-near-black, 0.06) 25%,
+    rgba($va-near-black, 0.10) 37%,
+    rgba($va-near-black, 0.06) 63%
+  );
+  background-size: 200% 100%;
+  animation: va-shimmer 1.5s ease-in-out infinite;
+  border-radius: $va-radius-sm;
+
+  // Circle variant (avatars, icons)
+  &--circle {
+    border-radius: 50%;
+  }
+
+  // Text line variant (single line of text)
+  &--text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+
+  // Card variant (full card placeholder)
+  &--card {
+    height: 200px;
+    width: 100%;
+    border-radius: $va-radius;
+  }
+
+  // Image variant
+  &--image {
+    height: 160px;
+    width: 100%;
+    border-radius: $va-radius-sm;
+  }
+}
