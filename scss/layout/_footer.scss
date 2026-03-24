@@ -100,7 +100,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   line-height: 1;
 }
 
-.va-footer__brand-description {
+// Brand tagline / description text
+// Note: `__brand-tagline` is a shorthand alias for `__brand-description`.
+.va-footer__brand-description,
+.va-footer__brand-tagline {
   font-size: $_font-size-sm;
   line-height: 1.7;
   color: rgba($va-white, 0.55);

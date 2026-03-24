@@ -98,6 +98,9 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   }
 
   // Logo icon (SVG / image)
+  // Note: `__logo` is the preferred class name used in page markup;
+  // `__icon` is kept as a backward-compatible alias.
+  &__logo,
   &__icon {
     width: 32px;
     height: 32px;

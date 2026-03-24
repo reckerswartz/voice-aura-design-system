@@ -268,3 +268,16 @@ pre {
   background-color: rgba($va-primary-blue, 0.15);
   color: $va-near-black;
 }
+
+// ---------------------------------------------------------------------------
+// 13. Text Colour Utilities
+// ---------------------------------------------------------------------------
+// Quick text-color helpers using design-system tokens.
+// Bootstrap generates `.text-primary`, `.text-secondary`, etc. from
+// $theme-colors.  These `.va-text-*` variants use the VA palette directly.
+
+.va-text-primary { color: $va-primary-blue !important; }
+.va-text-dark    { color: $va-near-black !important; }
+.va-text-muted   { color: $va-muted-text !important; }
+.va-text-body    { color: $va-body-text !important; }
+.va-text-white   { color: $va-white !important; }

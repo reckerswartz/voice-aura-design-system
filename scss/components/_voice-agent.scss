@@ -46,8 +46,10 @@
   // --------------------------------------------------------------------------
   // Language Selector Tabs
   // --------------------------------------------------------------------------
+  // Note: `__languages` is a shorthand alias for `__language-tabs`.
 
-  &__language-tabs {
+  &__language-tabs,
+  &__languages {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -237,8 +239,10 @@
   // --------------------------------------------------------------------------
   // Favorite / Heart Button
   // --------------------------------------------------------------------------
+  // Note: `__fav` is a shorthand alias for `__favorite`.
 
-  &__favorite {
+  &__favorite,
+  &__fav {
     position: absolute;
     top: 1rem;
     right: 1rem;

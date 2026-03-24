@@ -163,6 +163,11 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
 
 .va-section-alt {
   background-color: $va-section-bg;
+
+  // Adjacent alt sections should not have a double border
+  & + & {
+    border-top: none;
+  }
 }
 
 // ---------------------------------------------------------------------------
