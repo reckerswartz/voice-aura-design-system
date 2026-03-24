@@ -35,7 +35,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   &--light {
     background-color: $va-white;
     color: $va-body-text;
-    border-top: 1px solid $va-border-color;
+    border-top: $border-width solid $va-border-color;
 
     .va-footer__brand-text   { color: $va-near-black; }
     .va-footer__heading,
@@ -93,7 +93,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-footer__brand-text {
   font-family: $va-font-heading;
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: $va-white;
@@ -163,7 +163,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-footer__col-title {
   font-family: $va-font-body;
   font-size: $_font-size-sm;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   color: $va-white;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -204,7 +204,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   flex-wrap: wrap;
   gap: $va-grid-unit * 2;
   padding: ($va-grid-unit * 3) 0;                  // 24px vertical
-  border-top: 1px solid rgba($va-white, 0.1);
+  border-top: $border-width solid rgba($va-white, 0.1);
   font-size: $_font-size-xs;                       // 12px
   color: rgba($va-white, 0.4);
 

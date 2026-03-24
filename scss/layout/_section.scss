@@ -34,7 +34,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
   // Adjacent sections get a subtle separator line
   & + & {
-    border-top: 1px solid $va-border-color;
+    border-top: $border-width solid $va-border-color;
   }
 
   // Slightly tighter variant
@@ -87,12 +87,12 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   margin-bottom: $va-grid-unit * 2.5;              // 20px
   font-family: $va-font-body;
   font-size: $_font-size-xs;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $va-primary-blue;
   background-color: rgba($va-primary-blue, 0.06);
-  border: 1px solid rgba($va-primary-blue, 0.15);
+  border: $border-width solid rgba($va-primary-blue, 0.15);
   border-radius: $va-radius-pill;
   line-height: 1.4;
 }
@@ -101,7 +101,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-section__title {
   font-family: $va-font-heading;
   font-size: clamp(1.75rem, 3vw + 0.5rem, 2.75rem); // 28px → 44px
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: $va-near-black;
@@ -112,7 +112,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-section__subtitle {
   font-family: $va-font-body;
   font-size: $_font-size-lg;
-  font-weight: 400;
+  font-weight: $font-weight-normal;
   line-height: 1.65;
   color: $va-body-text;
   margin: 0;
@@ -136,12 +136,12 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
   &--light {
     background: linear-gradient(145deg, $va-section-bg 0%, darken($va-section-bg, 4%) 100%);
-    border: 1px solid $va-border-color;
+    border: $border-width solid $va-border-color;
   }
 
   &--dark {
     background: linear-gradient(145deg, $va-near-black 0%, darken($va-near-black, 10%) 100%);
-    border: 1px solid rgba($va-white, 0.06);
+    border: $border-width solid rgba($va-white, 0.06);
   }
 }
 
@@ -167,7 +167,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   &__heading {
     font-family: $va-font-body;
     font-size: $_font-size-sm;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: $va-muted-text;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -223,7 +223,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   max-width: $va-container-max-width;
   margin: 0 auto;
   border: none;
-  border-top: 1px solid $va-border-color;
+  border-top: $border-width solid $va-border-color;
 }
 
 // ---------------------------------------------------------------------------
@@ -268,7 +268,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   &__title {
     font-family: $va-font-heading;
     font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: $va-near-black;
@@ -278,7 +278,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   &__subtitle {
     font-family: $va-font-body;
     font-size: $_font-size-lg;
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.65;
     color: $va-body-text;
     margin: 0;
@@ -292,7 +292,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     padding: ($va-grid-unit * 1.25) ($va-grid-unit * 2.5);
     font-family: $va-font-body;
     font-size: $_font-size-sm;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: $va-white;
     background-color: $va-near-black;
     border: none;
@@ -385,7 +385,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   gap: $va-grid-unit * 0.75;
   font-family: $va-font-body;
   font-size: $_font-size-sm;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   color: $va-primary-blue;
   text-decoration: none;
   white-space: nowrap;

@@ -141,7 +141,7 @@
   padding: 0.375rem 0.875rem;
   font-family: $font-family-base;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: $va-primary;
@@ -192,7 +192,7 @@
   padding: 0.375rem 1rem;
   font-family: $font-family-base;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $va-body-text;
@@ -236,7 +236,7 @@
   padding: 0.375rem 0.875rem;
   font-family: $font-family-base;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: $va-body-text;
@@ -250,7 +250,7 @@
     justify-content: center;
     padding: 0.125rem 0.5rem;
     font-size: 0.6875rem;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     color: $va-white;
     background-color: $va-primary;
     border-radius: $border-radius-pill;

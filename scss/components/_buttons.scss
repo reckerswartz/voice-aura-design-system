@@ -208,10 +208,13 @@
 // Size: Large
 // --------------------------------------------------------------------------
 
+// Note: va-btn sizes are intentionally proportional to the va-btn base
+// (15px/1.4) rather than Bootstrap's btn base (16px/1.5), so these values
+// differ slightly from $btn-padding-y-lg / $btn-font-size-lg.
 .va-btn--lg {
-  padding: 0.9375rem 2rem;
-  font-size: 1.0625rem; // 17px
-  border-radius: 0.625rem;
+  padding: 0.9375rem $btn-padding-x-lg;   // 15px 32px
+  font-size: 1.0625rem;                   // 17px (vs Bootstrap 18px)
+  border-radius: 0.625rem;                // 10px — proportional to va-btn
 }
 
 // --------------------------------------------------------------------------
@@ -219,8 +222,8 @@
 // --------------------------------------------------------------------------
 
 .va-btn--sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem; // 13px
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  font-size: 0.8125rem;                   // 13px (vs Bootstrap 14px)
   gap: 0.375rem;
 }
 

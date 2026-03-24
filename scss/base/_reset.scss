@@ -49,7 +49,7 @@ p {
 // Ensure <strong> / <b> use a consistent weight
 strong,
 b {
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
 }
 
 // ---------------------------------------------------------------------------
@@ -155,7 +155,7 @@ select {
     color: $va-primary-blue;
     font-family: $va-font-body;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     border: 2px solid $va-primary-blue;
     border-radius: $va-radius-sm;
     text-decoration: none;

@@ -85,10 +85,10 @@
     padding: 0.375rem 0.75rem;
     font-family: $va-font-body;
     font-size: 0.8125rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: rgba($va-white, 0.6);
     background: transparent;
-    border: 1px solid rgba($va-white, 0.12);
+    border: $border-width solid rgba($va-white, 0.12);
     border-radius: $va-radius-pill;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
@@ -168,7 +168,7 @@
   &__player-title {
     font-family: $va-font-body;
     font-size: 0.8125rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: $va-white;
     white-space: nowrap;
     overflow: hidden;
@@ -215,7 +215,7 @@
     padding: 0.25rem 0.75rem;
     font-family: $va-font-body;
     font-size: 0.8125rem;
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.5;
     color: $va-white;
     background-color: rgba($va-near-black, 0.65);
@@ -273,11 +273,11 @@
     &--cc {
       font-family: $va-font-body;
       font-size: 0.625rem;
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       letter-spacing: 0.02em;
       width: auto;
       padding: 0.125rem 0.25rem;
-      border: 1px solid rgba($va-white, 0.4);
+      border: $border-width solid rgba($va-white, 0.4);
       border-radius: 0.125rem;
       color: $va-danger;
       background-color: transparent;
@@ -331,7 +331,7 @@
   &__time {
     font-family: $va-font-body;
     font-size: 0.6875rem;
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     color: rgba($va-white, 0.6);
     white-space: nowrap;
     flex-shrink: 0;
@@ -348,7 +348,7 @@
     padding: 0.5rem 1rem;
     font-family: $va-font-body;
     font-size: 0.8125rem;
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     color: rgba($va-white, 0.7);
   }
 
@@ -419,7 +419,7 @@
       top: 0.5rem;
       left: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: rgba($va-white, 0.2);
     }
@@ -430,7 +430,7 @@
       top: 0.5rem;
       right: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: rgba($va-white, 0.2);
     }
@@ -450,7 +450,7 @@
       bottom: 0.5rem;
       left: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: rgba($va-white, 0.2);
     }
@@ -461,7 +461,7 @@
       bottom: 0.5rem;
       right: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: rgba($va-white, 0.2);
     }

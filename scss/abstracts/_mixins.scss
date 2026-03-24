@@ -84,7 +84,7 @@
   background-color: rgba($va-white, $opacity);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur); // Safari support
-  border: 1px solid rgba($va-white, 0.3);
+  border: $border-width solid rgba($va-white, 0.3);
 }
 
 // ----------------------------------------------------------------------------

@@ -30,7 +30,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   height: $va-navbar-height;                       // 72px
   padding: 0 ($va-grid-unit * 4);                  // 0 32px
   background-color: $va-white;
-  border-bottom: 1px solid $va-border-color;
+  border-bottom: $border-width solid $va-border-color;
   z-index: $va-z-navbar;
   transition: box-shadow 0.2s ease-in-out,
               border-color 0.2s ease-in-out;
@@ -119,7 +119,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   &__text {
     font-family: $va-font-heading;
     font-size: 1.125rem;                           // 18px
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: $va-near-black;
@@ -147,7 +147,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 .va-navbar-link {
   font-family: $va-font-body;
   font-size: $font-size-base;
-  font-weight: 400;
+  font-weight: $font-weight-normal;
   color: $va-body-text;
   text-decoration: none;
   padding: $va-grid-unit 0;                        // 8px vertical hit area
@@ -179,7 +179,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   // Active / current page state
   &--active {
     color: $va-near-black;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
 
     &::after {
       width: 100%;
@@ -202,7 +202,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 .va-navbar-btn--ghost {
   font-family: $va-font-body;
   font-size: $font-size-base;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   color: $va-near-black;
   background: transparent;
   border: none;
@@ -227,10 +227,10 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   gap: $va-grid-unit * 0.75;
   font-family: $va-font-body;
   font-size: $_font-size-sm;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   color: $va-near-black;
   background: transparent;
-  border: 1px solid $va-border-color;
+  border: $border-width solid $va-border-color;
   padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
   border-radius: $va-radius-pill;
   cursor: pointer;
@@ -260,7 +260,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   gap: $va-grid-unit * 0.75;
   font-family: $va-font-body;
   font-size: $_font-size-sm;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   color: $va-white;
   background-color: $va-near-black;
   border: none;
@@ -418,7 +418,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   .va-navbar-link {
     display: block;
     padding: ($va-grid-unit * 1.5) $va-grid-unit;   // 12px 8px
-    border-bottom: 1px solid $va-border-color;
+    border-bottom: $border-width solid $va-border-color;
 
     &::after {
       display: none;

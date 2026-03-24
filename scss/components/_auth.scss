@@ -23,7 +23,7 @@
   padding: 2.5rem 2rem;
   background-color: $va-white;
   border-radius: $va-radius-lg;
-  border: 1px solid $va-border;
+  border: $border-width solid $va-border;
 
   // --------------------------------------------------------------------------
   // Header
@@ -37,7 +37,7 @@
     h2 {
       font-family: $va-font-heading;
       font-size: 1.75rem;
-      font-weight: 600;
+      font-weight: $font-weight-semibold;
       line-height: 1.25;
       color: $va-near-black;
       margin: 0 0 0.5rem;
@@ -118,10 +118,10 @@
     padding: 0.8125rem 1.5rem;
     font-family: $va-font-body;
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: $va-white;
     background-color: $va-near-black;
-    border: 1px solid $va-near-black;
+    border: $border-width solid $va-near-black;
     border-radius: $va-radius-sm;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -177,7 +177,7 @@
     span {
       font-family: $va-font-body;
       font-size: 0.8125rem;
-      font-weight: 400;
+      font-weight: $font-weight-normal;
       color: $va-body-text;
       text-transform: lowercase;
     }
@@ -211,10 +211,10 @@
     padding: 0.6875rem 1.25rem;
     font-family: $va-font-body;
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     color: $va-near-black;
     background-color: $va-white;
-    border: 1px solid $va-border;
+    border: $border-width solid $va-border;
     border-radius: $va-radius-sm;
     cursor: pointer;
     text-decoration: none;
@@ -251,7 +251,7 @@
 
     a {
       color: $va-primary;
-      font-weight: 500;
+      font-weight: $font-weight-medium;
       text-decoration: none;
       transition: color 0.15s ease-in-out;
 
@@ -393,7 +393,7 @@
   display: block;
   font-family: $va-font-body;
   font-size: 0.8125rem;
-  font-weight: 400;
+  font-weight: $font-weight-normal;
   color: $va-body-text;
   margin-bottom: 1.25rem;
   text-transform: uppercase;
@@ -416,7 +416,7 @@
   transition: filter 0.2s ease-in-out;
   padding: 0 1.25rem;
   // Pipe separator via border-right on every logo except last
-  border-right: 1px solid $va-border;
+  border-right: $border-width solid $va-border;
 
   &:last-child {
     border-right: none;

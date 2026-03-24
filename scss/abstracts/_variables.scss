@@ -99,10 +99,11 @@ $h5-font-size: 1.125rem; // 18px
 $h6-font-size: 1rem;     // 16px
 
 // Font weights
-$font-weight-normal:  400;
-$font-weight-medium:  500;
+$font-weight-light:    300;
+$font-weight-normal:   400;
+$font-weight-medium:   500;
 $font-weight-semibold: 600;
-$font-weight-bold:    700;
+$font-weight-bold:     700;
 
 $font-weight-base: $font-weight-normal;
 
@@ -119,7 +120,7 @@ $headings-margin-bottom: 1rem;                 // 16px — matches VA 8px grid (
 // Display headings — Bootstrap `.display-1` through `.display-4`
 // Customised to match Voice Aura's hero / landing-page typography.
 $display-font-family: $va-font-heading;
-$display-font-weight: 700;
+$display-font-weight: $font-weight-bold;
 $display-line-height:  1.1;
 $display-font-sizes: (
   1: clamp(3rem, 5vw + 1rem, 5.5rem),     // ~88px max
@@ -130,7 +131,7 @@ $display-font-sizes: (
 
 // Lead text — Bootstrap `.lead`
 $lead-font-size:   1.125rem;   // 18px (matches VA's $_font-size-lg)
-$lead-font-weight: 400;
+$lead-font-weight: $font-weight-normal;
 
 // Paragraph
 $paragraph-margin-bottom: 1.25rem;
@@ -295,7 +296,7 @@ $form-select-focus-box-shadow:   $input-focus-box-shadow;
 
 // Checks
 $form-check-input-border-radius: 0.25rem;
-$form-check-input-border:        1px solid $va-border-color;
+$form-check-input-border:        $border-width solid $va-border-color;
 
 // ----------------------------------------------------------------------------
 // 9. NAVBAR

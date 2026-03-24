@@ -47,7 +47,7 @@
   padding: 0.5rem 1.25rem;
   font-family: $va-font-body;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   color: $va-body-text;
   background: transparent;
   border: none;
@@ -125,7 +125,7 @@ $va-crosshair-color: $va-border;
   flex-direction: column;
   padding: 2rem;
   background-color: $va-white;
-  border: 1px solid $va-border;
+  border: $border-width solid $va-border;
   border-radius: $va-radius;
 
   // --------------------------------------------------------------------------
@@ -187,7 +187,7 @@ $va-crosshair-color: $va-border;
       top: 0.5rem;
       left: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: $va-crosshair-color;
     }
@@ -199,7 +199,7 @@ $va-crosshair-color: $va-border;
       top: 0.5rem;
       right: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: $va-crosshair-color;
     }
@@ -220,7 +220,7 @@ $va-crosshair-color: $va-border;
       bottom: 0.5rem;
       left: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: $va-crosshair-color;
     }
@@ -232,7 +232,7 @@ $va-crosshair-color: $va-border;
       bottom: 0.5rem;
       right: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: $font-weight-light;
       line-height: 1;
       color: $va-crosshair-color;
     }
@@ -257,7 +257,7 @@ $va-crosshair-color: $va-border;
     padding: 0.3125rem 0.75rem;
     font-family: $va-font-body;
     font-size: 0.8125rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     line-height: 1.4;
     color: $va-near-black;
     background-color: $va-light-grey;
@@ -273,7 +273,7 @@ $va-crosshair-color: $va-border;
   &__price {
     font-family: $va-font-heading;
     font-size: 3rem;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     line-height: 1.1;
     color: $va-near-black;
     margin-bottom: 0.75rem;
@@ -282,7 +282,7 @@ $va-crosshair-color: $va-border;
     &-suffix {
       font-family: $va-font-body;
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: $font-weight-normal;
       color: $va-body-text;
     }
   }
@@ -312,9 +312,9 @@ $va-crosshair-color: $va-border;
     padding: 0.75rem 1.5rem;
     font-family: $va-font-body;
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     text-decoration: none;
-    border: 1px solid $va-border;
+    border: $border-width solid $va-border;
     border-radius: $va-radius-sm;
     background-color: transparent;
     color: $va-near-black;
