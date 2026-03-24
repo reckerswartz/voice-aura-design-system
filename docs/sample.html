@@ -16,98 +16,10 @@
   <!-- Page-level tweaks (minimal — keeps everything in design-system classes) -->
   <style>
     html { scroll-behavior: smooth; }
-    body { background-color: #fff; }
-
-    /* Featured section background overrides */
-    .section-alt { background-color: #F7F7F8; }
-
-    /* Inline SVG icon helpers */
-    .icon-16 { width: 16px; height: 16px; flex-shrink: 0; }
-    .icon-18 { width: 18px; height: 18px; flex-shrink: 0; }
-    .icon-20 { width: 20px; height: 20px; flex-shrink: 0; }
-
-    /* Feature section two-col layout */
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      padding: 3rem 0;
-    }
-    .feature-row--reverse { direction: rtl; }
-    .feature-row--reverse > * { direction: ltr; }
-    @media (max-width: 767.98px) {
-      .feature-row,
-      .feature-row--reverse {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem 0;
-      }
-    }
-    .feature-row__text { max-width: 480px; }
-    .feature-row__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #0478FF;
-      background: rgba(4,120,255,0.08);
-      border: 1px solid rgba(4,120,255,0.18);
-      border-radius: 100px;
-      padding: 4px 12px;
-      margin-bottom: 16px;
-    }
-    .feature-row__title {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: #1A1919;
-      margin-bottom: 16px;
-    }
-    .feature-row__desc {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: #4B5563;
-      margin-bottom: 24px;
-    }
-    .feature-row__actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* Link with arrow icon */
-    .va-link-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #1A1919;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .va-link-arrow:hover { color: #0478FF; }
-    .va-link-arrow svg { width: 14px; height: 14px; }
-
-    /* Feature visual card */
-    .feature-visual {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-    }
 
     /* Ensure sections stack neatly */
     .va-section + .va-section { border-top: 1px solid #E5E7EB; }
-    .section-alt + .section-alt { border-top: none; }
+    .va-section-alt + .va-section-alt { border-top: none; }
 
     /* Client logo trust bar */
     .client-logo-svg {
@@ -211,11 +123,11 @@
   <!-- CTA Buttons -->
   <div class="va-hero__actions va-animate-fade-up va-animate--delay-2">
     <button class="va-hero__btn--primary" type="button">
-      <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+      <svg class="va-icon-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
       Open Studio
     </button>
     <button class="va-hero__btn--secondary" type="button">
-      <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
       API Docs
     </button>
   </div>
@@ -295,22 +207,22 @@
 <!-- ===================================================================== -->
 <section id="features-api" class="va-section va-bg-glow va-pattern-circuit va-pattern-circuit--light va-section-morph">
   <div class="va-container va-container-smooth">
-    <div class="feature-row">
+    <div class="va-feature-row">
       <!-- Text -->
-      <div class="feature-row__text va-scroll-fade-left va-responsive-fade-left">
-        <span class="feature-row__badge">
-          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <div class="va-feature-row__text va-scroll-fade-left va-responsive-fade-left">
+        <span class="va-feature-row__badge">
+          <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           FOR DEVELOPERS
         </span>
-        <h2 class="feature-row__title">Experience the Fastest, Most Powerful Text-to-Speech API</h2>
-        <p class="feature-row__desc">
+        <h2 class="va-feature-row__title">Experience the Fastest, Most Powerful Text-to-Speech API</h2>
+        <p class="va-feature-row__desc">
           Experience the fastest, most powerful Text-to-Speech API &mdash;
           delivering natural, high-quality voice with low latency and seamless
           integration for any application.
         </p>
-        <div class="feature-row__actions">
+        <div class="va-feature-row__actions">
           <button class="va-btn va-btn--filled va-btn--dark va-btn--sm" type="button">
-            <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             Get API Key
           </button>
           <a href="#" class="va-link-arrow">
@@ -321,22 +233,22 @@
       </div>
 
       <!-- Visual: Voice Agent Card -->
-      <div class="feature-visual feature-visual--light va-scroll-fade-right va-responsive-fade-right">
+      <div class="va-feature-visual va-feature-visual--light va-scroll-fade-right va-responsive-fade-right">
         <div class="va-agent-card va-agent-card--crosshairs">
           <div class="va-agent-card__corners"></div>
           <div class="va-agent-card__corners-bottom"></div>
           <!-- Language pills -->
           <div class="va-agent-card__languages" role="tablist">
             <button class="va-agent-card__lang va-agent-card__lang--active" type="button" role="tab" aria-selected="true">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
               English
             </button>
             <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
               Chinese
             </button>
             <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
               Japanese
             </button>
           </div>
@@ -369,22 +281,22 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 2 — FOR LOCALIZER (Video Dubbing)                              -->
 <!-- ===================================================================== -->
-<section id="features-dubbing" class="va-section section-alt va-pattern-noise va-pattern-rings va-pattern-rings--small va-section-morph">
+<section id="features-dubbing" class="va-section va-section-alt va-pattern-noise va-pattern-rings va-pattern-rings--small va-section-morph">
   <div class="va-container va-container-smooth">
-    <div class="feature-row feature-row--reverse">
+    <div class="va-feature-row va-feature-row--reverse">
       <!-- Text -->
-      <div class="feature-row__text va-scroll-fade-right va-responsive-fade-right">
-        <span class="feature-row__badge">
-          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+      <div class="va-feature-row__text va-scroll-fade-right va-responsive-fade-right">
+        <span class="va-feature-row__badge">
+          <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
           FOR LOCALIZER
         </span>
-        <h2 class="feature-row__title">Speed Meets Accuracy in Video Translation</h2>
-        <p class="feature-row__desc">
+        <h2 class="va-feature-row__title">Speed Meets Accuracy in Video Translation</h2>
+        <p class="va-feature-row__desc">
           Translate videos instantly with AI-powered precision.
           Deliver clear, natural, and reliable multilingual
           content &mdash; fast and effortless.
         </p>
-        <div class="feature-row__actions">
+        <div class="va-feature-row__actions">
           <button class="va-btn va-btn--filled va-btn--dark va-btn--sm" type="button">Try Dubbing</button>
           <a href="#" class="va-link-arrow">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -394,23 +306,23 @@
       </div>
 
       <!-- Visual: Dubbing card -->
-      <div class="feature-visual feature-visual--dark va-scroll-fade-left va-responsive-fade-left">
+      <div class="va-feature-visual va-feature-visual--dark va-scroll-fade-left va-responsive-fade-left">
         <div class="va-dubbing-card">
           <div class="va-dubbing-card__langs" role="tablist">
             <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button" role="tab" aria-selected="true">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               English
             </button>
             <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Chinese
             </button>
             <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Japanese
             </button>
             <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Korean
             </button>
           </div>
@@ -440,7 +352,7 @@
             </div>
           </div>
           <div class="va-dubbing-card__title">
-            <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+            <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
             The Master - Processing Scene(HD)
           </div>
         </div>
@@ -460,7 +372,7 @@
         <p class="va-section__subtitle">Latest news, product updates, and expert insights to keep you ahead.</p>
       </div>
       <a href="#" class="va-section__action va-btn va-btn--filled va-btn--dark va-btn--sm">
-        <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
         Explore more blogs
       </a>
     </div>
@@ -558,7 +470,7 @@
       <div>
         <span class="va-discount-badge">
           <span class="va-discount-badge__value">ANNUAL DISCOUNT</span>
-          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </span>
       </div>
     </div>

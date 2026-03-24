@@ -105,7 +105,7 @@
     &__placeholder {
       width: 100%;
       aspect-ratio: 1;
-      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      background: linear-gradient(135deg, $va-badge-bg-light 0%, darken($va-badge-bg-light, 6%) 100%);
       border-radius: $va-radius;
       display: flex;
       align-items: center;
@@ -204,6 +204,18 @@
       background-color: rgba($va-white, 0.1);
     }
 
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
+    }
+
+    &:disabled,
+    &.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
     // Accent-colored CTA variant
     &--accent {
       background-color: $va-primary;
@@ -248,8 +260,17 @@
     }
 
     &.is-active {
-      color: #ef4444;
-      background: rgba(#ef4444, 0.15);
+      color: $va-danger;
+      background: rgba($va-danger, 0.15);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
     }
 
     svg {

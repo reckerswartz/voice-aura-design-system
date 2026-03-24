@@ -85,6 +85,17 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   gap: $va-grid-unit;                              // 8px
   text-decoration: none;
   flex-shrink: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 4px;
+    border-radius: $va-radius-sm;
+  }
 
   // Logo icon (SVG / image)
   &__icon {

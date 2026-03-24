@@ -1,0 +1,168 @@
+// ============================================================================
+// Voice Aura – Feature Section Layout
+// ============================================================================
+// Two-column feature rows used on landing / marketing pages.
+// Previously inline in sample.html — now part of the design system.
+//
+// Markup example:
+//   <div class="va-feature-row">
+//     <div class="va-feature-row__text">
+//       <span class="va-feature-row__badge">…</span>
+//       <h2 class="va-feature-row__title">…</h2>
+//       <p class="va-feature-row__desc">…</p>
+//       <div class="va-feature-row__actions">…</div>
+//     </div>
+//     <div class="va-feature-visual va-feature-visual--light">…</div>
+//   </div>
+// ============================================================================
+
+// Private tokens (file-scoped)
+$_bp-md: map-get($va-breakpoints, "md"); // 768px
+
+// ---------------------------------------------------------------------------
+// 1. Feature Row — Two-Column Grid
+// ---------------------------------------------------------------------------
+
+.va-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: map-get($spacers, 6);               // 4rem / 64px
+  align-items: center;
+  padding: map-get($spacers, 6) 0;
+
+  @media (max-width: $_bp-md - 1px) {
+    grid-template-columns: 1fr;
+    gap: map-get($spacers, 5);             // 3rem / 48px
+    padding: map-get($spacers, 5) 0;
+  }
+}
+
+// Reversed variant — visual on the left, text on the right
+.va-feature-row--reverse {
+  direction: rtl;
+
+  > * {
+    direction: ltr;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Feature Row — Text Column
+// ---------------------------------------------------------------------------
+
+.va-feature-row__text {
+  max-width: 480px;
+}
+
+.va-feature-row__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;               // 6px
+  font-family: $va-font-body;
+  font-size: map-get($va-font-sizes, "xs"); // 0.75rem
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $va-primary-blue;
+  background: rgba($va-primary-blue, 0.08);
+  border: 1px solid rgba($va-primary-blue, 0.18);
+  border-radius: $va-radius-pill;
+  padding: ($va-grid-unit * 0.5) ($va-grid-unit * 1.5); // 4px 12px
+  margin-bottom: $va-grid-unit * 2;        // 16px
+}
+
+.va-feature-row__title {
+  font-family: $va-font-heading;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.15;
+  color: $va-near-black;
+  margin-bottom: $va-grid-unit * 2;        // 16px
+}
+
+.va-feature-row__desc {
+  font-family: $va-font-body;
+  font-size: 0.9375rem;                    // 15px
+  line-height: 1.65;
+  color: $va-body-text;
+  margin-bottom: $va-grid-unit * 3;        // 24px
+}
+
+.va-feature-row__actions {
+  display: flex;
+  align-items: center;
+  gap: $va-grid-unit * 2;                  // 16px
+  flex-wrap: wrap;
+}
+
+// ---------------------------------------------------------------------------
+// 3. Feature Visual — Demo Container
+// ---------------------------------------------------------------------------
+
+.va-feature-visual {
+  position: relative;
+  border-radius: $va-radius-lg;            // 16px
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+
+  &--light {
+    background: linear-gradient(145deg, $va-section-bg 0%, darken($va-section-bg, 4%) 100%);
+    border: 1px solid $va-border-color;
+  }
+
+  &--dark {
+    background: linear-gradient(145deg, $va-near-black 0%, darken($va-near-black, 10%) 100%);
+    border: 1px solid rgba($va-white, 0.06);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Link with Arrow Icon
+// ---------------------------------------------------------------------------
+
+.va-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;               // 6px
+  font-family: $va-font-body;
+  font-size: map-get($va-font-sizes, "sm"); // 0.875rem
+  font-weight: $font-weight-medium;
+  color: $va-near-black;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, gap 0.2s ease-in-out;
+
+  &:hover {
+    color: $va-primary-blue;
+    gap: $va-grid-unit;                     // 8px — subtle arrow push
+  }
+
+  &:focus-visible {
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5. Section Alt Background
+// ---------------------------------------------------------------------------
+
+.va-section-alt {
+  background-color: $va-section-bg;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Inline Icon Size Helpers
+// ---------------------------------------------------------------------------
+
+.va-icon-16 { width: 16px; height: 16px; flex-shrink: 0; }
+.va-icon-18 { width: 18px; height: 18px; flex-shrink: 0; }
+.va-icon-20 { width: 20px; height: 20px; flex-shrink: 0; }

@@ -332,6 +332,19 @@ $va-crosshair-color: $va-border;
       border-color: darken($va-border, 8%);
     }
 
+    &:active {
+      background-color: darken($va-bg-alt, 3%);
+      border-color: darken($va-border, 12%);
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
     &:focus-visible {
       outline: 2px solid $va-primary-blue;
       outline-offset: 2px;

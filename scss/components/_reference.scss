@@ -194,11 +194,11 @@
   border-radius: $va-radius;
 
   &--light {
-    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(145deg, $va-section-bg 0%, darken($va-section-bg, 4%) 100%);
   }
 
   &--dark {
-    background: linear-gradient(145deg, $va-near-black 0%, #0f172a 100%);
+    background: linear-gradient(145deg, $va-near-black 0%, darken($va-near-black, 10%) 100%);
     border-color: rgba($va-white, 0.06);
   }
 }

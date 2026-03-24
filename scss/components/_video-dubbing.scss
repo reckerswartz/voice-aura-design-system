@@ -180,12 +180,12 @@
   &__player-video {
     position: relative;
     aspect-ratio: 16 / 9;
-    background-color: #000;
+    background-color: $va-near-black;
     overflow: hidden;
 
     // Placeholder gradient (when no video is loaded)
     &--placeholder {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      background: linear-gradient(135deg, darken($va-near-black, 5%) 0%, darken($va-near-black, 12%) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -216,7 +216,7 @@
     font-weight: 400;
     line-height: 1.5;
     color: $va-white;
-    background-color: rgba(#000, 0.65);
+    background-color: rgba($va-near-black, 0.65);
     border-radius: 0.25rem;
     text-align: center;
     margin: 0;
@@ -232,7 +232,7 @@
     align-items: center;
     gap: 0.625rem;
     padding: 0.5rem 0.75rem;
-    background-color: rgba(#000, 0.85);
+    background-color: rgba($va-near-black, 0.85);
   }
 
   &__control-btn {
@@ -253,6 +253,15 @@
       color: $va-white;
     }
 
+    &:active {
+      transform: scale(0.92);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
+    }
+
     svg {
       width: 1rem;
       height: 1rem;
@@ -268,7 +277,7 @@
       padding: 0.125rem 0.25rem;
       border: 1px solid rgba($va-white, 0.4);
       border-radius: 0.125rem;
-      color: #ef4444;
+      color: $va-danger;
       background-color: transparent;
     }
   }
