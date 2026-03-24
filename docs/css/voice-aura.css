@@ -12766,9 +12766,20 @@ pre code {
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 
+@media (min-width: 992px) {
+  .va-navbar-collapse {
+    justify-content: center;
+  }
+  .va-navbar-actions {
+    margin-left: auto;
+  }
+  .va-navbar-nav {
+    margin: 0 auto;
+  }
+}
 @media (max-width: 991px) {
   .va-navbar {
     flex-wrap: wrap;
@@ -13078,35 +13089,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 42px;
+  height: 51px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 86px;
+  height: 91px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 29px;
+  height: 92px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 73px;
+  height: 83px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 19px;
+  height: 23px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 71px;
+  height: 92px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 41px;
+  height: 66px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 20px;
+  height: 90px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 

@@ -351,7 +351,21 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+// On desktop, nav links are centred in the available space while
+// the actions group is pushed to the far right.
+@media (min-width: $_bp-lg) {
+  .va-navbar-collapse {
+    justify-content: center;
+  }
+  .va-navbar-actions {
+    margin-left: auto;
+  }
+  .va-navbar-nav {
+    margin: 0 auto;
+  }
 }
 
 // ---------------------------------------------------------------------------
