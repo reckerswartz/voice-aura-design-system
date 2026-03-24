@@ -180,13 +180,13 @@
 <!-- ===================================================================== -->
 <!-- HERO SECTION                                                           -->
 <!-- ===================================================================== -->
-<section class="va-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg">
+<section id="hero" class="va-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg">
   <!-- Decorative floating elements (hidden on mobile by the SCSS) -->
-  <div class="va-hero__float va-hero__float--top-left va-hero__float--sm va-animate-float">
+  <div class="va-hero__float va-hero__float--top-left va-hero__float--sm va-animate-float" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 5 7 7-7 7"/></svg>
   </div>
-  <div class="va-hero__float va-hero__float--top-right va-hero__float--letter va-animate-float">A</div>
-  <div class="va-hero__float va-hero__float--bottom-left va-hero__float--lg va-animate-float">
+  <div class="va-hero__float va-hero__float--top-right va-hero__float--letter va-animate-float" aria-hidden="true">A</div>
+  <div class="va-hero__float va-hero__float--bottom-left va-hero__float--lg va-animate-float" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
   </div>
 
@@ -231,7 +231,7 @@
       </button>
     </div>
     <div class="va-input-card__body">
-      <textarea placeholder="Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences." rows="4"></textarea>
+      <textarea id="tts-input" aria-label="Text to speech input" placeholder="Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences." rows="4"></textarea>
     </div>
     <div class="va-input-card__footer">
       <div class="va-input-card__footer-pills">
@@ -273,17 +273,17 @@
 <!-- ===================================================================== -->
 <!-- CLIENT LOGOS                                                           -->
 <!-- ===================================================================== -->
-<section class="va-section" style="padding-top:2rem;padding-bottom:2rem;border-top:none;">
+<section id="client-logos" class="va-section" style="padding-top:2rem;padding-bottom:2rem;border-top:none;">
   <div class="va-client-logos">
     <span class="va-client-logos__label">The solution of choice for 300+ Forbes 2000 companies</span>
     <div class="va-client-logos__list" style="display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;">
       <!-- SVG wordmark logos for credibility -->
-      <svg class="client-logo-svg" viewBox="0 0 140 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="16" fill="#1A1919" letter-spacing="0.5">AIRFRANCE</text><text x="116" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="16" fill="#0478FF">/</text></svg>
-      <svg class="client-logo-svg" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="12" r="8" fill="none" stroke="#1A1919" stroke-width="1.5"/><path d="M7 12l2 2 4-4" fill="none" stroke="#1A1919" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="17" font-family="'IBM Plex Sans',sans-serif" font-weight="600" font-size="15" fill="#1A1919">VERTIV.</text></svg>
-      <svg class="client-logo-svg" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="800" font-size="16" fill="#1A1919">Honeywell</text></svg>
-      <svg class="client-logo-svg" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Mono',monospace" font-weight="500" font-size="15" fill="#1A1919">splunk&gt;</text></svg>
-      <svg class="client-logo-svg" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="15" fill="#1A1919">Salesforce</text></svg>
-      <svg class="client-logo-svg" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="600" font-size="16" fill="#1A1919">Shopify</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Air France" viewBox="0 0 140 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="16" fill="#1A1919" letter-spacing="0.5">AIRFRANCE</text><text x="116" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="16" fill="#0478FF">/</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Vertiv" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="12" r="8" fill="none" stroke="#1A1919" stroke-width="1.5"/><path d="M7 12l2 2 4-4" fill="none" stroke="#1A1919" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="17" font-family="'IBM Plex Sans',sans-serif" font-weight="600" font-size="15" fill="#1A1919">VERTIV.</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Honeywell" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="800" font-size="16" fill="#1A1919">Honeywell</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Splunk" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Mono',monospace" font-weight="500" font-size="15" fill="#1A1919">splunk&gt;</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Salesforce" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="700" font-size="15" fill="#1A1919">Salesforce</text></svg>
+      <svg class="client-logo-svg" role="img" aria-label="Shopify" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="'IBM Plex Sans',sans-serif" font-weight="600" font-size="16" fill="#1A1919">Shopify</text></svg>
     </div>
   </div>
 </section>
@@ -291,7 +291,7 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 1 — FOR DEVELOPERS (API)                                       -->
 <!-- ===================================================================== -->
-<section class="va-section va-bg-glow">
+<section id="features-api" class="va-section va-bg-glow">
   <div class="va-container">
     <div class="feature-row">
       <!-- Text -->
@@ -367,7 +367,7 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 2 — FOR LOCALIZER (Video Dubbing)                              -->
 <!-- ===================================================================== -->
-<section class="va-section section-alt va-pattern-noise">
+<section id="features-dubbing" class="va-section section-alt va-pattern-noise">
   <div class="va-container">
     <div class="feature-row feature-row--reverse">
       <!-- Text -->
@@ -450,7 +450,7 @@
 <!-- ===================================================================== -->
 <!-- INSIGHTS & UPDATES (Blog Section)                                       -->
 <!-- ===================================================================== -->
-<section class="va-section va-blog-section va-section-separator">
+<section id="blog" class="va-section va-blog-section va-section-separator">
   <div class="va-container">
     <div class="va-section__header va-section__header--left">
       <div>

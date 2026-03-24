@@ -31,7 +31,7 @@
     .ref-radius-demo { width: 80px; height: 80px; background: #E9E9EA; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; }
     .ref-shadow-demo { width: 120px; height: 80px; background: #fff; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #9CA3AF; }
     .ref-page-header { background: #1A1919; color: white; padding: 4rem 0; }
-    .ref-page-header h1 { font-family: 'IBM Plex Serif', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .ref-page-header h1 { font-family: 'IBM Plex Serif', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
     .ref-page-header p { color: #9CA3AF; font-size: 1.125rem; }
     .ref-page-header .ref-version { display: inline-block; background: #0478FF; color: white; padding: 0.25rem 0.75rem; border-radius: 50rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
   </style>
@@ -83,6 +83,7 @@
           <a href="#animations">Animations &amp; Transitions</a>
           <a href="#bootstrap-alignment">Bootstrap Alignment</a>
           <a href="#footer">Footer</a>
+          <a href="#file-structure">File Structure</a>
           <a href="#sample">Sample Landing Page</a>
         </nav>
       </aside>
@@ -1561,7 +1562,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
         <!-- ============================================================ -->
         <!-- FILE MAP                                                      -->
         <!-- ============================================================ -->
-        <section class="ref-section">
+        <section id="file-structure" class="ref-section">
           <p class="ref-label">Architecture</p>
           <h2 class="ref-title">File Structure</h2>
           <pre style="background: #F7F7F8; padding: 1.5rem; border-radius: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; line-height: 1.8; overflow-x: auto; color: #4B5563;">

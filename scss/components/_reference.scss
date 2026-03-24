@@ -1,0 +1,228 @@
+// ============================================================================
+// Voice Aura Design System — Reference Page Components
+// ============================================================================
+// Reusable classes for the design-system reference/documentation pages.
+// Extracts the most-repeated inline-style patterns into proper CSS classes.
+// ============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. SECTION HEADING (h2 with category label + description)
+// ---------------------------------------------------------------------------
+
+.ref-section-label {
+  font-family: $va-font-body;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $va-muted-text;
+  margin-bottom: $va-grid-unit;                  // 4px
+}
+
+.ref-section-title {
+  font-family: $va-font-heading;
+  font-weight: 700;
+  font-size: 2rem;
+  color: $va-near-black;
+  margin-bottom: $va-grid-unit;                  // 4px
+}
+
+.ref-section-desc {
+  font-family: $va-font-body;
+  font-size: 1rem;
+  color: $va-body-text;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+}
+
+// ---------------------------------------------------------------------------
+// 2. SUB-HEADING (h5-level within a section)
+// ---------------------------------------------------------------------------
+
+.ref-subheading {
+  font-family: $va-font-body;
+  font-weight: 600;
+  font-size: 1rem;
+  color: $va-near-black;
+  margin: 2rem 0 1rem;
+}
+
+// ---------------------------------------------------------------------------
+// 3. DEMO BOX (bordered container for component previews)
+// ---------------------------------------------------------------------------
+
+.ref-demo-box {
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;                     // 12px
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  &--centered {
+    text-align: center;
+  }
+
+  &--dark {
+    background: $va-near-black;
+    color: $va-white;
+  }
+
+  &--flush {
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. REFERENCE TABLE
+// ---------------------------------------------------------------------------
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+
+  th,
+  td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid $va-border-color;
+  }
+
+  th {
+    font-weight: 600;
+    color: $va-near-black;
+    background: $va-section-bg;
+  }
+
+  td {
+    color: $va-body-text;
+  }
+
+  code {
+    font-family: $va-font-mono;
+    font-size: 0.8125rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5. PATTERN / BACKGROUND DEMO
+// ---------------------------------------------------------------------------
+
+.ref-pattern-demo {
+  height: 120px;
+  border-radius: $va-radius-sm;                  // 8px
+  margin-bottom: 0.75rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &--muted {
+    opacity: 0.7;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 6. CAPTION (small muted note below a demo)
+// ---------------------------------------------------------------------------
+
+.ref-caption {
+  font-size: 0.75rem;
+  color: $va-muted-text;
+  margin-top: 0.25rem;
+}
+
+// ---------------------------------------------------------------------------
+// 7. CARD CONTAINER (bordered wrapper with radius)
+// ---------------------------------------------------------------------------
+
+.ref-card-container {
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;                     // 12px
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 8. COMPONENT GRID (flex grid for component demos)
+// ---------------------------------------------------------------------------
+
+.ref-component-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 9. SECTION DIVIDER
+// ---------------------------------------------------------------------------
+
+.ref-section {
+  border-bottom: 1px solid $va-border-color;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+// ---------------------------------------------------------------------------
+// 10. DARK PREVIEW (for dark-bg components like navbar, footer, hero)
+// ---------------------------------------------------------------------------
+
+.ref-dark-preview {
+  background: $va-near-black;
+  border-radius: $va-radius;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  color: $va-white;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $va-white;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 11. FEATURE-VISUAL CONTAINER (for showcasing component in context)
+// ---------------------------------------------------------------------------
+
+.ref-feature-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;
+
+  &--light {
+    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  &--dark {
+    background: linear-gradient(145deg, $va-near-black 0%, #0f172a 100%);
+    border-color: rgba($va-white, 0.06);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 12. BODY TEXT (standard paragraph inside reference sections)
+// ---------------------------------------------------------------------------
+
+.ref-body-text {
+  font-family: $va-font-body;
+  font-size: 1rem;
+  color: $va-body-text;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+// ---------------------------------------------------------------------------
+// 13. SERIF HEADING (for hero-style headings in demos)
+// ---------------------------------------------------------------------------
+
+.ref-serif-heading {
+  font-family: $va-font-heading;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: $va-near-black;
+  margin-bottom: 0.5rem;
+}
