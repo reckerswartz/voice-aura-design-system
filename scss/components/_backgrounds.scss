@@ -1,0 +1,540 @@
+// ==========================================================================
+// Voice Aura Design System — Backgrounds & Patterns
+// ==========================================================================
+// Decorative background utilities, pattern overlays, and abstract visual
+// elements identified from the Behance reference design.
+//
+// Pattern Inventory (from reference images):
+//   1. Halftone dot gradient   — dramatic radial dot-field behind hero/features
+//   2. Sound-wave waveform bar — full-width amplitude visualization
+//   3. Pricing dot grid        — uniform small dots behind pricing section
+//   4. Noise / grain texture   — subtle film-grain overlay for sections
+//   5. Radial gradient glow    — soft blue glow accent behind content
+//   6. Crosshair markers       — "+" corner decorations (see _pricing.scss)
+//   7. Section gradient washes — subtle top-to-bottom background shifts
+//   8. Glass / frosted panels  — backdrop-blur effect for floating cards
+//
+// All classes use the `.va-bg-*` namespace for backgrounds and
+// `.va-pattern-*` for positioned overlay patterns.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Halftone Dot Overlay
+// --------------------------------------------------------------------------
+// A large halftone-dot field positioned as a pseudo-element behind content.
+// Reproduces the dramatic half-tone motif from the Behance hero/feature sections.
+//
+// Usage: <div class="va-pattern-halftone">...content...</div>
+//
+// Variants:
+//   --bottom   : concentrated at bottom (hero default)
+//   --center   : radially centered
+//   --left     : concentrated on left edge (feature sections)
+//   --right    : concentrated on right edge
+
+.va-pattern-halftone {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
+    opacity: 1;
+
+    @media (max-width: 767.98px) {
+      background-size: 200% auto;
+      background-position: center bottom;
+    }
+  }
+
+  // Ensure content sits above the pattern
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Bottom-concentrated (default hero placement)
+  &--bottom::before {
+    background-position: center bottom;
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+  }
+
+  // Radially centered
+  &--center::before {
+    background-position: center center;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0, 0, 0, 0.5) 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0, 0, 0, 0.5) 0%, transparent 80%);
+  }
+
+  // Left-concentrated (feature section)
+  &--left::before {
+    background-position: left center;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+  }
+
+  // Right-concentrated
+  &--right::before {
+    background-position: right center;
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+  }
+
+  // Light variant (reduced opacity for lighter sections)
+  &--light::before {
+    opacity: 0.4;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Sound-Wave Waveform Bar
+// --------------------------------------------------------------------------
+// Full-width waveform bar as seen spanning the hero section middle.
+//
+// Usage: <div class="va-pattern-waveform">
+//          <img src="assets/patterns/sound-wave-wide.svg" alt="" aria-hidden="true" />
+//        </div>
+// Or as a positioned pseudo-element on a parent:
+//
+// Usage: <section class="va-hero va-pattern-waveform-bg">...</section>
+
+.va-pattern-waveform {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.va-pattern-waveform-bg {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 35%;
+    height: 80px;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/sound-wave-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: 0.5;
+
+    @media (max-width: 767.98px) {
+      height: 50px;
+      bottom: 40%;
+      opacity: 0.3;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 3. Noise / Grain Texture Overlay
+// --------------------------------------------------------------------------
+// Subtle film-grain texture for adding depth to flat sections.
+// Visible at very low opacity — mostly perceptible on large screens.
+//
+// Usage: <section class="va-section va-pattern-noise">...</section>
+
+.va-pattern-noise {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/noise-texture.svg");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.5;
+
+    @media (max-width: 767.98px) {
+      opacity: 0.3;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 4. Radial Gradient Glow
+// --------------------------------------------------------------------------
+// Soft coloured glow behind content areas. Used in hero and feature sections
+// for a subtle ambient light effect.
+//
+// Usage: <div class="va-bg-glow">...</div>
+//
+// Variants:
+//   --blue     : Blue primary glow (default)
+//   --neutral  : Neutral grey glow
+//   --top-right: Positioned top-right instead of centre
+
+.va-bg-glow {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      circle,
+      rgba($va-primary-blue, 0.06) 0%,
+      rgba($va-primary-blue, 0.02) 40%,
+      transparent 70%
+    );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 767.98px) {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--blue::before {
+    background: radial-gradient(
+      circle,
+      rgba($va-primary-blue, 0.08) 0%,
+      rgba($va-primary-blue, 0.03) 40%,
+      transparent 70%
+    );
+  }
+
+  &--neutral::before {
+    background: radial-gradient(
+      circle,
+      rgba($va-near-black, 0.04) 0%,
+      rgba($va-near-black, 0.01) 40%,
+      transparent 70%
+    );
+  }
+
+  &--top-right::before {
+    top: -10%;
+    left: auto;
+    right: -10%;
+    transform: none;
+  }
+
+  &--bottom-left::before {
+    top: auto;
+    bottom: -10%;
+    left: -10%;
+    transform: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 5. Section Background Utilities
+// --------------------------------------------------------------------------
+// Pre-defined background colours and gradients for page sections.
+
+// Pure white background (default)
+.va-bg-white {
+  background-color: $va-white;
+}
+
+// Light grey alternate section background
+.va-bg-alt {
+  background-color: $va-section-bg;
+}
+
+// Near-black dark background (for feature/CTA sections)
+.va-bg-dark {
+  background-color: $va-near-black;
+  color: rgba(#fff, 0.85);
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
+}
+
+// Subtle top-to-bottom gradient (white → light grey)
+.va-bg-gradient-subtle {
+  background: $va-gradient-subtle;
+}
+
+// Primary blue gradient
+.va-bg-gradient-primary {
+  background: $va-gradient-primary;
+  color: #fff;
+}
+
+// Dark gradient (near-black with slight blue tint)
+.va-bg-gradient-dark {
+  background: $va-gradient-dark;
+  color: rgba(#fff, 0.85);
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 6. Glass / Frosted Panel Utility
+// --------------------------------------------------------------------------
+// Applies glassmorphism to an element (backdrop-blur + semi-transparent bg).
+// Used on the floating TTS card and modals.
+//
+// Usage: <div class="va-glass">...</div>
+
+.va-glass {
+  background-color: rgba($va-white, $va-glass-bg-opacity);
+  backdrop-filter: blur($va-glass-blur);
+  -webkit-backdrop-filter: blur($va-glass-blur);
+  border: 1px solid rgba($va-white, 0.3);
+  border-radius: $va-radius-lg;
+
+  &--strong {
+    background-color: rgba($va-white, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  &--dark {
+    background-color: rgba($va-near-black, 0.65);
+    backdrop-filter: blur($va-glass-blur);
+    -webkit-backdrop-filter: blur($va-glass-blur);
+    border-color: rgba(#fff, 0.08);
+    color: rgba(#fff, 0.85);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 7. Decorative Grid Dot Background (CSS-only)
+// --------------------------------------------------------------------------
+// Uniform small dots in a grid, used behind pricing and feature sections.
+// This is a pure-CSS approach that doesn't require an SVG file.
+//
+// Usage: <section class="va-bg-dots">...</section>
+//
+// The mask creates a soft radial fade-out so dots don't have a hard edge.
+
+.va-bg-dots {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(
+      circle,
+      rgba($va-near-black, 0.07) 1px,
+      transparent 1px
+    );
+    background-size: ($va-grid-unit * 3) ($va-grid-unit * 3); // 24px grid
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.35) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.35) 0%,
+      transparent 70%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Tighter grid variant (16px spacing)
+  &--tight::before {
+    background-size: ($va-grid-unit * 2) ($va-grid-unit * 2);
+  }
+
+  // Looser grid variant (32px spacing)
+  &--loose::before {
+    background-size: ($va-grid-unit * 4) ($va-grid-unit * 4);
+  }
+
+  // No fade-out mask (dots fill the entire section)
+  &--full::before {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 8. Section Separator Line
+// --------------------------------------------------------------------------
+// Thin horizontal line between sections. In the reference, some sections
+// have a subtle border-top line as a separator.
+//
+// Usage: <section class="va-section va-section-separator">...</section>
+
+.va-section-separator {
+  border-top: 1px solid $va-border-color;
+}
+
+// Double-line variant
+.va-section-separator--double {
+  border-top: 1px solid $va-border-color;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $va-border-color;
+    pointer-events: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 9. Decorative Crosshair Markers (CSS-only)
+// --------------------------------------------------------------------------
+// Four corner "+" markers for cards or sections. Reproduces the crosshair
+// motif from the pricing cards and feature panels.
+//
+// Usage: <div class="va-crosshairs">
+//          <div class="va-crosshairs__marks"></div>
+//          ...content...
+//        </div>
+
+.va-crosshairs {
+  position: relative;
+}
+
+.va-crosshairs__marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  // Top-left "+"
+  &::before {
+    content: "+";
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-family: $va-font-body;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+    color: $va-border-color;
+  }
+
+  // Top-right "+"
+  &::after {
+    content: "+";
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-family: $va-font-body;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+    color: $va-border-color;
+  }
+}
+
+// Bottom corners require a second element
+.va-crosshairs__marks-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  &::before {
+    content: "+";
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-family: $va-font-body;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+    color: $va-border-color;
+  }
+
+  &::after {
+    content: "+";
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    font-family: $va-font-body;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+    color: $va-border-color;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 10. Decorative Blue Accent Line
+// --------------------------------------------------------------------------
+// Small blue vertical or horizontal line used as a decorative accent
+// in the hero (the cursor-like blue bar visible in the reference).
+//
+// Usage: <div class="va-accent-line"></div>
+//        <div class="va-accent-line va-accent-line--horizontal"></div>
+
+.va-accent-line {
+  display: inline-block;
+  width: 2px;
+  height: 24px;
+  background-color: $va-primary-blue;
+  border-radius: 1px;
+
+  &--horizontal {
+    width: 24px;
+    height: 2px;
+  }
+
+  &--long {
+    height: 40px;
+
+    &.va-accent-line--horizontal {
+      width: 40px;
+      height: 2px;
+    }
+  }
+}

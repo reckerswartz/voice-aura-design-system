@@ -79,6 +79,8 @@
           <a href="#dubbing">Video Dubbing Card</a>
           <a href="#client-logos">Client Logos</a>
           <a href="#auth-split">Auth Split Layout</a>
+          <a href="#backgrounds">Backgrounds &amp; Patterns</a>
+          <a href="#animations">Animations &amp; Transitions</a>
           <a href="#footer">Footer</a>
           <a href="#sample">Sample Landing Page</a>
         </nav>
@@ -894,6 +896,375 @@
 
           <p style="margin-top:1rem;"><code>.va-auth-split</code> &rarr; <code>.va-auth-split__illustration</code> + <code>.va-auth-split__form-panel</code></p>
           <p>Also demonstrates <code>.va-input-wrapper</code> with <code>.va-input-wrapper__toggle</code> for password eye toggle.</p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BACKGROUNDS & PATTERNS                                         -->
+        <!-- ============================================================ -->
+        <section id="backgrounds" class="ref-section">
+          <p class="ref-label">Visual System</p>
+          <h2 class="ref-title">Backgrounds &amp; Patterns</h2>
+          <p class="ref-desc">Decorative background patterns, gradient overlays, and abstract visual elements identified from the Behance reference design. All implemented as reusable CSS utility classes.</p>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">SVG Pattern Assets</h4>
+          <p style="margin-bottom:1.5rem;color:#4B5563;font-size:0.9375rem;">Located in <code>assets/patterns/</code>. These are used as background images by the SCSS utilities or can be embedded inline.</p>
+          <div class="ref-grid ref-grid--3" style="margin-bottom:2rem;">
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/halftone-wide.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;opacity:0.7;"></div>
+              <code style="font-size:0.8rem;">halftone-wide.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Dramatic radial halftone dot gradient</p>
+            </div>
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/sound-wave-wide.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;opacity:0.7;"></div>
+              <code style="font-size:0.8rem;">sound-wave-wide.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Full-width audio waveform visualization</p>
+            </div>
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/noise-texture.svg') repeat center/200px;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code style="font-size:0.8rem;">noise-texture.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Subtle film-grain texture overlay</p>
+            </div>
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/gradient-radial-soft.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code style="font-size:0.8rem;">gradient-radial-soft.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Soft blue radial glow accent</p>
+            </div>
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/crosshair.svg') repeat center/24px;border-radius:8px;margin-bottom:0.75rem;opacity:0.5;"></div>
+              <code style="font-size:0.8rem;">crosshair.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Plus/crosshair corner marker</p>
+            </div>
+            <div style="border:1px solid #E5E7EB;border-radius:12px;padding:1rem;text-align:center;">
+              <div style="height:120px;background:url('../assets/patterns/halftone-dots.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;opacity:0.7;"></div>
+              <code style="font-size:0.8rem;">halftone-dots.svg</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Compact halftone dot pattern</p>
+            </div>
+          </div>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Background Pattern Classes</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead>
+              <tr style="border-bottom:2px solid #E5E7EB;">
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Class</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Description</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Reference Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-pattern-halftone</code></td>
+                <td style="padding:0.5rem 1rem;">Large halftone dot gradient overlay</td>
+                <td style="padding:0.5rem 1rem;">Hero section, feature backgrounds</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-pattern-halftone--bottom</code></td>
+                <td style="padding:0.5rem 1rem;">Halftone concentrated at bottom edge</td>
+                <td style="padding:0.5rem 1rem;">Hero section (dots below TTS card)</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-pattern-halftone--left</code></td>
+                <td style="padding:0.5rem 1rem;">Halftone concentrated on left</td>
+                <td style="padding:0.5rem 1rem;">Feature section backgrounds</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-pattern-waveform-bg</code></td>
+                <td style="padding:0.5rem 1rem;">Sound-wave bar spanning section</td>
+                <td style="padding:0.5rem 1rem;">Hero section mid-band</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-pattern-noise</code></td>
+                <td style="padding:0.5rem 1rem;">Subtle grain texture overlay</td>
+                <td style="padding:0.5rem 1rem;">Feature sections, alt backgrounds</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-bg-glow</code></td>
+                <td style="padding:0.5rem 1rem;">Soft radial gradient glow behind content</td>
+                <td style="padding:0.5rem 1rem;">Feature sections, pricing area</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-bg-dots</code></td>
+                <td style="padding:0.5rem 1rem;">Uniform CSS dot grid with radial fade</td>
+                <td style="padding:0.5rem 1rem;">Pricing section background</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-glass</code></td>
+                <td style="padding:0.5rem 1rem;">Frosted glass panel (backdrop-blur)</td>
+                <td style="padding:0.5rem 1rem;">TTS floating card, modals</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-accent-line</code></td>
+                <td style="padding:0.5rem 1rem;">Decorative blue accent bar</td>
+                <td style="padding:0.5rem 1rem;">Hero floating elements, cursor line</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-crosshairs</code></td>
+                <td style="padding:0.5rem 1rem;">Four-corner "+" markers</td>
+                <td style="padding:0.5rem 1rem;">Pricing cards, feature panels</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Background Colour &amp; Gradient Utilities</h4>
+          <div class="ref-grid ref-grid--4" style="margin-bottom:1.5rem;">
+            <div style="border-radius:12px;padding:1.5rem 1rem;text-align:center;" class="va-bg-white">
+              <code>.va-bg-white</code>
+            </div>
+            <div style="border-radius:12px;padding:1.5rem 1rem;text-align:center;" class="va-bg-alt">
+              <code>.va-bg-alt</code>
+            </div>
+            <div style="border-radius:12px;padding:1.5rem 1rem;text-align:center;" class="va-bg-dark">
+              <code style="color:#fff;">.va-bg-dark</code>
+            </div>
+            <div style="border-radius:12px;padding:1.5rem 1rem;text-align:center;" class="va-bg-gradient-subtle">
+              <code>.va-bg-gradient-subtle</code>
+            </div>
+          </div>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Live Demos</h4>
+
+          <!-- Halftone Demo -->
+          <div style="margin-bottom:2rem;">
+            <p style="font-weight:500;margin-bottom:0.5rem;">Halftone Pattern (bottom variant)</p>
+            <div class="va-pattern-halftone va-pattern-halftone--bottom" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">Content sits above the pattern</span>
+            </div>
+          </div>
+
+          <!-- Glass Demo -->
+          <div style="margin-bottom:2rem;">
+            <p style="font-weight:500;margin-bottom:0.5rem;">Glass Panel</p>
+            <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:3rem;border-radius:12px;display:flex;justify-content:center;">
+              <div class="va-glass" style="padding:2rem 3rem;text-align:center;">
+                <p style="font-weight:600;color:#1A1919;">Frosted glass effect</p>
+                <p style="font-size:0.875rem;color:#4B5563;">Uses backdrop-filter: blur</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dot Grid Demo -->
+          <div style="margin-bottom:2rem;">
+            <p style="font-weight:500;margin-bottom:0.5rem;">Dot Grid Background</p>
+            <div class="va-bg-dots" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">va-bg-dots (radial fade)</span>
+            </div>
+          </div>
+
+          <!-- Accent Line Demo -->
+          <div style="margin-bottom:2rem;">
+            <p style="font-weight:500;margin-bottom:0.5rem;">Accent Lines</p>
+            <div style="display:flex;align-items:center;gap:2rem;">
+              <div style="text-align:center;">
+                <div class="va-accent-line" style="margin:0 auto 0.5rem;"></div>
+                <code style="font-size:0.75rem;">.va-accent-line</code>
+              </div>
+              <div style="text-align:center;">
+                <div class="va-accent-line va-accent-line--horizontal" style="margin:0 auto 0.5rem;"></div>
+                <code style="font-size:0.75rem;">--horizontal</code>
+              </div>
+              <div style="text-align:center;">
+                <div class="va-accent-line va-accent-line--long" style="margin:0 auto 0.5rem;"></div>
+                <code style="font-size:0.75rem;">--long</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Waveform Bars Demo -->
+          <div>
+            <p style="font-weight:500;margin-bottom:0.5rem;">Waveform Bars (animated)</p>
+            <div style="display:flex;gap:2rem;align-items:center;">
+              <div style="text-align:center;">
+                <div class="va-waveform-bars" style="color:#0478FF;margin:0 auto 0.5rem;">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <code style="font-size:0.75rem;">.va-waveform-bars</code>
+              </div>
+              <div style="text-align:center;">
+                <div class="va-waveform-bars va-waveform-bars--static" style="color:#1A1919;margin:0 auto 0.5rem;">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <code style="font-size:0.75rem;">--static</code>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ANIMATIONS & TRANSITIONS                                       -->
+        <!-- ============================================================ -->
+        <section id="animations" class="ref-section">
+          <p class="ref-label">Motion</p>
+          <h2 class="ref-title">Animations &amp; Transitions</h2>
+          <p class="ref-desc">A complete motion system for entrance animations, interaction states, responsive layout transitions, and scroll-triggered reveals. All animations respect <code>prefers-reduced-motion</code>.</p>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Entrance Animations</h4>
+          <p style="margin-bottom:1rem;color:#4B5563;font-size:0.9375rem;">Apply directly to elements. Plays once on mount. Chain with <code>.va-animate--delay-N</code> for staggering.</p>
+          <div class="ref-grid ref-grid--3" style="margin-bottom:2rem;">
+            <div class="va-animate-fade-up" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;">
+              <code>.va-animate-fade-up</code>
+            </div>
+            <div class="va-animate-fade-in va-animate--delay-1" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;">
+              <code>.va-animate-fade-in</code>
+            </div>
+            <div class="va-animate-scale-in va-animate--delay-2" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;">
+              <code>.va-animate-scale-in</code>
+            </div>
+          </div>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Interaction Animations</h4>
+          <p style="margin-bottom:1rem;color:#4B5563;font-size:0.9375rem;">Hover over these cards to see the effect:</p>
+          <div class="ref-grid ref-grid--3" style="margin-bottom:2rem;">
+            <div class="va-hover-lift" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;cursor:pointer;background:#fff;">
+              <code>.va-hover-lift</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Lifts up + shadow on hover</p>
+            </div>
+            <div class="va-hover-scale" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;cursor:pointer;background:#fff;">
+              <code>.va-hover-scale</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Scales up slightly on hover</p>
+            </div>
+            <div class="va-hover-glow" style="border:1px solid #E5E7EB;border-radius:12px;padding:1.5rem;text-align:center;cursor:pointer;background:#fff;">
+              <code>.va-hover-glow</code>
+              <p style="font-size:0.75rem;color:#9CA3AF;margin-top:0.25rem;">Blue ring glow on hover</p>
+            </div>
+          </div>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Transition Presets</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:2rem;">
+            <thead>
+              <tr style="border-bottom:2px solid #E5E7EB;">
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Class</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Duration</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Easing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-transition</code></td>
+                <td style="padding:0.5rem 1rem;">200ms</td>
+                <td style="padding:0.5rem 1rem;">ease-in-out</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-transition-fast</code></td>
+                <td style="padding:0.5rem 1rem;">120ms</td>
+                <td style="padding:0.5rem 1rem;">ease-in-out</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-transition-slow</code></td>
+                <td style="padding:0.5rem 1rem;">350ms</td>
+                <td style="padding:0.5rem 1rem;">ease-in-out</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-transition-bounce</code></td>
+                <td style="padding:0.5rem 1rem;">400ms</td>
+                <td style="padding:0.5rem 1rem;">cubic-bezier(0.34, 1.56, 0.64, 1)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Scroll-Triggered Animations</h4>
+          <p style="margin-bottom:1rem;color:#4B5563;font-size:0.9375rem;">Elements start hidden and animate in when they enter the viewport. Requires a lightweight JS IntersectionObserver (included in the sample page).</p>
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:1.5rem;">
+            <thead>
+              <tr style="border-bottom:2px solid #E5E7EB;">
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Class</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Effect</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-scroll-fade-up</code></td>
+                <td style="padding:0.5rem 1rem;">Fade in + slide up 32px</td>
+                <td style="padding:0.5rem 1rem;">Section titles, cards, content blocks</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-scroll-fade-in</code></td>
+                <td style="padding:0.5rem 1rem;">Simple opacity fade</td>
+                <td style="padding:0.5rem 1rem;">Images, decorative elements</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-scroll-scale-in</code></td>
+                <td style="padding:0.5rem 1rem;">Fade in + scale from 92%</td>
+                <td style="padding:0.5rem 1rem;">Cards, floating panels</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-scroll-fade-left</code></td>
+                <td style="padding:0.5rem 1rem;">Fade in + slide from left</td>
+                <td style="padding:0.5rem 1rem;">Feature text (left column)</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-scroll-fade-right</code></td>
+                <td style="padding:0.5rem 1rem;">Fade in + slide from right</td>
+                <td style="padding:0.5rem 1rem;">Feature visuals (right column)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
+            <p style="font-weight:600;margin-bottom:0.5rem;">JS Setup (add before &lt;/body&gt;):</p>
+            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>const observer = new IntersectionObserver((entries) =&gt; {
+  entries.forEach(e =&gt; e.isIntersecting &amp;&amp; e.target.classList.add('is-visible'));
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.observe(el));</code></pre>
+          </div>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Responsive Visibility Transitions</h4>
+          <p style="margin-bottom:1rem;color:#4B5563;font-size:0.9375rem;">Instead of abrupt show/hide at breakpoints, these classes fade elements in/out smoothly.</p>
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:2rem;">
+            <thead>
+              <tr style="border-bottom:2px solid #E5E7EB;">
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Class</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Behaviour</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-show-md</code></td>
+                <td style="padding:0.5rem 1rem;">Hidden on mobile, fades in at 768px+</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-show-lg</code></td>
+                <td style="padding:0.5rem 1rem;">Hidden on mobile, fades in at 992px+</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-hide-md</code></td>
+                <td style="padding:0.5rem 1rem;">Visible on mobile, hidden at 768px+</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin:2rem 0 1rem;font-weight:600;">Responsive Layout Smoothing</h4>
+          <p style="margin-bottom:1rem;color:#4B5563;font-size:0.9375rem;">Add to grid/flex containers so breakpoint changes animate smoothly (device rotation, browser resize).</p>
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead>
+              <tr style="border-bottom:2px solid #E5E7EB;">
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Class</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Transitions</th>
+                <th style="text-align:left;padding:0.5rem 1rem;font-weight:600;">Use Case</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-grid-smooth</code></td>
+                <td style="padding:0.5rem 1rem;">grid-template-columns, gap</td>
+                <td style="padding:0.5rem 1rem;">Pricing grid, blog grid</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-flex-smooth</code></td>
+                <td style="padding:0.5rem 1rem;">flex-direction, gap, align-items</td>
+                <td style="padding:0.5rem 1rem;">Navbar actions, footer columns</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-padding-smooth</code></td>
+                <td style="padding:0.5rem 1rem;">padding</td>
+                <td style="padding:0.5rem 1rem;">Section padding at breakpoints</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:0.5rem 1rem;"><code>.va-type-smooth</code></td>
+                <td style="padding:0.5rem 1rem;">font-size, line-height, letter-spacing</td>
+                <td style="padding:0.5rem 1rem;">Headlines with clamp() sizing</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <!-- ============================================================ -->

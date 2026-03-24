@@ -177,13 +177,13 @@
 <!-- ===================================================================== -->
 <!-- HERO SECTION                                                           -->
 <!-- ===================================================================== -->
-<section class="va-hero">
+<section class="va-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg">
   <!-- Decorative floating elements (hidden on mobile by the SCSS) -->
-  <div class="va-hero__float va-hero__float--top-left va-hero__float--sm">
+  <div class="va-hero__float va-hero__float--top-left va-hero__float--sm va-animate-float">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 5 7 7-7 7"/></svg>
   </div>
-  <div class="va-hero__float va-hero__float--top-right va-hero__float--letter">A</div>
-  <div class="va-hero__float va-hero__float--bottom-left va-hero__float--lg">
+  <div class="va-hero__float va-hero__float--top-right va-hero__float--letter va-animate-float">A</div>
+  <div class="va-hero__float va-hero__float--bottom-left va-hero__float--lg va-animate-float">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
   </div>
 
@@ -194,17 +194,17 @@
   </span>
 
   <!-- Headline -->
-  <h1 class="va-hero__title">Built for unmatched<br>speed and peak efficiency</h1>
+  <h1 class="va-hero__title va-animate-fade-up">Built for unmatched<br>speed and peak efficiency</h1>
 
   <!-- Subtitle -->
-  <p class="va-hero__subtitle">
+  <p class="va-hero__subtitle va-animate-fade-up va-animate--delay-1">
     Fastest TTS API. Customizable voice Studio.
     Instant AI dubbing.<br>
     Trusted by <strong>10M+</strong> creators worldwide.
   </p>
 
   <!-- CTA Buttons -->
-  <div class="va-hero__actions">
+  <div class="va-hero__actions va-animate-fade-up va-animate--delay-2">
     <button class="va-hero__btn--primary" type="button">
       <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
       Open Studio
@@ -216,7 +216,7 @@
   </div>
 
   <!-- TTS Input Card -->
-  <div class="va-input-card" style="max-width:780px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.06);position:relative;z-index:2;">
+  <div class="va-input-card va-glass va-animate-fade-up va-animate--delay-3" style="max-width:780px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.06);position:relative;z-index:2;">
     <div class="va-input-card__tabs">
       <button class="va-input-card__tab va-input-card__tab--active" type="button">
         <svg class="icon-16" style="display:inline;vertical-align:-2px;margin-right:4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
@@ -289,11 +289,11 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 1 — FOR DEVELOPERS (API)                                       -->
 <!-- ===================================================================== -->
-<section class="va-section">
+<section class="va-section va-bg-glow">
   <div class="va-container">
     <div class="feature-row">
       <!-- Text -->
-      <div class="feature-row__text">
+      <div class="feature-row__text va-scroll-fade-left">
         <span class="feature-row__badge">
           <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           FOR DEVELOPERS
@@ -317,7 +317,7 @@
       </div>
 
       <!-- Visual: Voice Agent Card -->
-      <div class="feature-visual" style="display:flex;align-items:center;justify-content:center;padding:2rem;">
+      <div class="feature-visual va-scroll-fade-right" style="display:flex;align-items:center;justify-content:center;padding:2rem;">
         <div class="va-agent-card va-agent-card--crosshairs" style="max-width:280px;width:100%;">
           <div class="va-agent-card__corners"></div>
           <div class="va-agent-card__corners-bottom"></div>
@@ -365,11 +365,11 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 2 — FOR LOCALIZER (Video Dubbing)                              -->
 <!-- ===================================================================== -->
-<section class="va-section section-alt">
+<section class="va-section section-alt va-pattern-noise">
   <div class="va-container">
     <div class="feature-row feature-row--reverse">
       <!-- Text -->
-      <div class="feature-row__text">
+      <div class="feature-row__text va-scroll-fade-right">
         <span class="feature-row__badge">
           <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
           FOR LOCALIZER
@@ -390,7 +390,7 @@
       </div>
 
       <!-- Visual: Dubbing card -->
-      <div class="feature-visual" style="display:flex;align-items:center;justify-content:center;padding:2rem;background-color:#1A1919;">
+      <div class="feature-visual va-scroll-fade-left" style="display:flex;align-items:center;justify-content:center;padding:2rem;background-color:#1A1919;">
         <div class="va-dubbing-card" style="max-width:420px;width:100%;">
           <div class="va-dubbing-card__langs">
             <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button">
@@ -448,7 +448,7 @@
 <!-- ===================================================================== -->
 <!-- INSIGHTS & UPDATES (Blog Section)                                       -->
 <!-- ===================================================================== -->
-<section class="va-section va-blog-section">
+<section class="va-section va-blog-section va-section-separator">
   <div class="va-container">
     <div class="va-section__header va-section__header--left">
       <div>
@@ -463,7 +463,7 @@
 
     <div class="va-blog-section__grid">
       <!-- Blog Card 1 -->
-      <article class="va-blog-card">
+      <article class="va-blog-card va-hover-lift">
         <div class="va-blog-card__image" style="background:linear-gradient(135deg,#1a1a2e 0%,#0a0a0a 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
         </div>
@@ -480,7 +480,7 @@
       </article>
 
       <!-- Blog Card 2 -->
-      <article class="va-blog-card">
+      <article class="va-blog-card va-hover-lift">
         <div class="va-blog-card__image" style="background:linear-gradient(135deg,#16213e 0%,#1a1a2e 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/></svg>
         </div>
@@ -497,7 +497,7 @@
       </article>
 
       <!-- Blog Card 3 -->
-      <article class="va-blog-card">
+      <article class="va-blog-card va-hover-lift">
         <div class="va-blog-card__image" style="background:linear-gradient(135deg,#0a0a0a 0%,#1a1919 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg>
         </div>
@@ -514,7 +514,7 @@
       </article>
 
       <!-- Blog Card 4 -->
-      <article class="va-blog-card">
+      <article class="va-blog-card va-hover-lift">
         <div class="va-blog-card__image" style="background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
         </div>
@@ -536,7 +536,7 @@
 <!-- ===================================================================== -->
 <!-- PRICING SECTION                                                        -->
 <!-- ===================================================================== -->
-<section id="pricing" class="va-section va-pricing-section" style="padding:5rem 0;">
+<section id="pricing" class="va-section va-pricing-section va-bg-glow va-bg-glow--neutral" style="padding:5rem 0;">
   <div class="va-pricing-section__dots"></div>
   <div class="va-container" style="position:relative;z-index:1;">
     <div class="va-section__header" style="text-align:center;">
@@ -562,7 +562,7 @@
     <!-- Pricing Grid -->
     <div class="va-pricing__grid">
       <!-- Free Plan -->
-      <div class="va-pricing-card">
+      <div class="va-pricing-card va-hover-lift">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Free</span>
@@ -598,7 +598,7 @@
       </div>
 
       <!-- Creator Plan (Featured) -->
-      <div class="va-pricing-card va-pricing-card--featured">
+      <div class="va-pricing-card va-pricing-card--featured va-hover-lift">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Creator</span>
@@ -634,7 +634,7 @@
       </div>
 
       <!-- Business Plan -->
-      <div class="va-pricing-card">
+      <div class="va-pricing-card va-hover-lift">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Business</span>
@@ -739,6 +739,21 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Scroll-triggered animations — adds .is-visible when elements enter viewport
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[class*="va-scroll-"]').forEach(el => observer.observe(el));
+  });
+</script>
 
 </body>
 </html>

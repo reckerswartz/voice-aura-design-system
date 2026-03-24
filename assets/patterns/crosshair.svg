@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Voice Aura Design System — crosshair.svg
+     Small crosshair / plus marker (24×24).
+     Usage: decorative element placed at grid intersections, corners of
+     cards, or as subtle alignment markers in section backgrounds.
+     Stroke: border grey #E5E7EB, 1px, round linecaps. No fill. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+     width="24" height="24" fill="none">
+  <!-- Horizontal bar -->
+  <line x1="4" y1="12" x2="20" y2="12"
+        stroke="#E5E7EB" stroke-width="1" stroke-linecap="round"/>
+  <!-- Vertical bar -->
+  <line x1="12" y1="4" x2="12" y2="20"
+        stroke="#E5E7EB" stroke-width="1" stroke-linecap="round"/>
+</svg>

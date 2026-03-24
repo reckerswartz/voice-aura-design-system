@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Voice Aura Design System — gradient-radial-soft.svg
+     Soft radial gradient blob (600×600).
+     Usage: decorative background glow placed behind sections or cards
+     to create a subtle blue ambient light effect. The gradient fades
+     from a very light primary-blue tint (opacity 0.06) at the center
+     to fully transparent at the edge.
+     Color: primary blue #0478FF at 6% opacity center. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"
+     width="600" height="600" fill="none">
+  <defs>
+    <radialGradient id="softBlueGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#0478FF" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="300" cy="300" r="250" fill="url(#softBlueGlow)"/>
+</svg>
