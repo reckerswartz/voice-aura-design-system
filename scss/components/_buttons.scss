@@ -205,6 +205,31 @@
 }
 
 // --------------------------------------------------------------------------
+// Variant: Link
+// --------------------------------------------------------------------------
+// Text-only button styled like a link with optional arrow animation.
+// Used for "Learn more →", "View docs →" inline actions.
+// Usage: <button class="va-btn va-btn--link">Learn more <span class="va-btn__arrow">→</span></button>
+
+.va-btn--link {
+  background-color: transparent;
+  border-color: transparent;
+  color: $va-primary;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover {
+    background-color: transparent;
+    color: darken($va-primary, 10%);
+    text-decoration: none;
+  }
+
+  &:active {
+    color: darken($va-primary, 16%);
+  }
+}
+
+// --------------------------------------------------------------------------
 // Size: Large
 // --------------------------------------------------------------------------
 
@@ -295,5 +320,48 @@
     &.is-active {
       z-index: 1;
     }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Standalone Arrow Link
+// --------------------------------------------------------------------------
+// Reusable "Learn more →" link with animated arrow nudge.
+// Usage: <a class="va-link--arrow" href="#">Learn more →</a>
+
+.va-link--arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: $font-family-base;
+  font-size: 0.875rem;
+  font-weight: $font-weight-medium;
+  color: $va-primary;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &::after {
+    content: "\2192"; // →
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: darken($va-primary, 10%);
+    text-decoration: none;
+
+    &::after {
+      transform: translateX(3px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $va-primary;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  &:active {
+    color: darken($va-primary, 16%);
   }
 }

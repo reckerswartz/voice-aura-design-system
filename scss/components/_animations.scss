@@ -388,6 +388,13 @@
     transform: translateY(-1px);
     box-shadow: $va-shadow-md;
   }
+
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: $va-shadow-lg;
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
 }
 
 // Subtle scale on hover
@@ -401,6 +408,12 @@
   &:active {
     transform: scale(0.98);
   }
+
+  &:focus-visible {
+    transform: scale(1.03);
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
 }
 
 // Glow on hover (buttons, badges)
@@ -409,6 +422,16 @@
 
   &:hover {
     box-shadow: 0 0 0 4px rgba($va-primary-blue, 0.12);
+  }
+
+  &:active {
+    box-shadow: 0 0 0 2px rgba($va-primary-blue, 0.18);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 4px rgba($va-primary-blue, 0.12);
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
   }
 }
 

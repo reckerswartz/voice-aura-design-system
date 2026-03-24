@@ -57,6 +57,7 @@
     background-size: 100% auto;
     background-position: center bottom;
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       background-size: 200% auto;
@@ -154,6 +155,7 @@
     background-size: 100% 100%;
     background-position: center;
     opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       height: 50px;
@@ -185,6 +187,7 @@
     background-repeat: repeat;
     background-size: 200px 200px;
     opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       opacity: var(--va-pattern-opacity, 0.3);
@@ -416,6 +419,7 @@
       transparent 70%
     );
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
   }
 
   > * {
@@ -577,6 +581,7 @@
     background-size: 100% auto;
     background-position: center center;
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       background-size: 180% auto;
@@ -630,6 +635,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       width: var(--va-ring-size, 360px);
@@ -689,6 +695,7 @@
     background-repeat: repeat;
     background-size: 48px 48px;
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
     mask-image: radial-gradient(
       ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
       rgba(0, 0, 0, 0.4) 0%,
@@ -740,6 +747,7 @@
     background-repeat: repeat;
     background-size: 40px 40px;
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       opacity: var(--va-pattern-opacity, 0.6);
@@ -782,6 +790,7 @@
     background-size: cover;
     background-position: center;
     opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
 
     @media (max-width: 767.98px) {
       opacity: var(--va-pattern-opacity, 0.6);
