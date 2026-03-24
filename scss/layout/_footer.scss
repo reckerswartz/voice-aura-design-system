@@ -26,14 +26,14 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-footer {
   position: relative;
   background-color: $va-near-black;
-  color: rgba(#fff, 0.75);
+  color: rgba($va-white, 0.75);
   padding-top: $va-grid-unit * 10;                 // 80px
   font-family: $va-font-body;
   font-size: $_font-size-sm;                       // 14px
 
   // Light variant (white bg)
   &--light {
-    background-color: #fff;
+    background-color: $va-white;
     color: $va-body-text;
     border-top: 1px solid $va-border-color;
 
@@ -96,14 +96,14 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
+  color: $va-white;
   line-height: 1;
 }
 
 .va-footer__brand-description {
   font-size: $_font-size-sm;
   line-height: 1.7;
-  color: rgba(#fff, 0.55);
+  color: rgba($va-white, 0.55);
   max-width: 280px;
 }
 
@@ -119,14 +119,14 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: rgba(#fff, 0.08);
-    color: rgba(#fff, 0.6);
+    background-color: rgba($va-white, 0.08);
+    color: rgba($va-white, 0.6);
     transition: background-color 0.2s ease-in-out,
                 color 0.2s ease-in-out;
 
     &:hover {
       background-color: $va-primary-blue;
-      color: #fff;
+      color: $va-white;
     }
 
     svg {
@@ -151,7 +151,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   font-family: $va-font-body;
   font-size: $_font-size-sm;
   font-weight: 600;
-  color: #fff;
+  color: $va-white;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: $va-grid-unit * 2.5;              // 20px
@@ -168,14 +168,14 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
 .va-footer__link {
   font-size: $_font-size-sm;
-  color: rgba(#fff, 0.55);
+  color: rgba($va-white, 0.55);
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: inline-block;
 
   &:hover,
   &:focus-visible {
-    color: #fff;
+    color: $va-white;
     text-decoration: none;
   }
 }
@@ -191,9 +191,9 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   flex-wrap: wrap;
   gap: $va-grid-unit * 2;
   padding: ($va-grid-unit * 3) 0;                  // 24px vertical
-  border-top: 1px solid rgba(#fff, 0.1);
+  border-top: 1px solid rgba($va-white, 0.1);
   font-size: $_font-size-xs;                       // 12px
-  color: rgba(#fff, 0.4);
+  color: rgba($va-white, 0.4);
 
   max-width: $va-container-max-width;
   margin: 0 auto;
@@ -216,12 +216,12 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   a,
   .va-footer__bottom-link {
     font-size: $_font-size-xs;
-    color: rgba(#fff, 0.4);
+    color: rgba($va-white, 0.4);
     text-decoration: none;
     transition: color 0.2s ease-in-out;
 
     &:hover {
-      color: rgba(#fff, 0.8);
+      color: rgba($va-white, 0.8);
     }
   }
 }

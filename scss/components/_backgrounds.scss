@@ -306,10 +306,10 @@
 // (VA version also recolors headings — use this for section-level dark bg.)
 .va-bg-dark {
   background-color: $va-near-black;
-  color: rgba(#fff, 0.85);
+  color: rgba($va-white, 0.85);
 
   h1, h2, h3, h4, h5, h6 {
-    color: #fff;
+    color: $va-white;
   }
 }
 
@@ -321,16 +321,16 @@
 // Primary blue gradient
 .va-bg-gradient-primary {
   background: $va-gradient-primary;
-  color: #fff;
+  color: $va-white;
 }
 
 // Dark gradient (near-black with slight blue tint)
 .va-bg-gradient-dark {
   background: $va-gradient-dark;
-  color: rgba(#fff, 0.85);
+  color: rgba($va-white, 0.85);
 
   h1, h2, h3, h4, h5, h6 {
-    color: #fff;
+    color: $va-white;
   }
 }
 
@@ -359,8 +359,8 @@
     background-color: rgba($va-near-black, 0.65);
     backdrop-filter: blur($va-glass-blur);
     -webkit-backdrop-filter: blur($va-glass-blur);
-    border-color: rgba(#fff, 0.08);
-    color: rgba(#fff, 0.85);
+    border-color: rgba($va-white, 0.08);
+    color: rgba($va-white, 0.85);
   }
 }
 

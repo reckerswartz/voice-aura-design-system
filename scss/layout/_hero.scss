@@ -33,7 +33,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   text-align: center;
   padding: ($va-grid-unit * 10) ($va-grid-unit * 4) ($va-grid-unit * 12); // 80px 32px 96px
   overflow: hidden;
-  background-color: #fff;
+  background-color: $va-white;
 
   // Compact variant
   &--compact {
@@ -121,7 +121,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   font-family: $va-font-body;
   font-size: $font-size-base;
   font-weight: 600;
-  color: #fff;
+  color: $va-white;
   background-color: $va-near-black;
   padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px
   border-radius: $va-radius-pill;
@@ -173,7 +173,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   position: relative;
   width: 100%;
   max-width: 780px;
-  background-color: #fff;
+  background-color: $va-white;
   border: 1px solid $va-border-color;
   border-radius: $va-radius-lg;
   box-shadow: $va-shadow-lg;
@@ -269,12 +269,12 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 
     &--active {
       background-color: $va-near-black;
-      color: #fff;
+      color: $va-white;
       border-color: $va-near-black;
 
       &:hover {
         background-color: lighten($va-near-black, 10%);
-        color: #fff;
+        color: $va-white;
       }
     }
   }
@@ -291,7 +291,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     font-family: $va-font-body;
     font-size: $font-size-base;
     font-weight: 600;
-    color: #fff;
+    color: $va-white;
     background-color: $va-primary-blue;
     border: none;
     border-radius: $va-radius-pill;
@@ -421,7 +421,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     justify-content: center;
     width: 48px;
     height: 48px;
-    background-color: #fff;
+    background-color: $va-white;
     border: 1px solid $va-border-color;
     border-radius: $va-radius;
     box-shadow: $va-shadow;

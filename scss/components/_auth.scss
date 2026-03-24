@@ -21,7 +21,7 @@
   max-width: 28rem;
   margin: 0 auto;
   padding: 2.5rem 2rem;
-  background-color: #fff;
+  background-color: $va-white;
   border-radius: $va-radius-lg;
   border: 1px solid $va-border;
 
@@ -119,7 +119,7 @@
     font-family: $va-font-body;
     font-size: 0.9375rem;
     font-weight: 500;
-    color: #fff;
+    color: $va-white;
     background-color: $va-near-black;
     border: 1px solid $va-near-black;
     border-radius: $va-radius-sm;
@@ -208,7 +208,7 @@
     font-size: 0.9375rem;
     font-weight: 500;
     color: $va-near-black;
-    background-color: #fff;
+    background-color: $va-white;
     border: 1px solid $va-border;
     border-radius: $va-radius-sm;
     cursor: pointer;
@@ -358,7 +358,7 @@
   align-items: center;
   justify-content: center;
   padding: 3rem 2rem;
-  background-color: #fff;
+  background-color: $va-white;
 
   .va-auth {
     max-width: 26rem;

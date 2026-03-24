@@ -38,7 +38,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: $va-white;
   border: 1px solid $va-border;
   border-radius: $va-radius;
   padding: $va-card-padding;
@@ -190,6 +190,13 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
                 0 1px 4px rgba(0, 0, 0, 0.04);
     border-color: darken($va-border, 6%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+                0 1px 4px rgba(0, 0, 0, 0.04);
   }
 
   &:active {

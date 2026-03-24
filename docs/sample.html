@@ -222,12 +222,12 @@
 
   <!-- TTS Input Card -->
   <div class="va-input-card va-glass va-animate-fade-up va-animate--delay-3">
-    <div class="va-input-card__tabs">
-      <button class="va-input-card__tab va-input-card__tab--active" type="button">
+    <div class="va-input-card__tabs" role="tablist">
+      <button class="va-input-card__tab va-input-card__tab--active" type="button" role="tab" aria-selected="true">
         <svg class="icon-16 va-icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
         Text to Speech
       </button>
-      <button class="va-input-card__tab" type="button">
+      <button class="va-input-card__tab" type="button" role="tab" aria-selected="false">
         <svg class="icon-16 va-icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
         Upload File
       </button>
@@ -326,19 +326,19 @@
           <div class="va-agent-card__corners"></div>
           <div class="va-agent-card__corners-bottom"></div>
           <!-- Language pills -->
-          <div class="va-agent-card__languages">
-            <span class="va-agent-card__lang va-agent-card__lang--active">
+          <div class="va-agent-card__languages" role="tablist">
+            <button class="va-agent-card__lang va-agent-card__lang--active" type="button" role="tab" aria-selected="true">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
               English
-            </span>
-            <span class="va-agent-card__lang">
+            </button>
+            <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
               Chinese
-            </span>
-            <span class="va-agent-card__lang">
+            </button>
+            <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
-              Jap
-            </span>
+              Japanese
+            </button>
           </div>
           <!-- Avatar -->
           <div class="va-agent-card__avatar">
@@ -396,20 +396,20 @@
       <!-- Visual: Dubbing card -->
       <div class="feature-visual feature-visual--dark va-scroll-fade-left va-responsive-fade-left">
         <div class="va-dubbing-card">
-          <div class="va-dubbing-card__langs">
-            <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button">
+          <div class="va-dubbing-card__langs" role="tablist">
+            <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button" role="tab" aria-selected="true">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               English
             </button>
-            <button class="va-dubbing-card__lang" type="button">
+            <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Chinese
             </button>
-            <button class="va-dubbing-card__lang" type="button">
+            <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Japanese
             </button>
-            <button class="va-dubbing-card__lang" type="button">
+            <button class="va-dubbing-card__lang" type="button" role="tab" aria-selected="false">
               <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Korean
             </button>
@@ -550,10 +550,10 @@
 
     <!-- Pricing Tabs -->
     <div class="va-pricing__tabs-wrapper">
-      <div class="va-pricing__tabs">
-        <button class="va-pricing__tab va-pricing__tab--active" type="button" aria-label="Monthly pricing">Monthly</button>
-        <button class="va-pricing__tab" type="button" aria-label="Yearly pricing">Yearly</button>
-        <button class="va-pricing__tab" type="button" aria-label="Enterprise pricing">Enterprise</button>
+      <div class="va-pricing__tabs" role="tablist">
+        <button class="va-pricing__tab va-pricing__tab--active" type="button" role="tab" aria-selected="true" aria-label="Monthly pricing">Monthly</button>
+        <button class="va-pricing__tab" type="button" role="tab" aria-selected="false" aria-label="Yearly pricing">Yearly</button>
+        <button class="va-pricing__tab" type="button" role="tab" aria-selected="false" aria-label="Enterprise pricing">Enterprise</button>
       </div>
       <div>
         <span class="va-discount-badge">
@@ -775,8 +775,12 @@
     const pricingTabs = document.querySelectorAll('.va-pricing__tab');
     pricingTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        pricingTabs.forEach(t => t.classList.remove('va-pricing__tab--active'));
+        pricingTabs.forEach(t => {
+          t.classList.remove('va-pricing__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('va-pricing__tab--active');
+        tab.setAttribute('aria-selected', 'true');
       });
     });
 
@@ -786,8 +790,12 @@
     const inputTabs = document.querySelectorAll('.va-input-card__tab');
     inputTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        inputTabs.forEach(t => t.classList.remove('va-input-card__tab--active'));
+        inputTabs.forEach(t => {
+          t.classList.remove('va-input-card__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('va-input-card__tab--active');
+        tab.setAttribute('aria-selected', 'true');
       });
     });
 
@@ -853,11 +861,13 @@
         if (!lang) return;
         container.querySelectorAll('.va-agent-card__lang, .va-dubbing-card__lang').forEach(l => {
           l.classList.remove('va-agent-card__lang--active', 'va-dubbing-card__lang--active');
+          l.setAttribute('aria-selected', 'false');
         });
         const activeClass = lang.classList.contains('va-agent-card__lang')
           ? 'va-agent-card__lang--active'
           : 'va-dubbing-card__lang--active';
         lang.classList.add(activeClass);
+        lang.setAttribute('aria-selected', 'true');
       });
     });
   });

@@ -63,17 +63,17 @@
   // Dark filled active tab (matches reference design)
   &--active {
     background-color: $va-near-black;
-    color: #fff;
+    color: $va-white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 
     &:hover {
-      color: #fff;
+      color: $va-white;
     }
   }
 
   // Light active variant (white pill with shadow)
   &--active-light {
-    background-color: #fff;
+    background-color: $va-white;
     color: $va-near-black;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
@@ -124,7 +124,7 @@ $va-crosshair-color: $va-border;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: #fff;
+  background-color: $va-white;
   border: 1px solid $va-border;
   border-radius: $va-radius;
 
@@ -331,6 +331,11 @@ $va-crosshair-color: $va-border;
       background-color: $va-bg-alt;
       border-color: darken($va-border, 8%);
     }
+
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -383,13 +388,13 @@ $va-crosshair-color: $va-border;
 
     .va-pricing-card__badge {
       background-color: $va-near-black;
-      color: #fff;
+      color: $va-white;
     }
 
     .va-pricing-card__cta {
       background-color: $va-near-black;
       border-color: $va-near-black;
-      color: #fff;
+      color: $va-white;
 
       &:hover {
         background-color: lighten($va-near-black, 10%);
