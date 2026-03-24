@@ -77,7 +77,10 @@
           <a href="#blog-section">Blog Section Layout</a>
           <a href="#agent">Voice Agent Card</a>
           <a href="#dubbing">Video Dubbing Card</a>
+          <a href="#client-logos">Client Logos</a>
+          <a href="#auth-split">Auth Split Layout</a>
           <a href="#footer">Footer</a>
+          <a href="#sample">Sample Landing Page</a>
         </nav>
       </aside>
 
@@ -825,6 +828,85 @@
               </div>
             </div>
           </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- CLIENT LOGOS                                                   -->
+        <!-- ============================================================ -->
+        <section id="client-logos" class="ref-section">
+          <p class="ref-label">Component</p>
+          <h2 class="ref-title">Client Logos</h2>
+          <p class="ref-desc">A greyscale logo row with pipe separators. Used under the hero or auth forms to show trust signals.</p>
+
+          <div class="va-client-logos" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 2rem;">
+            <span class="va-client-logos__label">The solution of choice for 300+ Forbes 2000 companies</span>
+            <div class="va-client-logos__list">
+              <span class="va-client-logos__img" style="height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:1.125rem;color:#1A1919;">AIRFRANCE /</span>
+              <span class="va-client-logos__img" style="height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:1rem;color:#1A1919;">VERTIV.</span>
+              <span class="va-client-logos__img" style="height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:1.125rem;color:#1A1919;">Honeywell</span>
+              <span class="va-client-logos__img" style="border-right:none;height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1rem;color:#1A1919;">splunk&gt;</span>
+            </div>
+          </div>
+
+          <p style="margin-top:1rem;"><code>.va-client-logos</code> &rarr; <code>.va-client-logos__label</code> + <code>.va-client-logos__list</code> &rarr; <code>.va-client-logos__img</code></p>
+          <p>Add <code>.va-client-logos--no-pipes</code> to remove the pipe separators.</p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- AUTH SPLIT LAYOUT                                              -->
+        <!-- ============================================================ -->
+        <section id="auth-split" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Auth Split Layout</h2>
+          <p class="ref-desc">Full-page two-panel auth layout: decorative illustration on the left, form on the right. Collapses to single-column on mobile.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; height: 400px;">
+            <div class="va-auth-split" style="min-height:400px;">
+              <div class="va-auth-split__illustration" style="padding:2rem;">
+                <div style="width:200px;height:200px;background:rgba(255,255,255,0.3);border-radius:20px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Serif',serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.8);">Illustration</div>
+              </div>
+              <div class="va-auth-split__form-panel">
+                <div class="va-auth va-auth--borderless">
+                  <div class="va-auth__header">
+                    <h2>Create an Account</h2>
+                    <p class="va-auth__subtitle">You are few moments away from your voice studio</p>
+                  </div>
+                  <form class="va-auth__form" onsubmit="return false;">
+                    <div class="va-form-group">
+                      <label class="va-form-label">Email</label>
+                      <input class="va-form-input" type="email" placeholder="you@example.com">
+                    </div>
+                    <div class="va-form-group">
+                      <label class="va-form-label">Password</label>
+                      <div class="va-input-wrapper">
+                        <input class="va-form-input" type="password" placeholder="Enter password">
+                        <button class="va-input-wrapper__toggle" type="button" aria-label="Toggle password">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <button class="va-auth__submit" type="submit">Sign Up</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin-top:1rem;"><code>.va-auth-split</code> &rarr; <code>.va-auth-split__illustration</code> + <code>.va-auth-split__form-panel</code></p>
+          <p>Also demonstrates <code>.va-input-wrapper</code> with <code>.va-input-wrapper__toggle</code> for password eye toggle.</p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SAMPLE PAGE LINK                                               -->
+        <!-- ============================================================ -->
+        <section id="sample" class="ref-section">
+          <p class="ref-label">Demo</p>
+          <h2 class="ref-title">Sample Landing Page</h2>
+          <p class="ref-desc">A pixel-perfect sample landing page combining all components into a complete Voice Aura homepage.</p>
+          <a href="sample.html" class="va-btn va-btn--filled va-btn--dark" style="display:inline-flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open Sample Page
+          </a>
         </section>
 
         <!-- ============================================================ -->

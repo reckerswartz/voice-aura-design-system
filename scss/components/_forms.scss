@@ -269,7 +269,7 @@
 
     &--active {
       color: $va-near-black;
-      border-bottom-color: $va-near-black;
+      border-bottom-color: $va-primary;
     }
   }
 
@@ -488,4 +488,55 @@
   align-items: center;
   gap: $va-grid-unit * 1.5;
   flex-shrink: 0;
+}
+
+// --------------------------------------------------------------------------
+// Password Input Wrapper
+// --------------------------------------------------------------------------
+// Wraps a text/password input with an eye-toggle icon button.
+// Usage: <div class="va-input-wrapper">
+//          <input class="va-form-input" type="password" />
+//          <button class="va-input-wrapper__toggle" type="button">
+//            <svg>...</svg>
+//          </button>
+//        </div>
+
+.va-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .va-form-input {
+    padding-right: 2.75rem;
+  }
+
+  &__toggle {
+    position: absolute;
+    right: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: $va-radius-sm;
+    cursor: pointer;
+    color: $va-body-text;
+    transition: color 0.15s ease-in-out,
+                background-color 0.15s ease-in-out;
+
+    &:hover {
+      color: $va-near-black;
+      background-color: $va-light-grey;
+    }
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
 }

@@ -186,17 +186,55 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   }
 }
 
+// Outlined "Log in" button — pill with visible border + arrow icon
+// Matches the reference design where "Log in →" is an outlined pill.
+.va-navbar-btn--outlined {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;
+  font-family: $va-font-body;
+  font-size: $_font-size-sm;
+  font-weight: 500;
+  color: $va-near-black;
+  background: transparent;
+  border: 1px solid $va-border-color;
+  padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
+  border-radius: $va-radius-pill;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $va-near-black;
+    background-color: $va-light-grey;
+    text-decoration: none;
+    color: $va-near-black;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
 // Filled "Sign up" button
 .va-navbar-btn--filled {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;
   font-family: $va-font-body;
-  font-size: $font-size-base;
+  font-size: $_font-size-sm;
   font-weight: 500;
   color: #fff;
   background-color: $va-near-black;
   border: none;
-  padding: $va-grid-unit ($va-grid-unit * 3);      // 8px 24px
+  padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
   border-radius: $va-radius-pill;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.2s ease-in-out,
               transform 0.2s ease-in-out;
 
@@ -204,10 +242,18 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   &:focus-visible {
     background-color: lighten($va-near-black, 12%);
     transform: translateY(-1px);
+    color: #fff;
+    text-decoration: none;
   }
 
   &:active {
     transform: translateY(0);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
   }
 }
 

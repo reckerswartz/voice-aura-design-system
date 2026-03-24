@@ -305,3 +305,128 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
               0 8px 32px rgba(0, 0, 0, 0.06);
 }
+
+// --------------------------------------------------------------------------
+// Auth - Split Layout (full-page, illustration + form)
+// --------------------------------------------------------------------------
+// The reference design shows a two-panel auth page:
+//   Left : Decorative illustration panel with gradient background
+//   Right: Form panel on white/light background
+//
+// Usage: <div class="va-auth-split">
+//          <div class="va-auth-split__illustration">
+//            <img src="..." alt="..." />
+//          </div>
+//          <div class="va-auth-split__form-panel">
+//            <div class="va-auth va-auth--borderless">...</div>
+//          </div>
+//        </div>
+
+.va-auth-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.va-auth-split__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, lighten($va-primary, 30%) 0%, lighten($va-primary, 10%) 100%);
+  overflow: hidden;
+
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+}
+
+.va-auth-split__form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: #fff;
+
+  .va-auth {
+    max-width: 26rem;
+    border: none;
+    padding: 0;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Client / Trust Logos Row (under auth forms or hero)
+// --------------------------------------------------------------------------
+// A row of greyscale client logos with pipe separators between them.
+//
+// Usage: <div class="va-client-logos">
+//          <span class="va-client-logos__label">Trusted by teams at</span>
+//          <div class="va-client-logos__list">
+//            <img src="..." alt="Acme" class="va-client-logos__img" />
+//            <img src="..." alt="Corp" class="va-client-logos__img" />
+//          </div>
+//        </div>
+
+.va-client-logos {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.va-client-logos__label {
+  display: block;
+  font-family: $va-font-body;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: $va-body-text;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.va-client-logos__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.va-client-logos__img {
+  height: 1.5rem;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.5);
+  transition: filter 0.2s ease-in-out;
+  padding: 0 1.25rem;
+  // Pipe separator via border-right on every logo except last
+  border-right: 1px solid $va-border;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    filter: grayscale(0) opacity(1);
+  }
+}
+
+// Variant without separators (just spaced logos)
+.va-client-logos--no-pipes {
+  .va-client-logos__img {
+    border-right: none;
+    padding: 0 1rem;
+  }
+}

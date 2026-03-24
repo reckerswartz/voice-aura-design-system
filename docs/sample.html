@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — AI Voice Generator &amp; Text to Speech</title>
+
+  <!-- Google Fonts (IBM Plex family) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Compiled Design System CSS -->
+  <link rel="stylesheet" href="../dist/css/voice-aura.css">
+
+  <!-- Page-level tweaks (minimal — keeps everything in design-system classes) -->
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #fff; }
+
+    /* Hero sound-wave decorative bar (CSS-only) */
+    .va-hero__wave-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.02) 100%);
+      pointer-events: none;
+    }
+
+    /* Featured section background overrides */
+    .section-alt { background-color: #F7F7F8; }
+
+    /* Inline SVG icon helpers */
+    .icon-16 { width: 16px; height: 16px; flex-shrink: 0; }
+    .icon-18 { width: 18px; height: 18px; flex-shrink: 0; }
+    .icon-20 { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Decorative halftone placement */
+    .halftone-left,
+    .halftone-right {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12;
+    }
+    .halftone-left  { left: -80px; bottom: -40px; }
+    .halftone-right { right: -80px; top: -40px; }
+
+    /* Feature section two-col layout */
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 4rem 0;
+    }
+    .feature-row--reverse { direction: rtl; }
+    .feature-row--reverse > * { direction: ltr; }
+    @media (max-width: 767.98px) {
+      .feature-row,
+      .feature-row--reverse { grid-template-columns: 1fr; }
+    }
+    .feature-row__text { max-width: 480px; }
+    .feature-row__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #0478FF;
+      background: rgba(4,120,255,0.08);
+      border: 1px solid rgba(4,120,255,0.18);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+    .feature-row__title {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #1A1919;
+      margin-bottom: 16px;
+    }
+    .feature-row__desc {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: #4B5563;
+      margin-bottom: 24px;
+    }
+    .feature-row__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Link with arrow icon */
+    .va-link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1A1919;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .va-link-arrow:hover { color: #0478FF; }
+    .va-link-arrow svg { width: 14px; height: 14px; }
+
+    /* Feature visual placeholder */
+    .feature-visual {
+      position: relative;
+      background-color: #F7F7F8;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    /* Ensure sections stack neatly */
+    .va-section + .va-section { border-top: 1px solid #E5E7EB; }
+    .section-alt + .section-alt { border-top: none; }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!-- NAVBAR                                                                 -->
+<!-- ===================================================================== -->
+<header class="va-navbar">
+  <div class="va-navbar-inner">
+    <!-- Brand -->
+    <a href="#" class="va-navbar-brand" aria-label="Voice Aura Home">
+      <svg class="va-navbar-brand__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none" width="160" height="38">
+        <circle cx="16" cy="24" r="5" fill="#0478FF"/>
+        <path d="M24 14 A14 14 0 0 1 24 34" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="1.0"/>
+        <path d="M29 10 A18 18 0 0 1 29 38" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M34 6 A22 22 0 0 1 34 42" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+        <text x="56" y="30" font-family="IBM Plex Serif" font-weight="600" font-size="22" fill="#1A1919">Voice</text>
+        <text x="120" y="30" font-family="IBM Plex Serif" font-weight="600" font-size="22" fill="#0478FF">Aura</text>
+      </svg>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="va-navbar-nav" aria-label="Main Navigation">
+      <a href="#" class="va-navbar-link">Products</a>
+      <a href="#" class="va-navbar-link">Integrations</a>
+      <a href="#" class="va-navbar-link">API</a>
+      <a href="#pricing" class="va-navbar-link">Pricing</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="va-navbar-actions">
+      <a href="#" class="va-navbar-btn--outlined">
+        Log in
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="va-navbar-btn--filled">
+        Sign up
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================================================================== -->
+<!-- HERO SECTION                                                           -->
+<!-- ===================================================================== -->
+<section class="va-hero">
+  <!-- Decorative floating elements (hidden on mobile by the SCSS) -->
+  <div class="va-hero__float va-hero__float--top-left va-hero__float--sm">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 5 7 7-7 7"/></svg>
+  </div>
+  <div class="va-hero__float va-hero__float--top-right va-hero__float--letter">A</div>
+  <div class="va-hero__float va-hero__float--bottom-left va-hero__float--lg">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+  </div>
+
+  <!-- Badge -->
+  <span class="va-hero__badge">
+    <svg class="va-hero__badge-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+    DON'T TYPE JUST SPEAK
+  </span>
+
+  <!-- Headline -->
+  <h1 class="va-hero__title">Built for unmatched<br>speed and peak efficiency</h1>
+
+  <!-- Subtitle -->
+  <p class="va-hero__subtitle">
+    Fastest TTS API. Customizable voice Studio.
+    Instant AI dubbing.<br>
+    Trusted by <strong>10M+</strong> creators worldwide.
+  </p>
+
+  <!-- CTA Buttons -->
+  <div class="va-hero__actions">
+    <button class="va-hero__btn--primary" type="button">
+      <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+      Open Studio
+    </button>
+    <button class="va-hero__btn--secondary" type="button">
+      <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      API Docs
+    </button>
+  </div>
+
+  <!-- TTS Input Card -->
+  <div class="va-input-card" style="max-width:780px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.06);position:relative;z-index:2;">
+    <div class="va-input-card__tabs">
+      <button class="va-input-card__tab va-input-card__tab--active" type="button">
+        <svg class="icon-16" style="display:inline;vertical-align:-2px;margin-right:4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+        Text to Speech
+      </button>
+      <button class="va-input-card__tab" type="button">
+        <svg class="icon-16" style="display:inline;vertical-align:-2px;margin-right:4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+        Upload File
+      </button>
+    </div>
+    <div class="va-input-card__body">
+      <textarea placeholder="Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences." rows="4"></textarea>
+    </div>
+    <div class="va-input-card__footer">
+      <div class="va-input-card__footer-pills">
+        <button class="va-category-pill va-category-pill--active" type="button">
+          <span class="va-category-pill__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+          </span>
+          YouTube
+        </button>
+        <button class="va-category-pill" type="button">
+          <span class="va-category-pill__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+          </span>
+          Narration
+        </button>
+        <button class="va-category-pill" type="button">
+          <span class="va-category-pill__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+          </span>
+          Advertisement
+        </button>
+        <button class="va-category-pill" type="button">
+          <span class="va-category-pill__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 8.5 12 2 6.5 8.5"/><path d="M12 2v12"/><circle cx="12" cy="20" r="2"/></svg>
+          </span>
+          Podcast
+        </button>
+      </div>
+      <div class="va-input-card__footer-actions">
+        <span class="va-char-counter"><span class="va-char-counter__current">400</span>/1000</span>
+        <button class="va-input-card__send" type="button" aria-label="Generate">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- CLIENT LOGOS                                                           -->
+<!-- ===================================================================== -->
+<section class="va-section" style="padding-top:2rem;padding-bottom:2rem;">
+  <div class="va-client-logos">
+    <span class="va-client-logos__label">The solution of choice for 300+ Forbes 2000 companies</span>
+    <div class="va-client-logos__list">
+      <!-- Using text-based placeholders styled like the reference brand logos -->
+      <span class="va-client-logos__img" style="border-right:1px solid #E5E7EB;padding:0 1.25rem;height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:1.125rem;color:#1A1919;letter-spacing:0.02em;">AIRFRANCE <span style="color:#0478FF;">/</span></span>
+      <span class="va-client-logos__img" style="border-right:1px solid #E5E7EB;padding:0 1.25rem;height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:1rem;color:#1A1919;">
+        <svg style="display:inline;vertical-align:-2px;margin-right:4px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        VERTIV.
+      </span>
+      <span class="va-client-logos__img" style="border-right:1px solid #E5E7EB;padding:0 1.25rem;height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:1.125rem;color:#1A1919;">Honeywell</span>
+      <span class="va-client-logos__img" style="padding:0 1.25rem;height:auto;filter:none;opacity:0.45;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1rem;color:#1A1919;">splunk&gt;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FEATURE 1 — FOR DEVELOPERS (API)                                       -->
+<!-- ===================================================================== -->
+<section class="va-section">
+  <div class="va-container">
+    <div class="feature-row">
+      <!-- Text -->
+      <div class="feature-row__text">
+        <span class="feature-row__badge">
+          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          FOR DEVELOPERS
+        </span>
+        <h2 class="feature-row__title">Experience the Fastest, Most Powerful Text-to-Speech API</h2>
+        <p class="feature-row__desc">
+          Experience the fastest, most powerful Text-to-Speech API &mdash;
+          delivering natural, high-quality voice with low latency and seamless
+          integration for any application.
+        </p>
+        <div class="feature-row__actions">
+          <button class="va-btn va-btn--filled va-btn--dark va-btn--sm" type="button">
+            <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Get API Key
+          </button>
+          <a href="#" class="va-link-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            Learn more
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual: Voice Agent Card -->
+      <div class="feature-visual" style="display:flex;align-items:center;justify-content:center;padding:2rem;">
+        <div class="va-agent-card va-agent-card--crosshairs" style="max-width:280px;width:100%;">
+          <div class="va-agent-card__corners"></div>
+          <div class="va-agent-card__corners-bottom"></div>
+          <!-- Language pills -->
+          <div class="va-agent-card__languages">
+            <span class="va-agent-card__lang va-agent-card__lang--active">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+              English
+            </span>
+            <span class="va-agent-card__lang">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Chinese
+            </span>
+            <span class="va-agent-card__lang">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+              Jap
+            </span>
+          </div>
+          <!-- Avatar -->
+          <div class="va-agent-card__avatar">
+            <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <!-- Favorite heart -->
+            <button class="va-agent-card__fav" type="button" aria-label="Favorite">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+          </div>
+          <!-- Info -->
+          <div class="va-agent-card__info">
+            <span class="va-agent-card__name">
+              Yang lu wu
+              <svg class="va-agent-card__verified" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            </span>
+            <span class="va-agent-card__role">Customer support agent</span>
+          </div>
+          <!-- CTA -->
+          <button class="va-agent-card__cta" type="button">Call Wang lu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FEATURE 2 — FOR LOCALIZER (Video Dubbing)                              -->
+<!-- ===================================================================== -->
+<section class="va-section section-alt">
+  <div class="va-container">
+    <div class="feature-row feature-row--reverse">
+      <!-- Text -->
+      <div class="feature-row__text">
+        <span class="feature-row__badge">
+          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+          FOR LOCALIZER
+        </span>
+        <h2 class="feature-row__title">Speed Meets Accuracy in Video Translation</h2>
+        <p class="feature-row__desc">
+          Translate videos instantly with AI-powered precision.
+          Deliver clear, natural, and reliable multilingual
+          content &mdash; fast and effortless.
+        </p>
+        <div class="feature-row__actions">
+          <button class="va-btn va-btn--filled va-btn--dark va-btn--sm" type="button">Try Dubbing</button>
+          <a href="#" class="va-link-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            Learn more
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual: Dubbing card -->
+      <div class="feature-visual" style="display:flex;align-items:center;justify-content:center;padding:2rem;background-color:#1A1919;">
+        <div class="va-dubbing-card" style="max-width:420px;width:100%;">
+          <div class="va-dubbing-card__langs">
+            <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+              English
+            </button>
+            <button class="va-dubbing-card__lang" type="button">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Chinese
+            </button>
+            <button class="va-dubbing-card__lang" type="button">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Chinese
+            </button>
+            <button class="va-dubbing-card__lang" type="button">
+              <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Chinese
+            </button>
+          </div>
+          <div class="va-dubbing-card__player">
+            <div class="va-dubbing-card__video" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <div class="va-dubbing-card__subtitle">
+              like to think about that it makes me sick are you scientific in your
+            </div>
+            <div class="va-dubbing-card__controls">
+              <div class="va-dubbing-card__controls-left">
+                <button type="button" aria-label="Pause">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+                <button type="button" aria-label="Volume">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <div class="va-dubbing-card__progress" style="width:120px;">
+                  <div class="va-dubbing-card__progress-bar" style="width:30%;"></div>
+                </div>
+                <span class="va-dubbing-card__time">1:57 / 6:50</span>
+              </div>
+              <div class="va-dubbing-card__controls-right">
+                <button type="button" aria-label="Captions">CC</button>
+              </div>
+            </div>
+          </div>
+          <div class="va-dubbing-card__title">
+            <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+            The Master - Processing Scene(HD)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- INSIGHTS & UPDATES (Blog Section)                                       -->
+<!-- ===================================================================== -->
+<section class="va-section va-blog-section">
+  <div class="va-container">
+    <div class="va-section__header va-section__header--left">
+      <div>
+        <h2 class="va-section__title">Insights &amp; Updates</h2>
+        <p class="va-section__subtitle">Latest news, product updates, and expert insights to keep you ahead.</p>
+      </div>
+      <a href="#" class="va-section__action va-btn va-btn--filled va-btn--dark va-btn--sm">
+        <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        Explore more blogs
+      </a>
+    </div>
+
+    <div class="va-blog-section__grid">
+      <!-- Blog Card 1 -->
+      <article class="va-blog-card">
+        <div class="va-blog-card__image" style="background:linear-gradient(135deg,#1a1a2e 0%,#0a0a0a 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+        </div>
+        <div class="va-blog-card__body">
+          <div class="va-blog-card__meta">
+            <span class="va-blog-card__tag">VOICE AGENTS</span>
+            <span class="va-blog-card__date">2024-12-08</span>
+            <span class="va-blog-card__read-time">3 min</span>
+          </div>
+          <h3 class="va-blog-card__title">Why Voice Agent Prompts Require a Different Approach</h3>
+          <p class="va-blog-card__excerpt">Scripting voice agents requires a different mindset than crafting prompts for text-based LLMs. Since voices are heard rather than read...</p>
+          <a href="#" class="va-blog-card__link">Read more</a>
+        </div>
+      </article>
+
+      <!-- Blog Card 2 -->
+      <article class="va-blog-card">
+        <div class="va-blog-card__image" style="background:linear-gradient(135deg,#16213e 0%,#1a1a2e 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/></svg>
+        </div>
+        <div class="va-blog-card__body">
+          <div class="va-blog-card__meta">
+            <span class="va-blog-card__tag">PRODUCT</span>
+            <span class="va-blog-card__date">2024-01-08</span>
+            <span class="va-blog-card__read-time">3 min</span>
+          </div>
+          <h3 class="va-blog-card__title">Twitter Video Translation Guide: Translate Videos Quickly and Easily</h3>
+          <p class="va-blog-card__excerpt">Designing for voice means prioritizing human-like dialogue, smoother transitions, and real-time responsiveness to create engaging ...</p>
+          <a href="#" class="va-blog-card__link">Read more</a>
+        </div>
+      </article>
+
+      <!-- Blog Card 3 -->
+      <article class="va-blog-card">
+        <div class="va-blog-card__image" style="background:linear-gradient(135deg,#0a0a0a 0%,#1a1919 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg>
+        </div>
+        <div class="va-blog-card__body">
+          <div class="va-blog-card__meta">
+            <span class="va-blog-card__tag">WHITEPAPER</span>
+            <span class="va-blog-card__date">2024-01-08</span>
+            <span class="va-blog-card__read-time">3 min</span>
+          </div>
+          <h3 class="va-blog-card__title">Designing for Voice: Prompting Text-Based LLMs</h3>
+          <p class="va-blog-card__excerpt">Learn how to quickly translate videos for iPhone using simple tools and AI, with an easy step-by-step guide that walks...</p>
+          <a href="#" class="va-blog-card__link">Read more</a>
+        </div>
+      </article>
+
+      <!-- Blog Card 4 -->
+      <article class="va-blog-card">
+        <div class="va-blog-card__image" style="background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+        </div>
+        <div class="va-blog-card__body">
+          <div class="va-blog-card__meta">
+            <span class="va-blog-card__tag">TUTORIAL</span>
+            <span class="va-blog-card__date">2024-02-15</span>
+            <span class="va-blog-card__read-time">5 min</span>
+          </div>
+          <h3 class="va-blog-card__title">Getting Started with Voice Cloning for Content Creators</h3>
+          <p class="va-blog-card__excerpt">A comprehensive guide to voice cloning technology, from recording samples to deploying your custom voice across platforms...</p>
+          <a href="#" class="va-blog-card__link">Read more</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- PRICING SECTION                                                        -->
+<!-- ===================================================================== -->
+<section id="pricing" class="va-section va-pricing-section" style="padding:5rem 0;">
+  <div class="va-pricing-section__dots"></div>
+  <div class="va-container" style="position:relative;z-index:1;">
+    <div class="va-section__header" style="text-align:center;">
+      <h2 class="va-section__title">Choose Pricing Plan</h2>
+      <p class="va-section__subtitle">Find the perfect plan for your voice creation needs &mdash; from free tools to enterprise-grade power.</p>
+    </div>
+
+    <!-- Pricing Tabs -->
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="va-pricing__tabs">
+        <button class="va-pricing__tab va-pricing__tab--active" type="button">Monthly</button>
+        <button class="va-pricing__tab" type="button">Yearly</button>
+        <button class="va-pricing__tab" type="button">Enterprise</button>
+      </div>
+      <div style="margin-top:0.75rem;">
+        <span class="va-discount-badge">
+          <span class="va-discount-badge__value">ANNUAL DISCOUNT</span>
+          <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="va-pricing__grid">
+      <!-- Free Plan -->
+      <div class="va-pricing-card">
+        <div class="va-pricing-card__corners"></div>
+        <div class="va-pricing-card__corners-bottom"></div>
+        <span class="va-pricing-card__badge">Free</span>
+        <div class="va-pricing-card__price">$0<span>/Month</span></div>
+        <p class="va-pricing-card__description">Perfect for trying out voice generation with basic customization &mdash; no credit card required.</p>
+        <button class="va-pricing-card__cta" type="button">Get Started Free</button>
+        <ul class="va-pricing-card__features">
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Access to core Text-to-Speech
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Limited monthly characters
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Standard voice library
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Basic voice customization
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Community support
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Watermarked exports
+          </li>
+        </ul>
+      </div>
+
+      <!-- Creator Plan (Featured) -->
+      <div class="va-pricing-card va-pricing-card--featured">
+        <div class="va-pricing-card__corners"></div>
+        <div class="va-pricing-card__corners-bottom"></div>
+        <span class="va-pricing-card__badge">Creator</span>
+        <div class="va-pricing-card__price">$29<span>/Month</span></div>
+        <p class="va-pricing-card__description">Ideal for content creators &amp; professionals who need high-quality voice output and more control.</p>
+        <button class="va-pricing-card__cta" type="button">Upgrade to Creator</button>
+        <ul class="va-pricing-card__features">
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Everything in Free
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Increased monthly characters
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Full voice library access
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            HD audio exports
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Advanced voice customization
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Commercial usage rights
+          </li>
+        </ul>
+      </div>
+
+      <!-- Business Plan -->
+      <div class="va-pricing-card">
+        <div class="va-pricing-card__corners"></div>
+        <div class="va-pricing-card__corners-bottom"></div>
+        <span class="va-pricing-card__badge">Business</span>
+        <div class="va-pricing-card__price">$69<span>/Month</span></div>
+        <p class="va-pricing-card__description">Built for teams that need collaboration tools, and enterprise-grade security.</p>
+        <button class="va-pricing-card__cta" type="button">Contact Sales</button>
+        <ul class="va-pricing-card__features">
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Everything in Creator
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Unlimited or high-volume characters
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            API access
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Team collaboration tools
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Custom voice cloning
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            Enterprise-grade security
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FOOTER                                                                 -->
+<!-- ===================================================================== -->
+<footer class="va-footer">
+  <div class="va-footer__inner">
+    <!-- Top: Brand + Link Columns -->
+    <div class="va-footer__grid">
+      <!-- Brand Column -->
+      <div class="va-footer__brand">
+        <a href="#" class="va-footer__brand-link">
+          <svg class="va-footer__brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none" width="140" height="34">
+            <circle cx="16" cy="24" r="5" fill="#0478FF"/>
+            <path d="M24 14 A14 14 0 0 1 24 34" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="1.0"/>
+            <path d="M29 10 A18 18 0 0 1 29 38" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <path d="M34 6 A22 22 0 0 1 34 42" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+            <text x="56" y="30" font-family="IBM Plex Serif" font-weight="600" font-size="22" fill="#FFFFFF">Voice</text>
+            <text x="120" y="30" font-family="IBM Plex Serif" font-weight="600" font-size="22" fill="#0478FF">Aura</text>
+          </svg>
+        </a>
+        <p class="va-footer__brand-text">The most powerful AI voice platform for creators, developers, and enterprises.</p>
+      </div>
+
+      <!-- Link Column 1 -->
+      <div class="va-footer__col">
+        <h4 class="va-footer__col-title">Important Links</h4>
+        <ul class="va-footer__links">
+          <li><a href="#" class="va-footer__link">Affiliates Partner Program</a></li>
+          <li><a href="#" class="va-footer__link">Voice Actor Partnerships</a></li>
+          <li><a href="#" class="va-footer__link">About Us</a></li>
+          <li><a href="#" class="va-footer__link">Contact Us</a></li>
+          <li><a href="#" class="va-footer__link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Link Column 2 -->
+      <div class="va-footer__col">
+        <h4 class="va-footer__col-title">Products</h4>
+        <ul class="va-footer__links">
+          <li><a href="#" class="va-footer__link">Text to Speech</a></li>
+          <li><a href="#" class="va-footer__link">AI Dubbing</a></li>
+          <li><a href="#" class="va-footer__link">AI Voice Agent</a></li>
+          <li><a href="#" class="va-footer__link">Voice Cloning</a></li>
+        </ul>
+      </div>
+
+      <!-- Link Column 3 -->
+      <div class="va-footer__col">
+        <h4 class="va-footer__col-title">How to create</h4>
+        <ul class="va-footer__links">
+          <li><a href="#" class="va-footer__link">E-Learning</a></li>
+          <li><a href="#" class="va-footer__link">Advertisements</a></li>
+          <li><a href="#" class="va-footer__link">Explainer Videos</a></li>
+          <li><a href="#" class="va-footer__link">Product Demos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom: Copyright -->
+    <div class="va-footer__bottom">
+      <p class="va-footer__copyright">&copy; 2026 Voice Aura. All Rights Reserved</p>
+      <div class="va-footer__bottom-links">
+        <a href="#" class="va-footer__bottom-link">Privacy Policy</a>
+        <a href="#" class="va-footer__bottom-link">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

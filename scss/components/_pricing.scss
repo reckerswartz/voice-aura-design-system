@@ -50,7 +50,19 @@
     color: $va-near-black;
   }
 
+  // Dark filled active tab (matches reference design)
   &--active {
+    background-color: $va-near-black;
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  // Light active variant (white pill with shadow)
+  &--active-light {
     background-color: #fff;
     color: $va-near-black;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
