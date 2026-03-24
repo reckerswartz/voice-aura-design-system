@@ -4,7 +4,7 @@
 // Badge, pill, tag, and section-label components.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │ BOOTSTRAP ALIGNMENT                                                 │
 // │                                                                      │
 // │ Bootstrap ships `.badge` with colour variants via `.bg-*`.          │
 // │ $badge-* variables are overridden in _variables.scss.               │
@@ -15,8 +15,10 @@
 // │   .va-badge--dark      ≈ .badge .bg-dark                            │
 // │   .va-badge--pill      ≈ .badge .rounded-pill                       │
 // │                                                                      │
-// │ VA-specific components (.va-tag, .va-section-badge,                 │
-// │ .va-discount-badge) have no Bootstrap equivalents.                  │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-tag             — uppercase promo label with icon support      │
+// │   .va-section-badge   — category badge above section headings       │
+// │   .va-discount-badge  — pricing page discount indicator             │
 // └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
@@ -32,13 +34,13 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  font-family: $va-font-body;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-family: $font-family-base;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
   line-height: 1.4;
   color: $va-near-black;
   background-color: $va-light-grey;
-  border: 1px solid transparent;
+  border: $border-width solid transparent;
   border-radius: 0.25rem;
   white-space: nowrap;
   vertical-align: middle;
@@ -95,7 +97,7 @@
 
 .va-badge--outline {
   background-color: transparent;
-  border-color: $va-border;
+  border-color: $card-border-color;
   color: $va-body-text;
 }
 
@@ -104,7 +106,7 @@
 // --------------------------------------------------------------------------
 
 .va-badge--pill {
-  border-radius: 100vw;
+  border-radius: $border-radius-pill;
 }
 
 // --------------------------------------------------------------------------
@@ -137,14 +139,14 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem 0.875rem;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: $va-primary;
   background-color: rgba($va-primary, 0.08);
-  border-radius: $va-radius-sm;
+  border-radius: $border-radius-sm;
   white-space: nowrap;
 
   &--dark {
@@ -188,15 +190,15 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.375rem 1rem;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $va-body-text;
   background-color: $va-bg-alt;
-  border: 1px solid $va-border;
-  border-radius: 100vw;
+  border: $border-width solid $card-border-color;
+  border-radius: $border-radius-pill;
 
   &__icon {
     display: inline-flex;
@@ -232,15 +234,15 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.375rem 0.875rem;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: $va-body-text;
   background-color: $va-bg-alt;
-  border: 1px solid $va-border;
-  border-radius: $va-radius-pill;
+  border: $border-width solid $card-border-color;
+  border-radius: $border-radius-pill;
 
   &__value {
     display: inline-flex;
@@ -251,7 +253,7 @@
     font-weight: 700;
     color: $va-white;
     background-color: $va-primary;
-    border-radius: $va-radius-pill;
+    border-radius: $border-radius-pill;
     line-height: 1.3;
   }
 

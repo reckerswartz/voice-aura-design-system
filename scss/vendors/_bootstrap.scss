@@ -86,6 +86,46 @@ $utilities: map.merge(
         bounce: $va-transition-bounce,
       ),
     ),
+
+    // -- Letter-spacing --
+    // Generates `.tracking-tight`, `.tracking-normal`, `.tracking-wide`,
+    // `.tracking-wider` — useful for headings & badges.
+    "va-letter-spacing": (
+      property: letter-spacing,
+      class: tracking,
+      responsive: true,
+      values: (
+        tight:  -0.01em,
+        normal: 0,
+        wide:   0.02em,
+        wider:  0.06em,
+      ),
+    ),
+
+    // -- Line-height overrides --
+    // Extends Bootstrap's existing `lh-*` with tighter heading values.
+    "va-line-height": (
+      property: line-height,
+      class: lh,
+      values: (
+        tight: 1.15,
+        snug:  1.3,
+      ),
+    ),
+
+    // -- Max-width constraints --
+    // Generates `.max-w-prose`, `.max-w-narrow`, `.max-w-wide` — handy for
+    // capping readable line length without container wrappers.
+    "va-max-width": (
+      property: max-width,
+      class: max-w,
+      responsive: true,
+      values: (
+        prose:  65ch,
+        narrow: 53.75rem,   // 860px — same as $_container-narrow
+        wide:   90rem,      // 1440px — same as $_container-wide
+      ),
+    ),
   )
 );
 

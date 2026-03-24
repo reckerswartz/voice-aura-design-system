@@ -4,11 +4,13 @@
 // Generic card components for the Voice Aura platform.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │ BOOTSTRAP ALIGNMENT                                                 │
 // │                                                                      │
-// │ Bootstrap's `.card` system is available and themed via variable      │
-// │ overrides ($card-bg, $card-border-*, $card-spacer-*, etc.) in       │
-// │ _variables.scss.                                                    │
+// │ Bootstrap's `.card` system is themed via $card-* variable overrides │
+// │ in _variables.scss ($card-bg, $card-border-*, $card-spacer-*, etc.) │
+// │ The `.va-card` class intentionally mirrors Bootstrap's `.card` with │
+// │ the same tokens.  All shared properties reference Bootstrap's Sass  │
+// │ variables so they stay in sync.                                     │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-card             ≈ .card                                      │
@@ -19,10 +21,14 @@
 // │   .va-card__title      ≈ .card-title                                │
 // │   .va-card__text       ≈ .card-text                                 │
 // │   .va-card--elevated   ≈ .card.shadow-sm                            │
-// │   .va-card--interactive≈ .card (+ custom hover — no BS equiv)       │
 // │                                                                      │
-// │ Use `.va-card` for Voice Aura–branded layouts; use `.card` for      │
-// │ standard Bootstrap patterns.  Both use the same design tokens.      │
+// │ Unique VA additions (no Bootstrap equivalent):                      │
+// │   .va-card--interactive — hover lift with shadow transition          │
+// │   .va-card--flush       — zero padding (content manages spacing)    │
+// │   .va-card__image--bottom — image at card bottom                    │
+// │                                                                      │
+// │ Use `.va-card` for Voice Aura branded layouts; use Bootstrap's      │
+// │ `.card` for standard patterns.  Both use the same design tokens.    │
 // └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
@@ -38,9 +44,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $va-white;
-  border: 1px solid $va-border;
-  border-radius: $va-radius;
+
+  // Appearance — shared with Bootstrap via $card-* variables
+  background-color: $card-bg;
+  border: $card-border-width solid $card-border-color;
+  border-radius: $card-border-radius;
   padding: $va-card-padding;
   word-wrap: break-word;
   overflow: hidden;
@@ -55,11 +63,11 @@
     justify-content: space-between;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid $va-border;
+    border-bottom: $card-border-width solid $card-border-color;
 
     // When card has no padding, let header carry its own
     .va-card--flush > & {
-      padding: 1rem $va-card-padding 1rem;
+      padding: $card-cap-padding-y $card-cap-padding-x;
       margin-bottom: 0;
     }
   }
@@ -85,10 +93,10 @@
     align-items: center;
     padding-top: 1rem;
     margin-top: auto;
-    border-top: 1px solid $va-border;
+    border-top: $card-border-width solid $card-border-color;
 
     .va-card--flush > & {
-      padding: 1rem $va-card-padding 1rem;
+      padding: $card-cap-padding-y $card-cap-padding-x;
       margin-top: 0;
     }
   }
@@ -101,7 +109,7 @@
   &__image {
     margin: (-$va-card-padding) (-$va-card-padding) 0;
     overflow: hidden;
-    border-radius: $va-radius $va-radius 0 0;
+    border-radius: $card-border-radius $card-border-radius 0 0;
 
     img {
       display: block;
@@ -118,7 +126,7 @@
     // Bottom image placement
     &--bottom {
       margin: 0 (-$va-card-padding) (-$va-card-padding);
-      border-radius: 0 0 $va-radius $va-radius;
+      border-radius: 0 0 $card-border-radius $card-border-radius;
       order: 999;
     }
   }
@@ -128,11 +136,11 @@
   // --------------------------------------------------------------------------
 
   &__title {
-    font-family: $va-font-heading;
+    font-family: $headings-font-family;
     font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: $va-near-black;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    color: $headings-color;
     margin: 0 0 0.5rem;
   }
 
@@ -141,10 +149,10 @@
   // --------------------------------------------------------------------------
 
   &__text {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.9375rem;
-    line-height: 1.6;
-    color: $va-body-text;
+    line-height: $line-height-base;
+    color: $body-color;
     margin: 0;
 
     + .va-card__text {
@@ -170,7 +178,7 @@
 // Explicitly bordered card (default already has border, but this is semantic).
 
 .va-card--bordered {
-  border-color: $va-border;
+  border-color: $card-border-color;
   box-shadow: none;
 }
 
@@ -189,11 +197,11 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
                 0 1px 4px rgba(0, 0, 0, 0.04);
-    border-color: darken($va-border, 6%);
+    border-color: darken($card-border-color, 6%);
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid $component-active-bg;
     outline-offset: 2px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
                 0 1px 4px rgba(0, 0, 0, 0.04);

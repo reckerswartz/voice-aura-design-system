@@ -58,7 +58,7 @@ $light:     $va-light-grey;
 $dark:      $va-near-black;
 
 $body-bg:    $va-white;
-$body-color: $va-body-text;
+$body-color: $va-near-black;        // Primary reading colour; $va-body-text is for secondary copy
 
 // Theme colour map — extended with Voice Aura semantic colours so that
 // Bootstrap utility classes like `.bg-section-bg`, `.text-muted-text`
@@ -112,9 +112,9 @@ $headings-line-height: 1.2;
 
 // Heading styles
 $headings-font-family: $va-font-heading;
-$headings-font-weight: $font-weight-bold;
+$headings-font-weight: $font-weight-semibold;  // 600 — common default; h1-h2 get 700 in _typography.scss
 $headings-color:       $va-near-black;
-$headings-margin-bottom: 0.75rem;
+$headings-margin-bottom: 1rem;                 // 16px — matches VA 8px grid ($va-grid-unit * 2)
 
 // Display headings — Bootstrap `.display-1` through `.display-4`
 // Customised to match Voice Aura's hero / landing-page typography.
@@ -385,7 +385,7 @@ $container-max-widths: (
 
 // Cards
 $va-pricing-card-min-height: 32rem;      // 512px
-$va-card-padding:            1.5rem;
+$va-card-padding:            $card-spacer-x;   // keep in sync with Bootstrap's card spacing
 $va-card-padding-lg:         2rem;
 
 // Decorative
