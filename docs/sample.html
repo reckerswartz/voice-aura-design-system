@@ -131,7 +131,7 @@
 <!-- ===================================================================== -->
 <!-- NAVBAR                                                                 -->
 <!-- ===================================================================== -->
-<header class="va-navbar va-navbar--sticky">
+<header class="va-navbar va-navbar--sticky va-nav-morph">
   <div class="va-navbar-inner">
     <!-- Brand -->
     <a href="#" class="va-navbar-brand" aria-label="Voice Aura Home">
@@ -180,7 +180,7 @@
 <!-- ===================================================================== -->
 <!-- HERO SECTION                                                           -->
 <!-- ===================================================================== -->
-<section id="hero" class="va-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg">
+<section id="hero" class="va-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-hero-adapt va-section-morph">
   <!-- Decorative floating elements (hidden on mobile by the SCSS) -->
   <div class="va-hero__float va-hero__float--top-left va-hero__float--sm va-animate-float" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 5 7 7-7 7"/></svg>
@@ -291,11 +291,11 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 1 — FOR DEVELOPERS (API)                                       -->
 <!-- ===================================================================== -->
-<section id="features-api" class="va-section va-bg-glow">
-  <div class="va-container">
+<section id="features-api" class="va-section va-bg-glow va-pattern-circuit va-pattern-circuit--light va-section-morph">
+  <div class="va-container va-container-smooth">
     <div class="feature-row">
       <!-- Text -->
-      <div class="feature-row__text va-scroll-fade-left">
+      <div class="feature-row__text va-scroll-fade-left va-responsive-fade-left">
         <span class="feature-row__badge">
           <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           FOR DEVELOPERS
@@ -319,7 +319,7 @@
       </div>
 
       <!-- Visual: Voice Agent Card -->
-      <div class="feature-visual feature-visual--light va-scroll-fade-right">
+      <div class="feature-visual feature-visual--light va-scroll-fade-right va-responsive-fade-right">
         <div class="va-agent-card va-agent-card--crosshairs" style="max-width:280px;width:100%;">
           <div class="va-agent-card__corners"></div>
           <div class="va-agent-card__corners-bottom"></div>
@@ -367,11 +367,11 @@
 <!-- ===================================================================== -->
 <!-- FEATURE 2 — FOR LOCALIZER (Video Dubbing)                              -->
 <!-- ===================================================================== -->
-<section id="features-dubbing" class="va-section section-alt va-pattern-noise">
-  <div class="va-container">
+<section id="features-dubbing" class="va-section section-alt va-pattern-noise va-pattern-rings va-pattern-rings--small va-section-morph">
+  <div class="va-container va-container-smooth">
     <div class="feature-row feature-row--reverse">
       <!-- Text -->
-      <div class="feature-row__text va-scroll-fade-right">
+      <div class="feature-row__text va-scroll-fade-right va-responsive-fade-right">
         <span class="feature-row__badge">
           <svg class="icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
           FOR LOCALIZER
@@ -392,7 +392,7 @@
       </div>
 
       <!-- Visual: Dubbing card -->
-      <div class="feature-visual feature-visual--dark va-scroll-fade-left">
+      <div class="feature-visual feature-visual--dark va-scroll-fade-left va-responsive-fade-left">
         <div class="va-dubbing-card" style="max-width:420px;width:100%;">
           <div class="va-dubbing-card__langs">
             <button class="va-dubbing-card__lang va-dubbing-card__lang--active" type="button">
@@ -450,7 +450,7 @@
 <!-- ===================================================================== -->
 <!-- INSIGHTS & UPDATES (Blog Section)                                       -->
 <!-- ===================================================================== -->
-<section id="blog" class="va-section va-blog-section va-section-separator">
+<section id="blog" class="va-section va-blog-section va-section-separator va-bg-grid-lines va-section-morph">
   <div class="va-container">
     <div class="va-section__header va-section__header--left">
       <div>
@@ -463,9 +463,9 @@
       </a>
     </div>
 
-    <div class="va-blog-section__grid">
+    <div class="va-blog-section__grid va-scroll-stagger">
       <!-- Blog Card 1 -->
-      <article class="va-blog-card va-hover-lift">
+      <article class="va-blog-card va-hover-lift va-card-reflow">
         <div class="va-blog-card__image">
           <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=375&fit=crop&auto=format" alt="Voice agent microphone setup" loading="lazy">
         </div>
@@ -482,7 +482,7 @@
       </article>
 
       <!-- Blog Card 2 -->
-      <article class="va-blog-card va-hover-lift">
+      <article class="va-blog-card va-hover-lift va-card-reflow">
         <div class="va-blog-card__image">
           <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=375&fit=crop&auto=format" alt="Video translation interface" loading="lazy">
         </div>
@@ -499,7 +499,7 @@
       </article>
 
       <!-- Blog Card 3 -->
-      <article class="va-blog-card va-hover-lift">
+      <article class="va-blog-card va-hover-lift va-card-reflow">
         <div class="va-blog-card__image">
           <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=375&fit=crop&auto=format" alt="AI voice technology visualization" loading="lazy">
         </div>
@@ -516,7 +516,7 @@
       </article>
 
       <!-- Blog Card 4 -->
-      <article class="va-blog-card va-hover-lift">
+      <article class="va-blog-card va-hover-lift va-card-reflow">
         <div class="va-blog-card__image">
           <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=375&fit=crop&auto=format" alt="Recording studio microphone" loading="lazy">
         </div>
@@ -538,7 +538,7 @@
 <!-- ===================================================================== -->
 <!-- PRICING SECTION                                                        -->
 <!-- ===================================================================== -->
-<section id="pricing" class="va-section va-pricing-section va-bg-glow va-bg-glow--neutral" style="padding:5rem 0;">
+<section id="pricing" class="va-section va-pricing-section va-bg-glow va-bg-glow--neutral va-bg-mesh va-section-morph" style="padding:5rem 0;">
   <div class="va-pricing-section__dots"></div>
   <div class="va-container" style="position:relative;z-index:1;">
     <div class="va-section__header" style="text-align:center;">
@@ -562,9 +562,9 @@
     </div>
 
     <!-- Pricing Grid -->
-    <div class="va-pricing__grid">
+    <div class="va-pricing__grid va-stagger-group">
       <!-- Free Plan -->
-      <div class="va-pricing-card va-hover-lift">
+      <div class="va-pricing-card va-hover-lift va-card-reflow">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Free</span>
@@ -600,7 +600,7 @@
       </div>
 
       <!-- Creator Plan (Featured) -->
-      <div class="va-pricing-card va-pricing-card--featured va-hover-lift">
+      <div class="va-pricing-card va-pricing-card--featured va-hover-lift va-card-reflow">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Creator</span>
@@ -636,7 +636,7 @@
       </div>
 
       <!-- Business Plan -->
-      <div class="va-pricing-card va-hover-lift">
+      <div class="va-pricing-card va-hover-lift va-card-reflow">
         <div class="va-pricing-card__corners"></div>
         <div class="va-pricing-card__corners-bottom"></div>
         <span class="va-pricing-card__badge">Business</span>
@@ -821,6 +821,14 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('[class*="va-scroll-"]').forEach(el => observer.observe(el));
+
+    // Also observe responsive-fade elements
+    document.querySelectorAll('[class*="va-responsive-fade"]').forEach(el => observer.observe(el));
+
+    // Observe scroll-stagger children
+    document.querySelectorAll('.va-scroll-stagger').forEach(parent => {
+      observer.observe(parent);
+    });
 
     // =====================================================================
     // 7. Navbar Background on Scroll

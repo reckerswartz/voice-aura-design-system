@@ -943,6 +943,41 @@
             </div>
           </div>
 
+          <h4 class="ref-sub-section-heading">New Pattern Assets</h4>
+          <p class="ref-desc-text">Five additional abstract patterns aligned with the Voice Aura visual language — tech-forward, audio-themed, and minimal.</p>
+          <div class="ref-grid ref-grid--3 ref-mb-lg">
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/circuit-lines.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code class="ref-code-sm">circuit-lines.svg</code>
+              <p class="ref-caption">Abstract tech/AI routing lines with node dots</p>
+            </div>
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/concentric-rings.svg') no-repeat center/contain;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code class="ref-code-sm">concentric-rings.svg</code>
+              <p class="ref-caption">Radiating voice/audio ripple rings</p>
+            </div>
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/grid-lines.svg') repeat center/48px;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code class="ref-code-sm">grid-lines.svg</code>
+              <p class="ref-caption">Clean perpendicular grid (48px tile)</p>
+            </div>
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/diagonal-lines.svg') repeat center/40px;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code class="ref-code-sm">diagonal-lines.svg</code>
+              <p class="ref-caption">Subtle diagonal hatching texture</p>
+            </div>
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/mesh-gradient.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;"></div>
+              <code class="ref-code-sm">mesh-gradient.svg</code>
+              <p class="ref-caption">Soft multi-blob gradient mesh</p>
+            </div>
+            <div class="ref-pattern-card">
+              <div style="height:120px;background:url('../assets/patterns/wave-divider.svg') no-repeat center/cover;border-radius:8px;margin-bottom:0.75rem;opacity:0.7;"></div>
+              <code class="ref-code-sm">wave-divider.svg</code>
+              <p class="ref-caption">Wave-shaped section divider</p>
+            </div>
+          </div>
+
           <h4 class="ref-sub-section-heading">Background Pattern Classes</h4>
           <table class="ref-table">
             <thead>
@@ -1002,6 +1037,36 @@
                 <td><code>.va-crosshairs</code></td>
                 <td>Four-corner "+" markers</td>
                 <td>Pricing cards, feature panels</td>
+              </tr>
+              <tr>
+                <td><code>.va-pattern-circuit</code></td>
+                <td>Abstract tech/AI circuit lines overlay</td>
+                <td>API section, integrations, technology features</td>
+              </tr>
+              <tr>
+                <td><code>.va-pattern-rings</code></td>
+                <td>Concentric ripple rings (voice propagation)</td>
+                <td>Voice agent section, hero, audio features</td>
+              </tr>
+              <tr>
+                <td><code>.va-bg-grid-lines</code></td>
+                <td>Clean perpendicular grid lines (48px tile)</td>
+                <td>Blog section, structured content areas</td>
+              </tr>
+              <tr>
+                <td><code>.va-pattern-diagonal</code></td>
+                <td>Subtle diagonal hatching texture</td>
+                <td>Alt-background sections, cards</td>
+              </tr>
+              <tr>
+                <td><code>.va-bg-mesh</code></td>
+                <td>Soft gradient mesh (ambient blobs)</td>
+                <td>Pricing, CTA sections, feature areas</td>
+              </tr>
+              <tr>
+                <td><code>.va-bg-layer</code></td>
+                <td>Positioned overlay for pattern stacking</td>
+                <td>Multi-pattern composition (see guide below)</td>
               </tr>
             </tbody>
           </table>
@@ -1087,6 +1152,80 @@
                 <code class="ref-code-sm">--static</code>
               </div>
             </div>
+          </div>
+
+          <!-- Circuit Lines Demo -->
+          <div class="ref-mb-lg" style="margin-top:2rem;">
+            <p class="ref-demo-label">Circuit Lines Pattern</p>
+            <div class="va-pattern-circuit" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-circuit — tech/AI routing lines</span>
+            </div>
+          </div>
+
+          <!-- Concentric Rings Demo -->
+          <div class="ref-mb-lg">
+            <p class="ref-demo-label">Concentric Rings Pattern</p>
+            <div class="va-pattern-rings" style="height:240px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-rings — voice/audio ripples</span>
+            </div>
+          </div>
+
+          <!-- Grid Lines Demo -->
+          <div class="ref-mb-lg">
+            <p class="ref-demo-label">Grid Lines Background</p>
+            <div class="va-bg-grid-lines" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-grid-lines (radial fade)</span>
+            </div>
+          </div>
+
+          <!-- Diagonal Lines Demo -->
+          <div class="ref-mb-lg">
+            <p class="ref-demo-label">Diagonal Lines Texture</p>
+            <div class="va-pattern-diagonal va-bg-alt" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-diagonal on .va-bg-alt</span>
+            </div>
+          </div>
+
+          <!-- Mesh Gradient Demo -->
+          <div class="ref-mb-lg">
+            <p class="ref-demo-label">Mesh Gradient</p>
+            <div class="va-bg-mesh" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-mesh — soft ambient gradient blobs</span>
+            </div>
+          </div>
+
+          <!-- Composition Guide -->
+          <h4 class="ref-sub-section-heading">Background Composition Guide</h4>
+          <p class="ref-desc-text">Patterns can be layered to create rich visual depth. Use the <code>.va-bg-layer</code> helper for additional overlays when a section already uses <code>::before</code> / <code>::after</code> for a pattern.</p>
+
+          <div class="ref-mb-lg">
+            <p class="ref-demo-label">Layered Composition: Glow + Circuit + Noise</p>
+            <div class="va-bg-glow va-pattern-noise" style="height:240px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;">
+              <div class="va-bg-layer va-bg-layer--circuit"></div>
+              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-glow + .va-pattern-noise + .va-bg-layer--circuit</span>
+            </div>
+          </div>
+
+          <div class="ref-mb-lg" style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
+            <p style="font-weight:600;margin-bottom:0.75rem;">Composition Rules:</p>
+            <ol style="padding-left:1.25rem;color:#4B5563;line-height:1.8;">
+              <li><strong>Max 2-3 patterns per section</strong> — more causes visual noise and hurts performance.</li>
+              <li><strong>Use <code>::before</code>-based patterns first</strong> (halftone, circuit, rings, mesh, grid-lines), then <code>::after</code>-based patterns (noise, diagonal), then <code>.va-bg-layer</code> for a third.</li>
+              <li><strong>Pair a structural pattern with a texture</strong> — e.g., circuit lines (structural) + noise (texture).</li>
+              <li><strong>Use <code>.va-bg-glow</code> as an ambient base</strong> — it adds subtle color without competing.</li>
+              <li><strong>All patterns reduce opacity on mobile</strong> for performance and readability.</li>
+              <li><strong>Prefer CSS-only patterns</strong> (<code>.va-bg-dots</code>, gradients) over SVG patterns for simple use cases.</li>
+            </ol>
+          </div>
+
+          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
+            <p style="font-weight:600;margin-bottom:0.5rem;">HTML Template (layered composition):</p>
+            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>&lt;section class="va-section va-bg-glow va-pattern-noise va-section-morph"&gt;
+  &lt;div class="va-bg-layer va-bg-layer--circuit"&gt;&lt;/div&gt;
+  &lt;div class="va-container"&gt;
+    ...content...
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
           </div>
         </section>
 
@@ -1267,6 +1406,123 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
               </tr>
             </tbody>
           </table>
+
+          <h4 class="ref-sub-section-heading">Responsive Entrance Animations</h4>
+          <p class="ref-inline-desc">Direction-adaptive entrance animations that switch axis on mobile. On desktop they slide horizontally; on mobile they slide vertically for better narrow-screen UX.</p>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Desktop (768px+)</th>
+                <th>Mobile (&lt;768px)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.va-responsive-fade-left</code></td>
+                <td>Slide from left (X&#8209;axis)</td>
+                <td>Slide from top (Y&#8209;axis)</td>
+              </tr>
+              <tr>
+                <td><code>.va-responsive-fade-right</code></td>
+                <td>Slide from right (X&#8209;axis)</td>
+                <td>Slide from bottom (Y&#8209;axis)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ref-grid ref-grid--2 ref-mb-lg">
+            <div class="va-responsive-fade-left is-visible ref-demo-card">
+              <code>.va-responsive-fade-left</code>
+              <p class="ref-caption">Resize to see direction change</p>
+            </div>
+            <div class="va-responsive-fade-right is-visible ref-demo-card">
+              <code>.va-responsive-fade-right</code>
+              <p class="ref-caption">X-axis on desktop, Y-axis on mobile</p>
+            </div>
+          </div>
+
+          <h4 class="ref-sub-section-heading">Auto-Stagger Groups</h4>
+          <p class="ref-inline-desc">Add <code>.va-stagger-group</code> to a parent to auto-stagger children with increasing delays. Delay reduces on mobile for faster perceived load.</p>
+          <div class="va-stagger-group ref-grid ref-grid--4 ref-mb-lg">
+            <div class="ref-demo-card"><code>Child 1</code><p class="ref-caption">0ms delay</p></div>
+            <div class="ref-demo-card"><code>Child 2</code><p class="ref-caption">100ms delay</p></div>
+            <div class="ref-demo-card"><code>Child 3</code><p class="ref-caption">200ms delay</p></div>
+            <div class="ref-demo-card"><code>Child 4</code><p class="ref-caption">300ms delay</p></div>
+          </div>
+
+          <h4 class="ref-sub-section-heading">Component-Level Responsive Transitions</h4>
+          <p class="ref-inline-desc">Apply to individual components for smooth layout adaptation at breakpoints.</p>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>What It Transitions</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.va-card-reflow</code></td>
+                <td>width, height, padding, margin, border-radius</td>
+                <td>Cards that resize at breakpoints</td>
+              </tr>
+              <tr>
+                <td><code>.va-breakpoint-fade</code></td>
+                <td>opacity + visibility at breakpoints</td>
+                <td>Show/hide elements per viewport</td>
+              </tr>
+              <tr>
+                <td><code>.va-section-morph</code></td>
+                <td>background-size, background-position, padding</td>
+                <td>Sections with pattern backgrounds</td>
+              </tr>
+              <tr>
+                <td><code>.va-container-smooth</code></td>
+                <td>max-width, padding</td>
+                <td>Container width transitions</td>
+              </tr>
+              <tr>
+                <td><code>.va-hero-adapt</code></td>
+                <td>grid-template, min-height, padding, gap</td>
+                <td>Hero sections reflow desktop&rarr;mobile</td>
+              </tr>
+              <tr>
+                <td><code>.va-nav-morph</code></td>
+                <td>height, padding, gap, background</td>
+                <td>Navbar desktop&harr;mobile morph</td>
+              </tr>
+              <tr>
+                <td><code>.va-scroll-stagger</code></td>
+                <td>Scroll-triggered + auto-stagger children</td>
+                <td>Feature grids, card lists</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="ref-mb-lg" style="margin-top:1.5rem;background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
+            <p style="font-weight:600;margin-bottom:0.75rem;">Responsive Animation Best Practices:</p>
+            <ol style="padding-left:1.25rem;color:#4B5563;line-height:1.8;">
+              <li><strong>Use <code>.va-responsive-fade-left/right</code></strong> for feature-text + visual pairs — the direction adapts automatically.</li>
+              <li><strong>Wrap card grids in <code>.va-stagger-group</code></strong> or <code>.va-scroll-stagger</code> for cascading reveals.</li>
+              <li><strong>Add <code>.va-section-morph</code></strong> to sections with background patterns so the pattern transitions smoothly on resize.</li>
+              <li><strong>Apply <code>.va-hero-adapt</code></strong> to hero sections with grid layouts for smooth desktop&rarr;mobile reflow.</li>
+              <li><strong>All animations honor <code>prefers-reduced-motion: reduce</code></strong> — animations are disabled and elements appear immediately.</li>
+            </ol>
+          </div>
+
+          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
+            <p style="font-weight:600;margin-bottom:0.5rem;">HTML Template (responsive animated section):</p>
+            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>&lt;section class="va-section va-section-morph va-bg-glow"&gt;
+  &lt;div class="va-container va-container-smooth"&gt;
+    &lt;h2 class="va-responsive-fade-left"&gt;Feature Title&lt;/h2&gt;
+    &lt;div class="va-scroll-stagger ref-grid ref-grid--3"&gt;
+      &lt;div class="va-card va-card-reflow"&gt;...&lt;/div&gt;
+      &lt;div class="va-card va-card-reflow"&gt;...&lt;/div&gt;
+      &lt;div class="va-card va-card-reflow"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          </div>
         </section>
 
         <!-- ============================================================ -->

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" fill="none">
+  <!-- Voice Aura — Concentric rings / ripple pattern
+       Radiating sound-wave rings from a central point, representing
+       voice output and audio propagation. -->
+  <defs>
+    <radialGradient id="rg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.08"/>
+      <stop offset="60%" stop-color="#0478FF" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#rg)"/>
+  <g stroke="#1A1919" fill="none" stroke-linecap="round">
+    <circle cx="300" cy="300" r="40"  stroke-opacity="0.08" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="80"  stroke-opacity="0.07" stroke-width="1.2"/>
+    <circle cx="300" cy="300" r="120" stroke-opacity="0.06" stroke-width="1"/>
+    <circle cx="300" cy="300" r="160" stroke-opacity="0.05" stroke-width="1"/>
+    <circle cx="300" cy="300" r="200" stroke-opacity="0.04" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="240" stroke-opacity="0.035" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="280" stroke-opacity="0.025" stroke-width="0.6"/>
+  </g>
+  <!-- Center dot -->
+  <circle cx="300" cy="300" r="4" fill="#0478FF" fill-opacity="0.1"/>
+</svg>

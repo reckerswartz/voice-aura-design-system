@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Voice Aura — Grid lines pattern (tileable)
+       Clean perpendicular grid for structured backgrounds.
+       Tile at 48×48px for a 48px grid (6 × grid-unit). -->
+  <line x1="0" y1="0" x2="48" y2="0" stroke="#1A1919" stroke-opacity="0.05" stroke-width="0.5"/>
+  <line x1="0" y1="0" x2="0" y2="48" stroke="#1A1919" stroke-opacity="0.05" stroke-width="0.5"/>
+</svg>

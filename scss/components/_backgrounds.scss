@@ -533,7 +533,314 @@
 }
 
 // --------------------------------------------------------------------------
-// 10. Decorative Blue Accent Line
+// 10. Circuit Lines Overlay
+// --------------------------------------------------------------------------
+// Abstract circuit / tech-line pattern evoking AI processing and signal
+// routing. Ideal for technology-focused sections (API, integrations).
+//
+// Usage: <section class="va-pattern-circuit">...</section>
+//
+// Variants:
+//   --light  : Reduced opacity for lighter sections
+//   --right  : Shifted right for asymmetric layouts
+
+.va-pattern-circuit {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center center;
+    opacity: 1;
+
+    @media (max-width: 767.98px) {
+      background-size: 180% auto;
+      opacity: 0.7;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--light::before {
+    opacity: 0.5;
+  }
+
+  &--right::before {
+    background-position: 70% center;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 11. Concentric Rings Overlay
+// --------------------------------------------------------------------------
+// Radiating ripple rings suggesting voice/audio propagation. Perfect for
+// hero sections, voice-agent features, or any audio-themed content.
+//
+// Usage: <section class="va-pattern-rings">...</section>
+//
+// Variants:
+//   --left   : Offset to left (feature sections)
+//   --right  : Offset to right
+//   --small  : Smaller ring set (cards, panels)
+
+.va-pattern-rings {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+
+    @media (max-width: 767.98px) {
+      width: 360px;
+      height: 360px;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--left::before {
+    left: 15%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--right::before {
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--small::before {
+    width: 320px;
+    height: 320px;
+
+    @media (max-width: 767.98px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 12. Grid Lines Background
+// --------------------------------------------------------------------------
+// Clean perpendicular grid-line pattern for structured, technical layouts.
+// Tiles at 48px intervals (6 grid units).
+//
+// Usage: <section class="va-bg-grid-lines">...</section>
+//
+// Variants:
+//   --dense  : 24px grid (tighter)
+//   --full   : No radial fade-out mask
+
+.va-bg-grid-lines {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-repeat: repeat;
+    background-size: 48px 48px;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.4) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.4) 0%,
+      transparent 70%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--dense::before {
+    background-size: 24px 24px;
+  }
+
+  &--full::before {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 13. Diagonal Lines Texture
+// --------------------------------------------------------------------------
+// Subtle hatching for adding depth and visual interest to flat sections.
+//
+// Usage: <section class="va-pattern-diagonal">...</section>
+//
+// Variants:
+//   --dense  : Tighter 20px repeat
+
+.va-pattern-diagonal {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+    opacity: 1;
+
+    @media (max-width: 767.98px) {
+      opacity: 0.6;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--dense::after {
+    background-size: 20px 20px;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 14. Mesh Gradient Background
+// --------------------------------------------------------------------------
+// Soft multi-blob gradient mesh for modern ambient sections. Non-repeating.
+//
+// Usage: <section class="va-bg-mesh">...</section>
+//
+// Variants:
+//   --dark   : Inverted for dark backgrounds
+
+.va-bg-mesh {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+
+    @media (max-width: 767.98px) {
+      opacity: 0.6;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--dark::before {
+    filter: invert(1);
+    opacity: 0.4;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 15. Background Composition Helpers
+// --------------------------------------------------------------------------
+// When layering multiple patterns on a single section, these helpers
+// ensure correct stacking. Apply patterns to the section and use
+// `.va-bg-layer` inside for additional pattern overlays.
+//
+// Usage:
+//   <section class="va-section va-bg-glow va-pattern-noise">
+//     <div class="va-bg-layer va-bg-layer--circuit"></div>
+//     <div class="va-container">...content...</div>
+//   </section>
+
+.va-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  &--circuit {
+    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+
+  &--rings {
+    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  &--grid {
+    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-repeat: repeat;
+    background-size: 48px 48px;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 70%
+    );
+  }
+
+  &--mesh {
+    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--diagonal {
+    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 16. Decorative Blue Accent Line
 // --------------------------------------------------------------------------
 // Small blue vertical or horizontal line used as a decorative accent
 // in the hero (the cursor-like blue bar visible in the reference).

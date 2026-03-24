@@ -595,3 +595,251 @@
     transform: none !important;
   }
 }
+
+// --------------------------------------------------------------------------
+// 11. Responsive Entrance Animations
+// --------------------------------------------------------------------------
+// Entrance animations that adapt direction based on screen size.
+// On desktop, elements slide from left/right; on mobile, they fade up
+// to match the vertical scroll flow.
+//
+// Usage:
+//   <div class="va-responsive-fade-left">Text column</div>
+//   <div class="va-responsive-fade-right">Visual column</div>
+
+.va-responsive-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  @media (max-width: 767.98px) {
+    transform: translateY(24px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.va-responsive-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  @media (max-width: 767.98px) {
+    transform: translateY(24px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 12. Stagger Group
+// --------------------------------------------------------------------------
+// Automatically stagger children entrance animations. Apply to a grid or
+// flex container — each direct child gets an incremental delay.
+//
+// Usage:
+//   <div class="va-stagger-group">
+//     <div class="va-scroll-fade-up">Card 1</div>
+//     <div class="va-scroll-fade-up">Card 2</div>
+//     <div class="va-scroll-fade-up">Card 3</div>
+//   </div>
+
+.va-stagger-group {
+  > :nth-child(1) { transition-delay: 0s; }
+  > :nth-child(2) { transition-delay: 0.08s; }
+  > :nth-child(3) { transition-delay: 0.16s; }
+  > :nth-child(4) { transition-delay: 0.24s; }
+  > :nth-child(5) { transition-delay: 0.32s; }
+  > :nth-child(6) { transition-delay: 0.40s; }
+  > :nth-child(7) { transition-delay: 0.48s; }
+  > :nth-child(8) { transition-delay: 0.56s; }
+
+  // On mobile, reduce stagger gaps for faster perceived load
+  @media (max-width: 767.98px) {
+    > :nth-child(n) {
+      transition-delay: 0s;
+    }
+    > :nth-child(2) { transition-delay: 0.06s; }
+    > :nth-child(3) { transition-delay: 0.12s; }
+    > :nth-child(4) { transition-delay: 0.18s; }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 13. Card Reflow Animation
+// --------------------------------------------------------------------------
+// Smooth card position/size transitions when grid columns change at
+// breakpoints. Apply to individual cards inside a grid.
+//
+// Usage:
+//   <div class="va-grid-3 va-grid-smooth">
+//     <div class="va-card-reflow">...</div>
+//   </div>
+
+.va-card-reflow {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease-in-out,
+              max-width 0.4s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 14. Touch-Aware Interaction States
+// --------------------------------------------------------------------------
+// On touch devices, hover doesn't exist in the same way. These classes
+// provide touch-optimized feedback (active press) while keeping hover
+// effects for pointer devices.
+//
+// Usage:
+//   <div class="va-touch-lift">Card</div>
+
+.va-touch-lift {
+  transition: transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+
+  // Pointer (mouse) devices: traditional hover lift
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $va-shadow-lg;
+    }
+  }
+
+  // Touch devices: active press feedback
+  &:active {
+    transform: scale(0.97);
+    box-shadow: $va-shadow-sm;
+  }
+}
+
+.va-touch-scale {
+  transition: transform 0.2s ease-in-out;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 15. Section Morph (Background Pattern Transition)
+// --------------------------------------------------------------------------
+// Smooth background opacity transitions when patterns change visibility
+// at breakpoints. Apply to sections with pattern overlays so the pattern
+// fades rather than pops.
+
+.va-section-morph {
+  &::before,
+  &::after {
+    transition: opacity 0.5s ease-in-out,
+                background-size 0.5s ease-in-out;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 16. Responsive Container Expand/Collapse
+// --------------------------------------------------------------------------
+// Animates container width changes at breakpoints. Useful for the main
+// content area and pricing grids.
+
+.va-container-smooth {
+  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-left 0.35s ease-in-out,
+              padding-right 0.35s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 17. Scroll-Triggered Stagger with Responsive Direction
+// --------------------------------------------------------------------------
+// Combines scroll-trigger + responsive direction + auto-stagger.
+// The ideal utility for feature grids and card collections.
+//
+// Usage:
+//   <div class="va-scroll-stagger">
+//     <article>Card 1</article>
+//     <article>Card 2</article>
+//   </div>
+
+.va-scroll-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  > :nth-child(1) { transition-delay: 0s; }
+  > :nth-child(2) { transition-delay: 0.1s; }
+  > :nth-child(3) { transition-delay: 0.2s; }
+  > :nth-child(4) { transition-delay: 0.3s; }
+  > :nth-child(5) { transition-delay: 0.4s; }
+  > :nth-child(6) { transition-delay: 0.5s; }
+
+  &.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Tighter stagger on mobile
+  @media (max-width: 767.98px) {
+    > :nth-child(n) { transition-delay: 0s; }
+    > :nth-child(2) { transition-delay: 0.08s; }
+    > :nth-child(3) { transition-delay: 0.16s; }
+    > :nth-child(4) { transition-delay: 0.24s; }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 18. Hero Responsive Adapt
+// --------------------------------------------------------------------------
+// Smooth transitions for hero section reflow between desktop and mobile.
+
+.va-hero-adapt {
+  transition: padding 0.4s ease-in-out;
+
+  .va-hero__title {
+    transition: font-size 0.3s ease-in-out,
+                line-height 0.3s ease-in-out;
+  }
+
+  .va-hero__subtitle {
+    transition: font-size 0.25s ease-in-out;
+  }
+
+  .va-hero__actions {
+    transition: flex-direction 0.3s ease-in-out,
+                gap 0.3s ease-in-out;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 19. Navbar Morph (Desktop ↔ Mobile)
+// --------------------------------------------------------------------------
+// Smooth transitions for the navbar when crossing the lg breakpoint.
+
+.va-nav-morph {
+  transition: height 0.3s ease-in-out,
+              padding 0.3s ease-in-out,
+              background-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+
+  .va-navbar-nav {
+    transition: opacity 0.2s ease-in-out,
+                transform 0.3s ease-in-out;
+  }
+
+  .va-navbar-actions {
+    transition: opacity 0.2s ease-in-out,
+                flex-direction 0.3s ease-in-out,
+                gap 0.3s ease-in-out;
+  }
+}

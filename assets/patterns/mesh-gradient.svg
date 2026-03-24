@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <!-- Voice Aura — Mesh gradient background
+       Soft multi-stop gradient blob mesh for modern ambient feel.
+       Position as a non-repeating background-image. -->
+  <defs>
+    <radialGradient id="mg1" cx="25%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mg2" cx="75%" cy="70%" r="35%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mg3" cx="60%" cy="20%" r="30%">
+      <stop offset="0%" stop-color="#1A1919" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#1A1919" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#mg1)"/>
+  <rect width="800" height="600" fill="url(#mg2)"/>
+  <rect width="800" height="600" fill="url(#mg3)"/>
+</svg>
