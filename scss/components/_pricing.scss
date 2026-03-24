@@ -64,7 +64,7 @@
   &--active {
     background-color: $va-near-black;
     color: $va-white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    box-shadow: $va-shadow-tab-dark;
 
     &:hover {
       color: $va-white;
@@ -75,7 +75,7 @@
   &--active-light {
     background-color: $va-white;
     color: $va-near-black;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: $va-shadow-tab-light;
   }
 }
 

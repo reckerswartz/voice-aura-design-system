@@ -178,7 +178,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   border-radius: $va-radius-lg;
   box-shadow: $va-shadow-lg;
   padding: $va-grid-unit * 4;                      // 32px
-  z-index: 2;
+  z-index: $va-z-raised;
 
   // Tab bar at the top
   &-tabs {

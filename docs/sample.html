@@ -621,15 +621,27 @@
   // Category pill switching
   document.querySelectorAll('.va-category-pill').forEach(pill => {
     pill.addEventListener('click', () => {
-      pill.closest('.va-input-card__footer-pills').querySelectorAll('.va-category-pill').forEach(p => {
-        p.classList.remove('va-category-pill--active');
-      });
+      const parent = pill.closest('.va-input-card__footer-pills');
+      if (parent) {
+        parent.querySelectorAll('.va-category-pill').forEach(p => {
+          p.classList.remove('va-category-pill--active');
+        });
+      }
       pill.classList.add('va-category-pill--active');
     });
   });
 
   // Scroll-triggered animations (IntersectionObserver)
   const animateOnScroll = () => {
+    const selector = '.va-scroll-fade-left, .va-scroll-fade-right, .va-scroll-stagger, .va-scroll-fade-up, .va-scroll-scale-in';
+    const els = document.querySelectorAll(selector);
+
+    // Respect prefers-reduced-motion: make elements visible immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -639,9 +651,7 @@
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll(
-      '.va-scroll-fade-left, .va-scroll-fade-right, .va-scroll-stagger, .va-scroll-fade-up, .va-scroll-scale-in'
-    ).forEach(el => observer.observe(el));
+    els.forEach(el => observer.observe(el));
   };
   animateOnScroll();
 </script>

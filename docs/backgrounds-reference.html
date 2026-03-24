@@ -1072,6 +1072,7 @@ class="va-scroll-stagger"
   // Replay helper for entrance animation demos
   function replayAnim(id, cls) {
     var el = document.getElementById(id);
+    if (!el) return;
     el.classList.remove(cls);
     void el.offsetWidth; // force reflow
     el.classList.add(cls);
@@ -1080,7 +1081,7 @@ class="va-scroll-stagger"
   // Auto-play entrance demos on load
   document.addEventListener('DOMContentLoaded', function () {
     ['demo-fade-up', 'demo-fade-in', 'demo-fade-left', 'demo-fade-right', 'demo-scale-in'].forEach(function (id) {
-      var cls = 'va-animate-' + id.replace('demo-', '').replace(/-/g, '-');
+      var cls = 'va-animate-' + id.replace(/^demo-/, '');
       var el = document.getElementById(id);
       if (el) el.classList.add(cls);
     });

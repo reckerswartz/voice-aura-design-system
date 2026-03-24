@@ -16,6 +16,9 @@
 // ---------------------------------------------------------------------------
 
 $_bp-md: map-get($va-breakpoints, "md"); // 768px
+$_bp-sm: map-get($va-breakpoints, "sm"); // 576px
+$_bp-lg: map-get($va-breakpoints, "lg"); // 992px
+$_bp-xl: map-get($va-breakpoints, "xl"); // 1200px
 $_font-size-lg: map-get($va-font-sizes, "lg"); // 1.125rem
 $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
@@ -116,103 +119,13 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 }
 
 // ---------------------------------------------------------------------------
-// 3. Feature Row (two-column split)
+// 3. Feature Row — see _feature-section.scss (canonical owner)
 // ---------------------------------------------------------------------------
-// Text on one side, visual / image on the other.
-
-.va-feature-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $va-grid-unit * 8;                          // 64px
-  align-items: center;
-  max-width: $va-container-max-width;
-  margin: 0 auto;
-  padding: ($va-grid-unit * 4) 0;
-
-  // Reversed variant — visual left, text right
-  &--reversed {
-    direction: rtl;
-
-    > * {
-      direction: ltr;
-    }
-  }
-
-  // Content side
-  &__content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__badge {
-    @extend .va-section__badge;
-    align-self: flex-start;
-  }
-
-  &__title {
-    font-family: $va-font-heading;
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: $va-near-black;
-    margin-bottom: $va-grid-unit * 2;
-  }
-
-  &__description {
-    font-family: $va-font-body;
-    font-size: $font-size-base;
-    line-height: 1.7;
-    color: $va-body-text;
-    margin-bottom: $va-grid-unit * 3;
-  }
-
-  &__link {
-    display: inline-flex;
-    align-items: center;
-    gap: $va-grid-unit * 0.75;
-    font-family: $va-font-body;
-    font-size: $font-size-base;
-    font-weight: 600;
-    color: $va-primary-blue;
-    transition: gap 0.2s ease-in-out;
-
-    &:hover {
-      gap: $va-grid-unit * 1.25;
-      text-decoration: none;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $va-primary-blue;
-      outline-offset: 2px;
-    }
-
-    // Arrow icon
-    &-arrow {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    &:hover &-arrow {
-      transform: translateX(3px);
-    }
-  }
-
-  // Visual / media side
-  &__visual {
-    position: relative;
-    border-radius: $va-radius-lg;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-}
+// The .va-feature-row block and its children (__text, __badge, __title,
+// __desc, __actions, --reverse) live in _feature-section.scss.
+// Any legacy sub-elements (__content, __description, __link, __visual,
+// --reversed) that are referenced nowhere should be removed.
+// ---------------------------------------------------------------------------
 
 // Feature visual — standalone container for demo visuals in feature rows
 .feature-visual {
@@ -239,21 +152,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   margin-right: 4px;
 }
 
-// Feature row — responsive
-@media (max-width: $_bp-md) {
-  .va-feature-row {
-    grid-template-columns: 1fr;
-    gap: $va-grid-unit * 4;
-
-    &--reversed {
-      direction: ltr;
-    }
-
-    &__visual {
-      order: -1;                                   // Image first on mobile
-    }
-  }
-}
+// Feature row responsive rules live in _feature-section.scss
 
 // ---------------------------------------------------------------------------
 // 4. Client Logos Bar
@@ -429,15 +328,15 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 
-    @media (max-width: 1199.98px) {
+    @media (max-width: $_bp-xl - 0.02px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 991.98px) {
+    @media (max-width: $_bp-lg - 0.02px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 575.98px) {
+    @media (max-width: $_bp-sm - 0.02px) {
       grid-template-columns: 1fr;
       max-width: 24rem;
       margin: 0 auto;

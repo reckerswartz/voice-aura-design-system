@@ -2360,7 +2360,7 @@ progress {
   --bs-btn-padding-y: 1rem;
   --bs-btn-padding-x: 2rem;
   --bs-btn-font-size: 1.125rem;
-  --bs-btn-border-radius: 0.5rem;
+  --bs-btn-border-radius: 1rem;
 }
 
 .btn-sm {
@@ -11497,12 +11497,42 @@ select {
   outline-offset: 2px;
 }
 
+.va-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+.va-skip-link:focus, .va-skip-link:focus-visible {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background-color: #FFFFFF;
+  color: #0478FF;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 2px solid #0478FF;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-html,
+html {
+  overflow-x: clip;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -11640,6 +11670,26 @@ pre code {
 ::selection {
   background-color: rgba(4, 120, 255, 0.15);
   color: #1A1919;
+}
+
+.va-text-primary {
+  color: #0478FF !important;
+}
+
+.va-text-dark {
+  color: #1A1919 !important;
+}
+
+.va-text-muted {
+  color: #9CA3AF !important;
+}
+
+.va-text-body {
+  color: #4B5563 !important;
+}
+
+.va-text-white {
+  color: #FFFFFF !important;
 }
 
 .va-container {
@@ -12571,14 +12621,15 @@ pre code {
   outline-offset: 4px;
   border-radius: 0.5rem;
 }
-.va-navbar-brand__icon {
+.va-navbar-brand__logo, .va-navbar-brand__icon {
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.va-navbar-brand__icon svg,
+.va-navbar-brand__logo svg,
+.va-navbar-brand__logo img, .va-navbar-brand__icon svg,
 .va-navbar-brand__icon img {
   width: 100%;
   height: 100%;
@@ -13089,35 +13140,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 51px;
+  height: 48px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 91px;
+  height: 36px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 92px;
+  height: 58px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 83px;
+  height: 56px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 23px;
+  height: 70px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 92px;
+  height: 24px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 66px;
+  height: 20px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 90px;
+  height: 72px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -13256,6 +13307,9 @@ pre code {
   padding: 6rem 2rem;
   background-color: #FFFFFF;
 }
+.va-section + .va-section {
+  border-top: 1px solid #E5E7EB;
+}
 .va-section--sm {
   padding: 4rem 2rem;
 }
@@ -13275,7 +13329,7 @@ pre code {
 .va-section--dark .va-section__subtitle {
   color: rgba(255, 255, 255, 0.7);
 }
-.va-section--dark .va-section__badge, .va-section--dark .va-feature-row__badge {
+.va-section--dark .va-section__badge {
   color: #0478FF;
   background-color: rgba(4, 120, 255, 0.15);
   border-color: rgba(4, 120, 255, 0.25);
@@ -13287,7 +13341,7 @@ pre code {
   margin: 0 auto 4rem;
 }
 
-.va-section__badge, .va-feature-row__badge {
+.va-section__badge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -13324,82 +13378,6 @@ pre code {
   margin: 0;
 }
 
-.va-feature-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-.va-feature-row--reversed {
-  direction: rtl;
-}
-.va-feature-row--reversed > * {
-  direction: ltr;
-}
-.va-feature-row__content {
-  display: flex;
-  flex-direction: column;
-}
-.va-feature-row__badge {
-  align-self: flex-start;
-}
-.va-feature-row__title {
-  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #1A1919;
-  margin-bottom: 1rem;
-}
-.va-feature-row__description {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #4B5563;
-  margin-bottom: 1.5rem;
-}
-.va-feature-row__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #0478FF;
-  transition: gap 0.2s ease-in-out;
-}
-.va-feature-row__link:hover {
-  gap: 0.625rem;
-  text-decoration: none;
-}
-.va-feature-row__link:focus-visible {
-  outline: 2px solid #0478FF;
-  outline-offset: 2px;
-}
-.va-feature-row__link-arrow {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s ease-in-out;
-}
-.va-feature-row__link:hover .va-feature-row__link-arrow {
-  transform: translateX(3px);
-}
-.va-feature-row__visual {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-.va-feature-row__visual img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 .feature-visual {
   display: flex;
   align-items: center;
@@ -13421,18 +13399,6 @@ pre code {
   margin-right: 4px;
 }
 
-@media (max-width: 768px) {
-  .va-feature-row {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .va-feature-row--reversed {
-    direction: ltr;
-  }
-  .va-feature-row__visual {
-    order: -1;
-  }
-}
 .va-client-logos {
   padding: 3rem 0;
   text-align: center;
@@ -13467,6 +13433,16 @@ pre code {
 .va-client-logos__logo:hover {
   opacity: 1;
   filter: grayscale(0%);
+}
+
+.client-logo-svg {
+  height: 24px;
+  width: auto;
+  opacity: 0.4;
+  transition: opacity 0.2s ease-in-out;
+}
+.client-logo-svg:hover {
+  opacity: 0.7;
 }
 
 .va-section__divider {
@@ -13751,6 +13727,9 @@ pre code {
 .va-section-alt {
   background-color: #F7F7F8;
 }
+.va-section-alt + .va-section-alt {
+  border-top: none;
+}
 
 .va-icon-16 {
   width: 16px;
@@ -13841,7 +13820,8 @@ pre code {
   line-height: 1;
 }
 
-.va-footer__brand-description {
+.va-footer__brand-description,
+.va-footer__brand-tagline {
   font-size: 0.875rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.55);
@@ -14695,7 +14675,7 @@ pre code {
 }
 .va-input-card__tab:focus-visible {
   outline: 2px solid #0478FF;
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 .va-input-card__tab--active {
   color: #1A1919;
@@ -14704,7 +14684,8 @@ pre code {
 .va-input-card__body {
   padding: 1.25rem 1.5rem;
 }
-.va-input-card__body textarea {
+.va-input-card__body textarea,
+.va-input-card__body .va-input-card__textarea {
   display: block;
   width: 100%;
   min-height: 8rem;
@@ -14718,7 +14699,8 @@ pre code {
   resize: none;
   outline: none;
 }
-.va-input-card__body textarea::placeholder {
+.va-input-card__body textarea::placeholder,
+.va-input-card__body .va-input-card__textarea::placeholder {
   color: #9CA3AF;
 }
 .va-input-card__footer {
@@ -15336,7 +15318,7 @@ pre code {
   max-width: 280px;
   width: 100%;
 }
-.va-agent-card__language-tabs {
+.va-agent-card__language-tabs, .va-agent-card__languages {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -15478,7 +15460,7 @@ pre code {
   height: 1rem;
   flex-shrink: 0;
 }
-.va-agent-card__favorite {
+.va-agent-card__favorite, .va-agent-card__fav {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -15494,22 +15476,22 @@ pre code {
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 }
-.va-agent-card__favorite:hover {
+.va-agent-card__favorite:hover, .va-agent-card__fav:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
 }
-.va-agent-card__favorite.is-active {
+.va-agent-card__favorite.is-active, .va-agent-card__fav.is-active {
   color: #EF4444;
   background: rgba(239, 68, 68, 0.15);
 }
-.va-agent-card__favorite:active {
+.va-agent-card__favorite:active, .va-agent-card__fav:active {
   transform: scale(0.9);
 }
-.va-agent-card__favorite:focus-visible {
+.va-agent-card__favorite:focus-visible, .va-agent-card__fav:focus-visible {
   outline: 2px solid #0478FF;
   outline-offset: 2px;
 }
-.va-agent-card__favorite svg {
+.va-agent-card__favorite svg, .va-agent-card__fav svg {
   width: 1rem;
   height: 1rem;
 }
@@ -15609,7 +15591,7 @@ pre code {
   max-width: 420px;
   width: 100%;
 }
-.va-dubbing-card__languages {
+.va-dubbing-card__languages, .va-dubbing-card__langs {
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -15618,7 +15600,7 @@ pre code {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.va-dubbing-card__languages::-webkit-scrollbar {
+.va-dubbing-card__languages::-webkit-scrollbar, .va-dubbing-card__langs::-webkit-scrollbar {
   display: none;
 }
 .va-dubbing-card__lang {
@@ -15824,6 +15806,27 @@ pre code {
   white-space: nowrap;
   flex-shrink: 0;
 }
+.va-dubbing-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+.va-dubbing-card__meta-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+.va-dubbing-card__controls-left {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
 
 .va-dubbing-card--compact .va-dubbing-card__languages {
   padding: 0.5rem 0.75rem;
@@ -15989,6 +15992,10 @@ pre code {
 .va-auth__submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+.va-auth__submit:focus-visible {
+  outline: 2px solid #0478FF;
+  outline-offset: 2px;
 }
 .va-auth__submit__arrow {
   transition: transform 0.2s ease-in-out;
@@ -17660,5 +17667,3 @@ pre code {
   color: #4B5563;
   font-size: 0.9375rem;
 }
-
-/*# sourceMappingURL=voice-aura.css.map */

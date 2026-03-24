@@ -142,7 +142,7 @@ select {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  z-index: 9999;
+  z-index: $va-z-skip-link;
 
   &:focus,
   &:focus-visible {
@@ -178,7 +178,12 @@ table {
 // ---------------------------------------------------------------------------
 
 // Prevent overflow from breaking layouts
-html,
+// Use `clip` on html to avoid creating a scroll container
+// (which breaks position: sticky), and `hidden` on body for compat.
+html {
+  overflow-x: clip;
+}
+
 body {
   overflow-x: hidden;
 }

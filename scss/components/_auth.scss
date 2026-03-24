@@ -139,6 +139,11 @@
       cursor: not-allowed;
     }
 
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
+    }
+
     // Arrow icon in submit button
     &__arrow {
       transition: transform 0.2s ease-in-out;
@@ -302,8 +307,7 @@
 
 .va-auth--elevated {
   border-color: transparent;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
-              0 8px 32px rgba(0, 0, 0, 0.06);
+  box-shadow: $va-shadow-auth-elevated;
 }
 
 // --------------------------------------------------------------------------

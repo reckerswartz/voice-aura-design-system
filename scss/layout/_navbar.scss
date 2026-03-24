@@ -50,7 +50,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
   // Scrolled state — subtle shadow appears after scrolling
   &--scrolled {
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: $va-shadow-nav-scrolled;
     border-bottom-color: transparent;
   }
 

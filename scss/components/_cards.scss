@@ -168,8 +168,7 @@
 
 .va-card--elevated {
   border-color: transparent;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06),
-              0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: $va-shadow-card-elevated;
 }
 
 // --------------------------------------------------------------------------
@@ -195,21 +194,19 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
-                0 1px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: $va-shadow-card-interactive-hover;
     border-color: darken($card-border-color, 6%);
   }
 
   &:focus-visible {
     outline: 2px solid $va-primary;
     outline-offset: 2px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
-                0 1px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: $va-shadow-card-interactive-hover;
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: $va-shadow-card-interactive-press;
   }
 }
 

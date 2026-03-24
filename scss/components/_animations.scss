@@ -481,7 +481,7 @@
   z-index: $va-z-overlay;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+  box-shadow: $va-shadow-mobile-menu;
   overflow-y: auto;
   padding: 1.5rem;
 
