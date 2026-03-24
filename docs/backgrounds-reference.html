@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Backgrounds & Animations Reference</title>
+  <link rel="stylesheet" href="css/voice-aura.css">
+  <style>
+    /* Reference-page-only styles */
+    .ref-section { padding: 3rem 0; border-bottom: 1px solid rgba(26,25,25,.08); }
+    .ref-section:last-child { border-bottom: 0; }
+    .ref-title { font-family: var(--va-font-heading); font-size: 1.75rem; font-weight: 700; margin-bottom: .5rem; color: #1A1919; }
+    .ref-subtitle { font-size: 1rem; color: #6B7280; margin-bottom: 2rem; }
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .ref-card { border: 1px solid rgba(26,25,25,.08); border-radius: 12px; overflow: hidden; background: #fff; }
+    .ref-card__preview { position: relative; height: 200px; overflow: hidden; }
+    .ref-card__body { padding: 1rem 1.25rem; }
+    .ref-card__name { font-weight: 600; font-size: .95rem; margin-bottom: .25rem; }
+    .ref-card__desc { font-size: .8rem; color: #6B7280; margin-bottom: .5rem; }
+    .ref-card__code { font-family: 'SFMono-Regular',Consolas,monospace; font-size: .75rem; background: #F5F5F5; padding: .5rem .75rem; border-radius: 6px; color: #374151; white-space: pre-wrap; word-break: break-all; }
+    .ref-badge { display: inline-block; font-size: .65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-right: .25rem; }
+    .ref-badge--svg { background: #E0F2FE; color: #0369A1; }
+    .ref-badge--css { background: #F0FDF4; color: #166534; }
+    .ref-badge--pseudo { background: #FEF3C7; color: #92400E; }
+    .ref-badge--tile { background: #EDE9FE; color: #6D28D9; }
+
+    /* Animation demo cards */
+    .anim-demo { text-align: center; padding: 2rem 1rem; }
+    .anim-demo__box { display: inline-block; width: 80px; height: 80px; background: #0478FF; border-radius: 12px; }
+    .anim-trigger-btn { font-size: .8rem; margin-top: .75rem; padding: .35rem 1rem; border: 1px solid #0478FF; background: #fff; color: #0478FF; border-radius: 6px; cursor: pointer; }
+    .anim-trigger-btn:hover { background: #0478FF; color: #fff; }
+
+    /* Responsive demo */
+    .responsive-demo { padding: 2rem; background: #F9FAFB; border-radius: 12px; margin-bottom: 1.5rem; }
+    .responsive-demo__label { font-size: .75rem; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .75rem; }
+    .responsive-demo__grid { display: grid; gap: 1rem; }
+    .responsive-demo__item { background: #fff; border: 1px solid rgba(26,25,25,.08); border-radius: 8px; padding: 1rem; text-align: center; font-size: .85rem; color: #374151; }
+
+    /* TOC */
+    .ref-toc { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+    .ref-toc a { font-size: .85rem; padding: .35rem .75rem; border-radius: 6px; background: #F3F4F6; color: #374151; text-decoration: none; transition: background .15s; }
+    .ref-toc a:hover { background: #0478FF; color: #fff; }
+
+    @media (max-width: 767px) {
+      .ref-grid { grid-template-columns: 1fr; }
+      .ref-card__preview { height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====================================================================== -->
+<!-- HEADER                                                                 -->
+<!-- ====================================================================== -->
+<header style="background:#1A1919; color:#fff; padding:2.5rem 0;">
+  <div class="container">
+    <h1 style="font-family:var(--va-font-heading); font-size:2rem; font-weight:700; margin-bottom:.25rem;">
+      Backgrounds & Animations Reference
+    </h1>
+    <p style="color:rgba(255,255,255,.6); font-size:.95rem; margin:0;">
+      Voice Aura Design System — Complete visual inventory of every pattern, overlay, background utility, and animation.
+    </p>
+  </div>
+</header>
+
+<main class="container" style="padding-top:2rem; padding-bottom:4rem;">
+
+  <!-- Table of contents -->
+  <nav class="ref-toc" aria-label="Quick navigation">
+    <a href="#patterns">SVG Patterns</a>
+    <a href="#backgrounds">Background Utilities</a>
+    <a href="#glass">Glass &amp; Glow</a>
+    <a href="#decorative">Decorative Elements</a>
+    <a href="#composition">Composition Helpers</a>
+    <a href="#inline">Inline Data-URI</a>
+    <a href="#entrance">Entrance Animations</a>
+    <a href="#scroll">Scroll Animations</a>
+    <a href="#hover">Hover Effects</a>
+    <a href="#responsive">Responsive Transitions</a>
+    <a href="#waveform">Waveform Bars</a>
+    <a href="#usage">Usage Guide</a>
+  </nav>
+
+  <!-- ================================================================== -->
+  <!-- 1. SVG PATTERN OVERLAYS                                            -->
+  <!-- ================================================================== -->
+  <section id="patterns" class="ref-section">
+    <h2 class="ref-title">SVG Pattern Overlays</h2>
+    <p class="ref-subtitle">Positioned pseudo-element overlays using external SVG assets. Add to any container element.</p>
+
+    <div class="ref-grid">
+
+      <!-- Halftone -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-halftone" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Halftone Dots</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::before</span></div>
+          <p class="ref-card__desc">Radial dot-field gradient. Hero/feature backgrounds.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-halftone"&gt;…&lt;/div&gt;
+
+Variants:
+  va-pattern-halftone--bottom
+  va-pattern-halftone--center
+  va-pattern-halftone--left
+  va-pattern-halftone--right
+  va-pattern-halftone--light</div>
+        </div>
+      </div>
+
+      <!-- Halftone --center -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-halftone va-pattern-halftone--center" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Halftone — Center</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::before</span></div>
+          <p class="ref-card__desc">Radially centered halftone concentration.</p>
+          <div class="ref-card__code">va-pattern-halftone va-pattern-halftone--center</div>
+        </div>
+      </div>
+
+      <!-- Sound-wave waveform -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-waveform-bg" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Sound Wave Waveform</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::after</span></div>
+          <p class="ref-card__desc">Full-width audio amplitude bar visualization.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-waveform-bg"&gt;…&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <!-- Noise texture -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-noise" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Noise / Grain Texture</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::after</span><span class="ref-badge ref-badge--tile">tileable</span></div>
+          <p class="ref-card__desc">Subtle film-grain overlay (feTurbulence). 200×200 tileable.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-noise"&gt;…&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <!-- Circuit lines -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-circuit" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Circuit Lines</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::before</span></div>
+          <p class="ref-card__desc">Tech paths with blue node dots. AI/developer sections.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-circuit"&gt;…&lt;/div&gt;
+
+Variants:
+  va-pattern-circuit--light
+  va-pattern-circuit--right</div>
+        </div>
+      </div>
+
+      <!-- Concentric rings -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-rings" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Concentric Rings</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::before</span></div>
+          <p class="ref-card__desc">Radiating ripple circles. Voice/audio sections.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-rings"&gt;…&lt;/div&gt;
+
+Variants:
+  va-pattern-rings--left
+  va-pattern-rings--right
+  va-pattern-rings--small</div>
+        </div>
+      </div>
+
+      <!-- Grid lines -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-grid-lines" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Grid Lines</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--tile">tileable</span></div>
+          <p class="ref-card__desc">48px perpendicular grid with radial fade mask.</p>
+          <div class="ref-card__code">&lt;div class="va-bg-grid-lines"&gt;…&lt;/div&gt;
+
+Variants:
+  va-bg-grid-lines--dense
+  va-bg-grid-lines--full</div>
+        </div>
+      </div>
+
+      <!-- Diagonal lines -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-diagonal" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Diagonal Lines</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span><span class="ref-badge ref-badge--pseudo">::before</span><span class="ref-badge ref-badge--tile">tileable</span></div>
+          <p class="ref-card__desc">40px diagonal hatching texture.</p>
+          <div class="ref-card__code">&lt;div class="va-pattern-diagonal"&gt;…&lt;/div&gt;
+
+Variant: va-pattern-diagonal--dense</div>
+        </div>
+      </div>
+
+      <!-- Mesh gradient -->
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-mesh" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Mesh Gradient</div>
+          <div><span class="ref-badge ref-badge--svg">SVG</span></div>
+          <p class="ref-card__desc">Multi-stop radial gradient blobs. Ambient feel.</p>
+          <div class="ref-card__code">&lt;div class="va-bg-mesh"&gt;…&lt;/div&gt;
+
+Variant: va-bg-mesh--dark</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 2. BACKGROUND UTILITIES                                            -->
+  <!-- ================================================================== -->
+  <section id="backgrounds" class="ref-section">
+    <h2 class="ref-title">Background Utilities</h2>
+    <p class="ref-subtitle">Solid, gradient, and dot backgrounds for section-level use.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-white" style="display:flex;align-items:center;justify-content:center;"><span style="color:#6B7280;">va-bg-white</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">White</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-white"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-alt" style="display:flex;align-items:center;justify-content:center;"><span style="color:#6B7280;">va-bg-alt</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Alt (Light Grey)</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-alt"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-dark" style="display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.6);">va-bg-dark</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Dark (Near-Black)</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-dark"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-gradient-subtle" style="display:flex;align-items:center;justify-content:center;"><span style="color:#6B7280;">va-bg-gradient-subtle</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Gradient Subtle</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-gradient-subtle"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-gradient-primary" style="display:flex;align-items:center;justify-content:center;"><span style="color:#fff;">va-bg-gradient-primary</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Gradient Primary (Blue)</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-gradient-primary"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-gradient-dark" style="display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.6);">va-bg-gradient-dark</span></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Gradient Dark</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <div class="ref-card__code">class="va-bg-gradient-dark"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-dots" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Dot Grid</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span><span class="ref-badge ref-badge--tile">tileable</span></div>
+          <p class="ref-card__desc">CSS radial-gradient dots with radial fade mask.</p>
+          <div class="ref-card__code">class="va-bg-dots"
+
+Variants:
+  va-bg-dots--tight  (16px)
+  va-bg-dots--loose  (32px)
+  va-bg-dots--full   (no fade mask)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 3. GLASS & GLOW                                                    -->
+  <!-- ================================================================== -->
+  <section id="glass" class="ref-section">
+    <h2 class="ref-title">Glass &amp; Glow Effects</h2>
+    <p class="ref-subtitle">Frosted-glass panels and radial gradient glow accents.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview" style="background:linear-gradient(135deg,#0478FF 0%,#1A1919 100%);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+          <div class="va-glass" style="padding:1.5rem;border-radius:12px;color:#fff;text-align:center;">Glass Panel</div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Glass (Default)</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span></div>
+          <p class="ref-card__desc">backdrop-filter: blur. Semi-transparent white border.</p>
+          <div class="ref-card__code">class="va-glass"
+
+Variants:
+  va-glass--strong
+  va-glass--dark</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-glow va-bg-glow--blue" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Radial Glow (Blue)</div>
+          <div><span class="ref-badge ref-badge--css">CSS</span><span class="ref-badge ref-badge--pseudo">::before</span></div>
+          <div class="ref-card__code">class="va-bg-glow va-bg-glow--blue"
+
+Variants:
+  va-bg-glow--neutral
+  va-bg-glow--top-right
+  va-bg-glow--bottom-left</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 4. DECORATIVE ELEMENTS                                             -->
+  <!-- ================================================================== -->
+  <section id="decorative" class="ref-section">
+    <h2 class="ref-title">Decorative Elements</h2>
+    <p class="ref-subtitle">Separators, crosshairs, accent lines, and visual markers.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex;align-items:center;justify-content:center;background:#F9FAFB;">
+          <div style="width:80%;"><div class="va-section-separator"></div></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Section Separator</div>
+          <div class="ref-card__code">class="va-section-separator"
+class="va-section-separator va-section-separator--double"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex;align-items:center;justify-content:center;background:#F9FAFB;">
+          <div class="va-crosshairs" style="width:200px;height:120px;position:relative;">
+            <div class="va-crosshairs__marks"></div>
+          </div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Crosshair Markers</div>
+          <p class="ref-card__desc">Corner "+" decorations for cards and sections.</p>
+          <div class="ref-card__code">&lt;div class="va-crosshairs"&gt;
+  &lt;div class="va-crosshairs__marks"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview" style="display:flex;align-items:center;justify-content:center;gap:2rem;background:#F9FAFB;">
+          <div class="va-accent-line"></div>
+          <div class="va-accent-line va-accent-line--horizontal"></div>
+          <div class="va-accent-line va-accent-line--long"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Accent Lines</div>
+          <p class="ref-card__desc">Blue decorative bars (vertical &amp; horizontal).</p>
+          <div class="ref-card__code">class="va-accent-line"
+class="va-accent-line va-accent-line--horizontal"
+class="va-accent-line va-accent-line--long"</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 5. COMPOSITION HELPERS                                             -->
+  <!-- ================================================================== -->
+  <section id="composition" class="ref-section">
+    <h2 class="ref-title">Background Composition Helpers</h2>
+    <p class="ref-subtitle">Layer multiple patterns on a single container using <code>.va-bg-layer</code>.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-layer va-bg-layer--circuit" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layer — Circuit</div>
+          <div class="ref-card__code">class="va-bg-layer va-bg-layer--circuit"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-layer va-bg-layer--rings" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layer — Rings</div>
+          <div class="ref-card__code">class="va-bg-layer va-bg-layer--rings"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-layer va-bg-layer--grid" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layer — Grid</div>
+          <div class="ref-card__code">class="va-bg-layer va-bg-layer--grid"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-layer va-bg-layer--diagonal" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layer — Diagonal</div>
+          <div class="ref-card__code">class="va-bg-layer va-bg-layer--diagonal"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-layer va-bg-layer--mesh" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layer — Mesh</div>
+          <div class="ref-card__code">class="va-bg-layer va-bg-layer--mesh"</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1.25rem; background:#F0F9FF; border-radius:8px; border-left:3px solid #0478FF;">
+      <strong style="font-size:.85rem;">Combining layers:</strong>
+      <p style="font-size:.8rem; color:#374151; margin:.5rem 0 0;">
+        Stack multiple modifiers on a single element:
+      </p>
+      <div class="ref-card__code" style="margin-top:.5rem;">&lt;section class="va-bg-alt va-pattern-halftone va-pattern-noise"&gt;
+  &lt;!-- halftone ::before + noise ::after + alt background --&gt;
+&lt;/section&gt;</div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 6. INLINE DATA-URI VARIANTS                                        -->
+  <!-- ================================================================== -->
+  <section id="inline" class="ref-section">
+    <h2 class="ref-title">Inline Data-URI Variants</h2>
+    <p class="ref-subtitle">Self-contained patterns with no external file dependency. Add <code>--inline</code> modifier.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-noise va-pattern-noise--inline" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Noise — Inline</div>
+          <div class="ref-card__code">class="va-pattern-noise va-pattern-noise--inline"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-pattern-circuit va-pattern-circuit--inline" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Circuit — Inline</div>
+          <div class="ref-card__code">class="va-pattern-circuit va-pattern-circuit--inline"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-grid-lines va-bg-grid-lines--inline" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Grid Lines — Inline</div>
+          <div class="ref-card__code">class="va-bg-grid-lines va-bg-grid-lines--inline"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-mesh va-bg-mesh--inline" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Mesh — Inline</div>
+          <div class="ref-card__code">class="va-bg-mesh va-bg-mesh--inline"</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1.25rem; background:#F0FDF4; border-radius:8px; border-left:3px solid #16A34A;">
+      <strong style="font-size:.85rem;">SCSS variable usage:</strong>
+      <div class="ref-card__code" style="margin-top:.5rem;">// Import the partial
+@import "components/pattern-data";
+
+// Use directly in custom styles
+.my-section::before {
+  background-image: $va-data-circuit-lines;
+}
+
+// Available variables:
+//   $va-data-grid-lines
+//   $va-data-diagonal-lines
+//   $va-data-noise
+//   $va-data-concentric-rings
+//   $va-data-circuit-lines
+//   $va-data-mesh-gradient</div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 7. ENTRANCE ANIMATIONS                                             -->
+  <!-- ================================================================== -->
+  <section id="entrance" class="ref-section">
+    <h2 class="ref-title">Entrance Animations</h2>
+    <p class="ref-subtitle">Immediate entrance effects. Applied on load; no JS required.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-fade-up"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-fade-up','va-animate-fade-up')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Fade Up</div>
+          <div class="ref-card__code">class="va-animate-fade-up"
+
+Modifiers:
+  va-animate-fade-up--delay-1  (0.1s)
+  va-animate-fade-up--delay-2  (0.2s)
+  va-animate-fade-up--fast     (0.25s)
+  va-animate-fade-up--slow     (0.8s)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-fade-in"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-fade-in','va-animate-fade-in')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Fade In</div>
+          <div class="ref-card__code">class="va-animate-fade-in"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-fade-left"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-fade-left','va-animate-fade-left')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Fade Left</div>
+          <div class="ref-card__code">class="va-animate-fade-left"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-fade-right"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-fade-right','va-animate-fade-right')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Fade Right</div>
+          <div class="ref-card__code">class="va-animate-fade-right"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box" id="demo-scale-in"></div>
+          <br>
+          <button class="anim-trigger-btn" onclick="replayAnim('demo-scale-in','va-animate-scale-in')">Replay</button>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Scale In</div>
+          <div class="ref-card__code">class="va-animate-scale-in"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-animate-float"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Float (Looping)</div>
+          <div class="ref-card__code">class="va-animate-float"  (3s infinite)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-animate-pulse"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Pulse (Looping)</div>
+          <div class="ref-card__code">class="va-animate-pulse"  (2s infinite)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-animate-spin" style="border-radius:50%;width:60px;height:60px;border:3px dashed #0478FF;background:transparent;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Spin (Looping)</div>
+          <div class="ref-card__code">class="va-animate-spin"  (1s linear infinite)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 8. SCROLL-TRIGGERED ANIMATIONS                                     -->
+  <!-- ================================================================== -->
+  <section id="scroll" class="ref-section">
+    <h2 class="ref-title">Scroll-Triggered Animations</h2>
+    <p class="ref-subtitle">
+      Elements start hidden and animate in when they enter the viewport.
+      Requires <code>va-scroll.js</code> (IntersectionObserver) to add <code>.is-visible</code>.
+    </p>
+
+    <div style="padding:1.25rem; background:#FEF3C7; border-radius:8px; border-left:3px solid #F59E0B; margin-bottom:1.5rem;">
+      <strong style="font-size:.85rem;">Setup:</strong>
+      <div class="ref-card__code" style="margin-top:.5rem;">&lt;!-- Add before &lt;/body&gt; --&gt;
+&lt;script src="js/va-scroll.js"&gt;&lt;/script&gt;
+
+&lt;!-- Auto-initialises. For manual control: --&gt;
+&lt;script&gt;
+  VaScroll.init({ threshold: 0.2, once: true });
+&lt;/script&gt;</div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+      <div class="va-scroll-fade-up" style="padding:2rem; background:#F9FAFB; border-radius:12px; text-align:center;">
+        <div class="anim-demo__box" style="display:inline-block;"></div>
+        <p style="margin-top:.75rem; font-size:.85rem; color:#374151;"><strong>va-scroll-fade-up</strong> — translateY(32px) to 0</p>
+      </div>
+
+      <div class="va-scroll-fade-in" style="padding:2rem; background:#F9FAFB; border-radius:12px; text-align:center;">
+        <div class="anim-demo__box" style="display:inline-block;"></div>
+        <p style="margin-top:.75rem; font-size:.85rem; color:#374151;"><strong>va-scroll-fade-in</strong> — opacity 0 to 1</p>
+      </div>
+
+      <div class="va-scroll-scale-in" style="padding:2rem; background:#F9FAFB; border-radius:12px; text-align:center;">
+        <div class="anim-demo__box" style="display:inline-block;"></div>
+        <p style="margin-top:.75rem; font-size:.85rem; color:#374151;"><strong>va-scroll-scale-in</strong> — scale(0.92) to 1</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="va-scroll-fade-left" style="padding:2rem; background:#F9FAFB; border-radius:12px; text-align:center;">
+          <div class="anim-demo__box" style="display:inline-block;width:60px;height:60px;"></div>
+          <p style="margin-top:.75rem; font-size:.85rem;"><strong>va-scroll-fade-left</strong></p>
+        </div>
+        <div class="va-scroll-fade-right" style="padding:2rem; background:#F9FAFB; border-radius:12px; text-align:center;">
+          <div class="anim-demo__box" style="display:inline-block;width:60px;height:60px;"></div>
+          <p style="margin-top:.75rem; font-size:.85rem;"><strong>va-scroll-fade-right</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1.25rem; background:#F0F9FF; border-radius:8px; border-left:3px solid #0478FF;">
+      <strong style="font-size:.85rem;">Stagger groups:</strong>
+      <div class="ref-card__code" style="margin-top:.5rem;">&lt;div class="va-scroll-stagger"&gt;
+  &lt;div&gt;Child 1 (delay 0s)&lt;/div&gt;
+  &lt;div&gt;Child 2 (delay 0.1s)&lt;/div&gt;
+  &lt;div&gt;Child 3 (delay 0.2s)&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Per-element attributes: --&gt;
+&lt;div class="va-scroll-fade-up"
+     data-va-scroll-threshold="0.3"
+     data-va-scroll-delay="200"
+     data-va-scroll-once="false"&gt;
+&lt;/div&gt;</div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 9. HOVER / INTERACTION EFFECTS                                     -->
+  <!-- ================================================================== -->
+  <section id="hover" class="ref-section">
+    <h2 class="ref-title">Hover &amp; Interaction Effects</h2>
+    <p class="ref-subtitle">Apply to interactive elements. Touch-aware variants available.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-hover-lift" style="cursor:pointer;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hover Lift</div>
+          <p class="ref-card__desc">translateY(-4px) + shadow on hover.</p>
+          <div class="ref-card__code">class="va-hover-lift"
+class="va-touch-lift"  (touch-aware)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-hover-scale" style="cursor:pointer;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hover Scale</div>
+          <p class="ref-card__desc">scale(1.03) on hover.</p>
+          <div class="ref-card__code">class="va-hover-scale"
+class="va-touch-scale"  (touch-aware)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="anim-demo__box va-hover-glow" style="cursor:pointer;"></div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Hover Glow</div>
+          <p class="ref-card__desc">Blue box-shadow glow on hover.</p>
+          <div class="ref-card__code">class="va-hover-glow"</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 10. RESPONSIVE LAYOUT TRANSITIONS                                  -->
+  <!-- ================================================================== -->
+  <section id="responsive" class="ref-section">
+    <h2 class="ref-title">Responsive Layout Transitions</h2>
+    <p class="ref-subtitle">Smooth CSS transitions when crossing breakpoints. Add to containers that change layout at different screen sizes.</p>
+
+    <div class="responsive-demo">
+      <div class="responsive-demo__label">Grid Smooth — columns transition at breakpoints</div>
+      <div class="responsive-demo__grid va-grid-smooth" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+        <div class="responsive-demo__item">1</div>
+        <div class="responsive-demo__item">2</div>
+        <div class="responsive-demo__item">3</div>
+        <div class="responsive-demo__item">4</div>
+      </div>
+    </div>
+
+    <div class="ref-grid" style="grid-template-columns:1fr;">
+
+      <div class="ref-card">
+        <div class="ref-card__body">
+          <div class="ref-card__name">Layout Transition Classes</div>
+          <div class="ref-card__code">class="va-grid-smooth"      grid-template-columns, gap (0.35s)
+class="va-flex-smooth"      flex-direction, gap, align-items (0.35s)
+class="va-width-smooth"     width, max-width, padding (0.35s)
+class="va-padding-smooth"   padding (0.35s)
+class="va-type-smooth"      font-size, line-height, letter-spacing (0.25s)
+class="va-container-smooth" max-width, padding (0.35s/0.4s)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__body">
+          <div class="ref-card__name">Component-Level Responsive Transitions</div>
+          <div class="ref-card__code">class="va-hero-adapt"       Hero padding, title font-size, subtitle, actions
+class="va-nav-morph"        Navbar height, padding, background-color, box-shadow
+class="va-section-morph"    Background pattern opacity/size transitions
+class="va-card-reflow"      Grid column span changes (0.3s–0.4s)</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__body">
+          <div class="ref-card__name">Responsive Visibility</div>
+          <div class="ref-card__code">class="va-show-md"    Hidden on mobile, fades in at 768px+
+class="va-show-lg"    Hidden on mobile, fades in at 992px+
+class="va-hide-md"    Visible on mobile, hidden at 768px+</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__body">
+          <div class="ref-card__name">Responsive Direction Animations</div>
+          <p class="ref-card__desc">Animate from the side on desktop, from below on mobile.</p>
+          <div class="ref-card__code">class="va-responsive-fade-left"
+  Desktop: translateX(-32px) &rarr; 0
+  Mobile:  translateY(24px)  &rarr; 0
+
+class="va-responsive-fade-right"
+  Desktop: translateX(32px)  &rarr; 0
+  Mobile:  translateY(24px)  &rarr; 0
+
+class="va-scroll-stagger"
+  Desktop delays: 0s, 0.1s, 0.2s, 0.3s, 0.4s, 0.5s
+  Mobile delays:  0s, 0.08s, 0.16s, 0.24s</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1.25rem; background:#F0FDF4; border-radius:8px; border-left:3px solid #16A34A;">
+      <strong style="font-size:.85rem;">Accessibility:</strong>
+      <p style="font-size:.8rem; color:#374151; margin:.5rem 0 0;">
+        All animations respect <code>prefers-reduced-motion: reduce</code>. When the user has motion reduced,
+        animation and transition durations are set to <code>0.01ms</code> and scroll-triggered elements are made
+        immediately visible.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 11. WAVEFORM BARS                                                  -->
+  <!-- ================================================================== -->
+  <section id="waveform" class="ref-section">
+    <h2 class="ref-title">Audio Waveform Bars</h2>
+    <p class="ref-subtitle">Animated equalizer-style bars for audio/voice UI indicators.</p>
+
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="va-waveform-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Waveform Bars (Animated)</div>
+          <div class="ref-card__code">&lt;div class="va-waveform-bars"&gt;
+  &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview anim-demo" style="background:#F9FAFB;">
+          <div class="va-waveform-bars va-waveform-bars--static">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Waveform Bars (Static)</div>
+          <div class="ref-card__code">class="va-waveform-bars va-waveform-bars--static"</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 12. USAGE GUIDE                                                    -->
+  <!-- ================================================================== -->
+  <section id="usage" class="ref-section">
+    <h2 class="ref-title">Usage Guide</h2>
+    <p class="ref-subtitle">How to apply backgrounds and animations to your templates.</p>
+
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div class="ref-card" style="border:0; background:#F9FAFB;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">1. Hero Section Recipe</div>
+          <p class="ref-card__desc">Full hero with halftone dots, waveform bar, and scroll-triggered content.</p>
+          <div class="ref-card__code">&lt;section class="va-hero va-pattern-halftone va-pattern-waveform-bg va-bg-glow va-bg-glow--blue"&gt;
+  &lt;div class="container va-hero-adapt"&gt;
+    &lt;h1 class="va-scroll-fade-up"&gt;Headline&lt;/h1&gt;
+    &lt;p class="va-scroll-fade-up" data-va-scroll-delay="100"&gt;Subtext&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card" style="border:0; background:#F9FAFB;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">2. Feature Section with Circuit Pattern</div>
+          <div class="ref-card__code">&lt;section class="va-section va-bg-alt va-pattern-circuit va-pattern-noise"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row va-grid-smooth"&gt;
+      &lt;div class="col-lg-6 va-responsive-fade-left"&gt;Text&lt;/div&gt;
+      &lt;div class="col-lg-6 va-responsive-fade-right"&gt;Image&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card" style="border:0; background:#F9FAFB;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">3. Blog Card Grid with Stagger</div>
+          <div class="ref-card__code">&lt;div class="row va-scroll-stagger va-grid-smooth"&gt;
+  &lt;div class="col-md-6 col-lg-3"&gt;
+    &lt;div class="va-card va-hover-lift"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-6 col-lg-3"&gt;
+    &lt;div class="va-card va-hover-lift"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Children auto-stagger with increasing delays --&gt;
+&lt;/div&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card" style="border:0; background:#F9FAFB;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">4. Dark Section with Rings</div>
+          <div class="ref-card__code">&lt;section class="va-section va-bg-dark va-pattern-rings va-pattern-rings--right"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="va-crosshairs"&gt;
+      &lt;div class="va-crosshairs__marks"&gt;&lt;/div&gt;
+      &lt;!-- content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+        </div>
+      </div>
+
+      <div class="ref-card" style="border:0; background:#F9FAFB;">
+        <div class="ref-card__body">
+          <div class="ref-card__name">5. Inline Data-URI (no asset files needed)</div>
+          <div class="ref-card__code">&lt;!-- HTML: append --inline modifier --&gt;
+&lt;div class="va-pattern-circuit va-pattern-circuit--inline"&gt;…&lt;/div&gt;
+
+&lt;!-- SCSS: use the variable directly --&gt;
+.my-widget {
+  background-image: $va-data-circuit-lines;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- SVG PATTERN ASSET INVENTORY                                        -->
+  <!-- ================================================================== -->
+  <section class="ref-section">
+    <h2 class="ref-title">SVG Asset Inventory</h2>
+    <p class="ref-subtitle">All SVG files in <code>assets/patterns/</code>.</p>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; font-size:.8rem; border-collapse:collapse;">
+        <thead>
+          <tr style="text-align:left; border-bottom:2px solid #E5E7EB;">
+            <th style="padding:.5rem .75rem;">File</th>
+            <th style="padding:.5rem .75rem;">Dimensions</th>
+            <th style="padding:.5rem .75rem;">Tileable</th>
+            <th style="padding:.5rem .75rem;">Colors</th>
+            <th style="padding:.5rem .75rem;">CSS Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">halftone-dots.svg</td>
+            <td style="padding:.5rem .75rem;">200 x 200</td>
+            <td style="padding:.5rem .75rem;">Yes</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-bg-dots</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">halftone-wide.svg</td>
+            <td style="padding:.5rem .75rem;">1200 x 400</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-halftone</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">sound-wave-wide.svg</td>
+            <td style="padding:.5rem .75rem;">1440 x 120</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-waveform</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">sound-wave-hero.svg</td>
+            <td style="padding:.5rem .75rem;">1440 x 200</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">(hero-specific)</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">noise-texture.svg</td>
+            <td style="padding:.5rem .75rem;">200 x 200</td>
+            <td style="padding:.5rem .75rem;">Yes</td>
+            <td style="padding:.5rem .75rem;">Greyscale</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-noise</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">circuit-lines.svg</td>
+            <td style="padding:.5rem .75rem;">800 x 400</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919, #0478FF</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-circuit</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">concentric-rings.svg</td>
+            <td style="padding:.5rem .75rem;">600 x 600</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919, #0478FF</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-rings</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">grid-lines.svg</td>
+            <td style="padding:.5rem .75rem;">48 x 48</td>
+            <td style="padding:.5rem .75rem;">Yes</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-bg-grid-lines</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">diagonal-lines.svg</td>
+            <td style="padding:.5rem .75rem;">40 x 40</td>
+            <td style="padding:.5rem .75rem;">Yes</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-pattern-diagonal</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">mesh-gradient.svg</td>
+            <td style="padding:.5rem .75rem;">800 x 600</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#0478FF, #1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-bg-mesh</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">grid-dots.svg</td>
+            <td style="padding:.5rem .75rem;">24 x 24</td>
+            <td style="padding:.5rem .75rem;">Yes</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-bg-dots</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">crosshair.svg</td>
+            <td style="padding:.5rem .75rem;">24 x 24</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#1A1919</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-crosshairs</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:.5rem .75rem; font-family:monospace;">wave-divider.svg</td>
+            <td style="padding:.5rem .75rem;">1440 x 80</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#F5F5F5</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">(section divider)</td>
+          </tr>
+          <tr>
+            <td style="padding:.5rem .75rem; font-family:monospace;">gradient-radial-soft.svg</td>
+            <td style="padding:.5rem .75rem;">600 x 600</td>
+            <td style="padding:.5rem .75rem;">No</td>
+            <td style="padding:.5rem .75rem;">#0478FF</td>
+            <td style="padding:.5rem .75rem; font-family:monospace;">.va-bg-glow</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<!-- ====================================================================== -->
+<!-- SCRIPTS                                                                -->
+<!-- ====================================================================== -->
+<script src="../js/va-scroll.js"></script>
+<script>
+  // Replay helper for entrance animation demos
+  function replayAnim(id, cls) {
+    var el = document.getElementById(id);
+    el.classList.remove(cls);
+    void el.offsetWidth; // force reflow
+    el.classList.add(cls);
+  }
+
+  // Auto-play entrance demos on load
+  document.addEventListener('DOMContentLoaded', function () {
+    ['demo-fade-up', 'demo-fade-in', 'demo-fade-left', 'demo-fade-right', 'demo-scale-in'].forEach(function (id) {
+      var cls = 'va-animate-' + id.replace('demo-', '').replace(/-/g, '-');
+      var el = document.getElementById(id);
+      if (el) el.classList.add(cls);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+// ==========================================================================
+// Voice Aura Design System — Inline SVG Pattern Data (CSS-only fallbacks)
+// ==========================================================================
+// Data-URI encoded versions of the most common SVG patterns so they can
+// be used without any external file dependency.  Ideal for:
+//   • Embedding in third-party sites where asset paths are unreliable
+//   • Critical-path CSS where a network request should be avoided
+//   • Email templates or contexts that block external resources
+//
+// Each variable holds a url(data:…) value that can drop straight into
+// a `background-image` property.
+//
+// Usage (SCSS):
+//   .my-element { background-image: $va-data-grid-lines; }
+//
+// Usage (HTML classes):
+//   <div class="va-pattern-noise va-pattern-noise--inline">…</div>
+//   ↑ The --inline modifier swaps the external URL for the data-URI.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Data-URI variables
+// ---------------------------------------------------------------------------
+
+// Grid lines — 48×48 tileable perpendicular grid
+$va-data-grid-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cline x1='0' y1='0' x2='48' y2='0' stroke='%231A1919' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cline x1='0' y1='0' x2='0' y2='48' stroke='%231A1919' stroke-opacity='0.05' stroke-width='0.5'/%3E%3C/svg%3E");
+
+// Diagonal lines — 40×40 tileable hatching
+$va-data-diagonal-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cline x1='0' y1='40' x2='40' y2='0' stroke='%231A1919' stroke-opacity='0.04' stroke-width='0.5'/%3E%3C/svg%3E");
+
+// Noise / grain texture — 200×200 tileable film-grain (feTurbulence)
+$va-data-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='saturate' values='0' in='noise'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+
+// Concentric rings — 600×600 radiating ripple pattern
+$va-data-concentric-rings: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' fill='none'%3E%3Cdefs%3E%3CradialGradient id='rg' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%230478FF' stop-opacity='0.08'/%3E%3Cstop offset='60%25' stop-color='%230478FF' stop-opacity='0.03'/%3E%3Cstop offset='100%25' stop-color='%230478FF' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='600' height='600' fill='url(%23rg)'/%3E%3Cg stroke='%231A1919' fill='none'%3E%3Ccircle cx='300' cy='300' r='40' stroke-opacity='0.08' stroke-width='1.5'/%3E%3Ccircle cx='300' cy='300' r='80' stroke-opacity='0.07' stroke-width='1.2'/%3E%3Ccircle cx='300' cy='300' r='120' stroke-opacity='0.06' stroke-width='1'/%3E%3Ccircle cx='300' cy='300' r='160' stroke-opacity='0.05' stroke-width='1'/%3E%3Ccircle cx='300' cy='300' r='200' stroke-opacity='0.04' stroke-width='0.8'/%3E%3Ccircle cx='300' cy='300' r='240' stroke-opacity='0.035' stroke-width='0.8'/%3E%3Ccircle cx='300' cy='300' r='280' stroke-opacity='0.025' stroke-width='0.6'/%3E%3C/g%3E%3Ccircle cx='300' cy='300' r='4' fill='%230478FF' fill-opacity='0.1'/%3E%3C/svg%3E");
+
+// Circuit lines — 800×400 tech paths with node dots
+$va-data-circuit-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400' fill='none'%3E%3Cdefs%3E%3CradialGradient id='cg' cx='50%25' cy='50%25' r='55%25'%3E%3Cstop offset='0%25' stop-color='%231A1919' stop-opacity='0.07'/%3E%3Cstop offset='100%25' stop-color='%231A1919' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='800' height='400' fill='url(%23cg)'/%3E%3Cg stroke='%231A1919' stroke-opacity='0.06' stroke-width='1' fill='none'%3E%3Cpath d='M0 80h120l20 20h160l20-20h80'/%3E%3Cpath d='M400 80h80l20 20h100l20-20h180'/%3E%3Cpath d='M0 200h200l30 30h140l30-30h100'/%3E%3Cpath d='M500 200h60l20 20h120l20-20h80'/%3E%3Cpath d='M0 320h160l20-20h100l20 20h200'/%3E%3Cpath d='M500 320h80l20-20h80l20 20h100'/%3E%3Cpath d='M200 0v80l20 20v100l-20 20v80'/%3E%3Cpath d='M400 0v120l-20 20v40l20 20v200'/%3E%3Cpath d='M600 0v100l20 20v60l-20 20v200'/%3E%3Cpath d='M120 80l80 120'/%3E%3Cpath d='M400 80l-60 120'/%3E%3Cpath d='M600 120l-100 80'/%3E%3Cpath d='M200 300l60-100'/%3E%3Cpath d='M500 200l100 120'/%3E%3C/g%3E%3Cg fill='%230478FF' fill-opacity='0.12'%3E%3Ccircle cx='120' cy='80' r='3'/%3E%3Ccircle cx='320' cy='100' r='3'/%3E%3Ccircle cx='400' cy='80' r='3'/%3E%3Ccircle cx='500' cy='100' r='3'/%3E%3Ccircle cx='200' cy='200' r='3'/%3E%3Ccircle cx='500' cy='200' r='3'/%3E%3Ccircle cx='600' cy='120' r='3'/%3E%3Ccircle cx='160' cy='320' r='3'/%3E%3Ccircle cx='500' cy='320' r='3'/%3E%3Ccircle cx='400' cy='200' r='4'/%3E%3Ccircle cx='200' cy='80' r='2.5'/%3E%3Ccircle cx='600' cy='200' r='2.5'/%3E%3Ccircle cx='300' cy='300' r='2.5'/%3E%3Ccircle cx='680' cy='320' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+
+// Mesh gradient — 800×600 ambient blob mesh
+$va-data-mesh-gradient: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600' fill='none'%3E%3Cdefs%3E%3CradialGradient id='mg1' cx='25%25' cy='30%25' r='40%25'%3E%3Cstop offset='0%25' stop-color='%230478FF' stop-opacity='0.06'/%3E%3Cstop offset='100%25' stop-color='%230478FF' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='mg2' cx='75%25' cy='70%25' r='35%25'%3E%3Cstop offset='0%25' stop-color='%230478FF' stop-opacity='0.04'/%3E%3Cstop offset='100%25' stop-color='%230478FF' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='mg3' cx='60%25' cy='20%25' r='30%25'%3E%3Cstop offset='0%25' stop-color='%231A1919' stop-opacity='0.03'/%3E%3Cstop offset='100%25' stop-color='%231A1919' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23mg1)'/%3E%3Crect width='800' height='600' fill='url(%23mg2)'/%3E%3Crect width='800' height='600' fill='url(%23mg3)'/%3E%3C/svg%3E");
+
+// ---------------------------------------------------------------------------
+// Inline modifier classes
+// ---------------------------------------------------------------------------
+// Add `--inline` to any existing pattern class to swap the external SVG URL
+// for the embedded data-URI version.  The base pattern class still supplies
+// all layout, positioning, and masking — the modifier only overrides
+// `background-image`.
+
+.va-pattern-noise--inline::after {
+  background-image: $va-data-noise !important;
+}
+
+.va-pattern-circuit--inline::before {
+  background-image: $va-data-circuit-lines !important;
+}
+
+.va-pattern-rings--inline::before {
+  background-image: $va-data-concentric-rings !important;
+}
+
+.va-pattern-diagonal--inline::before {
+  background-image: $va-data-diagonal-lines !important;
+}
+
+.va-bg-grid-lines--inline {
+  background-image: $va-data-grid-lines !important;
+}
+
+.va-bg-mesh--inline {
+  background-image: $va-data-mesh-gradient !important;
+}
+
+// Composition helper overrides
+.va-bg-layer--circuit-inline::before {
+  background-image: $va-data-circuit-lines !important;
+}
+
+.va-bg-layer--rings-inline::before {
+  background-image: $va-data-concentric-rings !important;
+}
+
+.va-bg-layer--grid-inline {
+  background-image: $va-data-grid-lines !important;
+}
+
+.va-bg-layer--mesh-inline {
+  background-image: $va-data-mesh-gradient !important;
+}
+
+.va-bg-layer--diagonal-inline::before {
+  background-image: $va-data-diagonal-lines !important;
+}
