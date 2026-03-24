@@ -1,0 +1,257 @@
+// ==========================================================================
+// Voice Aura Design System — Typography
+// ==========================================================================
+// Complete typography system built on IBM Plex Serif (headings) and
+// IBM Plex Sans (body).  Uses an 8px spacing grid and follows Voice Aura's
+// clean, minimal aesthetic.
+//
+// Depends on variables from _variables.scss:
+//   $va-font-heading, $va-font-body, $va-near-black, $va-primary-blue,
+//   $va-body-text, $va-muted-text, $va-light-grey, $va-grid-unit,
+//   $va-radius-sm, $va-radius, $line-height-base, $headings-line-height,
+//   $font-size-base, $h1-font-size … $h6-font-size, $va-font-sizes map.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Google Fonts Import
+// ---------------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+// ---------------------------------------------------------------------------
+// Local convenience aliases (derived from _variables.scss maps)
+// ---------------------------------------------------------------------------
+
+$_font-size-lg: map-get($va-font-sizes, "lg");  // 1.125rem / 18px
+$_font-size-sm: map-get($va-font-sizes, "sm");  // 0.875rem / 14px
+$_font-size-xs: map-get($va-font-sizes, "xs");  // 0.75rem  / 12px
+
+// ---------------------------------------------------------------------------
+// 2. Base Body Typography
+// ---------------------------------------------------------------------------
+
+body {
+  font-family: $va-font-body;
+  font-size: $font-size-base;                   // 16px
+  font-weight: 400;
+  line-height: $line-height-base;               // 1.6
+  color: $va-near-black;
+  letter-spacing: -0.01em;
+}
+
+// ---------------------------------------------------------------------------
+// 3. Headings (h1 – h6)
+// ---------------------------------------------------------------------------
+// All headings use IBM Plex Serif by default with tight line-heights
+// and generous bottom margins on the 8px grid.
+
+h1, h2, h3, h4, h5, h6,
+.va-h1, .va-h2, .va-h3, .va-h4, .va-h5, .va-h6 {
+  font-family: $va-font-heading;
+  font-weight: 600;
+  line-height: $headings-line-height;           // 1.2
+  color: $va-near-black;
+  letter-spacing: -0.02em;
+  margin-bottom: $va-grid-unit * 2;             // 16px
+}
+
+h1, .va-h1 {
+  font-size: $h1-font-size;                     // 56px
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h2, .va-h2 {
+  font-size: $h2-font-size;                     // 40px
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+h3, .va-h3 {
+  font-size: $h3-font-size;                     // 28px
+}
+
+h4, .va-h4 {
+  font-size: $h4-font-size;                     // 20px
+}
+
+h5, .va-h5 {
+  font-size: $h5-font-size;                     // 18px
+  font-weight: 500;
+}
+
+h6, .va-h6 {
+  font-size: $h6-font-size;                     // 16px
+  font-weight: 500;
+}
+
+// ---------------------------------------------------------------------------
+// 4. Display Headings
+// ---------------------------------------------------------------------------
+// Extra-large display text for hero sections and landing pages.
+
+.va-display-1,
+.va-display-2,
+.va-display-3,
+.va-display-4 {
+  font-family: $va-font-heading;
+  font-weight: 700;
+  line-height: 1.1;
+  color: $va-near-black;
+  letter-spacing: -0.03em;
+  margin-bottom: $va-grid-unit * 3;             // 24px
+}
+
+.va-display-1 {
+  font-size: clamp(3rem, 5vw + 1rem, 5.5rem);  // ~88px max
+}
+
+.va-display-2 {
+  font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem); // ~72px max
+}
+
+.va-display-3 {
+  font-size: clamp(2rem, 3.5vw + 1rem, 3.5rem);  // ~56px max
+}
+
+.va-display-4 {
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 2.75rem); // ~44px max
+}
+
+// ---------------------------------------------------------------------------
+// 5. Body Text Utilities
+// ---------------------------------------------------------------------------
+
+// Lead paragraph — larger, lighter body text for introductions.
+.va-lead {
+  font-size: $_font-size-lg;                    // 18px
+  font-weight: 400;
+  line-height: 1.7;
+  color: $va-body-text;
+  margin-bottom: $va-grid-unit * 3;             // 24px
+}
+
+// Muted text — de-emphasised secondary copy.
+.va-text-muted {
+  color: $va-muted-text !important;
+}
+
+// Small text — captions, labels, fine print.
+.va-text-small {
+  font-size: $_font-size-sm;                    // 14px
+  line-height: 1.5;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Font Family Overrides
+// ---------------------------------------------------------------------------
+
+// Force serif font (useful for body text that should look editorial).
+.va-heading-serif {
+  font-family: $va-font-heading !important;
+}
+
+// Force sans-serif on headings when a modern feel is preferred.
+.va-heading-sans {
+  font-family: $va-font-body !important;
+}
+
+// ---------------------------------------------------------------------------
+// 7. Paragraphs
+// ---------------------------------------------------------------------------
+
+p {
+  margin-bottom: $va-grid-unit * 2;             // 16px
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 8. Links
+// ---------------------------------------------------------------------------
+
+a {
+  color: $va-primary-blue;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out,
+              text-decoration-color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    color: darken($va-primary-blue, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 9. Strong / Bold
+// ---------------------------------------------------------------------------
+
+strong,
+b,
+.va-text-bold {
+  font-weight: 600;
+}
+
+// ---------------------------------------------------------------------------
+// 10. Blockquote
+// ---------------------------------------------------------------------------
+
+blockquote,
+.va-blockquote {
+  font-family: $va-font-heading;
+  font-size: $_font-size-lg;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $va-near-black;
+  padding-left: $va-grid-unit * 3;              // 24px
+  border-left: 3px solid $va-primary-blue;
+  margin: ($va-grid-unit * 4) 0;                // 32px vertical
+}
+
+// ---------------------------------------------------------------------------
+// 11. Code / Monospace
+// ---------------------------------------------------------------------------
+
+code,
+kbd,
+pre {
+  font-family: $va-font-mono;
+  font-size: 0.875em;
+}
+
+code {
+  padding: 2px 6px;
+  background-color: $va-light-grey;
+  border-radius: $va-radius-sm;
+  color: $va-near-black;
+}
+
+pre {
+  padding: $va-grid-unit * 3;
+  background-color: $va-near-black;
+  color: #fff;
+  border-radius: $va-radius;
+  overflow-x: auto;
+
+  code {
+    padding: 0;
+    background: none;
+    color: inherit;
+    border-radius: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 12. Selection
+// ---------------------------------------------------------------------------
+
+::selection {
+  background-color: rgba($va-primary-blue, 0.15);
+  color: $va-near-black;
+}

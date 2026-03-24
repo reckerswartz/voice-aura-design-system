@@ -1,0 +1,426 @@
+// ==========================================================================
+// Voice Aura Design System - Forms
+// ==========================================================================
+// Form controls, inputs, and the TTS input card component.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Form Group
+// --------------------------------------------------------------------------
+// Wraps a label + input pair with consistent spacing.
+// Usage: <div class="va-form-group">
+//          <label class="va-form-label">Email</label>
+//          <input class="va-form-input" type="email" />
+//        </div>
+
+.va-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Form Label
+// --------------------------------------------------------------------------
+
+.va-form-label {
+  font-family: $va-font-body;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: $va-near-black;
+
+  // Required indicator
+  &--required::after {
+    content: " *";
+    color: #ef4444;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Shared input styles (mixin)
+// --------------------------------------------------------------------------
+
+@mixin va-input-base {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: $va-font-body;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $va-near-black;
+  background-color: #fff;
+  border: 1px solid $va-border;
+  border-radius: $va-radius-sm;
+  transition: border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+  appearance: none;
+
+  &::placeholder {
+    color: lighten($va-body-text, 20%);
+  }
+
+  &:hover {
+    border-color: darken($va-border, 10%);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $va-primary;
+    box-shadow: 0 0 0 3px rgba($va-primary, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: $va-bg-alt;
+    cursor: not-allowed;
+  }
+
+  // Validation states
+  &.is-invalid {
+    border-color: #ef4444;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(#ef4444, 0.15);
+    }
+  }
+
+  &.is-valid {
+    border-color: #10b981;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(#10b981, 0.15);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Text Input
+// --------------------------------------------------------------------------
+
+.va-form-input {
+  @include va-input-base;
+}
+
+// --------------------------------------------------------------------------
+// Textarea
+// --------------------------------------------------------------------------
+
+.va-form-textarea {
+  @include va-input-base;
+  min-height: 7rem;
+  resize: vertical;
+}
+
+// --------------------------------------------------------------------------
+// Select Dropdown
+// --------------------------------------------------------------------------
+
+.va-form-select {
+  @include va-input-base;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234B5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  cursor: pointer;
+}
+
+// --------------------------------------------------------------------------
+// Custom Checkbox
+// --------------------------------------------------------------------------
+// Usage: <label class="va-form-checkbox">
+//          <input type="checkbox" class="va-form-checkbox__input" />
+//          <span class="va-form-checkbox__check"></span>
+//          <span class="va-form-checkbox__label">Remember me</span>
+//        </label>
+
+.va-form-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  cursor: pointer;
+  font-family: $va-font-body;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $va-body-text;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .va-form-checkbox__check {
+      background-color: $va-primary;
+      border-color: $va-primary;
+
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:focus-visible + .va-form-checkbox__check {
+      box-shadow: 0 0 0 3px rgba($va-primary, 0.15);
+    }
+  }
+
+  &__check {
+    position: relative;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.125rem;
+    border: 1.5px solid $va-border;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    transition: all 0.15s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.375rem;
+      height: 0.625rem;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: translate(-50%, -60%) rotate(45deg) scale(0);
+      opacity: 0;
+      transition: all 0.15s ease-in-out;
+    }
+  }
+
+  &__label {
+    line-height: 1.5;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Validation Message
+// --------------------------------------------------------------------------
+
+.va-form-error {
+  font-family: $va-font-body;
+  font-size: 0.8125rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}
+
+.va-form-hint {
+  font-family: $va-font-body;
+  font-size: 0.8125rem;
+  color: $va-body-text;
+  margin-top: 0.25rem;
+}
+
+// ==========================================================================
+// TTS Input Card Component
+// ==========================================================================
+// The large text-to-speech input area with tabs, textarea, category pills,
+// and send button.
+// Usage: <div class="va-input-card">
+//          <div class="va-input-card__tabs">...</div>
+//          <div class="va-input-card__body"><textarea>...</textarea></div>
+//          <div class="va-input-card__footer">...</div>
+//        </div>
+
+.va-input-card {
+  background-color: #fff;
+  border: 1px solid $va-border;
+  border-radius: $va-radius;
+  overflow: hidden;
+
+  // --------------------------------------------------------------------------
+  // Tab Navigation (Text to Speech / Upload File)
+  // --------------------------------------------------------------------------
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid $va-border;
+  }
+
+  &__tab {
+    padding: 0.875rem 1.25rem;
+    font-family: $va-font-body;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $va-body-text;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    margin-bottom: -1px;
+
+    &:hover {
+      color: $va-near-black;
+    }
+
+    &--active {
+      color: $va-near-black;
+      border-bottom-color: $va-near-black;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Body (textarea area)
+  // --------------------------------------------------------------------------
+
+  &__body {
+    padding: 1.25rem 1.5rem;
+
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 8rem;
+      padding: 0;
+      font-family: $va-font-body;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: $va-near-black;
+      background: transparent;
+      border: none;
+      resize: none;
+      outline: none;
+
+      &::placeholder {
+        color: lighten($va-body-text, 20%);
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Footer (category pills + character count + send button)
+  // --------------------------------------------------------------------------
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid $va-border;
+  }
+
+  &__pills {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  &__char-count {
+    font-family: $va-font-body;
+    font-size: 0.8125rem;
+    color: $va-body-text;
+    white-space: nowrap;
+  }
+
+  // --------------------------------------------------------------------------
+  // Send Button (blue circular button)
+  // --------------------------------------------------------------------------
+
+  &__send {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    background-color: $va-primary;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out,
+                transform 0.15s ease-in-out;
+
+    &:hover {
+      background-color: darken($va-primary, 8%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Category Pill
+// --------------------------------------------------------------------------
+// Small selectable pills for content category (YouTube, Narration, etc.)
+// Usage: <button class="va-category-pill">
+//          <span class="va-category-pill__icon"><svg>...</svg></span>
+//          YouTube
+//        </button>
+
+.va-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-family: $va-font-body;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $va-body-text;
+  background-color: $va-bg-alt;
+  border: 1px solid transparent;
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: darken($va-bg-alt, 4%);
+    color: $va-near-black;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Active / selected state
+  &--active {
+    background-color: $va-near-black;
+    color: #fff;
+    border-color: $va-near-black;
+
+    &:hover {
+      background-color: lighten($va-near-black, 8%);
+      color: #fff;
+    }
+  }
+}

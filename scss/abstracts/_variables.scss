@@ -1,0 +1,390 @@
+// ============================================================================
+// Voice Aura Design System - Variables
+// ============================================================================
+// Bootstrap 5 variable overrides — must be imported BEFORE Bootstrap.
+// Custom design tokens use the `$va-` namespace prefix.
+// ============================================================================
+
+@use "sass:color";
+
+// ----------------------------------------------------------------------------
+// 1. COLOR PALETTE
+// ----------------------------------------------------------------------------
+
+// Brand colours
+$va-primary-blue:    #0478FF;
+$va-near-black:      #1A1919;
+$va-light-grey:      #E9E9EA;
+$va-white:           #FFFFFF;
+$va-section-bg:      #F7F7F8;
+$va-body-text:       #4B5563;
+$va-muted-text:      #9CA3AF;
+$va-border-color:    #E5E7EB;
+$va-badge-bg-light:  #EEF2FF;
+
+// Semantic colours
+$va-success:         #10B981;
+$va-warning:         #F59E0B;
+$va-danger:          #EF4444;
+
+// Convenience aliases (used extensively across components)
+$va-primary:  $va-primary-blue;
+$va-border:   $va-border-color;
+$va-bg-alt:   $va-light-grey;
+
+// Colour map for programmatic access via `va-color()` function
+$va-colors: (
+  "primary-blue":   $va-primary-blue,
+  "near-black":     $va-near-black,
+  "light-grey":     $va-light-grey,
+  "white":          $va-white,
+  "section-bg":     $va-section-bg,
+  "body-text":      $va-body-text,
+  "muted-text":     $va-muted-text,
+  "border":         $va-border-color,
+  "badge-bg-light": $va-badge-bg-light,
+  "success":        $va-success,
+  "warning":        $va-warning,
+  "danger":         $va-danger,
+);
+
+// --- Bootstrap colour overrides ---
+$primary:   $va-primary-blue;
+$secondary: $va-near-black;
+$success:   $va-success;
+$warning:   $va-warning;
+$danger:    $va-danger;
+$light:     $va-light-grey;
+$dark:      $va-near-black;
+
+$body-bg:    $va-white;
+$body-color: $va-body-text;
+
+$theme-colors: (
+  "primary":   $primary,
+  "secondary": $secondary,
+  "success":   $success,
+  "warning":   $warning,
+  "danger":    $danger,
+  "light":     $light,
+  "dark":      $dark,
+);
+
+// ----------------------------------------------------------------------------
+// 2. TYPOGRAPHY
+// ----------------------------------------------------------------------------
+
+// Font stacks
+$va-font-heading: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+$va-font-body:    'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$va-font-mono:    'IBM Plex Mono', 'SF Mono', monospace;
+
+// Bootstrap font overrides
+$font-family-sans-serif: $va-font-body;
+$font-family-monospace:  $va-font-mono;
+$font-family-base:       $va-font-body;
+
+// Font sizes
+$font-size-base: 1rem; // 16px
+
+$h1-font-size: 3.5rem;   // 56px — hero headlines
+$h2-font-size: 2.5rem;   // 40px — section headings
+$h3-font-size: 1.75rem;  // 28px
+$h4-font-size: 1.25rem;  // 20px
+$h5-font-size: 1.125rem; // 18px
+$h6-font-size: 1rem;     // 16px
+
+// Font weights
+$font-weight-normal:  400;
+$font-weight-medium:  500;
+$font-weight-semibold: 600;
+$font-weight-bold:    700;
+
+$font-weight-base: $font-weight-normal;
+
+// Line heights
+$line-height-base: 1.6;
+$headings-line-height: 1.2;
+
+// Heading styles
+$headings-font-family: $va-font-heading;
+$headings-font-weight: $font-weight-bold;
+$headings-color:       $va-near-black;
+$headings-margin-bottom: 0.75rem;
+
+// Paragraph
+$paragraph-margin-bottom: 1.25rem;
+
+// Font-size map for easy lookup
+$va-font-sizes: (
+  "h1": $h1-font-size,
+  "h2": $h2-font-size,
+  "h3": $h3-font-size,
+  "h4": $h4-font-size,
+  "h5": $h5-font-size,
+  "h6": $h6-font-size,
+  "base": $font-size-base,
+  "sm": 0.875rem,
+  "xs": 0.75rem,
+  "lg": 1.125rem,
+);
+
+// ----------------------------------------------------------------------------
+// 3. SPACING
+// ----------------------------------------------------------------------------
+
+// 8px grid unit
+$va-grid-unit: 0.5rem; // 8px
+
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,   //  4px
+  2: $spacer * 0.5,    //  8px
+  3: $spacer,           // 16px
+  4: $spacer * 1.5,    // 24px
+  5: $spacer * 3,      // 48px
+  6: $spacer * 4,      // 64px
+  7: $spacer * 5,      // 80px
+  8: $spacer * 6,      // 96px
+  9: $spacer * 7.5,    // 120px
+);
+
+// ----------------------------------------------------------------------------
+// 4. BORDER RADIUS
+// ----------------------------------------------------------------------------
+
+$va-radius-sm:   0.5rem;   //  8px — buttons, inputs
+$va-radius:      0.75rem;  // 12px — standard cards
+$va-radius-lg:   1rem;     // 16px — large cards, modals
+$va-radius-xl:   1.5rem;   // 24px — hero cards
+$va-radius-pill: 50rem;    // pill / fully rounded
+
+// Bootstrap overrides
+$border-radius:    $va-radius;
+$border-radius-sm: $va-radius-sm;
+$border-radius-lg: $va-radius-lg;
+$border-radius-xl: $va-radius-xl;
+$border-radius-pill: $va-radius-pill;
+
+// ----------------------------------------------------------------------------
+// 5. SHADOWS
+// ----------------------------------------------------------------------------
+
+$va-shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.05);
+$va-shadow:     0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                0 2px 4px -2px rgba(0, 0, 0, 0.05);
+$va-shadow-md:  0 10px 15px -3px rgba(0, 0, 0, 0.08),
+                0 4px 6px -4px rgba(0, 0, 0, 0.04);
+$va-shadow-lg:  0 20px 25px -5px rgba(0, 0, 0, 0.08),
+                0 8px 10px -6px rgba(0, 0, 0, 0.04);
+$va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+// Bootstrap shadow overrides
+$box-shadow:    $va-shadow;
+$box-shadow-sm: $va-shadow-sm;
+$box-shadow-lg: $va-shadow-lg;
+
+// ----------------------------------------------------------------------------
+// 6. BORDERS
+// ----------------------------------------------------------------------------
+
+$border-width: 1px;
+$border-color: $va-border-color;
+
+// ----------------------------------------------------------------------------
+// 7. BUTTONS
+// ----------------------------------------------------------------------------
+
+$btn-padding-y:      0.75rem;
+$btn-padding-x:      1.5rem;
+$btn-font-weight:    $font-weight-medium;
+$btn-border-radius:  $va-radius-sm;
+$btn-font-size:      $font-size-base;
+$btn-line-height:    1.5;
+
+// Sizes
+$btn-padding-y-sm:   0.5rem;
+$btn-padding-x-sm:   1rem;
+$btn-font-size-sm:   0.875rem;
+$btn-border-radius-sm: $va-radius-sm;
+
+$btn-padding-y-lg:   1rem;
+$btn-padding-x-lg:   2rem;
+$btn-font-size-lg:   1.125rem;
+$btn-border-radius-lg: $va-radius-sm;
+
+// Transition
+$btn-transition: color 0.2s ease-in-out,
+                 background-color 0.2s ease-in-out,
+                 border-color 0.2s ease-in-out,
+                 box-shadow 0.2s ease-in-out,
+                 transform 0.2s ease-in-out;
+
+// Focus
+$btn-focus-width:     0.2rem;
+$btn-focus-box-shadow: 0 0 0 0.2rem rgba($va-primary-blue, 0.25);
+
+// ----------------------------------------------------------------------------
+// 8. FORMS / INPUTS
+// ----------------------------------------------------------------------------
+
+$input-padding-y:         0.75rem;
+$input-padding-x:         1rem;
+$input-border-radius:     $va-radius-sm;
+$input-border-color:      $va-border-color;
+$input-bg:                $va-white;
+$input-color:             $va-near-black;
+$input-placeholder-color: $va-muted-text;
+$input-font-size:         $font-size-base;
+
+$input-focus-border-color: $va-primary-blue;
+$input-focus-box-shadow:   0 0 0 0.2rem rgba($va-primary-blue, 0.25);
+$input-focus-color:        $va-near-black;
+
+$input-transition: border-color 0.2s ease-in-out,
+                   box-shadow 0.2s ease-in-out;
+
+$form-label-font-weight:  $font-weight-medium;
+$form-label-margin-bottom: 0.5rem;
+$form-label-font-size:    0.875rem;
+$form-label-color:        $va-near-black;
+
+// Select
+$form-select-border-radius: $va-radius-sm;
+$form-select-border-color:  $va-border-color;
+$form-select-focus-border-color: $va-primary-blue;
+$form-select-focus-box-shadow:   $input-focus-box-shadow;
+
+// Checks
+$form-check-input-border-radius: 0.25rem;
+$form-check-input-border:        1px solid $va-border-color;
+
+// ----------------------------------------------------------------------------
+// 9. NAVBAR
+// ----------------------------------------------------------------------------
+
+$navbar-padding-y:           1rem;
+$navbar-padding-x:           0;
+$navbar-light-color:         $va-body-text;
+$navbar-light-hover-color:   $va-near-black;
+$navbar-light-active-color:  $va-primary-blue;
+$navbar-light-toggler-border-color: $va-border-color;
+
+// ----------------------------------------------------------------------------
+// 10. CARDS
+// ----------------------------------------------------------------------------
+
+$card-bg:            $va-white;
+$card-border-color:  $va-border-color;
+$card-border-radius: $va-radius;
+$card-border-width:  $border-width;
+$card-spacer-y:      1.5rem;
+$card-spacer-x:      1.5rem;
+$card-cap-padding-y: 1.25rem;
+$card-cap-padding-x: 1.5rem;
+$card-cap-bg:        transparent;
+
+// ----------------------------------------------------------------------------
+// 11. MODALS
+// ----------------------------------------------------------------------------
+
+$modal-content-border-radius: $va-radius-lg;
+$modal-content-border-color:  $va-border-color;
+$modal-content-bg:            $va-white;
+$modal-backdrop-opacity:      0.5;
+
+// ----------------------------------------------------------------------------
+// 12. BADGES
+// ----------------------------------------------------------------------------
+
+$badge-font-size:    0.75rem;
+$badge-font-weight:  $font-weight-medium;
+$badge-padding-y:    0.35em;
+$badge-padding-x:    0.65em;
+$badge-border-radius: $va-radius-pill;
+
+// ----------------------------------------------------------------------------
+// 13. TRANSITIONS
+// ----------------------------------------------------------------------------
+
+$transition-base: all 0.2s ease-in-out;
+
+// ----------------------------------------------------------------------------
+// 14. LINKS
+// ----------------------------------------------------------------------------
+
+$link-color:       $va-primary-blue;
+$link-decoration:  none;
+$link-hover-color: color.adjust($va-primary-blue, $lightness: -10%);
+$link-hover-decoration: underline;
+
+// ----------------------------------------------------------------------------
+// 15. DROPDOWNS
+// ----------------------------------------------------------------------------
+
+$dropdown-border-radius: $va-radius;
+$dropdown-border-color:  $va-border-color;
+$dropdown-box-shadow:    $va-shadow-md;
+$dropdown-padding-y:     0.5rem;
+$dropdown-item-padding-y: 0.5rem;
+$dropdown-item-padding-x: 1rem;
+$dropdown-link-active-bg: $va-primary-blue;
+
+// ----------------------------------------------------------------------------
+// 16. TOOLTIPS
+// ----------------------------------------------------------------------------
+
+$tooltip-border-radius: $va-radius-sm;
+$tooltip-bg:            $va-near-black;
+$tooltip-opacity:       1;
+
+// ============================================================================
+// CUSTOM VOICE AURA TOKENS  ($va-*)
+// Non-Bootstrap variables specific to the Voice Aura design system.
+// ============================================================================
+
+// Layout
+$va-section-padding-y:       5rem;       // 80px — standard vertical section padding
+$va-section-padding-y-lg:    7.5rem;     // 120px — larger section padding
+$va-hero-max-width:          72rem;      // 1152px — hero content max-width
+$va-container-max-width:     80rem;      // 1280px
+$va-navbar-height:           4.5rem;     // 72px — fixed navbar height
+
+// Cards
+$va-pricing-card-min-height: 32rem;      // 512px
+$va-card-padding:            1.5rem;
+$va-card-padding-lg:         2rem;
+
+// Decorative
+$va-halftone-pattern-opacity: 0.06;
+$va-glass-bg-opacity:         0.7;
+$va-glass-blur:               12px;
+
+// Animation & transitions
+$va-transition-base:     all 0.2s ease-in-out;
+$va-transition-slow:     all 0.35s ease-in-out;
+$va-transition-fast:     all 0.12s ease-in-out;
+$va-transition-bounce:   all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// Z-index layers
+$va-z-navbar:   1030;
+$va-z-modal:    1050;
+$va-z-tooltip:  1070;
+$va-z-overlay:  1040;
+
+// Breakpoint map (mirrors Bootstrap, for use in custom mixins)
+$va-breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+// Gradient presets
+$va-gradient-primary: linear-gradient(135deg, $va-primary-blue 0%, color.adjust($va-primary-blue, $lightness: 12%) 100%);
+$va-gradient-dark:    linear-gradient(135deg, $va-near-black 0%, color.adjust($va-near-black, $lightness: 15%) 100%);
+$va-gradient-subtle:  linear-gradient(180deg, $va-white 0%, $va-section-bg 100%);

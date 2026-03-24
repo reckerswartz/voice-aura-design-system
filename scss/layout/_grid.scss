@@ -1,0 +1,236 @@
+// ==========================================================================
+// Voice Aura Design System — Grid & Container Extensions
+// ==========================================================================
+// Custom containers and grid utilities that extend Bootstrap 5's grid
+// system.  Built on the 8px spacing grid ($va-grid-unit).
+//
+// Depends on: $va-grid-unit, $va-container-max-width, $va-breakpoints.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Local aliases & container sizes
+// ---------------------------------------------------------------------------
+
+$_bp-md: map-get($va-breakpoints, "md"); // 768px
+$_bp-sm: map-get($va-breakpoints, "sm"); // 576px
+
+// Container width tokens (extend the single $va-container-max-width)
+$_container-narrow: 53.75rem;  // 860px — long-form / blog content
+$_container-wide:   90rem;     // 1440px — edge-to-edge features
+
+// ---------------------------------------------------------------------------
+// 1. Custom Containers
+// ---------------------------------------------------------------------------
+
+// Standard container — 1280px max-width
+.va-container {
+  width: 100%;
+  max-width: $va-container-max-width;              // 80rem / 1280px
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $va-grid-unit * 4;                 // 32px
+  padding-right: $va-grid-unit * 4;
+
+  @media (max-width: $_bp-sm) {
+    padding-left: $va-grid-unit * 2.5;             // 20px on small screens
+    padding-right: $va-grid-unit * 2.5;
+  }
+}
+
+// Narrow container — for long-form text / blog content (860px)
+.va-container--narrow {
+  max-width: $_container-narrow;
+}
+
+// Wide container — for edge-to-edge feature grids (1440px)
+.va-container--wide {
+  max-width: $_container-wide;
+}
+
+// Full-bleed — stretches to viewport, keeps inner padding
+.va-container--fluid {
+  max-width: none;
+}
+
+// ---------------------------------------------------------------------------
+// 2. Grid Gap Utilities
+// ---------------------------------------------------------------------------
+// Utility classes for setting gap on flex / grid containers.
+// Uses the 8px ($va-grid-unit) grid.
+
+@each $i in (0, 1, 2, 3, 4, 5, 6, 8, 10, 12) {
+  // Gap (both axes)
+  .va-gap-#{$i} {
+    gap: $va-grid-unit * $i !important;
+  }
+
+  // Row gap only
+  .va-row-gap-#{$i} {
+    row-gap: $va-grid-unit * $i !important;
+  }
+
+  // Column gap only
+  .va-col-gap-#{$i} {
+    column-gap: $va-grid-unit * $i !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Auto-Fit Card Grid
+// ---------------------------------------------------------------------------
+// Responsive card / tile grid that automatically adjusts column count
+// based on available width — no media queries needed.
+
+.va-auto-grid {
+  display: grid;
+  gap: $va-grid-unit * 4;                          // 32px default
+
+  // Minimum column width defaults to 280px.
+  // Override with CSS custom property --va-grid-min.
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--va-grid-min, 280px), 1fr)
+  );
+}
+
+// Preset column-width variants
+.va-auto-grid--sm {
+  --va-grid-min: 220px;
+}
+
+.va-auto-grid--md {
+  --va-grid-min: 300px;
+}
+
+.va-auto-grid--lg {
+  --va-grid-min: 360px;
+}
+
+// ---------------------------------------------------------------------------
+// 4. Fixed-Column Grids
+// ---------------------------------------------------------------------------
+// Quick helpers for common column layouts (built on CSS Grid).
+
+.va-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $va-grid-unit * 4;
+}
+
+.va-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $va-grid-unit * 4;
+}
+
+.va-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $va-grid-unit * 4;
+}
+
+// Collapse fixed grids on smaller screens
+@media (max-width: $_bp-md) {
+  .va-grid-2 { grid-template-columns: 1fr; }
+  .va-grid-3 { grid-template-columns: 1fr; }
+  .va-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: $_bp-sm) {
+  .va-grid-4 { grid-template-columns: 1fr; }
+}
+
+// ---------------------------------------------------------------------------
+// 5. Alignment Utilities (Flex shortcuts)
+// ---------------------------------------------------------------------------
+// Handy helpers for flex containers — extend Bootstrap's flex utilities.
+
+.va-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.va-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.va-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.va-flex-wrap {
+  flex-wrap: wrap;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Spacing Utilities
+// ---------------------------------------------------------------------------
+// Margin / padding helpers following the 8px grid.
+// Format: .va-mt-{n}  → margin-top:  n * 8px
+//         .va-pb-{n}  → padding-bottom: n * 8px
+// Covers the most commonly needed values.
+
+$_spacing-steps: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20);
+
+@each $step in $_spacing-steps {
+  // Margin
+  .va-mt-#{$step} { margin-top:    $va-grid-unit * $step !important; }
+  .va-mr-#{$step} { margin-right:  $va-grid-unit * $step !important; }
+  .va-mb-#{$step} { margin-bottom: $va-grid-unit * $step !important; }
+  .va-ml-#{$step} { margin-left:   $va-grid-unit * $step !important; }
+  .va-mx-#{$step} {
+    margin-left:  $va-grid-unit * $step !important;
+    margin-right: $va-grid-unit * $step !important;
+  }
+  .va-my-#{$step} {
+    margin-top:    $va-grid-unit * $step !important;
+    margin-bottom: $va-grid-unit * $step !important;
+  }
+
+  // Padding
+  .va-pt-#{$step} { padding-top:    $va-grid-unit * $step !important; }
+  .va-pr-#{$step} { padding-right:  $va-grid-unit * $step !important; }
+  .va-pb-#{$step} { padding-bottom: $va-grid-unit * $step !important; }
+  .va-pl-#{$step} { padding-left:   $va-grid-unit * $step !important; }
+  .va-px-#{$step} {
+    padding-left:  $va-grid-unit * $step !important;
+    padding-right: $va-grid-unit * $step !important;
+  }
+  .va-py-#{$step} {
+    padding-top:    $va-grid-unit * $step !important;
+    padding-bottom: $va-grid-unit * $step !important;
+  }
+}
+
+// Auto margins for centring
+.va-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+// ---------------------------------------------------------------------------
+// 7. Aspect Ratio Boxes
+// ---------------------------------------------------------------------------
+// Useful for image / video containers that need a fixed aspect ratio.
+
+.va-aspect {
+  position: relative;
+  width: 100%;
+
+  > * {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--1x1  { aspect-ratio: 1 / 1; }
+  &--4x3  { aspect-ratio: 4 / 3; }
+  &--16x9 { aspect-ratio: 16 / 9; }
+  &--21x9 { aspect-ratio: 21 / 9; }
+}

@@ -1,0 +1,144 @@
+// ============================================================================
+// Rails Application Stylesheet — Voice Aura Design System
+// ============================================================================
+//
+// COPY this file into your Rails app at:
+//
+//   app/assets/stylesheets/application.scss
+//
+// PREREQUISITES:
+//   1. Copy the design system to:  vendor/voice-aura-design-system/
+//   2. Add the SCSS load path (see RAILS_INTEGRATION.md for your setup):
+//      esbuild / cssbundling-rails:  --load-path=vendor/voice-aura-design-system/scss
+//      Webpack 5:                    sassOptions.includePaths in webpack.config.js
+//      dartsass-rails:               config/initializers/dartsass.rb
+//   3. Install Bootstrap 5 via yarn:  yarn add bootstrap@^5.3
+//
+// REFERENCE:
+//   All variables  → vendor/voice-aura-design-system/scss/abstracts/_variables.scss
+//   All mixins     → vendor/voice-aura-design-system/scss/abstracts/_mixins.scss
+//   Full spec      → vendor/voice-aura-design-system/DESIGN_SYSTEM.md
+//   Rails guide    → vendor/voice-aura-design-system/RAILS_INTEGRATION.md
+//
+// ============================================================================
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. YOUR BRAND OVERRIDES (set these BEFORE importing the design system)
+// ─────────────────────────────────────────────────────────────────────────────
+// Uncomment and modify any variable to customise the design system for your
+// project. The full list of overridable variables is in:
+//   vendor/voice-aura-design-system/scss/abstracts/_variables.scss
+//
+// ── Colours ──────────────────────────────────────────────
+// $va-primary-blue:   #0478FF;           // Accent colour (buttons, links, focus)
+// $va-near-black:     #1A1919;           // Primary dark (headings, dark buttons)
+// $va-light-grey:     #E9E9EA;           // Borders, subtle backgrounds
+// $va-section-bg:     #F7F7F8;           // Alternating section background
+// $va-body-text:      #4B5563;           // Body paragraph colour
+// $va-muted-text:     #9CA3AF;           // Captions, secondary text
+// $va-border-color:   #E5E7EB;           // Card/input borders
+//
+// ── Typography ───────────────────────────────────────────
+// $va-font-heading:   'IBM Plex Serif', Georgia, serif;
+// $va-font-body:      'IBM Plex Sans', -apple-system, sans-serif;
+// $va-font-mono:      'IBM Plex Mono', 'SF Mono', monospace;
+//
+// ── Spacing ──────────────────────────────────────────────
+// $va-section-padding-y:    5rem;        // Default section padding (80px)
+// $va-section-padding-y-lg: 7.5rem;     // Large section padding (120px)
+// $va-container-max-width:  80rem;       // Max container width (1280px)
+//
+// ── Border Radius ────────────────────────────────────────
+// $va-radius-sm:   0.5rem;              // 8px  — buttons, inputs
+// $va-radius:      0.75rem;             // 12px — standard cards
+// $va-radius-lg:   1rem;                // 16px — large cards, modals
+// $va-radius-xl:   1.5rem;              // 24px — hero cards
+//
+// ── Shadows ──────────────────────────────────────────────
+// $va-shadow:      0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+// $va-shadow-lg:   0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+//
+// ── Decorative ───────────────────────────────────────────
+// $va-halftone-pattern-opacity: 0.06;   // Halftone dot overlay intensity
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. IMPORT THE DESIGN SYSTEM
+// ─────────────────────────────────────────────────────────────────────────────
+// This single import brings in everything:
+//   → abstracts  (variables, functions, mixins — no CSS output)
+//   → Bootstrap 5 (with Voice Aura overrides applied)
+//   → base       (reset, typography, Google Fonts)
+//   → layout     (navbar, hero, sections, footer, grid)
+//   → components (buttons, cards, forms, pricing, badges, blog, voice-agent, auth)
+//
+// If you only need specific components, see the "Selective Import" section
+// in RAILS_INTEGRATION.md for cherry-picking individual layers.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@import "voice-aura";
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. APP-SPECIFIC STYLES
+// ─────────────────────────────────────────────────────────────────────────────
+// Everything below has full access to Voice Aura variables ($va-*),
+// mixins (@include va-*), and functions (va-color()).
+//
+// Follow these conventions:
+//   - Use the `va-` prefix for classes that extend the design system.
+//   - Use app-specific prefixes (e.g. `app-`) for unrelated components.
+//   - Refer to $va-* variables for colours, spacing, and typography.
+//   - Use @include va-* mixins for consistent patterns.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Example: Dashboard panel ─────────────────────────────
+// .app-dashboard {
+//   @include va-section-padding;
+//
+//   &__header {
+//     @include va-heading-serif($font-weight-semibold);
+//     font-size: map-get($va-font-sizes, "h2");
+//     margin-bottom: map-get($spacers, 5);
+//   }
+//
+//   &__card {
+//     @include va-card-elevated("md");
+//     transition: $va-transition-base;
+//
+//     &:hover {
+//       box-shadow: $va-shadow-lg;
+//       transform: translateY(-2px);
+//     }
+//   }
+//
+//   &__stat {
+//     font-family: $va-font-mono;
+//     font-size: map-get($va-font-sizes, "h2");
+//     color: $va-primary-blue;
+//     font-weight: $font-weight-bold;
+//   }
+// }
+
+// ── Example: Custom notification bar ─────────────────────
+// .app-notification {
+//   background-color: $va-badge-bg-light;
+//   border: 1px solid rgba($va-primary-blue, 0.15);
+//   border-radius: $va-radius-sm;
+//   padding: map-get($spacers, 3) map-get($spacers, 4);
+//   font-size: map-get($va-font-sizes, "sm");
+//   color: $va-body-text;
+//
+//   @include va-media-down("md") {
+//     padding: map-get($spacers, 2) map-get($spacers, 3);
+//   }
+// }
+
+// ── Example: Halftone textured section ───────────────────
+// .app-cta-section {
+//   @include va-section-padding("lg");
+//   @include va-halftone-overlay(0.04, $va-primary-blue);
+//   background-color: $va-section-bg;
+//   text-align: center;
+// }

@@ -1,0 +1,90 @@
+// ============================================================================
+// Voice Aura Design System - Functions
+// ============================================================================
+// Utility functions for colour manipulation, spacing, and string operations.
+// Depends on variables from `_variables.scss`.
+// ============================================================================
+
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+// Variables are loaded via @import in the main entry file (voice-aura.scss)
+// and are available in global scope.
+
+// ----------------------------------------------------------------------------
+// va-color($name)
+// Retrieves a colour from the `$va-colors` map by name.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key in $va-colors (e.g. "primary-blue", "border")
+/// @return {Color}
+/// @throws Error if the name is not found in the map
+@function va-color($name) {
+  @if not map.has-key($va-colors, $name) {
+    @error "Voice Aura colour `#{$name}` not found. Available keys: #{map.keys($va-colors)}";
+  }
+
+  @return map.get($va-colors, $name);
+}
+
+// ----------------------------------------------------------------------------
+// va-space($multiplier)
+// Returns a spacing value based on the 8px grid unit.
+// e.g. `va-space(1)` → 0.5rem (8px), `va-space(3)` → 1.5rem (24px)
+// ----------------------------------------------------------------------------
+/// @param  {Number} $multiplier — grid-unit multiplier (can be fractional)
+/// @return {Length}
+@function va-space($multiplier) {
+  @return $va-grid-unit * $multiplier;
+}
+
+// ----------------------------------------------------------------------------
+// va-shade($color, $percentage)
+// Darkens a colour by mixing it with black.
+// Unlike Sass `darken()`, this uses a mix-with-black approach for more
+// predictable results across colour spaces.
+// ----------------------------------------------------------------------------
+/// @param  {Color}  $color      — the base colour
+/// @param  {Number} $percentage — amount to darken (0% – 100%)
+/// @return {Color}
+@function va-shade($color, $percentage) {
+  @return color.mix(#000, $color, $percentage);
+}
+
+// ----------------------------------------------------------------------------
+// va-tint($color, $percentage)
+// Lightens a colour by mixing it with white.
+// Unlike Sass `lighten()`, this uses a mix-with-white approach for more
+// predictable results across colour spaces.
+// ----------------------------------------------------------------------------
+/// @param  {Color}  $color      — the base colour
+/// @param  {Number} $percentage — amount to lighten (0% – 100%)
+/// @return {Color}
+@function va-tint($color, $percentage) {
+  @return color.mix(#fff, $color, $percentage);
+}
+
+// ----------------------------------------------------------------------------
+// va-str-replace($string, $search, $replace)
+// Replaces all occurrences of `$search` in `$string` with `$replace`.
+// Useful for manipulating SVG data-URIs or class-name generation.
+// ----------------------------------------------------------------------------
+/// @param  {String} $string  — the source string
+/// @param  {String} $search  — substring to find
+/// @param  {String} $replace [""] — replacement substring
+/// @return {String}
+@function va-str-replace($string, $search, $replace: "") {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) +
+            $replace +
+            va-str-replace(
+              string.slice($string, $index + string.length($search)),
+              $search,
+              $replace
+            );
+  }
+
+  @return $string;
+}

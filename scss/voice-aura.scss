@@ -1,0 +1,49 @@
+// ============================================================================
+// Voice Aura Design System
+// ============================================================================
+// Main entry point.  Import order matters:
+//   1. Abstracts  – variables, functions, mixins (no CSS output)
+//   2. Vendors    – Bootstrap with our variable overrides
+//   3. Base       – reset, typography
+//   4. Layout     – navbar, hero, sections, footer, grid
+//   5. Components – buttons, cards, forms, pricing, badges, etc.
+// ============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. ABSTRACTS (no CSS output — design tokens & helpers only)
+// ---------------------------------------------------------------------------
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+// ---------------------------------------------------------------------------
+// 2. VENDORS (Bootstrap 5 with our overrides applied)
+// ---------------------------------------------------------------------------
+@import "vendors/bootstrap";
+
+// ---------------------------------------------------------------------------
+// 3. BASE (global resets & typography)
+// ---------------------------------------------------------------------------
+@import "base/reset";
+@import "base/typography";
+
+// ---------------------------------------------------------------------------
+// 4. LAYOUT (structural page sections)
+// ---------------------------------------------------------------------------
+@import "layout/grid";
+@import "layout/navbar";
+@import "layout/hero";
+@import "layout/section";
+@import "layout/footer";
+
+// ---------------------------------------------------------------------------
+// 5. COMPONENTS (reusable UI elements)
+// ---------------------------------------------------------------------------
+@import "components/buttons";
+@import "components/cards";
+@import "components/badges";
+@import "components/forms";
+@import "components/pricing";
+@import "components/blog-card";
+@import "components/voice-agent";
+@import "components/auth";

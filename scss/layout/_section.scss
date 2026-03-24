@@ -1,0 +1,297 @@
+// ==========================================================================
+// Voice Aura Design System — Sections
+// ==========================================================================
+// Reusable section patterns: standard / alt / dark backgrounds, centred
+// section headers with badge + title + subtitle, two-column feature rows,
+// and client-logo bars.
+//
+// Depends on: $va-near-black, $va-primary-blue, $va-body-text,
+//   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
+//   $va-font-body, $va-grid-unit, $va-radius-lg, $va-container-max-width,
+//   $va-breakpoints, $va-font-sizes, $font-size-base.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Local aliases
+// ---------------------------------------------------------------------------
+
+$_bp-md: map-get($va-breakpoints, "md"); // 768px
+$_font-size-lg: map-get($va-font-sizes, "lg"); // 1.125rem
+$_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
+$_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
+
+// ---------------------------------------------------------------------------
+// 1. Base Section
+// ---------------------------------------------------------------------------
+
+.va-section {
+  position: relative;
+  padding: ($va-grid-unit * 12) ($va-grid-unit * 4);  // 96px 32px
+  background-color: #fff;
+
+  // Slightly tighter variant
+  &--sm {
+    padding: ($va-grid-unit * 8) ($va-grid-unit * 4);  // 64px 32px
+  }
+
+  // Extra generous
+  &--lg {
+    padding: ($va-grid-unit * 16) ($va-grid-unit * 4); // 128px 32px
+  }
+
+  // Alternating background (light grey)
+  &--alt {
+    background-color: $va-light-grey;
+  }
+
+  // Dark background
+  &--dark {
+    background-color: $va-near-black;
+    color: #fff;
+
+    .va-section__title { color: #fff; }
+    .va-section__subtitle { color: rgba(#fff, 0.7); }
+    .va-section__badge {
+      color: $va-primary-blue;
+      background-color: rgba($va-primary-blue, 0.15);
+      border-color: rgba($va-primary-blue, 0.25);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Section Header
+// ---------------------------------------------------------------------------
+// Centred header block: optional badge → title → subtitle
+
+.va-section__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto ($va-grid-unit * 8);              // 64px bottom
+}
+
+// Category badge above the title (e.g. "FEATURES", "INTEGRATIONS")
+.va-section__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;
+  padding: ($va-grid-unit * 0.5) ($va-grid-unit * 2); // 4px 16px
+  margin-bottom: $va-grid-unit * 2.5;              // 20px
+  font-family: $va-font-body;
+  font-size: $_font-size-xs;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $va-primary-blue;
+  background-color: rgba($va-primary-blue, 0.06);
+  border: 1px solid rgba($va-primary-blue, 0.15);
+  border-radius: $va-radius-pill;
+  line-height: 1.4;
+}
+
+// Section title
+.va-section__title {
+  font-family: $va-font-heading;
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 2.75rem); // 28px → 44px
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: $va-near-black;
+  margin-bottom: $va-grid-unit * 2;                // 16px
+}
+
+// Section subtitle / description
+.va-section__subtitle {
+  font-family: $va-font-body;
+  font-size: $_font-size-lg;
+  font-weight: 400;
+  line-height: 1.65;
+  color: $va-body-text;
+  margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// 3. Feature Row (two-column split)
+// ---------------------------------------------------------------------------
+// Text on one side, visual / image on the other.
+
+.va-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $va-grid-unit * 8;                          // 64px
+  align-items: center;
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+  padding: ($va-grid-unit * 4) 0;
+
+  // Reversed variant — visual left, text right
+  &--reversed {
+    direction: rtl;
+
+    > * {
+      direction: ltr;
+    }
+  }
+
+  // Content side
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__badge {
+    @extend .va-section__badge;
+    align-self: flex-start;
+  }
+
+  &__title {
+    font-family: $va-font-heading;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: $va-near-black;
+    margin-bottom: $va-grid-unit * 2;
+  }
+
+  &__description {
+    font-family: $va-font-body;
+    font-size: $font-size-base;
+    line-height: 1.7;
+    color: $va-body-text;
+    margin-bottom: $va-grid-unit * 3;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $va-grid-unit * 0.75;
+    font-family: $va-font-body;
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $va-primary-blue;
+    transition: gap 0.2s ease-in-out;
+
+    &:hover {
+      gap: $va-grid-unit * 1.25;
+      text-decoration: none;
+    }
+
+    // Arrow icon
+    &-arrow {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover &-arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  // Visual / media side
+  &__visual {
+    position: relative;
+    border-radius: $va-radius-lg;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// Feature row — responsive
+@media (max-width: $_bp-md) {
+  .va-feature-row {
+    grid-template-columns: 1fr;
+    gap: $va-grid-unit * 4;
+
+    &--reversed {
+      direction: ltr;
+    }
+
+    &__visual {
+      order: -1;                                   // Image first on mobile
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Client Logos Bar
+// ---------------------------------------------------------------------------
+// Horizontal strip showing partner / customer logos.
+// "The solution of choice for 300+ Forbes 2000 companies"
+
+.va-client-logos {
+  padding: ($va-grid-unit * 6) 0;
+  text-align: center;
+
+  &__heading {
+    font-family: $va-font-body;
+    font-size: $_font-size-sm;
+    font-weight: 500;
+    color: $va-muted-text;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $va-grid-unit * 4;              // 32px
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: ($va-grid-unit * 5) ($va-grid-unit * 6);  // 40px 48px
+    max-width: $va-container-max-width;
+    margin: 0 auto;
+    padding: 0 ($va-grid-unit * 4);
+  }
+
+  &__logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: opacity 0.2s ease-in-out,
+                filter 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5. Section Divider (optional)
+// ---------------------------------------------------------------------------
+
+.va-section__divider {
+  width: 100%;
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid $va-border-color;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Responsive – Section Padding
+// ---------------------------------------------------------------------------
+
+@media (max-width: $_bp-md) {
+  .va-section {
+    padding: ($va-grid-unit * 8) ($va-grid-unit * 2.5);
+
+    &--sm { padding: ($va-grid-unit * 5) ($va-grid-unit * 2.5); }
+    &--lg { padding: ($va-grid-unit * 10) ($va-grid-unit * 2.5); }
+  }
+
+  .va-section__header {
+    margin-bottom: $va-grid-unit * 5;
+  }
+}

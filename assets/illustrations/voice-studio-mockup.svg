@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <!-- Laptop screen frame -->
+  <rect x="40" y="20" width="520" height="340" rx="12" stroke="#1A1919" stroke-width="2" fill="#F7F7F8"/>
+  <!-- Window control dots -->
+  <circle cx="68" cy="44" r="4" fill="#FF5F57"/>
+  <circle cx="82" cy="44" r="4" fill="#FFBD2E"/>
+  <circle cx="96" cy="44" r="4" fill="#28CA42"/>
+  <!-- Toolbar line -->
+  <line x1="40" y1="60" x2="560" y2="60" stroke="#1A1919" stroke-width="1" opacity="0.15"/>
+  <!-- Screen content area -->
+  <!-- Record button (large circle) -->
+  <circle cx="300" cy="200" r="36" fill="#0478FF"/>
+  <!-- Mic icon inside button -->
+  <rect x="294" y="184" width="12" height="18" rx="6" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+  <path d="M290 202 A10 10 0 0 0 310 202" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+  <line x1="300" y1="212" x2="300" y2="216" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Text lines below button -->
+  <rect x="200" y="260" width="200" height="4" rx="2" fill="#1A1919" opacity="0.12"/>
+  <rect x="220" y="274" width="160" height="4" rx="2" fill="#1A1919" opacity="0.08"/>
+  <rect x="240" y="288" width="120" height="4" rx="2" fill="#1A1919" opacity="0.06"/>
+  <!-- Laptop base -->
+  <path d="M20 360 L40 360 L40 356 Q40 360 44 360 L556 360 Q560 360 560 356 L560 360 L580 360" stroke="#1A1919" stroke-width="2" fill="none"/>
+  <rect x="20" y="360" width="560" height="12" rx="4" fill="#E9E9EA" stroke="#1A1919" stroke-width="1"/>
+  <!-- Trackpad indent -->
+  <rect x="250" y="363" width="100" height="6" rx="2" fill="none" stroke="#1A1919" stroke-width="0.5" opacity="0.3"/>
+</svg>

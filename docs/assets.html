@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Asset Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1A1919;
+      background: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ─────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .page-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid #E9E9EA;
+      margin-bottom: 56px;
+    }
+    .page-header h1 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .page-header p { color: #4B5563; font-size: 1.125rem; }
+
+    section { margin-bottom: 72px; }
+    section h2 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    section .section-desc {
+      color: #4B5563;
+      margin-bottom: 32px;
+    }
+
+    h3 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      margin-top: 32px;
+    }
+
+    /* ── Grid helpers ───────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .grid-8 { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-6 { grid-template-columns: repeat(3, 1fr); }
+      .grid-8 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* ── Card ───────────────────────────────────────── */
+    .asset-card {
+      border: 1px solid #E9E9EA;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .asset-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .asset-card img,
+    .asset-card svg { max-width: 100%; height: auto; }
+    .asset-card__label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: #9CA3AF;
+      text-align: center;
+      word-break: break-all;
+    }
+
+    /* ── Icon grid item ─────────────────────────────── */
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border: 1px solid #E9E9EA;
+      border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .icon-item:hover {
+      border-color: #0478FF;
+      background: #F0F7FF;
+    }
+    .icon-item img {
+      width: 24px;
+      height: 24px;
+    }
+    .icon-item span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.625rem;
+      color: #9CA3AF;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* ── Pattern swatch ─────────────────────────────── */
+    .pattern-swatch {
+      border: 1px solid #E9E9EA;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .pattern-swatch__preview {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pattern-swatch__info {
+      padding: 12px 16px;
+      border-top: 1px solid #E9E9EA;
+    }
+    .pattern-swatch__name {
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .pattern-swatch__desc {
+      font-size: 0.75rem;
+      color: #9CA3AF;
+    }
+
+    /* ── Color badge ────────────────────────────────── */
+    .color-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .color-chip {
+      width: 48px; height: 48px;
+      border-radius: 8px;
+      border: 1px solid #E9E9EA;
+    }
+
+    /* ── Dark preview box ───────────────────────────── */
+    .dark-box {
+      background: #1A1919;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Font showcase ──────────────────────────────── */
+    .font-sample {
+      border: 1px solid #E9E9EA;
+      border-radius: 12px;
+      padding: 24px 32px;
+    }
+    .font-sample__name {
+      font-size: 0.75rem;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .font-sample--serif { font-family: 'IBM Plex Serif', serif; }
+    .font-sample--sans { font-family: 'IBM Plex Sans', sans-serif; }
+    .font-sample--mono { font-family: 'IBM Plex Mono', monospace; }
+    .font-sample__text {
+      font-size: 1.75rem;
+      line-height: 1.3;
+    }
+    .font-sample__weights {
+      margin-top: 12px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .font-sample__weight {
+      font-size: 0.875rem;
+      color: #4B5563;
+    }
+
+    /* ── Divider demo ───────────────────────────────── */
+    .divider-demo {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #E9E9EA;
+      border-radius: 12px;
+    }
+    .divider-demo img { width: 100%; display: block; }
+
+    /* ── Source table ────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #E9E9EA;
+    }
+    th {
+      font-weight: 600;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    td a {
+      color: #0478FF;
+      text-decoration: none;
+    }
+    td a:hover { text-decoration: underline; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 50rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+    }
+    .badge--mit { background: #ECFDF5; color: #059669; }
+    .badge--cc0 { background: #EEF2FF; color: #4F46E5; }
+    .badge--ofl { background: #FFF7ED; color: #C2410C; }
+    .badge--free { background: #F0F7FF; color: #0478FF; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .page-footer {
+      border-top: 1px solid #E9E9EA;
+      padding: 32px 0;
+      margin-top: 72px;
+      text-align: center;
+      color: #9CA3AF;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ────────────────────── Header ────────────────────── -->
+  <header class="page-header">
+    <h1>Asset Showcase</h1>
+    <p>Icons, brand marks, patterns, illustrations, and typography for the Voice Aura design system.</p>
+  </header>
+
+  <!-- ────────────────────── Brand ─────────────────────── -->
+  <section id="brand">
+    <h2>Brand Assets</h2>
+    <p class="section-desc">Logo variations for light and dark contexts. Minimum display size: 24px for icon, 140px width for full logo.</p>
+
+    <div class="grid-3">
+      <div class="asset-card">
+        <img src="../assets/brand/logo-icon.svg" alt="Voice Aura logo icon" width="64" height="64">
+        <span class="asset-card__label">logo-icon.svg</span>
+      </div>
+      <div class="asset-card">
+        <img src="../assets/brand/logo-full.svg" alt="Voice Aura full logo" width="200" height="48">
+        <span class="asset-card__label">logo-full.svg</span>
+      </div>
+      <div class="asset-card dark-box">
+        <img src="../assets/brand/logo-icon-white.svg" alt="Voice Aura logo icon (white)" width="64" height="64">
+        <span class="asset-card__label" style="color:#666">logo-icon-white.svg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Custom Icons ──────────────── -->
+  <section id="custom-icons">
+    <h2>Custom Icons</h2>
+    <p class="section-desc">Voice-specific SVG icons created for the design system.</p>
+
+    <div class="grid-6">
+      <div class="icon-item">
+        <img src="../assets/icons/play-circle.svg" alt="Play">
+        <span>play-circle</span>
+      </div>
+      <div class="icon-item">
+        <img src="../assets/icons/pause-circle.svg" alt="Pause">
+        <span>pause-circle</span>
+      </div>
+      <div class="icon-item">
+        <img src="../assets/icons/waveform.svg" alt="Waveform">
+        <span>waveform</span>
+      </div>
+      <div class="icon-item">
+        <img src="../assets/icons/microphone.svg" alt="Microphone">
+        <span>microphone</span>
+      </div>
+      <div class="icon-item">
+        <img src="../assets/icons/volume-high.svg" alt="Volume">
+        <span>volume-high</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Lucide Icons ──────────────── -->
+  <section id="lucide-icons">
+    <h2>Lucide Icon Set</h2>
+    <p class="section-desc">54 curated icons from <a href="https://lucide.dev/" target="_blank" rel="noopener">Lucide</a> (MIT license). Full library has 1,900+ icons.</p>
+
+    <h3>Audio / Voice</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/mic.svg" alt="mic"><span>mic</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/mic-off.svg" alt="mic-off"><span>mic-off</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/headphones.svg" alt="headphones"><span>headphones</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/volume-2.svg" alt="volume-2"><span>volume-2</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/volume-x.svg" alt="volume-x"><span>volume-x</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/audio-waveform.svg" alt="audio-waveform"><span>audio-waveform</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/podcast.svg" alt="podcast"><span>podcast</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/radio.svg" alt="radio"><span>radio</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/speaker.svg" alt="speaker"><span>speaker</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/waves.svg" alt="waves"><span>waves</span></div>
+    </div>
+
+    <h3>Playback</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/play.svg" alt="play"><span>play</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/pause.svg" alt="pause"><span>pause</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/square.svg" alt="stop"><span>square</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/circle-play.svg" alt="circle-play"><span>circle-play</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/circle-pause.svg" alt="circle-pause"><span>circle-pause</span></div>
+    </div>
+
+    <h3>Navigation</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/menu.svg" alt="menu"><span>menu</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/x.svg" alt="close"><span>x</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/search.svg" alt="search"><span>search</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/arrow-right.svg" alt="arrow-right"><span>arrow-right</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/chevron-down.svg" alt="chevron-down"><span>chevron-down</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/chevron-right.svg" alt="chevron-right"><span>chevron-right</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/chevron-up.svg" alt="chevron-up"><span>chevron-up</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/external-link.svg" alt="external-link"><span>external-link</span></div>
+    </div>
+
+    <h3>Actions</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/send.svg" alt="send"><span>send</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/upload.svg" alt="upload"><span>upload</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/download.svg" alt="download"><span>download</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/copy.svg" alt="copy"><span>copy</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/share-2.svg" alt="share"><span>share-2</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/bookmark.svg" alt="bookmark"><span>bookmark</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/log-in.svg" alt="log-in"><span>log-in</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/log-out.svg" alt="log-out"><span>log-out</span></div>
+    </div>
+
+    <h3>Content</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/file-text.svg" alt="file-text"><span>file-text</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/code.svg" alt="code"><span>code</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/globe.svg" alt="globe"><span>globe</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/languages.svg" alt="languages"><span>languages</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/video.svg" alt="video"><span>video</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/message-square.svg" alt="message"><span>message-square</span></div>
+    </div>
+
+    <h3>Feedback</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/heart.svg" alt="heart"><span>heart</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/star.svg" alt="star"><span>star</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/thumbs-up.svg" alt="thumbs-up"><span>thumbs-up</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/check.svg" alt="check"><span>check</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/bell.svg" alt="bell"><span>bell</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/eye.svg" alt="eye"><span>eye</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/eye-off.svg" alt="eye-off"><span>eye-off</span></div>
+    </div>
+
+    <h3>Utility</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/settings.svg" alt="settings"><span>settings</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/user.svg" alt="user"><span>user</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/lock.svg" alt="lock"><span>lock</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/mail.svg" alt="mail"><span>mail</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/phone.svg" alt="phone"><span>phone</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/clock.svg" alt="clock"><span>clock</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/zap.svg" alt="zap"><span>zap</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/sparkles.svg" alt="sparkles"><span>sparkles</span></div>
+    </div>
+
+    <h3>Commerce &amp; Social</h3>
+    <div class="grid-8">
+      <div class="icon-item"><img src="../assets/icons/lucide/credit-card.svg" alt="credit-card"><span>credit-card</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/shield-check.svg" alt="shield-check"><span>shield-check</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/github.svg" alt="github"><span>github</span></div>
+      <div class="icon-item"><img src="../assets/icons/lucide/twitter.svg" alt="twitter"><span>twitter</span></div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Patterns ──────────────────── -->
+  <section id="patterns">
+    <h2>Patterns &amp; Decorative Elements</h2>
+    <p class="section-desc">Background textures, waveforms, and dividers for visual interest.</p>
+
+    <div class="grid-2">
+      <div class="pattern-swatch">
+        <div class="pattern-swatch__preview" style="background-image: url('../assets/patterns/halftone-dots.svg'); background-repeat: repeat; background-size: 16px 16px;">
+        </div>
+        <div class="pattern-swatch__info">
+          <div class="pattern-swatch__name">Halftone Dots</div>
+          <div class="pattern-swatch__desc">16x16 tile &middot; halftone-dots.svg</div>
+        </div>
+      </div>
+
+      <div class="pattern-swatch">
+        <div class="pattern-swatch__preview" style="background-image: url('../assets/patterns/grid-dots.svg'); background-repeat: repeat; background-size: 24px 24px;">
+        </div>
+        <div class="pattern-swatch__info">
+          <div class="pattern-swatch__name">Grid Dots</div>
+          <div class="pattern-swatch__desc">24x24 tile &middot; grid-dots.svg</div>
+        </div>
+      </div>
+
+      <div class="pattern-swatch">
+        <div class="pattern-swatch__preview" style="background: #FFFFFF;">
+          <img src="../assets/patterns/sound-wave-hero.svg" alt="Sound wave hero pattern" height="140">
+        </div>
+        <div class="pattern-swatch__info">
+          <div class="pattern-swatch__name">Sound Wave Hero</div>
+          <div class="pattern-swatch__desc">120x300 &middot; sound-wave-hero.svg</div>
+        </div>
+      </div>
+
+      <div class="pattern-swatch">
+        <div class="pattern-swatch__preview" style="background: #FFFFFF; padding: 40px 0;">
+          <img src="../assets/patterns/wave-divider.svg" alt="Wave divider" style="width: 100%;">
+        </div>
+        <div class="pattern-swatch__info">
+          <div class="pattern-swatch__name">Wave Divider</div>
+          <div class="pattern-swatch__desc">1440x60 &middot; wave-divider.svg</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>CSS Pattern Mixin</h3>
+    <div class="pattern-swatch" style="margin-top: 16px;">
+      <div class="pattern-swatch__preview" style="
+        position: relative;
+        background: #F7F7F8;
+      ">
+        <div style="
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle, rgba(26,25,25,0.06) 1px, transparent 1px);
+          background-size: 8px 8px;
+        "></div>
+        <span style="position: relative; z-index: 1; font-family: 'IBM Plex Mono', monospace; font-size: 0.8125rem; color: #4B5563;">
+          @include va-halftone-overlay();
+        </span>
+      </div>
+      <div class="pattern-swatch__info">
+        <div class="pattern-swatch__name">CSS Halftone Overlay (Mixin)</div>
+        <div class="pattern-swatch__desc">Pure CSS &middot; no image file needed &middot; configurable opacity &amp; color</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Illustrations ─────────────── -->
+  <section id="illustrations">
+    <h2>Illustrations &amp; Mockups</h2>
+    <p class="section-desc">Device frames and interface mockups for feature sections and demos.</p>
+
+    <div class="grid-2">
+      <div class="asset-card" style="padding: 32px;">
+        <img src="../assets/illustrations/voice-studio-mockup.svg" alt="Voice Studio mockup" style="max-width: 100%;">
+        <span class="asset-card__label">voice-studio-mockup.svg (600x400)</span>
+      </div>
+      <div class="asset-card" style="padding: 32px;">
+        <img src="../assets/illustrations/phone-mockup.svg" alt="Phone mockup" style="max-height: 320px;">
+        <span class="asset-card__label">phone-mockup.svg (280x560)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Typography ────────────────── -->
+  <section id="typography">
+    <h2>Typography</h2>
+    <p class="section-desc">IBM Plex superfamily — Serif for headings, Sans for body, Mono for code. All from Google Fonts under SIL OFL.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="font-sample font-sample--serif">
+        <div class="font-sample__name">IBM Plex Serif</div>
+        <div class="font-sample__text">Built for unmatched speed</div>
+        <div class="font-sample__weights">
+          <span class="font-sample__weight" style="font-weight:400">Regular 400</span>
+          <span class="font-sample__weight" style="font-weight:500">Medium 500</span>
+          <span class="font-sample__weight" style="font-weight:600">SemiBold 600</span>
+          <span class="font-sample__weight" style="font-weight:700">Bold 700</span>
+        </div>
+      </div>
+
+      <div class="font-sample font-sample--sans">
+        <div class="font-sample__name">IBM Plex Sans</div>
+        <div class="font-sample__text">Fastest TTS API. Customizable voice Studio.</div>
+        <div class="font-sample__weights">
+          <span class="font-sample__weight" style="font-weight:300">Light 300</span>
+          <span class="font-sample__weight" style="font-weight:400">Regular 400</span>
+          <span class="font-sample__weight" style="font-weight:500">Medium 500</span>
+          <span class="font-sample__weight" style="font-weight:600">SemiBold 600</span>
+          <span class="font-sample__weight" style="font-weight:700">Bold 700</span>
+        </div>
+      </div>
+
+      <div class="font-sample font-sample--mono">
+        <div class="font-sample__name">IBM Plex Mono</div>
+        <div class="font-sample__text">const voice = await api.generate(text);</div>
+        <div class="font-sample__weights">
+          <span class="font-sample__weight" style="font-weight:400">Regular 400</span>
+          <span class="font-sample__weight" style="font-weight:500">Medium 500</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Color Palette ─────────────── -->
+  <section id="colors">
+    <h2>Color Palette for Assets</h2>
+    <p class="section-desc">Use these exact values when recoloring downloaded SVGs and illustrations.</p>
+
+    <div class="grid-4">
+      <div class="asset-card">
+        <div class="color-chip" style="background: #0478FF; border-color: #0478FF;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Primary Blue</div>
+          <div class="asset-card__label">#0478FF</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #1A1919; border-color: #1A1919;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Near Black</div>
+          <div class="asset-card__label">#1A1919</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #E9E9EA;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Light Grey</div>
+          <div class="asset-card__label">#E9E9EA</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #F7F7F8;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Section BG</div>
+          <div class="asset-card__label">#F7F7F8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-top: 16px;">
+      <div class="asset-card">
+        <div class="color-chip" style="background: #4B5563; border-color: #4B5563;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Body Text</div>
+          <div class="asset-card__label">#4B5563</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #9CA3AF;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Muted</div>
+          <div class="asset-card__label">#9CA3AF</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #FFFFFF;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">White</div>
+          <div class="asset-card__label">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="color-chip" style="background: #E5E7EB;"></div>
+        <div>
+          <div style="font-weight: 600; font-size: 0.875rem;">Border</div>
+          <div class="asset-card__label">#E5E7EB</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Sources ───────────────────── -->
+  <section id="sources">
+    <h2>Open-Source Asset Sources</h2>
+    <p class="section-desc">All recommended platforms for downloading additional assets. Verify licenses per-asset for SVG Repo.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Best For</th>
+          <th>License</th>
+          <th>Attribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://lucide.dev/" target="_blank" rel="noopener">Lucide Icons</a></td>
+          <td>UI icons (primary library)</td>
+          <td><span class="badge badge--mit">MIT</span></td>
+          <td>Not required</td>
+        </tr>
+        <tr>
+          <td><a href="https://phosphoricons.com/" target="_blank" rel="noopener">Phosphor Icons</a></td>
+          <td>Extended icon needs</td>
+          <td><span class="badge badge--mit">MIT</span></td>
+          <td>Not required</td>
+        </tr>
+        <tr>
+          <td><a href="https://undraw.co/" target="_blank" rel="noopener">unDraw</a></td>
+          <td>Feature illustrations, empty states</td>
+          <td><span class="badge badge--cc0">CC0</span></td>
+          <td>Not required</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.svgrepo.com/" target="_blank" rel="noopener">SVG Repo</a></td>
+          <td>SVG icons &amp; illustrations</td>
+          <td><span class="badge badge--free">Varies</span></td>
+          <td>Check per asset</td>
+        </tr>
+        <tr>
+          <td><a href="https://heropatterns.com/" target="_blank" rel="noopener">Hero Patterns</a></td>
+          <td>CSS/SVG background patterns</td>
+          <td><span class="badge badge--free">Free</span></td>
+          <td>Not required</td>
+        </tr>
+        <tr>
+          <td><a href="https://fonts.google.com/?query=IBM+Plex" target="_blank" rel="noopener">Google Fonts</a></td>
+          <td>IBM Plex font family</td>
+          <td><span class="badge badge--ofl">SIL OFL</span></td>
+          <td>Not for usage</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/IBM/plex" target="_blank" rel="noopener">IBM/plex (GitHub)</a></td>
+          <td>Self-hosted font files</td>
+          <td><span class="badge badge--ofl">SIL OFL</span></td>
+          <td>License file for redistribution</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    Voice Aura Design System &middot; Asset Showcase &middot;
+    See <a href="../ASSET_GUIDELINES.md" style="color: #0478FF;">ASSET_GUIDELINES.md</a> for full documentation
+  </div>
+</footer>
+
+</body>
+</html>

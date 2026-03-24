@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura Design System — Component Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/css/voice-aura.css">
+  <style>
+    /* Reference page specific styles */
+    .ref-section { padding: 3rem 0; border-bottom: 1px solid #E5E7EB; }
+    .ref-section:last-child { border-bottom: none; }
+    .ref-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .ref-title { font-family: 'IBM Plex Serif', serif; font-size: 2rem; font-weight: 700; color: #1A1919; margin-bottom: 0.5rem; }
+    .ref-desc { color: #4B5563; margin-bottom: 2rem; max-width: 640px; }
+    .ref-grid { display: grid; gap: 1.5rem; }
+    .ref-grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .ref-grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .ref-grid--4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .ref-swatch { padding: 2rem 1rem 1rem; border-radius: 0.75rem; min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ref-swatch span { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; }
+    .ref-spacer { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+    .ref-spacer-bar { background: #0478FF; border-radius: 4px; height: 12px; }
+    .ref-spacer-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #4B5563; white-space: nowrap; }
+    .ref-component-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
+    .ref-toc { position: sticky; top: 1rem; }
+    .ref-toc a { display: block; padding: 0.35rem 0; font-size: 0.875rem; color: #4B5563; text-decoration: none; }
+    .ref-toc a:hover { color: #0478FF; }
+    .ref-radius-demo { width: 80px; height: 80px; background: #E9E9EA; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; }
+    .ref-shadow-demo { width: 120px; height: 80px; background: #fff; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #9CA3AF; }
+    .ref-page-header { background: #1A1919; color: white; padding: 4rem 0; }
+    .ref-page-header h1 { font-family: 'IBM Plex Serif', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .ref-page-header p { color: #9CA3AF; font-size: 1.125rem; }
+    .ref-page-header .ref-version { display: inline-block; background: #0478FF; color: white; padding: 0.25rem 0.75rem; border-radius: 50rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================== -->
+  <!-- PAGE HEADER                                                         -->
+  <!-- ================================================================== -->
+  <header class="ref-page-header">
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+      <span class="ref-version">v1.0.0</span>
+      <h1>Voice Aura Design System</h1>
+      <p>A comprehensive, reusable UI guideline built on Bootstrap 5 for premium SaaS applications.</p>
+    </div>
+  </header>
+
+  <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="row" style="display: flex; gap: 2rem;">
+
+      <!-- ================================================================ -->
+      <!-- SIDEBAR TOC                                                       -->
+      <!-- ================================================================ -->
+      <aside style="flex: 0 0 220px; padding-top: 2rem;" class="d-none d-lg-block">
+        <nav class="ref-toc">
+          <p class="ref-label" style="margin-bottom: 1rem;">Contents</p>
+          <a href="#colors">Color Palette</a>
+          <a href="#typography">Typography</a>
+          <a href="#spacing">Spacing</a>
+          <a href="#radius">Border Radius</a>
+          <a href="#shadows">Shadows</a>
+          <a href="#buttons">Buttons</a>
+          <a href="#badges">Badges & Tags</a>
+          <a href="#cards">Cards</a>
+          <a href="#forms">Forms</a>
+          <a href="#input-card">TTS Input Card</a>
+          <a href="#pricing">Pricing Cards</a>
+          <a href="#auth">Auth Forms</a>
+          <a href="#navbar">Navbar</a>
+          <a href="#hero">Hero Section</a>
+          <a href="#features">Feature Section</a>
+          <a href="#blog">Blog Cards</a>
+          <a href="#agent">Voice Agent Card</a>
+          <a href="#footer">Footer</a>
+        </nav>
+      </aside>
+
+      <!-- ================================================================ -->
+      <!-- MAIN CONTENT                                                      -->
+      <!-- ================================================================ -->
+      <main style="flex: 1; min-width: 0;">
+
+        <!-- ============================================================ -->
+        <!-- COLORS                                                        -->
+        <!-- ============================================================ -->
+        <section id="colors" class="ref-section">
+          <p class="ref-label">Foundation</p>
+          <h2 class="ref-title">Color Palette</h2>
+          <p class="ref-desc">The Voice Aura palette is intentionally restrained. Near-black and white dominate, with blue used only for interactive accents.</p>
+
+          <h5 style="margin: 2rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Core Brand</h5>
+          <div class="ref-grid ref-grid--4">
+            <div class="ref-swatch" style="background: #0478FF; color: white;">
+              <span><strong>Primary Blue</strong><br>#0478FF</span>
+            </div>
+            <div class="ref-swatch" style="background: #1A1919; color: white;">
+              <span><strong>Near Black</strong><br>#1A1919</span>
+            </div>
+            <div class="ref-swatch" style="background: #E9E9EA; color: #1A1919;">
+              <span><strong>Light Grey</strong><br>#E9E9EA</span>
+            </div>
+            <div class="ref-swatch" style="background: #FFFFFF; border: 1px solid #E5E7EB; color: #1A1919;">
+              <span><strong>White</strong><br>#FFFFFF</span>
+            </div>
+          </div>
+
+          <h5 style="margin: 2rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">UI & Text</h5>
+          <div class="ref-grid ref-grid--4">
+            <div class="ref-swatch" style="background: #F7F7F8; border: 1px solid #E5E7EB; color: #1A1919;">
+              <span><strong>Section BG</strong><br>#F7F7F8</span>
+            </div>
+            <div class="ref-swatch" style="background: #4B5563; color: white;">
+              <span><strong>Body Text</strong><br>#4B5563</span>
+            </div>
+            <div class="ref-swatch" style="background: #9CA3AF; color: white;">
+              <span><strong>Muted Text</strong><br>#9CA3AF</span>
+            </div>
+            <div class="ref-swatch" style="background: #E5E7EB; color: #1A1919;">
+              <span><strong>Border</strong><br>#E5E7EB</span>
+            </div>
+          </div>
+
+          <h5 style="margin: 2rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Semantic</h5>
+          <div class="ref-grid ref-grid--4">
+            <div class="ref-swatch" style="background: #10B981; color: white;">
+              <span><strong>Success</strong><br>#10B981</span>
+            </div>
+            <div class="ref-swatch" style="background: #F59E0B; color: white;">
+              <span><strong>Warning</strong><br>#F59E0B</span>
+            </div>
+            <div class="ref-swatch" style="background: #EF4444; color: white;">
+              <span><strong>Danger</strong><br>#EF4444</span>
+            </div>
+            <div class="ref-swatch" style="background: #EEF2FF; border: 1px solid #E5E7EB; color: #1A1919;">
+              <span><strong>Badge BG</strong><br>#EEF2FF</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TYPOGRAPHY                                                    -->
+        <!-- ============================================================ -->
+        <section id="typography" class="ref-section">
+          <p class="ref-label">Foundation</p>
+          <h2 class="ref-title">Typography</h2>
+          <p class="ref-desc">IBM Plex Serif for headings creates authority. IBM Plex Sans for body ensures readability. The pairing produces natural hierarchy.</p>
+
+          <div style="margin-bottom: 2rem;">
+            <p class="ref-label">Heading Font — IBM Plex Serif</p>
+            <p style="font-family: 'IBM Plex Serif', serif; font-size: 3.5rem; font-weight: 700; line-height: 1.2; color: #1A1919; margin-bottom: 0.5rem;">
+              H1 — Built for unmatched speed
+            </p>
+            <p style="font-family: 'IBM Plex Serif', serif; font-size: 2.5rem; font-weight: 700; line-height: 1.2; color: #1A1919; margin-bottom: 0.5rem;">
+              H2 — Choose Pricing Plan
+            </p>
+            <p style="font-family: 'IBM Plex Serif', serif; font-size: 1.75rem; font-weight: 600; line-height: 1.3; color: #1A1919; margin-bottom: 0.5rem;">
+              H3 — Experience the Fastest API
+            </p>
+            <p style="font-family: 'IBM Plex Serif', serif; font-size: 1.25rem; font-weight: 600; line-height: 1.4; color: #1A1919; margin-bottom: 0.5rem;">
+              H4 — Studio-Grade Voice
+            </p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.4; color: #1A1919; margin-bottom: 0.5rem;">
+              H5 — Smart voice experiences
+            </p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5; color: #1A1919; margin-bottom: 0.5rem;">
+              H6 — Natural language understanding
+            </p>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <p class="ref-label">Body Font — IBM Plex Sans</p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1.25rem; color: #4B5563; line-height: 1.6; margin-bottom: 1rem; max-width: 640px;">
+              <strong>Lead text (20px):</strong> Fastest TTS API. Customizable voice Studio. Instant AI dubbing. Trusted by 10M+ creators worldwide.
+            </p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; color: #4B5563; line-height: 1.6; margin-bottom: 1rem; max-width: 640px;">
+              <strong>Body text (16px):</strong> Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences.
+            </p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #9CA3AF; line-height: 1.5; max-width: 640px;">
+              <strong>Small/Muted (14px):</strong> By signing up, you accept Voice Aura privacy policy and terms of service.
+            </p>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SPACING                                                       -->
+        <!-- ============================================================ -->
+        <section id="spacing" class="ref-section">
+          <p class="ref-label">Foundation</p>
+          <h2 class="ref-title">Spacing Scale</h2>
+          <p class="ref-desc">Based on an 8px grid. Consistent spacing builds visual rhythm across the interface.</p>
+
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 4px;"></div><div class="ref-spacer-label">4px — $spacer-1</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 8px;"></div><div class="ref-spacer-label">8px — $spacer-2 (1 grid unit)</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 16px;"></div><div class="ref-spacer-label">16px — $spacer-3</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 24px;"></div><div class="ref-spacer-label">24px — $spacer-4</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 48px;"></div><div class="ref-spacer-label">48px — $spacer-5</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 64px;"></div><div class="ref-spacer-label">64px — $spacer-6</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 80px;"></div><div class="ref-spacer-label">80px — $spacer-7 (section padding)</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 96px;"></div><div class="ref-spacer-label">96px — $spacer-8</div></div>
+          <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 120px;"></div><div class="ref-spacer-label">120px — $spacer-9 (large section padding)</div></div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BORDER RADIUS                                                 -->
+        <!-- ============================================================ -->
+        <section id="radius" class="ref-section">
+          <p class="ref-label">Foundation</p>
+          <h2 class="ref-title">Border Radius</h2>
+          <p class="ref-desc">Five radius levels provide visual consistency from buttons to hero cards.</p>
+          <div class="ref-component-row">
+            <div style="text-align:center;">
+              <div class="ref-radius-demo" style="border-radius: 0.5rem;">sm</div>
+              <small class="ref-spacer-label">8px</small>
+            </div>
+            <div style="text-align:center;">
+              <div class="ref-radius-demo" style="border-radius: 0.75rem;">default</div>
+              <small class="ref-spacer-label">12px</small>
+            </div>
+            <div style="text-align:center;">
+              <div class="ref-radius-demo" style="border-radius: 1rem;">lg</div>
+              <small class="ref-spacer-label">16px</small>
+            </div>
+            <div style="text-align:center;">
+              <div class="ref-radius-demo" style="border-radius: 1.5rem;">xl</div>
+              <small class="ref-spacer-label">24px</small>
+            </div>
+            <div style="text-align:center;">
+              <div class="ref-radius-demo" style="border-radius: 50rem; width: 100px;">pill</div>
+              <small class="ref-spacer-label">full</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SHADOWS                                                       -->
+        <!-- ============================================================ -->
+        <section id="shadows" class="ref-section">
+          <p class="ref-label">Foundation</p>
+          <h2 class="ref-title">Shadows & Elevation</h2>
+          <p class="ref-desc">Subtle, layered shadows create depth without competing with content.</p>
+          <div class="ref-component-row">
+            <div class="ref-shadow-demo" style="box-shadow: 0 1px 2px rgba(0,0,0,0.05);">sm</div>
+            <div class="ref-shadow-demo" style="box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);">default</div>
+            <div class="ref-shadow-demo" style="box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);">md</div>
+            <div class="ref-shadow-demo" style="box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);">lg</div>
+            <div class="ref-shadow-demo" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);">xl</div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BUTTONS                                                       -->
+        <!-- ============================================================ -->
+        <section id="buttons" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Buttons</h2>
+          <p class="ref-desc">Four button variants cover every interaction pattern. Primary (dark) for main CTAs, accent (blue) for emphasis, secondary for alternatives, ghost for tertiary.</p>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Variants</h5>
+          <div class="ref-component-row">
+            <button class="va-btn va-btn--primary">Open Studio</button>
+            <button class="va-btn va-btn--secondary">API Docs</button>
+            <button class="va-btn va-btn--accent">Get API Key</button>
+            <button class="va-btn va-btn--ghost">Log in &rarr;</button>
+          </div>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Sizes</h5>
+          <div class="ref-component-row">
+            <button class="va-btn va-btn--primary va-btn--sm">Small</button>
+            <button class="va-btn va-btn--primary">Default</button>
+            <button class="va-btn va-btn--primary va-btn--lg">Large</button>
+          </div>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Modifiers</h5>
+          <div class="ref-component-row">
+            <button class="va-btn va-btn--primary va-btn--pill">Pill Button</button>
+            <button class="va-btn va-btn--accent va-btn--icon">
+              <span class="va-btn__icon">&#9993;</span>
+              With Icon
+            </button>
+            <button class="va-btn va-btn--primary" disabled>Disabled</button>
+          </div>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Full Width</h5>
+          <button class="va-btn va-btn--primary va-btn--block" style="max-width: 400px;">Sign up &rarr;</button>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BADGES                                                        -->
+        <!-- ============================================================ -->
+        <section id="badges" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Badges & Tags</h2>
+          <p class="ref-desc">Small status indicators and category labels used throughout the interface.</p>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Badge Variants</h5>
+          <div class="ref-component-row">
+            <span class="va-badge va-badge--primary va-badge--pill">Primary</span>
+            <span class="va-badge va-badge--dark va-badge--pill">DON'T SPEAK JUST TYPE</span>
+            <span class="va-badge va-badge--light va-badge--pill">Light Badge</span>
+            <span class="va-badge va-badge--outline va-badge--pill">Outlined</span>
+          </div>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Section Badges</h5>
+          <div class="ref-component-row">
+            <span class="va-section-badge">FOR DEVELOPERS</span>
+            <span class="va-section-badge">FOR LOCALIZER</span>
+            <span class="va-section-badge">WHITEPAPER</span>
+          </div>
+
+          <h5 style="margin: 1.5rem 0 1rem; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;">Tags</h5>
+          <div class="ref-component-row">
+            <span class="va-tag">ANNUAL DISCOUNT <strong>%40</strong></span>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- CARDS                                                         -->
+        <!-- ============================================================ -->
+        <section id="cards" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Cards</h2>
+          <p class="ref-desc">Flexible card containers for organizing content. Choose bordered for flat layouts, elevated for floating emphasis.</p>
+
+          <div class="ref-grid ref-grid--2">
+            <div class="va-card va-card--bordered">
+              <div class="va-card__body">
+                <h4 class="va-card__title">Bordered Card</h4>
+                <p class="va-card__text">Uses border instead of shadow. Clean, flat appearance for content grids.</p>
+              </div>
+            </div>
+            <div class="va-card va-card--elevated">
+              <div class="va-card__body">
+                <h4 class="va-card__title">Elevated Card</h4>
+                <p class="va-card__text">Uses shadow for depth. Draws attention to important content blocks.</p>
+              </div>
+            </div>
+            <div class="va-card va-card--elevated va-card--interactive">
+              <div class="va-card__body">
+                <h4 class="va-card__title">Interactive Card</h4>
+                <p class="va-card__text">Hover to see the lift effect. Great for clickable card grids.</p>
+              </div>
+            </div>
+            <div class="va-card va-card--bordered">
+              <div class="va-card__header">Card Header</div>
+              <div class="va-card__body">
+                <h4 class="va-card__title">With Header & Footer</h4>
+                <p class="va-card__text">Structured card with distinct header and footer areas.</p>
+              </div>
+              <div class="va-card__footer">Card Footer</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FORMS                                                         -->
+        <!-- ============================================================ -->
+        <section id="forms" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Forms</h2>
+          <p class="ref-desc">Clean form elements with consistent sizing, subtle borders, and blue focus rings.</p>
+
+          <div style="max-width: 480px;">
+            <div class="va-form-group">
+              <label class="va-form-label">Email Address</label>
+              <input type="email" class="va-form-input" placeholder="you@example.com">
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-label">Password</label>
+              <input type="password" class="va-form-input" placeholder="Enter your password">
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-label">Message</label>
+              <textarea class="va-form-textarea" rows="3" placeholder="Type your message..."></textarea>
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-label">Plan</label>
+              <select class="va-form-select">
+                <option>Free</option>
+                <option>Creator — $29/mo</option>
+                <option>Business — $69/mo</option>
+              </select>
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-checkbox">
+                <input type="checkbox" checked>
+                <span>Send me tips, updates and offers</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TTS INPUT CARD                                                -->
+        <!-- ============================================================ -->
+        <section id="input-card" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">TTS Input Card</h2>
+          <p class="ref-desc">The signature Voice Aura input component — tabs, textarea, category pills, and send button.</p>
+
+          <div style="max-width: 640px;">
+            <div class="va-input-card">
+              <div class="va-input-card__tabs">
+                <button class="va-input-card__tab va-input-card__tab--active">Text to Speech</button>
+                <button class="va-input-card__tab">Upload File</button>
+              </div>
+              <div class="va-input-card__body">
+                <textarea placeholder="Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences." rows="4"></textarea>
+              </div>
+              <div class="va-input-card__footer">
+                <div class="va-input-card__pills">
+                  <button class="va-category-pill va-category-pill--active">YouTube</button>
+                  <button class="va-category-pill">Narration</button>
+                  <button class="va-category-pill">Advertisement</button>
+                  <button class="va-category-pill">Podcast</button>
+                </div>
+                <div class="va-input-card__meta">
+                  <span>400/1000</span>
+                  <button class="va-input-card__send">&rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PRICING CARDS                                                 -->
+        <!-- ============================================================ -->
+        <section id="pricing" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Pricing Cards</h2>
+          <p class="ref-desc">Three-tier pricing with tab selector, crosshair corner decorations, and featured tier emphasis.</p>
+
+          <div class="va-pricing" style="max-width: 960px;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <span class="va-tag" style="margin-bottom: 1rem; display: inline-block;">ANNUAL DISCOUNT <strong>%40</strong></span>
+              <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 0.5rem;">Choose Pricing Plan</h2>
+              <p style="color: #4B5563;">Choose the perfect plan for your voice creation needs — from getting started to scaling your production.</p>
+            </div>
+
+            <div class="va-pricing__tabs" style="margin-bottom: 2rem;">
+              <button class="va-pricing__tab va-pricing__tab--active">Studio</button>
+              <button class="va-pricing__tab">DUB</button>
+              <button class="va-pricing__tab">API</button>
+            </div>
+
+            <div class="va-pricing__grid">
+              <!-- Free -->
+              <div class="va-pricing-card">
+                <span class="va-pricing-card__badge">Free</span>
+                <div class="va-pricing-card__price">$0 <span>/Month</span></div>
+                <p class="va-pricing-card__description">Get started with essential link tracking and customization — no credit card required.</p>
+                <button class="va-btn va-btn--secondary va-btn--block va-pricing-card__cta">Get Started Free</button>
+                <ul class="va-pricing-card__features">
+                  <li class="va-pricing-card__feature">Access to core Text-to-Speech</li>
+                  <li class="va-pricing-card__feature">Limited monthly characters</li>
+                  <li class="va-pricing-card__feature">Standard voice library</li>
+                  <li class="va-pricing-card__feature">Basic voice customization</li>
+                  <li class="va-pricing-card__feature">Community support</li>
+                  <li class="va-pricing-card__feature">Watermarked exports</li>
+                </ul>
+              </div>
+              <!-- Creator (Featured) -->
+              <div class="va-pricing-card va-pricing-card--featured">
+                <span class="va-pricing-card__badge">Creator</span>
+                <div class="va-pricing-card__price">$29 <span>/Month</span></div>
+                <p class="va-pricing-card__description">For content creators &amp; professionals.</p>
+                <button class="va-btn va-btn--primary va-btn--block va-pricing-card__cta">Upgrade to Creator</button>
+                <ul class="va-pricing-card__features">
+                  <li class="va-pricing-card__feature">Everything in Free</li>
+                  <li class="va-pricing-card__feature">Increased monthly characters</li>
+                  <li class="va-pricing-card__feature">Full voice library access</li>
+                  <li class="va-pricing-card__feature">HD audio exports</li>
+                  <li class="va-pricing-card__feature">Advanced voice customization</li>
+                  <li class="va-pricing-card__feature">Commercial usage rights</li>
+                </ul>
+              </div>
+              <!-- Business -->
+              <div class="va-pricing-card">
+                <span class="va-pricing-card__badge">Business</span>
+                <div class="va-pricing-card__price">$69 <span>/Month</span></div>
+                <p class="va-pricing-card__description">High-volume access, API integration, team tools, and enterprise-grade security.</p>
+                <button class="va-btn va-btn--secondary va-btn--block va-pricing-card__cta">Contact Sales</button>
+                <ul class="va-pricing-card__features">
+                  <li class="va-pricing-card__feature">Everything in Creator</li>
+                  <li class="va-pricing-card__feature">Unlimited or high-volume characters</li>
+                  <li class="va-pricing-card__feature">API access</li>
+                  <li class="va-pricing-card__feature">Team collaboration tools</li>
+                  <li class="va-pricing-card__feature">Custom voice cloning</li>
+                  <li class="va-pricing-card__feature">Enterprise-grade security</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- AUTH FORMS                                                    -->
+        <!-- ============================================================ -->
+        <section id="auth" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Authentication Forms</h2>
+          <p class="ref-desc">Sign up and login forms with social OAuth options.</p>
+
+          <div style="max-width: 440px;">
+            <div class="va-auth">
+              <h2 class="va-auth__header">Create an Account</h2>
+              <p class="va-auth__subtitle">You are few moments away from getting started!</p>
+              <form class="va-auth__form" onsubmit="return false;">
+                <label class="va-form-checkbox" style="margin-bottom: 1.5rem;">
+                  <input type="checkbox" checked>
+                  <span>Send me tips, updates and offers</span>
+                </label>
+                <div class="va-form-group">
+                  <label class="va-form-label">Email</label>
+                  <input type="email" class="va-form-input" placeholder="Email Address">
+                </div>
+                <div class="va-form-group">
+                  <label class="va-form-label">Password</label>
+                  <input type="password" class="va-form-input" value="secretpassword">
+                </div>
+                <p class="va-auth__terms">By signing up, you accept Voice Aura <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
+                <button class="va-btn va-btn--primary va-btn--block va-auth__submit">Sign up</button>
+                <div class="va-auth__divider">or</div>
+                <button type="button" class="va-auth__social-btn">G&ensp; Continue with Google</button>
+                <button type="button" class="va-auth__social-btn">&#8862;&ensp; Continue with Microsoft</button>
+                <p class="va-auth__footer">Already have an account? <a href="#"><strong>Log In</strong></a></p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- NAVBAR                                                        -->
+        <!-- ============================================================ -->
+        <section id="navbar" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Navbar</h2>
+          <p class="ref-desc">Clean horizontal navigation with logo, centered links, and right-aligned action buttons.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden;">
+            <nav class="va-navbar">
+              <div class="va-navbar-brand">
+                <span class="va-navbar-brand__icon">&#9646;&#9646;&#9646;</span>
+                <span class="va-navbar-brand__text">VOICE AURA</span>
+              </div>
+              <ul class="va-navbar-nav">
+                <li><a href="#" class="va-navbar-link">Products</a></li>
+                <li><a href="#" class="va-navbar-link">Integrations</a></li>
+                <li><a href="#" class="va-navbar-link">API</a></li>
+                <li><a href="#" class="va-navbar-link va-navbar-link--active">Pricing</a></li>
+              </ul>
+              <div class="va-navbar-actions">
+                <a href="#" class="va-btn va-btn--ghost">Log in &rarr;</a>
+                <a href="#" class="va-btn va-btn--primary">Sign up &rarr;</a>
+              </div>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- HERO                                                          -->
+        <!-- ============================================================ -->
+        <section id="hero" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Hero Section</h2>
+          <p class="ref-desc">The signature landing hero with badge, serif headline, subtitle, dual CTAs, and the TTS input card below.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden; background: white;">
+            <div class="va-hero" style="padding: 4rem 2rem;">
+              <span class="va-badge va-badge--dark va-badge--pill va-hero__badge">DON'T SPEAK JUST TYPE</span>
+              <h1 class="va-hero__title" style="font-size: 2.5rem;">Built for unmatched<br>speed and peak efficiency</h1>
+              <p class="va-hero__subtitle">Fastest TTS API. Customizable voice Studio. Instant AI dubbing.<br>Trusted by <strong>10M+</strong> creators worldwide.</p>
+              <div class="va-hero__actions">
+                <button class="va-btn va-btn--primary va-btn--icon">
+                  <span class="va-btn__icon">&#127908;</span>
+                  Open Studio
+                </button>
+                <button class="va-btn va-btn--secondary">&lt;&gt; API Docs</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FEATURE SECTION                                               -->
+        <!-- ============================================================ -->
+        <section id="features" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Feature Section</h2>
+          <p class="ref-desc">Two-column layout pattern used for feature blocks. Text and visual side by side.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden; padding: 3rem 2rem; background: white;">
+            <div class="va-feature-row">
+              <div class="va-feature-row__content">
+                <span class="va-section-badge">FOR DEVELOPERS</span>
+                <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">Experience the Fastest, Most Powerful Text-to-Speech API</h2>
+                <p style="color: #4B5563; margin-bottom: 1.5rem;">Experience the fastest, most powerful Text-to-Speech API — delivering natural, high-quality voice with low latency and seamless integration for any application.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <button class="va-btn va-btn--accent">Get API Key</button>
+                  <a href="#" class="va-btn va-btn--ghost">Learn more &rarr;</a>
+                </div>
+              </div>
+              <div class="va-feature-row__visual" style="display: flex; align-items: center; justify-content: center; background: #F7F7F8; border-radius: 0.75rem; min-height: 200px; color: #9CA3AF;">
+                [ Visual / Agent Card ]
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BLOG CARDS                                                    -->
+        <!-- ============================================================ -->
+        <section id="blog" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Blog / Insights Cards</h2>
+          <p class="ref-desc">Article cards for the blog section with image, metadata, and read-more link.</p>
+
+          <div class="ref-grid ref-grid--3">
+            <div class="va-blog-card">
+              <div class="va-blog-card__image" style="background: #1A1919; min-height: 180px; border-radius: 0.75rem;"></div>
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category">AI VOICE AGENTS</span>
+                <span>2026-01-06</span>
+                <span>3 min</span>
+              </div>
+              <h4 class="va-blog-card__title">Why Voice Agent Prompts Require a Different Approach</h4>
+              <p class="va-blog-card__excerpt">Prompting voice agents requires a different mindset than crafting prompts for text-based LLMs.</p>
+              <a href="#" class="va-blog-card__link">Read more</a>
+            </div>
+            <div class="va-blog-card">
+              <div class="va-blog-card__image" style="background: #1A1919; min-height: 180px; border-radius: 0.75rem;"></div>
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category">PROMPT</span>
+                <span>2026-01-06</span>
+                <span>3 min</span>
+              </div>
+              <h4 class="va-blog-card__title">Twitter Video Translation Guide: Translate Videos Quickly and Easily</h4>
+              <p class="va-blog-card__excerpt">Designing for voice means prioritizing human-like dialogue, smoother transitions, and real-time responsiveness.</p>
+              <a href="#" class="va-blog-card__link">Read more</a>
+            </div>
+            <div class="va-blog-card">
+              <div class="va-blog-card__image" style="background: #1A1919; min-height: 180px; border-radius: 0.75rem;"></div>
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category">WHITEPAPER</span>
+                <span>2026-01-06</span>
+              </div>
+              <h4 class="va-blog-card__title">Designing for Voice: Prompting Text-Based LLMs</h4>
+              <p class="va-blog-card__excerpt">Learn how to quickly translate videos directly on iPhone using simple tools and AI-powered apps.</p>
+              <a href="#" class="va-blog-card__link">Read more</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- VOICE AGENT CARD                                              -->
+        <!-- ============================================================ -->
+        <section id="agent" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Voice Agent Card</h2>
+          <p class="ref-desc">Dark card showcasing an AI voice agent with language selector, avatar, and action button.</p>
+
+          <div style="max-width: 320px;">
+            <div class="va-agent-card">
+              <div class="va-agent-card__language-tabs">
+                <button class="active">English</button>
+                <button>Chinese</button>
+                <button>Jap</button>
+              </div>
+              <div class="va-agent-card__avatar" style="width: 120px; height: 120px; background: #4B5563; border-radius: 50%; margin: 1rem auto;"></div>
+              <div class="va-agent-card__name">Yang lu wu <span>&#10004;</span></div>
+              <div class="va-agent-card__role">Customer support agent</div>
+              <button class="va-agent-card__cta">Call Wang lu</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER                                                        -->
+        <!-- ============================================================ -->
+        <section id="footer" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Footer</h2>
+          <p class="ref-desc">Multi-column footer with brand, link groups, and copyright bar.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden;">
+            <footer class="va-footer va-footer--light">
+              <div style="padding: 2rem;">
+                <div class="va-footer__grid">
+                  <div class="va-footer__brand">
+                    <strong>VOICE AURA</strong>
+                  </div>
+                  <div>
+                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">Important Links</h6>
+                    <ul class="va-footer__links">
+                      <li><a href="#">Affiliates Partner Program</a></li>
+                      <li><a href="#">Voice Actor Partnerships</a></li>
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#">Blog</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">Products</h6>
+                    <ul class="va-footer__links">
+                      <li><a href="#">Text to speech</a></li>
+                      <li><a href="#">AI Dubbing</a></li>
+                      <li><a href="#">AI Voice Agent</a></li>
+                      <li><a href="#">Voice Cloning</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">How to create</h6>
+                    <ul class="va-footer__links">
+                      <li><a href="#">E-Learning</a></li>
+                      <li><a href="#">Advertisements</a></li>
+                      <li><a href="#">Explainer Videos</a></li>
+                      <li><a href="#">Product Demos</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="va-footer__bottom">
+                &copy; 2026 Voice Aura. All Rights Reserved
+              </div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FILE MAP                                                      -->
+        <!-- ============================================================ -->
+        <section class="ref-section">
+          <p class="ref-label">Architecture</p>
+          <h2 class="ref-title">File Structure</h2>
+          <pre style="background: #F7F7F8; padding: 1.5rem; border-radius: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; line-height: 1.8; overflow-x: auto; color: #4B5563;">
+voice-aura-design-system/
+├── scss/
+│   ├── abstracts/
+│   │   ├── _variables.scss       <span style="color:#9CA3AF">// Design tokens, Bootstrap overrides</span>
+│   │   ├── _functions.scss       <span style="color:#9CA3AF">// Sass utility functions</span>
+│   │   └── _mixins.scss          <span style="color:#9CA3AF">// Reusable mixins</span>
+│   ├── base/
+│   │   ├── _reset.scss           <span style="color:#9CA3AF">// CSS reset / normalize</span>
+│   │   └── _typography.scss      <span style="color:#9CA3AF">// Type system, font imports</span>
+│   ├── components/
+│   │   ├── _buttons.scss         <span style="color:#9CA3AF">// Button variants</span>
+│   │   ├── _cards.scss           <span style="color:#9CA3AF">// Card variants</span>
+│   │   ├── _pricing.scss         <span style="color:#9CA3AF">// Pricing cards</span>
+│   │   ├── _forms.scss           <span style="color:#9CA3AF">// Forms + TTS input card</span>
+│   │   ├── _badges.scss          <span style="color:#9CA3AF">// Badges, pills, tags</span>
+│   │   ├── _blog-card.scss       <span style="color:#9CA3AF">// Blog / article cards</span>
+│   │   ├── _voice-agent.scss     <span style="color:#9CA3AF">// Voice agent card</span>
+│   │   └── _auth.scss            <span style="color:#9CA3AF">// Auth forms</span>
+│   ├── layout/
+│   │   ├── _navbar.scss          <span style="color:#9CA3AF">// Navigation bar</span>
+│   │   ├── _hero.scss            <span style="color:#9CA3AF">// Hero section</span>
+│   │   ├── _section.scss         <span style="color:#9CA3AF">// Section layouts</span>
+│   │   ├── _footer.scss          <span style="color:#9CA3AF">// Footer</span>
+│   │   └── _grid.scss            <span style="color:#9CA3AF">// Grid extensions</span>
+│   ├── vendors/
+│   │   └── _bootstrap.scss       <span style="color:#9CA3AF">// Bootstrap 5 selective import</span>
+│   └── voice-aura.scss           <span style="color:#9CA3AF">// Main entry point</span>
+├── dist/css/
+│   ├── voice-aura.css            <span style="color:#9CA3AF">// Compiled (295 KB)</span>
+│   └── voice-aura.min.css        <span style="color:#9CA3AF">// Minified (242 KB)</span>
+├── docs/
+│   └── reference.html            <span style="color:#9CA3AF">// This file</span>
+├── package.json
+└── DESIGN_SYSTEM.md              <span style="color:#9CA3AF">// Full documentation</span></pre>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <footer style="background: #1A1919; color: #9CA3AF; text-align: center; padding: 2rem; margin-top: 3rem;">
+    <p style="margin: 0;">Voice Aura Design System v1.0.0 — Built on Bootstrap 5</p>
+  </footer>
+
+</body>
+</html>

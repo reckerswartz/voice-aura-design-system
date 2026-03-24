@@ -1,0 +1,258 @@
+// ==========================================================================
+// Voice Aura Design System - Voice Agent Card
+// ==========================================================================
+// Dark-themed agent card featuring a person's photo, name, role,
+// language tabs, and call-to-action button.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Agent Card
+// --------------------------------------------------------------------------
+// Usage: <div class="va-agent-card">
+//          <div class="va-agent-card__language-tabs">
+//            <button class="va-agent-card__lang va-agent-card__lang--active">English</button>
+//            <button class="va-agent-card__lang">Chinese</button>
+//            <button class="va-agent-card__lang">Japanese</button>
+//          </div>
+//          <div class="va-agent-card__avatar">
+//            <img src="..." alt="..." />
+//          </div>
+//          <div class="va-agent-card__info">
+//            <h4 class="va-agent-card__name">
+//              Wang Lu <span class="va-agent-card__verified">✓</span>
+//            </h4>
+//            <p class="va-agent-card__role">Senior AI Engineer</p>
+//          </div>
+//          <button class="va-agent-card__cta">Call Wang Lu</button>
+//          <button class="va-agent-card__favorite" aria-label="Favorite">
+//            <svg>...</svg>
+//          </button>
+//        </div>
+
+.va-agent-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  background-color: $va-near-black;
+  border-radius: $va-radius;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+
+  // --------------------------------------------------------------------------
+  // Language Selector Tabs
+  // --------------------------------------------------------------------------
+
+  &__language-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.1875rem;
+    background-color: rgba(#fff, 0.1);
+    border-radius: 100vw;
+    margin-bottom: 1.5rem;
+    width: auto;
+  }
+
+  &__lang {
+    padding: 0.375rem 0.875rem;
+    font-family: $va-font-body;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(#fff, 0.6);
+    background: transparent;
+    border: none;
+    border-radius: 100vw;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    white-space: nowrap;
+
+    &:hover {
+      color: rgba(#fff, 0.85);
+    }
+
+    &--active {
+      background-color: rgba(#fff, 0.15);
+      color: #fff;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Avatar
+  // --------------------------------------------------------------------------
+
+  &__avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 2px solid rgba(#fff, 0.15);
+    flex-shrink: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Rounded square variant
+    &--square {
+      border-radius: $va-radius;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Info Section
+  // --------------------------------------------------------------------------
+
+  &__info {
+    margin-bottom: 1.25rem;
+  }
+
+  // --------------------------------------------------------------------------
+  // Name (with optional verified badge)
+  // --------------------------------------------------------------------------
+
+  &__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: $va-font-heading;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #fff;
+    margin: 0 0 0.25rem;
+  }
+
+  &__verified {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    background-color: $va-primary;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.625rem;
+    flex-shrink: 0;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Role
+  // --------------------------------------------------------------------------
+
+  &__role {
+    font-family: $va-font-body;
+    font-size: 0.875rem;
+    color: rgba(#fff, 0.55);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  // --------------------------------------------------------------------------
+  // CTA Button ("Call Wang Lu")
+  // --------------------------------------------------------------------------
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-family: $va-font-body;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: rgba(#fff, 0.12);
+    border: 1px solid rgba(#fff, 0.15);
+    border-radius: $va-radius-sm;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(#fff, 0.18);
+      border-color: rgba(#fff, 0.25);
+      color: #fff;
+    }
+
+    &:active {
+      background-color: rgba(#fff, 0.1);
+    }
+
+    // Accent-colored CTA variant
+    &--accent {
+      background-color: $va-primary;
+      border-color: $va-primary;
+
+      &:hover {
+        background-color: darken($va-primary, 8%);
+        border-color: darken($va-primary, 8%);
+      }
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Favorite / Heart Button
+  // --------------------------------------------------------------------------
+
+  &__favorite {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(#fff, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: rgba(#fff, 0.6);
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background: rgba(#fff, 0.18);
+      color: #fff;
+    }
+
+    &.is-active {
+      color: #ef4444;
+      background: rgba(#ef4444, 0.15);
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Agent Card Grid
+// --------------------------------------------------------------------------
+// Layout helper for displaying multiple agent cards.
+
+.va-agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}

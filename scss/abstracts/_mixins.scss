@@ -1,0 +1,236 @@
+// ============================================================================
+// Voice Aura Design System - Mixins
+// ============================================================================
+// Reusable style patterns for the Voice Aura design system.
+// Depends on variables from `_variables.scss`.
+// ============================================================================
+
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+// Variables are loaded via @import in the main entry file (voice-aura.scss)
+// and are available in global scope.
+
+// ----------------------------------------------------------------------------
+// Section Padding
+// Applies the standard vertical padding used for page sections.
+// ----------------------------------------------------------------------------
+/// @param {String} $size ["default"] — "default" | "lg"
+@mixin va-section-padding($size: "default") {
+  @if $size == "lg" {
+    padding-top: $va-section-padding-y-lg;
+    padding-bottom: $va-section-padding-y-lg;
+  } @else {
+    padding-top: $va-section-padding-y;
+    padding-bottom: $va-section-padding-y;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Heading Serif
+// Applies the serif heading font with proper weight & line-height.
+// ----------------------------------------------------------------------------
+/// @param {Number} $weight [$font-weight-bold] — font weight
+@mixin va-heading-serif($weight: $font-weight-bold) {
+  font-family: $va-font-heading;
+  font-weight: $weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+// ----------------------------------------------------------------------------
+// Card — Elevated
+// Card with a box-shadow for elevation.
+// ----------------------------------------------------------------------------
+/// @param {String} $level ["default"] — "sm" | "default" | "md" | "lg" | "xl"
+@mixin va-card-elevated($level: "default") {
+  background-color: $card-bg;
+  border-radius: $card-border-radius;
+  padding: $va-card-padding;
+
+  @if $level == "sm" {
+    box-shadow: $va-shadow-sm;
+  } @else if $level == "md" {
+    box-shadow: $va-shadow-md;
+  } @else if $level == "lg" {
+    box-shadow: $va-shadow-lg;
+  } @else if $level == "xl" {
+    box-shadow: $va-shadow-xl;
+  } @else {
+    box-shadow: $va-shadow;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Card — Bordered
+// Card with a border, no shadow.
+// ----------------------------------------------------------------------------
+@mixin va-card-bordered {
+  background-color: $card-bg;
+  border: $card-border-width solid $card-border-color;
+  border-radius: $card-border-radius;
+  padding: $va-card-padding;
+  box-shadow: none;
+}
+
+// ----------------------------------------------------------------------------
+// Glass Effect (Glassmorphism)
+// Frosted-glass look with backdrop blur.
+// ----------------------------------------------------------------------------
+/// @param {Number} $opacity [$va-glass-bg-opacity] — background opacity
+/// @param {Length}  $blur    [$va-glass-blur]       — blur radius
+@mixin va-glass-effect($opacity: $va-glass-bg-opacity, $blur: $va-glass-blur) {
+  background-color: rgba($va-white, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur); // Safari support
+  border: 1px solid rgba($va-white, 0.3);
+}
+
+// ----------------------------------------------------------------------------
+// Halftone Overlay
+// Pseudo-element that renders a halftone dot pattern on top of its parent.
+// The parent MUST have `position: relative` and `overflow: hidden`.
+// ----------------------------------------------------------------------------
+/// @param {Number} $opacity [$va-halftone-pattern-opacity] — overlay opacity
+/// @param {Color}  $color   [$va-near-black]               — dot colour
+@mixin va-halftone-overlay($opacity: $va-halftone-pattern-opacity, $color: $va-near-black) {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: $opacity;
+    background-image: radial-gradient($color 1px, transparent 1px);
+    background-size: 8px 8px;
+    z-index: 1;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Text Gradient
+// Applies a gradient fill to text.
+// ----------------------------------------------------------------------------
+/// @param {Value} $gradient [$va-gradient-primary] — any CSS gradient value
+@mixin va-text-gradient($gradient: $va-gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; // fallback for non-WebKit
+}
+
+// ----------------------------------------------------------------------------
+// Responsive / Fluid Font Size
+// Linearly scales font-size between a min and max across a viewport range.
+// Uses modern `clamp()` when possible.
+// ----------------------------------------------------------------------------
+/// @param {Length} $min    — minimum font size  (e.g. 1rem)
+/// @param {Length} $max    — maximum font size  (e.g. 3.5rem)
+/// @param {Length} $min-vw [20rem] — viewport width where $min applies
+/// @param {Length} $max-vw [80rem] — viewport width where $max applies
+@mixin va-responsive-font-size($min, $max, $min-vw: 20rem, $max-vw: 80rem) {
+  // The preferred value expression for clamp: min + (max-min) * ((100vw - min-vw) / (max-vw - min-vw))
+  // We express it with calc so Sass doesn't try to resolve vw at compile time.
+  $slope: math.div(($max - $min), ($max-vw - $min-vw));
+  $intercept: $min - $slope * $min-vw;
+
+  // Convert slope to vw-based percentage
+  $slope-vw: $slope * 100;
+
+  font-size: clamp(#{$min}, #{$intercept} + #{$slope-vw}vw, #{$max});
+}
+
+// ----------------------------------------------------------------------------
+// Focus Ring
+// Consistent keyboard-focus indicator following the Voice Aura palette.
+// ----------------------------------------------------------------------------
+/// @param {Color}  $color  [rgba($va-primary-blue, 0.25)] — ring colour
+/// @param {Length}  $width  [0.2rem]                       — ring width
+/// @param {Length}  $offset [2px]                          — outline offset
+@mixin va-focus-ring($color: rgba($va-primary-blue, 0.25), $width: 0.2rem, $offset: 2px) {
+  outline: none;
+  box-shadow: 0 0 0 $width $color;
+  border-color: $va-primary-blue;
+  outline-offset: $offset;
+}
+
+// ----------------------------------------------------------------------------
+// Truncate Lines
+// Multi-line text truncation using `-webkit-line-clamp`.
+// ----------------------------------------------------------------------------
+/// @param {Number} $lines [2] — number of visible lines before truncation
+@mixin va-truncate-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ----------------------------------------------------------------------------
+// Aspect Ratio
+// Creates a box that maintains the given aspect ratio.
+// Uses the modern `aspect-ratio` property with a padding-top fallback.
+// ----------------------------------------------------------------------------
+/// @param {Number} $width  [16]
+/// @param {Number} $height [9]
+@mixin va-aspect-ratio($width: 16, $height: 9) {
+  aspect-ratio: #{$width} / #{$height};
+
+  // Fallback for older browsers
+  @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      content: "";
+      display: block;
+      padding-top: math.percentage(math.div($height, $width));
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Media Query — Up (min-width)
+// Shorthand for `min-width` media queries using the VA breakpoint map.
+// ----------------------------------------------------------------------------
+/// @param {String} $breakpoint — key from $va-breakpoints (e.g. "md", "lg")
+@mixin va-media-up($breakpoint) {
+  $bp-value: map.get($va-breakpoints, $breakpoint);
+
+  @if $bp-value == null {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($va-breakpoints)}";
+  }
+
+  @if $bp-value == 0 {
+    // xs — no media query needed
+    @content;
+  } @else {
+    @media (min-width: #{$bp-value}) {
+      @content;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Media Query — Down (max-width)
+// Shorthand for `max-width` media queries using the VA breakpoint map.
+// Uses (max-width: bp - 0.02px) to avoid overlap with min-width queries.
+// ----------------------------------------------------------------------------
+/// @param {String} $breakpoint — key from $va-breakpoints (e.g. "md", "lg")
+@mixin va-media-down($breakpoint) {
+  $bp-value: map.get($va-breakpoints, $breakpoint);
+
+  @if $bp-value == null {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($va-breakpoints)}";
+  }
+
+  @if $bp-value == 0 {
+    @error "Cannot use `va-media-down` with the `xs` breakpoint — it would always apply.";
+  }
+
+  @media (max-width: #{$bp-value - 0.02px}) {
+    @content;
+  }
+}

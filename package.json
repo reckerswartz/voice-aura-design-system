@@ -1,0 +1,36 @@
+{
+  "name": "voice-aura-design-system",
+  "version": "1.0.0",
+  "description": "A premium SaaS design system built on Bootstrap 5, inspired by the Voice Aura AI platform",
+  "main": "dist/css/voice-aura.css",
+  "bin": {
+    "voice-aura-setup": "bin/setup.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:css": "sass scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
+    "build:min": "sass scss/voice-aura.scss dist/css/voice-aura.min.css --style=compressed --no-source-map",
+    "build": "npm run build:css && npm run build:min",
+    "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map"
+  },
+  "keywords": [
+    "design-system",
+    "bootstrap",
+    "sass",
+    "voice-aura",
+    "saas",
+    "ui-kit"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.98.0"
+  },
+  "dependencies": {
+    "lucide-static": "^1.0.1"
+  }
+}

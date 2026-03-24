@@ -1,0 +1,186 @@
+// ==========================================================================
+// Voice Aura Design System - Cards
+// ==========================================================================
+// Generic card components for the Voice Aura platform.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Base Card
+// --------------------------------------------------------------------------
+// Default card with white background, border, and rounded corners.
+// Usage: <div class="va-card">
+//          <div class="va-card__body">...</div>
+//        </div>
+
+.va-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid $va-border;
+  border-radius: $va-radius;
+  padding: $va-card-padding;
+  word-wrap: break-word;
+  overflow: hidden;
+
+  // --------------------------------------------------------------------------
+  // Card Header
+  // --------------------------------------------------------------------------
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $va-border;
+
+    // When card has no padding, let header carry its own
+    .va-card--flush > & {
+      padding: 1rem $va-card-padding 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Card Body
+  // --------------------------------------------------------------------------
+
+  &__body {
+    flex: 1 1 auto;
+
+    .va-card--flush > & {
+      padding: $va-card-padding;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Card Footer
+  // --------------------------------------------------------------------------
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    margin-top: auto;
+    border-top: 1px solid $va-border;
+
+    .va-card--flush > & {
+      padding: 1rem $va-card-padding 1rem;
+      margin-top: 0;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Card Image
+  // --------------------------------------------------------------------------
+  // Full-bleed image area. Place before card body for top image layout.
+
+  &__image {
+    margin: (-$va-card-padding) (-$va-card-padding) 0;
+    overflow: hidden;
+    border-radius: $va-radius $va-radius 0 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    // When image is inside a flush card, no negative margins needed
+    .va-card--flush > & {
+      margin: 0;
+    }
+
+    // Bottom image placement
+    &--bottom {
+      margin: 0 (-$va-card-padding) (-$va-card-padding);
+      border-radius: 0 0 $va-radius $va-radius;
+      order: 999;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Card Title
+  // --------------------------------------------------------------------------
+
+  &__title {
+    font-family: $va-font-heading;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: $va-near-black;
+    margin: 0 0 0.5rem;
+  }
+
+  // --------------------------------------------------------------------------
+  // Card Text
+  // --------------------------------------------------------------------------
+
+  &__text {
+    font-family: $va-font-body;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: $va-body-text;
+    margin: 0;
+
+    + .va-card__text {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Variant: Elevated
+// --------------------------------------------------------------------------
+// Card with shadow instead of border for a lifted appearance.
+
+.va-card--elevated {
+  border-color: transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06),
+              0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+// --------------------------------------------------------------------------
+// Variant: Bordered
+// --------------------------------------------------------------------------
+// Explicitly bordered card (default already has border, but this is semantic).
+
+.va-card--bordered {
+  border-color: $va-border;
+  box-shadow: none;
+}
+
+// --------------------------------------------------------------------------
+// Variant: Interactive
+// --------------------------------------------------------------------------
+// Hover effect with slight lift - for clickable cards.
+
+.va-card--interactive {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out,
+              border-color 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+                0 1px 4px rgba(0, 0, 0, 0.04);
+    border-color: darken($va-border, 6%);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Variant: Flush
+// --------------------------------------------------------------------------
+// Card with no padding - content manages its own spacing.
+
+.va-card--flush {
+  padding: 0;
+}

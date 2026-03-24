@@ -1,0 +1,159 @@
+// ==========================================================================
+// Voice Aura Design System — Reset / Normalize
+// ==========================================================================
+// A minimal reset layer that complements Bootstrap 5's Reboot.
+// Ensures consistent rendering across browsers while staying out of
+// Bootstrap's way.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Root & Document
+// ---------------------------------------------------------------------------
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// Universal box-sizing (inheritable pattern)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// ---------------------------------------------------------------------------
+// 2. Body
+// ---------------------------------------------------------------------------
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ---------------------------------------------------------------------------
+// 3. Typography Resets
+// ---------------------------------------------------------------------------
+
+// Remove default margins on all heading & paragraph elements.
+// Specific styles are defined in _typography.scss.
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+// Ensure <strong> / <b> use a consistent weight
+strong,
+b {
+  font-weight: 600;
+}
+
+// ---------------------------------------------------------------------------
+// 4. Lists
+// ---------------------------------------------------------------------------
+
+// Strip default list styles — opt-in via utility classes instead.
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// ---------------------------------------------------------------------------
+// 5. Links
+// ---------------------------------------------------------------------------
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Media
+// ---------------------------------------------------------------------------
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto; // Preserve aspect ratio
+}
+
+// ---------------------------------------------------------------------------
+// 7. Form Elements & Buttons
+// ---------------------------------------------------------------------------
+
+// Remove default button chrome so our component styles take full control.
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// ---------------------------------------------------------------------------
+// 8. Focus Management
+// ---------------------------------------------------------------------------
+
+// Hide the focus ring for pointer interactions; show it for keyboard users.
+// Uses :focus-visible to keep accessibility intact.
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid $va-primary-blue;
+  outline-offset: 2px;
+}
+
+// ---------------------------------------------------------------------------
+// 9. Tables
+// ---------------------------------------------------------------------------
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// ---------------------------------------------------------------------------
+// 10. Misc
+// ---------------------------------------------------------------------------
+
+// Prevent overflow from breaking layouts
+html,
+body {
+  overflow-x: hidden;
+}
+
+// Remove default fieldset styles
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Ensure hidden attribute works
+[hidden] {
+  display: none !important;
+}

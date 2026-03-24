@@ -1,0 +1,426 @@
+// ==========================================================================
+// Voice Aura Design System — Hero Section
+// ==========================================================================
+// Large hero banner used on landing & product pages.  Features a centred
+// headline, supporting copy, dual CTA buttons, and the signature TTS input
+// card with decorative sound-wave and halftone-dot motifs.
+//
+// Depends on: $va-near-black, $va-primary-blue, $va-body-text,
+//   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
+//   $va-font-body, $va-grid-unit, $va-radius, $va-radius-lg,
+//   $va-radius-pill, $va-shadow-lg, $va-breakpoints, $va-font-sizes,
+//   $font-size-base.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Local aliases
+// ---------------------------------------------------------------------------
+
+$_bp-md: map-get($va-breakpoints, "md"); // 768px
+$_font-size-lg: map-get($va-font-sizes, "lg"); // 1.125rem / 18px
+$_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem / 14px
+$_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
+
+// ---------------------------------------------------------------------------
+// 1. Hero Wrapper
+// ---------------------------------------------------------------------------
+
+.va-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: ($va-grid-unit * 10) ($va-grid-unit * 4) ($va-grid-unit * 12); // 80px 32px 96px
+  overflow: hidden;
+  background-color: #fff;
+
+  // Compact variant
+  &--compact {
+    padding: ($va-grid-unit * 6) ($va-grid-unit * 4) ($va-grid-unit * 8);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Badge / Pill
+// ---------------------------------------------------------------------------
+// Small pill at the very top — e.g. "DON'T SPEAK JUST TYPE"
+
+.va-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit;                              // 8px
+  padding: ($va-grid-unit * 0.75) ($va-grid-unit * 2); // 6px 16px
+  margin-bottom: $va-grid-unit * 3;                // 24px
+  font-family: $va-font-body;
+  font-size: $_font-size-xs;                       // 12px
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $va-primary-blue;
+  background-color: rgba($va-primary-blue, 0.08);
+  border: 1px solid rgba($va-primary-blue, 0.18);
+  border-radius: $va-radius-pill;
+  line-height: 1;
+
+  // Optional leading icon
+  &-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Title
+// ---------------------------------------------------------------------------
+
+.va-hero__title {
+  font-family: $va-font-heading;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);   // Fluid 40px → 72px
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: $va-near-black;
+  max-width: 860px;
+  margin: 0 auto ($va-grid-unit * 3);              // 24px bottom
+}
+
+// ---------------------------------------------------------------------------
+// 4. Subtitle
+// ---------------------------------------------------------------------------
+
+.va-hero__subtitle {
+  font-family: $va-font-body;
+  font-size: $_font-size-lg;                       // 18px
+  font-weight: 400;
+  line-height: 1.65;
+  color: $va-body-text;
+  max-width: 640px;
+  margin: 0 auto ($va-grid-unit * 5);              // 40px bottom
+}
+
+// ---------------------------------------------------------------------------
+// 5. CTA Actions
+// ---------------------------------------------------------------------------
+
+.va-hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $va-grid-unit * 2;                          // 16px
+  margin-bottom: $va-grid-unit * 8;                // 64px
+  flex-wrap: wrap;
+}
+
+// Primary CTA (dark filled)
+.va-hero__btn--primary {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit;
+  font-family: $va-font-body;
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: #fff;
+  background-color: $va-near-black;
+  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px
+  border-radius: $va-radius-pill;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out,
+              transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    background-color: lighten($va-near-black, 14%);
+    transform: translateY(-1px);
+  }
+}
+
+// Secondary CTA (outline / ghost)
+.va-hero__btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit;
+  font-family: $va-font-body;
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $va-near-black;
+  background-color: transparent;
+  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4);
+  border-radius: $va-radius-pill;
+  border: 1.5px solid $va-border-color;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out,
+              transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $va-near-black;
+    background-color: $va-light-grey;
+    transform: translateY(-1px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 6. TTS Input Card
+// ---------------------------------------------------------------------------
+// Floating card below the CTAs — contains tabs, a textarea, and
+// category pills.
+
+.va-hero__input-card {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  background-color: #fff;
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius-lg;
+  box-shadow: $va-shadow-lg;
+  padding: $va-grid-unit * 4;                      // 32px
+  z-index: 2;
+
+  // Tab bar at the top
+  &-tabs {
+    display: flex;
+    gap: $va-grid-unit * 0.5;
+    margin-bottom: $va-grid-unit * 3;              // 24px
+    border-bottom: 1px solid $va-border-color;
+    padding-bottom: $va-grid-unit * 1.5;
+  }
+
+  &-tab {
+    font-family: $va-font-body;
+    font-size: $_font-size-sm;
+    font-weight: 500;
+    color: $va-muted-text;
+    background: none;
+    border: none;
+    padding: $va-grid-unit ($va-grid-unit * 2);
+    border-radius: $va-radius;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out,
+                background-color 0.2s ease-in-out;
+
+    &:hover {
+      color: $va-near-black;
+      background-color: $va-light-grey;
+    }
+
+    &--active {
+      color: $va-near-black;
+      font-weight: 600;
+      background-color: $va-light-grey;
+    }
+  }
+
+  // Textarea
+  &-textarea {
+    width: 100%;
+    min-height: 120px;
+    font-family: $va-font-body;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    color: $va-near-black;
+    border: 1px solid $va-border-color;
+    border-radius: $va-radius;
+    padding: $va-grid-unit * 2;
+    resize: vertical;
+    transition: border-color 0.2s ease-in-out,
+                box-shadow 0.2s ease-in-out;
+
+    &::placeholder {
+      color: $va-muted-text;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $va-primary-blue;
+      box-shadow: 0 0 0 3px rgba($va-primary-blue, 0.12);
+    }
+  }
+
+  // Category pills row
+  &-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $va-grid-unit;
+    margin-top: $va-grid-unit * 2;
+  }
+
+  &-pill {
+    font-family: $va-font-body;
+    font-size: $_font-size-xs;
+    font-weight: 500;
+    color: $va-body-text;
+    background-color: $va-light-grey;
+    border: 1px solid transparent;
+    border-radius: $va-radius-pill;
+    padding: ($va-grid-unit * 0.5) ($va-grid-unit * 1.5); // 4px 12px
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out,
+                background-color 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+
+    &:hover {
+      border-color: $va-border-color;
+      color: $va-near-black;
+    }
+
+    &--active {
+      background-color: $va-near-black;
+      color: #fff;
+      border-color: $va-near-black;
+
+      &:hover {
+        background-color: lighten($va-near-black, 10%);
+        color: #fff;
+      }
+    }
+  }
+
+  // Generate / Convert button inside the card
+  &-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $va-grid-unit;
+    width: 100%;
+    margin-top: $va-grid-unit * 3;
+    padding: ($va-grid-unit * 1.5) ($va-grid-unit * 3);
+    font-family: $va-font-body;
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: #fff;
+    background-color: $va-primary-blue;
+    border: none;
+    border-radius: $va-radius-pill;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      background-color: darken($va-primary-blue, 8%);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 7. Decorative — Sound Waves
+// ---------------------------------------------------------------------------
+// Positioned absolutely on the left and right of the hero to add visual
+// depth.  Uses pseudo-elements or dedicated containers.
+
+.va-hero__wave {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+
+  &--left {
+    left: $va-grid-unit * 3;
+
+    .va-hero__wave-bar {
+      float: right;
+    }
+  }
+
+  &--right {
+    right: $va-grid-unit * 3;
+
+    .va-hero__wave-bar {
+      float: left;
+    }
+  }
+}
+
+// Individual wave bars (use multiple divs or SVG)
+.va-hero__wave-bar {
+  display: block;
+  width: 3px;
+  margin: 0 3px;
+  background-color: $va-primary-blue;
+  border-radius: 2px;
+  opacity: 0.35;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      height: (16px + random(80) * 1px);
+      animation: va-wave-pulse 1.4s ease-in-out #{$i * 0.12}s infinite alternate;
+    }
+  }
+}
+
+@keyframes va-wave-pulse {
+  0%   { transform: scaleY(0.6); opacity: 0.3; }
+  100% { transform: scaleY(1);   opacity: 0.6; }
+}
+
+// ---------------------------------------------------------------------------
+// 8. Decorative — Halftone Dot Pattern
+// ---------------------------------------------------------------------------
+// Radial dot grid behind the input card area.
+
+.va-hero__halftone {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba($va-near-black, $va-halftone-pattern-opacity) 1px,
+    transparent 1px
+  );
+  background-size: ($va-grid-unit * 2) ($va-grid-unit * 2); // 16px grid
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent 80%);
+}
+
+// ---------------------------------------------------------------------------
+// 9. Responsive
+// ---------------------------------------------------------------------------
+
+@media (max-width: $_bp-md) {
+  .va-hero {
+    padding: ($va-grid-unit * 6) ($va-grid-unit * 2.5) ($va-grid-unit * 8);
+  }
+
+  .va-hero__title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .va-hero__subtitle {
+    font-size: $font-size-base;
+    margin-bottom: $va-grid-unit * 4;
+  }
+
+  .va-hero__actions {
+    flex-direction: column;
+    gap: $va-grid-unit * 1.5;
+    margin-bottom: $va-grid-unit * 5;
+
+    .va-hero__btn--primary,
+    .va-hero__btn--secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .va-hero__input-card {
+    padding: $va-grid-unit * 2.5;
+  }
+
+  .va-hero__wave {
+    display: none;
+  }
+}

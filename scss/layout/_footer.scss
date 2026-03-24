@@ -1,0 +1,261 @@
+// ==========================================================================
+// Voice Aura Design System — Footer
+// ==========================================================================
+// Multi-column footer with link grid, brand area, and bottom copyright bar.
+// Clean, minimal style consistent with the Voice Aura aesthetic.
+//
+// Depends on: $va-near-black, $va-primary-blue, $va-body-text,
+//   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
+//   $va-font-body, $va-grid-unit, $va-container-max-width, $va-breakpoints,
+//   $va-font-sizes.
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Local aliases
+// ---------------------------------------------------------------------------
+
+$_bp-lg: map-get($va-breakpoints, "lg"); // 992px
+$_bp-sm: map-get($va-breakpoints, "sm"); // 576px
+$_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
+$_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
+
+// ---------------------------------------------------------------------------
+// 1. Footer Wrapper
+// ---------------------------------------------------------------------------
+
+.va-footer {
+  position: relative;
+  background-color: $va-near-black;
+  color: rgba(#fff, 0.75);
+  padding-top: $va-grid-unit * 10;                 // 80px
+  font-family: $va-font-body;
+  font-size: $_font-size-sm;                       // 14px
+
+  // Light variant (white bg)
+  &--light {
+    background-color: #fff;
+    color: $va-body-text;
+    border-top: 1px solid $va-border-color;
+
+    .va-footer__brand-text   { color: $va-near-black; }
+    .va-footer__heading       { color: $va-near-black; }
+    .va-footer__link          { color: $va-body-text; }
+    .va-footer__link:hover    { color: $va-near-black; }
+    .va-footer__bottom        { border-top-color: $va-border-color; color: $va-muted-text; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Footer Inner Container
+// ---------------------------------------------------------------------------
+
+.va-footer__inner {
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+  padding: 0 ($va-grid-unit * 4);                  // 32px horizontal
+}
+
+// ---------------------------------------------------------------------------
+// 3. Footer Grid
+// ---------------------------------------------------------------------------
+// Multi-column layout: brand column + N link columns.
+
+.va-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: $va-grid-unit * 6;                          // 48px
+  padding-bottom: $va-grid-unit * 8;               // 64px
+}
+
+// ---------------------------------------------------------------------------
+// 4. Brand Column
+// ---------------------------------------------------------------------------
+
+.va-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: $va-grid-unit * 2.5;                        // 20px
+}
+
+.va-footer__brand-logo {
+  display: flex;
+  align-items: center;
+  gap: $va-grid-unit;
+
+  svg,
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.va-footer__brand-text {
+  font-family: $va-font-heading;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.va-footer__brand-description {
+  font-size: $_font-size-sm;
+  line-height: 1.7;
+  color: rgba(#fff, 0.55);
+  max-width: 280px;
+}
+
+// Social links row
+.va-footer__social {
+  display: flex;
+  gap: $va-grid-unit * 1.5;                        // 12px
+
+  &-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(#fff, 0.08);
+    color: rgba(#fff, 0.6);
+    transition: background-color 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $va-primary-blue;
+      color: #fff;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5. Link Columns
+// ---------------------------------------------------------------------------
+
+.va-footer__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.va-footer__heading {
+  font-family: $va-font-body;
+  font-size: $_font-size-sm;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: $va-grid-unit * 2.5;              // 20px
+}
+
+.va-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: $va-grid-unit * 1.5;                        // 12px
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.va-footer__link {
+  font-size: $_font-size-sm;
+  color: rgba(#fff, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  display: inline-block;
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 6. Bottom Bar
+// ---------------------------------------------------------------------------
+
+.va-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $va-grid-unit * 2;
+  padding: ($va-grid-unit * 3) 0;                  // 24px vertical
+  border-top: 1px solid rgba(#fff, 0.1);
+  font-size: $_font-size-xs;                       // 12px
+  color: rgba(#fff, 0.4);
+
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+  padding-left: $va-grid-unit * 4;
+  padding-right: $va-grid-unit * 4;
+}
+
+.va-footer__copyright {
+  margin: 0;
+}
+
+// Secondary inline links in the bottom bar (e.g. Privacy, Terms)
+.va-footer__bottom-links {
+  display: flex;
+  gap: $va-grid-unit * 3;                          // 24px
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    font-size: $_font-size-xs;
+    color: rgba(#fff, 0.4);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: rgba(#fff, 0.8);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 7. Responsive
+// ---------------------------------------------------------------------------
+
+@media (max-width: $_bp-lg) {
+  .va-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: ($va-grid-unit * 5) ($va-grid-unit * 4);
+  }
+
+  .va-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: $_bp-sm) {
+  .va-footer {
+    padding-top: $va-grid-unit * 6;
+  }
+
+  .va-footer__inner {
+    padding: 0 ($va-grid-unit * 2.5);
+  }
+
+  .va-footer__grid {
+    grid-template-columns: 1fr;
+    gap: $va-grid-unit * 4;
+    padding-bottom: $va-grid-unit * 5;
+  }
+
+  .va-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: $va-grid-unit * 2.5;
+    padding-right: $va-grid-unit * 2.5;
+  }
+}

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 560" fill="none">
+  <!-- Phone frame -->
+  <rect x="10" y="10" width="260" height="540" rx="32" stroke="#1A1919" stroke-width="2" fill="#FFFFFF"/>
+  <!-- Notch -->
+  <rect x="100" y="10" width="80" height="22" rx="10" fill="#1A1919"/>
+  <!-- Status bar dots -->
+  <circle cx="135" cy="21" r="3" fill="#333333"/>
+  <circle cx="148" cy="21" r="2" fill="#555555"/>
+  <!-- Screen content area -->
+  <!-- Top bar text placeholder -->
+  <rect x="40" y="60" width="80" height="5" rx="2.5" fill="#1A1919" opacity="0.15"/>
+  <rect x="200" y="60" width="40" height="5" rx="2.5" fill="#1A1919" opacity="0.10"/>
+  <!-- Waveform visualization bars -->
+  <rect x="55" y="180" width="4" height="50" rx="2" fill="#0478FF" opacity="0.30"/>
+  <rect x="67" y="160" width="4" height="90" rx="2" fill="#0478FF" opacity="0.45"/>
+  <rect x="79" y="175" width="4" height="60" rx="2" fill="#0478FF" opacity="0.25"/>
+  <rect x="91" y="150" width="4" height="110" rx="2" fill="#0478FF" opacity="0.50"/>
+  <rect x="103" y="165" width="4" height="80" rx="2" fill="#0478FF" opacity="0.35"/>
+  <rect x="115" y="145" width="4" height="120" rx="2" fill="#0478FF" opacity="0.55"/>
+  <rect x="127" y="170" width="4" height="70" rx="2" fill="#0478FF" opacity="0.30"/>
+  <rect x="139" y="155" width="4" height="100" rx="2" fill="#0478FF" opacity="0.40"/>
+  <rect x="151" y="175" width="4" height="60" rx="2" fill="#0478FF" opacity="0.25"/>
+  <rect x="163" y="160" width="4" height="90" rx="2" fill="#0478FF" opacity="0.45"/>
+  <rect x="175" y="180" width="4" height="50" rx="2" fill="#0478FF" opacity="0.20"/>
+  <rect x="187" y="165" width="4" height="80" rx="2" fill="#0478FF" opacity="0.35"/>
+  <rect x="199" y="175" width="4" height="60" rx="2" fill="#0478FF" opacity="0.25"/>
+  <rect x="211" y="185" width="4" height="40" rx="2" fill="#0478FF" opacity="0.20"/>
+  <!-- Record/action button -->
+  <circle cx="140" cy="380" r="28" fill="#0478FF"/>
+  <!-- Mic icon in button -->
+  <rect x="134" y="366" width="12" height="16" rx="6" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+  <path d="M130 382 A10 10 0 0 0 150 382" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+  <line x1="140" y1="392" x2="140" y2="396" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Bottom text lines -->
+  <rect x="60" y="440" width="160" height="4" rx="2" fill="#1A1919" opacity="0.10"/>
+  <rect x="80" y="454" width="120" height="4" rx="2" fill="#1A1919" opacity="0.07"/>
+  <!-- Bottom navigation bar -->
+  <line x1="30" y1="510" x2="250" y2="510" stroke="#E9E9EA" stroke-width="1"/>
+  <circle cx="70" cy="530" r="4" fill="#E9E9EA"/>
+  <circle cx="140" cy="530" r="4" fill="#0478FF"/>
+  <circle cx="210" cy="530" r="4" fill="#E9E9EA"/>
+  <!-- Home indicator -->
+  <rect x="110" y="542" width="60" height="4" rx="2" fill="#1A1919" opacity="0.15"/>
+</svg>
