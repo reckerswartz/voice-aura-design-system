@@ -29,6 +29,12 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   gap: map-get($spacers, 6);               // 4rem / 64px
   align-items: center;
   padding: map-get($spacers, 6) 0;
+  overflow: hidden;                         // contain grid-gap measurement overflow
+
+  // Prevent grid children from overflowing their track
+  > * {
+    min-width: 0;
+  }
 
   @media (max-width: $_bp-md - 1px) {
     grid-template-columns: 1fr;

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375" viewBox="0 0 600 375">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="375" fill="url(#bg4)"/>
+  <!-- Waveform bars -->
+  <g transform="translate(200,130)" fill="#94a3b8" opacity="0.35">
+    <rect x="0" y="30" width="8" height="60" rx="4"/>
+    <rect x="16" y="15" width="8" height="90" rx="4"/>
+    <rect x="32" y="25" width="8" height="70" rx="4"/>
+    <rect x="48" y="5" width="8" height="110" rx="4"/>
+    <rect x="64" y="20" width="8" height="80" rx="4"/>
+    <rect x="80" y="35" width="8" height="50" rx="4"/>
+    <rect x="96" y="10" width="8" height="100" rx="4"/>
+    <rect x="112" y="25" width="8" height="70" rx="4"/>
+    <rect x="128" y="40" width="8" height="40" rx="4"/>
+    <rect x="144" y="15" width="8" height="90" rx="4"/>
+    <rect x="160" y="30" width="8" height="60" rx="4"/>
+    <rect x="176" y="20" width="8" height="80" rx="4"/>
+  </g>
+  <!-- Clone/duplicate icon -->
+  <g transform="translate(272,155)" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.3">
+    <rect x="0" y="0" width="16" height="16" rx="2"/>
+    <rect x="6" y="6" width="16" height="16" rx="2"/>
+  </g>
+  <!-- Person silhouette -->
+  <g transform="translate(275,250)" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.2">
+    <circle cx="12" cy="6" r="5"/>
+    <path d="M2,22 a10,10 0 0 1 20,0"/>
+  </g>
+</svg>

@@ -160,11 +160,6 @@ $va-crosshair-color: $va-border;
     );
     // We layer both lines using a different approach for cleaner rendering
     background: none;
-
-    // Use a cleaner cross approach with borders + centering
-    &::after {
-      content: "";
-    }
   }
 
   // Top-right crosshair
