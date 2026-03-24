@@ -376,3 +376,52 @@ $va-crosshair-color: $va-border;
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// Pricing Section — Dotted Grid Background
+// --------------------------------------------------------------------------
+// Subtle dotted grid behind the pricing cards. Applied to the pricing
+// section wrapper.
+//
+// Usage: <section class="va-section va-pricing-section">
+//          <div class="va-pricing-section__dots"></div>
+//          ...content...
+//        </section>
+
+.va-pricing-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.va-pricing-section__dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba($va-near-black, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: ($va-grid-unit * 3) ($va-grid-unit * 3); // 24px grid
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(0, 0, 0, 0.35) 0%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(0, 0, 0, 0.35) 0%,
+    transparent 70%
+  );
+}
+
+// Ensure pricing content sits above the dots
+.va-pricing-section .va-pricing,
+.va-pricing-section .va-section__header,
+.va-pricing-section .va-pricing__tabs,
+.va-pricing-section .va-pricing__grid,
+.va-pricing-section .va-discount-badge {
+  position: relative;
+  z-index: 1;
+}

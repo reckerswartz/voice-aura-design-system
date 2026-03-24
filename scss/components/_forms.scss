@@ -424,3 +424,68 @@
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// Character Counter
+// --------------------------------------------------------------------------
+// Displays "400/1000" style counter next to textarea.
+// Usage: <span class="va-char-counter">
+//          <span class="va-char-counter__current">400</span>/<span class="va-char-counter__max">1000</span>
+//        </span>
+
+.va-char-counter {
+  font-family: $va-font-body;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: $va-muted-text;
+  white-space: nowrap;
+
+  &__current {
+    color: $va-body-text;
+    font-weight: 500;
+  }
+
+  // Warning state (approaching limit)
+  &--warning {
+    .va-char-counter__current {
+      color: $va-warning;
+    }
+  }
+
+  // Error state (at or over limit)
+  &--error {
+    .va-char-counter__current {
+      color: $va-danger;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Input Card Footer (enhanced)
+// --------------------------------------------------------------------------
+// Footer with category pills on the left and counter + send on the right.
+// Usage: <div class="va-input-card__footer">
+//          <div class="va-input-card__footer-pills">
+//            <button class="va-category-pill va-category-pill--active">YouTube</button>
+//            ...
+//          </div>
+//          <div class="va-input-card__footer-actions">
+//            <span class="va-char-counter">400/1000</span>
+//            <button class="va-input-card__send">...</button>
+//          </div>
+//        </div>
+
+.va-input-card__footer-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $va-grid-unit * 0.75;
+  flex: 1;
+  min-width: 0;
+}
+
+.va-input-card__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: $va-grid-unit * 1.5;
+  flex-shrink: 0;
+}

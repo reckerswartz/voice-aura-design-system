@@ -387,7 +387,114 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 }
 
 // ---------------------------------------------------------------------------
-// 9. Responsive
+// 9. Floating Decorative Elements
+// ---------------------------------------------------------------------------
+// Small rounded-square icons positioned around the hero content.
+// The designs show: a waveform icon (left), blue cursor line (left),
+// and an "A" letter icon (right) floating near the hero CTAs.
+//
+// Usage: <div class="va-hero__float va-hero__float--left-top">
+//          <svg>...</svg>
+//        </div>
+//        <div class="va-hero__float va-hero__float--right-mid">
+//          <span>A</span>
+//        </div>
+
+.va-hero__float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+  transition: opacity 0.3s ease-in-out;
+
+  .va-hero:hover & {
+    opacity: 0.85;
+  }
+
+  // Rounded-square container (the icon badge)
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid $va-border-color;
+    border-radius: $va-radius;
+    box-shadow: $va-shadow;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $va-near-black;
+    }
+
+    // Small variant
+    &--sm {
+      width: 36px;
+      height: 36px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    // Large variant
+    &--lg {
+      width: 60px;
+      height: 60px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    // Letter variant (shows "A" or similar text)
+    &--letter {
+      font-family: $va-font-heading;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $va-near-black;
+    }
+  }
+
+  // Position variants
+  &--left-top {
+    left: 8%;
+    top: 35%;
+  }
+
+  &--left-mid {
+    left: 5%;
+    top: 55%;
+  }
+
+  &--right-top {
+    right: 8%;
+    top: 35%;
+  }
+
+  &--right-mid {
+    right: 5%;
+    top: 55%;
+  }
+
+  // Blue cursor line (thin vertical accent)
+  &-cursor {
+    width: 2px;
+    height: 24px;
+    background-color: $va-primary-blue;
+    border-radius: 1px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 10. Responsive
 // ---------------------------------------------------------------------------
 
 @media (max-width: $_bp-md) {
@@ -421,6 +528,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   }
 
   .va-hero__wave {
+    display: none;
+  }
+
+  .va-hero__float {
     display: none;
   }
 }

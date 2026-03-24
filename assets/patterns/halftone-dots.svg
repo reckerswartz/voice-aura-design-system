@@ -1,3 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <circle cx="8" cy="8" r="1" fill="#1A1919" opacity="0.06"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="#1A1919">
+  <!--
+    Voice Aura — Halftone Gradient Pattern
+    A radial halftone effect with dots that grow larger toward the centre-bottom,
+    simulating the dramatic half-tone motif seen in the Behance designs.
+    Use as a background-image with `background-size: cover` or embed inline.
+  -->
+  <!-- Row 1 (top) — smallest dots -->
+  <circle cx="20"  cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="60"  cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="100" cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="140" cy="20" r="1.0" opacity="0.05"/>
+  <circle cx="180" cy="20" r="1.0" opacity="0.05"/>
+  <circle cx="220" cy="20" r="1.0" opacity="0.05"/>
+  <circle cx="260" cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="300" cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="340" cy="20" r="0.8" opacity="0.04"/>
+  <circle cx="380" cy="20" r="0.8" opacity="0.04"/>
+
+  <!-- Row 2 -->
+  <circle cx="40"  cy="60" r="1.0" opacity="0.05"/>
+  <circle cx="80"  cy="60" r="1.2" opacity="0.06"/>
+  <circle cx="120" cy="60" r="1.4" opacity="0.07"/>
+  <circle cx="160" cy="60" r="1.6" opacity="0.08"/>
+  <circle cx="200" cy="60" r="1.6" opacity="0.08"/>
+  <circle cx="240" cy="60" r="1.4" opacity="0.07"/>
+  <circle cx="280" cy="60" r="1.2" opacity="0.06"/>
+  <circle cx="320" cy="60" r="1.0" opacity="0.05"/>
+  <circle cx="360" cy="60" r="0.8" opacity="0.04"/>
+
+  <!-- Row 3 -->
+  <circle cx="20"  cy="100" r="1.2" opacity="0.06"/>
+  <circle cx="60"  cy="100" r="1.6" opacity="0.08"/>
+  <circle cx="100" cy="100" r="2.0" opacity="0.10"/>
+  <circle cx="140" cy="100" r="2.4" opacity="0.12"/>
+  <circle cx="180" cy="100" r="2.6" opacity="0.14"/>
+  <circle cx="220" cy="100" r="2.4" opacity="0.12"/>
+  <circle cx="260" cy="100" r="2.0" opacity="0.10"/>
+  <circle cx="300" cy="100" r="1.6" opacity="0.08"/>
+  <circle cx="340" cy="100" r="1.2" opacity="0.06"/>
+  <circle cx="380" cy="100" r="1.0" opacity="0.05"/>
+
+  <!-- Row 4 -->
+  <circle cx="40"  cy="140" r="1.6" opacity="0.08"/>
+  <circle cx="80"  cy="140" r="2.2" opacity="0.12"/>
+  <circle cx="120" cy="140" r="2.8" opacity="0.16"/>
+  <circle cx="160" cy="140" r="3.2" opacity="0.20"/>
+  <circle cx="200" cy="140" r="3.4" opacity="0.22"/>
+  <circle cx="240" cy="140" r="3.2" opacity="0.20"/>
+  <circle cx="280" cy="140" r="2.8" opacity="0.16"/>
+  <circle cx="320" cy="140" r="2.2" opacity="0.12"/>
+  <circle cx="360" cy="140" r="1.6" opacity="0.08"/>
+
+  <!-- Row 5 — center-bottom approaching peak -->
+  <circle cx="20"  cy="180" r="1.8" opacity="0.10"/>
+  <circle cx="60"  cy="180" r="2.6" opacity="0.16"/>
+  <circle cx="100" cy="180" r="3.4" opacity="0.22"/>
+  <circle cx="140" cy="180" r="4.0" opacity="0.28"/>
+  <circle cx="180" cy="180" r="4.4" opacity="0.32"/>
+  <circle cx="220" cy="180" r="4.0" opacity="0.28"/>
+  <circle cx="260" cy="180" r="3.4" opacity="0.22"/>
+  <circle cx="300" cy="180" r="2.6" opacity="0.16"/>
+  <circle cx="340" cy="180" r="1.8" opacity="0.10"/>
+  <circle cx="380" cy="180" r="1.4" opacity="0.08"/>
+
+  <!-- Row 6 -->
+  <circle cx="40"  cy="220" r="2.2" opacity="0.14"/>
+  <circle cx="80"  cy="220" r="3.2" opacity="0.22"/>
+  <circle cx="120" cy="220" r="4.2" opacity="0.30"/>
+  <circle cx="160" cy="220" r="5.0" opacity="0.38"/>
+  <circle cx="200" cy="220" r="5.4" opacity="0.42"/>
+  <circle cx="240" cy="220" r="5.0" opacity="0.38"/>
+  <circle cx="280" cy="220" r="4.2" opacity="0.30"/>
+  <circle cx="320" cy="220" r="3.2" opacity="0.22"/>
+  <circle cx="360" cy="220" r="2.2" opacity="0.14"/>
+
+  <!-- Row 7 -->
+  <circle cx="20"  cy="260" r="2.6" opacity="0.18"/>
+  <circle cx="60"  cy="260" r="3.8" opacity="0.28"/>
+  <circle cx="100" cy="260" r="5.0" opacity="0.38"/>
+  <circle cx="140" cy="260" r="6.0" opacity="0.48"/>
+  <circle cx="180" cy="260" r="6.6" opacity="0.55"/>
+  <circle cx="220" cy="260" r="6.0" opacity="0.48"/>
+  <circle cx="260" cy="260" r="5.0" opacity="0.38"/>
+  <circle cx="300" cy="260" r="3.8" opacity="0.28"/>
+  <circle cx="340" cy="260" r="2.6" opacity="0.18"/>
+  <circle cx="380" cy="260" r="2.0" opacity="0.12"/>
+
+  <!-- Row 8 — largest dots -->
+  <circle cx="40"  cy="300" r="3.0" opacity="0.22"/>
+  <circle cx="80"  cy="300" r="4.4" opacity="0.34"/>
+  <circle cx="120" cy="300" r="5.8" opacity="0.46"/>
+  <circle cx="160" cy="300" r="7.0" opacity="0.58"/>
+  <circle cx="200" cy="300" r="7.6" opacity="0.65"/>
+  <circle cx="240" cy="300" r="7.0" opacity="0.58"/>
+  <circle cx="280" cy="300" r="5.8" opacity="0.46"/>
+  <circle cx="320" cy="300" r="4.4" opacity="0.34"/>
+  <circle cx="360" cy="300" r="3.0" opacity="0.22"/>
+
+  <!-- Row 9 — bottom, peak density -->
+  <circle cx="20"  cy="340" r="3.4" opacity="0.26"/>
+  <circle cx="60"  cy="340" r="5.0" opacity="0.40"/>
+  <circle cx="100" cy="340" r="6.4" opacity="0.52"/>
+  <circle cx="140" cy="340" r="7.6" opacity="0.65"/>
+  <circle cx="180" cy="340" r="8.4" opacity="0.72"/>
+  <circle cx="220" cy="340" r="7.6" opacity="0.65"/>
+  <circle cx="260" cy="340" r="6.4" opacity="0.52"/>
+  <circle cx="300" cy="340" r="5.0" opacity="0.40"/>
+  <circle cx="340" cy="340" r="3.4" opacity="0.26"/>
+  <circle cx="380" cy="340" r="2.6" opacity="0.18"/>
+
+  <!-- Row 10 — bottom edge -->
+  <circle cx="40"  cy="380" r="3.8" opacity="0.30"/>
+  <circle cx="80"  cy="380" r="5.4" opacity="0.44"/>
+  <circle cx="120" cy="380" r="7.0" opacity="0.58"/>
+  <circle cx="160" cy="380" r="8.2" opacity="0.70"/>
+  <circle cx="200" cy="380" r="9.0" opacity="0.78"/>
+  <circle cx="240" cy="380" r="8.2" opacity="0.70"/>
+  <circle cx="280" cy="380" r="7.0" opacity="0.58"/>
+  <circle cx="320" cy="380" r="5.4" opacity="0.44"/>
+  <circle cx="360" cy="380" r="3.8" opacity="0.30"/>
 </svg>

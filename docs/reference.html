@@ -74,7 +74,9 @@
           <a href="#hero">Hero Section</a>
           <a href="#features">Feature Section</a>
           <a href="#blog">Blog Cards</a>
+          <a href="#blog-section">Blog Section Layout</a>
           <a href="#agent">Voice Agent Card</a>
+          <a href="#dubbing">Video Dubbing Card</a>
           <a href="#footer">Footer</a>
         </nav>
       </aside>
@@ -656,24 +658,171 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- VOICE AGENT CARD                                              -->
+        <!-- BLOG SECTION LAYOUT                                          -->
+        <!-- ============================================================ -->
+        <section id="blog-section" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Blog Section Layout</h2>
+          <p class="ref-desc">Left-aligned header with title &amp; subtitle on the left, action button on the right, and a 4-column blog card grid. Matches the Behance "Insights &amp; Updates" section.</p>
+
+          <div style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden; padding: 2rem;">
+            <div class="va-blog-section">
+              <div class="va-blog-section__header">
+                <div class="va-blog-section__header-content">
+                  <h2 class="va-blog-section__title">Insights &amp; Updates</h2>
+                  <p class="va-blog-section__subtitle">Latest news, product updates, and expert insights to keep you ahead.</p>
+                </div>
+                <a href="#" class="va-blog-section__action">Explore more blogs</a>
+              </div>
+              <div class="va-blog-section__grid">
+                <div class="va-blog-card">
+                  <div class="va-blog-card__image" style="background: #1A1919; min-height: 140px;"></div>
+                  <div class="va-blog-card__content">
+                    <div class="va-blog-card__meta">
+                      <span class="va-blog-card__category">AI AGENTS</span>
+                      <span>2026-01-06</span>
+                    </div>
+                    <h4 class="va-blog-card__title">Voice Agent Prompts Guide</h4>
+                    <p class="va-blog-card__excerpt">Prompting voice agents requires a different mindset.</p>
+                    <a href="#" class="va-blog-card__link">Read more</a>
+                  </div>
+                </div>
+                <div class="va-blog-card">
+                  <div class="va-blog-card__image" style="background: #4B5563; min-height: 140px;"></div>
+                  <div class="va-blog-card__content">
+                    <div class="va-blog-card__meta">
+                      <span class="va-blog-card__category">PROMPT</span>
+                      <span>2026-01-06</span>
+                    </div>
+                    <h4 class="va-blog-card__title">Video Translation Guide</h4>
+                    <p class="va-blog-card__excerpt">Translate videos quickly and easily.</p>
+                    <a href="#" class="va-blog-card__link">Read more</a>
+                  </div>
+                </div>
+                <div class="va-blog-card">
+                  <div class="va-blog-card__image" style="background: #1A1919; min-height: 140px;"></div>
+                  <div class="va-blog-card__content">
+                    <div class="va-blog-card__meta">
+                      <span class="va-blog-card__category">WHITEPAPER</span>
+                      <span>2026-01-06</span>
+                    </div>
+                    <h4 class="va-blog-card__title">Designing for Voice</h4>
+                    <p class="va-blog-card__excerpt">Prioritizing human-like dialogue and transitions.</p>
+                    <a href="#" class="va-blog-card__link">Read more</a>
+                  </div>
+                </div>
+                <div class="va-blog-card">
+                  <div class="va-blog-card__image" style="background: #4B5563; min-height: 140px;"></div>
+                  <div class="va-blog-card__content">
+                    <div class="va-blog-card__meta">
+                      <span class="va-blog-card__category">TUTORIAL</span>
+                      <span>2026-01-06</span>
+                    </div>
+                    <h4 class="va-blog-card__title">Step-by-Step iPhone Translation</h4>
+                    <p class="va-blog-card__excerpt">Translate videos on iPhone using AI tools.</p>
+                    <a href="#" class="va-blog-card__link">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem; font-size: 1.25rem;">Discount Badge</h3>
+          <p class="ref-desc">Used on pricing pages for promotional offers.</p>
+          <div class="ref-component-row">
+            <span class="va-discount-badge">ANNUAL DISCOUNT <span class="va-discount-badge__value">%40</span></span>
+          </div>
+
+          <h3 style="margin-top: 2rem; font-size: 1.25rem;">Character Counter</h3>
+          <p class="ref-desc">Displays character count in TTS input cards.</p>
+          <div class="ref-component-row">
+            <span class="va-char-counter"><span class="va-char-counter__current">400</span>/1000</span>
+            <span class="va-char-counter va-char-counter--warning"><span class="va-char-counter__current">900</span>/1000</span>
+            <span class="va-char-counter va-char-counter--error"><span class="va-char-counter__current">1050</span>/1000</span>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- VOICE AGENT CARD (with crosshairs)                           -->
         <!-- ============================================================ -->
         <section id="agent" class="ref-section">
           <p class="ref-label">Components</p>
           <h2 class="ref-title">Voice Agent Card</h2>
-          <p class="ref-desc">Dark card showcasing an AI voice agent with language selector, avatar, and action button.</p>
+          <p class="ref-desc">Dark card showcasing an AI voice agent with language selector, avatar, and action button. Now supports crosshair corner decorations.</p>
 
-          <div style="max-width: 320px;">
-            <div class="va-agent-card">
-              <div class="va-agent-card__language-tabs">
-                <button class="active">English</button>
-                <button>Chinese</button>
-                <button>Jap</button>
+          <div class="ref-grid ref-grid--2">
+            <div>
+              <p class="ref-label" style="margin-bottom: 0.75rem;">Standard</p>
+              <div class="va-agent-card">
+                <div class="va-agent-card__language-tabs">
+                  <button class="va-agent-card__lang va-agent-card__lang--active">English</button>
+                  <button class="va-agent-card__lang">Chinese</button>
+                  <button class="va-agent-card__lang">Jap</button>
+                </div>
+                <div class="va-agent-card__avatar" style="width: 80px; height: 80px; background: #4B5563; border-radius: 50%;"></div>
+                <div class="va-agent-card__info">
+                  <div class="va-agent-card__name">Yang lu wu <span class="va-agent-card__verified">&#10004;</span></div>
+                  <div class="va-agent-card__role">Customer support agent</div>
+                </div>
+                <button class="va-agent-card__cta">Call Wang lu</button>
               </div>
-              <div class="va-agent-card__avatar" style="width: 120px; height: 120px; background: #4B5563; border-radius: 50%; margin: 1rem auto;"></div>
-              <div class="va-agent-card__name">Yang lu wu <span>&#10004;</span></div>
-              <div class="va-agent-card__role">Customer support agent</div>
-              <button class="va-agent-card__cta">Call Wang lu</button>
+            </div>
+            <div>
+              <p class="ref-label" style="margin-bottom: 0.75rem;">With Crosshairs</p>
+              <div class="va-agent-card va-agent-card--crosshairs">
+                <div class="va-agent-card__corners"></div>
+                <div class="va-agent-card__corners-bottom"></div>
+                <div class="va-agent-card__language-tabs">
+                  <button class="va-agent-card__lang va-agent-card__lang--active">English</button>
+                  <button class="va-agent-card__lang">Chinese</button>
+                  <button class="va-agent-card__lang">Jap</button>
+                </div>
+                <div class="va-agent-card__avatar" style="width: 80px; height: 80px; background: #4B5563; border-radius: 50%;"></div>
+                <div class="va-agent-card__info">
+                  <div class="va-agent-card__name">Yang lu wu <span class="va-agent-card__verified">&#10004;</span></div>
+                  <div class="va-agent-card__role">Customer support agent</div>
+                </div>
+                <button class="va-agent-card__cta">Call Wang lu</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- VIDEO DUBBING CARD                                            -->
+        <!-- ============================================================ -->
+        <section id="dubbing" class="ref-section">
+          <p class="ref-label">Components</p>
+          <h2 class="ref-title">Video Dubbing Card</h2>
+          <p class="ref-desc">Dark card for the "FOR LOCALIZER" section — language pill carousel, video player with subtitle overlay, and playback controls.</p>
+
+          <div style="max-width: 480px;">
+            <div class="va-dubbing-card">
+              <div class="va-dubbing-card__languages">
+                <button class="va-dubbing-card__lang va-dubbing-card__lang--active">English</button>
+                <button class="va-dubbing-card__lang">Chinese</button>
+                <button class="va-dubbing-card__lang">Chinese</button>
+                <button class="va-dubbing-card__lang">Chinese</button>
+                <button class="va-dubbing-card__lang">Chinese</button>
+              </div>
+              <div class="va-dubbing-card__player">
+                <div class="va-dubbing-card__player-header">
+                  <div class="va-dubbing-card__player-thumb" style="background: #4B5563;"></div>
+                  <span class="va-dubbing-card__player-title">The Master - Processing Scene(HD)</span>
+                </div>
+                <div class="va-dubbing-card__player-video" style="background: #111; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                  <p class="va-dubbing-card__subtitle">like to think about that it makes me sick are you scientific in your</p>
+                </div>
+                <div class="va-dubbing-card__controls">
+                  <button class="va-dubbing-card__control-btn" style="font-size: 14px;">&#9646;&#9646;</button>
+                  <button class="va-dubbing-card__control-btn" style="font-size: 14px;">&#128266;</button>
+                  <div class="va-dubbing-card__progress">
+                    <div class="va-dubbing-card__progress-bar" style="width: 30%;"></div>
+                  </div>
+                  <span class="va-dubbing-card__time">1:57 / 6:50</span>
+                  <button class="va-dubbing-card__control-btn va-dubbing-card__control-btn--cc">CC</button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

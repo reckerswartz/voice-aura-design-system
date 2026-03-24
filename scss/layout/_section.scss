@@ -280,7 +280,171 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 }
 
 // ---------------------------------------------------------------------------
-// 6. Responsive – Section Padding
+// 6. Blog / Insights Section
+// ---------------------------------------------------------------------------
+// Left-aligned header with title + subtitle on the left and an action button
+// on the right, plus a 4-column blog card grid.
+//
+// Usage: <section class="va-section va-blog-section">
+//          <div class="va-blog-section__header">
+//            <div class="va-blog-section__header-content">
+//              <h2 class="va-blog-section__title">Insights & Updates</h2>
+//              <p class="va-blog-section__subtitle">Latest news...</p>
+//            </div>
+//            <a class="va-blog-section__action" href="#">
+//              <svg>...</svg> Explore more blogs
+//            </a>
+//          </div>
+//          <div class="va-blog-section__grid">
+//            <article class="va-blog-card">...</article>
+//            ...
+//          </div>
+//        </section>
+
+.va-blog-section {
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $va-grid-unit * 3;
+    margin-bottom: $va-grid-unit * 6;              // 48px
+    text-align: left;
+  }
+
+  &__header-content {
+    max-width: 560px;
+  }
+
+  &__title {
+    font-family: $va-font-heading;
+    font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: $va-near-black;
+    margin-bottom: $va-grid-unit;
+  }
+
+  &__subtitle {
+    font-family: $va-font-body;
+    font-size: $_font-size-lg;
+    font-weight: 400;
+    line-height: 1.65;
+    color: $va-body-text;
+    margin: 0;
+  }
+
+  // "Explore more blogs" action button (dark pill with arrow)
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    gap: $va-grid-unit * 0.75;
+    padding: ($va-grid-unit * 1.25) ($va-grid-unit * 2.5);
+    font-family: $va-font-body;
+    font-size: $_font-size-sm;
+    font-weight: 500;
+    color: #fff;
+    background-color: $va-near-black;
+    border: none;
+    border-radius: $va-radius-pill;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
+
+    &:hover {
+      background-color: lighten($va-near-black, 12%);
+      transform: translateY(-1px);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  // 4-column blog card grid
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1199.98px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 575.98px) {
+      grid-template-columns: 1fr;
+      max-width: 24rem;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Blog section responsive header
+@media (max-width: $_bp-md) {
+  .va-blog-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $va-grid-unit * 2;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 7. Section Header — Left-aligned Variant
+// ---------------------------------------------------------------------------
+// For sections that need a left-aligned header with an action on the right.
+
+.va-section__header--left {
+  text-align: left;
+  max-width: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $va-grid-unit * 3;
+}
+
+.va-section__action {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit * 0.75;
+  font-family: $va-font-body;
+  font-size: $_font-size-sm;
+  font-weight: 600;
+  color: $va-primary-blue;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: gap 0.2s ease-in-out;
+
+  &:hover {
+    gap: $va-grid-unit;
+    text-decoration: none;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 8. Responsive – Section Padding
 // ---------------------------------------------------------------------------
 
 @media (max-width: $_bp-md) {
@@ -293,5 +457,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
   .va-section__header {
     margin-bottom: $va-grid-unit * 5;
+  }
+
+  .va-section__header--left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $va-grid-unit * 2;
   }
 }

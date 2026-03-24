@@ -256,3 +256,124 @@
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1.5rem;
 }
+
+// --------------------------------------------------------------------------
+// Agent Card — Crosshair Corners Variant
+// --------------------------------------------------------------------------
+// Adds the characteristic "+" marks at all four corners, matching the
+// pricing card decorations but in white for the dark background.
+//
+// Usage: <div class="va-agent-card va-agent-card--crosshairs">
+//          <div class="va-agent-card__corners"></div>
+//          <div class="va-agent-card__corners-bottom"></div>
+//          ...existing content...
+//        </div>
+
+.va-agent-card--crosshairs {
+  .va-agent-card__corners {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 1;
+
+    &::before {
+      content: "+";
+      position: absolute;
+      top: 0.5rem;
+      left: 0.75rem;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(#fff, 0.2);
+    }
+
+    &::after {
+      content: "+";
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(#fff, 0.2);
+    }
+  }
+
+  .va-agent-card__corners-bottom {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 1;
+
+    &::before {
+      content: "+";
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0.75rem;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(#fff, 0.2);
+    }
+
+    &::after {
+      content: "+";
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.75rem;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(#fff, 0.2);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Agent Card — With Crosshair Lines (alternative)
+// --------------------------------------------------------------------------
+// Uses thin hairline crosses instead of "+" text.
+
+.va-agent-card--hairlines {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::before {
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(#fff, 0.12) 0,
+      rgba(#fff, 0.12) 1rem,
+      transparent 1rem,
+      transparent calc(100% - 1rem),
+      rgba(#fff, 0.12) calc(100% - 1rem)
+    );
+  }
+
+  &::after {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(#fff, 0.12) 0,
+      rgba(#fff, 0.12) 1rem,
+      transparent 1rem,
+      transparent calc(100% - 1rem),
+      rgba(#fff, 0.12) calc(100% - 1rem)
+    );
+  }
+}
