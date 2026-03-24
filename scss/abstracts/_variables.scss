@@ -416,6 +416,16 @@ $va-transition-slow:     all 0.35s ease-in-out;
 $va-transition-fast:     all 0.12s ease-in-out;
 $va-transition-bounce:   all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
+// Duration-only tokens (for property-specific transitions)
+$va-duration-fast:   0.15s;
+$va-duration-base:   0.2s;
+$va-duration-slow:   0.35s;
+
+// Focus ring — reusable outline for :focus-visible states
+$va-focus-ring-width:  2px;
+$va-focus-ring-color:  $va-primary-blue;
+$va-focus-ring-offset: 2px;
+
 // Z-index layers (complete scale)
 $va-z-base:      1;
 $va-z-raised:    2;

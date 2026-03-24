@@ -135,6 +135,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     background-color: lighten($va-near-black, 14%);
     transform: translateY(-1px);
   }
+
+  &:active {
+    background-color: lighten($va-near-black, 8%);
+    transform: translateY(0);
+  }
 }
 
 // Secondary CTA (outline / ghost)
@@ -160,6 +165,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     border-color: $va-near-black;
     background-color: $va-light-grey;
     transform: translateY(-1px);
+  }
+
+  &:active {
+    background-color: darken($va-light-grey, 4%);
+    transform: translateY(0);
   }
 }
 

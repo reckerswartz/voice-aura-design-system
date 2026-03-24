@@ -38,6 +38,11 @@
     box-shadow: $va-shadow-blog-hover;
   }
 
+  &:focus-visible {
+    outline: $va-focus-ring-width solid $va-focus-ring-color;
+    outline-offset: $va-focus-ring-offset;
+  }
+
   // --------------------------------------------------------------------------
   // Image Area
   // --------------------------------------------------------------------------
