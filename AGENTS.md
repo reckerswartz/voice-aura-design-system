@@ -48,6 +48,7 @@ Full policy: `ASSET_GUIDELINES.md` | Attribution tracking: `ATTRIBUTIONS.md`
 ## Documentation
 
 - `DESIGN_SYSTEM.md` — full design system reference
+- `ARCHITECTURE_REVIEW.md` — architecture issues, improvement roadmap, and governance process
 - `RAILS_INTEGRATION.md` — Rails integration guide (esbuild, Webpack 5, Dart Sass)
 - `ASSET_GUIDELINES.md` — asset usage, licensing, recommended platforms, SVGO config
 - `ATTRIBUTIONS.md` — third-party asset attribution registry
