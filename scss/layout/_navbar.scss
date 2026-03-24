@@ -31,6 +31,8 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   background-color: #fff;
   border-bottom: 1px solid $va-border-color;
   z-index: $va-z-navbar;
+  transition: box-shadow 0.2s ease-in-out,
+              border-color 0.2s ease-in-out;
 
   // Fixed / sticky variants
   &--fixed {
@@ -45,11 +47,31 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
     top: 0;
   }
 
+  // Scrolled state — subtle shadow appears after scrolling
+  &--scrolled {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    border-bottom-color: transparent;
+  }
+
   // Transparent variant (for use over hero images)
   &--transparent {
     background-color: transparent;
     border-bottom-color: transparent;
   }
+}
+
+// ---------------------------------------------------------------------------
+// 1a. Navbar Inner Container
+// ---------------------------------------------------------------------------
+// Optional inner wrapper for constrained-width nav within a full-bleed header.
+
+.va-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $va-container-max-width;
+  margin: 0 auto;
 }
 
 // ---------------------------------------------------------------------------
@@ -102,12 +124,8 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   padding: 0;
   list-style: none;
 
-  // Centre the nav absolutely on larger screens
-  @media (min-width: $_bp-lg) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  // On larger screens, let flex layout handle centering within the collapse
+  // container (space-between distributes nav and actions naturally).
 }
 
 // Individual nav link
@@ -316,7 +334,7 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 // ---------------------------------------------------------------------------
@@ -372,9 +390,11 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
     gap: $va-grid-unit;
 
     .va-navbar-btn--ghost,
+    .va-navbar-btn--outlined,
     .va-navbar-btn--filled {
       width: 100%;
       text-align: center;
+      justify-content: center;
     }
   }
 }

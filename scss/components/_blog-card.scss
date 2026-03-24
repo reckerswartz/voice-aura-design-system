@@ -65,7 +65,8 @@
   // Content Area
   // --------------------------------------------------------------------------
 
-  &__content {
+  &__content,
+  &__body {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -97,7 +98,8 @@
   // Category Tag
   // --------------------------------------------------------------------------
 
-  &__category {
+  &__category,
+  &__tag {
     display: inline-block;
     padding: 0.125rem 0.5rem;
     font-size: 0.75rem;
@@ -190,7 +192,8 @@
     aspect-ratio: auto;
   }
 
-  .va-blog-card__content {
+  .va-blog-card__content,
+  .va-blog-card__body {
     flex: 1;
     justify-content: center;
   }

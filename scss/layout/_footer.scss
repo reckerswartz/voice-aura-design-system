@@ -38,7 +38,8 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     border-top: 1px solid $va-border-color;
 
     .va-footer__brand-text   { color: $va-near-black; }
-    .va-footer__heading       { color: $va-near-black; }
+    .va-footer__heading,
+    .va-footer__col-title  { color: $va-near-black; }
     .va-footer__link          { color: $va-body-text; }
     .va-footer__link:hover    { color: $va-near-black; }
     .va-footer__bottom        { border-top-color: $va-border-color; color: $va-muted-text; }
@@ -139,12 +140,14 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 // 5. Link Columns
 // ---------------------------------------------------------------------------
 
-.va-footer__column {
+.va-footer__column,
+.va-footer__col {
   display: flex;
   flex-direction: column;
 }
 
-.va-footer__heading {
+.va-footer__heading,
+.va-footer__col-title {
   font-family: $va-font-body;
   font-size: $_font-size-sm;
   font-weight: 600;
@@ -210,7 +213,8 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   margin: 0;
   padding: 0;
 
-  a {
+  a,
+  .va-footer__bottom-link {
     font-size: $_font-size-xs;
     color: rgba(#fff, 0.4);
     text-decoration: none;
