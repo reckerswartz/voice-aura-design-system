@@ -3,6 +3,32 @@
 // ==========================================================================
 // Button components for the Voice Aura platform.
 // Requires $va-* variables from _variables.scss.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap's `.btn` system is also available (`.btn-primary`,         │
+// │ `.btn-dark`, `.btn-outline-secondary`, `.btn-lg`, `.btn-sm`).       │
+// │ Both systems coexist; Bootstrap's button variables ($btn-padding-*,  │
+// │ $btn-font-*, etc.) are overridden in _variables.scss.               │
+// │                                                                      │
+// │ When to use which:                                                  │
+// │  • Use `.va-btn` + modifiers for Voice Aura–branded interfaces      │
+// │    (landing pages, hero sections, marketing).                       │
+// │  • Use `.btn` + Bootstrap variants for standard app UI              │
+// │    (forms, modals, admin panels).                                   │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-btn--primary (dark) ≈ .btn.btn-dark                           │
+// │   .va-btn--accent  (blue) ≈ .btn.btn-primary                       │
+// │   .va-btn--secondary      ≈ .btn.btn-outline-secondary             │
+// │   .va-btn--ghost          ≈ .btn.btn-link  (without underline)     │
+// │   .va-btn--lg             ≈ .btn.btn-lg                             │
+// │   .va-btn--sm             ≈ .btn.btn-sm                             │
+// │   .va-btn--pill           ≈ .btn.rounded-pill                       │
+// │   .va-btn--block          ≈ .btn.w-100                              │
+// │   .va-btn-group           ≈ .btn-group                              │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------

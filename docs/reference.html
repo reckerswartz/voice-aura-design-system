@@ -81,6 +81,7 @@
           <a href="#auth-split">Auth Split Layout</a>
           <a href="#backgrounds">Backgrounds &amp; Patterns</a>
           <a href="#animations">Animations &amp; Transitions</a>
+          <a href="#bootstrap-alignment">Bootstrap Alignment</a>
           <a href="#footer">Footer</a>
           <a href="#sample">Sample Landing Page</a>
         </nav>
@@ -1278,6 +1279,231 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Open Sample Page
           </a>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- BOOTSTRAP ALIGNMENT GUIDE                                     -->
+        <!-- ============================================================ -->
+        <section id="bootstrap-alignment" class="ref-section">
+          <p class="ref-label">Integration</p>
+          <h2 class="ref-title">Bootstrap Alignment Guide</h2>
+          <p class="ref-desc">
+            Voice Aura is built on top of Bootstrap 5. Many custom <code>.va-*</code> classes
+            have Bootstrap equivalents that work identically thanks to Sass variable overrides.
+            Prefer Bootstrap's native classes in new code to keep the codebase simple and scalable.
+          </p>
+
+          <!-- Sass Variable Overrides -->
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">Sass Variable Overrides</h3>
+          <p style="color: #4B5563; margin-bottom: 1rem;">
+            These Bootstrap variables are overridden in <code>_variables.scss</code>, so Bootstrap's
+            built-in classes automatically produce Voice Aura–consistent output:
+          </p>
+          <div style="overflow-x: auto; margin-bottom: 2rem;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid #E5E7EB; text-align: left;">
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Category</th>
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Bootstrap Variables</th>
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">VA Values</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Theme Colors</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$primary</code>, <code>$secondary</code>, <code>$theme-colors</code></td>
+                  <td style="padding: 0.75rem 1rem;">#0478FF (primary), #1A1919 (secondary), + <code>section-bg</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Typography</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$font-family-base</code>, <code>$headings-font-family</code>, <code>$display-font-sizes</code></td>
+                  <td style="padding: 0.75rem 1rem;">IBM Plex Sans / Serif, fluid clamp() sizes</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Spacing</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$spacers</code></td>
+                  <td style="padding: 0.75rem 1rem;">Keys 0–9 (0 to 120px)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Containers</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$container-max-widths</code></td>
+                  <td style="padding: 0.75rem 1rem;">xxl = 1280px (matches VA)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Buttons</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$btn-padding-*</code>, <code>$btn-font-*</code>, <code>$btn-border-radius</code></td>
+                  <td style="padding: 0.75rem 1rem;">VA sizing &amp; radius tokens</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Cards</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$card-bg</code>, <code>$card-border-*</code>, <code>$card-spacer-*</code></td>
+                  <td style="padding: 0.75rem 1rem;">VA border, radius &amp; padding tokens</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.75rem 1rem;">Forms</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$input-*</code>, <code>$form-label-*</code>, <code>$form-select-*</code></td>
+                  <td style="padding: 0.75rem 1rem;">VA input styling &amp; focus colors</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem 1rem;">Shadows</td>
+                  <td style="padding: 0.75rem 1rem;"><code>$box-shadow</code>, <code>$box-shadow-sm</code>, <code>$box-shadow-lg</code></td>
+                  <td style="padding: 0.75rem 1rem;">VA's multi-layered shadow values</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Class Equivalence Table -->
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">VA ↔ Bootstrap Class Equivalences</h3>
+          <p style="color: #4B5563; margin-bottom: 1rem;">
+            Where a VA class duplicates Bootstrap functionality, the Bootstrap class produces
+            equivalent output.  Both are available; prefer Bootstrap's in new code.
+          </p>
+          <div style="overflow-x: auto; margin-bottom: 2rem;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid #E5E7EB; text-align: left;">
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">VA Class</th>
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Bootstrap Equivalent</th>
+                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-container</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.container</code></td>
+                  <td style="padding: 0.5rem 1rem;">xxl = 1280px via <code>$container-max-widths</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-flex-center</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.d-flex .align-items-center .justify-content-center</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA is a convenience shorthand</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-flex-between</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.d-flex .align-items-center .justify-content-between</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA is a convenience shorthand</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-mx-auto</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.mx-auto</code></td>
+                  <td style="padding: 0.5rem 1rem;">Identical</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-display-1…4</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.display-1…4</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA adds <code>letter-spacing: -0.03em</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-lead</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.lead</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA adds <code>color</code> and <code>margin-bottom</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-text-muted</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.text-body-secondary</code></td>
+                  <td style="padding: 0.5rem 1rem;">Same purpose, different color value</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-text-bold</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.fw-semibold</code></td>
+                  <td style="padding: 0.5rem 1rem;">Both set <code>font-weight: 600</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-white</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.bg-white</code></td>
+                  <td style="padding: 0.5rem 1rem;">Identical</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-alt</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.bg-section-bg</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>section-bg</code> added to <code>$theme-colors</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-dark</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.bg-dark .text-white-50</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA version also recolors headings</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-btn--primary</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.btn .btn-dark</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA uses BEM; BS uses modifier classes</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-btn--accent</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.btn .btn-primary</code></td>
+                  <td style="padding: 0.5rem 1rem;">Both use <code>$primary</code> (#0478FF)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <td style="padding: 0.5rem 1rem;"><code>.va-transition</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.transition-base</code></td>
+                  <td style="padding: 0.5rem 1rem;">Generated via utility API extension</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem 1rem;"><code>.va-aspect--16x9</code></td>
+                  <td style="padding: 0.5rem 1rem;"><code>.ratio .ratio-16x9</code></td>
+                  <td style="padding: 0.5rem 1rem;">VA uses <code>aspect-ratio</code> property directly</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Custom-Only Classes -->
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">VA-Only Classes (No Bootstrap Equivalent)</h3>
+          <p style="color: #4B5563; margin-bottom: 1rem;">
+            These classes are unique to the Voice Aura design system and must use <code>.va-*</code> naming:
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
+            <span class="va-badge va-badge--pill">.va-input-card</span>
+            <span class="va-badge va-badge--pill">.va-category-pill</span>
+            <span class="va-badge va-badge--pill">.va-pricing-card</span>
+            <span class="va-badge va-badge--pill">.va-blog-card</span>
+            <span class="va-badge va-badge--pill">.va-section-badge</span>
+            <span class="va-badge va-badge--pill">.va-discount-badge</span>
+            <span class="va-badge va-badge--pill">.va-hero__*</span>
+            <span class="va-badge va-badge--pill">.va-navbar-*</span>
+            <span class="va-badge va-badge--pill">.va-footer__*</span>
+            <span class="va-badge va-badge--pill">.va-auth*</span>
+            <span class="va-badge va-badge--pill">.va-pattern-*</span>
+            <span class="va-badge va-badge--pill">.va-animate-*</span>
+            <span class="va-badge va-badge--pill">.va-scroll-*</span>
+            <span class="va-badge va-badge--pill">.va-hover-*</span>
+            <span class="va-badge va-badge--pill">.va-waveform-bars</span>
+            <span class="va-badge va-badge--pill">.va-glass</span>
+            <span class="va-badge va-badge--pill">.va-bg-glow</span>
+            <span class="va-badge va-badge--pill">.va-bg-dots</span>
+            <span class="va-badge va-badge--pill">.va-crosshairs</span>
+            <span class="va-badge va-badge--pill">.va-accent-line</span>
+            <span class="va-badge va-badge--pill">.va-auto-grid</span>
+          </div>
+
+          <!-- Usage Guidance -->
+          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">When to Use Which</h3>
+          <div class="ref-grid ref-grid--2">
+            <div class="va-card" style="border-left: 3px solid #0478FF;">
+              <div class="va-card__body">
+                <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Use Bootstrap Classes</h4>
+                <ul style="list-style: disc; padding-left: 1.25rem; color: #4B5563; font-size: 0.875rem; line-height: 1.8;">
+                  <li>Standard utility patterns (flex, spacing, display)</li>
+                  <li>App UI components (forms, modals, dropdowns)</li>
+                  <li>When responsive variants are needed (<code>.d-md-flex</code>)</li>
+                  <li>Simple backgrounds (<code>.bg-white</code>, <code>.bg-dark</code>)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="va-card" style="border-left: 3px solid #1A1919;">
+              <div class="va-card__body">
+                <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Use VA Classes</h4>
+                <ul style="list-style: disc; padding-left: 1.25rem; color: #4B5563; font-size: 0.875rem; line-height: 1.8;">
+                  <li>Voice Aura–branded components (hero, pricing, blog)</li>
+                  <li>Design-specific patterns (TTS card, waveform, glass)</li>
+                  <li>8px-grid precise spacing (<code>.va-mt-3</code> = 24px)</li>
+                  <li>Decorative elements (patterns, animations, glows)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </section>
 
         <!-- ============================================================ -->

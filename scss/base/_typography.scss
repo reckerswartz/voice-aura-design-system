@@ -5,6 +5,26 @@
 // IBM Plex Sans (body).  Uses an 8px spacing grid and follows Voice Aura's
 // clean, minimal aesthetic.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap's typography variables are overridden in _variables.scss   │
+// │ so that native Bootstrap classes produce Voice Aura–consistent       │
+// │ output.  Where a VA class duplicates a Bootstrap class, prefer the  │
+// │ Bootstrap version in new code.                                      │
+// │                                                                      │
+// │   VA class          → Bootstrap equivalent                          │
+// │   ─────────────────────────────────────────                          │
+// │   .va-h1 … .va-h6  → .h1 … .h6 (heading vars set in _variables)   │
+// │   .va-display-1…4   → .display-1 … .display-4 ($display-font-sizes │
+// │                        overridden in _variables.scss)                │
+// │   .va-lead          → .lead ($lead-font-size set in _variables)     │
+// │   .va-text-muted    → .text-body-secondary                          │
+// │   .va-text-small    → .small or <small>                             │
+// │   .va-text-bold     → .fw-semibold                                  │
+// │   .va-blockquote    → blockquote (styled in this file)              │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on variables from _variables.scss:
 //   $va-font-heading, $va-font-body, $va-near-black, $va-primary-blue,
 //   $va-body-text, $va-muted-text, $va-light-grey, $va-grid-unit,
@@ -44,6 +64,10 @@ body {
 // ---------------------------------------------------------------------------
 // All headings use IBM Plex Serif by default with tight line-heights
 // and generous bottom margins on the 8px grid.
+//
+// Bootstrap's `.h1`–`.h6` classes are also available and produce matching
+// output thanks to the $headings-* overrides in _variables.scss.
+// The `.va-h*` variants add additional letter-spacing refinements.
 
 h1, h2, h3, h4, h5, h6,
 .va-h1, .va-h2, .va-h3, .va-h4, .va-h5, .va-h6 {
@@ -89,6 +113,11 @@ h6, .va-h6 {
 // 4. Display Headings
 // ---------------------------------------------------------------------------
 // Extra-large display text for hero sections and landing pages.
+//
+// Bootstrap equivalent: `.display-1` through `.display-4`.
+// `$display-font-sizes`, `$display-font-weight`, and `$display-line-height`
+// are overridden in _variables.scss to match the VA design.
+// The `.va-display-*` classes add additional letter-spacing.
 
 .va-display-1,
 .va-display-2,
@@ -123,6 +152,8 @@ h6, .va-h6 {
 // ---------------------------------------------------------------------------
 
 // Lead paragraph — larger, lighter body text for introductions.
+// Bootstrap equivalent: `.lead` ($lead-font-size / $lead-font-weight
+// overridden in _variables.scss to match).
 .va-lead {
   font-size: $_font-size-lg;                    // 18px
   font-weight: 400;
@@ -132,11 +163,13 @@ h6, .va-h6 {
 }
 
 // Muted text — de-emphasised secondary copy.
+// Bootstrap equivalent: `.text-body-secondary`.
 .va-text-muted {
   color: $va-muted-text !important;
 }
 
 // Small text — captions, labels, fine print.
+// Bootstrap equivalent: `.small` or `<small>`.
 .va-text-small {
   font-size: $_font-size-sm;                    // 14px
   line-height: 1.5;
@@ -190,6 +223,7 @@ a {
 // ---------------------------------------------------------------------------
 // 9. Strong / Bold
 // ---------------------------------------------------------------------------
+// Bootstrap equivalent: `.fw-semibold` (font-weight: 600).
 
 strong,
 b,

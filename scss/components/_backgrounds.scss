@@ -268,18 +268,42 @@
 // 5. Section Background Utilities
 // --------------------------------------------------------------------------
 // Pre-defined background colours and gradients for page sections.
+//
+// ┌────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                         │
+// │                                                                    │
+// │ Simple background colours have Bootstrap equivalents (generated    │
+// │ from $theme-colors and the utility API).  Prefer Bootstrap's      │
+// │ classes in new code; the VA versions are kept for compatibility.   │
+// │                                                                    │
+// │   VA class                → Bootstrap equivalent                  │
+// │   ─────────────────────────────────────────────                    │
+// │   .va-bg-white            → .bg-white                             │
+// │   .va-bg-alt              → .bg-section-bg  (added to theme map)  │
+// │   .va-bg-dark             → .bg-dark .text-white                  │
+// │   .va-bg-gradient-primary → (no direct equiv — custom)            │
+// │   .va-bg-gradient-subtle  → (no direct equiv — custom)            │
+// │   .va-bg-gradient-dark    → (no direct equiv — custom)            │
+// │                                                                    │
+// │ Pattern overlays, glass effects, crosshairs, and accent lines     │
+// │ are custom to Voice Aura and have no Bootstrap equivalents.       │
+// └────────────────────────────────────────────────────────────────────┘
 
 // Pure white background (default)
+// Bootstrap equivalent: .bg-white
 .va-bg-white {
   background-color: $va-white;
 }
 
 // Light grey alternate section background
+// Bootstrap equivalent: .bg-section-bg (via extended $theme-colors)
 .va-bg-alt {
   background-color: $va-section-bg;
 }
 
 // Near-black dark background (for feature/CTA sections)
+// Bootstrap equivalent: .bg-dark .text-white-50
+// (VA version also recolors headings — use this for section-level dark bg.)
 .va-bg-dark {
   background-color: $va-near-black;
   color: rgba(#fff, 0.85);

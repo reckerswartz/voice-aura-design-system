@@ -2,6 +2,28 @@
 // Voice Aura Design System - Cards
 // ==========================================================================
 // Generic card components for the Voice Aura platform.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap's `.card` system is available and themed via variable      │
+// │ overrides ($card-bg, $card-border-*, $card-spacer-*, etc.) in       │
+// │ _variables.scss.                                                    │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-card             ≈ .card                                      │
+// │   .va-card__header     ≈ .card-header                               │
+// │   .va-card__body       ≈ .card-body                                 │
+// │   .va-card__footer     ≈ .card-footer                               │
+// │   .va-card__image      ≈ .card-img-top                              │
+// │   .va-card__title      ≈ .card-title                                │
+// │   .va-card__text       ≈ .card-text                                 │
+// │   .va-card--elevated   ≈ .card.shadow-sm                            │
+// │   .va-card--interactive≈ .card (+ custom hover — no BS equiv)       │
+// │                                                                      │
+// │ Use `.va-card` for Voice Aura–branded layouts; use `.card` for      │
+// │ standard Bootstrap patterns.  Both use the same design tokens.      │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------

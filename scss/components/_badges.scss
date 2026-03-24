@@ -2,6 +2,22 @@
 // Voice Aura Design System - Badges
 // ==========================================================================
 // Badge, pill, tag, and section-label components.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap ships `.badge` with colour variants via `.bg-*`.          │
+// │ $badge-* variables are overridden in _variables.scss.               │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-badge            ≈ .badge .bg-light .text-dark                │
+// │   .va-badge--primary   ≈ .badge .bg-primary .bg-opacity-10         │
+// │   .va-badge--dark      ≈ .badge .bg-dark                            │
+// │   .va-badge--pill      ≈ .badge .rounded-pill                       │
+// │                                                                      │
+// │ VA-specific components (.va-tag, .va-section-badge,                 │
+// │ .va-discount-badge) have no Bootstrap equivalents.                  │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------

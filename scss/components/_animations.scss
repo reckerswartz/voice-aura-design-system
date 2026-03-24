@@ -4,6 +4,30 @@
 // Responsive animation and transition definitions for smooth UI behaviour
 // across all screen sizes.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap provides minimal animation support ($transition-base,     │
+// │ .fade, .collapse).  This file extends the system with:              │
+// │  • Keyframe animations (fade, scale, slide, float, pulse, spin)    │
+// │  • Scroll-triggered entrance animations                             │
+// │  • Interaction hover/focus utilities                                │
+// │  • Mobile menu transitions                                          │
+// │  • Audio waveform visualiser                                        │
+// │                                                                      │
+// │ $transition-base is overridden in _variables.scss.  Additional      │
+// │ transition presets (.transition-base, .transition-fast, etc.) are   │
+// │ generated via the Bootstrap utility API in _bootstrap.scss.         │
+// │                                                                      │
+// │ The `.va-transition` / `.va-transition-*` classes are kept for      │
+// │ backward compatibility; prefer `.transition-*` (from the utility    │
+// │ API) in new code.                                                   │
+// │                                                                      │
+// │ Responsive visibility:                                              │
+// │   .va-show-md / .va-hide-md  — animated show/hide (no BS equiv)    │
+// │   For instant show/hide, use Bootstrap's `.d-none .d-md-block`.    │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // This file defines:
 //   1. Keyframe animations     — reusable @keyframes
 //   2. Transition utilities    — standard easing presets
@@ -156,6 +180,12 @@
 // 2. Transition Preset Utilities
 // --------------------------------------------------------------------------
 // Apply these classes for consistent, standard transition behaviour.
+//
+// Bootstrap utility API equivalents (generated in _bootstrap.scss):
+//   .va-transition       → .transition-base
+//   .va-transition-fast  → .transition-fast
+//   .va-transition-slow  → .transition-slow
+//   .va-transition-bounce→ .transition-bounce
 
 .va-transition {
   transition: $va-transition-base;

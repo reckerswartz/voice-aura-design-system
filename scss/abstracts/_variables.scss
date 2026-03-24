@@ -60,14 +60,18 @@ $dark:      $va-near-black;
 $body-bg:    $va-white;
 $body-color: $va-body-text;
 
+// Theme colour map — extended with Voice Aura semantic colours so that
+// Bootstrap utility classes like `.bg-section-bg`, `.text-muted-text`
+// are generated automatically via the utility API.
 $theme-colors: (
-  "primary":   $primary,
-  "secondary": $secondary,
-  "success":   $success,
-  "warning":   $warning,
-  "danger":    $danger,
-  "light":     $light,
-  "dark":      $dark,
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "section-bg": $va-section-bg,
 );
 
 // ----------------------------------------------------------------------------
@@ -111,6 +115,22 @@ $headings-font-family: $va-font-heading;
 $headings-font-weight: $font-weight-bold;
 $headings-color:       $va-near-black;
 $headings-margin-bottom: 0.75rem;
+
+// Display headings — Bootstrap `.display-1` through `.display-4`
+// Customised to match Voice Aura's hero / landing-page typography.
+$display-font-family: $va-font-heading;
+$display-font-weight: 700;
+$display-line-height:  1.1;
+$display-font-sizes: (
+  1: clamp(3rem, 5vw + 1rem, 5.5rem),     // ~88px max
+  2: clamp(2.5rem, 4vw + 1rem, 4.5rem),   // ~72px max
+  3: clamp(2rem, 3.5vw + 1rem, 3.5rem),   // ~56px max
+  4: clamp(1.75rem, 3vw + 0.5rem, 2.75rem), // ~44px max
+);
+
+// Lead text — Bootstrap `.lead`
+$lead-font-size:   1.125rem;   // 18px (matches VA's $_font-size-lg)
+$lead-font-weight: 400;
 
 // Paragraph
 $paragraph-margin-bottom: 1.25rem;
@@ -351,6 +371,17 @@ $va-section-padding-y-lg:    7.5rem;     // 120px — larger section padding
 $va-hero-max-width:          72rem;      // 1152px — hero content max-width
 $va-container-max-width:     80rem;      // 1280px
 $va-navbar-height:           4.5rem;     // 72px — fixed navbar height
+
+// Bootstrap container overrides — align `.container` max-widths with VA's
+// design tokens.  This lets you use Bootstrap's `.container` alongside
+// (or instead of) the custom `.va-container` classes.
+$container-max-widths: (
+  sm:  540px,
+  md:  720px,
+  lg:  960px,
+  xl:  1140px,
+  xxl: 1280px,   // matches $va-container-max-width
+);
 
 // Cards
 $va-pricing-card-min-height: 32rem;      // 512px

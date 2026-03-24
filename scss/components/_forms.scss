@@ -2,6 +2,28 @@
 // Voice Aura Design System - Forms
 // ==========================================================================
 // Form controls, inputs, and the TTS input card component.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Bootstrap's form system is available and themed via $input-*,       │
+// │ $form-label-*, $form-select-*, and $form-check-* variable overrides │
+// │ in _variables.scss.                                                 │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-form-group    ≈ .mb-3 (Bootstrap form spacing)               │
+// │   .va-form-label    ≈ .form-label                                   │
+// │   .va-form-input    ≈ .form-control                                 │
+// │   .va-form-textarea ≈ .form-control (on <textarea>)                 │
+// │   .va-form-select   ≈ .form-select                                  │
+// │   .va-form-checkbox ≈ .form-check + .form-check-input/label        │
+// │   .va-form-error    ≈ .invalid-feedback                             │
+// │   .va-form-hint     ≈ .form-text                                    │
+// │                                                                      │
+// │ The TTS Input Card (.va-input-card), Category Pill                  │
+// │ (.va-category-pill), and Password Wrapper (.va-input-wrapper)       │
+// │ are custom Voice Aura components with no Bootstrap equivalent.      │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------

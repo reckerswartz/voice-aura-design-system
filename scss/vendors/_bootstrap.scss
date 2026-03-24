@@ -3,7 +3,14 @@
 // ============================================================================
 // Selective import of Bootstrap modules.
 // Variables are already overridden in abstracts/_variables.scss.
+//
+// The utility API is invoked last.  Between the `$utilities` definition
+// (from bootstrap/scss/utilities) and the API generation step
+// (bootstrap/scss/utilities/api) we merge additional Voice Aura–specific
+// utilities so they are generated alongside Bootstrap's built-in ones.
 // ============================================================================
+
+@use "sass:map";
 
 // Core Bootstrap
 @import "../../node_modules/bootstrap/scss/functions";
@@ -35,4 +42,51 @@
 
 // Helpers & Utilities
 @import "../../node_modules/bootstrap/scss/helpers";
+
+// ---------------------------------------------------------------------------
+// Voice Aura – Bootstrap Utility API Extensions
+// ---------------------------------------------------------------------------
+// Extend the `$utilities` map BEFORE the API generates CSS.
+// This lets us generate VA-specific utility classes using Bootstrap's
+// utility engine — keeping the codebase consistent and avoiding hand-rolled
+// duplicates.
+//
+// Why this matters:
+//   • Classes generated here automatically get responsive variants when
+//     `responsive: true` is set, and `!important` where appropriate.
+//   • Consumers can use either VA custom classes (`.va-*`) or the Bootstrap
+//     utility equivalents interchangeably.
+// ---------------------------------------------------------------------------
+
+$utilities: map.merge(
+  $utilities,
+  (
+    // -- Background: VA section-bg colour --
+    // Generates `.bg-section-bg` automatically via theme-colors (handled by
+    // Bootstrap's bg utility), but we also add a standalone alias to ensure
+    // the "alt" background is available even outside the colour API.
+    "va-bg-section": (
+      property: background-color,
+      class: bg-section,
+      values: (
+        bg: $va-section-bg,
+      ),
+    ),
+
+    // -- Transition presets --
+    // Generates `.transition-base`, `.transition-fast`, `.transition-slow`,
+    // `.transition-bounce` — Bootstrap doesn't ship transition utilities.
+    "va-transition": (
+      property: transition,
+      class: transition,
+      values: (
+        base:   $va-transition-base,
+        fast:   $va-transition-fast,
+        slow:   $va-transition-slow,
+        bounce: $va-transition-bounce,
+      ),
+    ),
+  )
+);
+
 @import "../../node_modules/bootstrap/scss/utilities/api";

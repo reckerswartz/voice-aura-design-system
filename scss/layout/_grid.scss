@@ -4,6 +4,39 @@
 // Custom containers and grid utilities that extend Bootstrap 5's grid
 // system.  Built on the 8px spacing grid ($va-grid-unit).
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT NOTES                                           │
+// │                                                                      │
+// │ Several utility classes in this file have direct Bootstrap           │
+// │ equivalents.  They are kept for backward-compatibility, but new     │
+// │ code should prefer the Bootstrap versions listed below.             │
+// │                                                                      │
+// │   VA class            → Bootstrap equivalent                        │
+// │   ─────────────────────────────────────────────────                  │
+// │   .va-container       → .container  (xxl = 1280px via overrides)    │
+// │   .va-container--fluid→ .container-fluid                            │
+// │   .va-flex-center     → .d-flex .align-items-center                 │
+// │                          .justify-content-center                     │
+// │   .va-flex-between    → .d-flex .align-items-center                 │
+// │                          .justify-content-between                    │
+// │   .va-flex-col        → .d-flex .flex-column                        │
+// │   .va-flex-wrap       → .flex-wrap                                  │
+// │   .va-mx-auto         → .mx-auto                                   │
+// │   .va-aspect--1x1     → .ratio .ratio-1x1                          │
+// │   .va-aspect--4x3     → .ratio .ratio-4x3                          │
+// │   .va-aspect--16x9    → .ratio .ratio-16x9                         │
+// │   .va-aspect--21x9    → .ratio .ratio-21x9                         │
+// │   .va-gap-{n}         → .gap-{bs-key} (see $spacers in _variables) │
+// │   .va-mt-{n}          → .mt-{bs-key}  (see $spacers in _variables) │
+// │   .va-p*-{n}          → .p*-{bs-key}  (see $spacers in _variables) │
+// │                                                                      │
+// │ The VA 8px-grid spacing utilities (.va-mt-*, .va-p*-*) follow a     │
+// │ linear 8px-per-step scale (step 1 = 8px, step 2 = 16px, …).        │
+// │ Bootstrap's $spacers use a non-linear scale.  Both are available;   │
+// │ prefer Bootstrap's for standard layouts and VA's when you need      │
+// │ precise 8px-grid alignment.                                         │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-grid-unit, $va-container-max-width, $va-breakpoints.
 // ==========================================================================
 
@@ -21,6 +54,10 @@ $_container-wide:   90rem;     // 1440px — edge-to-edge features
 // ---------------------------------------------------------------------------
 // 1. Custom Containers
 // ---------------------------------------------------------------------------
+// Bootstrap equivalent: `.container` (xxl breakpoint set to 1280px in
+// _variables.scss via $container-max-widths).
+// `.va-container--fluid` = `.container-fluid`.
+// Narrow/wide variants have no direct Bootstrap equivalent.
 
 // Standard container — 1280px max-width
 .va-container {
@@ -143,7 +180,14 @@ $_container-wide:   90rem;     // 1440px — edge-to-edge features
 // ---------------------------------------------------------------------------
 // 5. Alignment Utilities (Flex shortcuts)
 // ---------------------------------------------------------------------------
-// Handy helpers for flex containers — extend Bootstrap's flex utilities.
+// Bootstrap equivalents (prefer these in new code):
+//   .va-flex-center  → .d-flex .align-items-center .justify-content-center
+//   .va-flex-between → .d-flex .align-items-center .justify-content-between
+//   .va-flex-col     → .d-flex .flex-column
+//   .va-flex-wrap    → .flex-wrap
+//
+// These VA shortcuts remain for convenience — they collapse multiple
+// Bootstrap classes into a single class name.
 
 .va-flex-center {
   display: flex;
@@ -173,6 +217,13 @@ $_container-wide:   90rem;     // 1440px — edge-to-edge features
 // Format: .va-mt-{n}  → margin-top:  n * 8px
 //         .va-pb-{n}  → padding-bottom: n * 8px
 // Covers the most commonly needed values.
+//
+// Bootstrap ships `.mt-*`, `.mb-*`, `.p-*`, etc. keyed to `$spacers`.
+// $spacers is overridden in _variables.scss with keys 0–9, which covers
+// 0–120px on a non-linear scale.  Use Bootstrap's utilities for standard
+// layouts; use these VA utilities when you need precise 8px-grid steps.
+//
+// .va-mx-auto is identical to Bootstrap's .mx-auto.
 
 $_spacing-steps: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20);
 
@@ -216,6 +267,11 @@ $_spacing-steps: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20);
 // 7. Aspect Ratio Boxes
 // ---------------------------------------------------------------------------
 // Useful for image / video containers that need a fixed aspect ratio.
+//
+// Bootstrap equivalent: `.ratio` + `.ratio-1x1`, `.ratio-4x3`,
+// `.ratio-16x9`, `.ratio-21x9`.  Prefer Bootstrap's ratio helpers in
+// new code.  These VA classes use the modern `aspect-ratio` property
+// directly (no padding hack).
 
 .va-aspect {
   position: relative;
