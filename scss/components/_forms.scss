@@ -260,6 +260,11 @@
   border: 1px solid $va-border;
   border-radius: $va-radius;
   overflow: hidden;
+  max-width: 780px;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
 
   // --------------------------------------------------------------------------
   // Tab Navigation (Text to Speech / Upload File)

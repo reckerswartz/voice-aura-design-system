@@ -23,6 +23,16 @@
 //          <button class="va-pricing__tab">API</button>
 //        </div>
 
+// Tabs wrapper — centers the tab group + discount badge
+.va-pricing__tabs-wrapper {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  .va-discount-badge {
+    margin-top: 0.75rem;
+  }
+}
+
 .va-pricing__tabs {
   display: inline-flex;
   align-items: center;
@@ -30,7 +40,7 @@
   padding: 0.25rem;
   background-color: $va-light-grey;
   border-radius: 100vw;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .va-pricing__tab {
@@ -403,6 +413,7 @@ $va-crosshair-color: $va-border;
 .va-pricing-section {
   position: relative;
   overflow: hidden;
+  padding: 5rem 0;
 }
 
 .va-pricing-section__dots {

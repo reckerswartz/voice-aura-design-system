@@ -55,6 +55,8 @@
   border-radius: $va-radius;
   overflow: hidden;
   color: #fff;
+  max-width: 420px;
+  width: 100%;
 
   // --------------------------------------------------------------------------
   // Language Pill Carousel
@@ -180,6 +182,14 @@
     aspect-ratio: 16 / 9;
     background-color: #000;
     overflow: hidden;
+
+    // Placeholder gradient (when no video is loaded)
+    &--placeholder {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     img,
     video {

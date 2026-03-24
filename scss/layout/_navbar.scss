@@ -354,14 +354,22 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   }
 
   .va-navbar-collapse {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
     width: 100%;
     flex-direction: column;
     align-items: stretch;
-    padding: ($va-grid-unit * 2) 0;
+    padding: 0;
+    display: flex;
+    visibility: hidden;
+    transition: max-height 0.3s ease-in-out,
+                padding 0.3s ease-in-out,
+                visibility 0.3s ease-in-out;
 
     &.is-open {
-      display: flex;
+      max-height: 500px;
+      padding: ($va-grid-unit * 2) 0;
+      visibility: visible;
     }
   }
 

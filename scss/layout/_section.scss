@@ -440,6 +440,18 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   gap: $va-grid-unit * 3;
 }
 
+// Center-aligned variant (pricing, CTA sections)
+.va-section__header--center {
+  text-align: center;
+}
+
+// Compact variant (client logos bar)
+.va-section--compact {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: none;
+}
+
 .va-section__action {
   display: inline-flex;
   align-items: center;
