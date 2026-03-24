@@ -226,3 +226,158 @@
   color: $va-near-black;
   margin-bottom: 0.5rem;
 }
+
+// ---------------------------------------------------------------------------
+// 14. DEMO CARD (bordered card for animation/interaction demos)
+// ---------------------------------------------------------------------------
+
+.ref-demo-card {
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;                     // 12px
+  padding: 1.5rem;
+  text-align: center;
+
+  &--interactive {
+    cursor: pointer;
+    background: $va-white;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 15. PATTERN CARD (bordered card for SVG pattern asset demos)
+// ---------------------------------------------------------------------------
+
+.ref-pattern-card {
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;                     // 12px
+  padding: 1rem;
+  text-align: center;
+}
+
+// ---------------------------------------------------------------------------
+// 16. BLOG PLACEHOLDER (placeholder image for blog card demos)
+// ---------------------------------------------------------------------------
+
+.ref-blog-placeholder {
+  background: $va-near-black;
+  min-height: 180px;
+  border-radius: $va-radius;                     // 12px
+
+  &--sm {
+    min-height: 140px;
+  }
+
+  &--alt {
+    background: $va-body-text;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 17. DEMO LABEL (bold label above a live demo)
+// ---------------------------------------------------------------------------
+
+.ref-demo-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 18. CODE SMALL (smaller code font for demo captions)
+// ---------------------------------------------------------------------------
+
+.ref-code-sm {
+  font-size: 0.8rem;
+}
+
+// ---------------------------------------------------------------------------
+// 19. WIDTH CONSTRAINTS (max-width containers for demo sections)
+// ---------------------------------------------------------------------------
+
+.ref-narrow  { max-width: 480px; }
+.ref-medium  { max-width: 640px; }
+.ref-wide    { max-width: 960px; }
+
+// ---------------------------------------------------------------------------
+// 20. SPACING UTILITIES (reference page only)
+// ---------------------------------------------------------------------------
+
+.ref-mb-sm { margin-bottom: 0.5rem; }
+.ref-mb-md { margin-bottom: 1rem; }
+.ref-mb-lg { margin-bottom: 2rem; }
+.ref-mt-md { margin-top: 1rem; }
+
+// ---------------------------------------------------------------------------
+// 21. LIVE DEMO WRAPPER (spacing wrapper for live pattern demos)
+// ---------------------------------------------------------------------------
+
+.ref-live-demo {
+  margin-bottom: 2rem;
+}
+
+// ---------------------------------------------------------------------------
+// 22. DEMO CONTAINER (bordered wrapper with padding, no overflow hidden)
+// ---------------------------------------------------------------------------
+
+.ref-demo-container {
+  border: 1px solid $va-border-color;
+  border-radius: $va-radius;                     // 12px
+  overflow: hidden;
+  background: $va-white;
+
+  &--padded {
+    padding: 2rem;
+  }
+
+  &--padded-lg {
+    padding: 3rem 2rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 23. FLEX CENTER (utility for demo flex layouts)
+// ---------------------------------------------------------------------------
+
+.ref-flex-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+// ---------------------------------------------------------------------------
+// 24. COLOR UTILITY DEMO (for bg-colour swatch demos)
+// ---------------------------------------------------------------------------
+
+.ref-color-demo {
+  border-radius: $va-radius;                     // 12px
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+// ---------------------------------------------------------------------------
+// 25. DESCRIPTION TEXT (paragraph after subheading in ref sections)
+// ---------------------------------------------------------------------------
+
+.ref-desc-text {
+  margin-bottom: 1.5rem;
+  color: $va-body-text;
+  font-size: 0.9375rem;
+}
+
+// ---------------------------------------------------------------------------
+// 26. SUB-SECTION HEADING (h4-level, for subsections within a ref-section)
+// ---------------------------------------------------------------------------
+
+.ref-sub-section-heading {
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+
+// ---------------------------------------------------------------------------
+// 27. INLINE DESCRIPTION (lighter text after subheading)
+// ---------------------------------------------------------------------------
+
+.ref-inline-desc {
+  margin-bottom: 1rem;
+  color: $va-body-text;
+  font-size: 0.9375rem;
+}

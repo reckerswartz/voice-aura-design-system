@@ -204,6 +204,31 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   }
 }
 
+// Feature visual — standalone container for demo visuals in feature rows
+.feature-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+
+  &--light {
+    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 1px solid $va-border-color;
+  }
+
+  &--dark {
+    background: linear-gradient(145deg, $va-near-black 0%, #0f172a 100%);
+    border: 1px solid rgba($va-white, 0.06);
+  }
+}
+
+// Inline icon — vertically aligned SVG icon next to text
+.va-icon-inline {
+  display: inline;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
 // Feature row — responsive
 @media (max-width: $_bp-md) {
   .va-feature-row {
