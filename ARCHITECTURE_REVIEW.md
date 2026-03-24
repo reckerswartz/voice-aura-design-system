@@ -1,9 +1,12 @@
 # Voice Aura Design System — Architecture Review & Continuous Improvement Plan
 
-> Generated from a full-codebase audit of 9,240 lines of SCSS, 7 HTML pages,
+> Generated from a full-codebase audit of 9,185 lines of SCSS, 7 HTML pages,
 > 1 JS module, CI/CD pipeline, and documentation. All findings are
-> cross-referenced against the compiled CSS output (17,752 lines / 3,963
-> selectors).
+> cross-referenced against the compiled CSS output (17,664 lines / ~3,963
+> selectors). Responsive behaviour verified via Playwright at 375px, 768px,
+> and 1440px viewports.
+>
+> Last updated: 2026-03-23
 
 ---
 
@@ -35,19 +38,21 @@
 
 | Metric | Value |
 |--------|-------|
-| SCSS source lines | 9,240 |
-| Compiled CSS lines | 17,752 |
+| SCSS source lines | 9,185 |
+| Compiled CSS lines | 17,664 |
 | Compiled CSS selectors | ~3,963 |
 | `!important` usages | 48 (35 in utility generators — acceptable) |
 | Hardcoded hex colors outside `_variables.scss` | 2 (`#000` / `#fff` in color-mix functions — acceptable) |
-| Hardcoded `rgba()` with literal color values | 20+ (shadows, borders — should use tokens) |
-| `z-index` declarations | 30+ (only 1 uses a variable) |
+| Hardcoded `rgba()` with literal color values | 42 (shadows, borders — should use tokens) |
+| `z-index` declarations | 42 (only 1 uses a variable) |
 | `@import` statements (deprecated in Dart Sass 3.0) | 52 |
 | `@use` statements | 10 (only in abstracts) |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
-| `transition` declarations | 177 |
-| `prefers-reduced-motion` checks | 1 (in `_animations.scss`) |
+| `transition` declarations | 101 |
+| `prefers-reduced-motion` checks | 4 (all in `_animations.scss`) |
+| Inline `style=` attributes in `reference.html` | 291 |
+| Inline `style=` attributes in other HTML files | 2 total |
 
 ---
 
@@ -129,6 +134,41 @@ The mixin accepts a `$color` argument but hardcodes the border colour,
 making customisation impossible.
 
 **Fix:** Replace with `border-color: $color;`
+
+---
+
+#### C-5. Reference page sticky sidebar is broken
+
+**File:** `scss/base/_reset.scss` lines 181–183
+
+```scss
+html,
+body {
+  overflow-x: hidden;
+}
+```
+
+**Problem:** Setting `overflow-x: hidden` on `<html>` creates a new scroll
+container that breaks `position: sticky` for `.ref-toc`. The sidebar scrolls
+off-screen instead of sticking at `top: 1rem`.
+
+**Root cause verified via Playwright:** At `window.scrollY = 5000`, the
+`.ref-toc` nav element is at `top: -4702px` (viewport-relative). If sticky
+were working, it should be at `top: 16px`. The flex aside stretches to
+28,756px (full page height via `align-items: stretch`), so the sticky
+element's containing block is correct — the `overflow-x: hidden` on `<html>`
+is the actual blocker.
+
+**Fix (choose one):**
+- **Option A (recommended):** Replace `overflow-x: hidden` with
+  `overflow-x: clip` on `<html>` — prevents horizontal scroll without
+  creating a scroll container:
+  ```scss
+  html { overflow-x: clip; }
+  body { overflow-x: hidden; }
+  ```
+- **Option B:** Remove `overflow-x: hidden` from `html` entirely and keep
+  it only on `body`.
 
 ---
 
@@ -253,6 +293,50 @@ solution.
 | Decorative SVG patterns missing `aria-hidden="true"` | `backgrounds-reference.html` | Screen readers read decorative content |
 | `va-scroll.js` does not check `prefers-reduced-motion` | `js/va-scroll.js` | Scroll animations play even when user requests reduced motion |
 | `index.html` missing `<header>`, `<main>`, `<footer>` landmarks | `docs/index.html` | Poor screen-reader navigation |
+| Muted text `#9CA3AF` on white has ~3.0:1 contrast (fails WCAG AA) | `_variables.scss` | Inaccessible to low-vision users |
+| No `:focus-visible` on auth form inputs | `_auth.scss` | Keyboard users can't see focus state |
+| Skip-link class exists but not used in most HTML files | All docs pages | Screen-reader users can't skip to main content |
+
+---
+
+#### H-8. Reference page — 291 inline `style=` attributes
+
+**File:** `docs/reference.html`
+
+The reference page uses 291 inline `style=` attributes for layout
+(flex containers, grid gaps, padding, max-widths, color swatches, etc.).
+This makes the design system's own reference page a poor example of its
+CSS classes. By comparison, `sample.html` and `pixel-perfect.html` have
+only 1 inline style each.
+
+**Fix:**
+- Map inline styles to existing utility classes where possible
+  (e.g., `style="margin-bottom: 1rem"` → `class="va-mb-3"`)
+- Add remaining styles to `_reference.scss` as semantic classes
+  (e.g., `.ref-demo-grid`, `.ref-color-swatch`)
+- Target: reduce from 291 to <20 (demo-specific overrides only)
+
+---
+
+#### H-9. Reference page — Missing code blocks & copy buttons
+
+Seven component sections (Buttons, Badges, Cards, Forms, Blog Cards,
+Voice Agent, Video Dubbing) show rendered demos but have **no
+`<pre><code>` blocks** showing the HTML markup. The 24 existing code
+blocks (in Foundations sections) lack copy-to-clipboard buttons.
+
+**Fix:**
+- Add collapsible `<details><summary>View Code</summary>` blocks
+  after each demo with copy-paste-ready HTML markup
+- Add a small JS copy-to-clipboard handler on all code blocks
+
+---
+
+#### H-10. Reference page — No scroll-spy active link highlighting
+
+The sidebar TOC links don't highlight the currently visible section as
+the user scrolls. Implement an `IntersectionObserver` that adds an
+`.active` class to the corresponding sidebar link.
 
 ---
 
@@ -397,6 +481,7 @@ changes to the compiled CSS can only be caught manually.
 |------|----------|--------|
 | Fix `$btn-border-radius-lg` bug | C-3 | 5 min |
 | Fix `va-focus-ring` mixin | C-4 | 5 min |
+| Fix sticky sidebar (`overflow-x: clip` on html) | C-5 | 15 min |
 | Consolidate `.va-feature-row` into one file | C-1 | 2 h |
 | Replace hardcoded breakpoints in `_section.scss` | H-1 | 30 min |
 | Add `id` attributes to `reference.html` form inputs | H-7 | 15 min |
@@ -427,6 +512,10 @@ changes to the compiled CSS can only be caught manually.
 | Add axe-core a11y audit to CI | M-7 | 2 h |
 | Introduce 11ty (or similar) for HTML partials | M-4 | 4 h |
 | Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h |
+| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h |
+| Add code blocks to 7 component demo sections | H-9 | 3 h |
+| Add copy-to-clipboard on all code blocks | H-9 | 1 h |
+| Implement scroll-spy active link highlighting | H-10 | 2 h |
 | Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h |
 
 ### Phase 4 — Maturity & scale (ongoing)
@@ -480,14 +569,34 @@ Every change to the design system should satisfy:
 |--------|---------|--------|
 | Compiled CSS size (gzip) | ~35 KB* | < 30 KB |
 | `!important` outside utilities | 13 | 0 |
-| Hardcoded `rgba()` with literal colours | 20+ | 0 |
-| Raw `z-index` (non-variable) | 29 | 0 |
+| Hardcoded `rgba()` with literal colours | 42 | 0 |
+| Raw `z-index` (non-variable) | 41 | 0 |
 | Max nesting depth | 4 | ≤ 3 |
 | `@import` statements | 52 | 0 (post-migration) |
 | a11y violations (axe-core) | Unknown | 0 |
 | Visual regression failures (unintentional) | N/A | 0 |
+| Inline `style=` in reference.html | 291 | < 20 |
 
 *Estimated; actual gzip size not yet measured.
+
+---
+
+## 5. Responsive Design Testing Results
+
+Verified via Playwright at three viewports (2026-03-23):
+
+| Viewport | Result |
+|---|---|
+| **1440px desktop** | All sections render correctly, no overflow, no console errors |
+| **768px tablet** | Navbar collapses to hamburger, feature rows 2-col, blog grid 2-col, pricing 2-col (orphans 1 of 3 cards) |
+| **375px mobile** | No horizontal overflow, hero buttons stack, single columns, h1 scales to 32px via `clamp()`, no console errors |
+
+### Notable responsive issue: Pricing card orphan
+
+At 768px, the 3-card pricing grid becomes 2 columns, leaving the third
+card alone on a second row. Consider using
+`grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` for more
+natural flow, or explicitly switching to single column at tablet.
 
 ---
 
