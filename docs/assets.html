@@ -661,12 +661,58 @@
     </table>
   </section>
 
+  <!-- ────────────────── Asset Guidelines Quick Ref ─────── -->
+  <section id="guidelines">
+    <h2>Asset Guidelines</h2>
+    <p class="section-desc">Quick reference for sourcing, optimizing, and attributing assets. Full details in <a href="../ASSET_GUIDELINES.md" style="color:#0478FF">ASSET_GUIDELINES.md</a>.</p>
+
+    <h3>5-Gate Acquisition Flow</h3>
+    <table>
+      <thead><tr><th>Gate</th><th>Check</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Existing assets</td><td>Search <code>assets/</code> first — avoid duplicates</td></tr>
+        <tr><td>2</td><td>License</td><td>ISC, MIT, CC0, SIL OFL = approved. Freepik/Flaticon free = conditional (attribution)</td></tr>
+        <tr><td>3</td><td>Visual consistency</td><td>Must match 1.5px stroke, 24px grid, rounded caps</td></tr>
+        <tr><td>4</td><td>Optimization</td><td>SVGO (<code>svgo.config.js</code>), max 3 KB per icon, 50 KB per illustration</td></tr>
+        <tr><td>5</td><td>Documentation</td><td>Add entry to <a href="../ATTRIBUTIONS.md" style="color:#0478FF">ATTRIBUTIONS.md</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Where to Find Assets</h3>
+    <table>
+      <thead><tr><th>Need</th><th>First Choice</th><th>Fallback</th></tr></thead>
+      <tbody>
+        <tr><td>UI icon</td><td><a href="https://lucide.dev/" target="_blank">Lucide</a> <span class="badge badge--mit">ISC</span></td><td><a href="https://phosphoricons.com/" target="_blank">Phosphor</a>, <a href="https://tabler.io/icons" target="_blank">Tabler</a></td></tr>
+        <tr><td>Illustration</td><td><a href="https://undraw.co/" target="_blank">unDraw</a> <span class="badge badge--cc0">CC0</span></td><td><a href="https://storyset.com/" target="_blank">Storyset</a> (attr. req.)</td></tr>
+        <tr><td>Pattern / texture</td><td><code>assets/patterns/</code></td><td><a href="https://heropatterns.com/" target="_blank">Hero Patterns</a> <span class="badge badge--free">Free</span></td></tr>
+        <tr><td>Stock photo</td><td><a href="https://unsplash.com/" target="_blank">Unsplash</a></td><td><a href="https://www.pexels.com/" target="_blank">Pexels</a></td></tr>
+        <tr><td>Decorative icon</td><td><a href="https://www.flaticon.com/" target="_blank">Flaticon</a> (attr. req.)</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Current Inventory</h3>
+    <table>
+      <thead><tr><th>Category</th><th>Count</th><th>License</th></tr></thead>
+      <tbody>
+        <tr><td>Lucide icons</td><td>56</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Custom icons</td><td>5</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Brand assets</td><td>3</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Blog images</td><td>4</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Illustrations</td><td>2</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Patterns</td><td>14</td><td><span class="badge badge--mit">ISC</span></td></tr>
+        <tr><td>Fonts</td><td>2 families</td><td><span class="badge badge--ofl">SIL OFL</span></td></tr>
+        <tr style="font-weight:600"><td>Total</td><td>86</td><td>No attribution required</td></tr>
+      </tbody>
+    </table>
+  </section>
+
 </div>
 
 <footer class="page-footer">
   <div class="container">
     Voice Aura Design System &middot; Asset Showcase &middot;
-    See <a href="../ASSET_GUIDELINES.md" style="color: #0478FF;">ASSET_GUIDELINES.md</a> for full documentation
+    See <a href="../ASSET_GUIDELINES.md" style="color: #0478FF;">ASSET_GUIDELINES.md</a> |
+    <a href="../ATTRIBUTIONS.md" style="color: #0478FF;">ATTRIBUTIONS.md</a> for full documentation
   </div>
 </footer>
 

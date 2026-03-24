@@ -19,18 +19,38 @@
 
 ## Assets
 
-- Icons: 54 curated Lucide icons in `assets/icons/lucide/` (MIT license)
-- Custom icons: 5 SVGs in `assets/icons/` (ISC license)
-- Brand: 3 SVGs in `assets/brand/`
-- Patterns: 4 SVGs in `assets/patterns/`
-- Illustrations: 2 SVGs in `assets/illustrations/`
-- See `ASSET_GUIDELINES.md` for full icon & asset usage rules
+- **Icons**: 56 Lucide icons in `assets/icons/lucide/` (ISC license), 5 custom icons in `assets/icons/`
+- **Brand**: 3 SVGs in `assets/brand/`
+- **Images**: 4 blog-card SVGs in `assets/images/`
+- **Patterns**: 14 SVGs in `assets/patterns/`
+- **Illustrations**: 2 SVGs in `assets/illustrations/`
+- **Total**: 86 assets — all ISC or SIL OFL 1.1 licensed
+
+### Asset Sourcing Quick-Reference
+
+| Need | First choice | Fallback |
+|------|-------------|----------|
+| UI icon | `assets/icons/lucide/` or [lucide.dev](https://lucide.dev/) | [Phosphor](https://phosphoricons.com/), [Tabler](https://tabler.io/icons) |
+| Decorative icon | [Flaticon](https://www.flaticon.com/) (attribution req.) | — |
+| Illustration | [unDraw](https://undraw.co/) (CC0) | [Storyset](https://storyset.com/) (attribution req.) |
+| Background pattern | `assets/patterns/` or SCSS mixins | [Hero Patterns](https://heropatterns.com/) |
+| Stock photo | [Unsplash](https://unsplash.com/) | [Pexels](https://www.pexels.com/) |
+
+### Asset Workflow
+
+1. Check existing `assets/` first — avoid duplicates
+2. Verify license (see `ASSET_GUIDELINES.md` Gate 2)
+3. Optimize SVGs with SVGO (`svgo.config.js` at project root)
+4. Add entry to `ATTRIBUTIONS.md`
+
+Full policy: `ASSET_GUIDELINES.md` | Attribution tracking: `ATTRIBUTIONS.md`
 
 ## Documentation
 
 - `DESIGN_SYSTEM.md` — full design system reference
 - `RAILS_INTEGRATION.md` — Rails integration guide (esbuild, Webpack 5, Dart Sass)
-- `ASSET_GUIDELINES.md` — asset usage, licensing, recommended platforms
+- `ASSET_GUIDELINES.md` — asset usage, licensing, recommended platforms, SVGO config
+- `ATTRIBUTIONS.md` — third-party asset attribution registry
 - `SKILLS.md` — agent skills documentation and GitHub CLI setup
 
 ## Rails Integration

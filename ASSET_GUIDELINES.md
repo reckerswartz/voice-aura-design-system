@@ -6,51 +6,166 @@
 
 ## Table of Contents
 
-1. [Asset Directory Structure](#asset-directory-structure)
-2. [Icons](#icons)
-3. [Brand Assets](#brand-assets)
-4. [Patterns & Decorative Elements](#patterns--decorative-elements)
-5. [Illustrations & Mockups](#illustrations--mockups)
-6. [Typography & Fonts](#typography--fonts)
-7. [Open-Source Platforms & Sources](#open-source-platforms--sources)
-8. [Asset Sourcing Workflow](#asset-sourcing-workflow)
-9. [File Format & Optimization Guidelines](#file-format--optimization-guidelines)
-10. [Naming Conventions](#naming-conventions)
-11. [Color Application for Assets](#color-application-for-assets)
-12. [Sizing & Spacing Guidelines](#sizing--spacing-guidelines)
-13. [Accessibility](#accessibility)
-14. [Performance Considerations](#performance-considerations)
-15. [Licensing Summary](#licensing-summary)
+1. [Asset Acquisition Policy](#asset-acquisition-policy)
+2. [Asset Directory Structure](#asset-directory-structure)
+3. [Icons](#icons)
+4. [Brand Assets](#brand-assets)
+5. [Patterns & Decorative Elements](#patterns--decorative-elements)
+6. [Illustrations & Mockups](#illustrations--mockups)
+7. [Typography & Fonts](#typography--fonts)
+8. [Alternative & Companion Fonts](#alternative--companion-fonts)
+9. [Open-Source Platforms & Sources](#open-source-platforms--sources)
+10. [Asset Sourcing Workflow](#asset-sourcing-workflow)
+11. [File Format & Optimization Guidelines](#file-format--optimization-guidelines)
+12. [SVGO Configuration](#svgo-configuration)
+13. [Naming Conventions](#naming-conventions)
+14. [Color Application for Assets](#color-application-for-assets)
+15. [Sizing & Spacing Guidelines](#sizing--spacing-guidelines)
+16. [Accessibility](#accessibility)
+17. [Performance Considerations](#performance-considerations)
+18. [Attribution Registry](#attribution-registry)
+19. [Licensing Summary](#licensing-summary)
+
+---
+
+## Asset Acquisition Policy
+
+Before adding **any** external asset to the project, it must pass these gates in order.
+
+### Gate 1 — Do We Already Have It?
+
+Search the existing `assets/` tree first. Run:
+
+```bash
+find assets/ -iname '*keyword*'
+```
+
+If a suitable asset already exists, **stop here and use it**.
+
+### Gate 2 — License Check
+
+Only the following license families are approved without further review:
+
+| Approved License | Attribution? | Notes |
+|------------------|-------------|-------|
+| **MIT / ISC** | No | Preferred for icons and code |
+| **Apache 2.0** | No | Include NOTICE if redistributing |
+| **CC0 / Public Domain** | No | Best for illustrations |
+| **SIL Open Font License 1.1** | No (usage) | Fonts only |
+| **Unsplash / Pexels / Pixabay** | No | Photos only; no sub-licensing |
+
+These licenses require **team lead approval** before use:
+
+| Conditional License | Attribution? | Action |
+|---------------------|-------------|--------|
+| **CC BY 4.0** | **Yes** | Add entry to `ATTRIBUTIONS.md` |
+| **Freepik Free** | **Yes** | Add entry to `ATTRIBUTIONS.md` |
+| **Flaticon Free** | **Yes** | Add entry to `ATTRIBUTIONS.md` |
+| **Storyset** | **Yes** | Add entry to `ATTRIBUTIONS.md` |
+
+These licenses are **blocked**:
+
+| Blocked License | Reason |
+|-----------------|--------|
+| GPL / LGPL | Copyleft may affect project licensing |
+| CC BY-NC | No commercial use |
+| CC BY-ND | No derivatives |
+| No license / unclear | Cannot determine rights |
+| "Free for personal use" | Excludes commercial SaaS |
+
+### Gate 3 — Visual Consistency
+
+The asset must match the Voice Aura aesthetic:
+
+- **Icons:** Stroke-based, 24x24 viewBox, 1.5–2px stroke width, `currentColor` fills
+- **Illustrations:** Flat or semi-flat style, recolored to VA palette (`#0478FF` accent, `#1A1919` primary)
+- **Patterns:** Subtle, low-opacity (0.03–0.08), tileable where possible
+- **Photos:** High-contrast, tech/professional subject matter, no watermarks
+
+### Gate 4 — Optimization
+
+Before committing, the asset must be optimized:
+
+- SVG icons: **< 2 KB** (run through SVGO)
+- SVG illustrations: **< 50 KB**
+- SVG patterns: **< 5 KB**
+- Raster images: WebP preferred, **< 200 KB** for hero images
+- Remove editor metadata, comments, and unused `<defs>`
+
+### Gate 5 — Documentation
+
+After adding the asset:
+
+1. Save to the correct `assets/` subdirectory
+2. Follow [Naming Conventions](#naming-conventions)
+3. If attribution is required, add an entry to [`ATTRIBUTIONS.md`](./ATTRIBUTIONS.md)
+4. Update this file's directory listing if adding a new category
+
+### Decision Flowchart
+
+```
+Need an asset?
+│
+├─ Already in assets/? ──── YES ──→ Use it. Done.
+│
+├─ NO → Check license
+│       ├─ MIT/CC0/OFL/ISC? ──── YES ──→ Gate 3 (visual check)
+│       ├─ CC BY / Freepik Free? ── YES ──→ Get approval → Gate 3 → Add to ATTRIBUTIONS.md
+│       └─ GPL / NC / ND / None? ── BLOCKED. Find alternative.
+│
+├─ Passes visual consistency? ── NO ──→ Recolor/resize, or find alternative.
+│
+├─ Optimized & under budget? ── NO ──→ Run SVGO / compress / simplify.
+│
+└─ Document & commit. Done.
+```
 
 ---
 
 ## Asset Directory Structure
 
+**85 assets total** across 6 categories:
+
 ```
 assets/
-├── brand/
-│   ├── logo-icon.svg           # Logo mark (sound-wave icon)
-│   ├── logo-icon-white.svg     # Logo mark (white, for dark backgrounds)
-│   └── logo-full.svg           # Full logo (icon + "Voice Aura" text)
-├── icons/
-│   ├── lucide/                 # Lucide icon set (MIT license)
+├── brand/                          # 3 files — Logo variants
+│   ├── logo-icon.svg               # Logo mark (sound-wave icon)
+│   ├── logo-icon-white.svg         # Logo mark (white, for dark backgrounds)
+│   └── logo-full.svg               # Full logo (icon + "Voice Aura" text)
+├── icons/                          # 59 files — UI icons
+│   ├── lucide/                     # 54 curated Lucide icons (MIT)
 │   │   ├── mic.svg
 │   │   ├── headphones.svg
 │   │   ├── play.svg
-│   │   └── ... (54 curated icons)
-│   ├── play-circle.svg         # Custom play button
-│   ├── pause-circle.svg        # Custom pause button
-│   ├── waveform.svg            # Custom waveform icon
-│   ├── microphone.svg          # Custom mic icon
-│   └── volume-high.svg         # Custom volume icon
-├── patterns/
-│   ├── halftone-dots.svg       # Repeating halftone tile (16x16)
-│   ├── grid-dots.svg           # Repeating dot grid tile (24x24)
-│   ├── sound-wave-hero.svg     # Decorative hero waveform
-│   └── wave-divider.svg        # Horizontal section divider
-└── illustrations/
-    ├── voice-studio-mockup.svg # Browser/laptop frame mockup
-    └── phone-mockup.svg        # Phone frame mockup
+│   │   └── ... (54 total)
+│   ├── microphone.svg              # Custom voice-specific icons (ISC)
+│   ├── pause-circle.svg
+│   ├── play-circle.svg
+│   ├── volume-high.svg
+│   └── waveform.svg
+├── images/                         # 4 files — Blog card placeholder images
+│   ├── blog-voice-agents.svg       # Blue/purple microphone-themed
+│   ├── blog-video-translation.svg  # Teal video-themed
+│   ├── blog-voice-design.svg       # Indigo waveform-themed
+│   └── blog-voice-cloning.svg      # Orange clone-themed
+├── illustrations/                  # 2 files — Device mockups
+│   ├── voice-studio-mockup.svg     # Browser/laptop frame (600x400)
+│   └── phone-mockup.svg            # Phone frame (280x560)
+└── patterns/                       # 14 files — Background textures & decorations
+    ├── halftone-dots.svg           # Repeating halftone tile (16x16)
+    ├── halftone-wide.svg           # Wide halftone variant
+    ├── grid-dots.svg               # Repeating dot grid tile (24x24)
+    ├── grid-lines.svg              # Perpendicular grid with radial fade
+    ├── circuit-lines.svg           # Tech path lines with blue node dots
+    ├── concentric-rings.svg        # Radiating ripple circles
+    ├── crosshair.svg               # Corner "+" decoration marks
+    ├── diagonal-lines.svg          # 40px diagonal hatching texture
+    ├── gradient-radial-soft.svg    # Soft radial gradient blob
+    ├── mesh-gradient.svg           # Multi-stop radial gradient blobs
+    ├── noise-texture.svg           # Subtle film-grain overlay (feTurbulence)
+    ├── sound-wave-hero.svg         # Decorative hero waveform (120x300)
+    ├── sound-wave-wide.svg         # Full-width audio amplitude bars
+    └── wave-divider.svg            # Horizontal section separator (1440x60)
 ```
 
 ---
@@ -577,6 +692,60 @@ npm install @ibm/plex
 
 ---
 
+## Alternative & Companion Fonts
+
+IBM Plex is the canonical Voice Aura typeface. The alternatives below are documented for teams that need to adapt the design system for sub-brands, partner pages, or future rebranding considerations. **Do not mix these into the core Voice Aura product without a design review.**
+
+All fonts listed below use the **SIL Open Font License 1.1** — free for commercial use, no attribution required.
+
+### Body Text Alternatives
+
+| Font | Style | Weights | Google Fonts | Notes |
+|------|-------|---------|-------------|-------|
+| **Inter** | Geometric sans | 100–900 | [inter](https://fonts.google.com/specimen/Inter) | Most popular SaaS body font; excellent x-height and legibility. Best match for IBM Plex Sans. |
+| **DM Sans** | Geometric sans | 100–1000 | [dm-sans](https://fonts.google.com/specimen/DM+Sans) | Clean, minimal; slightly warmer than Inter. Good for friendly UI. |
+| **Outfit** | Geometric sans | 100–900 | [outfit](https://fonts.google.com/specimen/Outfit) | Modern, round terminals; more approachable than IBM Plex. |
+
+### Heading Alternatives
+
+| Font | Style | Weights | Google Fonts | Notes |
+|------|-------|---------|-------------|-------|
+| **Plus Jakarta Sans** | Geometric sans | 200–800 | [plus-jakarta-sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) | Friendly, modern headings; pairs well with Inter for body. |
+| **Space Grotesk** | Geometric sans | 300–700 | [space-grotesk](https://fonts.google.com/specimen/Space+Grotesk) | Tech-forward, distinctive; great for hero display text. |
+| **Sora** | Geometric sans | 100–800 | [sora](https://fonts.google.com/specimen/Sora) | Clean geometric with subtle personality. |
+
+### Monospace Alternatives
+
+| Font | Style | Weights | Google Fonts | Notes |
+|------|-------|---------|-------------|-------|
+| **JetBrains Mono** | Monospace | 100–800 | [jetbrains-mono](https://fonts.google.com/specimen/JetBrains+Mono) | Designed for code readability; ligatures for operators. |
+| **Fira Code** | Monospace | 300–700 | [fira-code](https://fonts.google.com/specimen/Fira+Code) | Popular dev font with programming ligatures. |
+
+### Pairing Recommendations
+
+If replacing IBM Plex entirely, use one of these tested pairings:
+
+```
+Heading / Body / Mono
+─────────────────────
+Plus Jakarta Sans / Inter / JetBrains Mono    ← Modern SaaS
+Space Grotesk / DM Sans / Fira Code           ← Tech-forward
+Sora / Outfit / JetBrains Mono                ← Friendly & clean
+```
+
+### How to Swap Fonts
+
+Override the font variables in `scss/abstracts/_variables.scss`:
+
+```scss
+// Example: Switch to Inter + Plus Jakarta Sans
+$va-font-heading: 'Plus Jakarta Sans', sans-serif;
+$va-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$va-font-mono:    'JetBrains Mono', 'SF Mono', monospace;
+```
+
+Then update the Google Fonts `<link>` in your HTML to load the new families.
+
 ## Open-Source Platforms & Sources
 
 ### Icon Platform Hierarchy
@@ -743,6 +912,64 @@ cwebp -q 80 input.png -o output.webp
   <img src="hero.jpg" alt="..." loading="lazy" width="1200" height="600">
 </picture>
 ```
+
+---
+
+## SVGO Configuration
+
+All SVGs added to the project should be optimized with [SVGO](https://github.com/svg/svgo). A project-level configuration is provided so optimizations are consistent.
+
+### Project Config (`svgo.config.js`)
+
+Create this file at the project root if it doesn't exist:
+
+```js
+// svgo.config.js
+module.exports = {
+  multipass: true,
+  plugins: [
+    'preset-default',
+    'removeDimensions',           // Use viewBox only
+    { name: 'removeViewBox', active: false },  // Keep viewBox
+    { name: 'removeTitle', active: false },    // Keep <title> for a11y
+    {
+      name: 'sortAttrs',
+      params: { xmlnsOrder: 'alphabetical' }
+    },
+    {
+      name: 'removeAttrs',
+      params: {
+        attrs: ['data-name', 'class'],  // Remove editor artifacts
+        elemSeparator: ':',
+      }
+    },
+  ],
+};
+```
+
+### Usage
+
+```bash
+# Install (one-time)
+npm install -g svgo
+
+# Optimize a single file
+svgo --config svgo.config.js input.svg -o output.svg
+
+# Optimize an entire directory
+svgo --config svgo.config.js -f assets/icons/ -o assets/icons/
+
+# Dry-run (show savings without writing)
+svgo --config svgo.config.js input.svg --pretty --output=-
+```
+
+### Browser-Based Alternative
+
+For quick one-off optimizations, use [SVGOMG](https://jakearchibald.github.io/svgomg/):
+1. Upload or paste SVG
+2. Enable: Remove dimensions, Merge paths, Round/rewrite paths (precision 2)
+3. Disable: Remove viewBox, Remove `<title>`
+4. Download optimized file
 
 ---
 
@@ -949,6 +1176,64 @@ When self-hosting fonts, use `font-display: swap` in all `@font-face` declaratio
 | Hero photo (WebP) | 200 KB | Use responsive `srcset` |
 | Total page SVG weight | 100 KB | Inline only what's above the fold |
 | Web font (per weight) | 30 KB (WOFF2) | Subset if possible |
+
+---
+
+## Attribution Registry
+
+All third-party assets used in the Voice Aura Design System must be tracked in the **[ATTRIBUTIONS.md](./ATTRIBUTIONS.md)** file. This registry ensures license compliance, simplifies audits, and makes it easy to credit creators.
+
+### When to Add an Entry
+
+Add a row to `ATTRIBUTIONS.md` whenever you:
+- Import an icon, illustration, image, or font from an external source
+- Use a free-tier asset that requires attribution (Freepik, Flaticon, Storyset)
+- Incorporate a snippet or pattern from an open-source project
+
+### Registry Format
+
+Each entry in `ATTRIBUTIONS.md` follows this structure:
+
+| Field | Description |
+|-------|-------------|
+| **Asset** | File name or pattern (e.g., `icon-*.svg`, `hero-illustration.svg`) |
+| **Source** | Where it came from (e.g., Lucide, unDraw, Freepik) |
+| **URL** | Direct link to the asset or source page |
+| **License** | SPDX identifier or license name (e.g., `MIT`, `ISC`, `CC0-1.0`, `Freepik-Free`) |
+| **Attribution?** | `Yes` or `No` — whether credit is legally required |
+| **Added** | Date added (`YYYY-MM-DD`) |
+| **Added By** | Contributor name or handle |
+
+### Rendering Attribution in Production
+
+For assets that **require** attribution (Freepik free tier, Flaticon free tier, Storyset):
+
+```html
+<!-- In the site footer or a dedicated credits page -->
+<p class="va-attribution">
+  Icons by <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a> |
+  Illustrations by <a href="https://storyset.com/" title="Storyset">Storyset</a>
+</p>
+```
+
+For assets where attribution is **appreciated but not required** (Unsplash, Pexels, Lucide):
+- Include credit in the project README or an internal credits page
+- Not required in the UI
+
+### Auditing
+
+Run a periodic audit to ensure every asset in `assets/` has a corresponding entry:
+
+```bash
+# List all asset files
+find assets/ -type f | sort > /tmp/asset-files.txt
+
+# Compare against ATTRIBUTIONS.md entries
+grep -oP '`[^`]+\.(svg|png|jpg|woff2?)`' ATTRIBUTIONS.md | tr -d '`' | sort > /tmp/attributed.txt
+
+# Show un-attributed files
+comm -23 /tmp/asset-files.txt /tmp/attributed.txt
+```
 
 ---
 
