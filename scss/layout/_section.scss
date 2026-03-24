@@ -27,7 +27,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-section {
   position: relative;
   padding: ($va-grid-unit * 12) ($va-grid-unit * 4);  // 96px 32px
-  background-color: #fff;
+  background-color: $va-white;
 
   // Slightly tighter variant
   &--sm {
@@ -47,10 +47,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   // Dark background
   &--dark {
     background-color: $va-near-black;
-    color: #fff;
+    color: $va-white;
 
-    .va-section__title { color: #fff; }
-    .va-section__subtitle { color: rgba(#fff, 0.7); }
+    .va-section__title { color: $va-white; }
+    .va-section__subtitle { color: rgba($va-white, 0.7); }
     .va-section__badge {
       color: $va-primary-blue;
       background-color: rgba($va-primary-blue, 0.15);
@@ -175,6 +175,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     &:hover {
       gap: $va-grid-unit * 1.25;
       text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
     }
 
     // Arrow icon
@@ -371,7 +376,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     font-family: $va-font-body;
     font-size: $_font-size-sm;
     font-weight: 500;
-    color: #fff;
+    color: $va-white;
     background-color: $va-near-black;
     border: none;
     border-radius: $va-radius-pill;
@@ -385,8 +390,13 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     &:hover {
       background-color: lighten($va-near-black, 12%);
       transform: translateY(-1px);
-      color: #fff;
+      color: $va-white;
       text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $va-primary-blue;
+      outline-offset: 2px;
     }
 
     svg {

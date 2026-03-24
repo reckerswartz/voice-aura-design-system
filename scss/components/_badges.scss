@@ -77,7 +77,7 @@
 
 .va-badge--dark {
   background-color: $va-near-black;
-  color: #fff;
+  color: $va-white;
 }
 
 // --------------------------------------------------------------------------
@@ -149,7 +149,7 @@
 
   &--dark {
     background-color: $va-near-black;
-    color: #fff;
+    color: $va-white;
   }
 
   &--light {
@@ -158,8 +158,8 @@
   }
 
   &--success {
-    background-color: rgba(#10b981, 0.1);
-    color: #059669;
+    background-color: rgba($va-success, 0.1);
+    color: darken($va-success, 10%);
   }
 
   &__icon {
@@ -249,7 +249,7 @@
     padding: 0.125rem 0.5rem;
     font-size: 0.6875rem;
     font-weight: 700;
-    color: #fff;
+    color: $va-white;
     background-color: $va-primary;
     border-radius: $va-radius-pill;
     line-height: 1.3;

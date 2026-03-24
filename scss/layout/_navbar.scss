@@ -16,6 +16,7 @@
 // ---------------------------------------------------------------------------
 
 $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
+$_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
 // ---------------------------------------------------------------------------
 // 1. Navbar Wrapper
@@ -28,7 +29,7 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   justify-content: space-between;
   height: $va-navbar-height;                       // 72px
   padding: 0 ($va-grid-unit * 4);                  // 0 32px
-  background-color: #fff;
+  background-color: $va-white;
   border-bottom: 1px solid $va-border-color;
   z-index: $va-z-navbar;
   transition: box-shadow 0.2s ease-in-out,
@@ -246,7 +247,7 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   font-family: $va-font-body;
   font-size: $_font-size-sm;
   font-weight: 500;
-  color: #fff;
+  color: $va-white;
   background-color: $va-near-black;
   border: none;
   padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
@@ -260,7 +261,7 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
   &:focus-visible {
     background-color: lighten($va-near-black, 12%);
     transform: translateY(-1px);
-    color: #fff;
+    color: $va-white;
     text-decoration: none;
   }
 
@@ -295,6 +296,11 @@ $_bp-lg: map-get($va-breakpoints, "lg"); // 992px
 
   &:hover {
     background-color: $va-light-grey;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
   }
 
   // Three-line hamburger icon

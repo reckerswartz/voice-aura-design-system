@@ -115,18 +115,18 @@
 .va-btn--primary {
   background-color: $va-near-black;
   border-color: $va-near-black;
-  color: #fff;
+  color: $va-white;
 
   &:hover {
     background-color: lighten($va-near-black, 10%);
     border-color: lighten($va-near-black, 10%);
-    color: #fff;
+    color: $va-white;
   }
 
   &:active {
     background-color: darken($va-near-black, 5%);
     border-color: darken($va-near-black, 5%);
-    color: #fff;
+    color: $va-white;
   }
 }
 
@@ -160,18 +160,18 @@
 .va-btn--accent {
   background-color: $va-primary;
   border-color: $va-primary;
-  color: #fff;
+  color: $va-white;
 
   &:hover {
     background-color: darken($va-primary, 8%);
     border-color: darken($va-primary, 8%);
-    color: #fff;
+    color: $va-white;
   }
 
   &:active {
     background-color: darken($va-primary, 14%);
     border-color: darken($va-primary, 14%);
-    color: #fff;
+    color: $va-white;
   }
 }
 
