@@ -54,8 +54,24 @@ npm install
 # Development build (with source maps)
 npm run build:css
 
+# Production build (expanded + minified)
+npm run build
+
 # Watch for changes
 npm run watch:css
+```
+
+### Quality & Optimization
+
+```bash
+# Lint all SCSS (BEM-aware, 0 errors baseline)
+npm run lint
+
+# Auto-fix lint issues
+npm run lint:fix
+
+# Optimize all SVG assets (requires: npm install -g svgo)
+npm run optimize:svg
 ```
 
 ### Usage in Projects
@@ -505,7 +521,7 @@ $va-font-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Code', monospace;
 
 ## Icons & Visual Assets
 
-The design system includes 86 curated assets across 6 categories. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for full sourcing workflows, optimization rules, and platform-specific instructions. See **[site/asset-gallery.html](./site/asset-gallery.html)** for a visual showcase.
+The design system includes 88 curated assets across 6 categories. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for full sourcing workflows, optimization rules, and platform-specific instructions. See **[site/asset-gallery.html](./site/asset-gallery.html)** for a visual showcase.
 
 ### Icon Library: Lucide (Primary)
 
@@ -669,46 +685,61 @@ Source new illustrations from unDraw (CC0), Freepik (attribution required for fr
 
 ```
 voice-aura-design-system/
-├── scss/
+├── scss/                            # 28 SCSS partials (7-1 architecture)
 │   ├── abstracts/
-│   │   ├── _variables.scss      # Design tokens, Bootstrap overrides
-│   │   ├── _mixins.scss         # Reusable mixins
-│   │   └── _functions.scss      # Sass utility functions
+│   │   ├── _variables.scss          # Design tokens, $va-asset-base-path, Bootstrap overrides
+│   │   ├── _mixins.scss             # Reusable mixins (va-halftone-overlay, va-media-up/down)
+│   │   └── _functions.scss          # va-darken(), va-lighten(), va-color() functions
 │   ├── base/
-│   │   ├── _reset.scss          # CSS reset/normalize
-│   │   └── _typography.scss     # Type system, font imports
+│   │   ├── _reset.scss              # CSS reset + 38 authored --va-* custom properties on :root
+│   │   └── _typography.scss         # Type system, font imports
 │   ├── components/
-│   │   ├── _buttons.scss        # Button variants
-│   │   ├── _cards.scss          # Card variants
-│   │   ├── _pricing.scss        # Pricing cards
-│   │   ├── _forms.scss          # Form elements & TTS input
-│   │   ├── _badges.scss         # Badges, pills, tags
-│   │   ├── _blog-card.scss      # Blog/article cards
-│   │   ├── _voice-agent.scss    # Voice agent card
-│   │   └── _auth.scss           # Auth forms
+│   │   ├── _animations.scss         # Index → imports 3 sub-modules:
+│   │   │   ├── _anim-core.scss      #   Keyframes, transitions, entrances, interactions
+│   │   │   ├── _anim-components.scss #   Scroll-triggered, mobile menu, stagger, navbar morph
+│   │   │   └── _anim-presets.scss   #   Composition presets, skeleton, hamburger, responsive
+│   │   ├── _backgrounds.scss        # Index → imports 3 sub-modules:
+│   │   │   ├── _bg-patterns.scss    #   12 SVG/CSS pattern overlays
+│   │   │   ├── _bg-effects.scss     #   10 visual effects & utilities
+│   │   │   └── _bg-presets.scss     #   Composition helpers & section presets
+│   │   ├── _buttons.scss            # Button variants
+│   │   ├── _cards.scss              # Card variants
+│   │   ├── _pricing.scss            # Pricing cards
+│   │   ├── _forms.scss              # Form elements & TTS input
+│   │   ├── _badges.scss             # Badges, pills, tags
+│   │   ├── _blog-card.scss          # Blog/article cards
+│   │   ├── _trust-bar.scss          # Trust/logo bar
+│   │   ├── _voice-agent.scss        # Voice agent card
+│   │   ├── _video-dubbing.scss      # Video dubbing card
+│   │   ├── _reference.scss          # API reference page styles
+│   │   └── _auth.scss               # Auth forms
 │   ├── layout/
-│   │   ├── _navbar.scss         # Navigation bar
-│   │   ├── _hero.scss           # Hero section
-│   │   ├── _section.scss        # Section layouts
-│   │   ├── _footer.scss         # Footer
-│   │   └── _grid.scss           # Grid extensions
+│   │   ├── _navbar.scss             # Navigation bar
+│   │   ├── _hero.scss               # Hero section
+│   │   ├── _feature-section.scss    # Feature rows & visual panels
+│   │   ├── _section.scss            # Section layouts
+│   │   └── _footer.scss             # Footer
 │   ├── vendors/
-│   │   └── _bootstrap.scss      # Bootstrap imports
-│   └── voice-aura.scss          # Main entry point
-├── assets/
-│   ├── brand/                   # Logo SVGs
-│   ├── icons/                   # Custom + Lucide icons
-│   ├── patterns/                # SVG pattern tiles & decorations
-│   └── illustrations/           # Mockups & illustrations
-├── dist/
-│   └── css/
-│       └── voice-aura.css       # Compiled CSS
-├── site/
-│   ├── components.html          # Component visual reference
-│   └── asset-gallery.html       # Asset showcase page
-├── package.json
-├── DESIGN_SYSTEM.md             # Design system specification
-└── ASSET_GUIDELINES.md          # Asset & resource guidelines
+│   │   └── _bootstrap.scss          # Bootstrap 5.3 imports + utility API extensions
+│   └── voice-aura.scss              # Main entry point
+├── assets/                          # 88 assets across 6 categories
+│   ├── brand/                       # 3 logo SVGs
+│   ├── icons/                       # 59 icons (54 Lucide + 5 custom)
+│   ├── images/                      # 6 blog/component images
+│   ├── patterns/                    # 14 SVG pattern tiles & decorations
+│   └── illustrations/               # 2 device mockups
+├── dist/css/                        # Compiled output
+│   ├── voice-aura.css               # Expanded (with source map)
+│   └── voice-aura.min.css           # Compressed
+├── site/                            # 8 demo/reference HTML pages
+├── svgo.config.js                   # SVG optimization config
+├── .stylelintrc.json                # Stylelint config (BEM-aware)
+├── package.json                     # npm scripts: build, lint, optimize:svg
+├── DESIGN_SYSTEM.md                 # This file — design system specification
+├── ASSET_GUIDELINES.md              # Asset sourcing, licensing, usage, integration
+├── ATTRIBUTIONS.md                  # Third-party asset attribution registry
+├── ARCHITECTURE_REVIEW.md           # Architecture issues & improvement roadmap
+└── TEMPLATE_GUIDE.md                # Section recipes & SVG asset inventory
 ```
 
 ---

@@ -25,6 +25,10 @@
 17. [Performance Considerations](#performance-considerations)
 18. [Attribution Registry](#attribution-registry)
 19. [Licensing Summary](#licensing-summary)
+20. [Dark Mode Asset Guidance](#dark-mode-asset-guidance)
+21. [Animated SVG Guidelines](#animated-svg-guidelines)
+22. [Stock Photo Integration Patterns](#stock-photo-integration-patterns)
+23. [Asset Base Path Configuration](#asset-base-path-configuration)
 
 ---
 
@@ -1453,6 +1457,323 @@ When redistributing the design system, include:
 - Credit Lucide in your project's acknowledgments (appreciated but not required)
 - IBM Plex OFL license if self-hosting fonts
 - Attribution for any Freepik/Flaticon/Storyset free-tier assets used
+
+---
+
+## Dark Mode Asset Guidance
+
+When assets are used in dark-themed sections (`.va-bg-dark-grid`, feature `--dark` panels, auth showcase), they need special treatment to remain visible and on-brand.
+
+### Icons on Dark Backgrounds
+
+```html
+<!-- Use the --white color variant -->
+<svg class="va-icon va-icon--white" aria-hidden="true" ...><!-- paths --></svg>
+
+<!-- Or let currentColor inherit from the parent's color -->
+<div style="color: #fff;">
+  <svg class="va-icon" aria-hidden="true" ...>
+    <!-- stroke="currentColor" inherits white -->
+  </svg>
+</div>
+```
+
+### Brand Logo on Dark Backgrounds
+
+Use the white logo variant — do **not** apply CSS filters to recolor the standard logo:
+
+```html
+<!-- Correct: dedicated white variant -->
+<img src="assets/brand/logo-icon-white.svg" alt="" width="32" height="32">
+
+<!-- Incorrect: CSS filter on standard logo -->
+<img src="assets/brand/logo-icon.svg" style="filter: brightness(0) invert(1);" ...>
+```
+
+### Illustrations on Dark Backgrounds
+
+When placing illustrations on dark panels:
+
+1. **Prefer SVGs with `currentColor`** — they automatically adapt
+2. **For multi-color illustrations:** create a `-dark` variant with lighter fills
+3. **For photos:** add a semi-transparent overlay to maintain contrast:
+
+```scss
+.va-illustration--on-dark {
+  border-radius: $va-radius-lg;
+  // Slight brightness boost for dark backgrounds
+  filter: brightness(1.05);
+
+  // Alternative: overlay approach
+  &--overlay {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba($va-near-black, 0.15);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+  }
+}
+```
+
+### Patterns on Dark Backgrounds
+
+Built-in dark variants exist for key patterns:
+
+| Light Pattern | Dark Variant | Notes |
+|---------------|-------------|-------|
+| `.va-pattern-halftone` | `.va-pattern-halftone--dark` | White dots on dark bg |
+| `.va-bg-circuit` | — | Already works on dark (blue accent nodes) |
+| `.va-bg-dark-grid` | N/A (dark-only) | Grid lines for dark panels |
+
+For custom patterns on dark backgrounds, invert the pattern color:
+
+```scss
+.va-pattern-custom--dark::before {
+  // Override pattern color for dark sections
+  filter: invert(1);
+  opacity: 0.04; // Lower opacity on dark — patterns are more visible
+}
+```
+
+### CSS Custom Properties for Theming
+
+Use the authored `--va-*` custom properties (defined in `_reset.scss`) to make components theme-aware:
+
+```scss
+// Theme-aware card that adapts to dark sections
+.va-card--adaptive {
+  background: var(--va-color-white);
+  color: var(--va-color-text);
+  border-color: var(--va-color-border);
+
+  .dark-section & {
+    --va-color-white: #{$va-near-black};
+    --va-color-text: #{$va-white};
+    --va-color-border: rgba(255, 255, 255, 0.1);
+  }
+}
+```
+
+---
+
+## Animated SVG Guidelines
+
+### When to Use Animated SVGs
+
+| Context | Animated? | Source |
+|---------|-----------|--------|
+| Hero section waveform bars | **Yes** — CSS animation | Built-in `.va-waveform-bars` |
+| Loading skeleton shimmer | **Yes** — CSS animation | Built-in `.va-skeleton` |
+| Onboarding/empty-state illustrations | **Yes** — SVG animation | Storyset, Lottie |
+| Feature illustrations | **No** — static preferred | unDraw, Freepik |
+| Icons | **No** — CSS transitions only | Lucide (hover/focus states via CSS) |
+
+### Importing Animated SVGs from Storyset
+
+Storyset provides animated SVGs with embedded `<style>` and `<animate>` elements:
+
+```html
+<!-- Inline the animated SVG (required for animation to work) -->
+<div class="va-illustration va-illustration--animated" role="img"
+     aria-label="User setting up voice profile">
+  <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Storyset animated SVG content here -->
+  </svg>
+</div>
+```
+
+### Reduced Motion Support
+
+**All animated assets must respect `prefers-reduced-motion`.** The design system's global rule in `_anim-components.scss` handles CSS animations automatically, but SVG `<animate>` elements need explicit handling:
+
+```scss
+// For inline animated SVGs (Storyset, Lottie, custom)
+.va-illustration--animated {
+  svg animate,
+  svg animateTransform,
+  svg animateMotion {
+    // Animations play normally by default
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    svg animate,
+    svg animateTransform,
+    svg animateMotion {
+      // Pause SVG SMIL animations
+      animation-play-state: paused !important;
+    }
+
+    // For CSS-animated SVGs, the global rule handles it
+    svg * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}
+```
+
+### JavaScript-Based Animation (Lottie)
+
+For complex animations (mascots, onboarding walkthroughs), use [Lottie](https://airbnb.io/lottie/) with a reduced-motion check:
+
+```html
+<div id="lottie-animation" class="va-illustration" aria-label="Welcome animation"></div>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const anim = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'),
+    renderer: 'svg',
+    loop: !prefersReducedMotion,
+    autoplay: !prefersReducedMotion,
+    path: 'assets/animations/welcome.json',
+  });
+  // Show first frame as static fallback when motion is reduced
+  if (prefersReducedMotion) anim.goToAndStop(0, true);
+</script>
+```
+
+### Performance Budget for Animated Assets
+
+| Asset Type | Max Size | Max Duration | Notes |
+|------------|----------|-------------|-------|
+| Animated SVG (Storyset) | 80 KB | 3s loop | Inline only above-the-fold |
+| Lottie JSON | 100 KB | 5s loop | Lazy-load below fold |
+| CSS animation | N/A | Match `$va-duration-*` tokens | Use design system timing |
+| GIF (avoid) | 200 KB | — | Prefer animated SVG or Lottie |
+
+---
+
+## Stock Photo Integration Patterns
+
+### Responsive Images with Format Fallbacks
+
+Use the `<picture>` element for hero images and editorial photos from Unsplash/Pexels:
+
+```html
+<!-- Hero background image with AVIF → WebP → JPEG fallback -->
+<picture>
+  <source srcset="assets/images/hero-bg-1200.avif" type="image/avif">
+  <source srcset="assets/images/hero-bg-1200.webp" type="image/webp">
+  <img src="assets/images/hero-bg-1200.jpg"
+       alt="Professional recording studio with microphone and sound panels"
+       class="va-hero__bg-image"
+       width="1200" height="600"
+       loading="eager"
+       fetchpriority="high"
+       decoding="async">
+</picture>
+
+<!-- Below-the-fold feature photo (lazy loaded) -->
+<picture>
+  <source srcset="assets/images/feature-studio-800.avif 800w,
+                  assets/images/feature-studio-400.avif 400w"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          type="image/avif">
+  <source srcset="assets/images/feature-studio-800.webp 800w,
+                  assets/images/feature-studio-400.webp 400w"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          type="image/webp">
+  <img src="assets/images/feature-studio-800.jpg"
+       alt="Voice artist using the Voice Aura platform"
+       class="va-illustration va-illustration--elevated"
+       width="800" height="500"
+       loading="lazy"
+       decoding="async">
+</picture>
+```
+
+### Photo Styling Classes
+
+```scss
+// Full-bleed background photo for sections
+.va-section__bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: $va-z-base;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  // Darken for text readability
+  &--darken {
+    filter: brightness(0.4);
+  }
+
+  // Desaturate for subtle background
+  &--muted {
+    filter: grayscale(50%) brightness(0.6);
+  }
+}
+
+// Photo card thumbnail
+.va-photo-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: $va-radius;
+  transition: transform $va-duration-base ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+```
+
+### Photo Preparation Workflow
+
+When adding a stock photo from Unsplash or Pexels:
+
+1. **Download** the highest resolution available
+2. **Crop** to the needed aspect ratio (16:10 for cards, 2:1 for hero, 1:1 for avatars)
+3. **Generate responsive sizes:**
+   ```bash
+   # Using ImageMagick (install via: sudo apt install imagemagick)
+   convert input.jpg -resize 1200x600^ -gravity center -extent 1200x600 hero-bg-1200.jpg
+   convert input.jpg -resize 800x500^  -gravity center -extent 800x500  feature-800.jpg
+   convert input.jpg -resize 400x250^  -gravity center -extent 400x250  feature-400.jpg
+
+   # Convert to WebP
+   cwebp -q 82 hero-bg-1200.jpg -o hero-bg-1200.webp
+   cwebp -q 82 feature-800.jpg  -o feature-800.webp
+   cwebp -q 82 feature-400.jpg  -o feature-400.webp
+   ```
+4. **Verify** file sizes are under budget (see [Performance Considerations](#performance-considerations))
+5. **Add alt text** — describe the image content, not the design purpose
+6. **Credit** the photographer in `ATTRIBUTIONS.md` (appreciated but not required for Unsplash/Pexels)
+
+---
+
+## Asset Base Path Configuration
+
+The SCSS variable `$va-asset-base-path` controls where pattern and image assets are resolved from. Override it before importing Voice Aura to match your project's directory structure:
+
+```scss
+// Default (assumes scss/ and assets/ are siblings)
+$va-asset-base-path: "../../assets";
+
+// Rails with Propshaft (assets served from app/assets/)
+$va-asset-base-path: "";
+
+// npm consumer (assets in node_modules)
+$va-asset-base-path: "~voice-aura-design-system/assets";
+
+// CDN-hosted assets
+$va-asset-base-path: "https://cdn.example.com/va-assets";
+```
+
+All background patterns in `_bg-patterns.scss` and `_bg-effects.scss` reference this variable:
+
+```scss
+// Pattern classes use the configurable base path
+.va-pattern-halftone::before {
+  background-image: url("#{$va-asset-base-path}/patterns/halftone-dots.svg");
+}
+```
 
 ---
 

@@ -52,6 +52,7 @@
     "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
     "lint": "stylelint \"scss/**/*.scss\"",
     "lint:fix": "stylelint \"scss/**/*.scss\" --fix",
+    "optimize:svg": "svgo --config svgo.config.js -f assets/icons/ -f assets/brand/ -f assets/patterns/ -f assets/illustrations/ -f assets/images/ --recursive",
     "prepublishOnly": "npm run build",
     "preversion": "npm run build",
     "version": "npm run build && git add -A dist/",

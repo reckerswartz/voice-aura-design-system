@@ -433,6 +433,11 @@ $tooltip-opacity:       1;
 // Non-Bootstrap variables specific to the Voice Aura design system.
 // ============================================================================
 
+// Asset base path — override for npm consumers or non-standard directory layouts.
+// Default assumes SCSS is compiled from `scss/` with assets at sibling `assets/`.
+// Usage in components:  background-image: url("#{$va-asset-base-path}/patterns/halftone-dots.svg");
+$va-asset-base-path: "../../assets" !default;
+
 // Layout
 $va-section-padding-y:       5rem;       // 80px — standard vertical section padding
 $va-section-padding-y-lg:    7.5rem;     // 120px — larger section padding
