@@ -199,3 +199,37 @@ fieldset {
 [hidden] {
   display: none !important;
 }
+
+// ---------------------------------------------------------------------------
+// 9. Print Styles
+// ---------------------------------------------------------------------------
+
+@media print {
+  .va-navbar,
+  .va-navbar--sticky,
+  .va-navbar--fixed,
+  .va-pattern-halftone,
+  .va-bg-glow,
+  .va-bg-dots,
+  .va-pricing-section__dots,
+  .va-hero__float,
+  .va-waveform-bars {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+}
