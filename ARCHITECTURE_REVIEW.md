@@ -40,7 +40,7 @@
 |--------|-------|
 | SCSS source lines | 11,341 (+2,156 since initial review) |
 | Compiled CSS (expanded) | 424 KB |
-| Compiled CSS (minified) | 354 KB |
+| Compiled CSS (minified) | **339 KB** (was 354 KB; PostCSS + unused imports removed) |
 | `!important` usages | 48 (35 in utility generators — acceptable) |
 | Hardcoded hex colors outside `_variables.scss` | 6 (down from 42; remaining are in `color-mix` functions) |
 | Hardcoded `rgba()` with literal color values | 42 (shadows, borders — should use tokens) |
@@ -99,6 +99,11 @@ Issues resolved or partially addressed since the initial review:
 | F-5 | 7 files missing BOOTSTRAP ALIGNMENT blocks | ✅ Done | Added to navbar, hero, footer, feature-section, section, voice-agent, video-dubbing (`18fa927`) |
 | F-7 | 1,147 lines app-specific SCSS in `components/` | ✅ Done | Moved auth, voice-agent, video-dubbing to `scss/brands/voice-aura/` with index |
 | F-8 | Grid section missing from components.html | ✅ Done | Added with auto-fit, 2/3/4-col, spacing demos + code snippet (`18fa927`) |
+| — | Unused Bootstrap imports (modal, tooltip, close) | ✅ Done | Commented out — saved ~15 KB (`ee3f944`) |
+| — | No PostCSS pipeline | ✅ Done | autoprefixer + cssnano added to build chain (`ee3f944`) |
+| — | No CI workflow | ✅ Done | GitHub Actions: lint + build + size budget on Node 18/20 (`ee3f944`) |
+| — | No visual regression tests | ✅ Done | Playwright snapshot tests for 5 pages (`ee3f944`) |
+| — | No accessibility audits | ✅ Done | axe-core WCAG 2.1 AA tests for 4 pages (`ee3f944`) |
 
 ---
 

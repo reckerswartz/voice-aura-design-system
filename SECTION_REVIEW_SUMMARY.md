@@ -198,8 +198,8 @@ Fixes grouped by priority — derived from the per-section audits.
 
 | Gap | Impact |
 |-----|--------|
-| No PostCSS pipeline | No autoprefixer, cssnano, PurgeCSS |
-| No CI test workflow | Stylelint local only, no visual regression |
+| ~~No PostCSS pipeline~~ | ~~✅ autoprefixer + cssnano added (`ee3f944`)~~ |
+| ~~No CI test workflow~~ | ~~✅ GitHub Actions: lint + build + size budget (`ee3f944`)~~ |
 | No Style Dictionary / DTCG tokens | Token changes require editing SCSS manually |
 | No 11ty / SSG | Navbar duplicated 4× across HTML pages |
 
@@ -217,13 +217,13 @@ All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3
 2. ~~**F-7:** Move app-specific SCSS to `brands/voice-aura/`~~ ✅ COMPLETE
 3. ~~**F-11/F-12/F-13/F-14:** Complete variant demos in reference~~ ✅ COMPLETE
 
-### Sprint 3 — Tooling & quality (1 week)
+### ~~Sprint 3 — Tooling & quality~~ ✅ COMPLETE (`ee3f944`)
 
-11. Add PostCSS pipeline (autoprefixer + cssnano + PurgeCSS)
-12. Remove unused Bootstrap imports (modal, tooltip, dropdown, close)
-13. Add CI workflow (lint + build + size budget)
-14. Add Playwright visual regression test baselines
-15. Add axe-core accessibility audit to CI
+11. ~~Add PostCSS pipeline (autoprefixer + cssnano)~~ ✅
+12. ~~Remove unused Bootstrap imports (modal, tooltip, close — saved ~15 KB)~~ ✅
+13. ~~Add CI workflow (lint + build + size budget on Node 18/20)~~ ✅
+14. ~~Add Playwright visual regression test baselines (5 pages)~~ ✅
+15. ~~Add axe-core WCAG 2.1 AA accessibility audit (4 pages)~~ ✅
 
 ### Sprint 4 — Scale readiness (ongoing)
 
