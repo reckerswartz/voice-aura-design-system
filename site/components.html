@@ -204,7 +204,7 @@ $va-badge-bg:     #EEF2FF;
             <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; color: #4B5563; line-height: 1.6; margin-bottom: 1rem; max-width: 640px;">
               <strong>Body text (16px):</strong> Unlock the power of intelligent voice technology through interactive lessons and hands-on projects. Learn the core AI skills behind speech recognition, natural language understanding, and smart voice experiences.
             </p>
-            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #9CA3AF; line-height: 1.5; max-width: 640px;">
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #6B7280; line-height: 1.5; max-width: 640px;">
               <strong>Small/Muted (14px):</strong> By signing up, you accept Voice Aura privacy policy and terms of service.
             </p>
           </div>
@@ -526,20 +526,20 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 
           <div class="ref-narrow">
             <div class="va-form-group">
-              <label class="va-form-label">Email Address</label>
-              <input type="email" class="va-form-input" placeholder="you@example.com">
+              <label class="va-form-label" for="demo-email">Email Address</label>
+              <input type="email" class="va-form-input" id="demo-email" placeholder="you@example.com">
             </div>
             <div class="va-form-group">
-              <label class="va-form-label">Password</label>
-              <input type="password" class="va-form-input" placeholder="Enter your password">
+              <label class="va-form-label" for="demo-password">Password</label>
+              <input type="password" class="va-form-input" id="demo-password" placeholder="Enter your password">
             </div>
             <div class="va-form-group">
-              <label class="va-form-label">Message</label>
-              <textarea class="va-form-textarea" rows="3" placeholder="Type your message..."></textarea>
+              <label class="va-form-label" for="demo-message">Message</label>
+              <textarea class="va-form-textarea" id="demo-message" rows="3" placeholder="Type your message..."></textarea>
             </div>
             <div class="va-form-group">
-              <label class="va-form-label">Plan</label>
-              <select class="va-form-select">
+              <label class="va-form-label" for="demo-plan">Plan</label>
+              <select class="va-form-select" id="demo-plan">
                 <option>Free</option>
                 <option>Creator — $29/mo</option>
                 <option>Business — $69/mo</option>
@@ -630,17 +630,17 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <p class="ref-desc" class="ref-mb-2">Add <code>.is-invalid</code> or <code>.is-valid</code> to <code>.va-form-input</code> for colored borders and focus rings. Use <code>.va-form-error</code> for always-visible error messages.</p>
           <div class="ref-narrow" class="ref-mb-4">
             <div class="va-form-group">
-              <label class="va-form-label">Valid input</label>
-              <input type="text" class="va-form-input is-valid" value="hello@voiceaura.com">
+              <label class="va-form-label" for="demo-valid">Valid input</label>
+              <input type="text" class="va-form-input is-valid" id="demo-valid" value="hello@voiceaura.com">
             </div>
             <div class="va-form-group">
-              <label class="va-form-label">Invalid input</label>
-              <input type="text" class="va-form-input is-invalid" value="not-an-email">
+              <label class="va-form-label" for="demo-invalid">Invalid input</label>
+              <input type="text" class="va-form-input is-invalid" id="demo-invalid" value="not-an-email">
               <span class="va-form-error">Please enter a valid email address.</span>
             </div>
             <div class="va-form-group">
-              <label class="va-form-label">Hint text</label>
-              <input type="text" class="va-form-input" placeholder="Username">
+              <label class="va-form-label" for="demo-hint">Hint text</label>
+              <input type="text" class="va-form-input" id="demo-hint" placeholder="Username">
               <span class="va-form-hint">Must be 3–20 characters, letters and numbers only.</span>
             </div>
           </div>
@@ -830,12 +830,12 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
                   <span>Send me tips, updates and offers</span>
                 </label>
                 <div class="va-form-group">
-                  <label class="va-form-label">Email</label>
-                  <input type="email" class="va-form-input" placeholder="Email Address">
+                  <label class="va-form-label" for="demo-auth-email">Email</label>
+                  <input type="email" class="va-form-input" id="demo-auth-email" placeholder="Email Address">
                 </div>
                 <div class="va-form-group">
-                  <label class="va-form-label">Password</label>
-                  <input type="password" class="va-form-input" value="secretpassword">
+                  <label class="va-form-label" for="demo-auth-password">Password</label>
+                  <input type="password" class="va-form-input" id="demo-auth-password" value="secretpassword">
                 </div>
                 <p class="va-auth__terms">By signing up, you accept Voice Aura <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
                 <button class="va-btn va-btn--primary va-btn--block va-auth__submit">Sign up</button>

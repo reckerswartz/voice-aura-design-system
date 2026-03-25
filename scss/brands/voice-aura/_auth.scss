@@ -246,13 +246,13 @@
     color: var(--va-color-body-text);
 
     a {
-      color: var(--va-color-primary);
+      color: va-darken($va-primary, 8%); // darkened for WCAG AA 4.5:1 @ 14px on white
       font-weight: $font-weight-medium;
       text-decoration: none;
       transition: color var(--va-duration-fast) ease-in-out;
 
       &:hover {
-        color: va-darken($va-primary, 10%);
+        color: va-darken($va-primary, 15%);
         text-decoration: underline;
       }
     }
@@ -267,7 +267,7 @@
     font-family: $font-family-base;
     font-size: 0.75rem;
     line-height: 1.6;
-    color: va-lighten($va-body-text, 15%);
+    color: va-lighten($va-body-text, 10%); // 10% (was 15%) — WCAG AA 4.5:1 @ 12px
     margin-top: 1rem;
 
     a {

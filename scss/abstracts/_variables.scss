@@ -24,8 +24,8 @@ $va-badge-bg-light:  #EEF2FF;
 
 // Semantic colours
 $va-success:         #10B981;
-$va-warning:         #F59E0B;
-$va-danger:          #EF4444;
+$va-warning:         #B45309; // darkened from #F59E0B (2.14:1) for WCAG AA 4.5:1 on white
+$va-danger:          #DC2626; // darkened from #EF4444 (3.76:1) for WCAG AA 4.5:1 on white
 
 // Convenience aliases — canonical values are the longer forms above.
 // Kept because 29+ usages across 8 files reference these short names.
@@ -114,7 +114,16 @@ $theme-colors: (
 //   $box-shadow-sm            ← $va-shadow-sm      (single-layer)
 //   $box-shadow-lg            ← $va-shadow-lg      (multi-layer)
 //   $transition-base          ← $va-transition-base all 0.2s ease-in-out
+//   $btn-font-size            ←                    0.9375rem (15px)
+//   $btn-line-height          ←                    1.4
+//   $btn-font-size-sm         ←                    0.8125rem (13px)
+//   $btn-font-size-lg         ←                    1.0625rem (17px)
+//   $btn-padding-y-lg         ←                    0.9375rem (15px)
+//   $btn-border-radius-lg     ←                    0.625rem (10px)
 //   $btn-white-space          ←                    nowrap
+//   $badge-padding-y          ←                    0.25rem
+//   $badge-padding-x          ←                    0.625rem
+//   $badge-border-radius      ←                    0.25rem
 //   $input-disabled-bg        ← $va-section-bg     #F7F7F8
 //   $input-disabled-border-color ← $va-border-color #E5E7EB
 //   $card-inner-border-radius ←                    calc($va-radius - 1px)
@@ -337,19 +346,19 @@ $btn-padding-y:      0.75rem;
 $btn-padding-x:      1.5rem;
 $btn-font-weight:    $font-weight-medium;
 $btn-border-radius:  $va-radius-sm;
-$btn-font-size:      $font-size-base;
-$btn-line-height:    1.5;
+$btn-font-size:      0.9375rem;    // 15px — VA's preferred button text size
+$btn-line-height:    1.4;          // tighter than Bootstrap's 1.5
 
 // Sizes
 $btn-padding-y-sm:   0.5rem;
 $btn-padding-x-sm:   1rem;
-$btn-font-size-sm:   0.875rem;
+$btn-font-size-sm:   0.8125rem;    // 13px — VA's proportional small (Bootstrap default: 14px)
 $btn-border-radius-sm: $va-radius-sm;
 
-$btn-padding-y-lg:   1rem;
+$btn-padding-y-lg:   0.9375rem;    // 15px — VA's proportional large (Bootstrap default: 16px)
 $btn-padding-x-lg:   2rem;
-$btn-font-size-lg:   1.125rem;
-$btn-border-radius-lg: $va-radius-lg;
+$btn-font-size-lg:   1.0625rem;    // 17px — VA's proportional large (Bootstrap default: 18px)
+$btn-border-radius-lg: 0.625rem;   // 10px — proportional to VA's 0.5rem base btn radius
 
 // Transition
 $btn-transition: color 0.2s ease-in-out,
@@ -456,9 +465,9 @@ $modal-backdrop-opacity:      0.5;
 
 $badge-font-size:    0.75rem;
 $badge-font-weight:  $font-weight-medium;
-$badge-padding-y:    0.35em;
-$badge-padding-x:    0.65em;
-$badge-border-radius: $va-radius-pill;
+$badge-padding-y:    0.25rem;       // VA's preferred badge padding (Bootstrap default: 0.35em)
+$badge-padding-x:    0.625rem;     // VA's preferred badge padding (Bootstrap default: 0.65em)
+$badge-border-radius: 0.25rem;     // VA default: rounded-rect (use .va-badge--pill or .rounded-pill for pill shape)
 
 // ----------------------------------------------------------------------------
 // 13. TRANSITIONS
@@ -479,9 +488,9 @@ $focus-ring-color:   rgba($va-primary-blue, $focus-ring-opacity);
 // 14. LINKS
 // ----------------------------------------------------------------------------
 
-$link-color:       $va-primary-blue;
+$link-color:       color.adjust($va-primary-blue, $lightness: -8%); // darkened for WCAG AA 4.5:1 on white
 $link-decoration:  none;
-$link-hover-color: color.adjust($va-primary-blue, $lightness: -10%);
+$link-hover-color: color.adjust($va-primary-blue, $lightness: -15%);
 $link-hover-decoration: underline;
 
 // ----------------------------------------------------------------------------

@@ -289,9 +289,9 @@ Low-effort, high-impact fixes that improve quality immediately.
 | ✅ Fix "Get API Key" accent color | F-1 | 5 min | Visual accuracy |
 | ✅ Add hero section `id` | H-1 | 5 min | Anchor navigation |
 | ✅ Fix footer heading size | FT-1 | 5 min | Visual accuracy |
-| Add PostCSS pipeline | 3.2 | 3 h | ~40% CSS size reduction |
-| Add selective Bootstrap imports | 3.2 | 2 h | Remove ~32 KB dead CSS |
-| Add CI workflow (lint + build + size) | 3.5 | 2 h | Prevents regressions |
+| ~~Add PostCSS pipeline~~ | 3.2 | ✅ | autoprefixer + cssnano (`ee3f944`) |
+| ~~Add selective Bootstrap imports~~ | 3.2 | ✅ | Removed modal/tooltip/close (`ee3f944`) |
+| ~~Add CI workflow (lint + build + size)~~ | 3.5 | ✅ | GitHub Actions CI (`1cd5bbb`) |
 
 ### Phase 2 — Structural (3-4 weeks)
 
@@ -305,8 +305,8 @@ Address architectural debt that slows development.
 | ~~Components consume `--va-*` custom properties~~ | 3.9 | ✅ | 15/18 sections migrated (`1df176e`) |
 | Create `_reference.scss` page partials | 3.7 | ⚠️ In progress | 674 → 475 (-30%) with 38 ref-* classes |
 | ~~Add missing token maps and accessors~~ | 3.8 | ✅ | $va-icon-sizes, $va-letter-spacing, $va-line-heights |
-| Add Playwright visual regression tests | 3.10 | 4 h | Catches visual regressions |
-| Add axe-core a11y tests to CI | 3.5 | 2 h | Enforces accessibility |
+| ~~Add Playwright visual regression tests~~ | 3.10 | ✅ | 5 pages, desktop + mobile (`1cd5bbb`) |
+| ~~Add axe-core a11y tests to CI~~ | 3.5 | ✅ | 4 pages, WCAG 2.1 AA (`1cd5bbb`) |
 
 ### Phase 3 — Scale & Maturity (1-3 months)
 
@@ -314,14 +314,14 @@ Prepare the system for multi-brand, multi-platform use.
 
 | Task | Issue | Effort | Impact |
 |------|-------|--------|--------|
-| Introduce 11ty for HTML partials | 3.6 | 4 h | Eliminates navbar/footer duplication |
-| Full `@import` → `@use` migration | P0 phase 3 | 8 h | Dart Sass 3.0 readiness |
-| Dark mode via custom property layer | 3.9 | 8 h | Modern theming support |
-| Publish DTCG design token JSON | — | 4 h | Figma sync, multi-platform |
-| CSS `@layer` for cascade control | — | 3 h | Safe consumer overrides |
-| ✅ Container queries for key components | L-1 | ✅ Done | Embeddable components |
+| ~~Introduce 11ty for HTML partials~~ | 3.6 | ✅ | `_includes/`, `_layouts/` (`149f463`) |
+| Full `@import` → `@use` migration | P0 phase 3 | 8 h | Blocked on Bootstrap 6 |
+| ~~Dark mode via custom property layer~~ | 3.9 | ✅ | `va-dark-tokens` mixin, auto + manual (`96884f5`) |
+| ~~Publish DTCG design token JSON~~ | — | ✅ | Style Dictionary v5.4 (`050f0dd`) |
+| ~~CSS `@layer` for cascade control~~ | — | ✅ | `@layer va` wraps all output (`96884f5`) |
+| ~~Container queries for key components~~ | L-1 | ✅ | 8 `@container` queries |
 | Conditional component imports | — | 3 h | Tree-shaking for consumers |
-| CSS size target: < 250 KB minified | 3.2 | Ongoing | Performance |
+| CSS size target: < 250 KB minified | 3.2 | Ongoing | Currently 388 KB (347 w/ PurgeCSS) |
 
 ---
 

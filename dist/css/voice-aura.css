@@ -29,7 +29,7 @@
     --bs-primary: #0478FF;
     --bs-secondary: #1A1919;
     --bs-success: #10B981;
-    --bs-warning: #F59E0B;
+    --bs-warning: #B45309;
     --bs-danger: #DC2626;
     --bs-light: #E9E9EA;
     --bs-dark: #1A1919;
@@ -39,7 +39,7 @@
     --bs-primary-rgb: 4, 120, 255;
     --bs-secondary-rgb: 26, 25, 25;
     --bs-success-rgb: 16, 185, 129;
-    --bs-warning-rgb: 245, 158, 11;
+    --bs-warning-rgb: 180, 83, 9;
     --bs-danger-rgb: 220, 38, 38;
     --bs-light-rgb: 233, 233, 234;
     --bs-dark-rgb: 26, 25, 25;
@@ -50,7 +50,7 @@
     --bs-secondary-text-emphasis: rgb(10.4, 10, 10);
     --bs-success-text-emphasis: rgb(6.4, 74, 51.6);
     --bs-info-text-emphasis: rgb(5.2, 80.8, 96);
-    --bs-warning-text-emphasis: rgb(98, 63.2, 4.4);
+    --bs-warning-text-emphasis: rgb(72, 33.2, 3.6);
     --bs-danger-text-emphasis: rgb(88, 15.2, 15.2);
     --bs-light-text-emphasis: #495057;
     --bs-dark-text-emphasis: #495057;
@@ -58,7 +58,7 @@
     --bs-secondary-bg-subtle: rgb(209.2, 209, 209);
     --bs-success-bg-subtle: rgb(207.2, 241, 229.8);
     --bs-info-bg-subtle: rgb(206.6, 244.4, 252);
-    --bs-warning-bg-subtle: rgb(253, 235.6, 206.2);
+    --bs-warning-bg-subtle: rgb(240, 220.6, 205.8);
     --bs-danger-bg-subtle: rgb(248, 211.6, 211.6);
     --bs-light-bg-subtle: rgb(251.5, 252, 252.5);
     --bs-dark-bg-subtle: #ced4da;
@@ -66,7 +66,7 @@
     --bs-secondary-border-subtle: rgb(163.4, 163, 163);
     --bs-success-border-subtle: rgb(159.4, 227, 204.6);
     --bs-info-border-subtle: rgb(158.2, 233.8, 249);
-    --bs-warning-border-subtle: rgb(251, 216.2, 157.4);
+    --bs-warning-border-subtle: rgb(225, 186.2, 156.6);
     --bs-danger-border-subtle: rgb(241, 168.2, 168.2);
     --bs-light-border-subtle: #e9ecef;
     --bs-dark-border-subtle: #adb5bd;
@@ -146,7 +146,7 @@
     --bs-secondary-text-emphasis: rgb(117.6, 117, 117);
     --bs-success-text-emphasis: rgb(111.6, 213, 179.4);
     --bs-info-text-emphasis: rgb(109.8, 223.2, 246);
-    --bs-warning-text-emphasis: rgb(249, 196.8, 108.6);
+    --bs-warning-text-emphasis: rgb(210, 151.8, 107.4);
     --bs-danger-text-emphasis: rgb(234, 124.8, 124.8);
     --bs-light-text-emphasis: #f8f9fa;
     --bs-dark-text-emphasis: #dee2e6;
@@ -154,7 +154,7 @@
     --bs-secondary-bg-subtle: rgb(5.2, 5, 5);
     --bs-success-bg-subtle: rgb(3.2, 37, 25.8);
     --bs-info-bg-subtle: rgb(2.6, 40.4, 48);
-    --bs-warning-bg-subtle: rgb(49, 31.6, 2.2);
+    --bs-warning-bg-subtle: rgb(36, 16.6, 1.8);
     --bs-danger-bg-subtle: rgb(44, 7.6, 7.6);
     --bs-light-bg-subtle: #343a40;
     --bs-dark-bg-subtle: #1a1d20;
@@ -162,7 +162,7 @@
     --bs-secondary-border-subtle: rgb(15.6, 15, 15);
     --bs-success-border-subtle: rgb(9.6, 111, 77.4);
     --bs-info-border-subtle: rgb(7.8, 121.2, 144);
-    --bs-warning-border-subtle: rgb(147, 94.8, 6.6);
+    --bs-warning-border-subtle: rgb(108, 49.8, 5.4);
     --bs-danger-border-subtle: rgb(132, 22.8, 22.8);
     --bs-light-border-subtle: #495057;
     --bs-dark-border-subtle: #343a40;
@@ -1862,9 +1862,9 @@
     --bs-btn-padding-x: 1.5rem;
     --bs-btn-padding-y: 0.75rem;
     --bs-btn-font-family: ;
-    --bs-btn-font-size: 1rem;
+    --bs-btn-font-size: 0.9375rem;
     --bs-btn-font-weight: 500;
-    --bs-btn-line-height: 1.5;
+    --bs-btn-line-height: 1.4;
     --bs-btn-color: var(--bs-body-color);
     --bs-btn-bg: transparent;
     --bs-btn-border-width: var(--bs-border-width);
@@ -2007,20 +2007,20 @@
     --bs-btn-disabled-border-color: #10B981;
   }
   .btn-warning {
-    --bs-btn-color: #000;
-    --bs-btn-bg: #F59E0B;
-    --bs-btn-border-color: #F59E0B;
-    --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: rgb(246.5, 172.55, 47.6);
-    --bs-btn-hover-border-color: rgb(246, 167.7, 35.4);
-    --bs-btn-focus-shadow-rgb: 208, 134, 9;
-    --bs-btn-active-color: #000;
-    --bs-btn-active-bg: rgb(247, 177.4, 59.8);
-    --bs-btn-active-border-color: rgb(246, 167.7, 35.4);
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #B45309;
+    --bs-btn-border-color: #B45309;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: rgb(153, 70.55, 7.65);
+    --bs-btn-hover-border-color: rgb(144, 66.4, 7.2);
+    --bs-btn-focus-shadow-rgb: 191, 109, 46;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: rgb(144, 66.4, 7.2);
+    --bs-btn-active-border-color: rgb(135, 62.25, 6.75);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #000;
-    --bs-btn-disabled-bg: #F59E0B;
-    --bs-btn-disabled-border-color: #F59E0B;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #B45309;
+    --bs-btn-disabled-border-color: #B45309;
   }
   .btn-danger {
     --bs-btn-color: #fff;
@@ -2168,19 +2168,19 @@
     --bs-gradient: none;
   }
   .btn-outline-warning {
-    --bs-btn-color: #F59E0B;
-    --bs-btn-border-color: #F59E0B;
-    --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: #F59E0B;
-    --bs-btn-hover-border-color: #F59E0B;
-    --bs-btn-focus-shadow-rgb: 245, 158, 11;
-    --bs-btn-active-color: #000;
-    --bs-btn-active-bg: #F59E0B;
-    --bs-btn-active-border-color: #F59E0B;
+    --bs-btn-color: #B45309;
+    --bs-btn-border-color: #B45309;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #B45309;
+    --bs-btn-hover-border-color: #B45309;
+    --bs-btn-focus-shadow-rgb: 180, 83, 9;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #B45309;
+    --bs-btn-active-border-color: #B45309;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #F59E0B;
+    --bs-btn-disabled-color: #B45309;
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #F59E0B;
+    --bs-btn-disabled-border-color: #B45309;
     --bs-gradient: none;
   }
   .btn-outline-danger {
@@ -2304,15 +2304,15 @@
     color: var(--bs-btn-hover-color);
   }
   .btn-lg, .va-btn--lg {
-    --bs-btn-padding-y: 1rem;
+    --bs-btn-padding-y: 0.9375rem;
     --bs-btn-padding-x: 2rem;
-    --bs-btn-font-size: 1.125rem;
-    --bs-btn-border-radius: 1rem;
+    --bs-btn-font-size: 1.0625rem;
+    --bs-btn-border-radius: 0.625rem;
   }
   .btn-sm, .va-btn--sm {
     --bs-btn-padding-y: 0.5rem;
     --bs-btn-padding-x: 1rem;
-    --bs-btn-font-size: 0.875rem;
+    --bs-btn-font-size: 0.8125rem;
     --bs-btn-border-radius: 0.5rem;
   }
   .card, .va-card {
@@ -3901,12 +3901,12 @@
     --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
   .badge, .va-badge {
-    --bs-badge-padding-x: 0.65em;
-    --bs-badge-padding-y: 0.35em;
+    --bs-badge-padding-x: 0.625rem;
+    --bs-badge-padding-y: 0.25rem;
     --bs-badge-font-size: 0.75rem;
     --bs-badge-font-weight: 500;
     --bs-badge-color: #fff;
-    --bs-badge-border-radius: 50rem;
+    --bs-badge-border-radius: 0.25rem;
     display: inline-block;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     font-size: var(--bs-badge-font-size);
@@ -4282,7 +4282,7 @@
     background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
   }
   .text-bg-warning {
-    color: #000 !important;
+    color: #fff !important;
     background-color: RGBA(var(--bs-warning-rgb), var(--bs-bg-opacity, 1)) !important;
   }
   .text-bg-danger {
@@ -4338,8 +4338,8 @@
     text-decoration-color: RGBA(var(--bs-warning-rgb), var(--bs-link-underline-opacity, 1)) !important;
   }
   .link-warning:hover, .link-warning:focus {
-    color: RGBA(247, 177, 60, var(--bs-link-opacity, 1)) !important;
-    text-decoration-color: RGBA(247, 177, 60, var(--bs-link-underline-opacity, 1)) !important;
+    color: RGBA(144, 66, 7, var(--bs-link-opacity, 1)) !important;
+    text-decoration-color: RGBA(144, 66, 7, var(--bs-link-underline-opacity, 1)) !important;
   }
   .link-danger {
     color: RGBA(var(--bs-danger-rgb), var(--bs-link-opacity, 1)) !important;
@@ -10591,7 +10591,7 @@
     --va-color-link: rgb(0, 100.8414342629, 218.2);
     --va-color-border: #E5E7EB;
     --va-color-success: #10B981;
-    --va-color-warning: #F59E0B;
+    --va-color-warning: #B45309;
     --va-color-danger: #DC2626;
     --va-font-heading: IBM Plex Serif, Georgia, Times New Roman, serif;
     --va-font-body: IBM Plex Sans, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
@@ -10641,7 +10641,7 @@
       --va-color-link: rgb(44.8, 141.9442231076, 255);
       --va-color-border: #374151;
       --va-color-success: rgb(19.247761194, 222.552238806, 155.1850746269);
-      --va-color-warning: rgb(246.6062992126, 173.5811023622, 50.1937007874);
+      --va-color-warning: rgb(218.8571428571, 100.9174603175, 10.9428571429);
       --va-color-danger: rgb(225.6666666667, 73.1333333333, 73.1333333333);
       --va-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
       --va-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -10663,7 +10663,7 @@
     --va-color-link: rgb(44.8, 141.9442231076, 255);
     --va-color-border: #374151;
     --va-color-success: rgb(19.247761194, 222.552238806, 155.1850746269);
-    --va-color-warning: rgb(246.6062992126, 173.5811023622, 50.1937007874);
+    --va-color-warning: rgb(218.8571428571, 100.9174603175, 10.9428571429);
     --va-color-danger: rgb(225.6666666667, 73.1333333333, 73.1333333333);
     --va-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
     --va-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -12491,35 +12491,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 47px;
+    height: 39px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 54px;
+    height: 33px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 34px;
+    height: 46px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 49px;
+    height: 69px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 33px;
+    height: 62px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 40px;
+    height: 63px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 45px;
+    height: 40px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 81px;
+    height: 49px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
@@ -13704,7 +13704,7 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--va-color-primary);
+    color: var(--va-color-link);
     background-color: rgba(4, 120, 255, 0.08);
     border-radius: var(--va-radius-sm);
     white-space: nowrap;
@@ -13786,7 +13786,7 @@
     font-size: 0.6875rem;
     font-weight: 700;
     color: var(--va-color-white);
-    background-color: var(--va-color-primary);
+    background-color: rgb(0, 100.8414342629, 218.2);
     border-radius: 50rem;
     line-height: 1.3;
   }
@@ -14119,7 +14119,7 @@
     font-weight: 500;
   }
   .va-char-counter--warning .va-char-counter__current {
-    color: #F59E0B;
+    color: #B45309;
   }
   .va-char-counter--error .va-char-counter__current {
     color: #DC2626;
@@ -14564,8 +14564,8 @@
     background-color: rgba(16, 185, 129, 0.08);
   }
   .va-blog-card__category--news, .va-blog-card__tag--news {
-    color: rgb(206.7275590551, 133.0173228346, 8.4724409449);
-    background-color: rgba(245, 158, 11, 0.08);
+    color: rgb(141.1428571429, 65.0825396825, 7.0571428571);
+    background-color: rgba(180, 83, 9, 0.08);
   }
   .va-blog-card__title {
     font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
@@ -17976,7 +17976,7 @@
     padding: 1.25rem;
     background: #FEF3C7;
     border-radius: 0.5rem;
-    border-left: 3px solid #F59E0B;
+    border-left: 3px solid #B45309;
     margin-bottom: 1.5rem;
   }
   .ref-grid-full {

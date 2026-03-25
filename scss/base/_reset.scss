@@ -42,6 +42,9 @@ html {
   --va-color-body-text:  #{$va-body-text};
   --va-color-muted-text: #{$va-muted-text};
 
+  // Colors — links (darkened primary for WCAG AA 4.5:1 on white at normal text size)
+  --va-color-link:       #{va-darken($va-primary-blue, 8%)};
+
   // Colors — UI
   --va-color-border:     #{$va-border-color};
   --va-color-success:    #{$va-success};
@@ -91,6 +94,15 @@ html {
   // Glass / frosted panel
   --va-glass-blur:       #{$va-glass-blur};
   --va-glass-bg-opacity: #{$va-glass-bg-opacity};
+
+  // Theme transition — smooth color switch between light ↔ dark mode
+  transition: color 0.3s ease-in-out,
+              background-color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -118,6 +130,9 @@ html {
   --va-color-text:       #{$va-white};
   --va-color-body-text:  #D1D5DB;
   --va-color-muted-text: #9CA3AF;
+
+  // Colors — links (lightened primary for dark backgrounds)
+  --va-color-link:       #{va-lighten($va-primary-blue, 8%)};
 
   // Colors — UI
   --va-color-border:     #374151;
@@ -363,5 +378,116 @@ fieldset {
     content: " (" attr(href) ")";
     font-size: 0.8em;
     color: #555;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 10. High Contrast Mode — prefers-contrast
+// ---------------------------------------------------------------------------
+// Enhances visibility when the user requests increased contrast via their
+// OS accessibility settings.  Strengthens borders, removes subtle
+// decorative effects, and ensures text meets WCAG AAA contrast ratios.
+
+@media (prefers-contrast: more) {
+  :root {
+    --va-color-border: #{$va-near-black};
+    --va-color-muted-text: #{$va-near-black};
+    --va-shadow-sm: none;
+    --va-shadow: none;
+    --va-shadow-md: none;
+    --va-shadow-lg: none;
+  }
+
+  // Strengthen borders on interactive elements
+  .va-card,
+  .va-pricing-card,
+  .va-blog-card,
+  .va-form-input,
+  .va-form-textarea,
+  .va-form-select {
+    border-width: 2px;
+  }
+
+  // Ensure buttons have visible borders
+  .va-btn {
+    border-width: 2px;
+  }
+
+  // Remove decorative background patterns
+  .va-pattern-halftone,
+  .va-bg-glow,
+  .va-bg-dots,
+  .va-pricing-section__dots,
+  .va-bg-brand-watermark {
+    display: none !important;
+  }
+
+  // Remove subtle gradient backgrounds
+  .va-feature-visual--light,
+  .va-feature-visual--dark {
+    background: none;
+    border-width: 2px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 11. Forced Colors Mode (Windows High Contrast)
+// ---------------------------------------------------------------------------
+// Windows High Contrast mode replaces all colours with system colours.
+// We ensure interactive elements remain distinguishable via borders and
+// outlines rather than colour alone.
+
+@media (forced-colors: active) {
+  // Ensure buttons are visible with system borders
+  .va-btn {
+    border: 2px solid ButtonText;
+  }
+
+  .va-btn--primary,
+  .va-btn--accent {
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  .va-btn--ghost {
+    border-color: transparent;
+  }
+
+  // Ensure cards have visible borders
+  .va-card,
+  .va-pricing-card,
+  .va-blog-card {
+    border: 2px solid CanvasText;
+  }
+
+  // Ensure form inputs are visible
+  .va-form-input,
+  .va-form-textarea,
+  .va-form-select {
+    border: 2px solid CanvasText;
+  }
+
+  // Focus indicators use system highlight
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  // Remove decorative elements that may interfere
+  .va-pattern-halftone,
+  .va-bg-glow,
+  .va-bg-dots,
+  .va-pricing-section__dots,
+  .va-bg-brand-watermark,
+  .va-hero__float {
+    forced-color-adjust: none;
+    display: none !important;
+  }
+
+  // Ensure links are distinguishable
+  a {
+    color: LinkText;
+    text-decoration: underline;
   }
 }

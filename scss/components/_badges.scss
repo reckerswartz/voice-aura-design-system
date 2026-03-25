@@ -11,10 +11,12 @@
 // │                                                                      │
 // │ VA-specific DELTAS (vs Bootstrap's .badge):                         │
 // │   • `display: inline-flex` + gap (for icon alignment)              │
-// │   • Custom padding (wider than $badge-padding-*)                    │
 // │   • Neutral default (light-grey bg, dark text)                     │
-// │   • `border-radius: 0.25rem` (overrides $badge-border-radius pill) │
 // │   • `border` (transparent base for outline variant)                │
+// │                                                                      │
+// │ $badge-padding-y (0.25rem), $badge-padding-x (0.625rem), and       │
+// │ $badge-border-radius (0.25rem) are set in _variables.scss, so      │
+// │ Bootstrap's .badge already uses VA's preferred sizing.             │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-badge            ≈ .badge .bg-light .text-dark                │
@@ -41,18 +43,16 @@
 
   // Delta from Bootstrap's .badge:
   // - inline-flex (vs inline-block) for icon gap alignment
-  // - custom padding wider than Bootstrap's $badge-padding-*
   // - neutral (light-grey) default instead of Bootstrap's theme-coloured approach
-  // - 0.25rem radius instead of pill ($badge-border-radius)
+  // - border (transparent base for outline variant)
+  // Padding and border-radius are inherited from $badge-* variables in _variables.scss.
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.25rem 0.625rem;
   line-height: 1.4;
   color: var(--va-color-secondary);
   background-color: var(--va-color-light-grey);
   border: $border-width solid transparent;
-  border-radius: 0.25rem;
 
   // --------------------------------------------------------------------------
   // Icon inside badge
@@ -153,7 +153,7 @@
   font-weight: $font-weight-semibold;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--va-color-primary);
+  color: var(--va-color-link); // darkened primary for WCAG AA on light blue bg
   background-color: rgba($va-primary, 0.08);
   border-radius: var(--va-radius-sm);
   white-space: nowrap;
@@ -261,7 +261,7 @@
     font-size: 0.6875rem;
     font-weight: $font-weight-bold;
     color: var(--va-color-white);
-    background-color: var(--va-color-primary);
+    background-color: va-darken($va-primary, 8%); // darkened for WCAG AA 4.5:1 with white text
     border-radius: $border-radius-pill;
     line-height: 1.3;
   }

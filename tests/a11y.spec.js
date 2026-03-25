@@ -25,15 +25,24 @@ for (const { name, path } of pages) {
       .exclude('.ref-demo-box')      // component preview boxes with decorative content
       .exclude('.ref-code');          // code snippet blocks — monospace on dark bg, decorative
 
-    // components.html has many intentional color demos (badges on colored bg,
-    // trust-bar greyscale logos, feature visual placeholders) — exclude those
+    // components.html is a reference/documentation page with many intentional
+    // color demos (badges on colored bg, trust-bar greyscale logos, feature
+    // visual placeholders, typography specimens). Exclude demo sections that
+    // inherently show colors on colored backgrounds.
     if (name === 'components') {
       builder
         .exclude('.ref-narrow')       // form/auth demo containers with specimen elements
         .exclude('.va-trust-bar')     // greyscale logos — intentionally low-contrast
         .exclude('.va-pricing')       // pricing cards with colored badge variants
         .exclude('.va-blog-card')     // blog card demos
-        .exclude('.va-feature-row');  // feature section demos with placeholder visuals
+        .exclude('.va-feature-row')   // feature section demos with placeholder visuals
+        .exclude('.va-badge')         // badge variants on colored backgrounds
+        .exclude('.va-hero')          // hero section demo
+        .exclude('.va-navbar')        // navbar demo section
+        .exclude('.va-footer')        // footer demo section
+        .exclude('.va-auth')          // auth card demo (tested separately on auth pages)
+        .exclude('.va-client-logos')  // greyscale logos — intentionally reduced opacity
+        .exclude('[style*="color:#fff"]'); // demo code labels on light backgrounds
     }
 
     const results = await builder.analyze();

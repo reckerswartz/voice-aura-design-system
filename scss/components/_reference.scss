@@ -779,7 +779,7 @@
   top: 0.5rem;
   right: 0.5rem;
   background: rgba($va-white, 0.1);
-  color: $va-muted-text;
+  color: #9CA3AF; // lightened from $va-muted-text for WCAG AA 4.5:1 on dark code bg
   border: none;
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
@@ -849,13 +849,13 @@
   }
 
   p {
-    color: $va-muted-text;
+    color: #D1D5DB; // lightened from $va-muted-text for WCAG AA 4.5:1 on $va-near-black
     font-size: 1.125rem;
   }
 
   .ref-version {
     display: inline-block;
-    background: $va-primary-blue;
+    background: va-darken($va-primary-blue, 8%); // darkened for WCAG AA 4.5:1 with white text
     color: $va-white;
     padding: 0.25rem 0.75rem;
     border-radius: 50rem;
