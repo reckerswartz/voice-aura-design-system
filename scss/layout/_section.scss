@@ -127,23 +127,8 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 // --reversed) that are referenced nowhere should be removed.
 // ---------------------------------------------------------------------------
 
-// Feature visual — standalone container for demo visuals in feature rows
-.feature-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2.5rem;
-
-  &--light {
-    background: linear-gradient(135deg, $va-section-bg 0%, va-darken($va-section-bg, 4%) 100%);
-    border: $border-width solid $va-border-color;
-  }
-
-  &--dark {
-    background: linear-gradient(135deg, $va-near-black 0%, va-darken($va-near-black, 10%) 100%);
-    border: $border-width solid rgba($va-white, 0.06);
-  }
-}
+// Feature visual — REMOVED (was duplicate of .va-feature-visual in _feature-section.scss)
+// Canonical owner: scss/layout/_feature-section.scss
 
 // Inline icon — vertically aligned SVG icon next to text
 .va-icon-inline {

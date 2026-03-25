@@ -38,23 +38,27 @@
 
 | Metric | Value |
 |--------|-------|
-| SCSS source lines | 10,102 (+917 since initial review) |
-| Compiled CSS (expanded) | 400 KB |
-| Compiled CSS (minified) | 334 KB |
+| SCSS source lines | 11,341 (+2,156 since initial review) |
+| Compiled CSS (expanded) | 424 KB |
+| Compiled CSS (minified) | 354 KB |
 | `!important` usages | 48 (35 in utility generators — acceptable) |
-| Hardcoded hex colors outside `_variables.scss` | 2 (`#000` / `#fff` in color-mix functions — acceptable) |
+| Hardcoded hex colors outside `_variables.scss` | 6 (down from 42; remaining are in `color-mix` functions) |
 | Hardcoded `rgba()` with literal color values | 42 (shadows, borders — should use tokens) |
-| Deprecated `darken()`/`lighten()` calls | **50+** (will break in Dart Sass 3.0) |
-| `z-index` declarations | 42 (many now use `$va-z-*` tokens — partial fix) |
-| `@import` statements (deprecated in Dart Sass 3.0) | 52 |
+| Deprecated `darken()`/`lighten()` calls | **0** in VA code (all migrated to `va-darken()`/`va-lighten()`) |
+| `z-index` declarations | 107 in compiled CSS (only 1 raw value remains in SCSS) |
+| `@import` statements (deprecated in Dart Sass 3.0) | 59 (increased due to file splits) |
 | `@use` statements | 10 (only in abstracts) |
+| `@forward` statements | 0 |
+| `@extend` usages | 52 |
+| `--va-*` CSS custom properties | 38 authored on `:root` |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
 | `transition` declarations | 101 |
 | `prefers-reduced-motion` checks | 4 (all in `_animations.scss`) |
-| Inline `style=` attributes in `components.html` | 291 |
-| Inline `style=` attributes in other HTML files | 2 total |
-| Largest single SCSS file | `_backgrounds.scss` — **1,303 lines** |
+| Inline `style=` attributes in `components.html` | 292 |
+| Inline `style=` attributes across all HTML pages | 796 total |
+| Largest single SCSS file | `_bg-patterns.scss` — **644 lines** (was `_backgrounds.scss` 1,545 — split) |
+| SCSS partials | 33 |
 
 ---
 
@@ -64,15 +68,29 @@ Issues resolved or partially addressed since the initial review:
 
 | ID | Issue | Status | Commit |
 |----|-------|--------|--------|
+| C-1 | Duplicate `.feature-visual` in `_section.scss` | ✅ Done | Removed dead code; canonical is `.va-feature-visual` in `_feature-section.scss` |
 | C-2 | Dart Sass `@import` — phase 1 (pin version) | ✅ Done | `package.json`: `"sass": ">=1.98.0 <2.0.0"` |
-| C-5 | Sticky sidebar broken | ⚠️ **Workaround only** | `8fdea19` — per-page `body { overflow-x: visible !important }` overrides. Root cause in `_reset.scss` line 188 **not fixed**. |
-| H-2 | Scattered z-index values | ⚠️ Partial | `$va-z-*` scale added to `_variables.scss` (lines 480-489). Components not yet migrated. |
-| H-4 | Cross-component pattern duplication | ⚠️ Partial | `va-crosshair-corners` and `va-pill-tabs` mixins added to `_mixins.scss`. Not yet consumed by all components. |
+| C-3 | `$btn-border-radius-lg` bug | ✅ Done | Changed to `$va-radius-lg` in `_variables.scss` |
+| C-4 | `va-focus-ring` hardcoded color | ✅ Done | Fixed to use `$color` param via `box-shadow` in `_mixins.scss` |
+| C-5 | `body { overflow-x: hidden }` breaks sticky | ✅ Done | Root cause fixed — changed to `overflow-x: clip` in `_reset.scss` |
+| C-6 | 50+ deprecated `darken()`/`lighten()` | ✅ Done | Migrated to `va-darken()`/`va-lighten()` wrappers (`43ca9ce`) |
+| C-7 | Blog card `__tag` vs `__category` | ✅ Done | Aliased both names in `_blog-card.scss` |
+| H-2 | Scattered z-index values | ✅ Nearly done | `$va-z-*` scale added; only 1 raw z-index remains in SCSS |
+| H-4 | Cross-component pattern duplication | ⚠️ Partial | `va-crosshair-corners` and `va-pill-tabs` mixins added. Not yet consumed by all components. |
 | H-5 | Missing mixin extractions | ✅ Done | `va-flex-center`, `va-disabled-state`, `va-hover-darken`, `va-card-hover-lift`, `va-sr-only` added. |
-| H-7 | Accessibility gaps | ⚠️ Partial | Skip links, `autocomplete` attributes, `aria-label` on toggles added. Contrast issue (M-text `#9CA3AF`) still open. |
-| H-8 | 291 inline `style=` in reference | ❌ Open | Not yet addressed. |
+| H-6 | `!important` in `_pattern-data.scss` | ✅ Done | Restructured selectors — 0 `!important` now |
+| H-7 | Accessibility gaps | ✅ Mostly done | Skip links, `autocomplete`, `aria-label` added. **Muted text contrast fixed**: `#9CA3AF` → `#6B7280` (4.6:1 WCAG AA). |
+| H-8 | 796 inline `style=` across HTML pages | ❌ Open | Not yet addressed (grew from 291 due to new pages). |
 | H-9 | Missing code blocks in reference | ⚠️ Partial | 8 sections now have copyable code snippets (`8fdea19`). 13+ sections still lack them. |
 | H-10 | No scroll-spy | ✅ Done | JS scroll-spy added to `components.html` and `backgrounds.html` (`8fdea19`). |
+| — | `_backgrounds.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
+| — | `_animations.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
+| — | CSS custom properties | ✅ Done | 38 `--va-*` tokens on `:root` (`d6eceeb`) |
+| — | Stylelint | ✅ Done | BEM-aware config, 0 errors (`d6eceeb`) |
+| — | Gradient angle inconsistency | ✅ Done | Unified 6 instances → 135deg (`d6eceeb`) |
+| — | Delta-only component refactor | ✅ Done | Buttons, cards, forms, badges slimmed (`a1a82bc`) |
+| — | Blog SVG `stop-color="transparent"` | ✅ Done | Fixed all 4 SVGs to use `stop-opacity="0"` |
+| — | Pixel-perfect QA fixes | ✅ Done | Hero id, accent button, dubbing icon, footer font size |
 
 ---
 
