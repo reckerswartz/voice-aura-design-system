@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Transition Audit & Pixel-Perfect Reference</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
+
+  <!-- Google Fonts (IBM Plex family) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Compiled Design System CSS -->
+  <link rel="stylesheet" href="../dist/css/voice-aura.css">
+
+  <style>
+    /* Page-level styles for the audit page only */
+    body {
+      margin: 0;
+      background-color: #FFFFFF;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .audit-header {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .audit-header h1 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: #1A1919;
+      margin: 0 0 0.5rem;
+    }
+
+    .audit-header p {
+      font-size: 0.9375rem;
+      color: #6B7280;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .audit-toc {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.75rem 2rem;
+      overflow-x: auto;
+      border-bottom: 1px solid #E5E7EB;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      scrollbar-width: none;
+    }
+
+    .audit-toc::-webkit-scrollbar { display: none; }
+
+    .audit-toc a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #6B7280;
+      text-decoration: none;
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: color 0.15s, background-color 0.15s;
+    }
+
+    .audit-toc a:hover,
+    .audit-toc a.active {
+      color: #1A1919;
+      background-color: #F3F4F6;
+    }
+
+    .audit-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .audit-section__num {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: #0478FF;
+      background: rgba(4,120,255,0.06);
+      border: 1px solid rgba(4,120,255,0.15);
+      border-radius: 4px;
+      padding: 0.125rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .audit-section h2 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1A1919;
+      margin: 0 0 0.5rem;
+    }
+
+    .audit-section > p {
+      font-size: 0.875rem;
+      color: #6B7280;
+      margin: 0 0 2rem;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    .audit-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .audit-grid--2 { grid-template-columns: 1fr 1fr; }
+    .audit-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+    .audit-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 768px) {
+      .audit-grid--2,
+      .audit-grid--3,
+      .audit-grid--4 { grid-template-columns: 1fr; }
+    }
+
+    .demo-box {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .demo-box--dark {
+      background: #1A1919;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .demo-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .demo-label--light {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .demo-hint {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      color: #9CA3AF;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .anim-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .anim-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .anim-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #1A1919;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.25rem 1rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8125rem;
+    }
+
+    .token-grid dt { color: #1A1919; font-weight: 500; }
+    .token-grid dd { color: #6B7280; margin: 0; }
+    .token-grid .token-val { color: #0478FF; text-align: right; }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1A1919;
+      background: #F3F4F6;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+
+    .theme-toggle-btn:hover { background: #E5E7EB; }
+    .theme-toggle-btn:active { transform: scale(0.97); }
+
+    .skeleton-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 320px;
+    }
+
+    .skeleton-card-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!-- HEADER                                                                 -->
+<!-- ===================================================================== -->
+<div class="audit-header">
+  <h1>Transition Audit & Reference</h1>
+  <p>Pixel-perfect reference for all transition designs, dark mode, skeleton states, scroll-reveal, and visual effects. Supplements the main transitions-showcase with newly identified gaps and fixes.</p>
+</div>
+
+<!-- Sticky TOC -->
+<nav class="audit-toc" id="toc">
+  <a href="#navbar-pp">Navbar</a>
+  <a href="#dark-mode">Dark Mode</a>
+  <a href="#buttons-audit">Buttons</a>
+  <a href="#pricing-cta">Pricing CTA</a>
+  <a href="#footer-social">Footer Social</a>
+  <a href="#skeleton">Skeleton</a>
+  <a href="#scroll-reveal">Scroll Reveal</a>
+  <a href="#reduced-motion">Reduced Motion</a>
+  <a href="#cta-section">CTA Section</a>
+</nav>
+
+<!-- ===================================================================== -->
+<!-- 1. PIXEL-PERFECT NAVBAR                                                -->
+<!-- ===================================================================== -->
+<section id="navbar-pp" class="audit-section">
+  <span class="audit-section__num">01</span>
+  <h2>Pixel-Perfect Navbar</h2>
+  <p>Full-width navbar matching the Behance reference. Demonstrates link hover underline (width: 0→100%), scrolled frosted-glass state, and all button variants including the new <code>.va-navbar-btn--primary</code> alias.</p>
+
+  <div class="audit-grid audit-grid--2">
+    <!-- Default state -->
+    <div>
+      <div class="demo-label">Default State</div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB;">
+        <nav class="va-navbar" style="position: relative; height: auto; padding: 0.75rem 1.5rem;">
+          <a href="#" class="va-navbar-brand" class="pe-none">
+            <span class="va-navbar-brand__logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <circle cx="6" cy="16" r="3.5" fill="#0478FF"/>
+                <path d="M14 8 A10 10 0 0 1 14 24" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M19 5 A14 14 0 0 1 19 27" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+                <path d="M24 2 A18 18 0 0 1 24 30" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+            </span>
+            <span class="va-navbar-brand__text">VOICE AURA</span>
+          </a>
+          <div class="va-navbar-nav">
+            <a href="#" class="va-navbar-link">Products</a>
+            <a href="#" class="va-navbar-link">Integrations</a>
+            <a href="#" class="va-navbar-link">API</a>
+            <a href="#" class="va-navbar-link va-navbar-link--active">Pricing</a>
+          </div>
+          <div class="va-navbar-actions">
+            <a href="#" class="va-navbar-btn--ghost">Log in <span class="va-btn__arrow">→</span></a>
+            <a href="#" class="va-navbar-btn--primary">Sign up <span class="va-btn__arrow">→</span></a>
+          </div>
+        </nav>
+      </div>
+      <div class="demo-hint">Hover links → blue underline grows from left. Active link has persistent underline.</div>
+    </div>
+
+    <!-- Scrolled state -->
+    <div>
+      <div class="demo-label">Scrolled State (frosted glass)</div>
+      <div style="border-radius: 12px; overflow: hidden; background: linear-gradient(145deg, #1A1919, #374151); padding: 2rem 0;">
+        <nav class="va-navbar va-navbar--scrolled" style="position: relative; height: auto; padding: 0.75rem 1.5rem;">
+          <a href="#" class="va-navbar-brand" class="pe-none">
+            <span class="va-navbar-brand__logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <circle cx="6" cy="16" r="3.5" fill="#0478FF"/>
+                <path d="M14 8 A10 10 0 0 1 14 24" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M19 5 A14 14 0 0 1 19 27" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+                <path d="M24 2 A18 18 0 0 1 24 30" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+            </span>
+            <span class="va-navbar-brand__text">VOICE AURA</span>
+          </a>
+          <div class="va-navbar-nav">
+            <a href="#" class="va-navbar-link">Products</a>
+            <a href="#" class="va-navbar-link">API</a>
+            <a href="#" class="va-navbar-link va-navbar-link--active">Pricing</a>
+          </div>
+          <div class="va-navbar-actions">
+            <a href="#" class="va-navbar-btn--ghost">Log in <span class="va-btn__arrow">→</span></a>
+            <a href="#" class="va-navbar-btn--primary">Sign up <span class="va-btn__arrow">→</span></a>
+          </div>
+        </nav>
+      </div>
+      <div class="demo-hint">backdrop-filter: blur(12px) + box-shadow + transparent border</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 2. DARK MODE TOGGLE                                                    -->
+<!-- ===================================================================== -->
+<section id="dark-mode" class="audit-section">
+  <span class="audit-section__num">02</span>
+  <h2>Dark Mode Toggle</h2>
+  <p>Live dark mode demonstration using <code>data-va-theme</code> on a subtree. The new <code>:root</code> transition (0.3s) smoothly animates color, background-color, and border-color when switching themes.</p>
+
+  <div style="margin-bottom: 1.5rem;">
+    <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      Toggle Dark Mode on preview
+    </button>
+  </div>
+
+  <div id="themePreview" class="audit-grid audit-grid--3" style="border-radius: 16px; overflow: hidden; border: 1px solid #E5E7EB; padding: 1.5rem; transition: background-color 0.3s, border-color 0.3s;">
+    <!-- Card -->
+    <div class="va-card" style="transition: background-color 0.3s, border-color 0.3s, color 0.3s;">
+      <div class="va-card__body">
+        <h3 class="va-card__title">Card Title</h3>
+        <p class="va-card__text">This card smoothly transitions between light and dark themes.</p>
+      </div>
+    </div>
+
+    <!-- Button group -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; justify-content: center;">
+      <button class="va-btn va-btn--primary">Primary Button</button>
+      <button class="va-btn va-btn--secondary">Secondary Button</button>
+      <button class="va-btn va-btn--accent">Accent Button</button>
+    </div>
+
+    <!-- Form -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div class="va-form-group" class="m-0">
+        <label class="va-form-label">Email</label>
+        <input class="va-form-input" type="email" placeholder="you@example.com" style="transition: background-color 0.3s, border-color 0.3s, color 0.3s;">
+      </div>
+      <div class="va-form-group" class="m-0">
+        <label class="va-form-label">Password</label>
+        <input class="va-form-input" type="password" placeholder="••••••••" style="transition: background-color 0.3s, border-color 0.3s, color 0.3s;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 3. BUTTON TRANSITIONS (complete audit)                                 -->
+<!-- ===================================================================== -->
+<section id="buttons-audit" class="audit-section">
+  <span class="audit-section__num">03</span>
+  <h2>Button Transition Audit</h2>
+  <p>All button variants with their transition properties documented. Every button shares <code>transition: color, background-color, border-color, box-shadow, transform 0.2s ease-in-out</code>.</p>
+
+  <div class="audit-grid audit-grid--2">
+    <div class="demo-box">
+      <div class="demo-label">Primary & Accent — hover lift(-1px) + shadow</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+          Open Studio
+        </button>
+        <button class="va-btn va-btn--accent">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M15 3v6h6"/></svg>
+          Get API Key
+        </button>
+      </div>
+      <div class="demo-hint">Hover → translateY(-1px) + box-shadow</div>
+    </div>
+
+    <div class="demo-box">
+      <div class="demo-label">Secondary, Ghost & Link — hover bg + arrow nudge</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--secondary">API Docs</button>
+        <button class="va-btn va-btn--ghost">Log in <span class="va-btn__arrow">→</span></button>
+        <a class="va-btn va-btn--link" href="#buttons-audit">Learn more <span class="va-btn__arrow">→</span></a>
+      </div>
+      <div class="demo-hint">Hover → bg-color change + arrow translateX(3px)</div>
+    </div>
+
+    <div class="demo-box">
+      <div class="demo-label">Size Variants</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary va-btn--lg">Large</button>
+        <button class="va-btn va-btn--primary">Default</button>
+        <button class="va-btn va-btn--primary va-btn--sm">Small</button>
+      </div>
+    </div>
+
+    <div class="demo-box">
+      <div class="demo-label">States & Modifiers</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary va-btn--pill">Pill Shape</button>
+        <button class="va-btn va-btn--primary" disabled>Disabled</button>
+        <button class="va-btn va-btn--accent va-btn--sm va-btn--pill">Compact Pill</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 4. PRICING CTA (fixed transition)                                      -->
+<!-- ===================================================================== -->
+<section id="pricing-cta" class="audit-section">
+  <span class="audit-section__num">04</span>
+  <h2>Pricing CTA Transition (Fixed)</h2>
+  <p>Previously the pricing card CTA button had no explicit transition — hover/active changes were instant. Now includes <code>transition: background-color, border-color, color, transform, box-shadow</code> with subtle hover lift.</p>
+
+  <div class="audit-grid audit-grid--3">
+    <!-- Free tier -->
+    <div class="va-pricing-card" class="mw-100">
+      <span class="va-pricing-card__badge va-pricing-card__badge--free">Free</span>
+      <div class="va-pricing-card__price">$0<span> /Month</span></div>
+      <p class="va-pricing-card__description">Perfect for trying out voice generation with basic customization.</p>
+      <a class="va-pricing-card__cta" href="#">Get Started Free</a>
+      <ul class="va-pricing-card__features">
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Access to core Text-to-Speech
+        </li>
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Limited monthly characters
+        </li>
+      </ul>
+    </div>
+
+    <!-- Creator tier -->
+    <div class="va-pricing-card va-pricing-card--featured" class="mw-100">
+      <span class="va-pricing-card__badge va-pricing-card__badge--creator">Creator</span>
+      <div class="va-pricing-card__price">$29<span> /Month</span></div>
+      <p class="va-pricing-card__description">Ideal for content creators & professionals.</p>
+      <a class="va-pricing-card__cta" href="#">Upgrade to Creator</a>
+      <ul class="va-pricing-card__features">
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Everything in Free
+        </li>
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          HD audio exports
+        </li>
+      </ul>
+    </div>
+
+    <!-- Business tier -->
+    <div class="va-pricing-card" class="mw-100">
+      <span class="va-pricing-card__badge va-pricing-card__badge--business">Business</span>
+      <div class="va-pricing-card__price">$69<span> /Month</span></div>
+      <p class="va-pricing-card__description">Built for teams that need collaboration tools.</p>
+      <a class="va-pricing-card__cta" href="#">Contact Sales</a>
+      <ul class="va-pricing-card__features">
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Everything in Creator
+        </li>
+        <li class="va-pricing-card__feature">
+          <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          API access
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="demo-hint">Hover CTA buttons → smooth translateY(-1px) + box-shadow (was instant before fix)</div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5. FOOTER SOCIAL ICONS (fixed transform transition)                    -->
+<!-- ===================================================================== -->
+<section id="footer-social" class="audit-section">
+  <span class="audit-section__num">05</span>
+  <h2>Footer Social Icons (Fixed)</h2>
+  <p>Social icons now include <code>transform</code> in their transition declaration, so the <code>:active scale(0.95)</code> animates smoothly instead of snapping.</p>
+
+  <div class="audit-grid audit-grid--2">
+    <div class="demo-box demo-box--dark" class="p-4">
+      <div class="demo-label demo-label--light">Footer Social Icons (using design system classes)</div>
+      <div class="va-footer__social" style="gap: 1rem; margin-top: 1rem;">
+        <a href="#" class="va-footer__social-link" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+        <a href="#" class="va-footer__social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="va-footer__social-link" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+        <a href="#" class="va-footer__social-link" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+      </div>
+      <div class="demo-hint" style="color: rgba(255,255,255,0.25);">Hover → blue bg. Click/active → smooth scale(0.95) (was instant before fix).</div>
+    </div>
+
+    <div class="demo-box demo-box--dark" class="p-4">
+      <div class="demo-label demo-label--light">Footer Links (underline grows on hover)</div>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+        <a href="#" class="va-footer__link">Text to Speech</a>
+        <a href="#" class="va-footer__link">AI Dubbing</a>
+        <a href="#" class="va-footer__link">AI Voice Agent</a>
+        <a href="#" class="va-footer__link">Voice Cloning</a>
+      </div>
+      <div class="demo-hint" style="color: rgba(255,255,255,0.25);">Hover → color brightens + ::after underline width: 0→100%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 6. SKELETON LOADING (previously undocumented)                          -->
+<!-- ===================================================================== -->
+<section id="skeleton" class="audit-section">
+  <span class="audit-section__num">06</span>
+  <h2>Skeleton Loading States</h2>
+  <p>Loading skeleton placeholders with shimmer animation. Exists in SCSS (<code>_anim-presets.scss</code>) but was previously not demonstrated on any reference page.</p>
+
+  <div class="audit-grid audit-grid--3">
+    <!-- Text skeleton -->
+    <div class="demo-box">
+      <div class="demo-label">Text Lines</div>
+      <div class="skeleton-row">
+        <div class="va-skeleton va-skeleton--text"></div>
+        <div class="va-skeleton va-skeleton--text"></div>
+        <div class="va-skeleton va-skeleton--text" style="width: 60%;"></div>
+      </div>
+    </div>
+
+    <!-- Card skeleton -->
+    <div class="demo-box">
+      <div class="demo-label">Card Placeholder</div>
+      <div class="skeleton-card-demo">
+        <div class="va-skeleton va-skeleton--image"></div>
+        <div class="va-skeleton va-skeleton--text"></div>
+        <div class="va-skeleton va-skeleton--text" style="width: 75%;"></div>
+      </div>
+    </div>
+
+    <!-- Avatar + circle -->
+    <div class="demo-box">
+      <div class="demo-label">Avatar & Badge</div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div class="va-skeleton va-skeleton--circle" style="width: 48px; height: 48px;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div class="va-skeleton va-skeleton--text" style="width: 60%;"></div>
+          <div class="va-skeleton va-skeleton--text" style="width: 40%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 7. SCROLL-REVEAL DEMO                                                  -->
+<!-- ===================================================================== -->
+<section id="scroll-reveal" class="audit-section va-scroll-ready">
+  <span class="audit-section__num">07</span>
+  <h2>Scroll-Reveal Animations</h2>
+  <p>Elements animate in when scrolled into view using <code>.va-reveal</code> + IntersectionObserver. Includes directional variants and stagger delays.</p>
+
+  <div class="audit-grid audit-grid--4" style="margin-top: 2rem;">
+    <div class="demo-box va-reveal va-reveal--up" class="ref-demo-section">
+      <div class="anim-box" style="margin: 0 auto 0.75rem; background: #0478FF;">↑</div>
+      <div class="demo-label" class="m-0">va-reveal--up</div>
+    </div>
+    <div class="demo-box va-reveal va-reveal--up va-reveal--delay-1" class="ref-demo-section">
+      <div class="anim-box" style="margin: 0 auto 0.75rem; background: #334155;">↑</div>
+      <div class="demo-label" class="m-0">--delay-1 (150ms)</div>
+    </div>
+    <div class="demo-box va-reveal va-reveal--up va-reveal--delay-2" class="ref-demo-section">
+      <div class="anim-box" style="margin: 0 auto 0.75rem; background: #7f1d1d;">↑</div>
+      <div class="demo-label" class="m-0">--delay-2 (300ms)</div>
+    </div>
+    <div class="demo-box va-reveal va-reveal--up va-reveal--delay-3" class="ref-demo-section">
+      <div class="anim-box" style="margin: 0 auto 0.75rem; background: #0c4a6e;">↑</div>
+      <div class="demo-label" class="m-0">--delay-3 (450ms)</div>
+    </div>
+  </div>
+
+  <div class="audit-grid audit-grid--3" style="margin-top: 1.5rem;">
+    <div class="demo-box va-reveal va-reveal--left" class="ref-demo-section">
+      <div class="demo-label" class="m-0">va-reveal--left</div>
+    </div>
+    <div class="demo-box va-reveal va-reveal--scale" class="ref-demo-section">
+      <div class="demo-label" class="m-0">va-reveal--scale</div>
+    </div>
+    <div class="demo-box va-reveal va-reveal--right" class="ref-demo-section">
+      <div class="demo-label" class="m-0">va-reveal--right</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 8. REDUCED MOTION COMPLIANCE                                           -->
+<!-- ===================================================================== -->
+<section id="reduced-motion" class="audit-section">
+  <span class="audit-section__num">08</span>
+  <h2>Reduced Motion Compliance</h2>
+  <p>The design system now fully respects <code>prefers-reduced-motion: reduce</code>. Previously only entrance/reveal animations were disabled. Now covers all keyframe animations, entrance presets, skeleton shimmer, and component hover transitions.</p>
+
+  <div class="demo-box">
+    <div class="demo-label">Coverage Summary</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; font-size: 0.875rem; line-height: 1.8;">
+      <div>
+        <div class="fw-semibold mb-2" style="color:#1A1919">Animations Disabled</div>
+        <div class="ref-text-muted">
+          <code>.va-animate-fade-*</code> (5 directions)<br>
+          <code>.va-animate-scale-in</code><br>
+          <code>.va-animate-float</code> / <code>.va-animate-pulse</code> / <code>.va-animate-spin</code><br>
+          <code>.va-entrance-hero</code> / <code>-sub</code> / <code>-cta</code> / <code>-badge</code><br>
+          <code>.va-skeleton</code> shimmer
+        </div>
+      </div>
+      <div>
+        <div class="fw-semibold mb-2" style="color:#1A1919">Transitions Reduced</div>
+        <div class="ref-text-muted">
+          <code>.va-hover-lift</code> / <code>.va-hover-scale</code> / <code>.va-hover-glow</code><br>
+          <code>.va-hover-arrow</code><br>
+          <code>.va-touch-lift</code> / <code>.va-touch-scale</code><br>
+          <code>.va-card-reflow</code><br>
+          <code>.va-reveal</code> / <code>.va-responsive-*</code><br>
+          <code>:root</code> theme transition
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 9. CTA SECTION (complete reference)                                    -->
+<!-- ===================================================================== -->
+<section id="cta-section" class="audit-section" style="border-bottom: none;">
+  <span class="audit-section__num">09</span>
+  <h2>CTA Section (Complete Reference)</h2>
+  <p>The "Ready to Transform" call-to-action section with full dark background treatment, pattern overlay, and proper button transitions. Demonstrates all layers working together.</p>
+
+  <div class="va-section va-section--dark va-pattern-halftone va-pattern-halftone--dark" style="border-radius: 16px; overflow: hidden; margin-top: 1.5rem;">
+    <div style="position: relative; z-index: 2; text-align: center; max-width: 640px; margin: 0 auto; padding: 2rem 0;">
+      <h2 class="va-section__title" style="color: #FFFFFF;">Ready to Transform Your Voice Experience?</h2>
+      <p class="va-section__subtitle" style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Join 10M+ creators and developers building the future of voice technology.</p>
+      <div class="btn-row" style="justify-content: center;">
+        <a href="#" class="va-btn va-btn--accent va-btn--lg va-btn--pill">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+          Get Started Free
+        </a>
+        <a href="#" class="va-btn va-btn--secondary va-btn--lg va-btn--pill" style="border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          View API Docs
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FOOTER                                                                 -->
+<!-- ===================================================================== -->
+<footer style="text-align: center; padding: 2rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #9CA3AF; border-top: 1px solid #E5E7EB;">
+  Voice Aura Design System — Transition Audit Reference · 9 Sections
+</footer>
+
+<!-- ===================================================================== -->
+<!-- SCRIPTS                                                                -->
+<!-- ===================================================================== -->
+<script>
+// ── Dark mode toggle for preview area ──
+function toggleTheme() {
+  var el = document.getElementById('themePreview');
+  var btn = document.getElementById('themeToggle');
+  if (el.getAttribute('data-va-theme') === 'dark') {
+    el.removeAttribute('data-va-theme');
+    btn.textContent = '☀ Toggle Dark Mode on preview';
+  } else {
+    el.setAttribute('data-va-theme', 'dark');
+    btn.textContent = '🌙 Toggle Light Mode on preview';
+  }
+}
+
+// ── Scroll-reveal IntersectionObserver ──
+(function () {
+  document.querySelectorAll('.va-reveal').forEach(function(el) {
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 }).observe(el);
+  });
+})();
+
+// ── Scroll-spy for sticky TOC ──
+(function () {
+  var tocLinks = document.querySelectorAll('.audit-toc a');
+  var sections = [];
+  tocLinks.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  function updateSpy() {
+    var scrollY = window.scrollY + 120;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop <= scrollY) current = sections[i];
+    }
+    tocLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  updateSpy();
+})();
+</script>
+
+</body>
+</html>

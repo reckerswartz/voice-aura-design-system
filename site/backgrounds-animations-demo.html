@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Backgrounds & Animations Reference</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/css/voice-aura.css">
+  <style>
+    body { margin: 0; font-family: 'IBM Plex Sans', sans-serif; }
+
+    .page-header { text-align: center; padding: 3rem 2rem 2rem; border-bottom: 1px solid #E5E7EB; }
+    .page-header h1 { font-family: 'IBM Plex Serif', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: #1A1919; margin: 0 0 0.5rem; }
+    .page-header p { font-size: 0.9375rem; color: #6B7280; max-width: 640px; margin: 0 auto; line-height: 1.6; }
+
+    .toc { display: flex; gap: 0.25rem; padding: 0.75rem 2rem; overflow-x: auto; border-bottom: 1px solid #E5E7EB; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 100; scrollbar-width: none; }
+    .toc::-webkit-scrollbar { display: none; }
+    .toc a { font-size: 0.8125rem; font-weight: 500; color: #6B7280; text-decoration: none; padding: 0.375rem 0.75rem; border-radius: 6px; white-space: nowrap; transition: color 0.15s, background-color 0.15s; }
+    .toc a:hover, .toc a.active { color: #1A1919; background: #F3F4F6; }
+
+    .demo-section { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; border-bottom: 1px solid #E5E7EB; }
+    .demo-num { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; font-weight: 500; color: #0478FF; background: rgba(4,120,255,0.06); border: 1px solid rgba(4,120,255,0.15); border-radius: 4px; padding: 0.125rem 0.5rem; margin-bottom: 0.75rem; }
+    .demo-section h2 { font-family: 'IBM Plex Serif', serif; font-size: 1.5rem; font-weight: 700; color: #1A1919; margin: 0 0 0.5rem; }
+    .demo-section > p { font-size: 0.875rem; color: #6B7280; margin: 0 0 2rem; max-width: 720px; line-height: 1.6; }
+
+    .demo-grid { display: grid; gap: 1.5rem; }
+    .demo-grid--2 { grid-template-columns: 1fr 1fr; }
+    .demo-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 768px) { .demo-grid--2, .demo-grid--3 { grid-template-columns: 1fr; } }
+
+    .pattern-card { border-radius: 16px; overflow: hidden; min-height: 200px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .pattern-card__label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 500; padding: 0.375rem 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.85); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); color: #1A1919; position: relative; z-index: 10; }
+    .pattern-card__label--light { background: rgba(0,0,0,0.4); color: #FFFFFF; }
+
+    .demo-hint { font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: #9CA3AF; margin-top: 0.75rem; text-align: center; }
+    .demo-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; font-weight: 500; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+
+    .demo-box { background: #FFF; border: 1px solid #E5E7EB; border-radius: 12px; padding: 1.5rem; }
+
+    .faq-item { border-bottom: 1px solid #E5E7EB; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1rem 0; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #1A1919; background: none; border: none; cursor: pointer; text-align: left; }
+    .faq-trigger:hover { color: #0478FF; }
+
+    .tab-bar { display: flex; gap: 0; background: #F3F4F6; border-radius: 8px; padding: 3px; margin-bottom: 1.5rem; }
+    .tab-bar button { flex: 1; padding: 0.5rem 1rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 500; color: #6B7280; background: none; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .tab-bar button.is-active { background: #FFFFFF; color: #1A1919; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Backgrounds & Animations Reference</h1>
+  <p>Complete showcase of all background patterns, visual overlays, and responsive animations in the Voice Aura Design System. Includes 19 SVG patterns, CSS-only effects, and mobile-adaptive transitions.</p>
+</div>
+
+<nav class="toc">
+  <a href="#new-patterns">New Patterns</a>
+  <a href="#aurora">Aurora</a>
+  <a href="#wave-divider">Wave Divider</a>
+  <a href="#existing">Existing Patterns</a>
+  <a href="#composition">Composition</a>
+  <a href="#collapse">Collapse</a>
+  <a href="#tabs">Tab Crossfade</a>
+  <a href="#carousel">Mobile Carousel</a>
+  <a href="#skeleton">Skeleton Reveal</a>
+  <a href="#cta">CTA Section</a>
+</nav>
+
+<!-- ================================================================= -->
+<!-- 1. NEW PATTERNS                                                    -->
+<!-- ================================================================= -->
+<section id="new-patterns" class="demo-section">
+  <span class="demo-num">01</span>
+  <h2>New Background Patterns</h2>
+  <p>Three new SVG-based patterns added to the design system: hexagonal grid for tech/AI sections, audio frequency bars, and aurora gradient overlay.</p>
+
+  <div class="demo-grid demo-grid--3">
+    <!-- Hex Grid -->
+    <div>
+      <div class="pattern-card va-pattern-hex va-pattern-hex--full" style="background: #FFFFFF; border: 1px solid #E5E7EB;">
+        <span class="pattern-card__label">.va-pattern-hex</span>
+      </div>
+      <div class="demo-hint">Hexagonal grid — tech/AI sections</div>
+    </div>
+
+    <!-- Hex Dense -->
+    <div>
+      <div class="pattern-card va-pattern-hex va-pattern-hex--dense va-pattern-hex--full" style="background: #F3F4F6;">
+        <span class="pattern-card__label">.va-pattern-hex--dense</span>
+      </div>
+      <div class="demo-hint">Tighter 40px hexagonal repeat</div>
+    </div>
+
+    <!-- Hex Dark -->
+    <div>
+      <div class="pattern-card va-pattern-hex va-pattern-hex--full va-pattern--dark" style="background: #1A1919;">
+        <span class="pattern-card__label pattern-card__label--light">.va-pattern-hex + --dark</span>
+      </div>
+      <div class="demo-hint">Hex grid on dark background</div>
+    </div>
+
+    <!-- Frequency Bars -->
+    <div>
+      <div class="pattern-card va-pattern-frequency" style="background: #FFFFFF; border: 1px solid #E5E7EB; min-height: 220px;">
+        <span class="pattern-card__label">.va-pattern-frequency</span>
+      </div>
+      <div class="demo-hint">Audio frequency bars — bottom anchored</div>
+    </div>
+
+    <!-- Frequency Center -->
+    <div>
+      <div class="pattern-card va-pattern-frequency va-pattern-frequency--center" style="background: #F3F4F6; min-height: 220px;">
+        <span class="pattern-card__label">.va-pattern-frequency--center</span>
+      </div>
+      <div class="demo-hint">Centered with fade mask</div>
+    </div>
+
+    <!-- Frequency Dark -->
+    <div>
+      <div class="pattern-card va-pattern-frequency va-pattern--dark" style="background: #1A1919; min-height: 220px;">
+        <span class="pattern-card__label pattern-card__label--light">Frequency + dark</span>
+      </div>
+      <div class="demo-hint">Inverted for dark backgrounds</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 2. AURORA GRADIENT                                                  -->
+<!-- ================================================================= -->
+<section id="aurora" class="demo-section">
+  <span class="demo-num">02</span>
+  <h2>Aurora Gradient Overlay</h2>
+  <p>Organic flowing multi-blob gradient for CTA and premium sections. The <code>--animate</code> variant adds a slow 20s drift animation for subtle dynamism.</p>
+
+  <div class="demo-grid demo-grid--2">
+    <div>
+      <div class="pattern-card va-bg-aurora" style="background: #FFFFFF; border: 1px solid #E5E7EB; min-height: 240px;">
+        <span class="pattern-card__label">.va-bg-aurora</span>
+      </div>
+      <div class="demo-hint">Static aurora on light background</div>
+    </div>
+
+    <div>
+      <div class="pattern-card va-bg-aurora va-bg-aurora--animate" style="background: #FFFFFF; border: 1px solid #E5E7EB; min-height: 240px;">
+        <span class="pattern-card__label">.va-bg-aurora--animate</span>
+      </div>
+      <div class="demo-hint">Animated drift (20s cycle)</div>
+    </div>
+
+    <div>
+      <div class="pattern-card va-bg-aurora va-bg-aurora--dark" style="background: #1A1919; min-height: 240px;">
+        <span class="pattern-card__label pattern-card__label--light">.va-bg-aurora--dark</span>
+      </div>
+      <div class="demo-hint">Inverted for dark sections</div>
+    </div>
+
+    <div>
+      <div class="pattern-card va-bg-aurora va-bg-aurora--intense va-bg-aurora--animate" style="background: #F8FAFC; min-height: 240px;">
+        <span class="pattern-card__label">.va-bg-aurora--intense + animate</span>
+      </div>
+      <div class="demo-hint">Stronger opacity, animated</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 3. CSS WAVE DIVIDER                                                -->
+<!-- ================================================================= -->
+<section id="wave-divider" class="demo-section">
+  <span class="demo-num">03</span>
+  <h2>CSS-Only Wave Section Divider</h2>
+  <p>Pure CSS curved dividers between sections — no SVG dependency. Uses <code>clip-path: ellipse()</code> for smooth organic transitions. Custom property <code>--va-wave-color</code> controls the fill.</p>
+
+  <div style="border-radius: 16px; overflow: hidden; border: 1px solid #E5E7EB;">
+    <!-- Dark section with wave bottom -->
+    <div class="va-wave-bottom" style="background: #1A1919; padding: 3rem 2rem; text-align: center; position: relative;">
+      <h3 style="color: #FFFFFF; margin: 0 0 0.5rem; font-family: 'IBM Plex Serif', serif;">Dark Section</h3>
+      <p style="color: rgba(255,255,255,0.6); margin: 0; font-size: 0.875rem;">.va-wave-bottom (white wave at bottom edge)</p>
+    </div>
+
+    <!-- Light section -->
+    <div class="ref-demo-box--white">
+      <p class="ref-desc-inline">White section naturally follows the wave</p>
+    </div>
+
+    <!-- Light section with wave bottom (grey fill) -->
+    <div class="va-wave-bottom" style="background: #FFFFFF; padding: 3rem 2rem; text-align: center; position: relative; --va-wave-color: #F3F4F6;">
+      <h3 style="color: #1A1919; margin: 0 0 0.5rem; font-family: 'IBM Plex Serif', serif;">White Section</h3>
+      <p class="ref-desc-inline">.va-wave-bottom with --va-wave-color: #F3F4F6</p>
+    </div>
+
+    <!-- Grey section with wave top -->
+    <div class="va-wave-top" style="background: #F3F4F6; padding: 3rem 2rem; text-align: center; position: relative; --va-wave-color: #FFFFFF;">
+      <h3 style="color: #1A1919; margin: 0 0 0.5rem; font-family: 'IBM Plex Serif', serif;">Grey Section</h3>
+      <p class="ref-desc-inline">.va-wave-top receiving the wave from above</p>
+    </div>
+  </div>
+
+  <div class="demo-grid demo-grid--3" style="margin-top: 1.5rem;">
+    <div>
+      <div class="va-wave-bottom va-wave-bottom--shallow" style="background: #0478FF; height: 80px; border-radius: 12px 12px 0 0; position: relative;"></div>
+      <div style="background: #FFF; height: 40px; border-radius: 0 0 12px 12px; border: 1px solid #E5E7EB; border-top: none;"></div>
+      <div class="demo-hint">--shallow (32px)</div>
+    </div>
+    <div>
+      <div class="va-wave-bottom" style="background: #0478FF; height: 80px; border-radius: 12px 12px 0 0; position: relative;"></div>
+      <div style="background: #FFF; height: 40px; border-radius: 0 0 12px 12px; border: 1px solid #E5E7EB; border-top: none;"></div>
+      <div class="demo-hint">default (48px)</div>
+    </div>
+    <div>
+      <div class="va-wave-bottom va-wave-bottom--deep" style="background: #0478FF; height: 100px; border-radius: 12px 12px 0 0; position: relative;"></div>
+      <div style="background: #FFF; height: 40px; border-radius: 0 0 12px 12px; border: 1px solid #E5E7EB; border-top: none;"></div>
+      <div class="demo-hint">--deep (72px)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 4. EXISTING PATTERNS (gallery)                                     -->
+<!-- ================================================================= -->
+<section id="existing" class="demo-section">
+  <span class="demo-num">04</span>
+  <h2>Existing Pattern Gallery</h2>
+  <p>All 19 SVG-based and CSS-only background patterns in the design system.</p>
+
+  <div class="demo-grid demo-grid--3">
+    <div>
+      <div class="pattern-card va-pattern-halftone va-pattern-halftone--bottom" class="ref-card-bordered">
+        <span class="pattern-card__label">Halftone (bottom)</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-pattern-circuit" class="ref-card-bordered">
+        <span class="pattern-card__label">Circuit Lines</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-pattern-rings" class="ref-card-bordered">
+        <span class="pattern-card__label">Concentric Rings</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-grid-lines va-bg-grid-lines--full" class="ref-card-bordered">
+        <span class="pattern-card__label">Grid Lines</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-dots va-bg-dots--full" class="ref-card-bordered">
+        <span class="pattern-card__label">CSS Dot Grid</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-pattern-diagonal" class="ref-card-bordered">
+        <span class="pattern-card__label">Diagonal Lines</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-mesh" class="ref-card-bordered">
+        <span class="pattern-card__label">Mesh Gradient</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-pattern-noise" class="ref-card-bordered">
+        <span class="pattern-card__label">Noise Texture</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-pattern-voice-ripple va-pattern-voice-ripple--small" class="ref-card-bordered">
+        <span class="pattern-card__label">Voice Ripple</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-spotlight" class="ref-card-bordered">
+        <span class="pattern-card__label">Spotlight</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-radial-soft" class="ref-card-bordered">
+        <span class="pattern-card__label">Radial Soft</span>
+      </div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-glow" class="ref-card-bordered">
+        <span class="pattern-card__label">Radial Glow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 5. COMPOSITION                                                     -->
+<!-- ================================================================= -->
+<section id="composition" class="demo-section">
+  <span class="demo-num">05</span>
+  <h2>Layer Composition</h2>
+  <p>Multiple patterns can be layered using <code>.va-bg-stack</code> + <code>.va-bg-layer</code> children. New layer variants: <code>--hex</code>, <code>--frequency</code>, <code>--aurora</code>.</p>
+
+  <div class="demo-grid demo-grid--2">
+    <div>
+      <div class="pattern-card va-bg-stack" style="background: #FFFFFF; border: 1px solid #E5E7EB; min-height: 220px;">
+        <div class="va-bg-layer va-bg-layer--hex" style="opacity: 0.6;"></div>
+        <div class="va-bg-layer va-bg-layer--spotlight" style="opacity: 0.4;"></div>
+        <span class="pattern-card__label" class="position-relative" style="z-index:10">Hex + Spotlight</span>
+      </div>
+      <div class="demo-hint">va-bg-layer--hex + va-bg-layer--spotlight</div>
+    </div>
+    <div>
+      <div class="pattern-card va-bg-stack" style="background: #1A1919; min-height: 220px;">
+        <div class="va-bg-layer va-bg-layer--aurora" style="opacity: 0.8;"></div>
+        <div class="va-bg-layer va-bg-layer--frequency" style="opacity: 0.3; filter: invert(1);"></div>
+        <span class="pattern-card__label pattern-card__label--light" class="position-relative" style="z-index:10">Aurora + Frequency (dark)</span>
+      </div>
+      <div class="demo-hint">Layered on dark background</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 6. COLLAPSE / ACCORDION                                            -->
+<!-- ================================================================= -->
+<section id="collapse" class="demo-section">
+  <span class="demo-num">06</span>
+  <h2>Collapse / Accordion Animation</h2>
+  <p>Smooth expand/collapse using <code>.va-collapse</code> + <code>.is-open</code> toggle. Animates <code>max-height</code>, <code>opacity</code>, and <code>padding</code> with cubic-bezier easing.</p>
+
+  <div class="demo-box" class="ref-max-w-md">
+    <div class="faq-item">
+      <button class="faq-trigger va-collapse-trigger" onclick="toggleCollapse(this, 'faq-1')">
+        What voices are available?
+        <span class="va-collapse-trigger__icon" class="ref-annotation">&#9660;</span>
+      </button>
+      <div class="va-collapse" id="faq-1">
+        <p class="ref-desc--relaxed">Voice Aura offers 500+ voices across 29 languages, including professional narration voices, conversational styles, and custom voice clones. All voices support real-time streaming.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger va-collapse-trigger" onclick="toggleCollapse(this, 'faq-2')">
+        Can I clone my own voice?
+        <span class="va-collapse-trigger__icon" class="ref-annotation">&#9660;</span>
+      </button>
+      <div class="va-collapse" id="faq-2">
+        <p class="ref-desc--relaxed">Yes! Professional Voice Cloning requires just 30 minutes of sample audio. Instant Voice Cloning needs only 30 seconds. Both produce high-fidelity clones indistinguishable from the original.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger va-collapse-trigger" onclick="toggleCollapse(this, 'faq-3')">
+        What about API rate limits?
+        <span class="va-collapse-trigger__icon" class="ref-annotation">&#9660;</span>
+      </button>
+      <div class="va-collapse" id="faq-3">
+        <p class="ref-desc--relaxed">Free tier: 10 requests/min. Creator: 100 requests/min. Business: 1,000 requests/min with burst allowance. Enterprise plans have custom limits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 7. TAB CROSSFADE                                                   -->
+<!-- ================================================================= -->
+<section id="tabs" class="demo-section">
+  <span class="demo-num">07</span>
+  <h2>Tab Content Crossfade</h2>
+  <p>Smooth opacity crossfade between tab panes using <code>.va-tab-pane</code> + <code>.is-active</code>. The inactive pane uses <code>position: absolute</code> to collapse out of flow.</p>
+
+  <div class="demo-box" class="ref-max-w-md">
+    <div class="tab-bar">
+      <button class="is-active" onclick="switchTab('monthly', this)">Monthly</button>
+      <button onclick="switchTab('annual', this)">Annual (Save 20%)</button>
+    </div>
+    <div class="va-tab-content" style="--va-tab-min-height: 80px;">
+      <div class="va-tab-pane is-active" id="pane-monthly">
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: 'IBM Plex Serif', serif; font-size: 2.5rem; font-weight: 700; color: #1A1919;">$29</span>
+          <span class="ref-desc-inline">/month, billed monthly</span>
+        </div>
+        <p style="color: #6B7280; font-size: 0.875rem; margin: 0.5rem 0 0;">Perfect for individual creators and small projects.</p>
+      </div>
+      <div class="va-tab-pane" id="pane-annual">
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: 'IBM Plex Serif', serif; font-size: 2.5rem; font-weight: 700; color: #1A1919;">$23</span>
+          <span class="ref-desc-inline">/month, billed annually ($276/yr)</span>
+        </div>
+        <p style="color: #0478FF; font-size: 0.875rem; font-weight: 500; margin: 0.5rem 0 0;">Save $72/year with annual billing!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 8. MOBILE CAROUSEL                                                 -->
+<!-- ================================================================= -->
+<section id="carousel" class="demo-section">
+  <span class="demo-num">08</span>
+  <h2>Generic Mobile Carousel</h2>
+  <p>3-column grid on desktop, horizontal snap-scroll on mobile (&lt; 768px). Resize the browser to see the transition. Uses <code>.va-carousel-mobile--3</code>.</p>
+
+  <div class="va-carousel-mobile va-carousel-mobile--3">
+    <div class="va-carousel-mobile__item">
+      <div class="va-card va-card--interactive va-touch-lift" class="h-100">
+        <div class="va-card__body">
+          <h4 class="va-card__title">Text to Speech</h4>
+          <p class="va-card__text">Convert any text into natural-sounding speech with 500+ voices.</p>
+        </div>
+      </div>
+    </div>
+    <div class="va-carousel-mobile__item">
+      <div class="va-card va-card--interactive va-touch-lift" class="h-100">
+        <div class="va-card__body">
+          <h4 class="va-card__title">Voice Cloning</h4>
+          <p class="va-card__text">Create a digital replica of any voice with just 30 seconds of audio.</p>
+        </div>
+      </div>
+    </div>
+    <div class="va-carousel-mobile__item">
+      <div class="va-card va-card--interactive va-touch-lift" class="h-100">
+        <div class="va-card__body">
+          <h4 class="va-card__title">AI Dubbing</h4>
+          <p class="va-card__text">Translate and dub video content into 29 languages automatically.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-hint">Resize browser below 768px to see snap-scroll carousel</div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 9. SKELETON REVEAL                                                 -->
+<!-- ================================================================= -->
+<section id="skeleton" class="demo-section">
+  <span class="demo-num">09</span>
+  <h2>Skeleton-to-Content Reveal</h2>
+  <p>Animates from skeleton placeholders to real content. Click the button to trigger <code>.is-loaded</code>.</p>
+
+  <div class="demo-grid demo-grid--2">
+    <div>
+      <div class="demo-label">Before (skeleton)</div>
+      <div class="va-skeleton-reveal" id="skeleton-demo-1">
+        <div class="va-skeleton-reveal__placeholder">
+          <div class="va-skeleton va-skeleton--image" style="height: 120px; margin-bottom: 0.75rem;"></div>
+          <div class="va-skeleton va-skeleton--text" style="margin-bottom: 0.5rem;"></div>
+          <div class="va-skeleton va-skeleton--text" style="width: 60%;"></div>
+        </div>
+        <div class="va-skeleton-reveal__content">
+          <div style="background: #F3F4F6; border-radius: 12px; height: 120px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+          </div>
+          <p style="margin: 0 0 0.25rem; font-weight: 600; color: #1A1919;">Content loaded!</p>
+          <p style="margin: 0; color: #6B7280; font-size: 0.875rem;">The skeleton fades out and real content fades in with a scale effect.</p>
+        </div>
+      </div>
+      <button class="va-btn va-btn--accent va-btn--sm" class="mt-3" onclick="document.getElementById('skeleton-demo-1').classList.toggle('is-loaded');">
+        Toggle .is-loaded
+      </button>
+    </div>
+
+    <div>
+      <div class="demo-label">Avatar skeleton</div>
+      <div class="va-skeleton-reveal" id="skeleton-demo-2">
+        <div class="va-skeleton-reveal__placeholder">
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <div class="va-skeleton va-skeleton--circle" style="width: 48px; height: 48px; flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div class="va-skeleton va-skeleton--text" style="width: 60%; margin-bottom: 0.5rem;"></div>
+              <div class="va-skeleton va-skeleton--text" style="width: 40%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="va-skeleton-reveal__content">
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: #0478FF; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 600; font-size: 1.125rem; flex-shrink: 0;">JD</div>
+            <div>
+              <p style="margin: 0 0 0.125rem; font-weight: 600; color: #1A1919;">Jane Doe</p>
+              <p style="margin: 0; color: #6B7280; font-size: 0.8125rem;">Senior Voice Engineer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="va-btn va-btn--accent va-btn--sm" class="mt-3" onclick="document.getElementById('skeleton-demo-2').classList.toggle('is-loaded');">
+        Toggle .is-loaded
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= -->
+<!-- 10. CTA SECTION (full composition)                                 -->
+<!-- ================================================================= -->
+<section id="cta" class="demo-section" style="border-bottom: none;">
+  <span class="demo-num">10</span>
+  <h2>CTA Section (Full Composition)</h2>
+  <p>Complete CTA section using the new <code>.va-bg-preset-cta</code> + aurora gradient + halftone dark pattern + wave divider. Demonstrates all new layers working together.</p>
+
+  <div style="border-radius: 16px; overflow: hidden; margin-top: 1.5rem;">
+    <!-- CTA with aurora + halftone -->
+    <div class="va-section va-section--dark va-bg-preset-cta va-bg-aurora va-bg-aurora--dark va-bg-aurora--animate va-wave-bottom" style="--va-wave-color: #FFFFFF; position: relative;">
+      <div style="position: relative; z-index: 10; text-align: center; max-width: 640px; margin: 0 auto; padding: 1rem 0;">
+        <span class="va-section__badge" style="color: #60A5FA; background: rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.2);">GET STARTED</span>
+        <h2 class="va-section__title" style="color: #FFFFFF;">Ready to Transform Your Voice Experience?</h2>
+        <p class="va-section__subtitle" style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Join 10M+ creators and developers building the future of voice technology.</p>
+        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="va-btn va-btn--accent va-btn--lg va-btn--pill">
+            Get Started Free
+          </a>
+          <a href="#" class="va-btn va-btn--secondary va-btn--lg va-btn--pill" style="border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);">
+            View API Docs
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- White section receiving the wave -->
+    <div class="ref-demo-box--white">
+      <p style="color: #9CA3AF; font-size: 0.8125rem; margin: 0;">White section flows naturally from the wave divider above</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: 2rem; font-size: 0.8125rem; color: #9CA3AF; border-top: 1px solid #E5E7EB;">
+  Voice Aura Design System — Backgrounds & Animations Reference · 19 SVG Patterns · 10 Sections
+</footer>
+
+<script>
+// Collapse toggle
+function toggleCollapse(trigger, id) {
+  trigger.classList.toggle('is-open');
+  document.getElementById(id).classList.toggle('is-open');
+}
+
+// Tab switch
+function switchTab(pane, btn) {
+  document.querySelectorAll('.va-tab-pane').forEach(function(el) { el.classList.remove('is-active'); });
+  document.querySelectorAll('.tab-bar button').forEach(function(el) { el.classList.remove('is-active'); });
+  document.getElementById('pane-' + pane).classList.add('is-active');
+  btn.classList.add('is-active');
+}
+
+// Scroll-spy for TOC
+(function () {
+  var tocLinks = document.querySelectorAll('.toc a');
+  var sections = [];
+  tocLinks.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+  function updateSpy() {
+    var scrollY = window.scrollY + 120;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop <= scrollY) current = sections[i];
+    }
+    tocLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  updateSpy();
+})();
+</script>
+
+</body>
+</html>

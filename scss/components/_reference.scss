@@ -1155,3 +1155,72 @@
 .ref-bg-dark {
   background-color: $va-near-black;
 }
+
+// White card with border (replaces style="background: #FFF; border: 1px solid #E5E7EB;")
+.ref-card-bordered {
+  background: $va-white;
+  border: $border-width solid $va-border-color;
+}
+
+// Dark card bg (replaces style="background: #1A1919; min-height: 220px;")
+.ref-card-dark {
+  background: $va-near-black;
+}
+
+// Demo section center (replaces style="text-align: center; padding: 2rem 1rem;")
+.ref-demo-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+// Demo card footer bar (replaces the white bottom bar pattern)
+.ref-card-footer-bar {
+  background: $va-white;
+  height: 40px;
+  border-radius: 0 0 $va-radius $va-radius;
+  border: $border-width solid $va-border-color;
+  border-top: none;
+}
+
+// Blue accent header (replaces style="background: #0478FF; height: 80px; border-radius: 12px 12px 0 0; position: relative;")
+.ref-card-header-accent {
+  background: var(--va-color-primary);
+  height: 80px;
+  border-radius: $va-radius $va-radius 0 0;
+  position: relative;
+}
+
+// Max-width constraint (replaces style="max-width: 640px;")
+.ref-max-w-md {
+  max-width: 640px;
+}
+
+// Inline muted description (replaces style="color: #6B7280; margin: 0; font-size: 0.875rem;")
+// Note: .ref-desc at line 593 is the section-level description with max-width.
+.ref-desc-inline {
+  color: $va-muted-text;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+// Description text with line-height (replaces style="margin: 0; color: #6B7280; font-size: 0.875rem; line-height: 1.6;")
+.ref-desc--relaxed {
+  color: $va-muted-text;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+// White centered demo box (replaces style="background: #FFFFFF; padding: 2rem; text-align: center;")
+.ref-demo-box--white {
+  background: $va-white;
+  padding: 2rem;
+  text-align: center;
+}
+
+// Transition demo overlay (replaces style="position: relative; z-index: 2; padding: 1.5rem;")
+.ref-overlay-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+}
