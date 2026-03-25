@@ -1,0 +1,62 @@
+{
+  "va": {
+    "color": {
+      "$description": "Voice Aura color tokens — brand palette and semantic colors",
+      "primary": {
+        "$value": "#0478FF",
+        "$type": "color",
+        "$description": "Primary brand blue — interactive accents, CTAs, links"
+      },
+      "secondary": {
+        "$value": "#1A1919",
+        "$type": "color",
+        "$description": "Near-black — headings, high-emphasis text"
+      },
+      "white": {
+        "$value": "#FFFFFF",
+        "$type": "color",
+        "$description": "Pure white — backgrounds, inverted text"
+      },
+      "light-grey": {
+        "$value": "#E9E9EA",
+        "$type": "color",
+        "$description": "Light grey — subtle borders, alt backgrounds"
+      },
+      "section-bg": {
+        "$value": "#F7F7F8",
+        "$type": "color",
+        "$description": "Section background — alternating content bands"
+      },
+      "body-text": {
+        "$value": "#4B5563",
+        "$type": "color",
+        "$description": "Body text — secondary reading color"
+      },
+      "muted-text": {
+        "$value": "#6B7280",
+        "$type": "color",
+        "$description": "Muted text — 4.6:1 on white (WCAG AA)"
+      },
+      "border": {
+        "$value": "#E5E7EB",
+        "$type": "color",
+        "$description": "Default border color"
+      },
+      "success": {
+        "$value": "#10B981",
+        "$type": "color",
+        "$description": "Success/positive semantic color"
+      },
+      "warning": {
+        "$value": "#F59E0B",
+        "$type": "color",
+        "$description": "Warning/caution semantic color"
+      },
+      "danger": {
+        "$value": "#EF4444",
+        "$type": "color",
+        "$description": "Danger/error semantic color"
+      }
+    }
+  }
+}

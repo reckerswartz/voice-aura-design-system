@@ -1,0 +1,22 @@
+{
+  "va": {
+    "duration": {
+      "$description": "Transition and animation duration tokens",
+      "fast": {
+        "$value": "150ms",
+        "$type": "duration",
+        "$description": "Quick micro-interactions — hover, focus"
+      },
+      "base": {
+        "$value": "250ms",
+        "$type": "duration",
+        "$description": "Default transitions — expand, slide"
+      },
+      "slow": {
+        "$value": "400ms",
+        "$type": "duration",
+        "$description": "Deliberate animations — page transitions"
+      }
+    }
+  }
+}

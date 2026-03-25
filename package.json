@@ -11,10 +11,15 @@
     "./css/min": "./dist/css/voice-aura.min.css",
     "./scss": "./scss/voice-aura.scss",
     "./scss/*": "./scss/*",
-    "./assets/*": "./assets/*"
+    "./assets/*": "./assets/*",
+    "./tokens/css": "./dist/tokens/tokens.css",
+    "./tokens/scss": "./dist/tokens/_tokens.scss",
+    "./tokens/json": "./dist/tokens/tokens.json"
   },
   "files": [
     "dist/css/",
+    "dist/tokens/",
+    "tokens/",
     "scss/",
     "assets/brand/",
     "assets/icons/",
@@ -52,6 +57,7 @@
     "postcss:min": "postcss dist/css/voice-aura.min.css --use autoprefixer cssnano -o dist/css/voice-aura.min.css --no-map",
     "build": "npm run build:css && npm run build:min && npm run postcss:prefix && npm run postcss:min",
     "build:sass": "npm run build:css && npm run build:min",
+    "tokens:build": "style-dictionary build --config style-dictionary.config.js",
     "test:size": "node -e \"const s=require('fs').statSync('dist/css/voice-aura.min.css').size;const kb=Math.round(s/1024);console.log(kb+'KB minified');if(s>400000){console.error('FAIL: CSS exceeds 400KB budget ('+kb+'KB)');process.exit(1)}else{console.log('PASS: under 400KB budget')}\"",
     "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
     "lint": "stylelint \"scss/**/*.scss\"",
@@ -105,6 +111,7 @@
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1",
     "sass": ">=1.98.0 <2.0.0",
+    "style-dictionary": "^5.4.0",
     "stylelint": "^17.5.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-scss": "^7.0.0"

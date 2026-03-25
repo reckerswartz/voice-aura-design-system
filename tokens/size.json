@@ -1,0 +1,63 @@
+{
+  "va": {
+    "spacing": {
+      "$description": "8px grid-based spacing scale",
+      "unit": {
+        "$value": "0.5rem",
+        "$type": "dimension",
+        "$description": "Base grid unit (8px)"
+      }
+    },
+    "radius": {
+      "$description": "Border radius tokens",
+      "sm": {
+        "$value": "0.5rem",
+        "$type": "dimension",
+        "$description": "8px — inputs, small cards"
+      },
+      "default": {
+        "$value": "0.75rem",
+        "$type": "dimension",
+        "$description": "12px — cards, modals"
+      },
+      "lg": {
+        "$value": "1rem",
+        "$type": "dimension",
+        "$description": "16px — hero cards, panels"
+      },
+      "xl": {
+        "$value": "1.5rem",
+        "$type": "dimension",
+        "$description": "24px — feature sections"
+      },
+      "pill": {
+        "$value": "50rem",
+        "$type": "dimension",
+        "$description": "Pill shape — buttons, badges"
+      }
+    },
+    "font-size": {
+      "$description": "Typography size scale",
+      "xs": {
+        "$value": "0.75rem",
+        "$type": "dimension",
+        "$description": "12px — labels, captions"
+      },
+      "sm": {
+        "$value": "0.875rem",
+        "$type": "dimension",
+        "$description": "14px — small body text"
+      },
+      "base": {
+        "$value": "1rem",
+        "$type": "dimension",
+        "$description": "16px — default body text"
+      },
+      "lg": {
+        "$value": "1.125rem",
+        "$type": "dimension",
+        "$description": "18px — large body text"
+      }
+    }
+  }
+}
