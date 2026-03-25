@@ -50,7 +50,7 @@
 | `@use` statements | 10 (only in abstracts) |
 | `@forward` statements | 0 |
 | `@extend` usages | 55 (was 52; hero/navbar now extend `.va-btn` instead of duplicating) |
-| `--va-*` CSS custom properties | 38 authored on `:root` |
+| `--va-*` CSS custom properties | 38 authored on `:root`; **consumed by 15/18 sections** |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
 | `transition` declarations | 101 |
@@ -85,7 +85,8 @@ Issues resolved or partially addressed since the initial review:
 | H-10 | No scroll-spy | ✅ Done | JS scroll-spy added to `components.html` and `backgrounds.html` (`8fdea19`). |
 | — | `_backgrounds.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
 | — | `_animations.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
-| — | CSS custom properties | ✅ Done | 38 `--va-*` tokens on `:root` (`d6eceeb`) |
+| — | CSS custom properties authored | ✅ Done | 38 `--va-*` tokens on `:root` (`d6eceeb`) |
+| F-6 | Components consume `var(--va-*)` tokens | ✅ Done | 15/18 sections migrated — colors, borders, shadows, transitions, focus states |
 | — | Stylelint | ✅ Done | BEM-aware config, 0 errors (`d6eceeb`) |
 | — | Gradient angle inconsistency | ✅ Done | Unified 6 instances → 135deg (`d6eceeb`) |
 | — | Delta-only component refactor | ✅ Done | Buttons, cards, forms, badges slimmed (`a1a82bc`) |

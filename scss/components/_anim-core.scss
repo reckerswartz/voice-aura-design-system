@@ -353,18 +353,18 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: $va-shadow-lg;
+    box-shadow: var(--va-shadow-lg);
   }
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: $va-shadow-md;
+    box-shadow: var(--va-shadow-md);
   }
 
   &:focus-visible {
     transform: translateY(-4px);
-    box-shadow: $va-shadow-lg;
-    outline: 2px solid $va-primary-blue;
+    box-shadow: var(--va-shadow-lg);
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 }
@@ -383,7 +383,7 @@
 
   &:focus-visible {
     transform: scale(1.03);
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 }
@@ -402,7 +402,7 @@
 
   &:focus-visible {
     box-shadow: 0 0 0 4px rgba($va-primary-blue, 0.12);
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 }

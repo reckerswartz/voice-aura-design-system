@@ -48,9 +48,9 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem;
-  background-color: $va-near-black;
+  background-color: var(--va-color-secondary);
   border-radius: $border-radius;
-  color: $va-white;
+  color: var(--va-color-white);
   text-align: center;
   overflow: hidden;
   max-width: 280px;
@@ -137,7 +137,7 @@
     font-size: 1.125rem;
     font-weight: $font-weight-semibold;
     line-height: 1.3;
-    color: $va-white;
+    color: var(--va-color-white);
     margin: 0 0 0.25rem;
   }
 
@@ -147,8 +147,8 @@
     justify-content: center;
     width: 1.125rem;
     height: 1.125rem;
-    background-color: $va-primary;
-    color: $va-white;
+    background-color: var(--va-color-primary);
+    color: var(--va-color-white);
     border-radius: 50%;
     font-size: 0.625rem;
     flex-shrink: 0;
@@ -185,7 +185,7 @@
     font-family: $font-family-base;
     font-size: 0.9375rem;
     font-weight: $font-weight-medium;
-    color: $va-white;
+    color: var(--va-color-white);
     background-color: rgba($va-white, 0.12);
     border: $border-width solid rgba($va-white, 0.15);
     border-radius: $border-radius-sm;
@@ -196,7 +196,7 @@
     &:hover {
       background-color: rgba($va-white, 0.18);
       border-color: rgba($va-white, 0.25);
-      color: $va-white;
+      color: var(--va-color-white);
     }
 
     &:active {
@@ -204,7 +204,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary-blue;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 
@@ -215,8 +215,8 @@
 
     // Accent-colored CTA variant
     &--accent {
-      background-color: $va-primary;
-      border-color: $va-primary;
+      background-color: var(--va-color-primary);
+      border-color: var(--va-color-primary);
 
       &:hover {
         background-color: va-darken($va-primary, 8%);
@@ -255,11 +255,11 @@
 
     &:hover {
       background: rgba($va-white, 0.18);
-      color: $va-white;
+      color: var(--va-color-white);
     }
 
     &.is-active {
-      color: $va-danger;
+      color: var(--va-color-danger);
       background: rgba($va-danger, 0.15);
     }
 
@@ -268,7 +268,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary-blue;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 

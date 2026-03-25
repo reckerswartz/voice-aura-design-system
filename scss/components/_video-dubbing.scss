@@ -65,10 +65,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $va-near-black;
+  background-color: var(--va-color-secondary);
   border-radius: $border-radius;
   overflow: hidden;
-  color: $va-white;
+  color: var(--va-color-white);
   max-width: 420px;
   width: 100%;
 
@@ -160,7 +160,7 @@
     font-family: $font-family-base;
     font-size: 0.8125rem;
     font-weight: $font-weight-medium;
-    color: $va-white;
+    color: var(--va-color-white);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -173,7 +173,7 @@
   &__player-video {
     position: relative;
     aspect-ratio: 16 / 9;
-    background-color: $va-near-black;
+    background-color: var(--va-color-secondary);
     overflow: hidden;
 
     // Placeholder gradient (when no video is loaded)
@@ -208,7 +208,7 @@
     font-size: 0.8125rem;
     font-weight: $font-weight-normal;
     line-height: 1.5;
-    color: $va-white;
+    color: var(--va-color-white);
     background-color: rgba($va-near-black, 0.65);
     border-radius: 0.25rem;
     text-align: center;
@@ -243,7 +243,7 @@
     transition: color 0.15s ease-in-out;
 
     &:hover {
-      color: $va-white;
+      color: var(--va-color-white);
     }
 
     &:active {
@@ -251,7 +251,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary-blue;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 
@@ -270,7 +270,7 @@
       padding: 0.125rem 0.25rem;
       border: $border-width solid rgba($va-white, 0.4);
       border-radius: 0.125rem;
-      color: $va-danger;
+      color: var(--va-color-danger);
       background-color: transparent;
     }
   }
@@ -290,7 +290,7 @@
 
   &__progress-bar {
     height: 100%;
-    background-color: $va-white;
+    background-color: var(--va-color-white);
     border-radius: 100vw;
     width: 30%; // Example — controlled via JS
     position: relative;
@@ -304,7 +304,7 @@
       transform: translateY(-50%);
       width: 0.5rem;
       height: 0.5rem;
-      background-color: $va-white;
+      background-color: var(--va-color-white);
       border-radius: 50%;
       opacity: 0;
       transition: opacity 0.15s ease-in-out;

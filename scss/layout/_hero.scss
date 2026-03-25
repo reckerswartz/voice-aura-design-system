@@ -55,7 +55,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   text-align: center;
   padding: ($va-grid-unit * 10) ($va-grid-unit * 4) ($va-grid-unit * 12); // 80px 32px 96px
   overflow: hidden;
-  background-color: $va-white;
+  background-color: var(--va-color-white);
 
   // Compact variant
   &--compact {
@@ -79,10 +79,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   font-weight: $font-weight-semibold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $va-primary-blue;
+  color: var(--va-color-primary);
   background-color: rgba($va-primary-blue, 0.08);
   border: $border-width solid rgba($va-primary-blue, 0.18);
-  border-radius: $border-radius-pill;
+  border-radius: var(--va-radius-pill);
   line-height: 1;
 
   // Optional leading icon
@@ -103,7 +103,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   font-weight: $font-weight-bold;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: $va-near-black;
+  color: var(--va-color-secondary);
   max-width: 860px;
   margin: 0 auto ($va-grid-unit * 3);              // 24px bottom
 }
@@ -117,7 +117,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   font-size: $_font-size-lg;                       // 18px
   font-weight: $font-weight-normal;
   line-height: 1.65;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   max-width: 640px;
   margin: 0 auto ($va-grid-unit * 5);              // 40px bottom
 }
@@ -169,10 +169,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   position: relative;
   width: 100%;
   max-width: 780px;
-  background-color: $va-white;
-  border: $border-width solid $va-border-color;
+  background-color: var(--va-color-white);
+  border: $border-width solid var(--va-color-border);
   border-radius: $border-radius-lg;
-  box-shadow: $va-shadow-lg;
+  box-shadow: var(--va-shadow-lg);
   padding: $va-grid-unit * 4;                      // 32px
   z-index: $va-z-raised;
 
@@ -181,7 +181,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     display: flex;
     gap: $va-grid-unit * 0.5;
     margin-bottom: $va-grid-unit * 3;              // 24px
-    border-bottom: $border-width solid $va-border-color;
+    border-bottom: $border-width solid var(--va-color-border);
     padding-bottom: $va-grid-unit * 1.5;
   }
 
@@ -189,24 +189,24 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     font-family: $font-family-base;
     font-size: $_font-size-sm;
     font-weight: $font-weight-medium;
-    color: $va-muted-text;
+    color: var(--va-color-muted-text);
     background: none;
     border: none;
     padding: $va-grid-unit ($va-grid-unit * 2);
     border-radius: $border-radius;
     cursor: pointer;
-    transition: color 0.2s ease-in-out,
-                background-color 0.2s ease-in-out;
+    transition: color var(--va-duration-base) ease-in-out,
+                background-color var(--va-duration-base) ease-in-out;
 
     &:hover {
-      color: $va-near-black;
-      background-color: $va-light-grey;
+      color: var(--va-color-secondary);
+      background-color: var(--va-color-light-grey);
     }
 
     &--active {
-      color: $va-near-black;
+      color: var(--va-color-secondary);
       font-weight: $font-weight-semibold;
-      background-color: $va-light-grey;
+      background-color: var(--va-color-light-grey);
     }
   }
 
@@ -217,21 +217,21 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: 1.6;
-    color: $va-near-black;
-    border: $border-width solid $va-border-color;
+    color: var(--va-color-secondary);
+    border: $border-width solid var(--va-color-border);
     border-radius: $border-radius;
     padding: $va-grid-unit * 2;
     resize: vertical;
-    transition: border-color 0.2s ease-in-out,
-                box-shadow 0.2s ease-in-out;
+    transition: border-color var(--va-duration-base) ease-in-out,
+                box-shadow var(--va-duration-base) ease-in-out;
 
     &::placeholder {
-      color: $va-muted-text;
+      color: var(--va-color-muted-text);
     }
 
     &:focus {
       outline: none;
-      border-color: $va-primary-blue;
+      border-color: var(--va-color-primary);
       box-shadow: 0 0 0 3px rgba($va-primary-blue, 0.12);
     }
   }
@@ -248,25 +248,25 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     font-family: $font-family-base;
     font-size: $_font-size-xs;
     font-weight: $font-weight-medium;
-    color: $va-body-text;
-    background-color: $va-light-grey;
+    color: var(--va-color-body-text);
+    background-color: var(--va-color-light-grey);
     border: $border-width solid transparent;
-    border-radius: $border-radius-pill;
+    border-radius: var(--va-radius-pill);
     padding: ($va-grid-unit * 0.5) ($va-grid-unit * 1.5); // 4px 12px
     cursor: pointer;
-    transition: border-color 0.2s ease-in-out,
-                background-color 0.2s ease-in-out,
-                color 0.2s ease-in-out;
+    transition: border-color var(--va-duration-base) ease-in-out,
+                background-color var(--va-duration-base) ease-in-out,
+                color var(--va-duration-base) ease-in-out;
 
     &:hover {
-      border-color: $va-border-color;
-      color: $va-near-black;
+      border-color: var(--va-color-border);
+      color: var(--va-color-secondary);
     }
 
     &--active {
-      background-color: $va-near-black;
-      color: $va-white;
-      border-color: $va-near-black;
+      background-color: var(--va-color-secondary);
+      color: var(--va-color-white);
+      border-color: var(--va-color-secondary);
 
       &:hover {
         background-color: va-lighten($va-near-black, 10%);
@@ -287,13 +287,13 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     font-family: $font-family-base;
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
-    color: $va-white;
-    background-color: $va-primary-blue;
+    color: var(--va-color-white);
+    background-color: var(--va-color-primary);
     border: none;
-    border-radius: $border-radius-pill;
+    border-radius: var(--va-radius-pill);
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out,
-                transform 0.2s ease-in-out;
+    transition: background-color var(--va-duration-base) ease-in-out,
+                transform var(--va-duration-base) ease-in-out;
 
     &:hover,
     &:focus-visible {
@@ -341,7 +341,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   display: block;
   width: 3px;
   margin: 0 3px;
-  background-color: $va-primary-blue;
+  background-color: var(--va-color-primary);
   border-radius: 2px;
   opacity: 0.35;
 
@@ -417,15 +417,15 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     justify-content: center;
     width: 48px;
     height: 48px;
-    background-color: $va-white;
-    border: $border-width solid $va-border-color;
+    background-color: var(--va-color-white);
+    border: $border-width solid var(--va-color-border);
     border-radius: $border-radius;
-    box-shadow: $va-shadow;
+    box-shadow: var(--va-shadow);
 
     svg {
       width: 20px;
       height: 20px;
-      color: $va-near-black;
+      color: var(--va-color-secondary);
     }
 
     // Small variant
@@ -455,7 +455,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
       font-family: $headings-font-family;
       font-size: 1.25rem;
       font-weight: $font-weight-semibold;
-      color: $va-near-black;
+      color: var(--va-color-secondary);
     }
   }
 
@@ -495,15 +495,15 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   &--sm {
     width: 36px;
     height: 36px;
-    background-color: $va-white;
-    border: $border-width solid $va-border-color;
+    background-color: var(--va-color-white);
+    border: $border-width solid var(--va-color-border);
     border-radius: $border-radius;
-    box-shadow: $va-shadow;
+    box-shadow: var(--va-shadow);
 
     svg {
       width: 16px;
       height: 16px;
-      color: $va-near-black;
+      color: var(--va-color-secondary);
     }
   }
 
@@ -511,21 +511,21 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   &--letter {
     width: 48px;
     height: 48px;
-    background-color: $va-white;
-    border: $border-width solid $va-border-color;
+    background-color: var(--va-color-white);
+    border: $border-width solid var(--va-color-border);
     border-radius: $border-radius;
-    box-shadow: $va-shadow;
+    box-shadow: var(--va-shadow);
     font-family: $headings-font-family;
     font-size: 1.25rem;
     font-weight: $font-weight-semibold;
-    color: $va-near-black;
+    color: var(--va-color-secondary);
   }
 
   // Blue cursor line (thin vertical accent)
   &-cursor {
     width: 2px;
     height: 24px;
-    background-color: $va-primary-blue;
+    background-color: var(--va-color-primary);
     border-radius: 1px;
   }
 }

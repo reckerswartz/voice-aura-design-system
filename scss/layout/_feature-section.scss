@@ -85,10 +85,10 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   font-weight: $font-weight-semibold;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: $va-primary-blue;
+  color: var(--va-color-primary);
   background: rgba($va-primary-blue, 0.08);
   border: $border-width solid rgba($va-primary-blue, 0.18);
-  border-radius: $va-radius-pill;
+  border-radius: var(--va-radius-pill);
   padding: ($va-grid-unit * 0.5) ($va-grid-unit * 1.5); // 4px 12px
   margin-bottom: $va-grid-unit * 2;        // 16px
 }
@@ -98,7 +98,7 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: $font-weight-bold;
   line-height: 1.15;
-  color: $va-near-black;
+  color: var(--va-color-secondary);
   margin-bottom: $va-grid-unit * 2;        // 16px
 }
 
@@ -106,7 +106,7 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   font-family: $font-family-base;
   font-size: 0.9375rem;                    // 15px
   line-height: 1.65;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   margin-bottom: $va-grid-unit * 3;        // 24px
 }
 
@@ -138,7 +138,7 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
 
   &--light {
     background: linear-gradient(135deg, $va-section-bg 0%, va-darken($va-section-bg, 4%) 100%);
-    border: $border-width solid $va-border-color;
+    border: $border-width solid var(--va-color-border);
   }
 
   &--dark {
@@ -158,17 +158,17 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   font-family: $font-family-base;
   font-size: map-get($va-font-sizes, "sm"); // 0.875rem
   font-weight: $font-weight-medium;
-  color: $va-near-black;
+  color: var(--va-color-secondary);
   text-decoration: none;
-  transition: color 0.2s ease-in-out, gap 0.2s ease-in-out;
+  transition: color var(--va-duration-base) ease-in-out, gap var(--va-duration-base) ease-in-out;
 
   &:hover {
-    color: $va-primary-blue;
+    color: var(--va-color-primary);
     gap: $va-grid-unit;                     // 8px — subtle arrow push
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 
@@ -184,7 +184,7 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
 // ---------------------------------------------------------------------------
 
 .va-section-alt {
-  background-color: $va-section-bg;
+  background-color: var(--va-color-section-bg);
 
   // Adjacent alt sections should not have a double border
   & + & {

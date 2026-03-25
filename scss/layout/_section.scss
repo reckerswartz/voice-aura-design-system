@@ -47,11 +47,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-section {
   position: relative;
   padding: ($va-grid-unit * 12) ($va-grid-unit * 4);  // 96px 32px
-  background-color: $va-white;
+  background-color: var(--va-color-white);
 
   // Adjacent sections get a subtle separator line
   & + & {
-    border-top: $border-width solid $va-border-color;
+    border-top: $border-width solid var(--va-color-border);
   }
 
   // Slightly tighter variant
@@ -66,15 +66,15 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
   // Alternating background (light grey)
   &--alt {
-    background-color: $va-light-grey;
+    background-color: var(--va-color-light-grey);
   }
 
   // Dark background
   &--dark {
-    background-color: $va-near-black;
-    color: $va-white;
+    background-color: var(--va-color-secondary);
+    color: var(--va-color-white);
 
-    .va-section__title { color: $va-white; }
+    .va-section__title { color: var(--va-color-white); }
     .va-section__subtitle { color: rgba($va-white, 0.7); }
     .va-section__badge {
       color: $va-primary-blue;
@@ -107,10 +107,10 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   font-weight: $font-weight-semibold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $va-primary-blue;
+  color: var(--va-color-primary);
   background-color: rgba($va-primary-blue, 0.06);
   border: $border-width solid rgba($va-primary-blue, 0.15);
-  border-radius: $va-radius-pill;
+  border-radius: var(--va-radius-pill);
   line-height: 1.4;
 }
 
@@ -121,7 +121,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   font-weight: $font-weight-bold;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  color: $va-near-black;
+  color: var(--va-color-secondary);
   margin-bottom: $va-grid-unit * 2;                // 16px
 }
 
@@ -131,7 +131,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   font-size: $_font-size-lg;
   font-weight: $font-weight-normal;
   line-height: 1.65;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   margin: 0;
 }
 
@@ -170,7 +170,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     font-family: $font-family-base;
     font-size: $_font-size-sm;
     font-weight: $font-weight-medium;
-    color: $va-muted-text;
+    color: var(--va-color-muted-text);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: $va-grid-unit * 4;              // 32px
@@ -225,7 +225,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   max-width: $va-container-max-width;
   margin: 0 auto;
   border: none;
-  border-top: $border-width solid $va-border-color;
+  border-top: $border-width solid var(--va-color-border);
 }
 
 // ---------------------------------------------------------------------------

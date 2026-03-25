@@ -52,11 +52,11 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   justify-content: space-between;
   height: $va-navbar-height;                       // 72px
   padding: 0 ($va-grid-unit * 4);                  // 0 32px
-  background-color: $va-white;
-  border-bottom: $border-width solid $va-border-color;
+  background-color: var(--va-color-white);
+  border-bottom: $border-width solid var(--va-color-border);
   z-index: $va-z-navbar;
-  transition: box-shadow 0.2s ease-in-out,
-              border-color 0.2s ease-in-out;
+  transition: box-shadow var(--va-duration-base) ease-in-out,
+              border-color var(--va-duration-base) ease-in-out;
 
   // Fixed / sticky variants
   &--fixed {
@@ -118,7 +118,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 4px;
     border-radius: $border-radius-sm;
   }
@@ -148,7 +148,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
     font-weight: $font-weight-bold;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $va-near-black;
+    color: var(--va-color-secondary);
     line-height: 1;
   }
 }
@@ -174,15 +174,15 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   text-decoration: none;
   padding: $va-grid-unit 0;                        // 8px vertical hit area
   position: relative;
-  transition: color 0.2s ease-in-out;
+  transition: color var(--va-duration-base) ease-in-out;
 
   &:hover,
   &:focus-visible {
-    color: $va-near-black;
+    color: var(--va-color-secondary);
     text-decoration: none;
   }
 
@@ -194,8 +194,8 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
     left: 0;
     width: 0;
     height: 2px;
-    background-color: $va-primary-blue;
-    transition: width 0.2s ease-in-out;
+    background-color: var(--va-color-primary);
+    transition: width var(--va-duration-base) ease-in-out;
   }
 
   &:hover::after {
@@ -204,7 +204,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
   // Active / current page state
   &--active {
-    color: $va-near-black;
+    color: var(--va-color-secondary);
     font-weight: $font-weight-semibold;
 
     &::after {
@@ -299,14 +299,14 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   background: none;
   border: none;
   border-radius: $border-radius;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color var(--va-duration-base) ease-in-out;
 
   &:hover {
-    background-color: $va-light-grey;
+    background-color: var(--va-color-light-grey);
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 
@@ -315,10 +315,10 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
     display: block;
     width: 20px;
     height: 2px;
-    background-color: $va-near-black;
+    background-color: var(--va-color-secondary);
     border-radius: 1px;
-    transition: transform 0.2s ease-in-out,
-                opacity 0.2s ease-in-out;
+    transition: transform var(--va-duration-base) ease-in-out,
+                opacity var(--va-duration-base) ease-in-out;
 
     & + & {
       margin-top: 5px;
@@ -412,7 +412,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   .va-navbar-link {
     display: block;
     padding: ($va-grid-unit * 1.5) $va-grid-unit;   // 12px 8px
-    border-bottom: $border-width solid $va-border-color;
+    border-bottom: $border-width solid var(--va-color-border);
 
     &::after {
       display: none;

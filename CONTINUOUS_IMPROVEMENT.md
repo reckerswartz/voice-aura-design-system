@@ -124,6 +124,17 @@ Tracking what was already fixed to avoid rework and to establish patterns for fu
 | F-5 | 7 files missing BOOTSTRAP ALIGNMENT blocks | Added to all 7 files |
 | F-8 | Grid section missing from components.html | Added with auto-fit, 2/3/4-col, spacing demos + code snippet |
 
+### Fixes Applied — var(--va-*) Token Migration
+
+| ID | Issue | Fix |
+|----|-------|-----|
+| F-6 | 0 components consume `var(--va-*)` tokens | 15/18 sections migrated — colors, borders, shadows, transitions, focus states now use `var(--va-*)` |
+| — | Buttons, Badges, Cards, Forms, Pricing, Blog Cards | Migrated colors, focus-visible outlines, shadows, transitions |
+| — | Trust Bar, Footer, Auth | Migrated text colors, borders, backgrounds |
+| — | Section, Feature Section, Hero, Navbar | Migrated bg, text, borders, shadows, transitions, focus states |
+| — | Voice Agent, Video Dubbing | Migrated colors, focus-visible, accent/danger colors |
+| — | Anim Core, Anim Components | Migrated shadows, focus-visible outlines |
+
 ---
 
 ## 3. Open Issues by Priority
@@ -231,15 +242,14 @@ jobs:
 
 Accessor functions `va-font-size()`, `va-breakpoint()`, `va-shadow()`, `va-radius()`, `va-z()` exist for some maps but not all.
 
-#### 3.9 Custom properties not consumed by components
+#### ~~3.9 Custom properties not consumed by components~~ ✅ MOSTLY RESOLVED
 
-38 `--va-*` properties are authored on `:root` but **no component references them**. Components still use Sass variables directly, meaning:
-- No runtime theming
-- No JS access to design tokens
-- No per-component overrides via CSS
+15 of 18 sections now consume `var(--va-*)` tokens for colors, borders, shadows, transitions, and focus states. Sass variables retained only for compile-time constructs (`rgba()`, `va-darken()`/`va-lighten()`, `@extend`).
 
-**Fix (phased):**
-1. Components reference `var(--va-*)` for colors, radius, shadows
+**Migrated files:** `_buttons.scss`, `_badges.scss`, `_cards.scss`, `_forms.scss`, `_pricing.scss`, `_blog-card.scss`, `_trust-bar.scss`, `_footer.scss`, `_auth.scss`, `_section.scss`, `_feature-section.scss`, `_hero.scss`, `_navbar.scss`, `_voice-agent.scss`, `_video-dubbing.scss`, `_anim-core.scss`, `_anim-components.scss`
+
+**Remaining phases:**
+1. ~~Components reference `var(--va-*)` for colors, radius, shadows~~ ✅ Done
 2. Dark sections override custom properties locally
 3. Full dark mode via `@media (prefers-color-scheme: dark)`
 

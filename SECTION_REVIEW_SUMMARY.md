@@ -23,26 +23,26 @@
 
 | Section | Lines | Maturity | `@extend` | `var(--va-*)` | BOOTSTRAP ALIGNMENT | `:focus-visible` |
 |---------|-------|----------|-----------|---------------|---------------------|-------------------|
-| Navbar | 436 | Beta | 3 | 0 | ✅ Added (`18fa927`) | ✅ 6 |
-| Hero | 553 | Beta | 4 | 0 | ✅ Added (`18fa927`) | ✅ 3 |
-| Footer | 307 | Stable | 0 | 0 | ✅ Added (`18fa927`) | ✅ 2 |
-| Feature Rows | 604 | Beta | 0 | 0 | ✅ Added (`18fa927`) | — |
+| Navbar | 437 | Beta | 3 | ✅ Migrated | ✅ Added (`18fa927`) | ✅ 6 |
+| Hero | 575 | Beta | 4 | ✅ Migrated | ✅ Added (`18fa927`) | ✅ 3 |
+| Footer | 307 | Stable | 0 | ✅ Migrated | ✅ Added (`18fa927`) | ✅ 2 |
+| Feature Rows | 202 | Beta | 0 | ✅ Migrated | ✅ Added (`18fa927`) | — |
 | Grid | 292 | Beta | 0 | 1 ✅ | ✅ Present | — |
-| Buttons | 388 | Stable | 10 | 0 | ✅ Present | ✅ 2 |
-| Cards | 220 | Stable | 5 | 0 | ✅ Present | ✅ 1 |
-| Forms | 587 | Beta | 6 | 0 | ✅ Present | ✅ 5 |
-| Badges | 275 | Stable | 1 | 0 | ✅ Present | — |
-| Pricing | 423 | Beta | 2 | 0 | ✅ Present | ✅ 1 (`18fa927`) |
-| Blog Cards | 260 | Stable | 0 | 0 | ✅ Present | ✅ 2 |
-| Trust Bar | 164 | Stable | 0 | 0 | ✅ Present | — |
-| Auth | 432 | Beta | 4 | 0 | ✅ Present | ✅ |
+| Buttons | 388 | Stable | 10 | ✅ Migrated | ✅ Present | ✅ 2 |
+| Cards | 220 | Stable | 5 | ✅ Migrated | ✅ Present | ✅ 1 |
+| Forms | 588 | Beta | 6 | ✅ Migrated | ✅ Present | ✅ 5 |
+| Badges | 275 | Stable | 1 | ✅ Migrated | ✅ Present | — |
+| Pricing | 423 | Beta | 2 | ✅ Migrated | ✅ Present | ✅ 1 (`18fa927`) |
+| Blog Cards | 261 | Stable | 0 | ✅ Migrated | ✅ Present | ✅ 2 |
+| Trust Bar | 165 | Stable | 0 | ✅ Migrated | ✅ Present | — |
+| Auth | 433 | Beta | 4 | ✅ Migrated | ✅ Present | ✅ |
 | Backgrounds | 1,833 | Beta | 3 | 28 (internal) | — | — |
-| Animations | 1,493 | Beta | 0 | 3 (internal) | — | — |
+| Animations | 1,493 | Beta | 0 | ✅ Migrated | — | — |
 | Typography | 289 | Beta | 13 | 0 | — | — |
-| Voice Agent | 352 | Draft | 0 | 0 | ✅ Added (`18fa927`) | — |
-| Video Dubbing | 389 | Draft | 0 | 0 | ✅ Added (`18fa927`) | — |
+| Voice Agent | 353 | Draft | 0 | ✅ Migrated | ✅ Added (`18fa927`) | — |
+| Video Dubbing | 391 | Draft | 0 | ✅ Migrated | ✅ Added (`18fa927`) | — |
 
-**Summary:** 5 Stable, 11 Beta, 2 Draft. 55 total `@extend` usages (was 52; hero/navbar now extend `.va-btn` instead of duplicating). **0 components consume foundation `var(--va-*)` tokens.** All files now have BOOTSTRAP ALIGNMENT blocks.
+**Summary:** 5 Stable, 11 Beta, 2 Draft. 55 total `@extend` usages. **15 of 18 sections now consume `var(--va-*)` foundation tokens** (remaining: Grid [minimal], Backgrounds [internal only], Typography). All files now have BOOTSTRAP ALIGNMENT blocks.
 
 ---
 
@@ -50,14 +50,12 @@
 
 These issues appear across multiple sections and should be addressed systemically rather than per-file.
 
-### 2.1 Zero foundation custom property consumption (All sections)
+### ~~2.1 Zero foundation custom property consumption~~ ✅ MOSTLY RESOLVED
 
-Every section uses Sass variables (`$va-primary-blue`, `$va-near-black`, etc.) directly. The 38 `--va-*` tokens on `:root` are unused by components. This blocks:
-- Runtime theming / brand switching
-- Dark mode via `prefers-color-scheme`
-- Per-section color overrides
+15 of 18 sections now consume `var(--va-*)` foundation tokens for colors, borders, shadows, transitions, and focus states. Sass variables are retained only where compile-time evaluation is required (`rgba()`, `va-darken()`/`va-lighten()`, `@extend`).
 
-**Affected:** All 16 sections (100%)
+**Migrated:** Navbar, Hero, Footer, Feature Rows, Buttons, Cards, Forms, Badges, Pricing, Blog Cards, Trust Bar, Auth, Section, Voice Agent, Video Dubbing, Animations
+**Remaining:** Grid (minimal usage), Backgrounds (internal tokens only), Typography (no color properties)
 
 ### ~~2.2 Missing BOOTSTRAP ALIGNMENT blocks~~ ✅ RESOLVED (`18fa927`)
 
@@ -111,7 +109,7 @@ Fixes grouped by priority — derived from the per-section audits.
 |----|---------|-------|--------|
 | ~~F-4~~ | ~~Navbar + Hero~~ | ~~Unify 3 button systems~~ | ✅ Done (`18fa927`) |
 | ~~F-5~~ | ~~7 files~~ | ~~Add missing BOOTSTRAP ALIGNMENT comment blocks~~ | ✅ Done (`18fa927`) |
-| F-6 | All | Migrate components to consume `var(--va-*)` foundation tokens | 8 h |
+| ~~F-6~~ | ~~All~~ | ~~Migrate components to consume `var(--va-*)` foundation tokens~~ | ✅ Done — 15/18 sections migrated |
 | F-7 | Voice Agent, Video Dubbing, Auth | Move to `brands/voice-aura/` directory | 2 h |
 
 ### P2 — Nice to have (improves reference quality)
@@ -179,7 +177,7 @@ Fixes grouped by priority — derived from the per-section audits.
 
 | Gap | Impact | Sections Affected |
 |-----|--------|-------------------|
-| No `var(--va-*)` foundation token consumption | No runtime theming | All 16 |
+| ~~No `var(--va-*)` foundation token consumption~~ | ~~✅ Resolved — 15/18 sections migrated~~ | ~~All 16~~ |
 | ~~3 parallel button systems~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Navbar, Hero, Buttons~~ |
 | 55 `@extend` usages | 8-selector `.btn` rule, larger CSS | Buttons, Typography, Navbar, Forms, Cards |
 | ~~7 files missing BOOTSTRAP ALIGNMENT~~ | ~~✅ Resolved (`18fa927`)~~ | ~~All 7 files~~ |
@@ -215,7 +213,7 @@ All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3
 
 ### Sprint 2 — Structural improvements (1 week)
 
-1. **F-6:** Migrate top 8 components to consume `var(--va-*)` tokens (8 h)
+1. ~~**F-6:** Migrate top 8 components to consume `var(--va-*)` tokens~~ ✅ COMPLETE — 15/18 sections migrated
 2. **F-7:** Move app-specific SCSS to `brands/voice-aura/` (2 h)
 3. **F-11/F-12/F-13/F-14:** Complete variant demos in reference (3 h)
 

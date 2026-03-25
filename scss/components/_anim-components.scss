@@ -72,7 +72,7 @@
   bottom: 0;
   width: 80%;
   max-width: 320px;
-  background-color: $va-white;
+  background-color: var(--va-color-white);
   z-index: $va-z-overlay;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -301,14 +301,14 @@
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       transform: translateY(-4px);
-      box-shadow: $va-shadow-lg;
+      box-shadow: var(--va-shadow-lg);
     }
   }
 
   // Touch devices: active press feedback
   &:active {
     transform: scale(0.97);
-    box-shadow: $va-shadow-sm;
+    box-shadow: var(--va-shadow-sm);
   }
 }
 
