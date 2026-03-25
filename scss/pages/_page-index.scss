@@ -1,0 +1,160 @@
+// ============================================================================
+// Voice Aura Design System — Index / Landing Hub Page
+// ============================================================================
+// Styles for site/index.html — the design system's landing page.
+// ============================================================================
+
+.hero {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A2E 50%, #0A0A0A 100%);
+  color: $va-white;
+  padding: 80px 24px 64px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: $va-font-mono;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $va-primary-blue;
+  background: rgba($va-primary-blue, 0.1);
+  border: 1px solid rgba($va-primary-blue, 0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: $headings-font-family;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.15;
+  margin-bottom: 16px;
+
+  span { color: $va-primary-blue; }
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: $va-muted-text;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+// Card grid on the landing page
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: -48px auto 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: $va-white;
+  border: $border-width solid $va-border-color;
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border-color: $va-primary-blue;
+  }
+
+  h2 {
+    font-family: $headings-font-family;
+    font-size: 1.25rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $va-muted-text;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba($va-primary-blue, 0.08);
+  border-radius: $va-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: $va-primary-blue;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.card-link {
+  font-family: $va-font-mono;
+  font-size: 0.8125rem;
+  color: $va-primary-blue;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    stroke: $va-primary-blue;
+    fill: none;
+    stroke-width: 2;
+  }
+}
+
+// Info section (tech details grid)
+.info-section {
+  padding: 48px 0 64px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.info-item {
+  h3 {
+    font-family: $va-font-mono;
+    font-size: 0.75rem;
+    color: $va-muted-text;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $va-body-text;
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: $va-font-mono;
+    font-size: 0.8125rem;
+    background: #F3F4F6;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+}

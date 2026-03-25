@@ -546,3 +546,350 @@
   font-weight: $font-weight-semibold;
   margin-bottom: 0.75rem;
 }
+
+// ---------------------------------------------------------------------------
+// 39. REF GRID (responsive grid for component demos)
+// ---------------------------------------------------------------------------
+
+.ref-grid {
+  display: grid;
+  gap: 1.5rem;
+
+  &--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  &--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  &--4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
+// ---------------------------------------------------------------------------
+// 40. REF LABEL (mono category label above section title)
+// ---------------------------------------------------------------------------
+
+.ref-label {
+  font-family: $va-font-mono;
+  font-size: 0.75rem;
+  color: $va-muted-text;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 41. REF TITLE (section heading)
+// ---------------------------------------------------------------------------
+
+.ref-title {
+  font-family: $headings-font-family;
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  color: $va-near-black;
+  margin-bottom: 0.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 42. REF DESC (section description)
+// ---------------------------------------------------------------------------
+
+.ref-desc {
+  color: $va-body-text;
+  margin-bottom: 2rem;
+  max-width: 640px;
+}
+
+// ---------------------------------------------------------------------------
+// 43. COLOR SWATCH (palette demos)
+// ---------------------------------------------------------------------------
+
+.ref-swatch {
+  padding: 2rem 1rem 1rem;
+  border-radius: $va-radius;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  span {
+    font-family: $va-font-mono;
+    font-size: 0.8rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 44. SPACER BAR (spacing scale demos)
+// ---------------------------------------------------------------------------
+
+.ref-spacer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ref-spacer-bar {
+  background: $va-primary-blue;
+  border-radius: 4px;
+  height: 12px;
+}
+
+.ref-spacer-label {
+  font-family: $va-font-mono;
+  font-size: 0.8rem;
+  color: $va-body-text;
+  white-space: nowrap;
+}
+
+// ---------------------------------------------------------------------------
+// 45. COMPONENT ROW (flex row for component demos)
+// ---------------------------------------------------------------------------
+
+.ref-component-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 46. TOC SIDEBAR (sticky table of contents)
+// ---------------------------------------------------------------------------
+
+.ref-toc {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding-bottom: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: $va-border-color transparent;
+
+  a {
+    display: block;
+    padding: 0.35rem 0 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    color: $va-body-text;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+
+    &:hover {
+      color: $va-primary-blue;
+      background-color: rgba($va-primary-blue, 0.04);
+    }
+
+    &.active {
+      color: $va-primary-blue;
+      border-left-color: $va-primary-blue;
+      font-weight: $font-weight-semibold;
+      background-color: rgba($va-primary-blue, 0.06);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 47. MOBILE TOC (collapsible mobile table of contents)
+// ---------------------------------------------------------------------------
+
+.ref-mobile-toc {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $va-white;
+  border-bottom: $border-width solid $va-border-color;
+  padding: 0.75rem 1.5rem;
+
+  summary {
+    font-family: $font-family-base;
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    color: $va-near-black;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::-webkit-details-marker { display: none; }
+
+    &::after {
+      content: "\25BC";
+      font-size: 0.625rem;
+      transition: transform 0.2s;
+    }
+  }
+
+  &[open] summary::after {
+    transform: rotate(180deg);
+  }
+
+  .ref-mobile-toc__list {
+    padding: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+
+    a {
+      font-size: 0.8125rem;
+      color: $va-body-text;
+      text-decoration: none;
+      padding: 0.25rem 0.625rem;
+      border-radius: 50rem;
+      background: $va-section-bg;
+      white-space: nowrap;
+
+      &:hover,
+      &.active {
+        background: $va-primary-blue;
+        color: $va-white;
+      }
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    display: block;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 48. CODE BLOCK (dark code snippet with copy button)
+// ---------------------------------------------------------------------------
+
+.ref-code {
+  position: relative;
+  background: $va-near-black;
+  color: $va-light-grey;
+  border-radius: $va-radius-sm;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  font-family: $va-font-mono;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.ref-code-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba($va-white, 0.1);
+  color: $va-muted-text;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+  font-family: $va-font-mono;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: rgba($va-white, 0.2);
+    color: $va-white;
+  }
+
+  &.copied {
+    background: #10B981;
+    color: $va-white;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 49. RADIUS DEMO (small square for border-radius demos)
+// ---------------------------------------------------------------------------
+
+.ref-radius-demo {
+  width: 80px;
+  height: 80px;
+  background: $va-light-grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $va-font-mono;
+  font-size: 0.7rem;
+}
+
+// ---------------------------------------------------------------------------
+// 50. SHADOW DEMO (card for shadow demos)
+// ---------------------------------------------------------------------------
+
+.ref-shadow-demo {
+  width: 120px;
+  height: 80px;
+  background: $va-white;
+  border-radius: $va-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $va-font-mono;
+  font-size: 0.7rem;
+  color: $va-muted-text;
+}
+
+// ---------------------------------------------------------------------------
+// 51. PAGE HEADER (dark header with title + version badge)
+// ---------------------------------------------------------------------------
+
+.ref-page-header {
+  background: $va-near-black;
+  color: $va-white;
+  padding: 4rem 0;
+
+  h1 {
+    font-family: $headings-font-family;
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    color: $va-white;
+  }
+
+  p {
+    color: $va-muted-text;
+    font-size: 1.125rem;
+  }
+
+  .ref-version {
+    display: inline-block;
+    background: $va-primary-blue;
+    color: $va-white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50rem;
+    font-size: 0.75rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 1rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 52. BACK TO TOP (floating scroll-to-top button)
+// ---------------------------------------------------------------------------
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $va-near-black;
+  color: $va-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: $va-primary-blue;
+  }
+}

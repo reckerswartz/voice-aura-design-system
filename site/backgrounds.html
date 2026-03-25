@@ -6,51 +6,7 @@
   <title>Voice Aura — Backgrounds & Animations Reference</title>
   <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
   <link rel="stylesheet" href="../dist/css/voice-aura.css">
-  <style>
-    /* Reference-page-only styles */
-    .ref-section { padding: 3rem 0; border-bottom: 1px solid rgba(26,25,25,.08); }
-    .ref-section:last-child { border-bottom: 0; }
-    .ref-title { font-family: var(--va-font-heading); font-size: 1.75rem; font-weight: 700; margin-bottom: .5rem; color: #1A1919; }
-    .ref-subtitle { font-size: 1rem; color: #6B7280; margin-bottom: 2rem; }
-    .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
-    .ref-card { border: 1px solid rgba(26,25,25,.08); border-radius: 12px; overflow: hidden; background: #fff; }
-    .ref-card__preview { position: relative; height: 200px; overflow: hidden; }
-    .ref-card__body { padding: 1rem 1.25rem; }
-    .ref-card__name { font-weight: 600; font-size: .95rem; margin-bottom: .25rem; }
-    .ref-card__desc { font-size: .8rem; color: #6B7280; margin-bottom: .5rem; }
-    .ref-card__code { position: relative; font-family: 'SFMono-Regular',Consolas,monospace; font-size: .75rem; background: #F5F5F5; padding: .5rem .75rem; border-radius: 6px; color: #374151; white-space: pre-wrap; word-break: break-all; padding-right: 3.5rem; }
-    .ref-card__copy { position: absolute; top: .35rem; right: .35rem; background: rgba(0,0,0,.06); color: #6B7280; border: none; border-radius: 4px; padding: 2px 8px; font-size: .65rem; font-family: 'SFMono-Regular',Consolas,monospace; cursor: pointer; transition: background .15s, color .15s; }
-    .ref-card__copy:hover { background: rgba(0,0,0,.12); color: #1A1919; }
-    .ref-card__copy.copied { background: #10B981; color: #fff; }
-    .ref-badge { display: inline-block; font-size: .65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-right: .25rem; }
-    .ref-badge--svg { background: #E0F2FE; color: #0369A1; }
-    .ref-badge--css { background: #F0FDF4; color: #166534; }
-    .ref-badge--pseudo { background: #FEF3C7; color: #92400E; }
-    .ref-badge--tile { background: #EDE9FE; color: #6D28D9; }
-
-    /* Animation demo cards */
-    .anim-demo { text-align: center; padding: 2rem 1rem; }
-    .anim-demo__box { display: inline-block; width: 80px; height: 80px; background: #0478FF; border-radius: 12px; }
-    .anim-trigger-btn { font-size: .8rem; margin-top: .75rem; padding: .35rem 1rem; border: 1px solid #0478FF; background: #fff; color: #0478FF; border-radius: 6px; cursor: pointer; }
-    .anim-trigger-btn:hover { background: #0478FF; color: #fff; }
-
-    /* Responsive demo */
-    .responsive-demo { padding: 2rem; background: #F9FAFB; border-radius: 12px; margin-bottom: 1.5rem; }
-    .responsive-demo__label { font-size: .75rem; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .75rem; }
-    .responsive-demo__grid { display: grid; gap: 1rem; }
-    .responsive-demo__item { background: #fff; border: 1px solid rgba(26,25,25,.08); border-radius: 8px; padding: 1rem; text-align: center; font-size: .85rem; color: #374151; }
-
-    /* TOC */
-    .ref-toc { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; position: sticky; top: 0; z-index: 100; background: #fff; padding: 1rem 0; border-bottom: 1px solid rgba(26,25,25,.06); }
-    .ref-toc a { font-size: .85rem; padding: .35rem .75rem; border-radius: 6px; background: #F3F4F6; color: #374151; text-decoration: none; transition: background .15s, color .15s; }
-    .ref-toc a:hover { background: #0478FF; color: #fff; }
-    .ref-toc a.active { background: #0478FF; color: #fff; }
-
-    @media (max-width: 767px) {
-      .ref-grid { grid-template-columns: 1fr; }
-      .ref-card__preview { height: 160px; }
-    }
-  </style>
+  <!-- All page styles are in scss/pages/_page-backgrounds.scss and _reference.scss -->
 </head>
 <body>
 
@@ -1524,11 +1480,6 @@ Default: 24px (3 grid units)</div>
 
 <!-- Back to Top -->
 <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
-<style>
-  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; border-radius: 50%; background: #1A1919; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-  .back-to-top.visible { opacity: 1; pointer-events: auto; }
-  .back-to-top:hover { transform: translateY(-2px); background: #0478FF; }
-</style>
 <script>
 (function() {
   var btn = document.getElementById('backToTop');

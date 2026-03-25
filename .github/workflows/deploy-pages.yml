@@ -35,16 +35,33 @@ jobs:
 
       - name: Assemble site
         run: |
-          mkdir -p _site/site _site/dist/css _site/assets
+          mkdir -p _site/site/css _site/dist/css _site/assets _site/js
           # Copy HTML pages
           cp site/*.html _site/site/
+          # Copy site CSS preview copy
+          cp site/css/voice-aura.css _site/site/css/voice-aura.css
           # Copy built CSS
           cp dist/css/voice-aura.css _site/dist/css/
           cp dist/css/voice-aura.min.css _site/dist/css/
           # Copy all SVG assets (preserving directory structure)
           cp -r assets/* _site/assets/
-          # Copy the landing page to site root
-          cp site/index.html _site/index.html
+          # Copy JS
+          cp js/*.js _site/js/
+          # Create root index.html that redirects to site/index.html
+          # (site/index.html uses ../dist/ relative paths that only work from site/ subdirectory)
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0;url=site/index.html">
+            <title>Voice Aura Design System</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="site/index.html">Voice Aura Design System</a>…</p>
+          </body>
+          </html>
+          EOF
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

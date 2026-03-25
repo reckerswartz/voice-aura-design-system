@@ -72,4 +72,12 @@
   // These are tightly coupled to the Voice Aura product.  Other brands/themes
   // can safely remove or comment out this import.
   @import "brands/voice-aura/index";
+
+  // 7. PAGES — demo/documentation page styles (extracted from inline <style>)
+  @import "pages/page-index";
+  @import "pages/page-auth-demo";
+  @import "pages/page-backgrounds";
+  @import "pages/page-interactions";
+  @import "pages/page-transitions";
+  @import "pages/page-asset-gallery";
 }

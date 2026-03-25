@@ -1,0 +1,225 @@
+// ============================================================================
+// Voice Aura Design System — Interactions Demo Page
+// ============================================================================
+// Styles for site/interactions-demo.html.
+// ============================================================================
+
+// Section layout
+.demo-section {
+  padding: 5rem 0;
+  border-bottom: $border-width solid $va-border-color;
+
+  &:last-of-type { border-bottom: none; }
+}
+
+.demo-label {
+  display: inline-block;
+  font-family: $font-family-base;
+  font-size: 0.6875rem;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $va-primary-blue;
+  background: rgba($va-primary-blue, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100vw;
+  margin-bottom: 0.75rem;
+}
+
+.demo-title {
+  font-family: $headings-font-family;
+  font-size: 2rem;
+  font-weight: $font-weight-semibold;
+  color: $va-near-black;
+  margin: 0 0 0.5rem;
+}
+
+.demo-desc {
+  font-family: $font-family-base;
+  font-size: 0.9375rem;
+  color: $va-body-text;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 0 2.5rem;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.demo-card {
+  background: $va-white;
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius;
+  padding: 2rem;
+
+  h4 {
+    font-family: $font-family-base;
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    color: $va-near-black;
+    margin: 0 0 1.25rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.code-hint {
+  font-family: $va-font-mono;
+  font-size: 0.75rem;
+  color: $va-muted-text;
+  margin-top: 0.5rem;
+}
+
+// Scroll progress bar
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: $va-primary-blue;
+  z-index: 10000;
+  transition: width 0.1s linear;
+  width: 0;
+}
+
+// State indicator dots
+.state-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $va-border-color;
+  transition: background-color 0.3s ease;
+
+  &.is-active { background: $va-primary-blue; }
+}
+
+// Interactive demo panels
+.interactive-panel {
+  background: $va-section-bg;
+  border-radius: $va-radius;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &--dark {
+    background: $va-near-black;
+    color: $va-white;
+  }
+}
+
+// Form demo
+.form-demo-group {
+  margin-bottom: 1.25rem;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+// Tab demo wrapper
+.tab-demo-content {
+  padding: 1.5rem;
+  background: $va-white;
+  border-radius: $va-radius-sm;
+  margin-top: 1rem;
+  min-height: 80px;
+  transition: opacity 0.25s ease-in-out;
+
+  p {
+    font-family: $font-family-base;
+    font-size: 0.875rem;
+    color: $va-body-text;
+    margin: 0;
+  }
+}
+
+// Navbar demo section
+.navbar-demo-frame {
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius;
+  overflow: hidden;
+  background: $va-white;
+
+  .va-navbar { position: relative; }
+}
+
+// Reveal demo grid
+.reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.reveal-card {
+  background: $va-white;
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius-sm;
+  padding: 1.5rem;
+  text-align: center;
+
+  .reveal-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    background: $va-section-bg;
+    border-radius: $va-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h5 {
+    font-family: $font-family-base;
+    font-size: 0.9375rem;
+    font-weight: $font-weight-semibold;
+    color: $va-near-black;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    font-family: $font-family-base;
+    font-size: 0.8125rem;
+    color: $va-body-text;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// Background pattern demo tiles
+.pattern-tile {
+  height: 200px;
+  border-radius: $va-radius;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+
+  span {
+    font-family: $font-family-base;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: $va-body-text;
+    background: rgba($va-white, 0.9);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+    z-index: 2;
+  }
+
+  &--dark span {
+    color: $va-light-grey;
+    background: rgba($va-near-black, 0.8);
+  }
+}

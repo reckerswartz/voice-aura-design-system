@@ -1,6 +1,8 @@
 # Voice Aura Design System — CI Pipeline
 # Runs on every push and pull request to main.
-# Steps: lint SCSS, build CSS (Sass + PostCSS), check size budget.
+# Jobs:
+#   1. build — lint SCSS, build CSS (Sass + PostCSS), check size budget (Node 18 + 20)
+#   2. test  — accessibility audits via Playwright + axe-core (Node 20 only)
 
 name: CI
 
@@ -47,3 +49,44 @@ jobs:
           name: css-dist
           path: dist/css/
           retention-days: 7
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build
+
+      - name: Copy built CSS to site
+        run: cp dist/css/voice-aura.css site/css/voice-aura.css
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright deps (cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Accessibility tests (axe-core)
+        run: npx playwright test tests/a11y.spec.js --project "Desktop Chrome"

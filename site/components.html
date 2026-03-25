@@ -9,49 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/voice-aura.css">
-  <style>
-    /* Reference page specific styles */
-    .ref-section { padding: 3rem 0; border-bottom: 1px solid #E5E7EB; }
-    .ref-section:last-child { border-bottom: none; }
-    .ref-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-    .ref-title { font-family: 'IBM Plex Serif', serif; font-size: 2rem; font-weight: 700; color: #1A1919; margin-bottom: 0.5rem; }
-    .ref-desc { color: #4B5563; margin-bottom: 2rem; max-width: 640px; }
-    .ref-grid { display: grid; gap: 1.5rem; }
-    .ref-grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .ref-grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .ref-grid--4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-    .ref-swatch { padding: 2rem 1rem 1rem; border-radius: 0.75rem; min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
-    .ref-swatch span { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; }
-    .ref-spacer { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
-    .ref-spacer-bar { background: #0478FF; border-radius: 4px; height: 12px; }
-    .ref-spacer-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #4B5563; white-space: nowrap; }
-    .ref-component-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
-    .ref-toc { position: sticky; top: 1rem; max-height: calc(100vh - 3rem); overflow-y: auto; padding-bottom: 2rem; scrollbar-width: thin; scrollbar-color: #E5E7EB transparent; }
-    .ref-toc a { display: block; padding: 0.35rem 0; font-size: 0.875rem; color: #4B5563; text-decoration: none; border-left: 2px solid transparent; padding-left: 0.75rem; transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
-    .ref-toc a:hover { color: #0478FF; background-color: rgba(4,120,255,0.04); }
-    .ref-toc a.active { color: #0478FF; border-left-color: #0478FF; font-weight: 600; background-color: rgba(4,120,255,0.06); }
-    /* Mobile TOC toggle */
-    .ref-mobile-toc { display: none; position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #E5E7EB; padding: 0.75rem 1.5rem; }
-    .ref-mobile-toc summary { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: #1A1919; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
-    .ref-mobile-toc summary::-webkit-details-marker { display: none; }
-    .ref-mobile-toc summary::after { content: '\25BC'; font-size: 0.625rem; transition: transform 0.2s; }
-    .ref-mobile-toc[open] summary::after { transform: rotate(180deg); }
-    .ref-mobile-toc .ref-mobile-toc__list { padding: 0.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
-    .ref-mobile-toc .ref-mobile-toc__list a { font-size: 0.8125rem; color: #4B5563; text-decoration: none; padding: 0.25rem 0.625rem; border-radius: 50rem; background: #F7F7F8; white-space: nowrap; }
-    .ref-mobile-toc .ref-mobile-toc__list a:hover, .ref-mobile-toc .ref-mobile-toc__list a.active { background: #0478FF; color: #fff; }
-    @media (max-width: 991.98px) { .ref-mobile-toc { display: block; } }
-    /* Code snippet blocks */
-    .ref-code { position: relative; background: #1A1919; color: #E9E9EA; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 1rem 0 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8125rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
-    .ref-code-copy { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,255,255,0.1); color: #9CA3AF; border: none; border-radius: 0.25rem; padding: 0.25rem 0.5rem; font-size: 0.6875rem; font-family: 'IBM Plex Mono', monospace; cursor: pointer; transition: background 0.15s, color 0.15s; }
-    .ref-code-copy:hover { background: rgba(255,255,255,0.2); color: #fff; }
-    .ref-code-copy.copied { background: #10B981; color: #fff; }
-    .ref-radius-demo { width: 80px; height: 80px; background: #E9E9EA; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; }
-    .ref-shadow-demo { width: 120px; height: 80px; background: #fff; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #9CA3AF; }
-    .ref-page-header { background: #1A1919; color: white; padding: 4rem 0; }
-    .ref-page-header h1 { font-family: 'IBM Plex Serif', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
-    .ref-page-header p { color: #9CA3AF; font-size: 1.125rem; }
-    .ref-page-header .ref-version { display: inline-block; background: #0478FF; color: white; padding: 0.25rem 0.75rem; border-radius: 50rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
-  </style>
+  <!-- All reference page styles are in _reference.scss -->
 </head>
 <body>
 
@@ -2720,11 +2678,6 @@ voice-aura-design-system/
 
   <!-- Back to Top -->
   <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
-  <style>
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; border-radius: 50%; background: #1A1919; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-    .back-to-top.visible { opacity: 1; pointer-events: auto; }
-    .back-to-top:hover { transform: translateY(-2px); background: #0478FF; }
-  </style>
   <script>
   (function() {
     var btn = document.getElementById('backToTop');

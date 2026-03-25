@@ -1,0 +1,163 @@
+// ============================================================================
+// Voice Aura Design System — Backgrounds Reference Page
+// ============================================================================
+// Styles for site/backgrounds.html — background pattern gallery.
+// ============================================================================
+
+// Background-specific ref overrides (backgrounds.html uses slightly different
+// ref- styling from the main components.html reference page)
+.ref-subtitle {
+  font-size: 1rem;
+  color: $va-muted-text;
+  margin-bottom: 2rem;
+}
+
+.ref-card {
+  border: $border-width solid rgba($va-near-black, 0.08);
+  border-radius: $va-radius;
+  overflow: hidden;
+  background: $va-white;
+}
+
+.ref-card__preview {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.ref-card__body {
+  padding: 1rem 1.25rem;
+}
+
+.ref-card__name {
+  font-weight: $font-weight-semibold;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.ref-card__desc {
+  font-size: 0.8rem;
+  color: $va-muted-text;
+  margin-bottom: 0.5rem;
+}
+
+.ref-card__code {
+  position: relative;
+  font-family: $va-font-mono;
+  font-size: 0.75rem;
+  background: $va-section-bg;
+  padding: 0.5rem 0.75rem 0.5rem;
+  border-radius: 6px;
+  color: $va-body-text;
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding-right: 3.5rem;
+}
+
+.ref-card__copy {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  background: rgba(0, 0, 0, 0.06);
+  color: $va-muted-text;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-family: $va-font-mono;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.12);
+    color: $va-near-black;
+  }
+
+  &.copied {
+    background: #10B981;
+    color: $va-white;
+  }
+}
+
+// Badge variants for pattern type
+.ref-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: $font-weight-semibold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.25rem;
+
+  &--svg   { background: #E0F2FE; color: #0369A1; }
+  &--css   { background: #F0FDF4; color: #166534; }
+  &--pseudo { background: #FEF3C7; color: #92400E; }
+  &--tile  { background: #EDE9FE; color: #6D28D9; }
+}
+
+// Animation demo cards (backgrounds page)
+.anim-demo {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.anim-demo__box {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: $va-primary-blue;
+  border-radius: $va-radius;
+}
+
+.anim-trigger-btn {
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid $va-primary-blue;
+  background: $va-white;
+  color: $va-primary-blue;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: $va-primary-blue;
+    color: $va-white;
+  }
+}
+
+// Responsive demo section
+.responsive-demo {
+  padding: 2rem;
+  background: $va-section-bg;
+  border-radius: $va-radius;
+  margin-bottom: 1.5rem;
+}
+
+.responsive-demo__label {
+  font-size: 0.75rem;
+  font-weight: $font-weight-semibold;
+  color: $va-muted-text;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.responsive-demo__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.responsive-demo__item {
+  background: $va-white;
+  border: $border-width solid rgba($va-near-black, 0.08);
+  border-radius: $va-radius-sm;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: $va-body-text;
+}
+
+@media (max-width: 767px) {
+  .ref-card__preview { height: 160px; }
+}
