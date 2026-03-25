@@ -104,7 +104,7 @@
     pointer-events: none;
     opacity: $opacity;
     background-image: radial-gradient($color 1px, transparent 1px);
-    background-size: 8px 8px;
+    background-size: $va-halftone-pattern-size;
     z-index: $va-z-raised;
   }
 }

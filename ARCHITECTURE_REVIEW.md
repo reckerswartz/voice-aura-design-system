@@ -469,7 +469,7 @@ blocks (in Foundations sections) lack copy-to-clipboard buttons.
 
 ---
 
-#### H-10. Reference page — No scroll-spy active link highlighting (deferred)
+#### ~~H-10. Reference page — No scroll-spy active link highlighting~~ ✅ RESOLVED
 
 The sidebar TOC links don't highlight the currently visible section as
 the user scrolls. Implement an `IntersectionObserver` that adds an
@@ -601,12 +601,12 @@ changes to the compiled CSS can only be caught manually.
 | ID | Issue | Detail |
 |----|-------|--------|
 | ~~L-1~~ | ~~Unused Sass import~~ | ✅ Removed `@use "sass:meta"` from `_mixins.scss`. |
-| L-2 | Unused function | `va-str-replace()` in `_functions.scss` appears unused. |
+| ~~L-2~~ | ~~Unused function~~ | ✅ Kept as general-purpose utility (used for SVG data-URI manipulation). |
 | ~~L-3~~ | ~~Missing font-size in `$va-font-sizes` map~~ | ✅ Added `"md": 0.9375rem` to map. |
 | ~~L-4~~ | ~~`$va-colors` map missing entries~~ | ✅ Already present: `"white"` and `"section-bg"` in map. |
 | ~~L-5~~ | ~~No version header in compiled CSS~~ | ✅ Added `/*! Voice Aura Design System v1.0.0 ... */` banner (preserved by cssnano). |
-| L-6 | Halftone overlay mixin uses hardcoded `8px 8px` | Should reference `$va-halftone-pattern-size` variable. |
-| L-7 | Redundant variable aliases | `$va-primary`, `$va-border`, `$va-bg-alt` duplicate other tokens. Document which is canonical or remove. |
+| ~~L-6~~ | ~~Halftone overlay mixin uses hardcoded `8px 8px`~~ | ✅ Now uses `$va-halftone-pattern-size` variable. |
+| ~~L-7~~ | ~~Redundant variable aliases~~ | ✅ Documented as convenience aliases (29+ usages across 8 files). |
 
 ---
 

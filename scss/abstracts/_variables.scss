@@ -27,10 +27,11 @@ $va-success:         #10B981;
 $va-warning:         #F59E0B;
 $va-danger:          #EF4444;
 
-// Convenience aliases (used extensively across components)
-$va-primary:  $va-primary-blue;
-$va-border:   $va-border-color;
-$va-bg-alt:   $va-light-grey;
+// Convenience aliases — canonical values are the longer forms above.
+// Kept because 29+ usages across 8 files reference these short names.
+$va-primary:      $va-primary-blue; // alias for $va-primary-blue
+$va-border:       $va-border-color;    // alias for $va-border-color
+$va-bg-alt:       $va-light-grey;         // alias for $va-light-grey
 
 // Colour map for programmatic access via `va-color()` function
 $va-colors: (
@@ -542,6 +543,7 @@ $va-card-padding:            $card-spacer-x;   // keep in sync with Bootstrap's 
 $va-card-padding-lg:         2rem;
 
 // Decorative
+$va-halftone-pattern-size:    8px 8px;
 $va-halftone-pattern-opacity: 0.06;
 $va-glass-bg-opacity:         0.7;
 $va-glass-blur:               12px;
