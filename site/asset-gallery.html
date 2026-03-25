@@ -244,6 +244,12 @@
     .badge--ofl { background: #FFF7ED; color: #C2410C; }
     .badge--free { background: #F0F7FF; color: #0478FF; }
 
+    /* ── TOC ───────────────────────────────────────── */
+    .asset-toc { display: flex; flex-wrap: wrap; gap: .5rem; position: sticky; top: 0; z-index: 100; background: #fff; padding: 1rem 0; margin-bottom: 2rem; border-bottom: 1px solid #E9E9EA; }
+    .asset-toc a { font-size: .8125rem; padding: .3rem .7rem; border-radius: 6px; background: #F3F4F6; color: #374151; text-decoration: none; transition: background .15s, color .15s; white-space: nowrap; }
+    .asset-toc a:hover { background: #0478FF; color: #fff; }
+    .asset-toc a.active { background: #0478FF; color: #fff; }
+
     /* ── Footer ─────────────────────────────────────── */
     .page-footer {
       border-top: 1px solid #E9E9EA;
@@ -264,6 +270,19 @@
     <h1>Asset Showcase</h1>
     <p>Icons, brand marks, patterns, illustrations, and typography for the Voice Aura design system.</p>
   </header>
+
+  <!-- ────────────────────── TOC ──────────────────────── -->
+  <nav class="asset-toc" aria-label="Quick navigation">
+    <a href="#brand">Brand</a>
+    <a href="#custom-icons">Custom Icons</a>
+    <a href="#lucide-icons">Lucide Icons</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#illustrations">Illustrations</a>
+    <a href="#typography">Typography</a>
+    <a href="#colors">Colors</a>
+    <a href="#sources">Sources</a>
+    <a href="#guidelines">Guidelines</a>
+  </nav>
 
   <!-- ────────────────────── Brand ─────────────────────── -->
   <section id="brand">
@@ -717,6 +736,64 @@
     <a href="../ATTRIBUTIONS.md" style="color: #0478FF;">ATTRIBUTIONS.md</a> for full documentation
   </div>
 </footer>
+
+<script>
+// Scroll-spy for asset TOC
+(function() {
+  var sections = document.querySelectorAll('section[id]');
+  var tocLinks = document.querySelectorAll('.asset-toc a');
+  if (!sections.length || !tocLinks.length) return;
+  var linkMap = {};
+  tocLinks.forEach(function(a) { var id = a.getAttribute('href').replace('#',''); if (id) linkMap[id] = a; });
+  var ticking = false;
+  function update() {
+    var current = '';
+    var y = window.scrollY + 120;
+    sections.forEach(function(s) { if (s.offsetTop <= y) current = s.id; });
+    tocLinks.forEach(function(a) { a.classList.remove('active'); });
+    if (current && linkMap[current]) linkMap[current].classList.add('active');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+// Click-to-copy for icon/asset labels
+(function() {
+  document.querySelectorAll('.icon-item, .asset-card').forEach(function(card) {
+    card.style.cursor = 'pointer';
+    card.title = 'Click to copy name';
+    card.addEventListener('click', function() {
+      var label = card.querySelector('.icon-item span, .asset-card__label');
+      if (!label) return;
+      var text = label.textContent.trim();
+      navigator.clipboard.writeText(text).then(function() {
+        var orig = label.textContent;
+        label.textContent = 'Copied!';
+        label.style.color = '#10B981';
+        setTimeout(function() { label.textContent = orig; label.style.color = ''; }, 1200);
+      });
+    });
+  });
+})();
+</script>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
+<style>
+  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; border-radius: 50%; background: #1A1919; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: translateY(-2px); background: #0478FF; }
+</style>
+<script>
+(function() {
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>

@@ -18,7 +18,10 @@
     .ref-card__body { padding: 1rem 1.25rem; }
     .ref-card__name { font-weight: 600; font-size: .95rem; margin-bottom: .25rem; }
     .ref-card__desc { font-size: .8rem; color: #6B7280; margin-bottom: .5rem; }
-    .ref-card__code { font-family: 'SFMono-Regular',Consolas,monospace; font-size: .75rem; background: #F5F5F5; padding: .5rem .75rem; border-radius: 6px; color: #374151; white-space: pre-wrap; word-break: break-all; }
+    .ref-card__code { position: relative; font-family: 'SFMono-Regular',Consolas,monospace; font-size: .75rem; background: #F5F5F5; padding: .5rem .75rem; border-radius: 6px; color: #374151; white-space: pre-wrap; word-break: break-all; padding-right: 3.5rem; }
+    .ref-card__copy { position: absolute; top: .35rem; right: .35rem; background: rgba(0,0,0,.06); color: #6B7280; border: none; border-radius: 4px; padding: 2px 8px; font-size: .65rem; font-family: 'SFMono-Regular',Consolas,monospace; cursor: pointer; transition: background .15s, color .15s; }
+    .ref-card__copy:hover { background: rgba(0,0,0,.12); color: #1A1919; }
+    .ref-card__copy.copied { background: #10B981; color: #fff; }
     .ref-badge { display: inline-block; font-size: .65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-right: .25rem; }
     .ref-badge--svg { background: #E0F2FE; color: #0369A1; }
     .ref-badge--css { background: #F0FDF4; color: #166534; }
@@ -1496,6 +1499,43 @@ Default: 24px (3 grid units)</div>
   }
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   update();
+})();
+</script>
+
+<script>
+// Inject copy buttons into all code snippet cards
+(function() {
+  document.querySelectorAll('.ref-card__code').forEach(function(code) {
+    var btn = document.createElement('button');
+    btn.className = 'ref-card__copy';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function() {
+      var text = code.textContent.replace(/^Copy/, '').trim();
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+      });
+    });
+    code.appendChild(btn);
+  });
+})();
+</script>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
+<style>
+  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; border-radius: 50%; background: #1A1919; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: translateY(-2px); background: #0478FF; }
+</style>
+<script>
+(function() {
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
 })();
 </script>
 

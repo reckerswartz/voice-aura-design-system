@@ -26,7 +26,7 @@
     .ref-spacer-bar { background: #0478FF; border-radius: 4px; height: 12px; }
     .ref-spacer-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #4B5563; white-space: nowrap; }
     .ref-component-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
-    .ref-toc { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
+    .ref-toc { position: sticky; top: 1rem; max-height: calc(100vh - 3rem); overflow-y: auto; padding-bottom: 2rem; scrollbar-width: thin; scrollbar-color: #E5E7EB transparent; }
     .ref-toc a { display: block; padding: 0.35rem 0; font-size: 0.875rem; color: #4B5563; text-decoration: none; border-left: 2px solid transparent; padding-left: 0.75rem; transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
     .ref-toc a:hover { color: #0478FF; background-color: rgba(4,120,255,0.04); }
     .ref-toc a.active { color: #0478FF; border-left-color: #0478FF; font-weight: 600; background-color: rgba(4,120,255,0.06); }
@@ -182,6 +182,29 @@
               <span><strong>Badge BG</strong><br>#EEF2FF</span>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+          <div class="ref-code"><button class="ref-code-copy">Copy</button>// Core Brand
+$va-primary:      #0478FF;
+$va-near-black:   #1A1919;
+$va-light-grey:   #E9E9EA;
+$va-white:        #FFFFFF;
+
+// UI &amp; Text
+$va-section-bg:   #F7F7F8;
+$va-body-text:    #4B5563;
+$va-muted-text:   #9CA3AF;
+$va-border-color: #E5E7EB;
+
+// Semantic
+$va-success:      #10B981;
+$va-warning:      #F59E0B;
+$va-danger:       #EF4444;
+$va-badge-bg:     #EEF2FF;
+
+// CSS Custom Properties (runtime)
+// --va-color-primary, --va-color-near-black, etc.
+// See _reset.scss :root block for full list</div>
         </section>
 
         <!-- ============================================================ -->
@@ -226,6 +249,29 @@
               <strong>Small/Muted (14px):</strong> By signing up, you accept Voice Aura privacy policy and terms of service.
             </p>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+          <div class="ref-code"><button class="ref-code-copy">Copy</button>// Font families (set in _variables.scss)
+$font-family-heading: 'IBM Plex Serif', Georgia, serif;
+$font-family-base:    'IBM Plex Sans', system-ui, sans-serif;
+$font-family-mono:    'IBM Plex Mono', monospace;
+
+// Heading sizes (Bootstrap overrides)
+// H1: 3.5rem (56px) — Hero headlines
+// H2: 2.5rem (40px) — Section titles
+// H3: 1.75rem (28px) — Card titles
+// H4: 1.25rem (20px) — Sub-sections
+// H5: 1.125rem (18px) — Labels
+// H6: 1rem (16px) — Small headings
+
+// Body sizes
+// Lead:  1.25rem (20px), line-height 1.6
+// Body:  1rem (16px), line-height 1.6
+// Small: 0.875rem (14px), line-height 1.5
+
+// Usage in HTML:
+// &lt;h1 class="va-section__title"&gt;...&lt;/h1&gt;
+// &lt;p class="va-section__subtitle"&gt;...&lt;/p&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -276,6 +322,16 @@
               <small class="ref-spacer-label">full</small>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+          <div class="ref-code"><button class="ref-code-copy">Copy</button>$va-radius-sm:   0.5rem;   // 8px — inputs, small cards
+$va-radius:      0.75rem;  // 12px — cards, modals (default)
+$va-radius-lg:   1rem;     // 16px — hero cards, panels
+$va-radius-xl:   1.5rem;   // 24px — feature sections
+$va-radius-pill: 50rem;    // pill — buttons, badges
+
+// CSS custom properties
+// --va-radius-sm, --va-radius, --va-radius-lg, etc.</div>
         </section>
 
         <!-- ============================================================ -->
@@ -292,6 +348,19 @@
             <div class="ref-shadow-demo" style="box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);">lg</div>
             <div class="ref-shadow-demo" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);">xl</div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+          <div class="ref-code"><button class="ref-code-copy">Copy</button>$va-shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.05);
+$va-shadow:     0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                0 2px 4px -2px rgba(0, 0, 0, 0.05);
+$va-shadow-md:  0 10px 15px -3px rgba(0, 0, 0, 0.08),
+                0 4px 6px -4px rgba(0, 0, 0, 0.04);
+$va-shadow-lg:  0 20px 25px -5px rgba(0, 0, 0, 0.08),
+                0 8px 10px -6px rgba(0, 0, 0, 0.04);
+$va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+// CSS custom properties
+// --va-shadow-sm, --va-shadow, --va-shadow-lg, etc.</div>
         </section>
 
         <!-- ============================================================ -->
@@ -2296,6 +2365,23 @@ voice-aura-design-system/
       });
     });
   });
+  </script>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
+  <style>
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; border-radius: 50%; background: #1A1919; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-2px); background: #0478FF; }
+  </style>
+  <script>
+  (function() {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  })();
   </script>
 
 </body>
