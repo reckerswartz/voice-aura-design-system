@@ -82,8 +82,8 @@ Issues resolved or partially addressed since the initial review:
 | H-5 | Missing mixin extractions | ✅ Done | `va-flex-center`, `va-disabled-state`, `va-hover-darken`, `va-card-hover-lift`, `va-sr-only` added. |
 | H-6 | `!important` in `_pattern-data.scss` | ✅ Done | Restructured selectors — 0 `!important` now |
 | H-7 | Accessibility gaps | ✅ Mostly done | Skip links, `autocomplete`, `aria-label` added. **Muted text contrast fixed**: `#9CA3AF` → `#6B7280` (4.6:1 WCAG AA). |
-| H-8 | 796 inline `style=` across HTML pages | ❌ Open | Not yet addressed (grew from 291 due to new pages). |
-| H-9 | Missing code blocks in reference | ⚠️ Partial | 8 sections now have copyable code snippets (`8fdea19`). 13+ sections still lack them. |
+| H-8 | 796 inline `style=` across HTML pages | ⚠️ Partial | Reduced 358→182 in components.html (49%). 11 new ref- classes added to `_reference.scss`. |
+| H-9 | Missing code blocks in reference | ✅ Done | All sections now have copyable code blocks with Copy buttons. |
 | H-10 | No scroll-spy | ✅ Done | JS scroll-spy added to `components.html` and `backgrounds.html` (`8fdea19`). |
 | — | `_backgrounds.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
 | — | `_animations.scss` split | ✅ Done | Index + 3 sub-modules (`43ca9ce`) |
@@ -436,7 +436,7 @@ solution.
 
 ---
 
-#### H-8. Reference page — 291 inline `style=` attributes (deferred)
+#### H-8. Reference page — inline `style=` attributes (partially resolved)
 
 **File:** `site/components.html`
 
@@ -648,8 +648,8 @@ changes to the compiled CSS can only be caught manually.
 | Add axe-core a11y audit to CI | M-7 | 2 h | ✅ Done |
 | Introduce 11ty (or similar) for HTML partials | M-4 | 4 h | ✅ Done |
 | Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ⏳ Deferred |
-| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ⏳ Deferred |
-| Add code blocks to remaining 13 reference sections | H-9 | 3 h | ⏳ Deferred |
+| Move inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ⚠️ Partial (358→182) |
+| Add code blocks to remaining reference sections | H-9 | 3 h | ✅ Done |
 | Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h | ⏳ Blocked on Bootstrap 6 |
 | Split `_backgrounds.scss` (1303 lines) into sub-modules | NEW | 3 h | ✅ Done |
 
