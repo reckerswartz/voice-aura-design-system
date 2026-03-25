@@ -17,7 +17,7 @@
   <!-- PAGE HEADER                                                         -->
   <!-- ================================================================== -->
   <header class="ref-page-header">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="container" class="ref-container">
       <span class="ref-version">v1.0.0</span>
       <h1>Voice Aura Design System</h1>
       <p>A comprehensive, reusable UI guideline built on Bootstrap 5 for premium SaaS applications.</p>
@@ -41,7 +41,7 @@
     </div>
   </details>
 
-  <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+  <div class="container" class="ref-container">
     <div class="row" style="display: flex; gap: 2rem;">
 
       <!-- ================================================================ -->
@@ -49,7 +49,7 @@
       <!-- ================================================================ -->
       <aside style="flex: 0 0 220px; padding-top: 2rem; align-self: flex-start; position: sticky; top: 0;" class="d-none d-lg-block">
         <nav class="ref-toc">
-          <p class="ref-label" style="margin-bottom: 1rem;">Contents</p>
+          <p class="ref-label" class="ref-mb-2">Contents</p>
           <a href="#colors">Color Palette</a>
           <a href="#typography">Typography</a>
           <a href="#spacing">Spacing</a>
@@ -578,8 +578,8 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/label&gt;</div>
 
           <h5 class="ref-subheading">Toggle Switch</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Uses Bootstrap's native <code>.form-check.form-switch</code> pattern, styled via VA variable overrides.</p>
-          <div class="ref-narrow" style="margin-bottom: 2rem;">
+          <p class="ref-desc" class="ref-mb-2">Uses Bootstrap's native <code>.form-check.form-switch</code> pattern, styled via VA variable overrides.</p>
+          <div class="ref-narrow" class="ref-mb-4">
             <div class="form-check form-switch mb-3">
               <input class="form-check-input" type="checkbox" id="switchDemo1" checked>
               <label class="form-check-label" for="switchDemo1">Enable notifications</label>
@@ -600,8 +600,8 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/div&gt;</div>
 
           <h5 class="ref-subheading">Floating Labels</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Uses Bootstrap's <code>.form-floating</code> for labels that animate into the input on focus.</p>
-          <div class="ref-narrow" style="margin-bottom: 2rem;">
+          <p class="ref-desc" class="ref-mb-2">Uses Bootstrap's <code>.form-floating</code> for labels that animate into the input on focus.</p>
+          <div class="ref-narrow" class="ref-mb-4">
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="floatEmail" placeholder="name@example.com">
               <label for="floatEmail">Email address</label>
@@ -627,8 +627,8 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/div&gt;</div>
 
           <h5 class="ref-subheading">Validation States</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.is-invalid</code> or <code>.is-valid</code> to <code>.va-form-input</code> for colored borders and focus rings. Use <code>.va-form-error</code> for always-visible error messages.</p>
-          <div class="ref-narrow" style="margin-bottom: 2rem;">
+          <p class="ref-desc" class="ref-mb-2">Add <code>.is-invalid</code> or <code>.is-valid</code> to <code>.va-form-input</code> for colored borders and focus rings. Use <code>.va-form-error</code> for always-visible error messages.</p>
+          <div class="ref-narrow" class="ref-mb-4">
             <div class="va-form-group">
               <label class="va-form-label">Valid input</label>
               <input type="text" class="va-form-input is-valid" value="hello@voiceaura.com">
@@ -722,13 +722,13 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <p class="ref-desc">Three-tier pricing with tab selector, crosshair corner decorations, and featured tier emphasis.</p>
 
           <div class="va-pricing ref-wide">
-            <div style="text-align: center;" class="ref-mb-lg">
+            <div class="text-center" class="ref-mb-lg">
               <span class="va-tag" style="margin-bottom: 1rem; display: inline-block;">ANNUAL DISCOUNT <strong>%40</strong></span>
               <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 0.5rem;">Choose Pricing Plan</h2>
               <p style="color: #4B5563;">Choose the perfect plan for your voice creation needs — from getting started to scaling your production.</p>
             </div>
 
-            <div class="va-pricing__tabs" style="margin-bottom: 2rem;">
+            <div class="va-pricing__tabs" class="ref-mb-4">
               <button class="va-pricing__tab va-pricing__tab--active">Studio</button>
               <button class="va-pricing__tab">DUB</button>
               <button class="va-pricing__tab">API</button>
@@ -959,7 +959,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/section&gt;</div>
 
           <h5 class="ref-subheading">Compact Variant</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-hero--compact</code> for reduced vertical padding — ideal for inner pages or secondary heroes.</p>
+          <p class="ref-desc" class="ref-mb-2">Add <code>.va-hero--compact</code> for reduced vertical padding — ideal for inner pages or secondary heroes.</p>
           <div class="ref-demo-container">
             <div class="va-hero va-hero--compact" style="padding-left: 2rem; padding-right: 2rem;">
               <span class="va-badge va-badge--dark va-badge--pill va-hero__badge">INNER PAGE</span>
@@ -995,7 +995,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
               <div class="va-feature-row__content">
                 <span class="va-section-badge">FOR DEVELOPERS</span>
                 <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">Experience the Fastest, Most Powerful Text-to-Speech API</h2>
-                <p style="color: #4B5563; margin-bottom: 1.5rem;">Experience the fastest, most powerful Text-to-Speech API — delivering natural, high-quality voice with low latency and seamless integration for any application.</p>
+                <p class="ref-text-body ref-mb-3">Experience the fastest, most powerful Text-to-Speech API — delivering natural, high-quality voice with low latency and seamless integration for any application.</p>
                 <div class="ref-component-grid">
                   <button class="va-btn va-btn--accent">Get API Key</button>
                   <a href="#" class="va-btn va-btn--ghost">Learn more &rarr;</a>
@@ -1031,13 +1031,13 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;!-- Dark visual: use .va-feature-visual--dark --&gt;</div>
 
           <h5 class="ref-subheading">Reverse Variant</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-feature-row--reverse</code> to swap columns — visual on the left, text on the right.</p>
+          <p class="ref-desc" class="ref-mb-2">Add <code>.va-feature-row--reverse</code> to swap columns — visual on the left, text on the right.</p>
           <div class="ref-demo-container ref-demo-container--padded-lg">
             <div class="va-feature-row va-feature-row--reverse">
               <div class="va-feature-row__content">
                 <span class="va-section-badge">FOR CREATORS</span>
                 <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">AI Video Dubbing in 50+ Languages</h2>
-                <p style="color: #4B5563; margin-bottom: 1.5rem;">Translate any video with natural-sounding AI voices while preserving the speaker's tone and emotion.</p>
+                <p class="ref-text-body ref-mb-3">Translate any video with natural-sounding AI voices while preserving the speaker's tone and emotion.</p>
                 <div class="ref-component-grid">
                   <button class="va-btn va-btn--primary">Try Dubbing</button>
                   <a href="#" class="va-btn va-btn--ghost">See examples &rarr;</a>
@@ -1050,13 +1050,13 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           </div>
 
           <h5 class="ref-subheading">Dark Visual Panel</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Use <code>.va-feature-visual--dark</code> for a dark gradient background — pairs well with product screenshots or light UI mockups.</p>
+          <p class="ref-desc" class="ref-mb-2">Use <code>.va-feature-visual--dark</code> for a dark gradient background — pairs well with product screenshots or light UI mockups.</p>
           <div class="ref-demo-container ref-demo-container--padded-lg">
             <div class="va-feature-row">
               <div class="va-feature-row__content">
                 <span class="va-section-badge">VOICE STUDIO</span>
                 <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">Professional Voice Studio</h2>
-                <p style="color: #4B5563; margin-bottom: 1.5rem;">Create, edit, and fine-tune AI voices with our intuitive studio interface.</p>
+                <p class="ref-text-body ref-mb-3">Create, edit, and fine-tune AI voices with our intuitive studio interface.</p>
                 <div class="ref-component-grid">
                   <button class="va-btn va-btn--accent">Open Studio</button>
                 </div>
@@ -1260,7 +1260,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 
           <div class="ref-grid ref-grid--2">
             <div>
-              <p class="ref-label" style="margin-bottom: 0.75rem;">Standard</p>
+              <p class="ref-label" class="ref-mb-2">Standard</p>
               <div class="va-agent-card">
                 <div class="va-agent-card__language-tabs">
                   <button class="va-agent-card__lang va-agent-card__lang--active">English</button>
@@ -1276,7 +1276,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
               </div>
             </div>
             <div>
-              <p class="ref-label" style="margin-bottom: 0.75rem;">With Crosshairs</p>
+              <p class="ref-label" class="ref-mb-2">With Crosshairs</p>
               <div class="va-agent-card va-agent-card--crosshairs">
                 <div class="va-agent-card__corners"></div>
                 <div class="va-agent-card__corners-bottom"></div>
@@ -1416,7 +1416,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;!-- Remove pipe separators: add .va-client-logos--no-pipes --&gt;</div>
 
           <h5 class="ref-subheading">Trust Bar (va-trust-bar)</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Alternative trust bar component with greyscale logos, hover-to-color effect, and optional separator lines.</p>
+          <p class="ref-desc" class="ref-mb-2">Alternative trust bar component with greyscale logos, hover-to-color effect, and optional separator lines.</p>
 
           <div class="ref-demo-container ref-demo-container--padded">
             <div class="va-trust-bar">
@@ -1572,14 +1572,14 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <div class="ref-demo-container ref-demo-container--padded" style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div>
               <p class="ref-col-label">2-COLUMN</p>
-              <div class="va-grid va-grid--2col" style="gap: 1rem;">
+              <div class="va-grid va-grid--2col" class="gap-3">
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
               </div>
             </div>
             <div>
               <p class="ref-col-label">3-COLUMN</p>
-              <div class="va-grid va-grid--3col" style="gap: 1rem;">
+              <div class="va-grid va-grid--3col" class="gap-3">
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">3</div>
@@ -1587,7 +1587,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
             </div>
             <div>
               <p class="ref-col-label">4-COLUMN</p>
-              <div class="va-grid va-grid--4col" style="gap: 1rem;">
+              <div class="va-grid va-grid--4col" class="gap-3">
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
                 <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">3</div>
@@ -2291,7 +2291,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
             These Bootstrap variables are overridden in <code>_variables.scss</code>, so Bootstrap's
             built-in classes automatically produce Voice Aura–consistent output:
           </p>
-          <div style="overflow-x: auto;">
+          <div class="overflow-auto">
             <table class="ref-alignment-table">
               <thead>
                 <tr>
@@ -2351,7 +2351,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
             Where a VA class duplicates Bootstrap functionality, the Bootstrap class produces
             equivalent output.  Both are available; prefer Bootstrap's in new code.
           </p>
-          <div style="overflow-x: auto;">
+          <div class="overflow-auto">
             <table class="ref-alignment-table">
               <thead>
                 <tr>
@@ -2587,37 +2587,37 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
 voice-aura-design-system/
 ├── scss/
 │   ├── abstracts/
-│   │   ├── _variables.scss       <span style="color:#9CA3AF">// Design tokens, Bootstrap overrides</span>
-│   │   ├── _functions.scss       <span style="color:#9CA3AF">// Sass utility functions</span>
-│   │   └── _mixins.scss          <span style="color:#9CA3AF">// Reusable mixins</span>
+│   │   ├── _variables.scss       <span class="ref-text-muted">// Design tokens, Bootstrap overrides</span>
+│   │   ├── _functions.scss       <span class="ref-text-muted">// Sass utility functions</span>
+│   │   └── _mixins.scss          <span class="ref-text-muted">// Reusable mixins</span>
 │   ├── base/
-│   │   ├── _reset.scss           <span style="color:#9CA3AF">// CSS reset / normalize</span>
-│   │   └── _typography.scss      <span style="color:#9CA3AF">// Type system, font imports</span>
+│   │   ├── _reset.scss           <span class="ref-text-muted">// CSS reset / normalize</span>
+│   │   └── _typography.scss      <span class="ref-text-muted">// Type system, font imports</span>
 │   ├── components/
-│   │   ├── _buttons.scss         <span style="color:#9CA3AF">// Button variants</span>
-│   │   ├── _cards.scss           <span style="color:#9CA3AF">// Card variants</span>
-│   │   ├── _pricing.scss         <span style="color:#9CA3AF">// Pricing cards</span>
-│   │   ├── _forms.scss           <span style="color:#9CA3AF">// Forms + TTS input card</span>
-│   │   ├── _badges.scss          <span style="color:#9CA3AF">// Badges, pills, tags</span>
-│   │   ├── _blog-card.scss       <span style="color:#9CA3AF">// Blog / article cards</span>
-│   │   ├── _voice-agent.scss     <span style="color:#9CA3AF">// Voice agent card</span>
-│   │   └── _auth.scss            <span style="color:#9CA3AF">// Auth forms</span>
+│   │   ├── _buttons.scss         <span class="ref-text-muted">// Button variants</span>
+│   │   ├── _cards.scss           <span class="ref-text-muted">// Card variants</span>
+│   │   ├── _pricing.scss         <span class="ref-text-muted">// Pricing cards</span>
+│   │   ├── _forms.scss           <span class="ref-text-muted">// Forms + TTS input card</span>
+│   │   ├── _badges.scss          <span class="ref-text-muted">// Badges, pills, tags</span>
+│   │   ├── _blog-card.scss       <span class="ref-text-muted">// Blog / article cards</span>
+│   │   ├── _voice-agent.scss     <span class="ref-text-muted">// Voice agent card</span>
+│   │   └── _auth.scss            <span class="ref-text-muted">// Auth forms</span>
 │   ├── layout/
-│   │   ├── _navbar.scss          <span style="color:#9CA3AF">// Navigation bar</span>
-│   │   ├── _hero.scss            <span style="color:#9CA3AF">// Hero section</span>
-│   │   ├── _section.scss         <span style="color:#9CA3AF">// Section layouts</span>
-│   │   ├── _footer.scss          <span style="color:#9CA3AF">// Footer</span>
-│   │   └── _grid.scss            <span style="color:#9CA3AF">// Grid extensions</span>
+│   │   ├── _navbar.scss          <span class="ref-text-muted">// Navigation bar</span>
+│   │   ├── _hero.scss            <span class="ref-text-muted">// Hero section</span>
+│   │   ├── _section.scss         <span class="ref-text-muted">// Section layouts</span>
+│   │   ├── _footer.scss          <span class="ref-text-muted">// Footer</span>
+│   │   └── _grid.scss            <span class="ref-text-muted">// Grid extensions</span>
 │   ├── vendors/
-│   │   └── _bootstrap.scss       <span style="color:#9CA3AF">// Bootstrap 5 selective import</span>
-│   └── voice-aura.scss           <span style="color:#9CA3AF">// Main entry point</span>
+│   │   └── _bootstrap.scss       <span class="ref-text-muted">// Bootstrap 5 selective import</span>
+│   └── voice-aura.scss           <span class="ref-text-muted">// Main entry point</span>
 ├── dist/css/
-│   ├── voice-aura.css            <span style="color:#9CA3AF">// Compiled (295 KB)</span>
-│   └── voice-aura.min.css        <span style="color:#9CA3AF">// Minified (242 KB)</span>
+│   ├── voice-aura.css            <span class="ref-text-muted">// Compiled (295 KB)</span>
+│   └── voice-aura.min.css        <span class="ref-text-muted">// Minified (242 KB)</span>
 ├── site/
-│   └── components.html           <span style="color:#9CA3AF">// This file</span>
+│   └── components.html           <span class="ref-text-muted">// This file</span>
 ├── package.json
-└── DESIGN_SYSTEM.md              <span style="color:#9CA3AF">// Full documentation</span></pre>
+└── DESIGN_SYSTEM.md              <span class="ref-text-muted">// Full documentation</span></pre>
         </section>
 
       </main>
