@@ -45,7 +45,7 @@
 | Sass deprecation warnings | 343 | 0 | ⚠️ All Bootstrap-internal |
 | HTML pages | 9 | — | — |
 | Broken links / images | 0 | 0 | ✅ |
-| Accessibility violations (manual) | 1 known | 0 | ⚠️ |
+| Accessibility violations (manual) | 0 known | 0 | ✅ (pricing tab focus-visible fixed) |
 
 ### Architecture Strengths
 
@@ -113,6 +113,17 @@ Tracking what was already fixed to avoid rework and to establish patterns for fu
 | F-2 | "Try Dubbing" button missing icon | Added Lucide languages icon |
 | FT-1 | Footer heading font size 14px vs 16px reference | Increased to `1rem` in `_footer.scss` |
 
+### Fixes Applied — Commit `18fa927`
+
+| ID | Issue | Fix |
+|----|-------|-----|
+| F-1 | No `:focus-visible` on `.va-pricing__tab` | Added `:focus-visible` outline (2px solid `$va-primary-blue`) |
+| F-2 | 26 hardcoded SVG `url()` paths | All now use `#{$va-asset-base-path}/patterns/...` |
+| F-3 | Google Fonts `@import` render-blocking + brand-coupled | New `$va-google-fonts-url` variable with `@if` guard in `_typography.scss` |
+| F-4 | 3 parallel button systems (hero, navbar, buttons) | Hero/navbar buttons `@extend .va-btn` + section-specific deltas only |
+| F-5 | 7 files missing BOOTSTRAP ALIGNMENT blocks | Added to all 7 files |
+| F-8 | Grid section missing from components.html | Added with auto-fit, 2/3/4-col, spacing demos + code snippet |
+
 ---
 
 ## 3. Open Issues by Priority
@@ -153,25 +164,9 @@ No tree-shaking or dead code elimination. Unused Bootstrap modules ship:
 
 **Fix:** Add PostCSS pipeline with PurgeCSS and selective Bootstrap imports.
 
-#### 3.3 Three parallel button systems (~150 lines duplicated)
+#### ~~3.3 Three parallel button systems~~ ✅ RESOLVED (`18fa927`)
 
-| System | File | Purpose | Declarations |
-|--------|------|---------|-------------|
-| `va-btn--*` | `_buttons.scss` | Generic, documented | ~60 |
-| `va-hero__btn--*` | `_hero.scss` | Hero-specific sizing | ~50 |
-| `va-navbar-btn--*` | `_navbar.scss` | Navbar-specific pills | ~40 |
-
-**Fix:** Hero and navbar buttons should `@extend .va-btn` + size/shape modifiers, keeping generic system as single source of truth.
-
-```scss
-// Target pattern:
-.va-hero__btn--primary {
-  @extend .va-btn, .va-btn--primary, .va-btn--lg;
-  // Only hero-specific deltas:
-  padding: 1rem 2rem;
-  border-radius: $va-radius-pill;
-}
-```
+Hero and navbar buttons now extend `.va-btn` + variant classes with section-specific deltas only. ~160 lines of duplicated logic removed.
 
 #### 3.4 52 `@extend` usages creating selector bloat
 
@@ -300,10 +295,10 @@ Address architectural debt that slows development.
 
 | Task | Issue | Effort | Impact |
 |------|-------|--------|--------|
-| Unify button systems (hero/navbar → extend va-btn) | 3.3 | 4 h | -150 lines, single source of truth |
+| ~~Unify button systems~~ | ~~3.3~~ | ~~✅ Done~~ | ~~`18fa927`~~ |
 | Reduce `@extend` to ~20 (use mixins where safe) | 3.4 | 3 h | Smaller compiled CSS |
 | Migrate abstracts to `@use`/`@forward` | P0 phase 2 | 4 h | Module isolation for abstracts |
-| Components consume `--va-*` custom properties | 3.9 | 6 h | Enables runtime theming |
+| Components consume `--va-*` custom properties | 3.9 | 8 h | Enables runtime theming — **next priority** |
 | Create `_reference.scss` page partials | 3.7 | 4 h | Reduce 796 → <50 inline styles |
 | Add missing token maps and accessors | 3.8 | 2 h | Consistent token usage |
 | Add Playwright visual regression tests | 3.10 | 4 h | Catches visual regressions |
@@ -416,9 +411,9 @@ Use existing npm scripts: `npm run release:patch`, `release:minor`, `release:maj
 | Cards (`va-card`) | **Stable** | Needs visual regression test |
 | Badges (`va-badge`) | **Stable** | — |
 | Forms (`va-form`) | **Beta** | Missing code snippets in reference for all variants |
-| Navbar | **Beta** | Button system overlap with `va-btn`; duplicated across pages |
-| Hero | **Beta** | Button system overlap; `va-hero__btn` should extend `va-btn` |
-| Pricing | **Beta** | No dark mode variant |
+| Navbar | **Beta** | ~~Button system overlap~~ ✅; still duplicated across pages |
+| Hero | **Beta** | ~~Button system overlap~~ ✅; needs `var(--va-*)` consumption |
+| Pricing | **Beta** | ~~No `:focus-visible`~~ ✅; no dark mode variant |
 | Blog cards | **Stable** | — |
 | Auth forms | **Beta** | Missing code snippets |
 | Trust bar | **Stable** | — |
@@ -462,7 +457,7 @@ Track these metrics over time to measure design system health.
 | SCSS source lines | 9,185 | 11,341 | < 10,000 | ↑ |
 | CSS minified (KB) | ~295 | 354 | < 250 | ↑ needs PurgeCSS |
 | `@import` statements | 29 | 59 | 0 | ↑ (splits added imports) |
-| `@extend` usages | ~42 | 52 | < 20 | ↑ |
+| `@extend` usages | ~42 | 55 | < 20 | ↑ (hero/navbar now extend .va-btn) |
 | `--va-*` custom properties | 0 | 38 | 60+ | ✅ ↑ |
 | Hardcoded `rgba(0,0,0)` | 42 | 58 | 0 | ↑ |
 | Raw z-index (non-variable) | 41 | 1 | 0 | ✅ ↓ |
@@ -506,10 +501,20 @@ Track these metrics over time to measure design system health.
 **Rationale:** Reduces CSS output, ensures consistency, makes Bootstrap updates non-breaking.
 **Status:** Active — applied to buttons, cards, forms, badges, auth.
 
-### ADR-005: Muted text WCAG compliance (new, 2026-03-25)
+### ADR-005: Muted text WCAG compliance (2026-03-25)
 **Decision:** Changed `$va-muted-text` from `#9CA3AF` (3.0:1 contrast) to `#6B7280` (4.6:1 contrast).
 **Rationale:** WCAG AA requires 4.5:1 for normal text. Previous value failed.
 **Status:** Applied system-wide.
+
+### ADR-006: Configurable Google Fonts URL (2026-03-25)
+**Decision:** Introduced `$va-google-fonts-url` variable with `!default` flag. `_typography.scss` uses `@if` guard — set to `false` to skip the import entirely.
+**Rationale:** Decouples font loading from the design system core. Consumers can self-host fonts, use a different Google Fonts URL, or load fonts via HTML `<link>` for better performance.
+**Status:** Applied. Default URL loads IBM Plex Sans + Serif.
+
+### ADR-007: Button system unification (2026-03-25)
+**Decision:** Hero and navbar buttons now `@extend .va-btn` + variant classes, declaring only section-specific deltas (size, shape, text-decoration).
+**Rationale:** Single source of truth for button styles. Eliminates ~160 lines of duplicated logic. All button behaviour changes propagate automatically.
+**Status:** Applied to `_hero.scss` and `_navbar.scss`.
 
 ---
 

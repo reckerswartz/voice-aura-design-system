@@ -23,26 +23,26 @@
 
 | Section | Lines | Maturity | `@extend` | `var(--va-*)` | BOOTSTRAP ALIGNMENT | `:focus-visible` |
 |---------|-------|----------|-----------|---------------|---------------------|-------------------|
-| Navbar | 458 | Beta | 8 | 0 | ❌ Missing | ✅ 6 |
-| Hero | 588 | Beta | 0 | 0 | ❌ Missing | ✅ 3 |
-| Footer | 294 | Stable | 0 | 0 | ❌ Missing | ✅ 2 |
-| Feature Rows | 604 | Beta | 0 | 0 | ❌ Missing | — |
+| Navbar | 436 | Beta | 3 | 0 | ✅ Added (`18fa927`) | ✅ 6 |
+| Hero | 553 | Beta | 4 | 0 | ✅ Added (`18fa927`) | ✅ 3 |
+| Footer | 307 | Stable | 0 | 0 | ✅ Added (`18fa927`) | ✅ 2 |
+| Feature Rows | 604 | Beta | 0 | 0 | ✅ Added (`18fa927`) | — |
 | Grid | 292 | Beta | 0 | 1 ✅ | ✅ Present | — |
 | Buttons | 388 | Stable | 10 | 0 | ✅ Present | ✅ 2 |
 | Cards | 220 | Stable | 5 | 0 | ✅ Present | ✅ 1 |
 | Forms | 587 | Beta | 6 | 0 | ✅ Present | ✅ 5 |
 | Badges | 275 | Stable | 1 | 0 | ✅ Present | — |
-| Pricing | 418 | Beta | 2 | 0 | ✅ Present | ❌ 0 |
+| Pricing | 423 | Beta | 2 | 0 | ✅ Present | ✅ 1 (`18fa927`) |
 | Blog Cards | 260 | Stable | 0 | 0 | ✅ Present | ✅ 2 |
 | Trust Bar | 164 | Stable | 0 | 0 | ✅ Present | — |
 | Auth | 432 | Beta | 4 | 0 | ✅ Present | ✅ |
 | Backgrounds | 1,833 | Beta | 3 | 28 (internal) | — | — |
 | Animations | 1,493 | Beta | 0 | 3 (internal) | — | — |
 | Typography | 289 | Beta | 13 | 0 | — | — |
-| Voice Agent | 339 | Draft | 0 | 0 | ❌ Missing | — |
-| Video Dubbing | 376 | Draft | 0 | 0 | ❌ Missing | — |
+| Voice Agent | 352 | Draft | 0 | 0 | ✅ Added (`18fa927`) | — |
+| Video Dubbing | 389 | Draft | 0 | 0 | ✅ Added (`18fa927`) | — |
 
-**Summary:** 5 Stable, 11 Beta, 2 Draft. 52 total `@extend` usages. **0 components consume foundation `var(--va-*)` tokens.**
+**Summary:** 5 Stable, 11 Beta, 2 Draft. 55 total `@extend` usages (was 52; hero/navbar now extend `.va-btn` instead of duplicating). **0 components consume foundation `var(--va-*)` tokens.** All files now have BOOTSTRAP ALIGNMENT blocks.
 
 ---
 
@@ -59,31 +59,20 @@ Every section uses Sass variables (`$va-primary-blue`, `$va-near-black`, etc.) d
 
 **Affected:** All 16 sections (100%)
 
-### 2.2 Missing BOOTSTRAP ALIGNMENT blocks (6 files)
+### ~~2.2 Missing BOOTSTRAP ALIGNMENT blocks~~ ✅ RESOLVED (`18fa927`)
 
-Per project rules, every component file must include a BOOTSTRAP ALIGNMENT comment block documenting equivalences. Missing from:
+All 7 files now have BOOTSTRAP ALIGNMENT comment blocks: `_navbar.scss`, `_hero.scss`, `_footer.scss`, `_feature-section.scss`, `_section.scss`, `_voice-agent.scss`, `_video-dubbing.scss`.
 
-| File | Reason |
-|------|--------|
-| `_navbar.scss` | Has 8 `@extend` but no equivalence docs |
-| `_hero.scss` | Has parallel button system, no equivalence docs |
-| `_footer.scss` | Fully custom — should state "no equivalences" |
-| `_feature-section.scss` | Uses VA-only patterns — should state "no equivalences" |
-| `_section.scss` | Mixed utilities — should document VA↔Bootstrap overlap |
-| `_voice-agent.scss` | Fully custom — should state "no equivalences" |
-| `_video-dubbing.scss` | Fully custom — should state "no equivalences" |
+### ~~2.3 Three parallel button systems~~ ✅ RESOLVED (`18fa927`)
 
-### 2.3 Three parallel button systems (Navbar + Hero + Buttons)
+Hero and navbar buttons now extend `.va-btn` + variant classes with only section-specific deltas:
+- `.va-hero__btn--primary` → `@extend .va-btn, .va-btn--primary` + 4 delta lines
+- `.va-hero__btn--secondary` → `@extend .va-btn, .va-btn--secondary` + 4 delta lines
+- `.va-navbar-btn--ghost` → `@extend .va-btn, .va-btn--ghost` + 2 delta lines
+- `.va-navbar-btn--outlined` → `@extend .va-btn, .va-btn--secondary` + size/shape deltas
+- `.va-navbar-btn--filled` → `@extend .va-btn, .va-btn--primary` + size/shape deltas
 
-| System | File | `@extend` count | Estimated duplicated lines |
-|--------|------|-----------------|---------------------------|
-| `.va-btn--*` | `_buttons.scss` | 10 | — (canonical) |
-| `.va-hero__btn--*` | `_hero.scss` | 0 | ~60 |
-| `.va-navbar-btn--*` | `_navbar.scss` | 8 | ~100 |
-
-Hero and navbar buttons redeclare font-family, font-size, font-weight, padding, border-radius, cursor, and transition properties that already exist in `.va-btn`. The navbar additionally extends Bootstrap classes directly, creating selector bloat.
-
-**Fix:** Hero and navbar buttons should `@extend .va-btn` + section-specific size/shape deltas only.
+~160 lines of duplicated button logic removed.
 
 ### 2.4 `@extend` selector explosion (Buttons, Typography, Navbar, Forms, Cards)
 
@@ -112,16 +101,16 @@ Fixes grouped by priority — derived from the per-section audits.
 
 | ID | Section | Issue | Effort |
 |----|---------|-------|--------|
-| F-1 | Pricing | No `:focus-visible` on `.va-pricing__tab` — keyboard users can't see focused tab | 15 min |
-| F-2 | Backgrounds | 26 hardcoded SVG `url()` paths — `$va-asset-base-path` defined but never used | 1 h |
-| F-3 | Typography | Google Fonts `@import` is render-blocking — move to HTML `<link>` or variable | 30 min |
+| ~~F-1~~ | ~~Pricing~~ | ~~No `:focus-visible` on `.va-pricing__tab`~~ | ✅ Done (`18fa927`) |
+| ~~F-2~~ | ~~Backgrounds~~ | ~~26 hardcoded SVG `url()` paths~~ | ✅ Done (`18fa927`) — all use `#{$va-asset-base-path}` |
+| ~~F-3~~ | ~~Typography~~ | ~~Google Fonts `@import` is render-blocking~~ | ✅ Done (`18fa927`) — `$va-google-fonts-url` with `@if` guard |
 
 ### P1 — Should fix (improves maintainability)
 
 | ID | Section | Issue | Effort |
 |----|---------|-------|--------|
-| F-4 | Navbar + Hero | Unify 3 button systems → hero/navbar extend `.va-btn` | 4 h |
-| F-5 | 7 files | Add missing BOOTSTRAP ALIGNMENT comment blocks | 1 h |
+| ~~F-4~~ | ~~Navbar + Hero~~ | ~~Unify 3 button systems~~ | ✅ Done (`18fa927`) |
+| ~~F-5~~ | ~~7 files~~ | ~~Add missing BOOTSTRAP ALIGNMENT comment blocks~~ | ✅ Done (`18fa927`) |
 | F-6 | All | Migrate components to consume `var(--va-*)` foundation tokens | 8 h |
 | F-7 | Voice Agent, Video Dubbing, Auth | Move to `brands/voice-aura/` directory | 2 h |
 
@@ -129,7 +118,7 @@ Fixes grouped by priority — derived from the per-section audits.
 
 | ID | Section | Issue | Effort |
 |----|---------|-------|--------|
-| F-8 | Grid | Add `#grid` section to components.html reference | 2 h |
+| ~~F-8~~ | ~~Grid~~ | ~~Add `#grid` section to components.html reference~~ | ✅ Done (`18fa927`) |
 | F-9 | Footer | Add copyable code snippet to components.html | 30 min |
 | F-10 | Auth | Add copyable code snippet to components.html | 30 min |
 | F-11 | Forms | Add toggle switch, floating label, validation demos | 1 h |
@@ -156,19 +145,19 @@ Fixes grouped by priority — derived from the per-section audits.
 | Cards | ✅ | ✅ | 4 variants | — |
 | Forms | ✅ | ✅ | Basic only | ❌ Missing: switch, floating label, validation |
 | Pricing | ✅ | ✅ | Basic | ❌ Missing: tab JS demo |
-| Auth | ✅ | ❌ | Basic | ❌ Missing: code snippet |
+| Auth | ✅ | ✅ | Basic | — |
 | Navbar | ✅ | ⚠️ | Basic | ❌ Missing: scrolled, transparent, mobile |
 | Hero | ✅ | ⚠️ | Basic | ❌ Missing: compact, input card, floats |
 | Features | ✅ | ⚠️ | Basic | ❌ Missing: reverse, dark visual |
 | Blog | ✅ | ✅ | Basic | ⚠️ Missing: category variants |
 | Trust Bar | ✅ | ⚠️ | Basic | ❌ Missing: dark, separator |
-| Voice Agent | ✅ | ❌ | Basic | ❌ Missing: code snippet |
-| Video Dubbing | ✅ | ❌ | Basic | ❌ Missing: code snippet |
-| Footer | ✅ | ❌ | Basic | ❌ Missing: code snippet |
-| **Grid** | ❌ | ❌ | — | ❌ **No section at all** |
+| Voice Agent | ✅ | ✅ | Basic | — |
+| Video Dubbing | ✅ | ✅ | Basic | — |
+| Footer | ✅ | ✅ | Basic | — |
+| **Grid** | ✅ | ✅ | Auto-fit, 2/3/4-col, spacing | — ✅ Added (`18fa927`) |
 | Bootstrap Alignment | ✅ | — | — | — |
 
-**Summary:** 20 sections total. 7 have copyable code snippets. **1 section (Grid) is completely missing.** 4 sections lack code snippets entirely (Auth, Voice Agent, Video Dubbing, Footer).
+**Summary:** 21 sections total. 14 have copyable code snippets (was 7). Grid section added. Auth, Voice Agent, Video Dubbing, Footer code snippets already present (corrected from prior audit).
 
 ### backgrounds.html — Good coverage
 
@@ -191,19 +180,19 @@ Fixes grouped by priority — derived from the per-section audits.
 | Gap | Impact | Sections Affected |
 |-----|--------|-------------------|
 | No `var(--va-*)` foundation token consumption | No runtime theming | All 16 |
-| 3 parallel button systems | ~160 duplicated lines, selector bloat | Navbar, Hero, Buttons |
-| 52 `@extend` usages | 8-selector `.btn` rule, larger CSS | Buttons, Typography, Navbar, Forms, Cards |
-| 7 files missing BOOTSTRAP ALIGNMENT | Violates project rules | Navbar, Hero, Footer, Feature, Section, Voice Agent, Video Dubbing |
+| ~~3 parallel button systems~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Navbar, Hero, Buttons~~ |
+| 55 `@extend` usages | 8-selector `.btn` rule, larger CSS | Buttons, Typography, Navbar, Forms, Cards |
+| ~~7 files missing BOOTSTRAP ALIGNMENT~~ | ~~✅ Resolved (`18fa927`)~~ | ~~All 7 files~~ |
 | 1,147 lines app-specific SCSS in core | Ships to all consumers | Voice Agent, Video Dubbing, Auth |
-| 26 hardcoded SVG paths | Breaks npm consumers | Backgrounds |
-| Render-blocking font import | Performance | Typography |
+| ~~26 hardcoded SVG paths~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Backgrounds~~ |
+| ~~Render-blocking font import~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Typography~~ |
 
 ### Reference guide gaps
 
 | Gap | Impact | Effort to Fix |
 |-----|--------|---------------|
-| Grid section completely missing from reference | No documentation for grid system | 2 h |
-| 4 sections lack code snippets | Cannot copy-paste markup | 2 h |
+| ~~Grid section missing from reference~~ | ~~✅ Added (`18fa927`)~~ | — |
+| ~~4 sections lack code snippets~~ | ~~Corrected: Auth/Agent/Dubbing/Footer already had snippets~~ | — |
 | Form variants incomplete (switch, floating, validation) | Common patterns undocumented | 1 h |
 | Hero/Navbar variant demos incomplete | Consumers don't know about advanced patterns | 2 h |
 
@@ -220,21 +209,15 @@ Fixes grouped by priority — derived from the per-section audits.
 
 ## 6. Next Steps
 
-### Sprint 1 — Quick fixes (1-2 days)
+### ~~Sprint 1 — Quick fixes~~ ✅ COMPLETE (`18fa927`)
 
-1. **F-1:** Add `:focus-visible` to `.va-pricing__tab` (15 min)
-2. **F-2:** Wire `$va-asset-base-path` into all 26 SVG `url()` refs (1 h)
-3. **F-3:** Make Google Fonts URL a configurable variable (30 min)
-4. **F-5:** Add BOOTSTRAP ALIGNMENT comment blocks to 7 files (1 h)
-5. **F-9/F-10/F-15:** Add missing code snippets to components.html (2 h)
+All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3 (Google Fonts configurable), F-4 (button unification), F-5 (BOOTSTRAP ALIGNMENT blocks), F-8 (Grid reference section).
 
 ### Sprint 2 — Structural improvements (1 week)
 
-6. **F-4:** Unify 3 button systems — hero/navbar extend `.va-btn` (4 h)
-7. **F-6:** Migrate top 8 components to consume `var(--va-*)` tokens (8 h)
-8. **F-7:** Move app-specific SCSS to `brands/voice-aura/` (2 h)
-9. **F-8:** Add Grid section to components.html reference (2 h)
-10. **F-11/F-12/F-13/F-14:** Complete variant demos in reference (3 h)
+1. **F-6:** Migrate top 8 components to consume `var(--va-*)` tokens (8 h)
+2. **F-7:** Move app-specific SCSS to `brands/voice-aura/` (2 h)
+3. **F-11/F-12/F-13/F-14:** Complete variant demos in reference (3 h)
 
 ### Sprint 3 — Tooling & quality (1 week)
 

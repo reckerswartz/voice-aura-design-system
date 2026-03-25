@@ -49,7 +49,7 @@
 | `@import` statements (deprecated in Dart Sass 3.0) | 59 (increased due to file splits) |
 | `@use` statements | 10 (only in abstracts) |
 | `@forward` statements | 0 |
-| `@extend` usages | 52 |
+| `@extend` usages | 55 (was 52; hero/navbar now extend `.va-btn` instead of duplicating) |
 | `--va-*` CSS custom properties | 38 authored on `:root` |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
@@ -91,6 +91,12 @@ Issues resolved or partially addressed since the initial review:
 | — | Delta-only component refactor | ✅ Done | Buttons, cards, forms, badges slimmed (`a1a82bc`) |
 | — | Blog SVG `stop-color="transparent"` | ✅ Done | Fixed all 4 SVGs to use `stop-opacity="0"` |
 | — | Pixel-perfect QA fixes | ✅ Done | Hero id, accent button, dubbing icon, footer font size |
+| F-1 | No `:focus-visible` on `.va-pricing__tab` | ✅ Done | Added `:focus-visible` outline (`18fa927`) |
+| F-2 | 26 hardcoded SVG `url()` paths in backgrounds | ✅ Done | All use `#{$va-asset-base-path}` (`18fa927`) |
+| F-3 | Google Fonts `@import` render-blocking + brand-coupled | ✅ Done | `$va-google-fonts-url` variable with `@if` guard (`18fa927`) |
+| F-4 | 3 parallel button systems | ✅ Done | Hero/navbar buttons `@extend .va-btn` + deltas (`18fa927`) |
+| F-5 | 7 files missing BOOTSTRAP ALIGNMENT blocks | ✅ Done | Added to navbar, hero, footer, feature-section, section, voice-agent, video-dubbing (`18fa927`) |
+| F-8 | Grid section missing from components.html | ✅ Done | Added with auto-fit, 2/3/4-col, spacing demos + code snippet (`18fa927`) |
 
 ---
 
