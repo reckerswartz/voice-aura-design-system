@@ -124,12 +124,12 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   }
 
   &--light {
-    background: linear-gradient(145deg, $va-section-bg 0%, va-darken($va-section-bg, 4%) 100%);
+    background: linear-gradient(135deg, $va-section-bg 0%, va-darken($va-section-bg, 4%) 100%);
     border: $border-width solid $va-border-color;
   }
 
   &--dark {
-    background: linear-gradient(145deg, $va-near-black 0%, va-darken($va-near-black, 10%) 100%);
+    background: linear-gradient(135deg, $va-near-black 0%, va-darken($va-near-black, 10%) 100%);
     border: $border-width solid rgba($va-white, 0.06);
   }
 }

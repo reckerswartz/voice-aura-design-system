@@ -50,6 +50,8 @@
     "build:min": "sass scss/voice-aura.scss dist/css/voice-aura.min.css --style=compressed --no-source-map",
     "build": "npm run build:css && npm run build:min",
     "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
+    "lint": "stylelint \"scss/**/*.scss\"",
+    "lint:fix": "stylelint \"scss/**/*.scss\" --fix",
     "prepublishOnly": "npm run build",
     "preversion": "npm run build",
     "version": "npm run build && git add -A dist/",
@@ -88,7 +90,10 @@
   "devDependencies": {
     "bootstrap": "^5.3.8",
     "playwright": "^1.58.2",
-    "sass": ">=1.98.0 <2.0.0"
+    "sass": ">=1.98.0 <2.0.0",
+    "stylelint": "^17.5.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0"
   },
   "dependencies": {
     "lucide-static": "^1.0.1"

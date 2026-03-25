@@ -1,0 +1,66 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": true,
+    "color-no-invalid-hex": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "font-family-no-duplicate-names": true,
+    "function-calc-no-unspaced-operator": true,
+    "property-no-unknown": true,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global"] }],
+    "selector-pseudo-element-no-unknown": true,
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["from", "to"] }],
+    "unit-no-unknown": true,
+
+    "selector-class-pattern": ["^[a-z]([a-z0-9-]*[a-z0-9])?(__[a-z0-9]([a-z0-9-]*[a-z0-9])?)?(--[a-z0-9]([a-z0-9-]*[a-z0-9])?)?$", {
+      "message": "Expected class selector to match VA BEM pattern: .block__element--modifier",
+      "resolveNestedSelectors": true
+    }],
+
+    "scss/dollar-variable-pattern": "^_?[a-z][a-z0-9-]*[a-z0-9]$",
+    "scss/dollar-variable-colon-space-after": null,
+
+    "color-function-alias-notation": null,
+    "property-no-vendor-prefix": null,
+    "property-no-deprecated": null,
+    "declaration-block-single-line-max-declarations": null,
+    "color-hex-length": null,
+
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "hue-degree-notation": null,
+    "import-notation": null,
+    "media-feature-range-notation": null,
+    "selector-not-notation": null,
+    "value-keyword-case": null,
+
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+
+    "max-nesting-depth": [5, {
+      "ignoreAtRules": ["media", "include", "supports", "each", "if", "else"]
+    }],
+
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/comment-no-empty": null,
+    "scss/no-global-function-names": null,
+    "scss/operator-no-newline-after": null,
+    "scss/operator-no-unspaced": null,
+    "scss/at-if-no-null": null,
+    "scss/dollar-variable-empty-line-before": null
+  },
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**",
+    "scss/vendors/**"
+  ]
+}

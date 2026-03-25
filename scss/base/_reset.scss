@@ -16,6 +16,83 @@ html {
   text-size-adjust: 100%;
 }
 
+// ---------------------------------------------------------------------------
+// Voice Aura CSS Custom Properties
+// ---------------------------------------------------------------------------
+// Hand-authored design tokens exposed as CSS custom properties for runtime
+// theming, JavaScript access, and consumer overrides.
+// Override any of these on a parent element to re-theme a subtree:
+//
+//   .dark-section { --va-color-bg: #1A1919; --va-color-text: #fff; }
+//
+// Bootstrap auto-generates its own --bs-* properties; these --va-* tokens
+// are the Voice Aura authoring layer on top.
+// ---------------------------------------------------------------------------
+
+:root {
+  // Colors — brand palette
+  --va-color-primary:    #{$va-primary-blue};
+  --va-color-secondary:  #{$va-near-black};
+  --va-color-white:      #{$va-white};
+  --va-color-light-grey: #{$va-light-grey};
+  --va-color-section-bg: #{$va-section-bg};
+
+  // Colors — text
+  --va-color-text:       #{$va-near-black};
+  --va-color-body-text:  #{$va-body-text};
+  --va-color-muted-text: #{$va-muted-text};
+
+  // Colors — UI
+  --va-color-border:     #{$va-border-color};
+  --va-color-success:    #{$va-success};
+  --va-color-warning:    #{$va-warning};
+  --va-color-danger:     #{$va-danger};
+
+  // Typography — font families
+  --va-font-heading:     #{$va-font-heading};
+  --va-font-body:        #{$va-font-body};
+  --va-font-mono:        #{$va-font-mono};
+
+  // Typography — sizes
+  --va-font-size-base:   #{$font-size-base};
+  --va-font-size-sm:     0.875rem;
+  --va-font-size-xs:     0.75rem;
+  --va-font-size-lg:     1.125rem;
+
+  // Spacing — 8px grid unit
+  --va-grid-unit:        #{$va-grid-unit};
+
+  // Border radius
+  --va-radius-sm:        #{$va-radius-sm};
+  --va-radius:           #{$va-radius};
+  --va-radius-lg:        #{$va-radius-lg};
+  --va-radius-xl:        #{$va-radius-xl};
+  --va-radius-pill:      #{$va-radius-pill};
+
+  // Shadows
+  --va-shadow-sm:        #{$va-shadow-sm};
+  --va-shadow:           #{$va-shadow};
+  --va-shadow-md:        #{$va-shadow-md};
+  --va-shadow-lg:        #{$va-shadow-lg};
+
+  // Transitions — durations
+  --va-duration-fast:    #{$va-duration-fast};
+  --va-duration-base:    #{$va-duration-base};
+  --va-duration-slow:    #{$va-duration-slow};
+
+  // Z-index scale
+  --va-z-base:           #{$va-z-base};
+  --va-z-raised:         #{$va-z-raised};
+  --va-z-sticky:         #{$va-z-sticky};
+  --va-z-navbar:         #{$va-z-navbar};
+  --va-z-overlay:        #{$va-z-overlay};
+  --va-z-modal:          #{$va-z-modal};
+
+  // Glass / frosted panel
+  --va-glass-blur:       #{$va-glass-blur};
+  --va-glass-bg-opacity: #{$va-glass-bg-opacity};
+}
+
 // Universal box-sizing (inheritable pattern)
 *,
 *::before,

@@ -278,6 +278,6 @@ pre {
 
 .va-text-primary { color: $va-primary-blue !important; }
 .va-text-dark    { color: $va-near-black !important; }
-.va-text-muted   { color: $va-muted-text !important; }
+// .va-text-muted defined above (line ~145) — not duplicated here
 .va-text-body    { color: $va-body-text !important; }
 .va-text-white   { color: $va-white !important; }

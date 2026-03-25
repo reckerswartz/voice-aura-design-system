@@ -11662,6 +11662,49 @@ html {
   text-size-adjust: 100%;
 }
 
+:root {
+  --va-color-primary: #0478FF;
+  --va-color-secondary: #1A1919;
+  --va-color-white: #FFFFFF;
+  --va-color-light-grey: #E9E9EA;
+  --va-color-section-bg: #F7F7F8;
+  --va-color-text: #1A1919;
+  --va-color-body-text: #4B5563;
+  --va-color-muted-text: #9CA3AF;
+  --va-color-border: #E5E7EB;
+  --va-color-success: #10B981;
+  --va-color-warning: #F59E0B;
+  --va-color-danger: #EF4444;
+  --va-font-heading: IBM Plex Serif, Georgia, Times New Roman, serif;
+  --va-font-body: IBM Plex Sans, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  --va-font-mono: IBM Plex Mono, SF Mono, monospace;
+  --va-font-size-base: 1rem;
+  --va-font-size-sm: 0.875rem;
+  --va-font-size-xs: 0.75rem;
+  --va-font-size-lg: 1.125rem;
+  --va-grid-unit: 0.5rem;
+  --va-radius-sm: 0.5rem;
+  --va-radius: 0.75rem;
+  --va-radius-lg: 1rem;
+  --va-radius-xl: 1.5rem;
+  --va-radius-pill: 50rem;
+  --va-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --va-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --va-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --va-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --va-duration-fast: 0.15s;
+  --va-duration-base: 0.2s;
+  --va-duration-slow: 0.35s;
+  --va-z-base: 0;
+  --va-z-raised: 1;
+  --va-z-sticky: 500;
+  --va-z-navbar: 1030;
+  --va-z-overlay: 1040;
+  --va-z-modal: 1050;
+  --va-glass-blur: 12px;
+  --va-glass-bg-opacity: 0.7;
+}
+
 *,
 *::before,
 *::after {
@@ -11941,10 +11984,6 @@ pre code {
 
 .va-text-dark {
   color: #1A1919 !important;
-}
-
-.va-text-muted {
-  color: #9CA3AF !important;
 }
 
 .va-text-body {
@@ -13414,35 +13453,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 69px;
+  height: 84px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 83px;
+  height: 87px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 73px;
+  height: 33px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 41px;
+  height: 57px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 38px;
+  height: 56px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 44px;
+  height: 80px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 39px;
+  height: 86px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 42px;
+  height: 37px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -13692,11 +13731,11 @@ pre code {
   padding: 2.5rem;
 }
 .feature-visual--light {
-  background: linear-gradient(145deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
+  background: linear-gradient(135deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
   border: 1px solid #E5E7EB;
 }
 .feature-visual--dark {
-  background: linear-gradient(145deg, #1A1919 0%, black 100%);
+  background: linear-gradient(135deg, #1A1919 0%, black 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -14005,11 +14044,11 @@ pre code {
   }
 }
 .va-feature-visual--light {
-  background: linear-gradient(145deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
+  background: linear-gradient(135deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
   border: 1px solid #E5E7EB;
 }
 .va-feature-visual--dark {
-  background: linear-gradient(145deg, #1A1919 0%, black 100%);
+  background: linear-gradient(135deg, #1A1919 0%, black 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -18651,10 +18690,10 @@ pre code {
   border-radius: 0.75rem;
 }
 .ref-feature-visual--light {
-  background: linear-gradient(145deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
+  background: linear-gradient(135deg, #F7F7F8 0%, rgb(236.12, 236.12, 238.48) 100%);
 }
 .ref-feature-visual--dark {
-  background: linear-gradient(145deg, #1A1919 0%, black 100%);
+  background: linear-gradient(135deg, #1A1919 0%, black 100%);
   border-color: rgba(255, 255, 255, 0.06);
 }
 
