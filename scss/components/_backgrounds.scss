@@ -1301,3 +1301,232 @@
   --va-pattern-opacity: 0.4;
   --va-glow-size: 500px;
 }
+
+// --------------------------------------------------------------------------
+// 24. Radial Soft Gradient Overlay
+// --------------------------------------------------------------------------
+// A soft, non-repeating radial gradient from gradient-radial-soft.svg.
+// Creates an ambient haze effect — lighter than va-bg-glow, more organic.
+//
+// Usage: <section class="va-bg-radial-soft">...</section>
+
+.va-bg-radial-soft {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/gradient-radial-soft.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.6);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.4);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--top::before {
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 25. Halftone Dots (Circular / Compact Variant)
+// --------------------------------------------------------------------------
+// Uses halftone-dots.svg (circular pattern) vs halftone-wide.svg (wide field).
+// Ideal for smaller panels, cards, and compact feature sections.
+//
+// Usage: <div class="va-pattern-halftone-dots">...</div>
+
+.va-pattern-halftone-dots {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/halftone-dots.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.8);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.5);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 26. Sound Wave Hero SVG Overlay
+// --------------------------------------------------------------------------
+// Uses the hero-specific sound-wave-hero.svg (taller, more dramatic).
+// Designed for full-width hero placement as a bold decorative motif.
+//
+// Usage: <section class="va-pattern-wave-hero">...</section>
+
+.va-pattern-wave-hero {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    height: 120px;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/sound-wave-hero.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.6);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      height: 60px;
+      bottom: 25%;
+      opacity: var(--va-pattern-opacity, 0.35);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 27. SVG-Based Grid Dots Overlay
+// --------------------------------------------------------------------------
+// Uses grid-dots.svg (precise SVG dots) as an alternative to the CSS-only
+// va-bg-dots. Produces crisper dots at all zoom levels.
+//
+// Usage: <section class="va-pattern-grid-dots">...</section>
+
+.va-pattern-grid-dots {
+  position: relative;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/grid-dots.svg");
+    background-repeat: repeat;
+    background-size: 24px 24px;
+    opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
+    mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--full::before {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 28. App Icon Animation
+// --------------------------------------------------------------------------
+// Subtle breathing / pulse animation for the Voice Aura app icon element.
+// Reference: behance-05 / behance-07 show the rounded-square icon as a
+// prominent design element.
+//
+// Usage: <div class="va-app-icon va-app-icon--animate">...</div>
+
+.va-app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: $va-white;
+  border: 1px solid $va-border-color;
+  border-radius: $va-grid-unit * 3; // 24px
+  box-shadow: 0 8px 32px rgba($va-near-black, 0.08),
+              0 2px 8px rgba($va-near-black, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba($va-near-black, 0.12),
+                0 4px 12px rgba($va-near-black, 0.06);
+  }
+
+  &--lg {
+    width: 96px;
+    height: 96px;
+  }
+
+  &--sm {
+    width: 56px;
+    height: 56px;
+    border-radius: $va-grid-unit * 2;
+  }
+
+  &--animate {
+    animation: va-float 4s ease-in-out infinite;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 29. Background Preset: Footer
+// --------------------------------------------------------------------------
+
+.va-bg-preset-footer {
+  --va-pattern-opacity: 0.3;
+}
+
+// --------------------------------------------------------------------------
+// 30. Background Preset: Auth / Signup
+// --------------------------------------------------------------------------
+
+.va-bg-preset-auth {
+  --va-pattern-opacity: 0.5;
+  --va-glow-size: 400px;
+}

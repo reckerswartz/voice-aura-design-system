@@ -365,39 +365,178 @@ Animated show/hide at breakpoints (instead of abrupt `d-none`).
 
 ---
 
-## 9. Mobile-Specific Patterns
+## 9. New Background Patterns (v2)
 
-### Pricing Horizontal Scroll (Mobile)
+### Radial Soft Gradient
 
-On screens < 768px, `.va-pricing__grid` automatically becomes a horizontal
-scroll carousel with snap points. No extra classes needed.
+Ambient haze effect — lighter than `va-bg-glow`, more organic. Uses `gradient-radial-soft.svg`.
 
-**Reference**: behance-16 (mobile pricing phones)
+```html
+<section class="va-bg-radial-soft">...</section>
+<section class="va-bg-radial-soft va-bg-radial-soft--top">...</section>
+```
 
-### Hero Full-Width CTAs (Mobile)
+### Halftone Dots (Compact)
 
-On screens < 768px, `.va-hero__actions` stacks buttons vertically at full width.
-Floating decorative icons are hidden. No extra classes needed.
+Circular halftone from `halftone-dots.svg`. For smaller panels and cards vs the wide hero field.
 
-**Reference**: behance-14 (mobile hero phone)
+```html
+<div class="va-pattern-halftone-dots">...</div>
+```
 
-### Feature Row Stack (Mobile)
+### Sound Wave Hero SVG
 
-On screens < 768px, `.va-feature-row` collapses from 2-column to single-column
-with smooth transitions. Visual padding reduces automatically.
+Taller, more dramatic hero waveform variant from `sound-wave-hero.svg`.
 
-**Reference**: behance-14 (mobile features)
+```html
+<section class="va-pattern-wave-hero">...</section>
+```
+
+### SVG Grid Dots
+
+Crisper SVG-based dots from `grid-dots.svg` (alternative to CSS-only `va-bg-dots`).
+
+```html
+<section class="va-pattern-grid-dots">...</section>
+<section class="va-pattern-grid-dots va-pattern-grid-dots--full">...</section>
+```
+
+### App Icon Component
+
+Rounded-square app icon element. Reference: behance-05 / behance-07.
+
+```html
+<div class="va-app-icon">
+  <svg>...waveform bars...</svg>
+</div>
+<div class="va-app-icon va-app-icon--lg">...</div>       <!-- 96px -->
+<div class="va-app-icon va-app-icon--sm">...</div>       <!-- 56px -->
+<div class="va-app-icon va-app-icon--animate">...</div>  <!-- Floating animation -->
+```
+
+### Additional Presets
+
+```html
+<footer class="va-bg-preset-footer va-pattern-noise">...</footer>
+<div class="va-bg-preset-auth va-bg-glow va-pattern-halftone">...</div>
+```
 
 ---
 
-## 10. Reduced Motion
+## 10. Mobile-Specific Patterns
+
+### Pricing Horizontal Scroll (Mobile)
+
+On screens < 768px, `.va-pricing-scroll` becomes a horizontal snap-scroll carousel
+with peek effect. **Reference**: behance-16 (mobile pricing phones)
+
+```html
+<div class="va-pricing-scroll">
+  <div class="va-pricing-card">...</div>
+  <div class="va-pricing-card">...</div>
+  <div class="va-pricing-card">...</div>
+</div>
+```
+
+### Hero Full-Width CTAs (Mobile)
+
+`.va-hero-actions-morph` smoothly stacks buttons full-width on mobile.
+**Reference**: behance-14 (mobile hero phone)
+
+```html
+<div class="va-hero-actions-morph">
+  <button class="va-btn va-btn--primary">Open Studio</button>
+  <button class="va-btn va-btn--secondary">API Docs</button>
+</div>
+```
+
+### Feature Row Collapse
+
+`.va-feature-collapse` smoothly transitions from 2-column to 1-column at `lg`.
+**Reference**: behance-14 (mobile features)
+
+```html
+<div class="va-feature-collapse">
+  <div>Text content...</div>
+  <div>Visual panel...</div>
+</div>
+
+<!-- Reverse order on desktop (visual left, text right) -->
+<div class="va-feature-collapse va-feature-collapse--reverse">
+  <div>Text content...</div>
+  <div>Visual panel...</div>
+</div>
+```
+
+### Hamburger Icon Morph
+
+Animated ☰ → ✕ transition. Hidden on desktop, visible below `lg`.
+
+```html
+<button class="va-hamburger" aria-label="Menu">
+  <span class="va-hamburger__bar"></span>
+  <span class="va-hamburger__bar"></span>
+  <span class="va-hamburger__bar"></span>
+</button>
+```
+
+Toggle `is-open` class via JS:
+
+```js
+const btn = document.querySelector('.va-hamburger');
+btn.addEventListener('click', () => btn.classList.toggle('is-open'));
+```
+
+### Responsive Pattern Fade
+
+Smoothly reduces pattern opacity on smaller screens instead of abrupt hide.
+
+```html
+<section class="va-pattern-responsive-fade va-pattern-halftone">...</section>
+```
+
+| Breakpoint | Opacity multiplier |
+|---|---|
+| Desktop (lg+) | `--va-pattern-opacity` (full) |
+| Tablet (md) | × 0.5 |
+| Phone (sm) | × 0.3 |
+
+### Card Grid Responsive Reflow
+
+Animates card grids with smooth column transitions.
+
+```html
+<div class="va-card-grid-reflow va-card-grid-reflow--3">
+  <article>...</article>
+  <article>...</article>
+  <article>...</article>
+</div>
+```
+
+Variants: `--2` (2→1 at md), `--3` (3→2→1), `--4` (4→2→1)
+
+---
+
+## 11. Responsive Typography
+
+Smooth font-size transitions when viewport crosses breakpoints.
+
+```html
+<h1 class="va-type-responsive">Headline</h1>
+```
+
+---
+
+## 12. Reduced Motion
 
 All animations respect `prefers-reduced-motion: reduce`. Scroll-triggered
 elements remain visible (opacity: 1, transform: none) when motion is reduced.
 
 ---
 
-## Quick Reference: Section Recipe
+## Section Recipes
+
+### Hero Section (Full)
 
 ```html
 <section class="
@@ -407,44 +546,138 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
   va-pattern-waveform-bg
   va-bg-glow
   va-section-morph
+  va-pattern-responsive-fade
   va-hero-adapt
-  va-mobile-desktop-morph
 ">
-  <!-- Floating decorative icons (hidden on mobile automatically) -->
-  <div class="va-hero__float va-hero__float--left va-hero__float--sm va-animate-float" aria-hidden="true">
+  <div class="va-hero__float va-hero__float--left va-hero__float--sm va-animate-float va-show-md" aria-hidden="true">
     <svg>...microphone icon...</svg>
   </div>
-  <div class="va-hero__float va-hero__float--right va-hero__float--letter va-animate-float" aria-hidden="true">A</div>
+  <div class="va-hero__float va-hero__float--right va-hero__float--letter va-animate-float va-show-md" aria-hidden="true">A</div>
 
   <div class="va-container va-container-smooth">
     <div class="va-hero__badge va-entrance-badge">DON'T SPEAK JUST TYPE</div>
-    <h1 class="va-hero__title va-entrance-hero">...</h1>
+    <h1 class="va-hero__title va-entrance-hero va-type-responsive">...</h1>
     <p class="va-hero__subtitle va-entrance-hero-sub">...</p>
-    <div class="va-hero__actions va-entrance-hero-cta">
-      <button class="va-hero__btn--primary">Open Studio</button>
-      <button class="va-hero__btn--secondary">API Docs</button>
+    <div class="va-hero-actions-morph va-entrance-hero-cta">
+      <button class="va-btn va-btn--primary">Open Studio</button>
+      <button class="va-btn va-btn--secondary">API Docs</button>
     </div>
   </div>
 </section>
+```
+
+### Feature API Section
+
+```html
+<section class="va-section va-bg-preset-feature-api va-pattern-noise va-pattern-responsive-fade">
+  <div class="va-feature-collapse">
+    <div class="va-entrance-feature">
+      <span class="va-section-badge">FOR DEVELOPERS</span>
+      <h2>Experience the Fastest TTS API</h2>
+      <p>...</p>
+      <div class="va-hero-actions-morph">
+        <button class="va-btn va-btn--primary">Get API Key</button>
+        <a class="va-link-arrow va-hover-arrow">Learn more</a>
+      </div>
+    </div>
+    <div class="va-entrance-feature-visual" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="va-feature-visual va-feature-visual--light va-pattern-halftone va-pattern-halftone--bottom">
+        <div class="va-app-icon va-app-icon--lg va-hover-lift">
+          <svg>...waveform icon...</svg>
+        </div>
+      </div>
+      <div class="va-feature-visual va-feature-visual--dark va-bg-brand-watermark va-bg-dark-grid">
+        <div class="va-agent-card va-agent-card--crosshairs">...</div>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+### Pricing Section
+
+```html
+<section class="va-section va-bg-preset-pricing va-bg-dots va-bg-glow va-pattern-responsive-fade">
+  <div class="va-container">
+    <h2 class="va-entrance-hero">Choose Pricing Plan</h2>
+    <div class="va-pricing__tabs">...</div>
+    <div class="va-pricing-scroll va-scroll-stagger">
+      <div class="va-pricing-card va-touch-lift">...</div>
+      <div class="va-pricing-card va-pricing-card--featured va-touch-lift">...</div>
+      <div class="va-pricing-card va-touch-lift">...</div>
+    </div>
+  </div>
+</section>
+```
+
+### Blog Section
+
+```html
+<section class="va-section va-bg-preset-blog va-pattern-responsive-fade">
+  <div class="va-container">
+    <h2>Insights & Updates</h2>
+    <div class="va-card-grid-reflow va-card-grid-reflow--4 va-scroll-stagger">
+      <article class="va-blog-card va-touch-lift">...</article>
+      <article class="va-blog-card va-touch-lift">...</article>
+      <article class="va-blog-card va-touch-lift">...</article>
+      <article class="va-blog-card va-touch-lift">...</article>
+    </div>
+  </div>
+</section>
+```
+
+### Footer
+
+```html
+<footer class="va-footer va-bg-preset-footer va-pattern-noise va-pattern-responsive-fade">
+  <div class="va-container">
+    <div class="va-card-grid-reflow va-card-grid-reflow--4">
+      <div>Brand column</div>
+      <div>Links column</div>
+      <div>Products column</div>
+      <div>How to Create column</div>
+    </div>
+  </div>
+</footer>
 ```
 
 ---
 
 ## SVG Asset Inventory
 
-| Pattern | File | Usage |
-|---------|------|-------|
-| Halftone (wide) | `assets/patterns/halftone-wide.svg` | Hero, features, signup |
-| Halftone (dots) | `assets/patterns/halftone-dots.svg` | Compact sections |
-| Sound wave (wide) | `assets/patterns/sound-wave-wide.svg` | Hero waveform bar |
-| Sound wave (hero) | `assets/patterns/sound-wave-hero.svg` | Hero accent |
-| Grid lines | `assets/patterns/grid-lines.svg` | Technical sections |
-| Grid dots | `assets/patterns/grid-dots.svg` | Alternate dot grid |
-| Circuit lines | `assets/patterns/circuit-lines.svg` | API/developer sections |
-| Concentric rings | `assets/patterns/concentric-rings.svg` | Voice/audio sections |
-| Diagonal lines | `assets/patterns/diagonal-lines.svg` | Texture depth |
-| Noise texture | `assets/patterns/noise-texture.svg` | Film grain overlay |
-| Mesh gradient | `assets/patterns/mesh-gradient.svg` | Ambient gradient |
-| Crosshair | `assets/patterns/crosshair.svg` | Corner decorations |
-| Wave divider | `assets/patterns/wave-divider.svg` | Section dividers |
-| Radial gradient | `assets/patterns/gradient-radial-soft.svg` | Soft glow |
+| # | Pattern | File | SCSS Class | Used In |
+|---|---------|------|------------|---------|
+| 1 | Halftone (wide) | `assets/patterns/halftone-wide.svg` | `.va-pattern-halftone` | Hero, features, signup |
+| 2 | Halftone (dots) | `assets/patterns/halftone-dots.svg` | `.va-pattern-halftone-dots` | Compact panels, cards |
+| 3 | Sound wave (wide) | `assets/patterns/sound-wave-wide.svg` | `.va-pattern-waveform-bg` | Hero waveform bar |
+| 4 | Sound wave (hero) | `assets/patterns/sound-wave-hero.svg` | `.va-pattern-wave-hero` | Hero accent (dramatic) |
+| 5 | Grid lines | `assets/patterns/grid-lines.svg` | `.va-bg-grid-lines` | Technical sections |
+| 6 | Grid dots | `assets/patterns/grid-dots.svg` | `.va-pattern-grid-dots` | SVG dot grid overlay |
+| 7 | Circuit lines | `assets/patterns/circuit-lines.svg` | `.va-pattern-circuit` | API/developer sections |
+| 8 | Concentric rings | `assets/patterns/concentric-rings.svg` | `.va-pattern-rings` | Voice/audio sections |
+| 9 | Diagonal lines | `assets/patterns/diagonal-lines.svg` | `.va-pattern-diagonal` | Texture depth |
+| 10 | Noise texture | `assets/patterns/noise-texture.svg` | `.va-pattern-noise` | Film grain overlay |
+| 11 | Mesh gradient | `assets/patterns/mesh-gradient.svg` | `.va-bg-mesh` | Ambient gradient |
+| 12 | Crosshair | `assets/patterns/crosshair.svg` | `.va-pattern-crosshair` | Corner decorations |
+| 13 | Wave divider | `assets/patterns/wave-divider.svg` | `.va-pattern-wave-divider` | Section bottom dividers |
+| 14 | Radial gradient | `assets/patterns/gradient-radial-soft.svg` | `.va-bg-radial-soft` | Soft ambient haze |
+
+---
+
+## Responsive Animation Quick Reference
+
+| Class | Desktop behaviour | Mobile behaviour | Breakpoint |
+|---|---|---|---|
+| `.va-hero-actions-morph` | Inline flex buttons | Stacked full-width | md (768px) |
+| `.va-feature-collapse` | 2-column grid | Single column | lg (992px) |
+| `.va-pricing-scroll` | Default layout | Horizontal snap-scroll | md (768px) |
+| `.va-card-grid-reflow--3` | 3 columns | 2 → 1 columns | lg → md |
+| `.va-card-grid-reflow--4` | 4 columns | 2 → 1 columns | lg → md |
+| `.va-hamburger` | Hidden | Visible (☰ → ✕ morph) | lg (992px) |
+| `.va-pattern-responsive-fade` | Full opacity | × 0.5 (md), × 0.3 (sm) | md / sm |
+| `.va-show-md` | Visible | Hidden (fade) | md (768px) |
+| `.va-show-lg` | Visible | Hidden (fade) | lg (992px) |
+| `.va-hide-md` | Hidden | Visible | md (768px) |
+| `.va-responsive-fade-left` | Slide from left | Fade up | md (768px) |
+| `.va-responsive-fade-right` | Slide from right | Fade up | md (768px) |
+| `.va-type-responsive` | Smooth font-size transition | Smooth font-size transition | Any resize |
