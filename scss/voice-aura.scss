@@ -7,54 +7,67 @@
 //   3. Base       – reset, typography
 //   4. Layout     – navbar, hero, sections, footer, grid
 //   5. Components – buttons, cards, forms, pricing, badges, etc.
+//   6. Brand      – Voice Aura app-specific components
+//
+// All CSS output is wrapped in `@layer va` for cascade control.
+// Consumer stylesheets written WITHOUT @layer automatically win over
+// design-system styles — no `!important` needed for overrides.
+//
+// Example consumer override:
+//   /* This beats any .va-btn rule because it's unlayered */
+//   .va-btn { border-radius: 0; }
+//
+// For explicit layer ordering in consumer code:
+//   @layer va, my-app;
+//   @layer my-app { .va-btn { border-radius: 0; } }
 // ============================================================================
 
 // ---------------------------------------------------------------------------
 // 1. ABSTRACTS (no CSS output — design tokens & helpers only)
 // ---------------------------------------------------------------------------
+// Loaded outside the @layer block because they produce no CSS output.
+// They must be available before any @layer content is compiled.
 @import "abstracts/variables";
 @import "abstracts/functions";
 @import "abstracts/mixins";
 
 // ---------------------------------------------------------------------------
-// 2. VENDORS (Bootstrap 5 with our overrides applied)
+// 2–6. ALL CSS OUTPUT — wrapped in @layer va
 // ---------------------------------------------------------------------------
-@import "vendors/bootstrap";
+// A single layer is used (rather than per-section layers) because Sass
+// @extend cannot cross @layer boundaries.  The 55 @extend usages in this
+// codebase require Bootstrap and VA selectors to share the same layer.
+@layer va {
+  // 2. VENDORS (Bootstrap 5 with our overrides applied)
+  @import "vendors/bootstrap";
 
-// ---------------------------------------------------------------------------
-// 3. BASE (global resets & typography)
-// ---------------------------------------------------------------------------
-@import "base/reset";
-@import "base/typography";
+  // 3. BASE (global resets & typography)
+  @import "base/reset";
+  @import "base/typography";
 
-// ---------------------------------------------------------------------------
-// 4. LAYOUT (structural page sections)
-// ---------------------------------------------------------------------------
-@import "layout/grid";
-@import "layout/navbar";
-@import "layout/hero";
-@import "layout/section";
-@import "layout/feature-section";
-@import "layout/footer";
+  // 4. LAYOUT (structural page sections)
+  @import "layout/grid";
+  @import "layout/navbar";
+  @import "layout/hero";
+  @import "layout/section";
+  @import "layout/feature-section";
+  @import "layout/footer";
 
-// ---------------------------------------------------------------------------
-// 5. COMPONENTS (reusable UI elements)
-// ---------------------------------------------------------------------------
-@import "components/buttons";
-@import "components/cards";
-@import "components/badges";
-@import "components/forms";
-@import "components/pricing";
-@import "components/blog-card";
-@import "components/trust-bar";
-@import "components/backgrounds";
-@import "components/pattern-data";
-@import "components/animations";
-@import "components/reference";
+  // 5. COMPONENTS (reusable UI elements)
+  @import "components/buttons";
+  @import "components/cards";
+  @import "components/badges";
+  @import "components/forms";
+  @import "components/pricing";
+  @import "components/blog-card";
+  @import "components/trust-bar";
+  @import "components/backgrounds";
+  @import "components/pattern-data";
+  @import "components/animations";
+  @import "components/reference";
 
-// ---------------------------------------------------------------------------
-// 6. BRAND — Voice Aura app-specific components
-// ---------------------------------------------------------------------------
-// These are tightly coupled to the Voice Aura product.  Other brands/themes
-// can safely remove or comment out this import.
-@import "brands/voice-aura/index";
+  // 6. BRAND — Voice Aura app-specific components
+  // These are tightly coupled to the Voice Aura product.  Other brands/themes
+  // can safely remove or comment out this import.
+  @import "brands/voice-aura/index";
+}

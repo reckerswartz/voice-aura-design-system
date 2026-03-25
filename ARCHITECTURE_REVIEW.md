@@ -40,7 +40,7 @@
 |--------|-------|
 | SCSS source lines | 11,341 (+2,156 since initial review) |
 | Compiled CSS (expanded) | 424 KB |
-| Compiled CSS (minified) | **339 KB** (was 354 KB; PostCSS + unused imports removed) |
+| Compiled CSS (minified) | **340 KB** (was 354 KB; PostCSS + unused imports removed; +1 KB for @layer + dark mode) |
 | `!important` usages | 48 (35 in utility generators — acceptable) |
 | Hardcoded hex colors outside `_variables.scss` | 6 (down from 42; remaining are in `color-mix` functions) |
 | Hardcoded `rgba()` with literal color values | 42 (shadows, borders — should use tokens) |
@@ -50,11 +50,13 @@
 | `@use` statements | 10 (only in abstracts) |
 | `@forward` statements | 0 |
 | `@extend` usages | 55 (was 52; hero/navbar now extend `.va-btn` instead of duplicating) |
-| `--va-*` CSS custom properties | 38 authored on `:root`; **consumed by 15/18 sections** |
+| `--va-*` CSS custom properties | 38 on `:root` + dark overrides via `prefers-color-scheme` / `[data-va-theme]`; consumed by 15/18 sections |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
 | `transition` declarations | 101 |
 | `prefers-reduced-motion` checks | 4 (all in `_animations.scss`) |
+| `prefers-color-scheme: dark` | ✅ Supported — `@mixin va-dark-tokens` in `_reset.scss` |
+| `@layer` usage | ✅ All output wrapped in `@layer va` (`voice-aura.scss`) |
 | Inline `style=` attributes in `components.html` | 292 |
 | Inline `style=` attributes across all HTML pages | 796 total |
 | Largest single SCSS file | `_bg-patterns.scss` — **644 lines** (was `_backgrounds.scss` 1,545 — split) |
@@ -104,6 +106,8 @@ Issues resolved or partially addressed since the initial review:
 | — | No CI workflow | ✅ Done | GitHub Actions: lint + build + size budget on Node 18/20 (`ee3f944`) |
 | — | No visual regression tests | ✅ Done | Playwright snapshot tests for 5 pages (`ee3f944`) |
 | — | No accessibility audits | ✅ Done | axe-core WCAG 2.1 AA tests for 4 pages (`ee3f944`) |
+| — | No `@layer` cascade control | ✅ Done | All output wrapped in `@layer va` — consumers override without `!important` |
+| — | No `prefers-color-scheme` support | ✅ Done | Dark tokens via `@media` + `[data-va-theme="dark"]` attribute |
 
 ---
 

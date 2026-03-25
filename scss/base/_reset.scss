@@ -93,6 +93,62 @@ html {
   --va-glass-bg-opacity: #{$va-glass-bg-opacity};
 }
 
+// ---------------------------------------------------------------------------
+// Dark Mode — prefers-color-scheme + manual toggle
+// ---------------------------------------------------------------------------
+// Automatically activates when the user's OS is in dark mode.
+// Can also be triggered manually via `data-va-theme="dark"` on any element:
+//
+//   <html data-va-theme="dark">       — full-page dark mode
+//   <section data-va-theme="dark">    — dark subtree only
+//
+// To force light mode regardless of OS preference:
+//   <html data-va-theme="light">
+// ---------------------------------------------------------------------------
+
+@mixin va-dark-tokens {
+  // Colors — inverted palette
+  --va-color-primary:    #{va-lighten($va-primary-blue, 8%)};
+  --va-color-secondary:  #{$va-white};
+  --va-color-white:      #{$va-near-black};
+  --va-color-light-grey: #2A2A2B;
+  --va-color-section-bg: #222223;
+
+  // Colors — text (light on dark)
+  --va-color-text:       #{$va-white};
+  --va-color-body-text:  #D1D5DB;
+  --va-color-muted-text: #9CA3AF;
+
+  // Colors — UI
+  --va-color-border:     #374151;
+  --va-color-success:    #{va-lighten($va-success, 8%)};
+  --va-color-warning:    #{va-lighten($va-warning, 8%)};
+  --va-color-danger:     #{va-lighten($va-danger, 8%)};
+
+  // Shadows — darker, more subtle
+  --va-shadow-sm:        0 1px 2px rgba(0, 0, 0, 0.4);
+  --va-shadow:           0 2px 8px rgba(0, 0, 0, 0.5);
+  --va-shadow-md:        0 4px 16px rgba(0, 0, 0, 0.5);
+  --va-shadow-lg:        0 8px 32px rgba(0, 0, 0, 0.6);
+
+  // Glass — denser blur on dark
+  --va-glass-bg-opacity: 0.3;
+
+  color-scheme: dark;
+}
+
+// Auto dark mode via OS preference
+@media (prefers-color-scheme: dark) {
+  :root:not([data-va-theme="light"]) {
+    @include va-dark-tokens;
+  }
+}
+
+// Manual dark mode via data attribute
+[data-va-theme="dark"] {
+  @include va-dark-tokens;
+}
+
 // Universal box-sizing (inheritable pattern)
 *,
 *::before,
