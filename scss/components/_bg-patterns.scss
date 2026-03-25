@@ -47,7 +47,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/halftone-wide.svg");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center bottom;
@@ -200,7 +200,7 @@
     height: 80px;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/sound-wave-wide.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/sound-wave-wide.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -233,7 +233,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/noise-texture.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/noise-texture.svg");
     background-repeat: repeat;
     background-size: 200px 200px;
     opacity: var(--va-pattern-opacity, 0.5);
@@ -273,7 +273,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/circuit-lines.svg");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center center;
@@ -325,7 +325,7 @@
     height: var(--va-ring-size, 600px);
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/concentric-rings.svg");
     background-repeat: no-repeat;
     background-size: contain;
     top: 50%;
@@ -388,7 +388,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/grid-lines.svg");
     background-repeat: repeat;
     background-size: 48px 48px;
     opacity: var(--va-pattern-opacity, 1);
@@ -440,7 +440,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/diagonal-lines.svg");
     background-repeat: repeat;
     background-size: 40px 40px;
     opacity: var(--va-pattern-opacity, 1);
@@ -482,7 +482,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/mesh-gradient.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -524,7 +524,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/halftone-dots.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/halftone-dots.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -564,7 +564,7 @@
     height: 120px;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/sound-wave-hero.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/sound-wave-hero.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -602,7 +602,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/grid-dots.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/grid-dots.svg");
     background-repeat: repeat;
     background-size: 24px 24px;
     opacity: var(--va-pattern-opacity, 0.5);
@@ -649,7 +649,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/gradient-radial-soft.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/gradient-radial-soft.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -702,7 +702,7 @@
     height: var(--va-ripple-size, 640px);
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/voice-ripple.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/voice-ripple.svg");
     background-repeat: no-repeat;
     background-size: contain;
     top: 50%;
@@ -771,7 +771,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/spotlight-gradient.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/spotlight-gradient.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

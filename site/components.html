@@ -77,7 +77,7 @@
       <a href="#navbar">Navbar</a><a href="#hero">Hero</a><a href="#features">Features</a>
       <a href="#blog">Blog</a><a href="#blog-section">Blog Layout</a><a href="#agent">Agent</a>
       <a href="#dubbing">Dubbing</a><a href="#client-logos">Logos</a><a href="#auth-split">Auth Split</a>
-      <a href="#backgrounds">Backgrounds</a><a href="#animations">Animations</a>
+      <a href="#grid">Grid</a><a href="#backgrounds">Backgrounds</a><a href="#animations">Animations</a>
       <a href="#bootstrap-alignment">Bootstrap</a><a href="#footer">Footer</a>
       <a href="#file-structure">Files</a><a href="#sample">Sample</a>
     </div>
@@ -113,6 +113,7 @@
           <a href="#dubbing">Video Dubbing Card</a>
           <a href="#client-logos">Client Logos</a>
           <a href="#auth-split">Auth Split Layout</a>
+          <a href="#grid">Grid &amp; Layout</a>
           <a href="#backgrounds">Backgrounds &amp; Patterns</a>
           <a href="#animations">Animations &amp; Transitions</a>
           <a href="#bootstrap-alignment">Bootstrap Alignment</a>
@@ -1324,6 +1325,92 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- GRID & LAYOUT                                                  -->
+        <!-- ============================================================ -->
+        <section id="grid" class="ref-section">
+          <p class="ref-label">Layout</p>
+          <h2 class="ref-title">Grid &amp; Layout Utilities</h2>
+          <p class="ref-desc">CSS Grid system with auto-fit responsive grids, fixed-column variants, flex utilities, and VA spacing (8px grid). The <code>--va-grid-min</code> custom property allows per-instance column width control.</p>
+
+          <h5 class="ref-subheading">Auto-fit Grid</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Columns automatically fill available space. Set <code>--va-grid-min</code> to control minimum column width (default: 280px).</p>
+          <div class="ref-demo-container ref-demo-container--padded">
+            <div class="va-grid" style="--va-grid-min: 180px; gap: 1rem;">
+              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 1</div>
+              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 2</div>
+              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 3</div>
+              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 4</div>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Fixed-column Variants</h5>
+          <div class="ref-demo-container ref-demo-container--padded" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">2-COLUMN</p>
+              <div class="va-grid va-grid--2col" style="gap: 1rem;">
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
+              </div>
+            </div>
+            <div>
+              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">3-COLUMN</p>
+              <div class="va-grid va-grid--3col" style="gap: 1rem;">
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">3</div>
+              </div>
+            </div>
+            <div>
+              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">4-COLUMN</p>
+              <div class="va-grid va-grid--4col" style="gap: 1rem;">
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">3</div>
+                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">4</div>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Gap &amp; Spacing Utilities (8px grid)</h5>
+          <div class="ref-demo-container ref-demo-container--padded">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-1 (8px)</span>
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-2 (16px)</span>
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-3 (24px)</span>
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-4 (32px)</span>
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-mt-1 … .va-mt-8</span>
+              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-flex-center</span>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Auto-fit responsive grid (custom column minimum) --&gt;
+&lt;div class="va-grid" style="--va-grid-min: 200px;"&gt;
+  &lt;div&gt;Column 1&lt;/div&gt;
+  &lt;div&gt;Column 2&lt;/div&gt;
+  &lt;div&gt;Column 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Fixed column counts --&gt;
+&lt;div class="va-grid va-grid--2col"&gt;...&lt;/div&gt;
+&lt;div class="va-grid va-grid--3col"&gt;...&lt;/div&gt;
+&lt;div class="va-grid va-grid--4col"&gt;...&lt;/div&gt;
+
+&lt;!-- Spacing utilities (8px grid) --&gt;
+&lt;div class="va-gap-2"&gt;...&lt;/div&gt;   &lt;!-- gap: 16px --&gt;
+&lt;div class="va-mt-4"&gt;...&lt;/div&gt;    &lt;!-- margin-top: 32px --&gt;
+&lt;div class="va-flex-center"&gt;...&lt;/div&gt;
+
+&lt;!-- Max-width container --&gt;
+&lt;div class="va-container"&gt;...&lt;/div&gt;  &lt;!-- max-width: 1280px --&gt;</div>
+
+          <p style="color: #6B7280; font-size: 0.8125rem; margin-top: 1rem;">
+            <strong>SCSS source:</strong> <code>scss/layout/_grid.scss</code> &middot;
+            <strong>Note:</strong> VA spacing utilities use the 8px grid (<code>$va-grid-unit</code>). Bootstrap&rsquo;s <code>.mt-*</code>, <code>.gap-*</code> use Bootstrap&rsquo;s own spacer scale. Both can be used together.
+          </p>
         </section>
 
         <!-- ============================================================ -->

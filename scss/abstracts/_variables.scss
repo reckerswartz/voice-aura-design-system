@@ -460,6 +460,11 @@ $tooltip-opacity:       1;
 // Usage in components:  background-image: url("#{$va-asset-base-path}/patterns/halftone-dots.svg");
 $va-asset-base-path: "../../assets" !default;
 
+// Google Fonts URL — override to change brand fonts or use self-hosted fonts.
+// Set to `false` to skip the @import entirely (e.g. when fonts are loaded via HTML <link>).
+// Default loads IBM Plex Sans + Serif for Voice Aura branding.
+$va-google-fonts-url: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" !default;
+
 // Layout
 $va-section-padding-y:       5rem;       // 80px — standard vertical section padding
 $va-section-padding-y-lg:    7.5rem;     // 120px — larger section padding

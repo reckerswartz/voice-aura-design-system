@@ -5,6 +5,23 @@
 // section headers with badge + title + subtitle, two-column feature rows,
 // and client-logo bars.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ Section wrappers are fully custom — no Bootstrap classes extended.  │
+// │ Shared properties (font-family, font-weight, border-color,          │
+// │ border-radius) reference Bootstrap Sass variables.                  │
+// │                                                                      │
+// │ VA section utilities overlap intentionally with Bootstrap:          │
+// │   .va-section   — custom padding (VA 8px grid) vs Bootstrap .py-*  │
+// │   .va-container — custom max-width vs Bootstrap .container          │
+// │                                                                      │
+// │ No approximate Bootstrap equivalences for:                          │
+// │   .va-section-header, .va-section-header__badge,                    │
+// │   .va-section-header__title, .va-section-header__subtitle,          │
+// │   .va-discount-badge, .va-icon-inline                               │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-near-black, $va-primary-blue, $va-body-text,
 //   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
 //   $va-font-body, $va-grid-unit, $va-radius-lg, $va-container-max-width,

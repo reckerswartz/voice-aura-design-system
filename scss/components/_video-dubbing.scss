@@ -5,6 +5,20 @@
 // video player with subtitle overlay, and playback controls.  Used in the
 // "FOR LOCALIZER" feature section.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ Fully custom, app-specific component — no Bootstrap classes are     │
+// │ extended.  This component is tightly coupled to the Voice Aura      │
+// │ brand and should be moved to `brands/voice-aura/` for multi-theme  │
+// │ builds.                                                              │
+// │                                                                      │
+// │ No approximate Bootstrap equivalences — all classes are unique:     │
+// │   .va-dubbing-card, .va-dubbing-card__lang,                        │
+// │   .va-dubbing-card__player, .va-dubbing-card__controls,            │
+// │   .va-dubbing-card__subtitle                                       │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-near-black, $va-primary-blue, $va-body-text,
 //   $va-muted-text, $va-light-grey, $va-border-color, $va-font-body,
 //   $va-grid-unit, $va-radius, $va-radius-sm, $va-radius-pill.

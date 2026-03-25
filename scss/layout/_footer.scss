@@ -4,6 +4,18 @@
 // Multi-column footer with link grid, brand area, and bottom copyright bar.
 // Clean, minimal style consistent with the Voice Aura aesthetic.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ The footer is fully custom — no Bootstrap classes are extended.     │
+// │ Shared properties (font-family, font-weight, border-color) use     │
+// │ Bootstrap Sass variables for design-system consistency.             │
+// │                                                                      │
+// │ No approximate Bootstrap equivalences — all classes are unique:     │
+// │   .va-footer, .va-footer__brand, .va-footer__col,                  │
+// │   .va-footer__link, .va-footer__bottom, .va-footer__legal          │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-near-black, $va-primary-blue, $va-body-text,
 //   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
 //   $va-font-body, $va-grid-unit, $va-container-max-width, $va-breakpoints,

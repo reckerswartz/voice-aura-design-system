@@ -32,21 +32,21 @@
   z-index: $va-z-base;
 
   &--circuit {
-    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/circuit-lines.svg");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center;
   }
 
   &--rings {
-    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/concentric-rings.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
   }
 
   &--grid {
-    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/grid-lines.svg");
     background-repeat: repeat;
     background-size: 48px 48px;
     mask-image: radial-gradient(
@@ -62,20 +62,20 @@
   }
 
   &--mesh {
-    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/mesh-gradient.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   &--diagonal {
-    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/diagonal-lines.svg");
     background-repeat: repeat;
     background-size: 40px 40px;
   }
 
   &--crosshair {
-    background-image: url("../../assets/patterns/crosshair.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/crosshair.svg");
     background-repeat: no-repeat;
     background-size: 64px 64px;
     background-position: center;
@@ -83,7 +83,7 @@
   }
 
   &--wave-divider {
-    background-image: url("../../assets/patterns/wave-divider.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/wave-divider.svg");
     background-repeat: repeat-x;
     background-size: auto 12px;
     background-position: center bottom;
@@ -91,7 +91,7 @@
   }
 
   &--voice-ripple {
-    background-image: url("../../assets/patterns/voice-ripple.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/voice-ripple.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -99,7 +99,7 @@
   }
 
   &--spotlight {
-    background-image: url("../../assets/patterns/spotlight-gradient.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/spotlight-gradient.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -122,7 +122,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/crosshair.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/crosshair.svg");
     background-repeat: no-repeat;
     background-size: 64px 64px;
     background-position: var(--va-pattern-position, 50% 50%);
@@ -149,7 +149,7 @@
     height: 12px;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/wave-divider.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/wave-divider.svg");
     background-repeat: repeat-x;
     background-size: auto 100%;
     background-position: center;
@@ -251,7 +251,7 @@
     inset: 0;
     pointer-events: none;
     z-index: $va-z-base;
-    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-image: url("#{$va-asset-base-path}/patterns/halftone-wide.svg");
     background-repeat: no-repeat;
     background-size: 120% auto;
     background-position: center 60%;

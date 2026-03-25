@@ -4,6 +4,19 @@
 // Two-column feature rows used on landing / marketing pages.
 // Previously inline in sample.html — now part of the design system.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ Fully custom VA layout — no Bootstrap grid or card classes are      │
+// │ extended.  Uses CSS Grid for two-column layout.  Shared properties  │
+// │ (font-family, font-weight, border-radius) reference Bootstrap Sass │
+// │ variables for consistency.                                           │
+// │                                                                      │
+// │ No approximate Bootstrap equivalences — all classes are unique:     │
+// │   .va-feature-row, .va-feature-row__text, .va-feature-row__badge,  │
+// │   .va-feature-row__title, .va-feature-visual                       │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Markup example:
 //   <div class="va-feature-row">
 //     <div class="va-feature-row__text">

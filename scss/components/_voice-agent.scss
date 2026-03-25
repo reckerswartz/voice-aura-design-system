@@ -3,6 +3,19 @@
 // ==========================================================================
 // Dark-themed agent card featuring a person's photo, name, role,
 // language tabs, and call-to-action button.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ Fully custom, app-specific component — no Bootstrap classes are     │
+// │ extended.  This component is tightly coupled to the Voice Aura      │
+// │ brand and should be moved to `brands/voice-aura/` for multi-theme  │
+// │ builds.                                                              │
+// │                                                                      │
+// │ No approximate Bootstrap equivalences — all classes are unique:     │
+// │   .va-agent-card, .va-agent-card__lang, .va-agent-card__avatar,    │
+// │   .va-agent-card__info, .va-agent-card__call-btn                   │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------

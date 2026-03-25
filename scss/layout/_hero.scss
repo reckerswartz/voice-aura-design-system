@@ -5,6 +5,28 @@
 // headline, supporting copy, dual CTA buttons, and the signature TTS input
 // card with decorative sound-wave and halftone-dot motifs.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ The hero section is fully custom — no Bootstrap layout is extended. │
+// │ Shared properties (font-family, font-weight, border-radius,         │
+// │ border-color, box-shadow) reference Bootstrap Sass variables.       │
+// │                                                                      │
+// │ Hero CTA buttons are standalone (no @extend).  Approximate          │
+// │ Bootstrap equivalences:                                              │
+// │   .va-hero__btn--primary   ≈ .btn .btn-dark .rounded-pill          │
+// │   .va-hero__btn--secondary ≈ .btn .btn-outline-secondary .rounded-pill │
+// │   .va-hero__input-card-submit ≈ .btn .btn-primary .rounded-pill    │
+// │                                                                      │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-hero__badge          — announcement pill                     │
+// │   .va-hero__title          — fluid clamp() headline                │
+// │   .va-hero__input-card     — TTS demo card with tabs + textarea    │
+// │   .va-hero__float          — floating decorative icons             │
+// │   .va-hero__wave           — animated sound-wave bars              │
+// │   .va-hero__halftone       — halftone dot pattern overlay          │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-near-black, $va-primary-blue, $va-body-text,
 //   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
 //   $va-font-body, $va-grid-unit, $border-radius, $border-radius-lg,
@@ -113,64 +135,28 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   flex-wrap: wrap;
 }
 
-// Primary CTA (dark filled)
+// Primary CTA (dark filled) — extends .va-btn--primary + hero-specific deltas
 .va-hero__btn--primary {
-  display: inline-flex;
-  align-items: center;
-  gap: $va-grid-unit;
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: $va-white;
-  background-color: $va-near-black;
-  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px
-  border-radius: $border-radius-pill;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out,
-              transform 0.2s ease-in-out;
+  @extend .va-btn;
+  @extend .va-btn--primary;
 
-  &:hover,
-  &:focus-visible {
-    background-color: va-lighten($va-near-black, 14%);
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    background-color: va-lighten($va-near-black, 8%);
-    transform: translateY(0);
-  }
+  // --- Hero-specific deltas only ---
+  font-weight: $font-weight-semibold;               // 600 vs va-btn's 500
+  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px (larger)
+  border-radius: $border-radius-pill;                // pill shape
+  text-decoration: none;                             // safety for <a> usage
 }
 
-// Secondary CTA (outline / ghost)
+// Secondary CTA (outline / ghost) — extends .va-btn--secondary + hero-specific deltas
 .va-hero__btn--secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: $va-grid-unit;
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: $va-near-black;
-  background-color: transparent;
-  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4);
-  border-radius: $border-radius-pill;
-  border: 1.5px solid $va-border-color;
-  cursor: pointer;
-  transition: border-color 0.2s ease-in-out,
-              background-color 0.2s ease-in-out,
-              transform 0.2s ease-in-out;
+  @extend .va-btn;
+  @extend .va-btn--secondary;
 
-  &:hover,
-  &:focus-visible {
-    border-color: $va-near-black;
-    background-color: $va-light-grey;
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    background-color: va-darken($va-light-grey, 4%);
-    transform: translateY(0);
-  }
+  // --- Hero-specific deltas only ---
+  font-weight: $font-weight-semibold;               // 600 vs va-btn's 500
+  padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px (larger)
+  border-radius: $border-radius-pill;                // pill shape
+  text-decoration: none;                             // safety for <a> usage
 }
 
 // ---------------------------------------------------------------------------

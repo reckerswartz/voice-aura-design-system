@@ -5,6 +5,29 @@
 // right-aligned auth actions.  Collapses to a hamburger on mobile.
 // Height: 72px on desktop.
 //
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ The navbar is a fully custom VA component — Bootstrap's `.navbar`   │
+// │ is NOT extended.  Shared properties (border-color, border-radius,   │
+// │ font-family, font-weight) reference Bootstrap Sass variables to     │
+// │ stay in sync with the design system.                                │
+// │                                                                      │
+// │ Navbar action buttons extend Bootstrap classes for base styling:    │
+// │   .va-navbar-btn--ghost    ≈ .btn .btn-link (dark text, no border) │
+// │   .va-navbar-btn--outlined ≈ .btn .btn-outline-secondary .rounded-pill │
+// │   .va-navbar-btn--filled   ≈ .btn .btn-dark .rounded-pill          │
+// │                                                                      │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-navbar              — custom flex layout (72px height)        │
+// │   .va-navbar--scrolled    — frosted glass backdrop-filter effect    │
+// │   .va-navbar-brand        — logo + text link                       │
+// │   .va-navbar-nav          — centred link list                      │
+// │   .va-navbar-link         — link with underline-on-hover           │
+// │   .va-navbar-toggle       — hamburger → ✕ morph                    │
+// │   .va-navbar-collapse     — mobile collapsible panel               │
+// └──────────────────────────────────────────────────────────────────────┘
+//
 // Depends on: $va-navbar-height, $va-near-black, $va-primary-blue,
 //   $va-body-text, $va-light-grey, $va-border-color, $va-muted-text,
 //   $va-font-heading, $va-font-body, $va-grid-unit, $va-radius,
@@ -201,59 +224,32 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   flex-shrink: 0;
 }
 
-// Ghost "Log in" button
+// Ghost "Log in" button — extends .va-btn--ghost + navbar-specific deltas
 .va-navbar-btn--ghost {
-  @extend .btn;
-  @extend .btn-link;
+  @extend .va-btn;
+  @extend .va-btn--ghost;
 
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-medium;
-  color: $va-near-black;
-  background: transparent;
-  border: none;
-  padding: $va-grid-unit ($va-grid-unit * 2);      // 8px 16px
-  border-radius: $border-radius;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out,
-              background-color 0.2s ease-in-out;
-
-  &:hover,
-  &:focus-visible {
-    background-color: $va-light-grey;
-    color: $va-near-black;
-  }
+  // --- Navbar-specific deltas only ---
+  padding: $va-grid-unit ($va-grid-unit * 2);      // 8px 16px (smaller)
+  border-radius: $border-radius;                    // standard, not pill
 }
 
-// Outlined "Log in" button — pill with visible border + arrow icon
+// Outlined "Log in →" button — extends .va-btn--secondary + navbar-specific deltas
 // Matches the reference design where "Log in →" is an outlined pill.
 .va-navbar-btn--outlined {
-  @extend .btn;
-  @extend .btn-outline-secondary;
-  @extend .rounded-pill;
+  @extend .va-btn;
+  @extend .va-btn--secondary;
 
-  display: inline-flex;
-  align-items: center;
-  gap: $va-grid-unit * 0.75;
-  font-family: $font-family-base;
-  font-size: $_font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $va-near-black;
-  background: transparent;
-  border: $border-width solid $va-border-color;
+  // --- Navbar-specific deltas only ---
+  gap: $va-grid-unit * 0.75;                        // tighter icon gap
+  font-size: $_font-size-sm;                        // 14px (smaller)
   padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
-  border-radius: $va-radius-pill;
-  cursor: pointer;
+  border-radius: $va-radius-pill;                   // pill shape
   text-decoration: none;
-  transition: border-color 0.2s ease-in-out,
-              background-color 0.2s ease-in-out;
 
   &:hover,
   &:focus-visible {
-    border-color: $va-near-black;
-    background-color: $va-light-grey;
     text-decoration: none;
-    color: $va-near-black;
   }
 
   svg {
@@ -263,38 +259,21 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   }
 }
 
-// Filled "Sign up" button
+// Filled "Sign up →" button — extends .va-btn--primary + navbar-specific deltas
 .va-navbar-btn--filled {
-  @extend .btn;
-  @extend .btn-dark;
-  @extend .rounded-pill;
+  @extend .va-btn;
+  @extend .va-btn--primary;
 
-  display: inline-flex;
-  align-items: center;
-  gap: $va-grid-unit * 0.75;
-  font-family: $font-family-base;
-  font-size: $_font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $va-white;
-  background-color: $va-near-black;
-  border: none;
+  // --- Navbar-specific deltas only ---
+  gap: $va-grid-unit * 0.75;                        // tighter icon gap
+  font-size: $_font-size-sm;                        // 14px (smaller)
   padding: ($va-grid-unit * 0.875) ($va-grid-unit * 2.5); // ~7px 20px
-  border-radius: $va-radius-pill;
-  cursor: pointer;
+  border-radius: $va-radius-pill;                   // pill shape
   text-decoration: none;
-  transition: background-color 0.2s ease-in-out,
-              transform 0.2s ease-in-out;
 
   &:hover,
   &:focus-visible {
-    background-color: va-lighten($va-near-black, 12%);
-    transform: translateY(-1px);
-    color: $va-white;
     text-decoration: none;
-  }
-
-  &:active {
-    transform: translateY(0);
   }
 
   svg {
