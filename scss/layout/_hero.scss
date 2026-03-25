@@ -383,17 +383,17 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   left: 50%;
   transform: translateX(-50%);
   width: 110%;
-  height: 50%;
+  height: 55%;
   pointer-events: none;
   z-index: $va-z-base;
   background-image: radial-gradient(
     circle,
-    rgba($va-near-black, $va-halftone-pattern-opacity) 1px,
+    rgba($va-near-black, $va-halftone-pattern-opacity * 1.5) 1px,
     transparent 1px
   );
   background-size: ($va-grid-unit * 2) ($va-grid-unit * 2); // 16px grid
-  mask-image: linear-gradient(to top, rgba($va-near-black, 0.25), transparent 80%);
-  -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 0.25), transparent 80%);
+  mask-image: linear-gradient(to top, rgba($va-near-black, 0.35) 0%, rgba($va-near-black, 0.12) 50%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 0.35) 0%, rgba($va-near-black, 0.12) 50%, transparent 85%);
 }
 
 // ---------------------------------------------------------------------------

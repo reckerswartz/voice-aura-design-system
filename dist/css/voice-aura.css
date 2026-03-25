@@ -13453,35 +13453,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 92px;
+  height: 65px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 51px;
+  height: 73px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 44px;
+  height: 31px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 82px;
+  height: 87px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 70px;
+  height: 31px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 29px;
+  height: 17px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 95px;
+  height: 49px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 36px;
+  height: 38px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -13501,13 +13501,13 @@ pre code {
   left: 50%;
   transform: translateX(-50%);
   width: 110%;
-  height: 50%;
+  height: 55%;
   pointer-events: none;
   z-index: 0;
-  background-image: radial-gradient(circle, rgba(26, 25, 25, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(26, 25, 25, 0.09) 1px, transparent 1px);
   background-size: 1rem 1rem;
-  mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.25), transparent 80%);
-  -webkit-mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.25), transparent 80%);
+  mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.35) 0%, rgba(26, 25, 25, 0.12) 50%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.35) 0%, rgba(26, 25, 25, 0.12) 50%, transparent 85%);
 }
 
 .va-hero__float {
@@ -16619,8 +16619,8 @@ pre code {
 }
 .va-pattern-halftone--bottom::before {
   background-position: center bottom;
-  mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.6) 0%, transparent 70%);
-  -webkit-mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.6) 0%, transparent 70%);
+  mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.85) 0%, rgba(26, 25, 25, 0.4) 40%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to top, rgba(26, 25, 25, 0.85) 0%, rgba(26, 25, 25, 0.4) 40%, transparent 75%);
 }
 .va-pattern-halftone--center::before {
   background-position: center center;
@@ -16638,10 +16638,10 @@ pre code {
   -webkit-mask-image: linear-gradient(to left, rgba(26, 25, 25, 0.6) 0%, transparent 60%);
 }
 .va-pattern-halftone--dense::before {
-  background-size: 200% auto;
-  background-position: center 80%;
-  mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.9) 35%, transparent 70%);
-  -webkit-mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.9) 35%, transparent 70%);
+  background-size: 150% auto;
+  background-position: center 85%;
+  mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.95) 30%, rgba(26, 25, 25, 0.5) 55%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.95) 30%, rgba(26, 25, 25, 0.5) 55%, transparent 75%);
 }
 .va-pattern-halftone--light::before {
   opacity: 0.4;
