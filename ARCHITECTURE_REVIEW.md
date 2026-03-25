@@ -292,7 +292,7 @@ solution.
 | Form inputs missing `id` attributes (labels can't associate) | `reference.html` lines 378-398 | Screen readers can't announce input purpose |
 | Decorative SVG patterns missing `aria-hidden="true"` | `backgrounds-reference.html` | Screen readers read decorative content |
 | `va-scroll.js` does not check `prefers-reduced-motion` | `js/va-scroll.js` | Scroll animations play even when user requests reduced motion |
-| `index.html` missing `<header>`, `<main>`, `<footer>` landmarks | `docs/index.html` | Poor screen-reader navigation |
+| `index.html` missing `<header>`, `<main>`, `<footer>` landmarks | `site/index.html` | Poor screen-reader navigation |
 | Muted text `#9CA3AF` on white has ~3.0:1 contrast (fails WCAG AA) | `_variables.scss` | Inaccessible to low-vision users |
 | No `:focus-visible` on auth form inputs | `_auth.scss` | Keyboard users can't see focus state |
 | Skip-link class exists but not used in most HTML files | All docs pages | Screen-reader users can't skip to main content |
@@ -301,7 +301,7 @@ solution.
 
 #### H-8. Reference page — 291 inline `style=` attributes
 
-**File:** `docs/reference.html`
+**File:** `site/components.html`
 
 The reference page uses 291 inline `style=` attributes for layout
 (flex containers, grid gaps, padding, max-widths, color swatches, etc.).

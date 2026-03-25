@@ -511,10 +511,10 @@ The design system includes a GitHub Actions workflow that automatically builds t
 | Page | URL Path | Description |
 |------|----------|-------------|
 | Landing page | `/` | Overview with links to all pages |
-| Component Reference | `/docs/reference.html` | Live preview of all design tokens and components |
-| Asset Showcase | `/docs/assets.html` | Visual gallery of all 68 SVG assets |
+| Component Reference | `/site/components.html` | Live preview of all design tokens and components |
+| Asset Showcase | `/site/asset-gallery.html` | Visual gallery of all 68 SVG assets |
 
-The CI pipeline runs `npm run build` to compile SCSS, then assembles the site from `docs/`, `dist/css/`, and `assets/`.
+The CI pipeline runs `npm run build` to compile SCSS, then assembles the site from `site/`, `dist/css/`, and `assets/`.
 
 ### Enabling GitHub Pages
 
@@ -541,14 +541,14 @@ The workflow:
 1. Checks out the code
 2. Installs Node.js 20 + npm dependencies
 3. Runs `npm run build` (compiles SCSS to CSS)
-4. Assembles `_site/` with `docs/`, `dist/css/`, and `assets/`
+4. Assembles `_site/` with `site/`, `dist/css/`, and `assets/`
 5. Deploys to GitHub Pages via `actions/deploy-pages@v4`
 
 Triggers: push to `main`, or manual dispatch from the Actions tab.
 
 ### Customizing the Landing Page
 
-Edit `docs/index.html` to update the landing page. Replace `USER` in the GitHub links with your actual username or organization name.
+Edit `site/index.html` to update the landing page. Replace `USER` in the GitHub links with your actual username or organization name.
 
 ---
 
@@ -562,9 +562,9 @@ All agent-related files in this project:
 | `.devin/config.json` | Permission pre-approvals | Devin for Terminal |
 | `.devin/skills/voice-aura-design-system/SKILL.md` | Interactive skill with 5 commands | Devin for Terminal |
 | `.github/workflows/deploy-pages.yml` | CI/CD: build CSS + deploy to GitHub Pages | GitHub Actions |
-| `docs/index.html` | Landing page for GitHub Pages site | GitHub Pages |
-| `docs/reference.html` | Component reference (live preview) | GitHub Pages |
-| `docs/assets.html` | Asset showcase (visual gallery) | GitHub Pages |
+| `site/index.html` | Landing page for GitHub Pages site | GitHub Pages |
+| `site/components.html` | Component reference (live preview) | GitHub Pages |
+| `site/asset-gallery.html` | Asset showcase (visual gallery) | GitHub Pages |
 | `.windsurf/skills/voice-aura-design-system/SKILL.md` | Same skill for Windsurf | Windsurf (copy from .devin/) |
 | `.windsurf/rules/voice-aura.md` | Always-on rules | Windsurf |
 | `.cursor/rules/voice-aura.md` | Glob-activated rules | Cursor |

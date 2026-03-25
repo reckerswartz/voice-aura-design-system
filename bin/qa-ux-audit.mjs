@@ -3,11 +3,11 @@ import fs from 'fs';
 import path from 'path';
 
 const root='/home/pkumar/voice-aura-design-system';
-const docs=path.join(root,'docs');
+const docs=path.join(root,'site');
 const outDir=path.join(root,'audit-screenshots','ux-audit-2026-03-24');
 fs.mkdirSync(outDir,{recursive:true});
 
-const pages=['sample.html','pixel-perfect.html','reference.html','backgrounds-reference.html'];
+const pages=['app-demo.html','pixel-perfect-demo.html','components.html','backgrounds.html'];
 const viewports=[
   {name:'desktop', width:1440, height:2200},
   {name:'tablet', width:768, height:1400},

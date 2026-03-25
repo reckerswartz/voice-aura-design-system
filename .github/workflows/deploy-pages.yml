@@ -35,16 +35,16 @@ jobs:
 
       - name: Assemble site
         run: |
-          mkdir -p _site/docs _site/dist/css _site/assets
+          mkdir -p _site/site _site/dist/css _site/assets
           # Copy HTML pages
-          cp docs/*.html _site/docs/
+          cp site/*.html _site/site/
           # Copy built CSS
           cp dist/css/voice-aura.css _site/dist/css/
           cp dist/css/voice-aura.min.css _site/dist/css/
           # Copy all SVG assets (preserving directory structure)
           cp -r assets/* _site/assets/
           # Copy the landing page to site root
-          cp docs/index.html _site/index.html
+          cp site/index.html _site/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -4,13 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs/**'
+      - 'site/**'
       - 'scss/**'
       - 'assets/**'
       - 'dist/**'
   pull_request:
     paths:
-      - 'docs/**'
+      - 'site/**'
       - 'scss/**'
       - 'assets/**'
       - 'dist/**'
@@ -63,8 +63,8 @@ jobs:
       - name: Build CSS
         run: npm run build
 
-      - name: Copy built CSS to docs
-        run: cp dist/css/voice-aura.css docs/css/voice-aura.css
+      - name: Copy built CSS to site
+        run: cp dist/css/voice-aura.css site/css/voice-aura.css
 
       - name: Cache Playwright browsers
         id: playwright-cache

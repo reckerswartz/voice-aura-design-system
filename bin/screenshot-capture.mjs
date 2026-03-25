@@ -2,7 +2,7 @@
 /**
  * Voice Aura Design System — Multi-Breakpoint Screenshot Capture (Parallel)
  *
- * Visits every docs/*.html page and captures screenshots across all
+ * Visits every site/*.html page and captures screenshots across all
  * breakpoints (4K → XS), in desktop, tablet, and mobile device formats.
  *
  * Performance features:
@@ -40,7 +40,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
-const DOCS_DIR = path.join(ROOT, 'docs');
+const SITE_DIR = path.join(ROOT, 'site');
 
 /** Responsive breakpoints — 4K down to XS (Bootstrap-aligned + extras) */
 const BREAKPOINTS = {
@@ -233,7 +233,7 @@ async function capturePageScreenshots(page, outDir, slug) {
 async function processPage(context, file, outDir, captureDir, label) {
   const slug = slugify(file);
   const page = await context.newPage();
-  const url = 'file://' + path.join(DOCS_DIR, file);
+  const url = 'file://' + path.join(SITE_DIR, file);
 
   try {
     await page.goto(url, { waitUntil: 'load', timeout: 30000 });
@@ -286,7 +286,7 @@ async function main() {
   fs.mkdirSync(captureDir, { recursive: true });
 
   // Discover pages
-  let htmlFiles = fs.readdirSync(DOCS_DIR)
+  let htmlFiles = fs.readdirSync(SITE_DIR)
     .filter(f => f.endsWith('.html'))
     .sort();
   if (opts.pages) {

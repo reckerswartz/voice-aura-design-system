@@ -101,9 +101,9 @@ voice-aura-design-system/            <── ROOT (the guideline you are integra
 │
 ├── dist/css/                        # Pre-compiled CSS (voice-aura.css, voice-aura.min.css)
 │
-└── docs/
-    ├── reference.html               # Visual component reference
-    └── assets.html                  # Asset showcase page
+└── site/
+    ├── components.html              # Visual component reference
+    └── asset-gallery.html           # Asset showcase page
 ```
 
 **Guideline documents to read first:**
@@ -112,8 +112,8 @@ voice-aura-design-system/            <── ROOT (the guideline you are integra
 |----------|----------------|
 | `DESIGN_SYSTEM.md` | Colors, typography, spacing, border-radius, shadows, components, page patterns, breakpoints |
 | `ASSET_GUIDELINES.md` | Icons (Lucide), brand SVGs, patterns, fonts (IBM Plex), open-source sources, accessibility, licensing |
-| `docs/reference.html` | Open in a browser to see every component rendered |
-| `docs/assets.html` | Open in a browser to see all icons, patterns, and mockups |
+| `site/components.html` | Open in a browser to see every component rendered |
+| `site/asset-gallery.html` | Open in a browser to see all icons, patterns, and mockups |
 
 ---
 
@@ -1279,7 +1279,7 @@ css: yarn build:css:dev
 | Pre-built CSS | `vendor/voice-aura-design-system/dist/css/voice-aura.css` |
 | Lucide icons | `vendor/voice-aura-design-system/assets/icons/lucide/` |
 | Brand SVGs | `vendor/voice-aura-design-system/assets/brand/` |
-| Visual reference | `vendor/voice-aura-design-system/docs/reference.html` |
+| Visual reference | `vendor/voice-aura-design-system/site/components.html` |
 
 ### CSS Class Prefix
 

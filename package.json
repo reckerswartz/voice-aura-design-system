@@ -7,7 +7,7 @@
     "voice-aura-setup": "bin/setup.js"
   },
   "directories": {
-    "doc": "docs"
+    "doc": "site"
   },
   "scripts": {
     "build:css": "sass scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",

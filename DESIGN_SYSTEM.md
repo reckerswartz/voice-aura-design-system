@@ -505,7 +505,7 @@ $va-font-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Code', monospace;
 
 ## Icons & Visual Assets
 
-The design system includes a curated set of icons, brand assets, decorative patterns, and illustration mockups. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for the full reference, and **[docs/assets.html](./docs/assets.html)** for a visual showcase.
+The design system includes a curated set of icons, brand assets, decorative patterns, and illustration mockups. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for the full reference, and **[site/asset-gallery.html](./site/asset-gallery.html)** for a visual showcase.
 
 ### Icon Library: Lucide
 
@@ -606,9 +606,9 @@ voice-aura-design-system/
 ├── dist/
 │   └── css/
 │       └── voice-aura.css       # Compiled CSS
-├── docs/
-│   ├── reference.html           # Component visual reference
-│   └── assets.html              # Asset showcase page
+├── site/
+│   ├── components.html          # Component visual reference
+│   └── asset-gallery.html       # Asset showcase page
 ├── package.json
 ├── DESIGN_SYSTEM.md             # Design system specification
 └── ASSET_GUIDELINES.md          # Asset & resource guidelines
@@ -721,8 +721,8 @@ gh repo create voice-aura-design-system --public --source=. --push
 A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically builds the CSS and deploys a static demo site on every push to `main`:
 
 - **Landing page** — `https://reckerswartz.github.io/voice-aura-design-system/`
-- **Component Reference** — `/docs/reference.html`
-- **Asset Showcase** — `/docs/assets.html`
+- **Component Reference** — `/site/components.html`
+- **Asset Showcase** — `/site/asset-gallery.html`
 
 To enable: go to **Settings > Pages > Source > GitHub Actions**, then push to `main`.
 

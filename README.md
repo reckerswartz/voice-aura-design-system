@@ -2,7 +2,7 @@
 
 A premium SaaS design system built on **Bootstrap 5** and **Dart Sass**, extracted from the Voice Aura AI Voice Generator & Text-to-Speech platform design.
 
-**[Live Demo](https://reckerswartz.github.io/voice-aura-design-system/)** | **[Component Reference](https://reckerswartz.github.io/voice-aura-design-system/docs/reference.html)** | **[Asset Showcase](https://reckerswartz.github.io/voice-aura-design-system/docs/assets.html)**
+**[Live Demo](https://reckerswartz.github.io/voice-aura-design-system/)** | **[Component Reference](https://reckerswartz.github.io/voice-aura-design-system/site/components.html)** | **[Asset Showcase](https://reckerswartz.github.io/voice-aura-design-system/site/asset-gallery.html)**
 
 ---
 
@@ -91,10 +91,10 @@ voice-aura-design-system/
 │   ├── icons/              # Custom feature icons (5)
 │   ├── patterns/           # Decorative SVG patterns (4)
 │   └── illustrations/      # Hero & mockup illustrations (2)
-├── docs/
+├── site/
 │   ├── index.html          # Landing page (GitHub Pages)
-│   ├── reference.html      # Live component reference
-│   └── assets.html         # Visual asset gallery
+│   ├── components.html     # Live component reference
+│   └── asset-gallery.html  # Visual asset gallery
 ├── examples/
 │   ├── rails_application.scss  # Drop-in Rails SCSS entry point
 │   └── icon_helper.rb         # Ruby helper for inline SVG rendering
@@ -154,8 +154,8 @@ See [`SKILLS.md`](./SKILLS.md) for Windsurf, Cursor, and generic agent setup ins
 The live demo site is deployed automatically via GitHub Actions on every push to `main`:
 
 - **Landing page:** [reckerswartz.github.io/voice-aura-design-system](https://reckerswartz.github.io/voice-aura-design-system/)
-- **Component Reference:** [/docs/reference.html](https://reckerswartz.github.io/voice-aura-design-system/docs/reference.html)
-- **Asset Showcase:** [/docs/assets.html](https://reckerswartz.github.io/voice-aura-design-system/docs/assets.html)
+- **Component Reference:** [/site/components.html](https://reckerswartz.github.io/voice-aura-design-system/site/components.html)
+- **Asset Showcase:** [/site/asset-gallery.html](https://reckerswartz.github.io/voice-aura-design-system/site/asset-gallery.html)
 
 ## Documentation
 
