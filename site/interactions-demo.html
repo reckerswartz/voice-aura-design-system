@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Interactions &amp; Transitions Reference</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
+  <link rel="stylesheet" href="css/voice-aura.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Page-specific overrides */
+    body { overflow-x: visible !important; }
+    .demo-section { padding: 5rem 0; border-bottom: 1px solid #E5E7EB; }
+    .demo-section:last-of-type { border-bottom: none; }
+    .demo-label {
+      display: inline-block;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0478FF;
+      background: rgba(4,120,255,0.08);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100vw;
+      margin-bottom: 0.75rem;
+    }
+    .demo-title {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1A1919;
+      margin: 0 0 0.5rem;
+    }
+    .demo-desc {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: #4B5563;
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 0 2.5rem;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+    .demo-card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 0.75rem;
+      padding: 2rem;
+    }
+    .demo-card h4 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1A1919;
+      margin: 0 0 1.25rem;
+      letter-spacing: 0.02em;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .demo-row:last-child { margin-bottom: 0; }
+    .code-hint {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: #9CA3AF;
+      margin-top: 0.5rem;
+    }
+    /* Scroll-to-top indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #0478FF;
+      z-index: 10000;
+      transition: width 0.1s linear;
+      width: 0;
+    }
+    /* Transition state indicator dots */
+    .state-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E5E7EB;
+      transition: background-color 0.3s ease;
+    }
+    .state-dot.is-active { background: #0478FF; }
+    /* Interactive demo panels */
+    .interactive-panel {
+      background: #F7F7F8;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .interactive-panel--dark {
+      background: #1A1919;
+      color: #fff;
+    }
+    /* Form demo */
+    .form-demo-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-demo-group:last-child { margin-bottom: 0; }
+    /* Tab demo wrapper */
+    .tab-demo-content {
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      min-height: 80px;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .tab-demo-content p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.875rem;
+      color: #4B5563;
+      margin: 0;
+    }
+    /* Navbar demo section */
+    .navbar-demo-frame {
+      border: 1px solid #E5E7EB;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #fff;
+    }
+    .navbar-demo-frame .va-navbar {
+      position: relative;
+    }
+    /* Reveal demo grid */
+    .reveal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .reveal-card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .reveal-card .reveal-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      background: #F7F7F8;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .reveal-card h5 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #1A1919;
+      margin: 0 0 0.5rem;
+    }
+    .reveal-card p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.8125rem;
+      color: #4B5563;
+      margin: 0;
+      line-height: 1.5;
+    }
+    /* Background pattern demo tiles */
+    .pattern-tile {
+      height: 200px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+    .pattern-tile span {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #4B5563;
+      background: rgba(255,255,255,0.9);
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.25rem;
+      z-index: 2;
+    }
+    .pattern-tile--dark span {
+      color: #E9E9EA;
+      background: rgba(26,25,25,0.8);
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Skip to main -->
+  <a href="#main" class="va-skip-link">Skip to main content</a>
+
+  <!-- ================================================================== -->
+  <!-- NAVBAR — with live scroll transition demo                          -->
+  <!-- ================================================================== -->
+  <header class="va-navbar va-navbar--fixed va-navbar--sticky" id="mainNav">
+    <a href="interactions-demo.html" class="va-navbar-brand" aria-label="Voice Aura Home">
+      <span class="va-navbar-brand__logo">
+        <img src="../assets/brand/logo-icon.svg" alt="" width="32" height="32">
+      </span>
+      <span class="va-navbar-brand__text">VOICE AURA</span>
+    </a>
+    <div class="va-navbar-collapse" id="navCollapse">
+      <nav class="va-navbar-nav" aria-label="Main Navigation">
+        <a href="#buttons" class="va-navbar-link">Buttons</a>
+        <a href="#cards" class="va-navbar-link">Cards</a>
+        <a href="#tabs" class="va-navbar-link">Tabs</a>
+        <a href="#forms" class="va-navbar-link">Forms</a>
+        <a href="#reveal" class="va-navbar-link">Reveal</a>
+        <a href="#patterns" class="va-navbar-link va-navbar-link--active">Patterns</a>
+      </nav>
+      <div class="va-navbar-actions">
+        <a href="login-demo.html" class="va-navbar-btn--outlined">
+          Log in
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="signup-demo.html" class="va-navbar-btn--filled">
+          Sign up
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <button class="va-navbar-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="va-navbar-toggle__line"></span>
+      <span class="va-navbar-toggle__line"></span>
+      <span class="va-navbar-toggle__line"></span>
+    </button>
+  </header>
+
+  <main id="main" style="padding-top: 72px;">
+
+    <!-- ================================================================== -->
+    <!-- HERO — entrance animations                                         -->
+    <!-- ================================================================== -->
+    <section class="demo-section va-pattern-halftone va-pattern-halftone--bottom" style="padding: 6rem 2rem 5rem; text-align: center;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <div class="va-animate-fade-down" style="margin-bottom: 1.5rem;">
+          <span class="demo-label">Interactions &amp; Transitions Reference</span>
+        </div>
+        <h1 class="va-animate-fade-up" style="font-family: 'IBM Plex Serif', serif; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; color: #1A1919; line-height: 1.15; margin: 0 0 1.25rem;">
+          Every transition, hover state,<br>and animation — in one place
+        </h1>
+        <p class="va-animate-fade-up va-animate--delay-1" style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1.0625rem; color: #4B5563; line-height: 1.65; max-width: 540px; margin: 0 auto 2rem;">
+          A pixel-perfect reference page for the Voice Aura design system. Scroll down to see every interaction pattern refined against the Behance reference images.
+        </p>
+        <div class="va-animate-fade-up va-animate--delay-2 demo-row" style="justify-content: center;">
+          <button class="va-btn va-btn--primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+            Open Studio
+          </button>
+          <button class="va-btn va-btn--secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            API Docs
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 1. BUTTONS — all variants with live hover states                   -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="buttons" style="padding-left: 2rem; padding-right: 2rem;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">01</span>
+        <h2 class="demo-title">Button Transitions</h2>
+        <p class="demo-desc">
+          All button variants now feature refined hover depth (translateY + shadow on primary/accent), smooth color transitions, and active press states. Hover each button to see the interaction.
+        </p>
+
+        <div class="demo-grid">
+          <!-- Primary -->
+          <div class="demo-card">
+            <h4>Primary (Dark Filled)</h4>
+            <div class="demo-row">
+              <button class="va-btn va-btn--primary">Open Studio</button>
+              <button class="va-btn va-btn--primary va-btn--sm">Small</button>
+            </div>
+            <div class="demo-row">
+              <button class="va-btn va-btn--primary va-btn--lg">Large Primary</button>
+            </div>
+            <div class="demo-row">
+              <button class="va-btn va-btn--primary" disabled>Disabled</button>
+            </div>
+            <p class="code-hint">.va-btn--primary → translateY(-1px) + shadow on hover</p>
+          </div>
+
+          <!-- Accent -->
+          <div class="demo-card">
+            <h4>Accent (Blue Filled)</h4>
+            <div class="demo-row">
+              <button class="va-btn va-btn--accent">Get API Key</button>
+              <button class="va-btn va-btn--accent va-btn--sm">Small</button>
+            </div>
+            <div class="demo-row">
+              <button class="va-btn va-btn--accent va-btn--pill">Pill Shape</button>
+            </div>
+            <div class="demo-row">
+              <button class="va-btn va-btn--accent" disabled>Disabled</button>
+            </div>
+            <p class="code-hint">.va-btn--accent → translateY(-1px) + shadow on hover</p>
+          </div>
+
+          <!-- Secondary -->
+          <div class="demo-card">
+            <h4>Secondary (Outlined)</h4>
+            <div class="demo-row">
+              <button class="va-btn va-btn--secondary">API Docs</button>
+              <button class="va-btn va-btn--secondary va-btn--sm">Small</button>
+            </div>
+            <div class="demo-row">
+              <button class="va-btn va-btn--secondary va-btn--pill">Outlined Pill</button>
+            </div>
+            <p class="code-hint">.va-btn--secondary → subtle bg + border darken on hover</p>
+          </div>
+
+          <!-- Ghost + Link -->
+          <div class="demo-card">
+            <h4>Ghost &amp; Link Variants</h4>
+            <div class="demo-row">
+              <button class="va-btn va-btn--ghost">Log in</button>
+              <button class="va-btn va-btn--link">Learn more <span class="va-btn__arrow">→</span></button>
+            </div>
+            <div class="demo-row">
+              <a href="#" class="va-link--arrow">Standalone arrow link</a>
+            </div>
+            <p class="code-hint">.va-btn__arrow → translateX(3px) on hover</p>
+          </div>
+
+          <!-- Navbar Buttons -->
+          <div class="demo-card">
+            <h4>Navbar Button Pair</h4>
+            <div class="demo-row">
+              <a href="#" class="va-navbar-btn--outlined">
+                Log in
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="va-navbar-btn--filled">
+                Sign up
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+            <p class="code-hint">.va-navbar-btn--filled → translateY(-1px) on hover</p>
+          </div>
+
+          <!-- Button Group -->
+          <div class="demo-card">
+            <h4>Button Group</h4>
+            <div class="demo-row">
+              <div class="va-btn-group">
+                <button class="va-btn va-btn--secondary is-active">Monthly</button>
+                <button class="va-btn va-btn--primary">Annual</button>
+              </div>
+            </div>
+            <p class="code-hint">.va-btn-group → collapsed borders, z-index on active</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 2. CARDS — hover lift, blog cards, pricing card                    -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="cards" style="padding-left: 2rem; padding-right: 2rem; background: #F7F7F8;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">02</span>
+        <h2 class="demo-title">Card Interactions</h2>
+        <p class="demo-desc">
+          Cards feature hover lift, image zoom, and read-more arrow animation. The pricing card includes crosshair corner decorations and a featured card scale effect.
+        </p>
+
+        <h4 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9CA3AF; margin: 0 0 1.25rem;">Blog Cards — hover to see transitions</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+          <article class="va-blog-card va-reveal va-reveal--up va-reveal--delay-1">
+            <div class="va-blog-card__image">
+              <img src="../assets/images/blog-voice-agents.svg" alt="Voice agent microphone setup">
+            </div>
+            <div class="va-blog-card__content">
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category">VOICE AGENTS</span>
+                <span>2024-12-08</span>
+                <span>3 min</span>
+              </div>
+              <h3 class="va-blog-card__title">Why Voice Agent Prompts Require a Different Approach</h3>
+              <p class="va-blog-card__excerpt">Scripting voice agents requires a different mindset than crafting prompts for text-based LLMs.</p>
+              <a class="va-blog-card__link" href="#">Read more</a>
+            </div>
+          </article>
+
+          <article class="va-blog-card va-reveal va-reveal--up va-reveal--delay-2">
+            <div class="va-blog-card__image">
+              <img src="../assets/images/blog-video-translation.svg" alt="Video translation interface">
+            </div>
+            <div class="va-blog-card__content">
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category va-blog-card__category--product">PRODUCT</span>
+                <span>2024-01-08</span>
+                <span>3 min</span>
+              </div>
+              <h3 class="va-blog-card__title">Twitter Video Translation Guide: Translate Videos Quickly</h3>
+              <p class="va-blog-card__excerpt">Designing for voice means prioritizing human-like dialogue and real-time responsiveness.</p>
+              <a class="va-blog-card__link" href="#">Read more</a>
+            </div>
+          </article>
+
+          <article class="va-blog-card va-reveal va-reveal--up va-reveal--delay-3">
+            <div class="va-blog-card__image">
+              <img src="../assets/images/blog-voice-design.svg" alt="AI voice technology">
+            </div>
+            <div class="va-blog-card__content">
+              <div class="va-blog-card__meta">
+                <span class="va-blog-card__category va-blog-card__category--tutorial">TUTORIAL</span>
+                <span>2024-02-15</span>
+                <span>5 min</span>
+              </div>
+              <h3 class="va-blog-card__title">Designing for Voice: Prompting Text-Based LLMs</h3>
+              <p class="va-blog-card__excerpt">Learn how to quickly translate videos using simple tools and AI-powered workflows.</p>
+              <a class="va-blog-card__link" href="#">Read more</a>
+            </div>
+          </article>
+        </div>
+
+        <h4 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9CA3AF; margin: 0 0 1.25rem;">Hover Lift Utilities</h4>
+        <div class="demo-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="demo-card va-hover-lift" style="text-align: center;">
+            <p style="font-size: 0.875rem; color: #4B5563; margin: 0;">.va-hover-lift<br><span style="font-size: 0.75rem; color: #9CA3AF;">translateY(-4px) + shadow-lg</span></p>
+          </div>
+          <div class="demo-card va-hover-scale" style="text-align: center;">
+            <p style="font-size: 0.875rem; color: #4B5563; margin: 0;">.va-hover-scale<br><span style="font-size: 0.75rem; color: #9CA3AF;">scale(1.03)</span></p>
+          </div>
+          <div class="demo-card va-hover-glow" style="text-align: center;">
+            <p style="font-size: 0.875rem; color: #4B5563; margin: 0;">.va-hover-glow<br><span style="font-size: 0.75rem; color: #9CA3AF;">blue ring glow</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 3. TABS — pricing tabs with smooth transitions                     -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="tabs" style="padding-left: 2rem; padding-right: 2rem;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">03</span>
+        <h2 class="demo-title">Tab Transitions</h2>
+        <p class="demo-desc">
+          Pill-style tab switching with dark active indicator and smooth color transitions. Matches the pricing section tabs from the Behance reference (Studio / DUB / API).
+        </p>
+
+        <div class="demo-grid">
+          <!-- Pricing Tabs Demo -->
+          <div class="demo-card">
+            <h4>Pricing Tabs (Dark Active)</h4>
+            <div style="text-align: center; margin-bottom: 1rem;">
+              <div class="va-pricing__tabs" id="pricingTabs">
+                <button class="va-pricing__tab va-pricing__tab--active" data-tab="studio">Studio</button>
+                <button class="va-pricing__tab" data-tab="dub">DUB</button>
+                <button class="va-pricing__tab" data-tab="api">API</button>
+              </div>
+            </div>
+            <div class="tab-demo-content" id="tabContent">
+              <p id="tabText">Studio plan: Full TTS voice generation suite with customizable voices and real-time preview.</p>
+            </div>
+            <p class="code-hint">.va-pricing__tab--active → dark bg + white text + shadow</p>
+          </div>
+
+          <!-- TTS Input Tabs Demo -->
+          <div class="demo-card">
+            <h4>TTS Input Tabs (Light Active)</h4>
+            <div class="va-input-card" style="border: 1px solid #E5E7EB; border-radius: 0.75rem; overflow: hidden;">
+              <div role="tablist" style="display: flex; border-bottom: 1px solid #E5E7EB;">
+                <button role="tab" class="va-input-card__tab va-input-card__tab--active" style="flex: 1; padding: 0.75rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 500; background: #fff; border: none; cursor: pointer; border-bottom: 2px solid #0478FF; color: #1A1919; transition: all 0.2s ease;">
+                  Text to Speech
+                </button>
+                <button role="tab" class="va-input-card__tab" style="flex: 1; padding: 0.75rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 400; background: #fff; border: none; cursor: pointer; border-bottom: 2px solid transparent; color: #9CA3AF; transition: all 0.2s ease;">
+                  Upload File
+                </button>
+              </div>
+              <div style="padding: 1rem;">
+                <p style="font-size: 0.8125rem; color: #9CA3AF; margin: 0;">Unlock the power of intelligent voice technology...</p>
+              </div>
+            </div>
+            <p class="code-hint">.va-input-card__tab--active → blue bottom border</p>
+          </div>
+
+          <!-- Category Pills Demo -->
+          <div class="demo-card">
+            <h4>Category Pills</h4>
+            <div class="demo-row">
+              <button class="va-category-pill va-category-pill--active" style="display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.875rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 500; background: #1A1919; color: #fff; border: 1px solid #1A1919; border-radius: 100vw; cursor: pointer; transition: all 0.2s ease;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                YouTube
+              </button>
+              <button style="display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.875rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 400; background: transparent; color: #4B5563; border: 1px solid #E5E7EB; border-radius: 100vw; cursor: pointer; transition: all 0.2s ease;">
+                Narration
+              </button>
+              <button style="display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.875rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 400; background: transparent; color: #4B5563; border: 1px solid #E5E7EB; border-radius: 100vw; cursor: pointer; transition: all 0.2s ease;">
+                Podcast
+              </button>
+            </div>
+            <p class="code-hint">.va-category-pill--active → dark bg + white text</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 4. FORMS — focus transitions                                       -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="forms" style="padding-left: 2rem; padding-right: 2rem; background: #F7F7F8;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">04</span>
+        <h2 class="demo-title">Form Focus Transitions</h2>
+        <p class="demo-desc">
+          Form inputs feature smooth border-color transitions on focus, matching the clean signup form from the Behance reference (behance-12). Click into each field to see the focus ring.
+        </p>
+
+        <div class="demo-grid" style="grid-template-columns: 1fr 1fr;">
+          <!-- Signup Form Recreation -->
+          <div class="demo-card" style="max-width: 420px;">
+            <h4>Signup Form (Reference: behance-12)</h4>
+            <form onsubmit="return false;" autocomplete="off">
+              <div class="va-form-group">
+                <label class="va-form-label">Email</label>
+                <input class="va-form-input" type="email" placeholder="Email Address" autocomplete="email">
+              </div>
+              <div class="va-form-group">
+                <label class="va-form-label">Password</label>
+                <input class="va-form-input" type="password" placeholder="Create a password" autocomplete="new-password">
+              </div>
+              <button class="va-btn va-btn--primary va-btn--block" style="margin-top: 0.5rem;">Sign up</button>
+              <div style="text-align: center; margin: 1rem 0; font-size: 0.8125rem; color: #9CA3AF;">or</div>
+              <button class="va-btn va-btn--secondary va-btn--block" style="margin-bottom: 0.75rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                Continue with Google
+              </button>
+              <button class="va-btn va-btn--secondary va-btn--block">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#00A4EF"><path d="M1 1h10v10H1V1zm12 0h10v10H13V1zM1 13h10v10H1V13zm12 0h10v10H13V13z"/></svg>
+                Continue with Microsoft
+              </button>
+            </form>
+          </div>
+
+          <!-- Form States -->
+          <div class="demo-card" style="max-width: 420px;">
+            <h4>Input States</h4>
+            <div class="form-demo-group">
+              <label class="va-form-label">Default</label>
+              <input class="va-form-input" type="text" placeholder="Click to see focus ring">
+            </div>
+            <div class="form-demo-group">
+              <label class="va-form-label va-form-label--required">Required Field</label>
+              <input class="va-form-input" type="text" placeholder="Required field" required>
+            </div>
+            <div class="form-demo-group">
+              <label class="va-form-label">Textarea</label>
+              <textarea class="va-form-textarea" rows="3" placeholder="Write your message here..." style="width: 100%; padding: 0.75rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9375rem; border: 1px solid #E5E7EB; border-radius: 0.5rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; resize: vertical;"></textarea>
+            </div>
+            <p class="code-hint">.va-form-input:focus → blue border + ring transition (0.2s)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 5. SCROLL REVEAL — IntersectionObserver-triggered animations       -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="reveal" style="padding-left: 2rem; padding-right: 2rem;">
+      <div style="max-width: 1120px; margin: 0 auto;">
+        <div class="va-reveal va-reveal--up">
+          <span class="demo-label">05</span>
+          <h2 class="demo-title">Scroll-Reveal Animations</h2>
+          <p class="demo-desc">
+            Elements below use <code>.va-reveal</code> with direction variants and stagger delays. They animate in as you scroll into view via IntersectionObserver. Respects <code>prefers-reduced-motion</code>.
+          </p>
+        </div>
+
+        <div class="reveal-grid">
+          <div class="reveal-card va-reveal va-reveal--up va-reveal--delay-1">
+            <div class="reveal-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+            </div>
+            <h5>Fade Up</h5>
+            <p>.va-reveal--up with 150ms delay</p>
+          </div>
+          <div class="reveal-card va-reveal va-reveal--up va-reveal--delay-2">
+            <div class="reveal-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h5>Fade Up</h5>
+            <p>.va-reveal--up with 300ms delay</p>
+          </div>
+          <div class="reveal-card va-reveal va-reveal--up va-reveal--delay-3">
+            <div class="reveal-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h5>Fade Up</h5>
+            <p>.va-reveal--up with 450ms delay</p>
+          </div>
+          <div class="reveal-card va-reveal va-reveal--up va-reveal--delay-4">
+            <div class="reveal-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0478FF" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <h5>Fade Up</h5>
+            <p>.va-reveal--up with 600ms delay</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+          <h4 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9CA3AF; margin: 0 0 1.25rem;">Direction Variants</h4>
+          <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="reveal-card va-reveal va-reveal--left">
+              <h5>← Left</h5>
+              <p>.va-reveal--left</p>
+            </div>
+            <div class="reveal-card va-reveal va-reveal--right">
+              <h5>→ Right</h5>
+              <p>.va-reveal--right</p>
+            </div>
+            <div class="reveal-card va-reveal va-reveal--down">
+              <h5>↓ Down</h5>
+              <p>.va-reveal--down</p>
+            </div>
+            <div class="reveal-card va-reveal va-reveal--scale">
+              <h5>Scale</h5>
+              <p>.va-reveal--scale</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 6. BACKGROUND PATTERNS — all pattern variants                      -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="patterns" style="padding-left: 2rem; padding-right: 2rem; background: #F7F7F8;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">06</span>
+        <h2 class="demo-title">Background Patterns &amp; Effects</h2>
+        <p class="demo-desc">
+          Decorative background patterns refined from the Behance reference. The halftone pattern uses a 720-circle SVG with graduated opacity for the dramatic dot-sweep effect.
+        </p>
+
+        <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="pattern-tile va-pattern-halftone va-pattern-halftone--bottom" style="background-color: #fff;">
+            <span>Halftone — Bottom</span>
+          </div>
+          <div class="pattern-tile va-pattern-halftone va-pattern-halftone--dense" style="background-color: #E9E9EA;">
+            <span>Halftone — Dense</span>
+          </div>
+          <div class="pattern-tile pattern-tile--dark va-pattern-halftone va-pattern-halftone--dark" style="background-color: #1A1919;">
+            <span>Halftone — Dark</span>
+          </div>
+          <div class="pattern-tile va-bg-dots" style="background-color: #fff;">
+            <span>Dot Grid (CSS)</span>
+          </div>
+          <div class="pattern-tile pattern-tile--dark va-bg-dark-grid" style="background-color: #1A1919;">
+            <span>Dark Grid Overlay</span>
+          </div>
+          <div class="pattern-tile va-bg-gradient-subtle" style="background-color: #fff;">
+            <span>Gradient Subtle</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 7. NAVBAR SCROLL — live demo of frosted glass transition           -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="navbar-scroll" style="padding-left: 2rem; padding-right: 2rem;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">07</span>
+        <h2 class="demo-title">Navbar Scroll Transition</h2>
+        <p class="demo-desc">
+          The fixed navbar at the top of this page transitions to a frosted glass effect on scroll: translucent background + backdrop-filter blur + shadow. Scroll up and down to see it in action.
+        </p>
+        <div class="demo-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="demo-card">
+            <h4>Default State</h4>
+            <p style="font-size: 0.8125rem; color: #4B5563; margin: 0 0 0.5rem;">White background, 1px bottom border, no shadow.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="state-dot is-active"></span>
+              <span style="font-size: 0.75rem; color: #4B5563;">background: #fff</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.375rem;">
+              <span class="state-dot is-active"></span>
+              <span style="font-size: 0.75rem; color: #4B5563;">border-bottom: 1px solid #E5E7EB</span>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h4>Scrolled State (.va-navbar--scrolled)</h4>
+            <p style="font-size: 0.8125rem; color: #4B5563; margin: 0 0 0.5rem;">Frosted glass with shadow, 0.2s transition.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="state-dot is-active"></span>
+              <span style="font-size: 0.75rem; color: #4B5563;">background: rgba(255,255,255,0.92)</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.375rem;">
+              <span class="state-dot is-active"></span>
+              <span style="font-size: 0.75rem; color: #4B5563;">backdrop-filter: blur(12px)</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.375rem;">
+              <span class="state-dot is-active"></span>
+              <span style="font-size: 0.75rem; color: #4B5563;">box-shadow: 0 1px 3px rgba(0,0,0,0.06)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- 8. TRANSITION TOKENS — quick reference                             -->
+    <!-- ================================================================== -->
+    <section class="demo-section" id="tokens" style="padding-left: 2rem; padding-right: 2rem; background: #F7F7F8;">
+      <div style="max-width: 1120px; margin: 0 auto;" class="va-reveal va-reveal--up">
+        <span class="demo-label">08</span>
+        <h2 class="demo-title">Transition Tokens Quick Reference</h2>
+        <p class="demo-desc">
+          All timing tokens used across the design system, from SCSS variables to CSS custom properties.
+        </p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid #1A1919;">
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600; color: #1A1919;">Token</th>
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600; color: #1A1919;">Value</th>
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600; color: #1A1919;">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">$va-transition-base</code></td>
+                <td style="padding: 0.625rem 0.75rem;">all 0.2s ease-in-out</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">Default for buttons, links, inputs</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">$va-transition-fast</code></td>
+                <td style="padding: 0.625rem 0.75rem;">all 0.1s ease-in-out</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">Micro-interactions, tooltips</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">$va-transition-slow</code></td>
+                <td style="padding: 0.625rem 0.75rem;">all 0.4s ease-in-out</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">Modals, overlays, page transitions</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">$va-transition-bounce</code></td>
+                <td style="padding: 0.625rem 0.75rem;">all 0.3s cubic-bezier(0.68,-0.55,0.27,1.55)</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">Playful bounces, badges</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">--va-transition-base</code></td>
+                <td style="padding: 0.625rem 0.75rem;">all 0.2s ease-in-out</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">CSS custom property (runtime)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.625rem 0.75rem;"><code style="color: #0478FF;">.va-reveal (0.6s)</code></td>
+                <td style="padding: 0.625rem 0.75rem;">opacity + transform 0.6s ease-out</td>
+                <td style="padding: 0.625rem 0.75rem; color: #4B5563;">Scroll-triggered entrance animations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================== -->
+  <!-- FOOTER                                                              -->
+  <!-- ================================================================== -->
+  <footer style="padding: 3rem 2rem; background: #1A1919; text-align: center;">
+    <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #9CA3AF; margin: 0;">
+      Voice Aura Design System — Interactions &amp; Transitions Reference
+    </p>
+    <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.75rem; color: #4B5563; margin: 0.5rem 0 0;">
+      &copy; 2026 Voice Aura. All Rights Reserved.
+    </p>
+  </footer>
+
+  <!-- ================================================================== -->
+  <!-- SCRIPTS                                                             -->
+  <!-- ================================================================== -->
+  <script>
+    // ---- Navbar scroll transition ----
+    const nav = document.getElementById('mainNav');
+    function updateNavScroll() {
+      if (window.scrollY > 20) {
+        nav.classList.add('va-navbar--scrolled');
+      } else {
+        nav.classList.remove('va-navbar--scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateNavScroll, { passive: true });
+    updateNavScroll();
+
+    // ---- Scroll progress bar ----
+    const progressBar = document.getElementById('scrollProgress');
+    function updateProgress() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = progress + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ---- Mobile toggle ----
+    const toggle = document.getElementById('navToggle');
+    const collapse = document.getElementById('navCollapse');
+    toggle.addEventListener('click', () => {
+      const open = toggle.classList.toggle('is-open');
+      collapse.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    // ---- Pricing tab switching ----
+    const tabTexts = {
+      studio: 'Studio plan: Full TTS voice generation suite with customizable voices and real-time preview.',
+      dub: 'DUB plan: AI-powered video dubbing with automatic lip-sync and 50+ language support.',
+      api: 'API plan: RESTful endpoints with < 200ms latency, streaming support, and webhook callbacks.'
+    };
+    document.getElementById('pricingTabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.va-pricing__tab');
+      if (!btn) return;
+      document.querySelectorAll('#pricingTabs .va-pricing__tab').forEach(t => t.classList.remove('va-pricing__tab--active'));
+      btn.classList.add('va-pricing__tab--active');
+      const content = document.getElementById('tabContent');
+      content.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('tabText').textContent = tabTexts[btn.dataset.tab] || '';
+        content.style.opacity = '1';
+      }, 200);
+    });
+
+    // ---- Scroll-reveal IntersectionObserver ----
+    document.querySelectorAll('.va-reveal').forEach(el => {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }).observe(el);
+    });
+
+    // ---- Navbar active link scroll-spy ----
+    const sections = document.querySelectorAll('.demo-section[id]');
+    const navLinks = document.querySelectorAll('.va-navbar-link');
+    function updateActiveLink() {
+      const scrollY = window.scrollY + 120;
+      let current = '';
+      sections.forEach(section => {
+        if (section.offsetTop <= scrollY) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('va-navbar-link--active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('va-navbar-link--active');
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+  </script>
+</body>
+</html>

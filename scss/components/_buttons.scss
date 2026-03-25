@@ -129,17 +129,24 @@
   background-color: $va-near-black;
   border-color: $va-near-black;
   color: $va-white;
+  transition: $btn-transition,
+              transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
 
   &:hover {
     background-color: va-lighten($va-near-black, 10%);
     border-color: va-lighten($va-near-black, 10%);
     color: $va-white;
+    transform: translateY(-1px);
+    box-shadow: $va-shadow-sm;
   }
 
   &:active {
     background-color: va-darken($va-near-black, 5%);
     border-color: va-darken($va-near-black, 5%);
     color: $va-white;
+    transform: translateY(0);
+    box-shadow: none;
   }
 }
 
@@ -178,17 +185,24 @@
   background-color: $va-primary;
   border-color: $va-primary;
   color: $va-white;
+  transition: $btn-transition,
+              transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
 
   &:hover {
     background-color: va-darken($va-primary, 8%);
     border-color: va-darken($va-primary, 8%);
     color: $va-white;
+    transform: translateY(-1px);
+    box-shadow: $va-shadow-sm;
   }
 
   &:active {
     background-color: va-darken($va-primary, 14%);
     border-color: va-darken($va-primary, 14%);
     color: $va-white;
+    transform: translateY(0);
+    box-shadow: none;
   }
 }
 

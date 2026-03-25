@@ -421,3 +421,57 @@
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// 7. Scroll-Reveal Utilities
+// --------------------------------------------------------------------------
+// Elements start hidden and animate in when `.is-visible` is toggled by an
+// IntersectionObserver.  Pair with stagger delays for sequenced reveals.
+//
+// Usage:
+//   <section class="va-reveal va-reveal--up">…</section>
+//
+// JS (minimal IntersectionObserver — included in example pages):
+//   document.querySelectorAll('.va-reveal').forEach(el => {
+//     new IntersectionObserver(([e]) => {
+//       if (e.isIntersecting) { e.target.classList.add('is-visible'); }
+//     }, { threshold: 0.15 }).observe(el);
+//   });
+
+.va-reveal {
+  opacity: 0;
+  transition: opacity 0.6s ease-out,
+              transform 0.6s ease-out;
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  // Direction variants — set initial offset
+  &--up    { transform: translateY(32px); }
+  &--down  { transform: translateY(-32px); }
+  &--left  { transform: translateX(-32px); }
+  &--right { transform: translateX(32px); }
+  &--scale { transform: scale(0.92); }
+
+  // Stagger delays for sequenced reveals (150ms increments)
+  &--delay-1 { transition-delay: 0.15s; }
+  &--delay-2 { transition-delay: 0.3s; }
+  &--delay-3 { transition-delay: 0.45s; }
+  &--delay-4 { transition-delay: 0.6s; }
+
+  // Faster/slower variants
+  &--fast { transition-duration: 0.35s; }
+  &--slow { transition-duration: 0.9s; }
+}
+
+// Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .va-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
