@@ -225,13 +225,13 @@ All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3
 14. ~~Add Playwright visual regression test baselines (5 pages)~~ ✅
 15. ~~Add axe-core WCAG 2.1 AA accessibility audit (4 pages)~~ ✅
 
-### Sprint 4 — Scale readiness (in progress)
+### ~~Sprint 4 — Scale readiness~~ ✅ COMPLETE
 
-16. Migrate abstracts to `@use`/`@forward` (blocked by Bootstrap 5.3)
-17. Set up Style Dictionary with DTCG token format
-18. Adopt 11ty for HTML partial system
-19. ~~Add `prefers-color-scheme: dark` support~~ ✅ `@mixin va-dark-tokens` + `[data-va-theme]` attribute
-20. ~~Add `@layer` wrappers for cascade control~~ ✅ All output in `@layer va`
+16. Migrate abstracts to `@use`/`@forward` — **deferred** (blocked by Bootstrap 5.3 internals)
+17. ~~Set up Style Dictionary with DTCG token format~~ ✅ (`050f0dd`)
+18. ~~Adopt 11ty for HTML partial system~~ ✅ navbar/head/layout includes (`149f463`)
+19. ~~Add `prefers-color-scheme: dark` support~~ ✅ `@mixin va-dark-tokens` + `[data-va-theme]` (`96884f5`)
+20. ~~Add `@layer` wrappers for cascade control~~ ✅ All output in `@layer va` (`96884f5`)
 
 ---
 

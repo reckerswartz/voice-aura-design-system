@@ -108,6 +108,8 @@ Issues resolved or partially addressed since the initial review:
 | — | No accessibility audits | ✅ Done | axe-core WCAG 2.1 AA tests for 4 pages (`ee3f944`) |
 | — | No `@layer` cascade control | ✅ Done | All output wrapped in `@layer va` — consumers override without `!important` |
 | — | No `prefers-color-scheme` support | ✅ Done | Dark tokens via `@media` + `[data-va-theme="dark"]` attribute |
+| — | No DTCG design tokens | ✅ Done | Style Dictionary v5 + tokens/ directory, outputs CSS/SCSS/JSON (`050f0dd`) |
+| — | Navbar duplicated 5× across HTML | ✅ Done | 11ty partial system: `_includes/navbar.njk`, `_layouts/base.njk` (`149f463`) |
 
 ---
 
