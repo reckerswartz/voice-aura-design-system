@@ -217,13 +217,15 @@ Bootstrap utility classes (`.mb-0`, `.text-center`, `.mx-auto`, `.text-primary`,
 | `backgrounds.html` | 240 | 67 | **-72%** |
 | `components.html` | 182 | 133 | -27% |
 | `interactions-demo.html` | 120 | 61 | **-49%** |
-| `transitions-showcase.html` | 100 | 80 | -20% |
+| `transitions-showcase.html` | 100 | 70 | -30% |
+| `backgrounds-animations-demo.html` | 98 | 66 | -33% |
+| `transition-audit.html` | 64 | 39 | -39% |
 | `asset-gallery.html` | 48 | 31 | -35% |
 | `pixel-perfect-demo.html` | 8 | 8 | — |
 
-**Remaining:** 542 inline styles (-20% from 674). Many are highly page-specific (demo dimensions, one-off layouts). Further reduction requires deeper refactoring of demo HTML structure.
+**Remaining:** 475 inline styles (-30% from 674). Many are highly page-specific (demo dimensions, one-off layouts). Further reduction requires deeper refactoring of demo HTML structure.
 
-**Ref-* classes created (26 total):** `.ref-td`, `.ref-td--mono`, `.ref-td-lg`, `.ref-tr`, `.ref-th`, `.ref-bg-alt`, `.ref-bg-white`, `.ref-bg-dark`, `.ref-preview-center`, `.ref-text-sm`, `.ref-card--flat`, `.ref-callout` (+`--success`, `--warning`), `.ref-grid-full`, `.ref-container`, `.ref-inline-flex`, `.ref-px-4`, `.ref-mb-1..4`, `.ref-section-label--lg`, `.ref-annotation` (+`--muted`)
+**Ref-* classes created (38 total):** `.ref-td`, `.ref-td--mono`, `.ref-td-lg`, `.ref-tr`, `.ref-th`, `.ref-bg-alt`, `.ref-bg-white`, `.ref-bg-dark`, `.ref-card-bordered`, `.ref-card-dark`, `.ref-card-footer-bar`, `.ref-card-header-accent`, `.ref-preview-center`, `.ref-text-sm`, `.ref-card--flat`, `.ref-callout` (+`--success`, `--warning`), `.ref-grid-full`, `.ref-container`, `.ref-inline-flex`, `.ref-px-4`, `.ref-mb-1..4`, `.ref-section-label--lg`, `.ref-annotation` (+`--muted`), `.ref-demo-section`, `.ref-demo-box--white`, `.ref-overlay-content`, `.ref-max-w-md`, `.ref-desc-inline`, `.ref-desc--relaxed`
 
 #### ~~3.8 Missing token maps and accessor functions~~ ✅ RESOLVED
 
@@ -298,11 +300,11 @@ Address architectural debt that slows development.
 | Task | Issue | Effort | Impact |
 |------|-------|--------|--------|
 | ~~Unify button systems~~ | ~~3.3~~ | ~~✅ Done~~ | ~~`18fa927`~~ |
-| Reduce `@extend` to ~20 (use mixins where safe) | 3.4 | 3 h | Smaller compiled CSS |
+| ~~Reduce `@extend`~~ — audited, 46 justified | 3.4 | ✅ | 56 → 46; remaining are Bootstrap alignment |
 | Migrate abstracts to `@use`/`@forward` | P0 phase 2 | 4 h | Module isolation for abstracts |
-| Components consume `--va-*` custom properties | 3.9 | 8 h | Enables runtime theming — **next priority** |
-| Create `_reference.scss` page partials | 3.7 | 4 h | Reduce 796 → <50 inline styles |
-| Add missing token maps and accessors | 3.8 | 2 h | Consistent token usage |
+| ~~Components consume `--va-*` custom properties~~ | 3.9 | ✅ | 15/18 sections migrated (`1df176e`) |
+| Create `_reference.scss` page partials | 3.7 | ⚠️ In progress | 674 → 475 (-30%) with 38 ref-* classes |
+| ~~Add missing token maps and accessors~~ | 3.8 | ✅ | $va-icon-sizes, $va-letter-spacing, $va-line-heights |
 | Add Playwright visual regression tests | 3.10 | 4 h | Catches visual regressions |
 | Add axe-core a11y tests to CI | 3.5 | 2 h | Enforces accessibility |
 
@@ -456,10 +458,10 @@ Track these metrics over time to measure design system health.
 | Metric | 03-23 (Initial) | 03-25 | 03-26 (Current) | Target | Trend |
 |--------|-----------------|-------|------------------|--------|-------|
 | SCSS partials | 22 | 33 | 40 | — | ↑ (new features) |
-| SCSS source lines | 9,185 | 11,341 | 13,399 | < 10,000 | ↓ (ref-* classes replace inline styles) |
-| CSS minified (KB) | ~295 | 354 | 387 (347 w/ PurgeCSS) | < 300 | ⚠️ PurgeCSS helps |
+| SCSS source lines | 9,185 | 11,341 | 13,430 | < 10,000 | ↑ (new ref-* utility classes) |
+| CSS minified (KB) | ~295 | 354 | 388 (347 w/ PurgeCSS) | < 300 | ⚠️ PurgeCSS helps |
 | `@import` statements | 29 | 59 | 68 | 0 | ↑ (blocked on Bootstrap 6) |
-| `@extend` usages | ~42 | 55 | 56 | ~56 (justified) | ✅ Accepted |
+| `@extend` usages | ~42 | 55 | **46** | ~46 (justified) | ✅ ↓ bg-effects replaced with direct props |
 | `--va-*` custom properties | 0 | 38 | 38 | 60+ | ✅ |
 | `var(--va-*)` references | 0 | ~55 | 356 | All components | ✅ ↑↑ |
 | Container queries | 0 | 0 | 8 | Key components | ✅ New |
@@ -469,7 +471,7 @@ Track these metrics over time to measure design system health.
 | Raw z-index (non-variable) | 41 | 1 | 1 | 0 | ✅ ↓ |
 | Stylelint errors | N/A | 0 | 0 | 0 | ✅ |
 | a11y violations (axe) | Unknown | Unknown | 0 | 0 | ✅ |
-| Inline `style=` in HTML | ~291 | 796 | **542** | < 50 | ↓ 132 replaced with 26 ref-* + Bootstrap classes |
+| Inline `style=` in HTML | ~291 | 796 | **475** | < 50 | ↓ 199 replaced with 38 ref-* + Bootstrap classes |
 | Components at Stable+ | 0 | 5 | 6 | All | ↑ |
 | Visual regression baselines | 0 | 5 pages | 5 pages | All pages | ✅ |
 | CI pipeline | None | Full | Full | Full | ✅ |

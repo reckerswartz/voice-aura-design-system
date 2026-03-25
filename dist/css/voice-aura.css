@@ -6081,7 +6081,7 @@
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
   }
-  .bg-dark, .va-bg-dark {
+  .bg-dark {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
   }
@@ -6101,7 +6101,7 @@
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
   }
-  .bg-white, .va-bg-white {
+  .bg-white {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
   }
@@ -12488,35 +12488,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 51px;
+    height: 80px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 95px;
+    height: 59px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 65px;
+    height: 52px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 30px;
+    height: 74px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 73px;
+    height: 95px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 76px;
+    height: 25px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 72px;
+    height: 52px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 62px;
+    height: 58px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
@@ -15549,10 +15549,14 @@
     left: -10%;
     transform: none;
   }
+  .va-bg-white {
+    background-color: #FFFFFF !important;
+  }
   .va-bg-alt {
     background-color: #F7F7F8;
   }
   .va-bg-dark {
+    background-color: #1A1919 !important;
     color: rgba(255, 255, 255, 0.85);
   }
   .va-bg-dark h1, .va-bg-dark .h1, .va-bg-dark .va-h1, .va-bg-dark h2, .va-bg-dark .h2, .va-bg-dark .va-h2, .va-bg-dark h3, .va-bg-dark .h3, .va-bg-dark .va-h3, .va-bg-dark h4, .va-bg-dark .h4, .va-bg-dark .va-h4, .va-bg-dark h5, .va-bg-dark .h5, .va-bg-dark .va-h5, .va-bg-dark h6, .va-bg-dark .h6, .va-bg-dark .va-h6 {

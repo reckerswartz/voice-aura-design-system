@@ -128,7 +128,7 @@
 // Pure white background (default)
 // Bootstrap equivalent: .bg-white — prefer .bg-white in new code.
 .va-bg-white {
-  @extend .bg-white;
+  background-color: $va-white !important; // matches .bg-white behavior
 }
 
 // Light grey alternate section background
@@ -144,7 +144,7 @@
 // dark backgrounds.  For simple dark bg without heading override, use
 // Bootstrap's .bg-dark .text-white instead.
 .va-bg-dark {
-  @extend .bg-dark;
+  background-color: $va-near-black !important; // matches .bg-dark behavior
 
   color: rgba($va-white, 0.85);
 
