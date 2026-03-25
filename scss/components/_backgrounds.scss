@@ -99,6 +99,15 @@
     -webkit-mask-image: linear-gradient(to left, rgba($va-near-black, 0.6) 0%, transparent 60%);
   }
 
+  // Dense variant (full-strength mask for feature panels — behance-05 reference)
+  // Scales up SVG 200% for larger dots and uses opaque mask for prominent display.
+  &--dense::before {
+    background-size: 200% auto;
+    background-position: center 80%;
+    mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.9) 35%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.9) 35%, transparent 70%);
+  }
+
   // Light variant (reduced opacity for lighter sections)
   &--light::before {
     opacity: 0.4;
