@@ -207,28 +207,30 @@ GitHub Actions CI workflow runs on every push/PR to main: lint → build → siz
 
 ### P2 — Medium (improves developer experience)
 
-#### 3.7 796 inline `style=` attributes across demo pages
+#### 3.7 ~~796~~ 587 inline `style=` attributes across demo pages — PARTIALLY RESOLVED
 
-| Page | Count |
-|------|-------|
-| `components.html` | 292 |
-| `backgrounds.html` | 234 |
-| `interactions-demo.html` | 111 |
-| `transitions-showcase.html` | 99 |
-| `asset-gallery.html` | 48 |
-| `pixel-perfect-demo.html` | 12 |
+18 semantic `ref-*` utility classes added to `_reference.scss` (commit `7e826e7`).
+Bootstrap utility classes (`.mb-0`, `.text-center`, `.mx-auto`, `.text-primary`, etc.) used where available.
 
-**Fix:** Create `scss/pages/_reference.scss` with semantic classes (`.ref-demo-grid`, `.ref-color-swatch`, `.ref-section-header`). Target: < 50 inline styles total.
+| Page | Before | After | Reduction |
+|------|--------|-------|-----------|
+| `backgrounds.html` | 240 | 67 | **-72%** |
+| `components.html` | 182 | 133 | -27% |
+| `interactions-demo.html` | 120 | 112 | -7% |
+| `transitions-showcase.html` | 100 | 81 | -19% |
+| `asset-gallery.html` | 48 | 34 | -29% |
+| `pixel-perfect-demo.html` | 8 | 8 | — |
 
-#### 3.8 Missing token maps and accessor functions
+**Remaining:** 587 inline styles. Many are highly page-specific (demo dimensions, one-off layouts). Further reduction requires deeper refactoring of demo HTML structure.
 
-| Category | Hardcoded values found | Proposed map |
-|----------|----------------------|-------------|
-| Icon sizes | `16px`, `18px`, `20px`, `24px`, `36px`, `48px` | `$va-icon-sizes` |
-| Letter-spacing | `-0.03em`, `-0.02em`, `0.08em` | `$va-letter-spacing` |
-| Line-height | `1.1`, `1.15`, `1.2`, `1.6`, `1.7` | `$va-line-heights` |
+#### ~~3.8 Missing token maps and accessor functions~~ ✅ RESOLVED
 
-Accessor functions `va-font-size()`, `va-breakpoint()`, `va-shadow()`, `va-radius()`, `va-z()` exist for some maps but not all.
+All three maps now exist in `_variables.scss`:
+- `$va-icon-sizes` (xs: 12px … xxl: 48px) — line 200
+- `$va-letter-spacing` (tighter: -0.03em … wider: 0.1em) — line 211
+- `$va-line-heights` (none: 1 … loose: 1.8) — line 221
+
+Accessor functions `va-font-size()`, `va-breakpoint()`, `va-shadow()`, `va-radius()`, `va-z()` exist for existing maps.
 
 #### ~~3.9 Custom properties not consumed by components~~ ✅ MOSTLY RESOLVED
 
@@ -263,8 +265,8 @@ test('pixel-perfect-demo desktop', async ({ page }) => {
 | ~~L-1~~ | ~~No container queries~~ | ✅ 8 `@container` queries across cards, pricing, features, blog cards |
 | ~~L-2~~ | ~~Limited RTL support~~ | ✅ Full logical property utility set (`.va-ms-*`, `.va-me-*`, `.va-ps-*`, `.va-pe-*`) |
 | ~~L-3~~ | ~~No `prefers-contrast` support~~ | ✅ `@media (prefers-contrast: more)` + `@media (forced-colors: active)` in `_reset.scss` |
-| L-4 | Missing `$va-font-sizes` entry | `0.9375rem` (15px) used in components but not in the map |
-| L-5 | No version banner in CSS | Add `/*! Voice Aura v#{$version} */` |
+| ~~L-4~~ | ~~Missing `$va-font-sizes` entry~~ | ✅ `"md": 0.9375rem` added to `$va-font-sizes` map |
+| ~~L-5~~ | ~~No version banner in CSS~~ | ✅ `/*! Voice Aura Design System v1.0.0 */` in `voice-aura.scss` line 25 |
 | L-6 | Button shape undocumented | Pill vs. rounded-rect distinction intentional but unexplained |
 
 ---
@@ -452,8 +454,8 @@ Track these metrics over time to measure design system health.
 | Metric | 03-23 (Initial) | 03-25 | 03-26 (Current) | Target | Trend |
 |--------|-----------------|-------|------------------|--------|-------|
 | SCSS partials | 22 | 33 | 40 | — | ↑ (new features) |
-| SCSS source lines | 9,185 | 11,341 | 13,879 | < 10,000 | ↑ (container queries, logical props, a11y) |
-| CSS minified (KB) | ~295 | 354 | 384 (347 w/ PurgeCSS) | < 300 | ⚠️ PurgeCSS helps |
+| SCSS source lines | 9,185 | 11,341 | 13,399 | < 10,000 | ↓ (ref-* classes replace inline styles) |
+| CSS minified (KB) | ~295 | 354 | 387 (347 w/ PurgeCSS) | < 300 | ⚠️ PurgeCSS helps |
 | `@import` statements | 29 | 59 | 68 | 0 | ↑ (blocked on Bootstrap 6) |
 | `@extend` usages | ~42 | 55 | 56 | ~56 (justified) | ✅ Accepted |
 | `--va-*` custom properties | 0 | 38 | 38 | 60+ | ✅ |
@@ -465,7 +467,7 @@ Track these metrics over time to measure design system health.
 | Raw z-index (non-variable) | 41 | 1 | 1 | 0 | ✅ ↓ |
 | Stylelint errors | N/A | 0 | 0 | 0 | ✅ |
 | a11y violations (axe) | Unknown | Unknown | 0 | 0 | ✅ |
-| Inline `style=` in HTML | ~291 | 796 | 674 | < 50 | ⚠️ 61 ref-* classes ready |
+| Inline `style=` in HTML | ~291 | 796 | **587** | < 50 | ↓ 87 replaced with ref-* + Bootstrap classes |
 | Components at Stable+ | 0 | 5 | 6 | All | ↑ |
 | Visual regression baselines | 0 | 5 pages | 5 pages | All pages | ✅ |
 | CI pipeline | None | Full | Full | Full | ✅ |
