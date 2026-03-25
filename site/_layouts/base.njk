@@ -1,0 +1,33 @@
+{# Voice Aura — Base Layout
+   All pages that use this layout get shared head, navbar, and footer.
+
+   Front matter variables:
+     title       — page title (required)
+     description — meta description (optional)
+     activeLink  — highlight a navbar link: products|integrations|api|pricing
+     homeHref    — brand logo link target (default: pixel-perfect-demo.html)
+     bodyClass   — optional class on <body>
+     pageStyle   — optional inline <style> block content
+     includeScrollJs — if true, includes va-scroll.js before </body>
+#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "head.njk" %}
+  {% if pageStyle %}<style>{{ pageStyle | safe }}</style>{% endif %}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+<a href="#main" class="va-skip-link">Skip to main content</a>
+
+{% include "navbar.njk" %}
+
+<main id="main">
+  {{ content | safe }}
+</main>
+
+{% if includeScrollJs %}
+<script src="../js/va-scroll.js"></script>
+{% endif %}
+</body>
+</html>

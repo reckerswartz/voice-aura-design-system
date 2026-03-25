@@ -21,6 +21,9 @@ Thumbs.db
 # Screenshot captures (uploaded to GitHub Releases, not tracked in git)
 screenshots/captures/
 
+# 11ty build output
+_site/
+
 # QA audit artifacts (temporary, not tracked)
 qa-*.png
 audit-screenshots/

@@ -58,6 +58,8 @@
     "build": "npm run build:css && npm run build:min && npm run postcss:prefix && npm run postcss:min",
     "build:sass": "npm run build:css && npm run build:min",
     "tokens:build": "style-dictionary build --config style-dictionary.config.js",
+    "site:build": "npx @11ty/eleventy",
+    "site:serve": "npx @11ty/eleventy --serve",
     "test:size": "node -e \"const s=require('fs').statSync('dist/css/voice-aura.min.css').size;const kb=Math.round(s/1024);console.log(kb+'KB minified');if(s>400000){console.error('FAIL: CSS exceeds 400KB budget ('+kb+'KB)');process.exit(1)}else{console.log('PASS: under 400KB budget')}\"",
     "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
     "lint": "stylelint \"scss/**/*.scss\"",
@@ -102,6 +104,7 @@
     }
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
     "@axe-core/playwright": "^4.11.1",
     "@playwright/test": "^1.58.2",
     "autoprefixer": "^10.4.27",
