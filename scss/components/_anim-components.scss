@@ -115,7 +115,7 @@
 //     entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible'));
 //   }).observe(document.querySelectorAll('[class*="va-scroll-"]'));
 
-.va-scroll-fade-up {
+.va-scroll-ready .va-scroll-fade-up {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -126,7 +126,7 @@
   }
 }
 
-.va-scroll-fade-in {
+.va-scroll-ready .va-scroll-fade-in {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 
@@ -135,7 +135,7 @@
   }
 }
 
-.va-scroll-scale-in {
+.va-scroll-ready .va-scroll-scale-in {
   opacity: 0;
   transform: scale(0.92);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -146,7 +146,7 @@
   }
 }
 
-.va-scroll-fade-left {
+.va-scroll-ready .va-scroll-fade-left {
   opacity: 0;
   transform: translateX(-32px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -157,7 +157,7 @@
   }
 }
 
-.va-scroll-fade-right {
+.va-scroll-ready .va-scroll-fade-right {
   opacity: 0;
   transform: translateX(32px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -365,7 +365,7 @@
 //     <article>Card 2</article>
 //   </div>
 
-.va-scroll-stagger {
+.va-scroll-ready .va-scroll-stagger {
   > * {
     opacity: 0;
     transform: translateY(24px);

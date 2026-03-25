@@ -163,6 +163,7 @@
   border-bottom: $border-width solid $va-border-color;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
+  scroll-margin-top: 4rem;
 }
 
 // ---------------------------------------------------------------------------
@@ -655,10 +656,15 @@
 
 .ref-toc {
   position: sticky;
-  top: 1rem;
-  max-height: calc(100vh - 3rem);
+  top: 0;
+  z-index: 100;
+  background: $va-white;
+  max-height: calc(100vh - 2rem);
   overflow-y: auto;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: $border-width solid $va-border-color;
   scrollbar-width: thin;
   scrollbar-color: $va-border-color transparent;
 
@@ -862,6 +868,110 @@
 // ---------------------------------------------------------------------------
 // 52. BACK TO TOP (floating scroll-to-top button)
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// 53. MUTED COLOR TEXT (for inline color labels in swatch demos)
+// ---------------------------------------------------------------------------
+
+.ref-text-muted {
+  color: $va-muted-text;
+}
+
+.ref-text-body {
+  color: $va-body-text;
+}
+
+// ---------------------------------------------------------------------------
+// 54. TRUST-BAR LOGO PLACEHOLDER (grayscale wordmark in trust-bar demos)
+// ---------------------------------------------------------------------------
+
+.ref-trust-logo {
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  font-size: 1.125rem;
+  color: $va-near-black;
+}
+
+// ---------------------------------------------------------------------------
+// 55. DEMO HEADING (serif heading for section header demos)
+// ---------------------------------------------------------------------------
+
+.ref-demo-heading {
+  font-family: $headings-font-family;
+  font-weight: $font-weight-bold;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+// ---------------------------------------------------------------------------
+// 56. DEMO DESC (body text below demo heading)
+// ---------------------------------------------------------------------------
+
+.ref-demo-desc {
+  color: $va-body-text;
+  margin-bottom: 1.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 57. DEMO LIST (styled list for info boxes and feature lists)
+// ---------------------------------------------------------------------------
+
+.ref-demo-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: $va-body-text;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+// ---------------------------------------------------------------------------
+// 58. LAYOUT WRAPPER (max-width container for main content)
+// ---------------------------------------------------------------------------
+
+.ref-layout-wrapper {
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 59. GLASS DEMO BOX (translucent box for glassmorphism demos)
+// ---------------------------------------------------------------------------
+
+.ref-glass-box {
+  width: 200px;
+  height: 200px;
+  background: rgba($va-white, 0.3);
+  border-radius: $va-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $headings-font-family;
+  font-size: 1.5rem;
+  font-weight: $font-weight-bold;
+  color: rgba($va-white, 0.8);
+}
+
+// ---------------------------------------------------------------------------
+// 60. HEIGHT DEMO (fixed-height containers for overflow/pattern demos)
+// ---------------------------------------------------------------------------
+
+.ref-h-100 { height: 100px; }
+.ref-h-160 { height: 160px; }
+.ref-h-200 { height: 200px; }
+.ref-h-240 { height: 240px; }
+.ref-h-300 { height: 300px; }
+
+// ---------------------------------------------------------------------------
+// 61. OVERFLOW UTILITY (horizontal scroll for tables/code)
+// ---------------------------------------------------------------------------
+
+.ref-overflow-x {
+  overflow-x: auto;
+}
 
 .back-to-top {
   position: fixed;

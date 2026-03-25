@@ -668,6 +668,7 @@
     });
 
     // ---- Scroll-reveal IntersectionObserver ----
+    document.documentElement.classList.add('va-scroll-ready');
     document.querySelectorAll('.va-reveal').forEach(el => {
       new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {

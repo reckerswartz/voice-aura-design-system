@@ -698,6 +698,9 @@
 
   // Scroll-triggered animations (IntersectionObserver)
   const animateOnScroll = () => {
+    // Signal CSS that JS observer is ready — elements are visible by default
+    document.documentElement.classList.add('va-scroll-ready');
+
     const selector = '.va-scroll-fade-left, .va-scroll-fade-right, .va-scroll-stagger, .va-scroll-fade-up, .va-scroll-scale-in, .va-reveal';
     const els = document.querySelectorAll(selector);
 

@@ -151,7 +151,30 @@
   &::before {
     // Invert the halftone SVG to get white dots on dark
     filter: invert(1);
-    opacity: var(--va-pattern-opacity, 0.7);
+    opacity: var(--va-pattern-opacity, 0.35);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Dark Pattern Variants
+// --------------------------------------------------------------------------
+// Invert any pattern for use on dark backgrounds. Apply as a modifier
+// alongside the base pattern class.
+//
+// Usage: <section class="va-pattern-circuit va-pattern--dark">...</section>
+//        <section class="va-pattern-rings va-pattern--dark">...</section>
+//        <section class="va-bg-grid-lines va-pattern--dark">...</section>
+
+.va-pattern--dark {
+  // Invert pseudo-element patterns (::before and ::after) for dark bg
+  &::before {
+    filter: invert(1);
+    opacity: var(--va-pattern-opacity, 0.5);
+  }
+
+  &::after {
+    filter: invert(1);
+    opacity: var(--va-pattern-opacity, 0.5);
   }
 }
 

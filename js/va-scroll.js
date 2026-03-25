@@ -124,6 +124,9 @@
 
       opts = mergeOpts(DEFAULTS, options);
 
+      // Signal CSS that JS observer is ready (graceful degradation)
+      document.documentElement.classList.add('va-scroll-ready');
+
       // Respect prefers-reduced-motion: skip scroll animations entirely
       var prefersReducedMotion =
         window.matchMedia &&

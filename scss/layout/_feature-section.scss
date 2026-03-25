@@ -42,7 +42,8 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   gap: map-get($spacers, 6);               // 4rem / 64px
   align-items: center;
   padding: map-get($spacers, 6) 0;
-  overflow: hidden;                         // contain grid-gap measurement overflow
+  // overflow: visible — let the parent section handle overflow
+  // (overflow:hidden here clips scroll-fade-left animation at -32px)
   transition: grid-template-columns 0.4s ease-in-out,
               gap 0.35s ease-in-out,
               padding 0.35s ease-in-out;
@@ -199,3 +200,37 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
 .va-icon-16 { width: 16px; height: 16px; flex-shrink: 0; }
 .va-icon-18 { width: 18px; height: 18px; flex-shrink: 0; }
 .va-icon-20 { width: 20px; height: 20px; flex-shrink: 0; }
+
+// ---------------------------------------------------------------------------
+// 7. Container Query Support
+// ---------------------------------------------------------------------------
+// When feature rows are embedded in a narrow container (CMS sidebar, modal,
+// iframe), they adapt based on container width rather than viewport.
+//
+// Usage:
+//   <div class="va-feature-section--cq">
+//     <div class="va-feature-row">...</div>
+//   </div>
+
+.va-feature-section--cq {
+  @include va-container-root(feature);
+
+  .va-feature-row {
+    @include va-container-down(700px) {
+      grid-template-columns: 1fr;
+      gap: map-get($spacers, 4);
+    }
+  }
+
+  .va-feature-row--reverse {
+    @include va-container-down(700px) {
+      direction: ltr;
+    }
+  }
+
+  .va-feature-visual {
+    @include va-container-down(500px) {
+      padding: 1rem;
+    }
+  }
+}

@@ -438,7 +438,7 @@
 //     }, { threshold: 0.15 }).observe(el);
 //   });
 
-.va-reveal {
+.va-scroll-ready .va-reveal {
   opacity: 0;
   transition: opacity 0.6s ease-out,
               transform 0.6s ease-out;
@@ -559,11 +559,41 @@
 
 // Respect reduced motion preference
 @media (prefers-reduced-motion: reduce) {
+  // Entrance / reveal animations
   .va-reveal,
   .va-responsive-stack,
   .va-responsive-order {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  // Disable all keyframe-based animations
+  .va-animate-fade-in,
+  .va-animate-fade-up,
+  .va-animate-fade-down,
+  .va-animate-fade-left,
+  .va-animate-fade-right,
+  .va-animate-scale-in,
+  .va-animate-float,
+  .va-animate-pulse,
+  .va-animate-spin,
+  .va-entrance-hero,
+  .va-entrance-hero-sub,
+  .va-entrance-hero-cta,
+  .va-entrance-badge,
+  .va-skeleton {
+    animation: none;
+  }
+
+  // Reduce component hover/interaction transitions to instant
+  .va-hover-lift,
+  .va-hover-scale,
+  .va-hover-glow,
+  .va-hover-arrow,
+  .va-touch-lift,
+  .va-touch-scale,
+  .va-card-reflow {
+    transition-duration: 0.01s;
   }
 }

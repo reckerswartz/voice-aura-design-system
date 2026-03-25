@@ -32,6 +32,8 @@
   font-weight: $font-weight-bold;
   line-height: 1.15;
   margin-bottom: 16px;
+  color: $va-white;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 
   span { color: $va-primary-blue; }
 }
@@ -156,5 +158,21 @@
     background: #F3F4F6;
     padding: 2px 8px;
     border-radius: 4px;
+  }
+}
+
+// Footer
+body > footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: $va-muted-text;
+  border-top: $border-width solid $va-border-color;
+
+  a {
+    color: $va-primary-blue;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
   }
 }
