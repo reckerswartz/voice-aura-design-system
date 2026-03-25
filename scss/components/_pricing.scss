@@ -264,6 +264,27 @@ $va-crosshair-color: $va-border;
   }
 
   // --------------------------------------------------------------------------
+  // Tier Badge Color Variants
+  // --------------------------------------------------------------------------
+  // Reference: behance-08-pricing-section.jpg — subtle tinted backgrounds
+  // Usage: <span class="va-pricing-card__badge va-pricing-card__badge--free">Free</span>
+
+  &__badge--free {
+    background-color: rgba($va-success, 0.08);
+    color: darken($va-success, 12%);
+  }
+
+  &__badge--creator {
+    background-color: rgba($va-primary, 0.08);
+    color: $va-primary;
+  }
+
+  &__badge--business {
+    background-color: rgba($va-primary, 0.06);
+    color: darken($va-primary, 8%);
+  }
+
+  // --------------------------------------------------------------------------
   // Featured / Recommended Card (Creator plan)
   // --------------------------------------------------------------------------
   // Highlighted card with dark filled CTA.

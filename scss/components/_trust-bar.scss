@@ -1,0 +1,164 @@
+// ==========================================================================
+// Voice Aura Design System — Trust / Logo Bar
+// ==========================================================================
+// Client logo strip shown below the hero section.  Displays a trust message
+// and a row of partner/client logos.
+//
+// Reference: behance-04-desktop-hero-section.jpg, behance-09-desktop-monitor-mockup.jpg
+//   — "The solution of choice for 300+ Forbes 2000 companies"
+//   — Logo row: AIRFRANCE, VERTIV, Honeywell, splunk>
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ No direct Bootstrap equivalent.  Uses Bootstrap spacing utilities   │
+// │ ($spacers) and references $border-color for the optional divider.   │
+// │                                                                      │
+// │ Unique VA component — use `.va-trust-bar` for landing pages.        │
+// └──────────────────────────────────────────────────────────────────────┘
+// ==========================================================================
+
+// Private tokens
+$_bp-md: map-get($va-breakpoints, "md");
+$_bp-sm: map-get($va-breakpoints, "sm");
+$_font-size-sm: map-get($va-font-sizes, "sm");
+$_font-size-xs: map-get($va-font-sizes, "xs");
+
+// --------------------------------------------------------------------------
+// 1. Trust Bar Wrapper
+// --------------------------------------------------------------------------
+// Usage:
+//   <div class="va-trust-bar">
+//     <p class="va-trust-bar__text">
+//       The solution of choice for <strong>300+</strong> Forbes 2000 companies
+//     </p>
+//     <div class="va-trust-bar__logos">
+//       <img class="va-trust-bar__logo" src="..." alt="AIRFRANCE" />
+//       <img class="va-trust-bar__logo" src="..." alt="VERTIV" />
+//       <img class="va-trust-bar__logo" src="..." alt="Honeywell" />
+//       <img class="va-trust-bar__logo" src="..." alt="splunk>" />
+//     </div>
+//   </div>
+
+.va-trust-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $va-grid-unit * 2.5;                      // 20px
+  padding: ($va-grid-unit * 4) ($va-grid-unit * 3); // 32px 24px
+  text-align: center;
+  width: 100%;
+  max-width: $va-container-max-width;
+  margin: 0 auto;
+
+  // With top border divider
+  &--bordered {
+    border-top: $border-width solid $va-border-color;
+    padding-top: $va-grid-unit * 5;               // 40px
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Trust Text
+// --------------------------------------------------------------------------
+
+.va-trust-bar__text {
+  font-family: $va-font-body;
+  font-size: $_font-size-sm;                      // 14px
+  font-weight: $font-weight-medium;
+  color: $va-body-text;
+  letter-spacing: 0.01em;
+  margin: 0;
+
+  strong {
+    font-weight: $font-weight-bold;
+    color: $va-near-black;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 3. Logo Row
+// --------------------------------------------------------------------------
+
+.va-trust-bar__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: ($va-grid-unit * 4) ($va-grid-unit * 5);   // 32px 40px
+
+  @include va-media-down("sm") {
+    gap: ($va-grid-unit * 3) ($va-grid-unit * 3);  // 24px
+  }
+}
+
+// --------------------------------------------------------------------------
+// 4. Individual Logo
+// --------------------------------------------------------------------------
+
+.va-trust-bar__logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.85;
+    filter: grayscale(50%);
+  }
+
+  @include va-media-down("sm") {
+    height: 20px;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 5. Separator Variant (vertical lines between logos, as in reference)
+// --------------------------------------------------------------------------
+
+.va-trust-bar__logos--separated {
+  .va-trust-bar__logo {
+    padding-right: $va-grid-unit * 5;             // 40px
+    border-right: $border-width solid $va-border-color;
+
+    &:last-child {
+      padding-right: 0;
+      border-right: none;
+    }
+
+    @include va-media-down("sm") {
+      padding-right: $va-grid-unit * 3;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 6. Dark Variant (for use on dark backgrounds)
+// --------------------------------------------------------------------------
+
+.va-trust-bar--dark {
+  .va-trust-bar__text {
+    color: rgba($va-white, 0.6);
+
+    strong {
+      color: $va-white;
+    }
+  }
+
+  .va-trust-bar__logo {
+    filter: grayscale(100%) brightness(10);
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 0.7;
+      filter: grayscale(50%) brightness(10);
+    }
+  }
+
+  .va-trust-bar__logos--separated .va-trust-bar__logo {
+    border-right-color: rgba($va-white, 0.1);
+  }
+}
