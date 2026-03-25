@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" fill="none">
+  <!-- Aurora/nebula gradient — organic flowing color wash for CTA and premium
+       sections. Voice Aura design system. -->
+  <defs>
+    <radialGradient id="ag1" cx="25%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#0478FF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ag2" cx="70%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.08"/>
+      <stop offset="50%" stop-color="#1A1919" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#1A1919" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ag3" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.06"/>
+      <stop offset="70%" stop-color="#0478FF" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#ag1)"/>
+  <rect width="800" height="400" fill="url(#ag2)"/>
+  <rect width="800" height="400" fill="url(#ag3)"/>
+</svg>

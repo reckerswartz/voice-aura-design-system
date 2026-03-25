@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="48" viewBox="0 0 56 48" fill="none">
+  <!-- Hexagonal grid tile — repeats seamlessly at 56×48px.
+       Voice Aura design system — tech/AI sections. -->
+  <path d="M14 0 L28 0 L35 12 L28 24 L14 24 L7 12 Z"
+        stroke="#1A1919" stroke-opacity="0.06" stroke-width="0.75" fill="none"/>
+  <path d="M42 0 L56 0 L63 12 L56 24 L42 24 L35 12 Z"
+        stroke="#1A1919" stroke-opacity="0.06" stroke-width="0.75" fill="none"/>
+  <path d="M0 24 L14 24 L21 36 L14 48 L0 48 L-7 36 Z"
+        stroke="#1A1919" stroke-opacity="0.06" stroke-width="0.75" fill="none"/>
+  <path d="M28 24 L42 24 L49 36 L42 48 L28 48 L21 36 Z"
+        stroke="#1A1919" stroke-opacity="0.06" stroke-width="0.75" fill="none"/>
+</svg>

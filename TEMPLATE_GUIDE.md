@@ -271,7 +271,8 @@ Use `.va-bg-layer` for additional pattern overlays inside a section.
 ```
 
 Available layers: `--circuit`, `--rings`, `--grid`, `--mesh`, `--diagonal`,
-`--crosshair`, `--wave-divider`
+`--crosshair`, `--wave-divider`, `--voice-ripple`, `--spotlight`, `--hex`,
+`--frequency`, `--aurora`
 
 ---
 
@@ -361,6 +362,101 @@ Animated show/hide at breakpoints (instead of abrupt `d-none`).
 <div class="va-show-md">Hidden on mobile, fades in at md+</div>
 <div class="va-show-lg">Hidden on mobile, fades in at lg+</div>
 <div class="va-hide-md">Visible on mobile, hidden at md+</div>
+```
+
+### Collapse / Accordion Animation
+
+Smooth expand/collapse for FAQ sections, mobile nav sub-menus, any collapsible content.
+
+```html
+<button class="va-collapse-trigger" onclick="this.classList.toggle('is-open'); document.getElementById('faq-1').classList.toggle('is-open');">
+  Question text
+  <span class="va-collapse-trigger__icon">▼</span>
+</button>
+<div class="va-collapse" id="faq-1">
+  <p>Answer text here...</p>
+</div>
+```
+
+**Custom property**: `--va-collapse-height` (default `600px`)
+
+**Variant**: `.va-collapse--fast` (0.2s for small content)
+
+### Tab Content Crossfade
+
+Smooth crossfade between tab panes (pricing monthly/annual, feature tabs).
+
+```html
+<div class="va-tab-content">
+  <div class="va-tab-pane is-active" id="tab-monthly">Monthly pricing cards</div>
+  <div class="va-tab-pane" id="tab-annual">Annual pricing cards</div>
+</div>
+```
+
+Toggle via JS: remove `is-active` from current pane, add to target pane.
+
+**Custom property**: `--va-tab-min-height` (prevents layout shift)
+
+### Generic Mobile Carousel
+
+Horizontal snap-scroll on mobile, standard grid on desktop. Generalises the pricing-scroll
+pattern for any card collection.
+
+```html
+<div class="va-carousel-mobile va-carousel-mobile--3">
+  <div class="va-carousel-mobile__item">Card 1</div>
+  <div class="va-carousel-mobile__item">Card 2</div>
+  <div class="va-carousel-mobile__item">Card 3</div>
+</div>
+```
+
+Column variants: `--2`, `--3`, `--4` (desktop grid columns)
+
+On mobile (< 768px): items become 85%-width snap-scroll cards.
+
+### Skeleton-to-Content Reveal
+
+Animates the transition from skeleton placeholders to real content.
+
+```html
+<div class="va-skeleton-reveal" id="card-1">
+  <div class="va-skeleton-reveal__placeholder">
+    <div class="va-skeleton va-skeleton--text"></div>
+    <div class="va-skeleton va-skeleton--text"></div>
+  </div>
+  <div class="va-skeleton-reveal__content">
+    <p>Real content here</p>
+  </div>
+</div>
+```
+
+Trigger: `document.getElementById('card-1').classList.add('is-loaded');`
+
+### Parallax Background
+
+Simple parallax for background elements. Falls back to static on mobile.
+
+```html
+<section class="va-parallax">
+  <div class="va-parallax__bg" style="background-image: url(assets/images/hero-bg.jpg)"></div>
+  <div class="va-parallax__content">
+    ...content...
+  </div>
+</section>
+```
+
+Speed variants: `.va-parallax--slow` (0.3), `.va-parallax--fast` (0.7)
+
+JS (minimal scroll handler):
+```js
+document.querySelectorAll('.va-parallax__bg').forEach(bg => {
+  const speed = getComputedStyle(bg.parentElement).getPropertyValue('--va-parallax-speed') || 0.5;
+  window.addEventListener('scroll', () => {
+    const rect = bg.parentElement.getBoundingClientRect();
+    const offset = rect.top * speed;
+    bg.style.transform = `translateY(${offset}px)`;
+  }, { passive: true });
+});
 ```
 
 ---
@@ -461,6 +557,51 @@ collapses to single-column on mobile.
 
 **Reference**: behance-05 (feature cards split)
 
+### Hexagonal Grid Pattern
+
+Repeating hexagonal tile for technology / AI sections. Evokes data architecture.
+
+```html
+<section class="va-pattern-hex">...</section>
+<section class="va-pattern-hex va-pattern-hex--dense">...</section>  <!-- Tighter 40px -->
+<section class="va-pattern-hex va-pattern-hex--full">...</section>   <!-- No fade mask -->
+```
+
+**Custom properties**: `--va-mask-size`, `--va-mask-center`
+
+### Audio Frequency Bars Pattern
+
+Abstract vertical equalizer bars evoking audio spectrum analysis.
+
+```html
+<section class="va-pattern-frequency">...</section>
+<section class="va-pattern-frequency va-pattern-frequency--center">...</section>
+```
+
+### Aurora Gradient Overlay
+
+Organic flowing multi-blob gradient for CTA and premium sections.
+
+```html
+<section class="va-bg-aurora">...</section>
+<section class="va-bg-aurora va-bg-aurora--animate">...</section>  <!-- Slow drift animation -->
+<section class="va-bg-aurora va-bg-aurora--dark">...</section>     <!-- For dark backgrounds -->
+<section class="va-bg-aurora va-bg-aurora--intense">...</section>  <!-- Stronger opacity -->
+```
+
+### CSS-Only Wave Section Divider
+
+Pure CSS curved section divider — no SVG dependency. Creates organic transitions.
+
+```html
+<section class="va-wave-bottom">...</section>                       <!-- Default 48px -->
+<section class="va-wave-bottom va-wave-bottom--shallow">...</section> <!-- 32px -->
+<section class="va-wave-bottom va-wave-bottom--deep">...</section>    <!-- 72px -->
+<section class="va-wave-top">...</section>                           <!-- Top edge -->
+```
+
+**Custom property**: `--va-wave-color` (defaults to white)
+
 ### App Icon Component
 
 Rounded-square app icon element. Reference: behance-05 / behance-07.
@@ -479,6 +620,8 @@ Rounded-square app icon element. Reference: behance-05 / behance-07.
 ```html
 <footer class="va-bg-preset-footer va-pattern-noise">...</footer>
 <div class="va-bg-preset-auth va-bg-glow va-pattern-halftone">...</div>
+<section class="va-bg-preset-cta va-bg-aurora va-pattern-halftone--dark">...</section>
+<section class="va-bg-preset-testimonial va-bg-glow va-bg-dots">...</section>
 ```
 
 ---
@@ -778,10 +921,10 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
 
 | # | Pattern | File | SCSS Class | Used In |
 |---|---------|------|------------|---------|
-| 1 | Halftone (wide) | `assets/patterns/halftone-wide.svg` | `.va-pattern-halftone` | Hero, features, signup |
+| 1 | Halftone (wide) | `assets/patterns/halftone-wide.svg` (1.5KB, pattern+mask) | `.va-pattern-halftone` | Hero, features, signup |
 | 2 | Halftone (dots) | `assets/patterns/halftone-dots.svg` | `.va-pattern-halftone-dots` | Compact panels, cards |
 | 3 | Sound wave (wide) | `assets/patterns/sound-wave-wide.svg` | `.va-pattern-waveform-bg` | Hero waveform bar |
-| 4 | Sound wave (hero) | `assets/patterns/sound-wave-hero.svg` | `.va-pattern-wave-hero` | Hero accent (dramatic) |
+| 4 | Sound wave (hero) | `assets/patterns/sound-wave-hero.svg` (landscape 480×120) | `.va-pattern-wave-hero` | Hero accent (dramatic) |
 | 5 | Grid lines | `assets/patterns/grid-lines.svg` | `.va-bg-grid-lines` | Technical sections |
 | 6 | Grid dots | `assets/patterns/grid-dots.svg` | `.va-pattern-grid-dots` | SVG dot grid overlay |
 | 7 | Circuit lines | `assets/patterns/circuit-lines.svg` | `.va-pattern-circuit` | API/developer sections |
@@ -790,10 +933,29 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
 | 10 | Noise texture | `assets/patterns/noise-texture.svg` | `.va-pattern-noise` | Film grain overlay |
 | 11 | Mesh gradient | `assets/patterns/mesh-gradient.svg` | `.va-bg-mesh` | Ambient gradient |
 | 12 | Crosshair | `assets/patterns/crosshair.svg` | `.va-pattern-crosshair` | Corner decorations |
-| 13 | Wave divider | `assets/patterns/wave-divider.svg` | `.va-pattern-wave-divider` | Section bottom dividers |
+| 13 | Wave divider | `assets/patterns/wave-divider.svg` (dual-wave audio theme) | `.va-pattern-wave-divider` | Section bottom dividers |
 | 14 | Radial gradient | `assets/patterns/gradient-radial-soft.svg` | `.va-bg-radial-soft` | Soft ambient haze |
 | 15 | Voice ripple | `assets/patterns/voice-ripple.svg` | `.va-pattern-voice-ripple` | Audio-themed sections |
 | 16 | Spotlight gradient | `assets/patterns/spotlight-gradient.svg` | `.va-bg-spotlight` | Hero, pricing ambient light |
+| 17 | Hex grid | `assets/patterns/hex-grid.svg` | `.va-pattern-hex` | Tech/AI sections |
+| 18 | Frequency bars | `assets/patterns/frequency-bars.svg` | `.va-pattern-frequency` | Audio/voice-tech sections |
+| 19 | Aurora gradient | `assets/patterns/aurora-gradient.svg` | `.va-bg-aurora` | CTA, premium sections |
+
+### Dark Mode Patterns
+
+Use `.va-pattern--dark` alongside any pattern class to invert it for dark backgrounds:
+
+```html
+<section class="va-bg-dark va-pattern-circuit va-pattern--dark">
+  <!-- Circuit pattern renders as white lines on dark bg -->
+</section>
+
+<section class="va-bg-dark va-pattern-rings va-pattern--dark">
+  <!-- Concentric rings render as light strokes on dark bg -->
+</section>
+```
+
+Alternatively, `.va-pattern-halftone--dark` is the dedicated halftone-specific dark variant.
 
 ---
 
@@ -821,3 +983,11 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
 | `.va-hero-secondary-adapt` | Outlined button | Text-link style | md (768px) |
 | `.va-feature-split` | 2-column grid | Single column | lg (992px) |
 | `.va-reveal` | Hidden (opacity 0) | Animates in on scroll | IntersectionObserver |
+| `.va-collapse` | Collapsed (max-height 0) | Expanded (.is-open) | JS toggle |
+| `.va-tab-pane` | Hidden (opacity 0) | Visible (.is-active) | JS toggle |
+| `.va-carousel-mobile--3` | 3-column grid | Horizontal snap-scroll | md (768px) |
+| `.va-skeleton-reveal` | Skeleton visible | Content visible (.is-loaded) | JS toggle |
+| `.va-bg-aurora--animate` | Slow drift animation | Reduced opacity | Always |
+| `.va-wave-bottom` | 48px curved divider | 32px curved divider | md (768px) |
+| `.va-pattern-hex` | Full opacity | 60% opacity | md (768px) |
+| `.va-pattern-frequency` | Full size | 200% scaled, 50% opacity | md (768px) |

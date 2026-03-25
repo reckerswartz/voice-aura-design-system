@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" fill="none">
+  <!-- Audio frequency/equalizer bars — abstract vertical bars with varying heights
+       and opacity to evoke audio spectrum analysis. Voice Aura design system. -->
+  <defs>
+    <linearGradient id="fb-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A1919" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#1A1919" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+  <!-- 24 frequency bars with audio-like amplitude distribution -->
+  <rect x="8"   y="120" width="4" height="60" rx="2" fill="url(#fb-grad)"/>
+  <rect x="20"  y="90"  width="4" height="90" rx="2" fill="url(#fb-grad)"/>
+  <rect x="32"  y="60"  width="4" height="120" rx="2" fill="url(#fb-grad)"/>
+  <rect x="44"  y="40"  width="4" height="140" rx="2" fill="url(#fb-grad)"/>
+  <rect x="56"  y="25"  width="4" height="155" rx="2" fill="url(#fb-grad)"/>
+  <rect x="68"  y="15"  width="4" height="165" rx="2" fill="url(#fb-grad)"/>
+  <rect x="80"  y="8"   width="4" height="172" rx="2" fill="url(#fb-grad)"/>
+  <rect x="92"  y="20"  width="4" height="160" rx="2" fill="url(#fb-grad)"/>
+  <rect x="104" y="35"  width="4" height="145" rx="2" fill="url(#fb-grad)"/>
+  <rect x="116" y="55"  width="4" height="125" rx="2" fill="url(#fb-grad)"/>
+  <rect x="128" y="30"  width="4" height="150" rx="2" fill="url(#fb-grad)"/>
+  <rect x="140" y="12"  width="4" height="168" rx="2" fill="url(#fb-grad)"/>
+  <!-- Center peak -->
+  <rect x="160" y="5"   width="4" height="175" rx="2" fill="url(#fb-grad)"/>
+  <rect x="180" y="10"  width="4" height="170" rx="2" fill="url(#fb-grad)"/>
+  <rect x="200" y="18"  width="4" height="162" rx="2" fill="url(#fb-grad)"/>
+  <rect x="220" y="28"  width="4" height="152" rx="2" fill="url(#fb-grad)"/>
+  <rect x="240" y="8"   width="4" height="172" rx="2" fill="url(#fb-grad)"/>
+  <!-- Right decay -->
+  <rect x="268" y="22"  width="4" height="158" rx="2" fill="url(#fb-grad)"/>
+  <rect x="296" y="40"  width="4" height="140" rx="2" fill="url(#fb-grad)"/>
+  <rect x="324" y="55"  width="4" height="125" rx="2" fill="url(#fb-grad)"/>
+  <rect x="352" y="70"  width="4" height="110" rx="2" fill="url(#fb-grad)"/>
+  <rect x="388" y="90"  width="4" height="90" rx="2" fill="url(#fb-grad)"/>
+  <rect x="424" y="110" width="4" height="70" rx="2" fill="url(#fb-grad)"/>
+  <rect x="460" y="130" width="4" height="50" rx="2" fill="url(#fb-grad)"/>
+</svg>

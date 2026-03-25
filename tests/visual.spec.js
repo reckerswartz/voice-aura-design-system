@@ -9,6 +9,7 @@ const pages = [
   { name: 'backgrounds', path: './backgrounds.html' },
   { name: 'interactions-demo', path: './interactions-demo.html' },
   { name: 'transitions-showcase', path: './transitions-showcase.html' },
+  { name: 'backgrounds-animations-demo', path: './backgrounds-animations-demo.html' },
 ];
 
 for (const { name, path } of pages) {
