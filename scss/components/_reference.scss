@@ -381,3 +381,168 @@
   color: $va-body-text;
   font-size: 0.9375rem;
 }
+
+// ---------------------------------------------------------------------------
+// 28. ALIGNMENT TABLE (Bootstrap Alignment Guide section)
+// ---------------------------------------------------------------------------
+
+.ref-alignment-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+
+  th {
+    padding: 0.75rem 1rem;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    border-bottom: 2px solid $va-border-color;
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+    border-bottom: $border-width solid $va-border-color;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 29. GRID DEMO CELL (column cell in grid/layout demos)
+// ---------------------------------------------------------------------------
+
+.ref-grid-cell {
+  background: $va-section-bg;
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: $va-body-text;
+
+  &--sm {
+    padding: 1rem;
+  }
+
+  &--accent {
+    background: $va-badge-bg-light;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 30. PATTERN PREVIEW (bordered container for live pattern demos)
+// ---------------------------------------------------------------------------
+
+.ref-pattern-preview {
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--sm  { height: 160px; }
+  &--md  { height: 200px; }
+  &--lg  { height: 240px; }
+}
+
+// ---------------------------------------------------------------------------
+// 31. PATTERN LABEL (overlay text inside pattern previews)
+// ---------------------------------------------------------------------------
+
+.ref-pattern-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.875rem;
+  color: $va-muted-text;
+}
+
+// ---------------------------------------------------------------------------
+// 32. PILL (code-style label for utility demos)
+// ---------------------------------------------------------------------------
+
+.ref-pill {
+  background: $va-section-bg;
+  border: $border-width solid $va-border-color;
+  border-radius: $va-radius-sm;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-family: $va-font-mono;
+}
+
+// ---------------------------------------------------------------------------
+// 33. INFO BOX (tip/info callout)
+// ---------------------------------------------------------------------------
+
+.ref-info-box {
+  background: $va-section-bg;
+  border-radius: $va-radius;
+  padding: 1.25rem;
+  font-size: 0.8125rem;
+
+  &__title {
+    font-weight: $font-weight-semibold;
+    margin-bottom: 0.75rem;
+  }
+
+  &__list {
+    padding-left: 1.25rem;
+    color: $va-body-text;
+    line-height: 1.8;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 34. INLINE CODE BLOCK (pre/code block inside info boxes)
+// ---------------------------------------------------------------------------
+
+.ref-pre {
+  background: $va-near-black;
+  color: $va-light-grey;
+  padding: 1rem;
+  border-radius: $va-radius-sm;
+  overflow-x: auto;
+  font-family: $va-font-mono;
+  font-size: 0.8rem;
+}
+
+// ---------------------------------------------------------------------------
+// 35. SECTION H3 (section sub-title used in Bootstrap Alignment)
+// ---------------------------------------------------------------------------
+
+.ref-h3 {
+  font-size: 1.25rem;
+  margin: 2rem 0 1rem;
+}
+
+// ---------------------------------------------------------------------------
+// 36. AVATAR PLACEHOLDER (circular avatar placeholder)
+// ---------------------------------------------------------------------------
+
+.ref-avatar {
+  width: 80px;
+  height: 80px;
+  background: $va-body-text;
+  border-radius: 50%;
+}
+
+// ---------------------------------------------------------------------------
+// 37. COLUMN LABEL (small label above grid variant demos)
+// ---------------------------------------------------------------------------
+
+.ref-col-label {
+  font-size: 0.75rem;
+  font-weight: $font-weight-semibold;
+  color: $va-muted-text;
+  margin-bottom: 0.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// 38. FOOTER HEADING (footer link group heading in demo)
+// ---------------------------------------------------------------------------
+
+.ref-footer-heading {
+  font-weight: $font-weight-semibold;
+  margin-bottom: 0.75rem;
+}

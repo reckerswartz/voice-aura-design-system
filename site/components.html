@@ -328,23 +328,23 @@ padding: va-space(5);      // 2.5rem (40px)
           <h2 class="ref-title">Border Radius</h2>
           <p class="ref-desc">Five radius levels provide visual consistency from buttons to hero cards.</p>
           <div class="ref-component-row">
-            <div style="text-align:center;">
+            <div class="text-center">
               <div class="ref-radius-demo" style="border-radius: 0.5rem;">sm</div>
               <small class="ref-spacer-label">8px</small>
             </div>
-            <div style="text-align:center;">
+            <div class="text-center">
               <div class="ref-radius-demo" style="border-radius: 0.75rem;">default</div>
               <small class="ref-spacer-label">12px</small>
             </div>
-            <div style="text-align:center;">
+            <div class="text-center">
               <div class="ref-radius-demo" style="border-radius: 1rem;">lg</div>
               <small class="ref-spacer-label">16px</small>
             </div>
-            <div style="text-align:center;">
+            <div class="text-center">
               <div class="ref-radius-demo" style="border-radius: 1.5rem;">xl</div>
               <small class="ref-spacer-label">24px</small>
             </div>
-            <div style="text-align:center;">
+            <div class="text-center">
               <div class="ref-radius-demo" style="border-radius: 50rem; width: 100px;">pill</div>
               <small class="ref-spacer-label">full</small>
             </div>
@@ -1278,7 +1278,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/div&gt;</div>
 
           <h3 class="ref-sub-section-heading" style="font-size: 1.25rem;">Discount Badge</h3>
-          <p class="ref-desc">Used on pricing pages for promotional offers.</p>
+          <p class="ref-desc ref-mb-md">Used on pricing pages for promotional offers.</p>
           <div class="ref-component-row">
             <span class="va-discount-badge">ANNUAL DISCOUNT <span class="va-discount-badge__value">%40</span></span>
           </div>
@@ -1309,7 +1309,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
                   <button class="va-agent-card__lang">Chinese</button>
                   <button class="va-agent-card__lang">Jap</button>
                 </div>
-                <div class="va-agent-card__avatar" style="width: 80px; height: 80px; background: #4B5563; border-radius: 50%;"></div>
+                <div class="va-agent-card__avatar ref-avatar"></div>
                 <div class="va-agent-card__info">
                   <div class="va-agent-card__name">Yang lu wu <span class="va-agent-card__verified">&#10004;</span></div>
                   <div class="va-agent-card__role">Customer support agent</div>
@@ -1327,7 +1327,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
                   <button class="va-agent-card__lang">Chinese</button>
                   <button class="va-agent-card__lang">Jap</button>
                 </div>
-                <div class="va-agent-card__avatar" style="width: 80px; height: 80px; background: #4B5563; border-radius: 50%;"></div>
+                <div class="va-agent-card__avatar ref-avatar"></div>
                 <div class="va-agent-card__info">
                   <div class="va-agent-card__name">Yang lu wu <span class="va-agent-card__verified">&#10004;</span></div>
                   <div class="va-agent-card__role">Customer support agent</div>
@@ -1473,7 +1473,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           </div>
 
           <h5 class="ref-subheading">Separator Variant</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-trust-bar__logos--separated</code> for vertical dividers between logos.</p>
+          <p class="ref-desc ref-mb-md">Add <code>.va-trust-bar__logos--separated</code> for vertical dividers between logos.</p>
           <div class="ref-demo-container ref-demo-container--padded">
             <div class="va-trust-bar va-trust-bar--bordered">
               <p class="va-trust-bar__text">Trusted by <strong>10M+</strong> creators worldwide</p>
@@ -1487,7 +1487,7 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           </div>
 
           <h5 class="ref-subheading">Dark Variant</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-trust-bar--dark</code> for use on dark backgrounds. Logos are inverted and text is muted white.</p>
+          <p class="ref-desc ref-mb-md">Add <code>.va-trust-bar--dark</code> for use on dark backgrounds. Logos are inverted and text is muted white.</p>
           <div class="ref-demo-container" style="background: #1A1919; border-radius: 0.75rem; padding: 2rem;">
             <div class="va-trust-bar va-trust-bar--dark">
               <p class="va-trust-bar__text">Trusted by <strong>10M+</strong> creators worldwide</p>
@@ -1600,40 +1600,40 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <p class="ref-desc">CSS Grid system with auto-fit responsive grids, fixed-column variants, flex utilities, and VA spacing (8px grid). The <code>--va-grid-min</code> custom property allows per-instance column width control.</p>
 
           <h5 class="ref-subheading">Auto-fit Grid</h5>
-          <p class="ref-desc" style="margin-bottom: 1rem;">Columns automatically fill available space. Set <code>--va-grid-min</code> to control minimum column width (default: 280px).</p>
+          <p class="ref-desc ref-mb-md">Columns automatically fill available space. Set <code>--va-grid-min</code> to control minimum column width (default: 280px).</p>
           <div class="ref-demo-container ref-demo-container--padded">
             <div class="va-grid" style="--va-grid-min: 180px; gap: 1rem;">
-              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 1</div>
-              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 2</div>
-              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 3</div>
-              <div style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1.5rem; text-align: center; font-size: 0.875rem; color: #4B5563;">Column 4</div>
+              <div class="ref-grid-cell">Column 1</div>
+              <div class="ref-grid-cell">Column 2</div>
+              <div class="ref-grid-cell">Column 3</div>
+              <div class="ref-grid-cell">Column 4</div>
             </div>
           </div>
 
           <h5 class="ref-subheading">Fixed-column Variants</h5>
           <div class="ref-demo-container ref-demo-container--padded" style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div>
-              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">2-COLUMN</p>
+              <p class="ref-col-label">2-COLUMN</p>
               <div class="va-grid va-grid--2col" style="gap: 1rem;">
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
               </div>
             </div>
             <div>
-              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">3-COLUMN</p>
+              <p class="ref-col-label">3-COLUMN</p>
               <div class="va-grid va-grid--3col" style="gap: 1rem;">
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">3</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">3</div>
               </div>
             </div>
             <div>
-              <p style="font-size: 0.75rem; font-weight: 600; color: #6B7280; margin-bottom: 0.5rem;">4-COLUMN</p>
+              <p class="ref-col-label">4-COLUMN</p>
               <div class="va-grid va-grid--4col" style="gap: 1rem;">
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">1</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">2</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">3</div>
-                <div style="background: #EEF2FF; border: 1px solid #E5E7EB; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem;">4</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">1</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">2</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">3</div>
+                <div class="ref-grid-cell ref-grid-cell--sm ref-grid-cell--accent">4</div>
               </div>
             </div>
           </div>
@@ -1641,12 +1641,12 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <h5 class="ref-subheading">Gap &amp; Spacing Utilities (8px grid)</h5>
           <div class="ref-demo-container ref-demo-container--padded">
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-1 (8px)</span>
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-2 (16px)</span>
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-3 (24px)</span>
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-gap-4 (32px)</span>
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-mt-1 … .va-mt-8</span>
-              <span style="background: #F7F7F8; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.8125rem; font-family: 'IBM Plex Mono', monospace;">.va-flex-center</span>
+              <span class="ref-pill">.va-gap-1 (8px)</span>
+              <span class="ref-pill">.va-gap-2 (16px)</span>
+              <span class="ref-pill">.va-gap-3 (24px)</span>
+              <span class="ref-pill">.va-gap-4 (32px)</span>
+              <span class="ref-pill">.va-mt-1 … .va-mt-8</span>
+              <span class="ref-pill">.va-flex-center</span>
             </div>
           </div>
 
@@ -1869,8 +1869,8 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <!-- Halftone Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Halftone Pattern (bottom variant)</p>
-            <div class="va-pattern-halftone va-pattern-halftone--bottom" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">Content sits above the pattern</span>
+            <div class="va-pattern-halftone va-pattern-halftone--bottom ref-pattern-preview ref-pattern-preview--md">
+              <span class="ref-pattern-label">Content sits above the pattern</span>
             </div>
           </div>
 
@@ -1888,8 +1888,8 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <!-- Dot Grid Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Dot Grid Background</p>
-            <div class="va-bg-dots" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">va-bg-dots (radial fade)</span>
+            <div class="va-bg-dots ref-pattern-preview ref-pattern-preview--sm">
+              <span class="ref-pattern-label">va-bg-dots (radial fade)</span>
             </div>
           </div>
 
@@ -1897,15 +1897,15 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Accent Lines</p>
             <div class="ref-flex-row">
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div class="va-accent-line" style="margin:0 auto 0.5rem;"></div>
                 <code class="ref-code-sm">.va-accent-line</code>
               </div>
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div class="va-accent-line va-accent-line--horizontal" style="margin:0 auto 0.5rem;"></div>
                 <code class="ref-code-sm">--horizontal</code>
               </div>
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div class="va-accent-line va-accent-line--long" style="margin:0 auto 0.5rem;"></div>
                 <code class="ref-code-sm">--long</code>
               </div>
@@ -1916,13 +1916,13 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <div>
             <p class="ref-demo-label">Waveform Bars (animated)</p>
             <div class="ref-flex-row">
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div class="va-waveform-bars" style="color:#0478FF;margin:0 auto 0.5rem;">
                   <span></span><span></span><span></span><span></span><span></span>
                 </div>
                 <code class="ref-code-sm">.va-waveform-bars</code>
               </div>
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div class="va-waveform-bars va-waveform-bars--static" style="color:#1A1919;margin:0 auto 0.5rem;">
                   <span></span><span></span><span></span><span></span><span></span>
                 </div>
@@ -1934,40 +1934,40 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
           <!-- Circuit Lines Demo -->
           <div class="ref-mb-lg" style="margin-top:2rem;">
             <p class="ref-demo-label">Circuit Lines Pattern</p>
-            <div class="va-pattern-circuit" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-circuit — tech/AI routing lines</span>
+            <div class="va-pattern-circuit ref-pattern-preview ref-pattern-preview--md">
+              <span class="ref-pattern-label">.va-pattern-circuit — tech/AI routing lines</span>
             </div>
           </div>
 
           <!-- Concentric Rings Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Concentric Rings Pattern</p>
-            <div class="va-pattern-rings" style="height:240px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-rings — voice/audio ripples</span>
+            <div class="va-pattern-rings ref-pattern-preview ref-pattern-preview--lg">
+              <span class="ref-pattern-label">.va-pattern-rings — voice/audio ripples</span>
             </div>
           </div>
 
           <!-- Grid Lines Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Grid Lines Background</p>
-            <div class="va-bg-grid-lines" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-grid-lines (radial fade)</span>
+            <div class="va-bg-grid-lines ref-pattern-preview ref-pattern-preview--sm">
+              <span class="ref-pattern-label">.va-bg-grid-lines (radial fade)</span>
             </div>
           </div>
 
           <!-- Diagonal Lines Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Diagonal Lines Texture</p>
-            <div class="va-pattern-diagonal va-bg-alt" style="height:160px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-pattern-diagonal on .va-bg-alt</span>
+            <div class="va-pattern-diagonal va-bg-alt ref-pattern-preview ref-pattern-preview--sm">
+              <span class="ref-pattern-label">.va-pattern-diagonal on .va-bg-alt</span>
             </div>
           </div>
 
           <!-- Mesh Gradient Demo -->
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Mesh Gradient</p>
-            <div class="va-bg-mesh" style="height:200px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-mesh — soft ambient gradient blobs</span>
+            <div class="va-bg-mesh ref-pattern-preview ref-pattern-preview--md">
+              <span class="ref-pattern-label">.va-bg-mesh — soft ambient gradient blobs</span>
             </div>
           </div>
 
@@ -1977,15 +1977,15 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 
           <div class="ref-mb-lg">
             <p class="ref-demo-label">Layered Composition: Glow + Circuit + Noise</p>
-            <div class="va-bg-glow va-pattern-noise" style="height:240px;border:1px solid #E5E7EB;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;">
+            <div class="va-bg-glow va-pattern-noise ref-pattern-preview ref-pattern-preview--lg" style="position:relative;">
               <div class="va-bg-layer va-bg-layer--circuit"></div>
-              <span style="position:relative;z-index:1;font-size:0.875rem;color:#9CA3AF;">.va-bg-glow + .va-pattern-noise + .va-bg-layer--circuit</span>
+              <span class="ref-pattern-label">.va-bg-glow + .va-pattern-noise + .va-bg-layer--circuit</span>
             </div>
           </div>
 
-          <div class="ref-mb-lg" style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
-            <p style="font-weight:600;margin-bottom:0.75rem;">Composition Rules:</p>
-            <ol style="padding-left:1.25rem;color:#4B5563;line-height:1.8;">
+          <div class="ref-info-box ref-mb-lg">
+            <p class="ref-info-box__title">Composition Rules:</p>
+            <ol class="ref-info-box__list">
               <li><strong>Max 2-3 patterns per section</strong> — more causes visual noise and hurts performance.</li>
               <li><strong>Use <code>::before</code>-based patterns first</strong> (halftone, circuit, rings, mesh, grid-lines), then <code>::after</code>-based patterns (noise, diagonal), then <code>.va-bg-layer</code> for a third.</li>
               <li><strong>Pair a structural pattern with a texture</strong> — e.g., circuit lines (structural) + noise (texture).</li>
@@ -1995,9 +1995,9 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
             </ol>
           </div>
 
-          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
-            <p style="font-weight:600;margin-bottom:0.5rem;">HTML Template (layered composition):</p>
-            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>&lt;section class="va-section va-bg-glow va-pattern-noise va-section-morph"&gt;
+          <div class="ref-info-box">
+            <p class="ref-info-box__title">HTML Template (layered composition):</p>
+            <pre class="ref-pre"><code>&lt;section class="va-section va-bg-glow va-pattern-noise va-section-morph"&gt;
   &lt;div class="va-bg-layer va-bg-layer--circuit"&gt;&lt;/div&gt;
   &lt;div class="va-container"&gt;
     ...content...
@@ -2116,9 +2116,9 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
               </tr>
             </tbody>
           </table>
-          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
-            <p style="font-weight:600;margin-bottom:0.5rem;">JS Setup (add before &lt;/body&gt;):</p>
-            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>const observer = new IntersectionObserver((entries) =&gt; {
+          <div class="ref-info-box">
+            <p class="ref-info-box__title">JS Setup (add before &lt;/body&gt;):</p>
+            <pre class="ref-pre"><code>const observer = new IntersectionObserver((entries) =&gt; {
   entries.forEach(e =&gt; e.isIntersecting &amp;&amp; e.target.classList.add('is-visible'));
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
@@ -2276,9 +2276,9 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
             </tbody>
           </table>
 
-          <div class="ref-mb-lg" style="margin-top:1.5rem;background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
-            <p style="font-weight:600;margin-bottom:0.75rem;">Responsive Animation Best Practices:</p>
-            <ol style="padding-left:1.25rem;color:#4B5563;line-height:1.8;">
+          <div class="ref-info-box ref-mb-lg" style="margin-top:1.5rem;">
+            <p class="ref-info-box__title">Responsive Animation Best Practices:</p>
+            <ol class="ref-info-box__list">
               <li><strong>Use <code>.va-responsive-fade-left/right</code></strong> for feature-text + visual pairs — the direction adapts automatically.</li>
               <li><strong>Wrap card grids in <code>.va-stagger-group</code></strong> or <code>.va-scroll-stagger</code> for cascading reveals.</li>
               <li><strong>Add <code>.va-section-morph</code></strong> to sections with background patterns so the pattern transitions smoothly on resize.</li>
@@ -2287,9 +2287,9 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
             </ol>
           </div>
 
-          <div style="background:#F7F7F8;border-radius:12px;padding:1.25rem;font-size:0.8125rem;">
-            <p style="font-weight:600;margin-bottom:0.5rem;">HTML Template (responsive animated section):</p>
-            <pre style="background:#1A1919;color:#E9E9EA;padding:1rem;border-radius:8px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;"><code>&lt;section class="va-section va-section-morph va-bg-glow"&gt;
+          <div class="ref-info-box">
+            <p class="ref-info-box__title">HTML Template (responsive animated section):</p>
+            <pre class="ref-pre"><code>&lt;section class="va-section va-section-morph va-bg-glow"&gt;
   &lt;div class="va-container va-container-smooth"&gt;
     &lt;h2 class="va-responsive-fade-left"&gt;Feature Title&lt;/h2&gt;
     &lt;div class="va-scroll-stagger ref-grid ref-grid--3"&gt;
@@ -2328,163 +2328,163 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
           </p>
 
           <!-- Sass Variable Overrides -->
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">Sass Variable Overrides</h3>
-          <p style="color: #4B5563; margin-bottom: 1rem;">
+          <h3 class="ref-h3">Sass Variable Overrides</h3>
+          <p class="ref-inline-desc">
             These Bootstrap variables are overridden in <code>_variables.scss</code>, so Bootstrap's
             built-in classes automatically produce Voice Aura–consistent output:
           </p>
-          <div style="overflow-x: auto; margin-bottom: 2rem;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+          <div style="overflow-x: auto;">
+            <table class="ref-alignment-table">
               <thead>
-                <tr style="border-bottom: 2px solid #E5E7EB; text-align: left;">
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Category</th>
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Bootstrap Variables</th>
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">VA Values</th>
+                <tr>
+                  <th>Category</th>
+                  <th>Bootstrap Variables</th>
+                  <th>VA Values</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Theme Colors</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$primary</code>, <code>$secondary</code>, <code>$theme-colors</code></td>
-                  <td style="padding: 0.75rem 1rem;">#0478FF (primary), #1A1919 (secondary), + <code>section-bg</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Typography</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$font-family-base</code>, <code>$headings-font-family</code>, <code>$display-font-sizes</code></td>
-                  <td style="padding: 0.75rem 1rem;">IBM Plex Sans / Serif, fluid clamp() sizes</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Spacing</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$spacers</code></td>
-                  <td style="padding: 0.75rem 1rem;">Keys 0–9 (0 to 120px)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Containers</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$container-max-widths</code></td>
-                  <td style="padding: 0.75rem 1rem;">xxl = 1280px (matches VA)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Buttons</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$btn-padding-*</code>, <code>$btn-font-*</code>, <code>$btn-border-radius</code></td>
-                  <td style="padding: 0.75rem 1rem;">VA sizing &amp; radius tokens</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Cards</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$card-bg</code>, <code>$card-border-*</code>, <code>$card-spacer-*</code></td>
-                  <td style="padding: 0.75rem 1rem;">VA border, radius &amp; padding tokens</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.75rem 1rem;">Forms</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$input-*</code>, <code>$form-label-*</code>, <code>$form-select-*</code></td>
-                  <td style="padding: 0.75rem 1rem;">VA input styling &amp; focus colors</td>
+                <tr>
+                  <td>Theme Colors</td>
+                  <td><code>$primary</code>, <code>$secondary</code>, <code>$theme-colors</code></td>
+                  <td>#0478FF (primary), #1A1919 (secondary), + <code>section-bg</code></td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.75rem 1rem;">Shadows</td>
-                  <td style="padding: 0.75rem 1rem;"><code>$box-shadow</code>, <code>$box-shadow-sm</code>, <code>$box-shadow-lg</code></td>
-                  <td style="padding: 0.75rem 1rem;">VA's multi-layered shadow values</td>
+                  <td>Typography</td>
+                  <td><code>$font-family-base</code>, <code>$headings-font-family</code>, <code>$display-font-sizes</code></td>
+                  <td>IBM Plex Sans / Serif, fluid clamp() sizes</td>
+                </tr>
+                <tr>
+                  <td>Spacing</td>
+                  <td><code>$spacers</code></td>
+                  <td>Keys 0–9 (0 to 120px)</td>
+                </tr>
+                <tr>
+                  <td>Containers</td>
+                  <td><code>$container-max-widths</code></td>
+                  <td>xxl = 1280px (matches VA)</td>
+                </tr>
+                <tr>
+                  <td>Buttons</td>
+                  <td><code>$btn-padding-*</code>, <code>$btn-font-*</code>, <code>$btn-border-radius</code></td>
+                  <td>VA sizing &amp; radius tokens</td>
+                </tr>
+                <tr>
+                  <td>Cards</td>
+                  <td><code>$card-bg</code>, <code>$card-border-*</code>, <code>$card-spacer-*</code></td>
+                  <td>VA border, radius &amp; padding tokens</td>
+                </tr>
+                <tr>
+                  <td>Forms</td>
+                  <td><code>$input-*</code>, <code>$form-label-*</code>, <code>$form-select-*</code></td>
+                  <td>VA input styling &amp; focus colors</td>
+                </tr>
+                <tr>
+                  <td>Shadows</td>
+                  <td><code>$box-shadow</code>, <code>$box-shadow-sm</code>, <code>$box-shadow-lg</code></td>
+                  <td>VA's multi-layered shadow values</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <!-- Class Equivalence Table -->
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">VA ↔ Bootstrap Class Equivalences</h3>
-          <p style="color: #4B5563; margin-bottom: 1rem;">
+          <h3 class="ref-h3">VA ↔ Bootstrap Class Equivalences</h3>
+          <p class="ref-inline-desc">
             Where a VA class duplicates Bootstrap functionality, the Bootstrap class produces
             equivalent output.  Both are available; prefer Bootstrap's in new code.
           </p>
-          <div style="overflow-x: auto; margin-bottom: 2rem;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+          <div style="overflow-x: auto;">
+            <table class="ref-alignment-table">
               <thead>
-                <tr style="border-bottom: 2px solid #E5E7EB; text-align: left;">
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">VA Class</th>
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Bootstrap Equivalent</th>
-                  <th style="padding: 0.75rem 1rem; font-weight: 600;">Notes</th>
+                <tr>
+                  <th>VA Class</th>
+                  <th>Bootstrap Equivalent</th>
+                  <th>Notes</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-container</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.container</code></td>
-                  <td style="padding: 0.5rem 1rem;">xxl = 1280px via <code>$container-max-widths</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-flex-center</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.d-flex .align-items-center .justify-content-center</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA is a convenience shorthand</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-flex-between</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.d-flex .align-items-center .justify-content-between</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA is a convenience shorthand</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-mx-auto</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.mx-auto</code></td>
-                  <td style="padding: 0.5rem 1rem;">Identical</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-display-1…4</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.display-1…4</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA adds <code>letter-spacing: -0.03em</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-lead</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.lead</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA adds <code>color</code> and <code>margin-bottom</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-text-muted</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.text-body-secondary</code></td>
-                  <td style="padding: 0.5rem 1rem;">Same purpose, different color value</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-text-bold</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.fw-semibold</code></td>
-                  <td style="padding: 0.5rem 1rem;">Both set <code>font-weight: 600</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-white</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.bg-white</code></td>
-                  <td style="padding: 0.5rem 1rem;">Identical</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-alt</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.bg-section-bg</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>section-bg</code> added to <code>$theme-colors</code></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-bg-dark</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.bg-dark .text-white-50</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA version also recolors headings</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-btn--primary</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.btn .btn-dark</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA uses BEM; BS uses modifier classes</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-btn--accent</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.btn .btn-primary</code></td>
-                  <td style="padding: 0.5rem 1rem;">Both use <code>$primary</code> (#0478FF)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                  <td style="padding: 0.5rem 1rem;"><code>.va-transition</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.transition-base</code></td>
-                  <td style="padding: 0.5rem 1rem;">Generated via utility API extension</td>
+                <tr>
+                  <td><code>.va-container</code></td>
+                  <td><code>.container</code></td>
+                  <td>xxl = 1280px via <code>$container-max-widths</code></td>
                 </tr>
                 <tr>
-                  <td style="padding: 0.5rem 1rem;"><code>.va-aspect--16x9</code></td>
-                  <td style="padding: 0.5rem 1rem;"><code>.ratio .ratio-16x9</code></td>
-                  <td style="padding: 0.5rem 1rem;">VA uses <code>aspect-ratio</code> property directly</td>
+                  <td><code>.va-flex-center</code></td>
+                  <td><code>.d-flex .align-items-center .justify-content-center</code></td>
+                  <td>VA is a convenience shorthand</td>
+                </tr>
+                <tr>
+                  <td><code>.va-flex-between</code></td>
+                  <td><code>.d-flex .align-items-center .justify-content-between</code></td>
+                  <td>VA is a convenience shorthand</td>
+                </tr>
+                <tr>
+                  <td><code>.va-mx-auto</code></td>
+                  <td><code>.mx-auto</code></td>
+                  <td>Identical</td>
+                </tr>
+                <tr>
+                  <td><code>.va-display-1…4</code></td>
+                  <td><code>.display-1…4</code></td>
+                  <td>VA adds <code>letter-spacing: -0.03em</code></td>
+                </tr>
+                <tr>
+                  <td><code>.va-lead</code></td>
+                  <td><code>.lead</code></td>
+                  <td>VA adds <code>color</code> and <code>margin-bottom</code></td>
+                </tr>
+                <tr>
+                  <td><code>.va-text-muted</code></td>
+                  <td><code>.text-body-secondary</code></td>
+                  <td>Same purpose, different color value</td>
+                </tr>
+                <tr>
+                  <td><code>.va-text-bold</code></td>
+                  <td><code>.fw-semibold</code></td>
+                  <td>Both set <code>font-weight: 600</code></td>
+                </tr>
+                <tr>
+                  <td><code>.va-bg-white</code></td>
+                  <td><code>.bg-white</code></td>
+                  <td>Identical</td>
+                </tr>
+                <tr>
+                  <td><code>.va-bg-alt</code></td>
+                  <td><code>.bg-section-bg</code></td>
+                  <td><code>section-bg</code> added to <code>$theme-colors</code></td>
+                </tr>
+                <tr>
+                  <td><code>.va-bg-dark</code></td>
+                  <td><code>.bg-dark .text-white-50</code></td>
+                  <td>VA version also recolors headings</td>
+                </tr>
+                <tr>
+                  <td><code>.va-btn--primary</code></td>
+                  <td><code>.btn .btn-dark</code></td>
+                  <td>VA uses BEM; BS uses modifier classes</td>
+                </tr>
+                <tr>
+                  <td><code>.va-btn--accent</code></td>
+                  <td><code>.btn .btn-primary</code></td>
+                  <td>Both use <code>$primary</code> (#0478FF)</td>
+                </tr>
+                <tr>
+                  <td><code>.va-transition</code></td>
+                  <td><code>.transition-base</code></td>
+                  <td>Generated via utility API extension</td>
+                </tr>
+                <tr>
+                  <td><code>.va-aspect--16x9</code></td>
+                  <td><code>.ratio .ratio-16x9</code></td>
+                  <td>VA uses <code>aspect-ratio</code> property directly</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <!-- Custom-Only Classes -->
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">VA-Only Classes (No Bootstrap Equivalent)</h3>
-          <p style="color: #4B5563; margin-bottom: 1rem;">
+          <h3 class="ref-h3">VA-Only Classes (No Bootstrap Equivalent)</h3>
+          <p class="ref-inline-desc">
             These classes are unique to the Voice Aura design system and must use <code>.va-*</code> naming:
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
@@ -2512,7 +2512,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
           </div>
 
           <!-- Usage Guidance -->
-          <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem;">When to Use Which</h3>
+          <h3 class="ref-h3">When to Use Which</h3>
           <div class="ref-grid ref-grid--2">
             <div class="va-card" style="border-left: 3px solid #0478FF;">
               <div class="va-card__body">
@@ -2556,7 +2556,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
                     <strong>VOICE AURA</strong>
                   </div>
                   <div>
-                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">Important Links</h6>
+                    <h6 class="ref-footer-heading">Important Links</h6>
                     <ul class="va-footer__links">
                       <li><a href="#">Affiliates Partner Program</a></li>
                       <li><a href="#">Voice Actor Partnerships</a></li>
@@ -2566,7 +2566,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
                     </ul>
                   </div>
                   <div>
-                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">Products</h6>
+                    <h6 class="ref-footer-heading">Products</h6>
                     <ul class="va-footer__links">
                       <li><a href="#">Text to speech</a></li>
                       <li><a href="#">AI Dubbing</a></li>
@@ -2575,7 +2575,7 @@ document.querySelectorAll('[class*="va-scroll-"]').forEach(el =&gt; observer.obs
                     </ul>
                   </div>
                   <div>
-                    <h6 style="font-weight: 600; margin-bottom: 0.75rem;">How to create</h6>
+                    <h6 class="ref-footer-heading">How to create</h6>
                     <ul class="va-footer__links">
                       <li><a href="#">E-Learning</a></li>
                       <li><a href="#">Advertisements</a></li>
