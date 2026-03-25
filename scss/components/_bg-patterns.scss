@@ -227,6 +227,7 @@
   position: relative;
   contain: layout style;
 
+  // stylelint-disable-next-line no-duplicate-selectors
   &::after {
     content: "";
     position: absolute;
@@ -244,7 +245,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -286,7 +287,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -340,7 +341,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -405,7 +406,7 @@
     );
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -451,7 +452,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -494,7 +495,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -536,7 +537,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -578,7 +579,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -619,7 +620,7 @@
     );
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -661,7 +662,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -717,7 +718,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }
@@ -783,7 +784,7 @@
     }
   }
 
-  > * {
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }

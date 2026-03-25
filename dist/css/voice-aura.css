@@ -12029,35 +12029,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 96px;
+    height: 41px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 29px;
+    height: 76px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 72px;
+    height: 68px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 18px;
+    height: 25px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 30px;
+    height: 71px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 63px;
+    height: 23px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 80px;
+    height: 69px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 22px;
+    height: 31px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
@@ -14317,7 +14317,7 @@
       opacity: var(--va-pattern-opacity, 0.3);
     }
   }
-  .va-pattern-noise > * {
+  .va-pattern-noise > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14345,7 +14345,7 @@
       opacity: var(--va-pattern-opacity, 0.7);
     }
   }
-  .va-pattern-circuit > * {
+  .va-pattern-circuit > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14382,7 +14382,7 @@
       height: var(--va-ring-size, 360px);
     }
   }
-  .va-pattern-rings > * {
+  .va-pattern-rings > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14422,7 +14422,7 @@
     mask-image: radial-gradient(ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%), rgba(26, 25, 25, 0.4) 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%), rgba(26, 25, 25, 0.4) 0%, transparent 70%);
   }
-  .va-bg-grid-lines > * {
+  .va-bg-grid-lines > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14454,7 +14454,7 @@
       opacity: var(--va-pattern-opacity, 0.6);
     }
   }
-  .va-pattern-diagonal > * {
+  .va-pattern-diagonal > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14484,7 +14484,7 @@
       opacity: var(--va-pattern-opacity, 0.6);
     }
   }
-  .va-bg-mesh > * {
+  .va-bg-mesh > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14515,7 +14515,7 @@
       opacity: var(--va-pattern-opacity, 0.5);
     }
   }
-  .va-pattern-halftone-dots > * {
+  .va-pattern-halftone-dots > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14547,7 +14547,7 @@
       opacity: var(--va-pattern-opacity, 0.35);
     }
   }
-  .va-pattern-wave-hero > * {
+  .va-pattern-wave-hero > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14569,7 +14569,7 @@
     mask-image: radial-gradient(ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%), rgba(26, 25, 25, 0.4) 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%), rgba(26, 25, 25, 0.4) 0%, transparent 70%);
   }
-  .va-pattern-grid-dots > * {
+  .va-pattern-grid-dots > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14600,7 +14600,7 @@
       opacity: var(--va-pattern-opacity, 0.4);
     }
   }
-  .va-bg-radial-soft > * {
+  .va-bg-radial-soft > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14636,7 +14636,7 @@
       height: var(--va-ripple-size, 400px);
     }
   }
-  .va-pattern-voice-ripple > * {
+  .va-pattern-voice-ripple > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }
@@ -14682,7 +14682,7 @@
       opacity: var(--va-pattern-opacity, 0.5);
     }
   }
-  .va-bg-spotlight > * {
+  .va-bg-spotlight > *:not(.va-hero__float) {
     position: relative;
     z-index: 1;
   }

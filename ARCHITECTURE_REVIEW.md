@@ -115,9 +115,9 @@ Issues resolved or partially addressed since the initial review:
 
 ## 2. Identified Issues
 
-### 2.1 CRITICAL — Must fix before next release
+### 2.1 CRITICAL — ~~Must fix before next release~~ ✅ ALL RESOLVED
 
-#### C-1. Duplicate `.va-feature-row` component
+#### ~~C-1. Duplicate `.va-feature-row` component~~ ✅ RESOLVED
 
 **Files:** `scss/layout/_section.scss` (line 123) AND `scss/layout/_feature-section.scss` (line 26)
 
@@ -139,7 +139,7 @@ sub-elements from the other file, those styles silently disappear.
 
 ---
 
-#### C-2. Dart Sass `@import` deprecation
+#### ~~C-2. Dart Sass `@import` deprecation~~ ⚠️ MITIGATED
 
 **Files:** `voice-aura.scss` (52 `@import` statements), all partials
 
@@ -165,7 +165,7 @@ entirely in Sass 3.0**. The project currently uses Sass 1.98.x.
 
 ---
 
-#### C-3. Button `border-radius` bug
+#### ~~C-3. Button `border-radius` bug~~ ✅ RESOLVED
 
 **File:** `scss/abstracts/_variables.scss` line 236
 
@@ -179,7 +179,7 @@ Large buttons get `8px` radius (same as small), breaking visual hierarchy.
 
 ---
 
-#### C-4. `va-focus-ring` mixin ignores its `$color` parameter
+#### ~~C-4. `va-focus-ring` mixin ignores its `$color` parameter~~ ✅ RESOLVED
 
 **File:** `scss/abstracts/_mixins.scss` line 157
 
@@ -194,7 +194,7 @@ making customisation impossible.
 
 ---
 
-#### C-5. `body { overflow-x: hidden }` breaks `position: sticky` globally
+#### ~~C-5. `body { overflow-x: hidden }` breaks `position: sticky` globally~~ ✅ RESOLVED
 
 **File:** `scss/base/_reset.scss` lines 183–189
 
@@ -227,7 +227,7 @@ per-page `!important` overrides.
 
 ---
 
-#### C-6. 50+ deprecated `darken()` / `lighten()` global function calls
+#### ~~C-6. 50+ deprecated `darken()` / `lighten()` global function calls~~ ✅ RESOLVED
 
 **Files:** 16 SCSS files across components, layout, base, and abstracts
 
@@ -262,7 +262,7 @@ The `_variables.scss` already uses `@use "sass:color"` and `color.adjust()`
 
 ---
 
-#### C-7. Class naming split between sample page and reference
+#### ~~C-7. Class naming split between sample page and reference~~ ✅ RESOLVED
 
 **Problem:** The pixel-perfect demo (`pixel-perfect-demo.html`) and the
 reference guide (`components.html`) use **different class names** for the
@@ -290,7 +290,7 @@ replicate.
 
 ### 2.2 HIGH — Should fix this sprint
 
-#### H-0. Pricing section floating elements have wrong positioning
+#### ~~H-0. Pricing section floating elements have wrong positioning~~ ✅ RESOLVED
 
 **File:** `site/pixel-perfect-demo.html` lines 429-432
 
