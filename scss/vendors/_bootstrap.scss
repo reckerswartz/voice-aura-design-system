@@ -35,10 +35,10 @@
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/badge";
 @import "../../node_modules/bootstrap/scss/dropdown";
-@import "../../node_modules/bootstrap/scss/modal";
-@import "../../node_modules/bootstrap/scss/tooltip";
+// @import "../../node_modules/bootstrap/scss/modal";      // ~8 KB — unused
+// @import "../../node_modules/bootstrap/scss/tooltip";    // ~6 KB — unused
 @import "../../node_modules/bootstrap/scss/transitions";
-@import "../../node_modules/bootstrap/scss/close";
+// @import "../../node_modules/bootstrap/scss/close";      // ~1 KB — unused (modal dependency)
 
 // Helpers & Utilities
 @import "../../node_modules/bootstrap/scss/helpers";
