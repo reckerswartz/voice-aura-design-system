@@ -13386,35 +13386,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 38px;
+  height: 68px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 23px;
+  height: 42px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 46px;
+  height: 17px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 56px;
+  height: 46px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 32px;
+  height: 89px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 64px;
+  height: 67px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 44px;
+  height: 60px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 62px;
+  height: 87px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14258,10 +14258,10 @@ pre code {
   font-size: 0.9375rem;
   line-height: 1.4;
   text-decoration: none;
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-btn:focus-visible, .va-navbar-btn--ghost:focus-visible, .va-navbar-btn--outlined:focus-visible, .va-navbar-btn--filled:focus-visible, .va-hero__btn--primary:focus-visible, .va-hero__btn--secondary:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-btn:disabled, .va-navbar-btn--ghost:disabled, .va-navbar-btn--outlined:disabled, .va-navbar-btn--filled:disabled, .va-hero__btn--primary:disabled, .va-hero__btn--secondary:disabled, .va-btn.is-disabled, .is-disabled.va-navbar-btn--ghost, .is-disabled.va-navbar-btn--outlined, .is-disabled.va-navbar-btn--filled, .is-disabled.va-hero__btn--primary, .is-disabled.va-hero__btn--secondary {
@@ -14290,30 +14290,30 @@ pre code {
 }
 
 .va-btn--primary, .va-navbar-btn--filled, .va-hero__btn--primary {
-  color: #FFFFFF;
+  color: var(--va-color-white);
 }
 .va-btn--primary:hover, .va-navbar-btn--filled:hover, .va-hero__btn--primary:hover {
   background-color: #343232;
   border-color: #343232;
-  color: #FFFFFF;
+  color: var(--va-color-white);
   transform: translateY(-1px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .va-btn--primary:active, .va-navbar-btn--filled:active, .va-hero__btn--primary:active {
   background-color: rgb(13, 12.5, 12.5);
   border-color: rgb(13, 12.5, 12.5);
-  color: #FFFFFF;
+  color: var(--va-color-white);
   transform: translateY(0);
   box-shadow: none;
 }
 
 .va-btn--secondary, .va-navbar-btn--outlined, .va-hero__btn--secondary {
-  border-color: #E5E7EB;
+  border-color: var(--va-color-border);
 }
 .va-btn--secondary:hover, .va-navbar-btn--outlined:hover, .va-hero__btn--secondary:hover {
-  background-color: #F7F7F8;
+  background-color: var(--va-color-section-bg);
   border-color: rgb(205.9391304348, 209.7130434783, 217.2608695652);
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-btn--secondary:active, .va-navbar-btn--outlined:active, .va-hero__btn--secondary:active {
   background-color: rgb(238.84, 238.84, 240.86);
@@ -14321,29 +14321,29 @@ pre code {
 }
 
 .va-btn--accent {
-  color: #FFFFFF;
+  color: var(--va-color-white);
 }
 .va-btn--accent:hover {
   background-color: rgb(0, 100.8414342629, 218.2);
   border-color: rgb(0, 100.8414342629, 218.2);
-  color: #FFFFFF;
+  color: var(--va-color-white);
   transform: translateY(-1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--va-shadow-sm);
 }
 .va-btn--accent:active {
   background-color: rgb(0, 86.6996015936, 187.6);
   border-color: rgb(0, 86.6996015936, 187.6);
-  color: #FFFFFF;
+  color: var(--va-color-white);
   transform: translateY(0);
   box-shadow: none;
 }
 
 .va-btn--ghost, .va-navbar-btn--ghost {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-btn--ghost:hover, .va-navbar-btn--ghost:hover {
   background-color: rgba(26, 25, 25, 0.06);
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-btn--ghost:active, .va-navbar-btn--ghost:active {
   background-color: rgba(26, 25, 25, 0.1);
@@ -14352,7 +14352,7 @@ pre code {
 .va-btn--link {
   background-color: transparent;
   border-color: transparent;
-  color: #0478FF;
+  color: var(--va-color-primary);
   padding-left: 0;
   padding-right: 0;
 }
@@ -14418,9 +14418,9 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #0478FF;
+  color: var(--va-color-primary);
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: color var(--va-duration-base) ease-in-out;
 }
 .va-link--arrow::after {
   content: "→";
@@ -14435,7 +14435,7 @@ pre code {
   transform: translateX(3px);
 }
 .va-link--arrow:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -14504,7 +14504,7 @@ pre code {
 
 .va-card--elevated {
   border-color: transparent;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--va-shadow-md);
 }
 
 .va-card--bordered {
@@ -14514,7 +14514,7 @@ pre code {
 
 .va-card--interactive {
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: transform var(--va-duration-base) ease-in-out, box-shadow var(--va-duration-base) ease-in-out, border-color var(--va-duration-base) ease-in-out;
 }
 .va-card--interactive:hover {
   transform: translateY(-2px);
@@ -14522,7 +14522,7 @@ pre code {
   border-color: rgb(211.7043478261, 215.0347826087, 221.6956521739);
 }
 .va-card--interactive:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
 }
@@ -14541,8 +14541,8 @@ pre code {
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
   line-height: 1.4;
-  color: #1A1919;
-  background-color: #E9E9EA;
+  color: var(--va-color-secondary);
+  background-color: var(--va-color-light-grey);
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -14560,23 +14560,23 @@ pre code {
 
 .va-badge--primary {
   background-color: rgba(4, 120, 255, 0.1);
-  color: #0478FF;
+  color: var(--va-color-primary);
 }
 
 .va-badge--dark {
-  background-color: #1A1919;
-  color: #FFFFFF;
+  background-color: var(--va-color-secondary);
+  color: var(--va-color-white);
 }
 
 .va-badge--light {
-  background-color: #F7F7F8;
-  color: #4B5563;
+  background-color: var(--va-color-section-bg);
+  color: var(--va-color-body-text);
 }
 
 .va-badge--outline {
   background-color: transparent;
-  border-color: #E5E7EB;
-  color: #4B5563;
+  border-color: var(--va-color-border);
+  color: var(--va-color-body-text);
 }
 
 .va-badge--pill {
@@ -14603,18 +14603,18 @@ pre code {
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #0478FF;
+  color: var(--va-color-primary);
   background-color: rgba(4, 120, 255, 0.08);
-  border-radius: 0.5rem;
+  border-radius: var(--va-radius-sm);
   white-space: nowrap;
 }
 .va-tag--dark {
-  background-color: #1A1919;
-  color: #FFFFFF;
+  background-color: var(--va-color-secondary);
+  color: var(--va-color-white);
 }
 .va-tag--light {
-  background-color: #F7F7F8;
-  color: #4B5563;
+  background-color: var(--va-color-section-bg);
+  color: var(--va-color-body-text);
 }
 .va-tag--success {
   background-color: rgba(16, 185, 129, 0.1);
@@ -14642,10 +14642,10 @@ pre code {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #4B5563;
-  background-color: #F7F7F8;
-  border: 1px solid #E5E7EB;
-  border-radius: 50rem;
+  color: var(--va-color-body-text);
+  background-color: var(--va-color-section-bg);
+  border: 1px solid var(--va-color-border);
+  border-radius: var(--va-radius-pill);
 }
 .va-section-badge__icon {
   display: inline-flex;
@@ -14661,7 +14661,7 @@ pre code {
 .va-section-badge--accent {
   background-color: rgba(4, 120, 255, 0.06);
   border-color: rgba(4, 120, 255, 0.15);
-  color: #0478FF;
+  color: var(--va-color-primary);
 }
 
 .va-discount-badge {
@@ -14674,10 +14674,10 @@ pre code {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4B5563;
-  background-color: #F7F7F8;
-  border: 1px solid #E5E7EB;
-  border-radius: 50rem;
+  color: var(--va-color-body-text);
+  background-color: var(--va-color-section-bg);
+  border: 1px solid var(--va-color-border);
+  border-radius: var(--va-radius-pill);
 }
 .va-discount-badge__value {
   display: inline-flex;
@@ -14686,8 +14686,8 @@ pre code {
   padding: 0.125rem 0.5rem;
   font-size: 0.6875rem;
   font-weight: 700;
-  color: #FFFFFF;
-  background-color: #0478FF;
+  color: var(--va-color-white);
+  background-color: var(--va-color-primary);
   border-radius: 50rem;
   line-height: 1.3;
 }
@@ -14793,7 +14793,7 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   user-select: none;
 }
 .va-form-checkbox__input {
@@ -14803,8 +14803,8 @@ pre code {
   height: 0;
 }
 .va-form-checkbox__input:checked + .va-form-checkbox__check {
-  background-color: #0478FF;
-  border-color: #0478FF;
+  background-color: var(--va-color-primary);
+  border-color: var(--va-color-primary);
 }
 .va-form-checkbox__input:checked + .va-form-checkbox__check::after {
   opacity: 1;
@@ -14872,24 +14872,24 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all var(--va-duration-fast) ease-in-out;
   margin-bottom: -1px;
 }
 .va-input-card__tab:hover {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-input-card__tab:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-input-card__tab--active {
-  color: #1A1919;
-  border-bottom-color: #0478FF;
+  color: var(--va-color-secondary);
+  border-bottom-color: var(--va-color-primary);
 }
 .va-input-card__body {
   padding: 1.25rem 1.5rem;
@@ -14931,7 +14931,7 @@ pre code {
 .va-input-card__char-count {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.8125rem;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   white-space: nowrap;
 }
 .va-input-card__send {
@@ -14941,8 +14941,8 @@ pre code {
   width: 2.5rem;
   height: 2.5rem;
   flex-shrink: 0;
-  background-color: #0478FF;
-  color: #FFFFFF;
+  background-color: var(--va-color-primary);
+  color: var(--va-color-white);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -14961,7 +14961,7 @@ pre code {
   transform: none;
 }
 .va-input-card__send:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-input-card__send svg {
@@ -14977,20 +14977,20 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #4B5563;
-  background-color: #F7F7F8;
+  color: var(--va-color-body-text);
+  background-color: var(--va-color-section-bg);
   border: 1px solid transparent;
-  border-radius: 50rem;
+  border-radius: var(--va-radius-pill);
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all var(--va-duration-fast) ease-in-out;
   white-space: nowrap;
 }
 .va-category-pill:hover {
   background-color: rgb(236.12, 236.12, 238.48);
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-category-pill:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-category-pill__icon {
@@ -15005,24 +15005,24 @@ pre code {
   height: 100%;
 }
 .va-category-pill--active {
-  background-color: #1A1919;
-  color: #FFFFFF;
-  border-color: #1A1919;
+  background-color: var(--va-color-secondary);
+  color: var(--va-color-white);
+  border-color: var(--va-color-secondary);
 }
 .va-category-pill--active:hover {
   background-color: rgb(46.8, 45, 45);
-  color: #FFFFFF;
+  color: var(--va-color-white);
 }
 
 .va-char-counter {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.8125rem;
   font-weight: 400;
-  color: #6B7280;
+  color: var(--va-color-muted-text);
   white-space: nowrap;
 }
 .va-char-counter__current {
-  color: #4B5563;
+  color: var(--va-color-body-text);
   font-weight: 500;
 }
 .va-char-counter--warning .va-char-counter__current {
@@ -15070,15 +15070,15 @@ pre code {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: #4B5563;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  color: var(--va-color-body-text);
+  transition: color var(--va-duration-fast) ease-in-out, background-color var(--va-duration-fast) ease-in-out;
 }
 .va-input-wrapper__toggle:hover {
-  color: #1A1919;
-  background-color: #E9E9EA;
+  color: var(--va-color-secondary);
+  background-color: var(--va-color-light-grey);
 }
 .va-input-wrapper__toggle:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-input-wrapper__toggle svg {
@@ -15103,7 +15103,7 @@ pre code {
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem;
-  background-color: #E9E9EA;
+  background-color: var(--va-color-light-grey);
   border-radius: 100vw;
   margin-bottom: 0;
 }
@@ -15113,32 +15113,32 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   background: transparent;
   border: none;
   border-radius: 100vw;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all var(--va-duration-base) ease-in-out;
   white-space: nowrap;
 }
 .va-pricing__tab:hover {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-pricing__tab:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-pricing__tab--active {
-  background-color: #1A1919;
-  color: #FFFFFF;
+  background-color: var(--va-color-secondary);
+  color: var(--va-color-white);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 .va-pricing__tab--active:hover {
-  color: #FFFFFF;
+  color: var(--va-color-white);
 }
 .va-pricing__tab--active-light {
-  background-color: #FFFFFF;
-  color: #1A1919;
+  background-color: var(--va-color-white);
+  color: var(--va-color-secondary);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
@@ -15178,14 +15178,14 @@ pre code {
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.75rem;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  background-color: var(--va-color-white);
+  border: 1px solid var(--va-color-border);
+  border-radius: var(--va-radius);
+  transition: border-color var(--va-duration-base) ease-in-out, box-shadow var(--va-duration-base) ease-in-out, transform var(--va-duration-base) ease-in-out;
 }
 .va-pricing-card:hover:not(.va-pricing-card--featured) {
   border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--va-shadow-md);
 }
 .va-pricing-card .va-pricing-card__corners,
 .va-pricing-card .va-pricing-card__corners-bottom {
@@ -15236,8 +15236,8 @@ pre code {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.4;
-  color: #1A1919;
-  background-color: #E9E9EA;
+  color: var(--va-color-secondary);
+  background-color: var(--va-color-light-grey);
   border-radius: 100vw;
   margin-bottom: 1.25rem;
 }
@@ -15246,20 +15246,20 @@ pre code {
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.1;
-  color: #1A1919;
+  color: var(--va-color-secondary);
   margin-bottom: 0.75rem;
 }
 .va-pricing-card__price span, .va-pricing-card__price-suffix {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  color: #4B5563;
+  color: var(--va-color-body-text);
 }
 .va-pricing-card__description {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   margin-bottom: 1.5rem;
 }
 .va-pricing-card__cta {
@@ -15268,14 +15268,14 @@ pre code {
   justify-content: center;
   width: 100%;
   font-size: 0.9375rem;
-  border-color: #E5E7EB;
-  color: #1A1919;
+  border-color: var(--va-color-border);
+  color: var(--va-color-secondary);
   margin-bottom: 1.5rem;
 }
 .va-pricing-card__cta:hover {
-  background-color: #F7F7F8;
+  background-color: var(--va-color-section-bg);
   border-color: rgb(205.9391304348, 209.7130434783, 217.2608695652);
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-pricing-card__cta:active {
   background-color: rgb(238.84, 238.84, 240.86);
@@ -15302,14 +15302,14 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #4B5563;
+  color: var(--va-color-body-text);
 }
 .va-pricing-card__feature-icon {
   flex-shrink: 0;
   width: 1.125rem;
   height: 1.125rem;
   margin-top: 0.125rem;
-  color: #0478FF;
+  color: var(--va-color-primary);
 }
 .va-pricing-card__badge--free {
   background-color: rgba(16, 185, 129, 0.08);
@@ -15324,19 +15324,19 @@ pre code {
   color: rgb(0, 100.8414342629, 218.2);
 }
 .va-pricing-card--featured {
-  border-color: #1A1919;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border-color: var(--va-color-secondary);
+  box-shadow: var(--va-shadow-lg);
   transform: scale(1.02);
   z-index: 1;
 }
 .va-pricing-card--featured .va-pricing-card__badge {
-  background-color: #1A1919;
-  color: #FFFFFF;
+  background-color: var(--va-color-secondary);
+  color: var(--va-color-white);
 }
 .va-pricing-card--featured .va-pricing-card__cta {
-  background-color: #1A1919;
-  border-color: #1A1919;
-  color: #FFFFFF;
+  background-color: var(--va-color-secondary);
+  border-color: var(--va-color-secondary);
+  color: var(--va-color-white);
 }
 .va-pricing-card--featured .va-pricing-card__cta:hover {
   background-color: #343232;

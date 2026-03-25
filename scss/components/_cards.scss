@@ -168,7 +168,7 @@
 
 .va-card--elevated {
   border-color: transparent;
-  box-shadow: $va-shadow-card-elevated;
+  box-shadow: var(--va-shadow-md);
 }
 
 // --------------------------------------------------------------------------
@@ -188,9 +188,9 @@
 
 .va-card--interactive {
   cursor: pointer;
-  transition: transform 0.2s ease-in-out,
-              box-shadow 0.2s ease-in-out,
-              border-color 0.2s ease-in-out;
+  transition: transform var(--va-duration-base) ease-in-out,
+              box-shadow var(--va-duration-base) ease-in-out,
+              border-color var(--va-duration-base) ease-in-out;
 
   &:hover {
     transform: translateY(-2px);
@@ -199,7 +199,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
     box-shadow: $va-shadow-card-interactive-hover;
   }

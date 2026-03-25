@@ -63,7 +63,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem;
-  background-color: $va-light-grey;
+  background-color: var(--va-color-light-grey);
   border-radius: 100vw;
   margin-bottom: 0;
 }
@@ -73,38 +73,38 @@
   font-family: $font-family-base;
   font-size: 0.875rem;
   font-weight: $font-weight-medium;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   background: transparent;
   border: none;
   border-radius: 100vw;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all var(--va-duration-base) ease-in-out;
   white-space: nowrap;
 
   &:hover {
-    color: $va-near-black;
+    color: var(--va-color-secondary);
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary-blue;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 
   // Dark filled active tab (matches reference design)
   &--active {
-    background-color: $va-near-black;
-    color: $va-white;
+    background-color: var(--va-color-secondary);
+    color: var(--va-color-white);
     box-shadow: $va-shadow-tab-dark;
 
     &:hover {
-      color: $va-white;
+      color: var(--va-color-white);
     }
   }
 
   // Light active variant (white pill with shadow)
   &--active-light {
-    background-color: $va-white;
-    color: $va-near-black;
+    background-color: var(--va-color-white);
+    color: var(--va-color-secondary);
     box-shadow: $va-shadow-tab-light;
   }
 }
@@ -168,16 +168,16 @@ $va-crosshair-color: $border-color;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: $va-white;
-  border: $border-width solid $border-color;
-  border-radius: $border-radius;
-  transition: border-color 0.2s ease-in-out,
-              box-shadow 0.2s ease-in-out,
-              transform 0.2s ease-in-out;
+  background-color: var(--va-color-white);
+  border: $border-width solid var(--va-color-border);
+  border-radius: var(--va-radius);
+  transition: border-color var(--va-duration-base) ease-in-out,
+              box-shadow var(--va-duration-base) ease-in-out,
+              transform var(--va-duration-base) ease-in-out;
 
   &:hover:not(.va-pricing-card--featured) {
     border-color: va-darken($border-color, 12%);
-    box-shadow: $va-shadow-md;
+    box-shadow: var(--va-shadow-md);
   }
 
   @include va-crosshair-corners(".va-pricing-card__corners", ".va-pricing-card__corners-bottom", $va-crosshair-color, $va-z-raised);
@@ -197,8 +197,8 @@ $va-crosshair-color: $border-color;
     font-size: 0.8125rem;
     font-weight: $font-weight-medium;
     line-height: 1.4;
-    color: $va-near-black;
-    background-color: $va-light-grey;
+    color: var(--va-color-secondary);
+    background-color: var(--va-color-light-grey);
     border-radius: 100vw;
     margin-bottom: 1.25rem;
   }
@@ -213,7 +213,7 @@ $va-crosshair-color: $border-color;
     font-size: 3rem;
     font-weight: $font-weight-semibold;
     line-height: 1.1;
-    color: $va-near-black;
+    color: var(--va-color-secondary);
     margin-bottom: 0.75rem;
 
     span,
@@ -221,7 +221,7 @@ $va-crosshair-color: $border-color;
       font-family: $font-family-base;
       font-size: 1rem;
       font-weight: $font-weight-normal;
-      color: $va-body-text;
+      color: var(--va-color-body-text);
     }
   }
 
@@ -233,7 +233,7 @@ $va-crosshair-color: $border-color;
     font-family: $font-family-base;
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: $va-body-text;
+    color: var(--va-color-body-text);
     margin-bottom: 1.5rem;
   }
 
@@ -256,14 +256,14 @@ $va-crosshair-color: $border-color;
     justify-content: center;
     width: 100%;
     font-size: 0.9375rem;
-    border-color: $border-color;
-    color: $va-near-black;
+    border-color: var(--va-color-border);
+    color: var(--va-color-secondary);
     margin-bottom: 1.5rem;
 
     &:hover {
-      background-color: $va-section-bg;
+      background-color: var(--va-color-section-bg);
       border-color: va-darken($border-color, 8%);
-      color: $va-near-black;
+      color: var(--va-color-secondary);
     }
 
     &:active {
@@ -307,7 +307,7 @@ $va-crosshair-color: $border-color;
     font-family: $font-family-base;
     font-size: 0.875rem;
     line-height: 1.5;
-    color: $va-body-text;
+    color: var(--va-color-body-text);
   }
 
   &__feature-icon {
@@ -315,7 +315,7 @@ $va-crosshair-color: $border-color;
     width: 1.125rem;
     height: 1.125rem;
     margin-top: 0.125rem;
-    color: $va-primary;
+    color: var(--va-color-primary);
   }
 
   // --------------------------------------------------------------------------
@@ -345,20 +345,20 @@ $va-crosshair-color: $border-color;
   // Highlighted card with dark filled CTA.
 
   &--featured {
-    border-color: $va-near-black;
-    box-shadow: $va-shadow-lg;
+    border-color: var(--va-color-secondary);
+    box-shadow: var(--va-shadow-lg);
     transform: scale(1.02);
     z-index: $va-z-raised;
 
     .va-pricing-card__badge {
-      background-color: $va-near-black;
-      color: $va-white;
+      background-color: var(--va-color-secondary);
+      color: var(--va-color-white);
     }
 
     .va-pricing-card__cta {
-      background-color: $va-near-black;
-      border-color: $va-near-black;
-      color: $va-white;
+      background-color: var(--va-color-secondary);
+      border-color: var(--va-color-secondary);
+      color: var(--va-color-white);
 
       &:hover {
         background-color: va-lighten($va-near-black, 10%);

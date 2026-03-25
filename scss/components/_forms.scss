@@ -165,7 +165,7 @@
   font-family: $font-family-base;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   user-select: none;
 
   &__input {
@@ -175,8 +175,8 @@
     height: 0;
 
     &:checked + .va-form-checkbox__check {
-      background-color: $va-primary;
-      border-color: $va-primary;
+      background-color: var(--va-color-primary);
+      border-color: var(--va-color-primary);
 
       &::after {
         opacity: 1;
@@ -279,26 +279,26 @@
     font-family: $font-family-base;
     font-size: 0.875rem;
     font-weight: $font-weight-medium;
-    color: $va-body-text;
+    color: var(--va-color-body-text);
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
-    transition: all 0.15s ease-in-out;
+    transition: all var(--va-duration-fast) ease-in-out;
     margin-bottom: -1px;
 
     &:hover {
-      color: $va-near-black;
+      color: var(--va-color-secondary);
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 
     &--active {
-      color: $va-near-black;
-      border-bottom-color: $va-primary;
+      color: var(--va-color-secondary);
+      border-bottom-color: var(--va-color-primary);
     }
   }
 
@@ -354,7 +354,7 @@
   &__char-count {
     font-family: $font-family-base;
     font-size: 0.8125rem;
-    color: $va-body-text;
+    color: var(--va-color-body-text);
     white-space: nowrap;
   }
 
@@ -369,8 +369,8 @@
     width: 2.5rem;
     height: 2.5rem;
     flex-shrink: 0;
-    background-color: $va-primary;
-    color: $va-white;
+    background-color: var(--va-color-primary);
+    color: var(--va-color-white);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -393,7 +393,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 
@@ -421,21 +421,21 @@
   font-family: $font-family-base;
   font-size: 0.8125rem;
   font-weight: $font-weight-medium;
-  color: $va-body-text;
-  background-color: $va-section-bg;
+  color: var(--va-color-body-text);
+  background-color: var(--va-color-section-bg);
   border: $border-width solid transparent;
-  border-radius: $border-radius-pill;
+  border-radius: var(--va-radius-pill);
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all var(--va-duration-fast) ease-in-out;
   white-space: nowrap;
 
   &:hover {
     background-color: va-darken($va-section-bg, 4%);
-    color: $va-near-black;
+    color: var(--va-color-secondary);
   }
 
   &:focus-visible {
-    outline: 2px solid $va-primary;
+    outline: 2px solid var(--va-color-primary);
     outline-offset: 2px;
   }
 
@@ -454,13 +454,13 @@
 
   // Active / selected state
   &--active {
-    background-color: $va-near-black;
-    color: $va-white;
-    border-color: $va-near-black;
+    background-color: var(--va-color-secondary);
+    color: var(--va-color-white);
+    border-color: var(--va-color-secondary);
 
     &:hover {
       background-color: va-lighten($va-near-black, 8%);
-      color: $va-white;
+      color: var(--va-color-white);
     }
   }
 }
@@ -477,11 +477,11 @@
   font-family: $font-family-base;
   font-size: 0.8125rem;
   font-weight: $font-weight-normal;
-  color: $va-muted-text;
+  color: var(--va-color-muted-text);
   white-space: nowrap;
 
   &__current {
-    color: $va-body-text;
+    color: var(--va-color-body-text);
     font-weight: $font-weight-medium;
   }
 
@@ -565,17 +565,17 @@
     border: none;
     border-radius: $border-radius-sm;
     cursor: pointer;
-    color: $va-body-text;
-    transition: color 0.15s ease-in-out,
-                background-color 0.15s ease-in-out;
+    color: var(--va-color-body-text);
+    transition: color var(--va-duration-fast) ease-in-out,
+                background-color var(--va-duration-fast) ease-in-out;
 
     &:hover {
-      color: $va-near-black;
-      background-color: $va-light-grey;
+      color: var(--va-color-secondary);
+      background-color: var(--va-color-light-grey);
     }
 
     &:focus-visible {
-      outline: 2px solid $va-primary;
+      outline: 2px solid var(--va-color-primary);
       outline-offset: 2px;
     }
 
