@@ -13414,35 +13414,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 82px;
+  height: 75px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 52px;
+  height: 17px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 42px;
+  height: 21px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 32px;
+  height: 82px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 43px;
+  height: 61px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 49px;
+  height: 87px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 86px;
+  height: 41px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 84px;
+  height: 65px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 

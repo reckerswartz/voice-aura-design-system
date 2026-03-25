@@ -7,6 +7,8 @@
   <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
   <link rel="stylesheet" href="../dist/css/voice-aura.css">
   <style>
+    /* Fix: override body overflow-x:hidden from reset so sticky works */
+    body { overflow-x: visible !important; }
     /* Reference-page-only styles */
     .ref-section { padding: 3rem 0; border-bottom: 1px solid rgba(26,25,25,.08); }
     .ref-section:last-child { border-bottom: 0; }
@@ -38,9 +40,10 @@
     .responsive-demo__item { background: #fff; border: 1px solid rgba(26,25,25,.08); border-radius: 8px; padding: 1rem; text-align: center; font-size: .85rem; color: #374151; }
 
     /* TOC */
-    .ref-toc { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
-    .ref-toc a { font-size: .85rem; padding: .35rem .75rem; border-radius: 6px; background: #F3F4F6; color: #374151; text-decoration: none; transition: background .15s; }
+    .ref-toc { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; position: sticky; top: 0; z-index: 100; background: #fff; padding: 1rem 0; border-bottom: 1px solid rgba(26,25,25,.06); }
+    .ref-toc a { font-size: .85rem; padding: .35rem .75rem; border-radius: 6px; background: #F3F4F6; color: #374151; text-decoration: none; transition: background .15s, color .15s; }
     .ref-toc a:hover { background: #0478FF; color: #fff; }
+    .ref-toc a.active { background: #0478FF; color: #fff; }
 
     @media (max-width: 767px) {
       .ref-grid { grid-template-columns: 1fr; }
@@ -1474,6 +1477,28 @@ Default: 24px (3 grid units)</div>
       if (el) el.classList.add(cls);
     });
   });
+</script>
+
+<script>
+// Scroll-spy for backgrounds TOC
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('.ref-toc a');
+  if (!sections.length || !tocLinks.length) return;
+  const linkMap = {};
+  tocLinks.forEach(a => { const id = a.getAttribute('href')?.replace('#',''); if (id) linkMap[id] = a; });
+  let ticking = false;
+  function update() {
+    let current = '';
+    const y = window.scrollY + 120;
+    sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
+    tocLinks.forEach(a => a.classList.remove('active'));
+    if (current && linkMap[current]) linkMap[current].classList.add('active');
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
 </script>
 
 </body>

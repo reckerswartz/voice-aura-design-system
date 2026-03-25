@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/voice-aura.css">
   <style>
+    /* Fix: override body overflow-x:hidden from reset so sticky sidebar works */
+    body { overflow-x: visible !important; }
     /* Reference page specific styles */
     .ref-section { padding: 3rem 0; border-bottom: 1px solid #E5E7EB; }
     .ref-section:last-child { border-bottom: none; }
@@ -26,9 +28,25 @@
     .ref-spacer-bar { background: #0478FF; border-radius: 4px; height: 12px; }
     .ref-spacer-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #4B5563; white-space: nowrap; }
     .ref-component-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
-    .ref-toc { position: sticky; top: 1rem; }
-    .ref-toc a { display: block; padding: 0.35rem 0; font-size: 0.875rem; color: #4B5563; text-decoration: none; }
-    .ref-toc a:hover { color: #0478FF; }
+    .ref-toc { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
+    .ref-toc a { display: block; padding: 0.35rem 0; font-size: 0.875rem; color: #4B5563; text-decoration: none; border-left: 2px solid transparent; padding-left: 0.75rem; transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
+    .ref-toc a:hover { color: #0478FF; background-color: rgba(4,120,255,0.04); }
+    .ref-toc a.active { color: #0478FF; border-left-color: #0478FF; font-weight: 600; background-color: rgba(4,120,255,0.06); }
+    /* Mobile TOC toggle */
+    .ref-mobile-toc { display: none; position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #E5E7EB; padding: 0.75rem 1.5rem; }
+    .ref-mobile-toc summary { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: #1A1919; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+    .ref-mobile-toc summary::-webkit-details-marker { display: none; }
+    .ref-mobile-toc summary::after { content: '\25BC'; font-size: 0.625rem; transition: transform 0.2s; }
+    .ref-mobile-toc[open] summary::after { transform: rotate(180deg); }
+    .ref-mobile-toc .ref-mobile-toc__list { padding: 0.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+    .ref-mobile-toc .ref-mobile-toc__list a { font-size: 0.8125rem; color: #4B5563; text-decoration: none; padding: 0.25rem 0.625rem; border-radius: 50rem; background: #F7F7F8; white-space: nowrap; }
+    .ref-mobile-toc .ref-mobile-toc__list a:hover, .ref-mobile-toc .ref-mobile-toc__list a.active { background: #0478FF; color: #fff; }
+    @media (max-width: 991.98px) { .ref-mobile-toc { display: block; } }
+    /* Code snippet blocks */
+    .ref-code { position: relative; background: #1A1919; color: #E9E9EA; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 1rem 0 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8125rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
+    .ref-code-copy { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,255,255,0.1); color: #9CA3AF; border: none; border-radius: 0.25rem; padding: 0.25rem 0.5rem; font-size: 0.6875rem; font-family: 'IBM Plex Mono', monospace; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .ref-code-copy:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .ref-code-copy.copied { background: #10B981; color: #fff; }
     .ref-radius-demo { width: 80px; height: 80px; background: #E9E9EA; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; }
     .ref-shadow-demo { width: 120px; height: 80px; background: #fff; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #9CA3AF; }
     .ref-page-header { background: #1A1919; color: white; padding: 4rem 0; }
@@ -50,13 +68,30 @@
     </div>
   </header>
 
+  <!-- Mobile TOC (visible < 992px) -->
+  <details class="ref-mobile-toc" id="mobile-toc">
+    <summary>Jump to section</summary>
+    <div class="ref-mobile-toc__list">
+      <a href="#colors">Colors</a><a href="#typography">Typography</a><a href="#spacing">Spacing</a>
+      <a href="#radius">Radius</a><a href="#shadows">Shadows</a><a href="#buttons">Buttons</a>
+      <a href="#badges">Badges</a><a href="#cards">Cards</a><a href="#forms">Forms</a>
+      <a href="#input-card">TTS Input</a><a href="#pricing">Pricing</a><a href="#auth">Auth</a>
+      <a href="#navbar">Navbar</a><a href="#hero">Hero</a><a href="#features">Features</a>
+      <a href="#blog">Blog</a><a href="#blog-section">Blog Layout</a><a href="#agent">Agent</a>
+      <a href="#dubbing">Dubbing</a><a href="#client-logos">Logos</a><a href="#auth-split">Auth Split</a>
+      <a href="#backgrounds">Backgrounds</a><a href="#animations">Animations</a>
+      <a href="#bootstrap-alignment">Bootstrap</a><a href="#footer">Footer</a>
+      <a href="#file-structure">Files</a><a href="#sample">Sample</a>
+    </div>
+  </details>
+
   <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
     <div class="row" style="display: flex; gap: 2rem;">
 
       <!-- ================================================================ -->
       <!-- SIDEBAR TOC                                                       -->
       <!-- ================================================================ -->
-      <aside style="flex: 0 0 220px; padding-top: 2rem;" class="d-none d-lg-block">
+      <aside style="flex: 0 0 220px; padding-top: 2rem; align-self: flex-start; position: sticky; top: 0;" class="d-none d-lg-block">
         <nav class="ref-toc">
           <p class="ref-label" style="margin-bottom: 1rem;">Contents</p>
           <a href="#colors">Color Palette</a>
@@ -296,6 +331,35 @@
 
           <h5 class="ref-subheading">Full Width</h5>
           <button class="va-btn va-btn--primary va-btn--block" style="max-width: 400px;">Sign up &rarr;</button>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Primary (dark CTA) --&gt;
+&lt;button class="va-btn va-btn--primary"&gt;Open Studio&lt;/button&gt;
+
+&lt;!-- Secondary (outlined) --&gt;
+&lt;button class="va-btn va-btn--secondary"&gt;API Docs&lt;/button&gt;
+
+&lt;!-- Accent (blue) --&gt;
+&lt;button class="va-btn va-btn--accent"&gt;Get API Key&lt;/button&gt;
+
+&lt;!-- Ghost (text-only) --&gt;
+&lt;button class="va-btn va-btn--ghost"&gt;Log in &amp;rarr;&lt;/button&gt;
+
+&lt;!-- Sizes: --sm, (default), --lg --&gt;
+&lt;button class="va-btn va-btn--primary va-btn--sm"&gt;Small&lt;/button&gt;
+&lt;button class="va-btn va-btn--primary va-btn--lg"&gt;Large&lt;/button&gt;
+
+&lt;!-- Pill shape --&gt;
+&lt;button class="va-btn va-btn--primary va-btn--pill"&gt;Pill&lt;/button&gt;
+
+&lt;!-- With icon --&gt;
+&lt;button class="va-btn va-btn--accent va-btn--icon"&gt;
+  &lt;span class="va-btn__icon"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/span&gt;
+  With Icon
+&lt;/button&gt;
+
+&lt;!-- Full width --&gt;
+&lt;button class="va-btn va-btn--primary va-btn--block"&gt;Sign up &amp;rarr;&lt;/button&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -325,6 +389,19 @@
           <div class="ref-component-row">
             <span class="va-tag">ANNUAL DISCOUNT <strong>%40</strong></span>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Badge variants --&gt;
+&lt;span class="va-badge va-badge--primary va-badge--pill"&gt;Primary&lt;/span&gt;
+&lt;span class="va-badge va-badge--dark va-badge--pill"&gt;Dark&lt;/span&gt;
+&lt;span class="va-badge va-badge--light va-badge--pill"&gt;Light&lt;/span&gt;
+&lt;span class="va-badge va-badge--outline va-badge--pill"&gt;Outlined&lt;/span&gt;
+
+&lt;!-- Section badge (used above feature rows) --&gt;
+&lt;span class="va-section-badge"&gt;FOR DEVELOPERS&lt;/span&gt;
+
+&lt;!-- Discount tag --&gt;
+&lt;span class="va-tag"&gt;ANNUAL DISCOUNT &lt;strong&gt;%40&lt;/strong&gt;&lt;/span&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -363,6 +440,28 @@
               <div class="va-card__footer">Card Footer</div>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Bordered card --&gt;
+&lt;div class="va-card va-card--bordered"&gt;
+  &lt;div class="va-card__body"&gt;
+    &lt;h4 class="va-card__title"&gt;Title&lt;/h4&gt;
+    &lt;p class="va-card__text"&gt;Description text.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Elevated card --&gt;
+&lt;div class="va-card va-card--elevated"&gt;...&lt;/div&gt;
+
+&lt;!-- Interactive (hover lift) --&gt;
+&lt;div class="va-card va-card--elevated va-card--interactive"&gt;...&lt;/div&gt;
+
+&lt;!-- With header &amp; footer --&gt;
+&lt;div class="va-card va-card--bordered"&gt;
+  &lt;div class="va-card__header"&gt;Header&lt;/div&gt;
+  &lt;div class="va-card__body"&gt;...&lt;/div&gt;
+  &lt;div class="va-card__footer"&gt;Footer&lt;/div&gt;
+&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -401,6 +500,30 @@
               </label>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="va-form-group"&gt;
+  &lt;label class="va-form-label"&gt;Email&lt;/label&gt;
+  &lt;input type="email" class="va-form-input" placeholder="you@example.com"&gt;
+&lt;/div&gt;
+
+&lt;div class="va-form-group"&gt;
+  &lt;label class="va-form-label"&gt;Message&lt;/label&gt;
+  &lt;textarea class="va-form-textarea" rows="3"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+
+&lt;div class="va-form-group"&gt;
+  &lt;label class="va-form-label"&gt;Plan&lt;/label&gt;
+  &lt;select class="va-form-select"&gt;
+    &lt;option&gt;Free&lt;/option&gt;
+    &lt;option&gt;Creator&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+
+&lt;label class="va-form-checkbox"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span&gt;I agree to the terms&lt;/span&gt;
+&lt;/label&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -505,6 +628,34 @@
               </div>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="va-pricing"&gt;
+  &lt;div class="va-pricing__tabs"&gt;
+    &lt;button class="va-pricing__tab va-pricing__tab--active"&gt;Studio&lt;/button&gt;
+    &lt;button class="va-pricing__tab"&gt;DUB&lt;/button&gt;
+    &lt;button class="va-pricing__tab"&gt;API&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="va-pricing__grid"&gt;
+    &lt;!-- Standard tier --&gt;
+    &lt;div class="va-pricing-card"&gt;
+      &lt;span class="va-pricing-card__badge"&gt;Free&lt;/span&gt;
+      &lt;div class="va-pricing-card__price"&gt;$0 &lt;span&gt;/Month&lt;/span&gt;&lt;/div&gt;
+      &lt;p class="va-pricing-card__description"&gt;...&lt;/p&gt;
+      &lt;button class="va-btn va-btn--secondary va-btn--block va-pricing-card__cta"&gt;Get Started&lt;/button&gt;
+      &lt;ul class="va-pricing-card__features"&gt;
+        &lt;li class="va-pricing-card__feature"&gt;Feature item&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Featured tier (add --featured modifier) --&gt;
+    &lt;div class="va-pricing-card va-pricing-card--featured"&gt;
+      &lt;span class="va-pricing-card__badge"&gt;Creator&lt;/span&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -569,6 +720,25 @@
               </div>
             </nav>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;nav class="va-navbar"&gt;
+  &lt;div class="va-navbar-brand"&gt;
+    &lt;span class="va-navbar-brand__icon"&gt;...&lt;/span&gt;
+    &lt;span class="va-navbar-brand__text"&gt;VOICE AURA&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;ul class="va-navbar-nav"&gt;
+    &lt;li&gt;&lt;a href="#" class="va-navbar-link"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="va-navbar-link va-navbar-link--active"&gt;Pricing&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="va-navbar-actions"&gt;
+    &lt;a href="#" class="va-btn va-btn--ghost"&gt;Log in &amp;rarr;&lt;/a&gt;
+    &lt;a href="#" class="va-btn va-btn--primary"&gt;Sign up &amp;rarr;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;!-- Add .va-navbar--scrolled via JS on scroll for frosted-glass effect --&gt;
+&lt;!-- Add .va-navbar--transparent for hero overlay variant --&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -593,6 +763,24 @@
               </div>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;section class="va-hero va-pattern-halftone va-pattern-waveform-bg va-bg-glow"&gt;
+  &lt;span class="va-badge va-badge--dark va-badge--pill va-hero__badge"&gt;
+    DON'T SPEAK JUST TYPE
+  &lt;/span&gt;
+  &lt;h1 class="va-hero__title"&gt;Built for unmatched&lt;br&gt;speed and peak efficiency&lt;/h1&gt;
+  &lt;p class="va-hero__subtitle"&gt;
+    Fastest TTS API. Trusted by &lt;strong&gt;10M+&lt;/strong&gt; creators.
+  &lt;/p&gt;
+  &lt;div class="va-hero__actions"&gt;
+    &lt;button class="va-btn va-btn--primary va-btn--icon"&gt;
+      &lt;span class="va-btn__icon"&gt;&lt;svg&gt;...&lt;/svg&gt;&lt;/span&gt;
+      Open Studio
+    &lt;/button&gt;
+    &lt;button class="va-btn va-btn--secondary"&gt;API Docs&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -663,6 +851,21 @@
               <a href="#" class="va-blog-card__link">Read more</a>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="va-blog-card"&gt;
+  &lt;div class="va-blog-card__image"&gt;
+    &lt;img src="..." alt="..."&gt;
+  &lt;/div&gt;
+  &lt;div class="va-blog-card__meta"&gt;
+    &lt;span class="va-blog-card__category"&gt;AI VOICE AGENTS&lt;/span&gt;
+    &lt;span&gt;2026-01-06&lt;/span&gt;
+    &lt;span&gt;3 min&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h4 class="va-blog-card__title"&gt;Article Title&lt;/h4&gt;
+  &lt;p class="va-blog-card__excerpt"&gt;Short excerpt...&lt;/p&gt;
+  &lt;a href="#" class="va-blog-card__link"&gt;Read more&lt;/a&gt;
+&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -1866,6 +2069,54 @@ voice-aura-design-system/
   <footer style="background: #1A1919; color: #9CA3AF; text-align: center; padding: 2rem; margin-top: 3rem;">
     <p style="margin: 0;">Voice Aura Design System v1.0.0 — Built on Bootstrap 5</p>
   </footer>
+
+  <script>
+  // ── Scroll-spy: highlight current section in sidebar & mobile TOC ──
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.ref-toc a, .ref-mobile-toc__list a');
+    if (!sections.length || !tocLinks.length) return;
+
+    const linkMap = {};
+    tocLinks.forEach(a => {
+      const id = a.getAttribute('href')?.replace('#', '');
+      if (id) { if (!linkMap[id]) linkMap[id] = []; linkMap[id].push(a); }
+    });
+
+    let ticking = false;
+    function updateActive() {
+      let current = '';
+      const scrollY = window.scrollY + 120;
+      sections.forEach(sec => { if (sec.offsetTop <= scrollY) current = sec.id; });
+      tocLinks.forEach(a => a.classList.remove('active'));
+      if (current && linkMap[current]) linkMap[current].forEach(a => a.classList.add('active'));
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateActive); } }, { passive: true });
+    updateActive();
+
+    // Close mobile TOC on link click
+    const mobileToc = document.getElementById('mobile-toc');
+    if (mobileToc) {
+      mobileToc.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => { mobileToc.removeAttribute('open'); });
+      });
+    }
+  })();
+
+  // ── Copy button for .ref-code blocks ──
+  document.querySelectorAll('.ref-code').forEach(block => {
+    const btn = block.querySelector('.ref-code-copy');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const code = block.textContent.replace(btn.textContent, '').trim();
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+  </script>
 
 </body>
 </html>
