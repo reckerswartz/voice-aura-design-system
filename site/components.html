@@ -592,6 +592,85 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
   &lt;input type="checkbox"&gt;
   &lt;span&gt;I agree to the terms&lt;/span&gt;
 &lt;/label&gt;</div>
+
+          <h5 class="ref-subheading">Toggle Switch</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Uses Bootstrap's native <code>.form-check.form-switch</code> pattern, styled via VA variable overrides.</p>
+          <div class="ref-narrow" style="margin-bottom: 2rem;">
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="switchDemo1" checked>
+              <label class="form-check-label" for="switchDemo1">Enable notifications</label>
+            </div>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="switchDemo2">
+              <label class="form-check-label" for="switchDemo2">Dark mode</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="switchDemo3" disabled>
+              <label class="form-check-label" for="switchDemo3">Disabled switch</label>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="form-check form-switch"&gt;
+  &lt;input class="form-check-input" type="checkbox" id="mySwitch" checked&gt;
+  &lt;label class="form-check-label" for="mySwitch"&gt;Enable notifications&lt;/label&gt;
+&lt;/div&gt;</div>
+
+          <h5 class="ref-subheading">Floating Labels</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Uses Bootstrap's <code>.form-floating</code> for labels that animate into the input on focus.</p>
+          <div class="ref-narrow" style="margin-bottom: 2rem;">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatEmail" placeholder="name@example.com">
+              <label for="floatEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="floatPassword" placeholder="Password">
+              <label for="floatPassword">Password</label>
+            </div>
+            <div class="form-floating">
+              <textarea class="form-control" id="floatTextarea" placeholder="Leave a comment" style="height: 100px"></textarea>
+              <label for="floatTextarea">Comments</label>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="form-floating mb-3"&gt;
+  &lt;input type="email" class="form-control" id="floatEmail" placeholder="name@example.com"&gt;
+  &lt;label for="floatEmail"&gt;Email address&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="form-floating"&gt;
+  &lt;textarea class="form-control" id="floatTextarea" placeholder="Comment" style="height: 100px"&gt;&lt;/textarea&gt;
+  &lt;label for="floatTextarea"&gt;Comments&lt;/label&gt;
+&lt;/div&gt;</div>
+
+          <h5 class="ref-subheading">Validation States</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.is-invalid</code> or <code>.is-valid</code> to <code>.va-form-input</code> for colored borders and focus rings. Use <code>.va-form-error</code> for always-visible error messages.</p>
+          <div class="ref-narrow" style="margin-bottom: 2rem;">
+            <div class="va-form-group">
+              <label class="va-form-label">Valid input</label>
+              <input type="text" class="va-form-input is-valid" value="hello@voiceaura.com">
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-label">Invalid input</label>
+              <input type="text" class="va-form-input is-invalid" value="not-an-email">
+              <span class="va-form-error">Please enter a valid email address.</span>
+            </div>
+            <div class="va-form-group">
+              <label class="va-form-label">Hint text</label>
+              <input type="text" class="va-form-input" placeholder="Username">
+              <span class="va-form-hint">Must be 3–20 characters, letters and numbers only.</span>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Valid state --&gt;
+&lt;input type="text" class="va-form-input is-valid" value="hello@voiceaura.com"&gt;
+
+&lt;!-- Invalid state with error message --&gt;
+&lt;input type="text" class="va-form-input is-invalid" value="not-an-email"&gt;
+&lt;span class="va-form-error"&gt;Please enter a valid email address.&lt;/span&gt;
+
+&lt;!-- Hint text --&gt;
+&lt;input type="text" class="va-form-input" placeholder="Username"&gt;
+&lt;span class="va-form-hint"&gt;Must be 3–20 characters.&lt;/span&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -894,6 +973,29 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
     &lt;button class="va-btn va-btn--secondary"&gt;API Docs&lt;/button&gt;
   &lt;/div&gt;
 &lt;/section&gt;</div>
+
+          <h5 class="ref-subheading">Compact Variant</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-hero--compact</code> for reduced vertical padding — ideal for inner pages or secondary heroes.</p>
+          <div class="ref-demo-container">
+            <div class="va-hero va-hero--compact" style="padding-left: 2rem; padding-right: 2rem;">
+              <span class="va-badge va-badge--dark va-badge--pill va-hero__badge">INNER PAGE</span>
+              <h1 class="va-hero__title" style="font-size: 2rem;">Compact hero for inner pages</h1>
+              <p class="va-hero__subtitle">Less vertical padding, same visual hierarchy.</p>
+              <div class="va-hero__actions">
+                <button class="va-btn va-btn--primary">Get Started</button>
+              </div>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Compact hero: reduced vertical padding --&gt;
+&lt;section class="va-hero va-hero--compact"&gt;
+  &lt;span class="va-badge va-badge--dark va-badge--pill va-hero__badge"&gt;INNER PAGE&lt;/span&gt;
+  &lt;h1 class="va-hero__title"&gt;Compact hero for inner pages&lt;/h1&gt;
+  &lt;p class="va-hero__subtitle"&gt;Less vertical padding, same visual hierarchy.&lt;/p&gt;
+  &lt;div class="va-hero__actions"&gt;
+    &lt;button class="va-btn va-btn--primary"&gt;Get Started&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -943,6 +1045,55 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 
 &lt;!-- Reverse layout: add .va-feature-row--reverse --&gt;
 &lt;!-- Dark visual: use .va-feature-visual--dark --&gt;</div>
+
+          <h5 class="ref-subheading">Reverse Variant</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-feature-row--reverse</code> to swap columns — visual on the left, text on the right.</p>
+          <div class="ref-demo-container ref-demo-container--padded-lg">
+            <div class="va-feature-row va-feature-row--reverse">
+              <div class="va-feature-row__content">
+                <span class="va-section-badge">FOR CREATORS</span>
+                <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">AI Video Dubbing in 50+ Languages</h2>
+                <p style="color: #4B5563; margin-bottom: 1.5rem;">Translate any video with natural-sounding AI voices while preserving the speaker's tone and emotion.</p>
+                <div class="ref-component-grid">
+                  <button class="va-btn va-btn--primary">Try Dubbing</button>
+                  <a href="#" class="va-btn va-btn--ghost">See examples &rarr;</a>
+                </div>
+              </div>
+              <div class="va-feature-visual va-feature-visual--light" style="min-height: 200px; color: #9CA3AF;">
+                [ Visual Panel ]
+              </div>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Dark Visual Panel</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Use <code>.va-feature-visual--dark</code> for a dark gradient background — pairs well with product screenshots or light UI mockups.</p>
+          <div class="ref-demo-container ref-demo-container--padded-lg">
+            <div class="va-feature-row">
+              <div class="va-feature-row__content">
+                <span class="va-section-badge">VOICE STUDIO</span>
+                <h2 style="font-family: 'IBM Plex Serif', serif; font-weight: 700; font-size: 2rem; margin: 1rem 0;">Professional Voice Studio</h2>
+                <p style="color: #4B5563; margin-bottom: 1.5rem;">Create, edit, and fine-tune AI voices with our intuitive studio interface.</p>
+                <div class="ref-component-grid">
+                  <button class="va-btn va-btn--accent">Open Studio</button>
+                </div>
+              </div>
+              <div class="va-feature-visual va-feature-visual--dark" style="min-height: 200px; color: rgba(255,255,255,0.4);">
+                [ Dark Visual Panel ]
+              </div>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Reverse layout --&gt;
+&lt;div class="va-feature-row va-feature-row--reverse"&gt;
+  &lt;div class="va-feature-row__content"&gt;...&lt;/div&gt;
+  &lt;div class="va-feature-visual va-feature-visual--light"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dark visual panel --&gt;
+&lt;div class="va-feature-row"&gt;
+  &lt;div class="va-feature-row__content"&gt;...&lt;/div&gt;
+  &lt;div class="va-feature-visual va-feature-visual--dark"&gt;...&lt;/div&gt;
+&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -1253,6 +1404,67 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
 &lt;/div&gt;
 
 &lt;!-- Remove pipe separators: add .va-client-logos--no-pipes --&gt;</div>
+
+          <h5 class="ref-subheading">Trust Bar (va-trust-bar)</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Alternative trust bar component with greyscale logos, hover-to-color effect, and optional separator lines.</p>
+
+          <div class="ref-demo-container ref-demo-container--padded">
+            <div class="va-trust-bar">
+              <p class="va-trust-bar__text">The solution of choice for <strong>300+</strong> Forbes 2000 companies</p>
+              <div class="va-trust-bar__logos">
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:1.125rem;color:#1A1919;">AIRFRANCE</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:1rem;color:#1A1919;">VERTIV.</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:1.125rem;color:#1A1919;">Honeywell</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1rem;color:#1A1919;">splunk&gt;</span>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Separator Variant</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-trust-bar__logos--separated</code> for vertical dividers between logos.</p>
+          <div class="ref-demo-container ref-demo-container--padded">
+            <div class="va-trust-bar va-trust-bar--bordered">
+              <p class="va-trust-bar__text">Trusted by <strong>10M+</strong> creators worldwide</p>
+              <div class="va-trust-bar__logos va-trust-bar__logos--separated">
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:1.125rem;color:#1A1919;">AIRFRANCE</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:1rem;color:#1A1919;">VERTIV.</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:1.125rem;color:#1A1919;">Honeywell</span>
+                <span class="va-trust-bar__logo" style="height:auto;filter:grayscale(100%);opacity:0.55;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1rem;color:#1A1919;">splunk&gt;</span>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="ref-subheading">Dark Variant</h5>
+          <p class="ref-desc" style="margin-bottom: 1rem;">Add <code>.va-trust-bar--dark</code> for use on dark backgrounds. Logos are inverted and text is muted white.</p>
+          <div class="ref-demo-container" style="background: #1A1919; border-radius: 0.75rem; padding: 2rem;">
+            <div class="va-trust-bar va-trust-bar--dark">
+              <p class="va-trust-bar__text">Trusted by <strong>10M+</strong> creators worldwide</p>
+              <div class="va-trust-bar__logos va-trust-bar__logos--separated">
+                <span class="va-trust-bar__logo" style="height:auto;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:1.125rem;">AIRFRANCE</span>
+                <span class="va-trust-bar__logo" style="height:auto;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:1rem;">VERTIV.</span>
+                <span class="va-trust-bar__logo" style="height:auto;font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:1.125rem;">Honeywell</span>
+                <span class="va-trust-bar__logo" style="height:auto;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1rem;">splunk&gt;</span>
+              </div>
+            </div>
+          </div>
+
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;!-- Basic trust bar --&gt;
+&lt;div class="va-trust-bar"&gt;
+  &lt;p class="va-trust-bar__text"&gt;Trusted by &lt;strong&gt;10M+&lt;/strong&gt; creators&lt;/p&gt;
+  &lt;div class="va-trust-bar__logos"&gt;
+    &lt;img class="va-trust-bar__logo" src="logo-1.svg" alt="Company 1"&gt;
+    &lt;img class="va-trust-bar__logo" src="logo-2.svg" alt="Company 2"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- With separator lines + top border --&gt;
+&lt;div class="va-trust-bar va-trust-bar--bordered"&gt;
+  &lt;p class="va-trust-bar__text"&gt;...&lt;/p&gt;
+  &lt;div class="va-trust-bar__logos va-trust-bar__logos--separated"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dark variant (on dark backgrounds) --&gt;
+&lt;div class="va-trust-bar va-trust-bar--dark"&gt;...&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->

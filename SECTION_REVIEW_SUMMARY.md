@@ -119,10 +119,10 @@ Fixes grouped by priority — derived from the per-section audits.
 | ~~F-8~~ | ~~Grid~~ | ~~Add `#grid` section to components.html reference~~ | ✅ Done (`18fa927`) |
 | F-9 | Footer | Add copyable code snippet to components.html | 30 min |
 | F-10 | Auth | Add copyable code snippet to components.html | 30 min |
-| F-11 | Forms | Add toggle switch, floating label, validation demos | 1 h |
-| F-12 | Hero | Add input card variant, compact variant demos | 1 h |
-| F-13 | Feature Rows | Add reverse variant, dark visual panel demos | 1 h |
-| F-14 | Trust Bar | Add dark variant, separator variant demos | 30 min |
+| ~~F-11~~ | ~~Forms~~ | ~~Add toggle switch, floating label, validation demos~~ | ✅ Done |
+| ~~F-12~~ | ~~Hero~~ | ~~Add compact variant demo~~ | ✅ Done |
+| ~~F-13~~ | ~~Feature Rows~~ | ~~Add reverse variant, dark visual panel demos~~ | ✅ Done |
+| ~~F-14~~ | ~~Trust Bar~~ | ~~Add dark variant, separator variant demos~~ | ✅ Done |
 | F-15 | Voice Agent, Video Dubbing | Add copyable code snippets | 1 h |
 
 ---
@@ -141,14 +141,14 @@ Fixes grouped by priority — derived from the per-section audits.
 | Buttons | ✅ | ✅ | All 6 variants | — |
 | Badges | ✅ | ✅ | All variants | — |
 | Cards | ✅ | ✅ | 4 variants | — |
-| Forms | ✅ | ✅ | Basic only | ❌ Missing: switch, floating label, validation |
+| Forms | ✅ | ✅ | All variants | ✅ Switch, floating label, validation added |
 | Pricing | ✅ | ✅ | Basic | ❌ Missing: tab JS demo |
 | Auth | ✅ | ✅ | Basic | — |
 | Navbar | ✅ | ⚠️ | Basic | ❌ Missing: scrolled, transparent, mobile |
-| Hero | ✅ | ⚠️ | Basic | ❌ Missing: compact, input card, floats |
-| Features | ✅ | ⚠️ | Basic | ❌ Missing: reverse, dark visual |
+| Hero | ✅ | ✅ | Basic + compact | ✅ Compact variant added |
+| Features | ✅ | ✅ | Reverse + dark visual | ✅ Both variants added |
 | Blog | ✅ | ✅ | Basic | ⚠️ Missing: category variants |
-| Trust Bar | ✅ | ⚠️ | Basic | ❌ Missing: dark, separator |
+| Trust Bar | ✅ | ✅ | Dark + separator | ✅ Both variants added |
 | Voice Agent | ✅ | ✅ | Basic | — |
 | Video Dubbing | ✅ | ✅ | Basic | — |
 | Footer | ✅ | ✅ | Basic | — |
@@ -191,8 +191,8 @@ Fixes grouped by priority — derived from the per-section audits.
 |-----|--------|---------------|
 | ~~Grid section missing from reference~~ | ~~✅ Added (`18fa927`)~~ | — |
 | ~~4 sections lack code snippets~~ | ~~Corrected: Auth/Agent/Dubbing/Footer already had snippets~~ | — |
-| Form variants incomplete (switch, floating, validation) | Common patterns undocumented | 1 h |
-| Hero/Navbar variant demos incomplete | Consumers don't know about advanced patterns | 2 h |
+| ~~Form variants incomplete (switch, floating, validation)~~ | ~~✅ Added toggle switch, floating label, validation demos~~ | — |
+| ~~Hero/Feature/Trust Bar variant demos incomplete~~ | ~~✅ Added compact hero, reverse feature, dark visual, trust bar variants~~ | — |
 
 ### Tooling gaps
 
@@ -215,7 +215,7 @@ All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3
 
 1. ~~**F-6:** Migrate top 8 components to consume `var(--va-*)` tokens~~ ✅ COMPLETE — 15/18 sections migrated
 2. ~~**F-7:** Move app-specific SCSS to `brands/voice-aura/`~~ ✅ COMPLETE
-3. **F-11/F-12/F-13/F-14:** Complete variant demos in reference (3 h)
+3. ~~**F-11/F-12/F-13/F-14:** Complete variant demos in reference~~ ✅ COMPLETE
 
 ### Sprint 3 — Tooling & quality (1 week)
 
