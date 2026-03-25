@@ -600,11 +600,11 @@ changes to the compiled CSS can only be caught manually.
 
 | ID | Issue | Detail |
 |----|-------|--------|
-| L-1 | Unused Sass import | `_mixins.scss` line 10: `@use "sass:meta"` is never used. |
+| ~~L-1~~ | ~~Unused Sass import~~ | ✅ Removed `@use "sass:meta"` from `_mixins.scss`. |
 | L-2 | Unused function | `va-str-replace()` in `_functions.scss` appears unused. |
-| L-3 | Missing font-size in `$va-font-sizes` map | `0.9375rem` (15px) is used in `_feature-section.scss:91` but not in the map. |
-| L-4 | `$va-colors` map missing entries | `$va-white` and `$va-section-bg` are omitted. |
-| L-5 | No version header in compiled CSS | Add a `/*! Voice Aura v#{$version} */` banner. |
+| ~~L-3~~ | ~~Missing font-size in `$va-font-sizes` map~~ | ✅ Added `"md": 0.9375rem` to map. |
+| ~~L-4~~ | ~~`$va-colors` map missing entries~~ | ✅ Already present: `"white"` and `"section-bg"` in map. |
+| ~~L-5~~ | ~~No version header in compiled CSS~~ | ✅ Added `/*! Voice Aura Design System v1.0.0 ... */` banner (preserved by cssnano). |
 | L-6 | Halftone overlay mixin uses hardcoded `8px 8px` | Should reference `$va-halftone-pattern-size` variable. |
 | L-7 | Redundant variable aliases | `$va-primary`, `$va-border`, `$va-bg-alt` duplicate other tokens. Document which is canonical or remove. |
 
@@ -616,53 +616,53 @@ changes to the compiled CSS can only be caught manually.
 
 | Task | Issue(s) | Effort | Status |
 |------|----------|--------|--------|
-| Fix `$btn-border-radius-lg` bug | C-3 | 5 min | ❌ Open |
-| Fix `va-focus-ring` mixin | C-4 | 5 min | ❌ Open |
-| Fix `body { overflow-x }` root cause in `_reset.scss` | C-5 | 15 min | ❌ Open (workaround in place) |
-| Migrate 50+ `darken()`/`lighten()` to `color.adjust()` | C-6 | 3 h | ❌ Open |
-| Fix pricing section float positioning | H-0 | 30 min | ❌ Open |
-| Standardise class names across sample and reference | C-7 | 2 h | ❌ Open |
-| Consolidate `.va-feature-row` into one file | C-1 | 2 h | ❌ Open |
-| Replace hardcoded breakpoints in `_section.scss` | H-1 | 30 min | ❌ Open |
+| Fix `$btn-border-radius-lg` bug | C-3 | 5 min | ✅ Done |
+| Fix `va-focus-ring` mixin | C-4 | 5 min | ✅ Done |
+| Fix `body { overflow-x }` root cause in `_reset.scss` | C-5 | 15 min | ✅ Done |
+| Migrate 50+ `darken()`/`lighten()` to `color.adjust()` | C-6 | 3 h | ✅ Done |
+| Fix pricing section float positioning | H-0 | 30 min | ✅ Done |
+| Standardise class names across sample and reference | C-7 | 2 h | ✅ Done |
+| Consolidate `.va-feature-row` into one file | C-1 | 2 h | ✅ Done |
+| Replace hardcoded breakpoints in `_section.scss` | H-1 | 30 min | ✅ Done |
 | Pin Sass version in `package.json` | C-2 phase 1 | 5 min | ✅ Done |
 
 ### Phase 2 — Token hardening (weeks 3-4)
 
 | Task | Issue(s) | Effort | Status |
 |------|----------|--------|--------|
-| Migrate remaining z-index values to `$va-z-*` tokens | H-2 | 2 h | ⚠️ Scale defined, migration pending |
-| Replace `rgba(0,0,0,N)` with token-based shadows | H-3 | 3 h | ❌ Open |
-| Add `$va-icon-sizes`, `$va-letter-spacing`, `$va-line-heights` maps | M-2 | 2 h | ❌ Open |
-| Add accessor functions (`va-font-size`, `va-breakpoint`, etc.) | M-1 | 1.5 h | ❌ Open |
-| Have components consume `va-crosshair-corners`/`va-pill-tabs` mixins | H-4 | 1 h | ⚠️ Mixins exist, not consumed |
-| Restructure `_pattern-data.scss` to remove `!important` | H-6 | 1 h | ❌ Open |
-| Add missing utility extensions (opacity, z-index) | M-3 | 1 h | ❌ Open |
+| Migrate remaining z-index values to `$va-z-*` tokens | H-2 | 2 h | ✅ Done |
+| Replace `rgba(0,0,0,N)` with token-based shadows | H-3 | 3 h | ✅ Done |
+| Add `$va-icon-sizes`, `$va-letter-spacing`, `$va-line-heights` maps | M-2 | 2 h | ✅ Done |
+| Add accessor functions (`va-font-size`, `va-breakpoint`, etc.) | M-1 | 1.5 h | ✅ Done |
+| Have components consume `va-crosshair-corners`/`va-pill-tabs` mixins | H-4 | 1 h | ✅ Done |
+| Restructure `_pattern-data.scss` to remove `!important` | H-6 | 1 h | ✅ Done |
+| Add missing utility extensions (opacity, z-index) | M-3 | 1 h | ✅ Done |
 
 ### Phase 3 — Tooling & automation (weeks 5-8)
 
 | Task | Issue(s) | Effort | Status |
 |------|----------|--------|--------|
-| Add Stylelint + Prettier config | M-6 | 2 h | ❌ Open |
-| Add CSS snapshot test to CI | M-7 | 3 h | ❌ Open |
-| Add Playwright visual-regression tests | M-7 | 4 h | ❌ Open |
-| Add axe-core a11y audit to CI | M-7 | 2 h | ❌ Open |
-| Introduce 11ty (or similar) for HTML partials | M-4 | 4 h | ❌ Open |
-| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ❌ Open |
-| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ❌ Open |
-| Add code blocks to remaining 13 reference sections | H-9 | 3 h | ⚠️ 8 of 21 done |
-| Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h | ❌ Open |
-| Split `_backgrounds.scss` (1303 lines) into sub-modules | NEW | 3 h | ❌ Open |
+| Add Stylelint + Prettier config | M-6 | 2 h | ✅ Done |
+| Add CSS snapshot test to CI | M-7 | 3 h | ✅ Done |
+| Add Playwright visual-regression tests | M-7 | 4 h | ✅ Done |
+| Add axe-core a11y audit to CI | M-7 | 2 h | ✅ Done |
+| Introduce 11ty (or similar) for HTML partials | M-4 | 4 h | ✅ Done |
+| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ⏳ Deferred |
+| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ⏳ Deferred |
+| Add code blocks to remaining 13 reference sections | H-9 | 3 h | ⏳ Deferred |
+| Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h | ⏳ Blocked on Bootstrap 6 |
+| Split `_backgrounds.scss` (1303 lines) into sub-modules | NEW | 3 h | ✅ Done |
 
 ### Phase 4 — Maturity & scale (ongoing)
 
 | Task | Issue(s) | Effort | Status |
 |------|----------|--------|--------|
-| Complete `@import` → `@use` migration (post-Bootstrap 6) | C-2 phase 3 | 8 h | ❌ Blocked on Bootstrap 6 |
-| Add conditional component imports for tree-shaking | — | 3 h | ❌ Open |
-| Publish design-token JSON (for Figma sync / multi-platform) | — | 4 h | ❌ Open |
-| CSS custom-property layer for runtime theming | — | 8 h | ❌ Open |
-| Create component accessibility checklist in DESIGN_SYSTEM.md | — | 2 h | ❌ Open |
-| Reduce compiled CSS size from 334 KB to < 250 KB | — | 4 h | ❌ Open |
+| Complete `@import` → `@use` migration (post-Bootstrap 6) | C-2 phase 3 | 8 h | ⏳ Blocked on Bootstrap 6 |
+| Add conditional component imports for tree-shaking | — | 3 h | ⏳ Deferred |
+| Publish design-token JSON (for Figma sync / multi-platform) | — | 4 h | ✅ Done (Style Dictionary) |
+| CSS custom-property layer for runtime theming | — | 8 h | ✅ Done (--va-* + dark mode) |
+| Create component accessibility checklist in DESIGN_SYSTEM.md | — | 2 h | ⏳ Deferred |
+| Reduce compiled CSS size from 334 KB to < 250 KB | — | 4 h | ⏳ Deferred (currently 341 KB) |
 
 ---
 

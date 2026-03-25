@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*! Voice Aura Design System v1.0.0 | ISC License | github.com/reckerswartz/voice-aura-design-system */
 @layer va {
   :root,
   [data-bs-theme=light] {
@@ -12074,35 +12075,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 94px;
+    height: 68px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 40px;
+    height: 50px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 72px;
+    height: 35px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 82px;
+    height: 29px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 19px;
+    height: 83px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 61px;
+    height: 37px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 51px;
+    height: 89px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 30px;
+    height: 19px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
