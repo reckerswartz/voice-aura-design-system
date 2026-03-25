@@ -216,12 +216,14 @@ Bootstrap utility classes (`.mb-0`, `.text-center`, `.mx-auto`, `.text-primary`,
 |------|--------|-------|-----------|
 | `backgrounds.html` | 240 | 67 | **-72%** |
 | `components.html` | 182 | 133 | -27% |
-| `interactions-demo.html` | 120 | 112 | -7% |
-| `transitions-showcase.html` | 100 | 81 | -19% |
-| `asset-gallery.html` | 48 | 34 | -29% |
+| `interactions-demo.html` | 120 | 61 | **-49%** |
+| `transitions-showcase.html` | 100 | 80 | -20% |
+| `asset-gallery.html` | 48 | 31 | -35% |
 | `pixel-perfect-demo.html` | 8 | 8 | — |
 
-**Remaining:** 587 inline styles. Many are highly page-specific (demo dimensions, one-off layouts). Further reduction requires deeper refactoring of demo HTML structure.
+**Remaining:** 542 inline styles (-20% from 674). Many are highly page-specific (demo dimensions, one-off layouts). Further reduction requires deeper refactoring of demo HTML structure.
+
+**Ref-* classes created (26 total):** `.ref-td`, `.ref-td--mono`, `.ref-td-lg`, `.ref-tr`, `.ref-th`, `.ref-bg-alt`, `.ref-bg-white`, `.ref-bg-dark`, `.ref-preview-center`, `.ref-text-sm`, `.ref-card--flat`, `.ref-callout` (+`--success`, `--warning`), `.ref-grid-full`, `.ref-container`, `.ref-inline-flex`, `.ref-px-4`, `.ref-mb-1..4`, `.ref-section-label--lg`, `.ref-annotation` (+`--muted`)
 
 #### ~~3.8 Missing token maps and accessor functions~~ ✅ RESOLVED
 
@@ -467,7 +469,7 @@ Track these metrics over time to measure design system health.
 | Raw z-index (non-variable) | 41 | 1 | 1 | 0 | ✅ ↓ |
 | Stylelint errors | N/A | 0 | 0 | 0 | ✅ |
 | a11y violations (axe) | Unknown | Unknown | 0 | 0 | ✅ |
-| Inline `style=` in HTML | ~291 | 796 | **587** | < 50 | ↓ 87 replaced with ref-* + Bootstrap classes |
+| Inline `style=` in HTML | ~291 | 796 | **542** | < 50 | ↓ 132 replaced with 26 ref-* + Bootstrap classes |
 | Components at Stable+ | 0 | 5 | 6 | All | ↑ |
 | Visual regression baselines | 0 | 5 pages | 5 pages | All pages | ✅ |
 | CI pipeline | None | Full | Full | Full | ✅ |
