@@ -12,7 +12,7 @@ module.exports = defineConfig({
   reporter: process.env.CI ? 'github' : 'list',
 
   use: {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://localhost:8080/site/',
     trace: 'on-first-retry',
   },
 
@@ -28,7 +28,7 @@ module.exports = defineConfig({
   ],
 
   webServer: {
-    command: 'python3 -m http.server 8080 -d site',
+    command: 'python3 -m http.server 8080',
     port: 8080,
     reuseExistingServer: !process.env.CI,
   },

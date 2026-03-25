@@ -48,14 +48,16 @@
     "url": "https://github.com/reckerswartz/voice-aura-design-system/issues"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "build:css": "sass scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
     "build:min": "sass scss/voice-aura.scss dist/css/voice-aura.min.css --style=compressed --no-source-map",
     "postcss:prefix": "postcss dist/css/voice-aura.css --use autoprefixer -o dist/css/voice-aura.css --no-map",
     "postcss:min": "postcss dist/css/voice-aura.min.css --use autoprefixer cssnano -o dist/css/voice-aura.min.css --no-map",
+    "postcss:purge": "PURGE=true postcss dist/css/voice-aura.min.css -o dist/css/voice-aura.min.css --no-map",
     "build": "npm run build:css && npm run build:min && npm run postcss:prefix && npm run postcss:min",
+    "build:purge": "npm run build:css && npm run build:min && npm run postcss:prefix && npm run postcss:purge",
     "build:sass": "npm run build:css && npm run build:min",
     "tokens:build": "style-dictionary build --config style-dictionary.config.js",
     "site:build": "npx @11ty/eleventy",
@@ -106,6 +108,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
     "@axe-core/playwright": "^4.11.1",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@playwright/test": "^1.58.2",
     "autoprefixer": "^10.4.27",
     "bootstrap": "^5.3.8",

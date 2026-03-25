@@ -1,8 +1,8 @@
 # Voice Aura Design System — CI Pipeline
 # Runs on every push and pull request to main.
 # Jobs:
-#   1. build — lint SCSS, build CSS (Sass + PostCSS), check size budget (Node 18 + 20)
-#   2. test  — accessibility audits via Playwright + axe-core (Node 20 only)
+#   1. build — lint SCSS, build CSS (Sass + PostCSS), check size budget (Node 20 + 22)
+#   2. test  — accessibility audits via Playwright + axe-core (Node 22 only)
 
 name: CI
 
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [20, 22]
 
     steps:
       - name: Checkout
@@ -43,7 +43,7 @@ jobs:
         run: npm run test:size
 
       - name: Upload CSS artifacts
-        if: matrix.node-version == 20
+        if: matrix.node-version == 22
         uses: actions/upload-artifact@v4
         with:
           name: css-dist
@@ -61,7 +61,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -69,9 +69,6 @@ jobs:
 
       - name: Build CSS
         run: npm run build
-
-      - name: Copy built CSS to site
-        run: cp dist/css/voice-aura.css site/css/voice-aura.css
 
       - name: Cache Playwright browsers
         id: playwright-cache

@@ -54,7 +54,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -62,9 +62,6 @@ jobs:
 
       - name: Build CSS
         run: npm run build
-
-      - name: Copy built CSS to site
-        run: cp dist/css/voice-aura.css site/css/voice-aura.css
 
       - name: Cache Playwright browsers
         id: playwright-cache

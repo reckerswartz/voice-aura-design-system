@@ -6,10 +6,10 @@ const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
 const pages = [
-  { name: 'components', path: '/components.html' },
-  { name: 'pixel-perfect-demo', path: '/pixel-perfect-demo.html' },
-  { name: 'signup-demo', path: '/signup-demo.html' },
-  { name: 'login-demo', path: '/login-demo.html' },
+  { name: 'components', path: './components.html' },
+  { name: 'pixel-perfect-demo', path: './pixel-perfect-demo.html' },
+  { name: 'signup-demo', path: './signup-demo.html' },
+  { name: 'login-demo', path: './login-demo.html' },
 ];
 
 for (const { name, path } of pages) {
