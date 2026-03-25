@@ -252,7 +252,7 @@
       transition: color 0.15s ease-in-out;
 
       &:hover {
-        color: darken($va-primary, 10%);
+        color: va-darken($va-primary, 10%);
         text-decoration: underline;
       }
     }
@@ -267,7 +267,7 @@
     font-family: $font-family-base;
     font-size: 0.75rem;
     line-height: 1.6;
-    color: lighten($va-body-text, 15%);
+    color: va-lighten($va-body-text, 15%);
     margin-top: 1rem;
 
     a {
@@ -338,7 +338,7 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  background: linear-gradient(135deg, lighten($va-primary, 30%) 0%, lighten($va-primary, 10%) 100%);
+  background: linear-gradient(135deg, va-lighten($va-primary, 30%) 0%, va-lighten($va-primary, 10%) 100%);
   overflow: hidden;
 
   @include va-media-down("lg") {

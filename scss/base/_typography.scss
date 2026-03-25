@@ -192,7 +192,7 @@ a {
 
   &:hover,
   &:focus-visible {
-    color: darken($va-primary-blue, 10%);
+    color: va-darken($va-primary-blue, 10%);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;

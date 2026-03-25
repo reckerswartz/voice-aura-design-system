@@ -80,7 +80,7 @@
 @mixin va-input-base {
   // Hover: darken border (Bootstrap .form-control has no hover state)
   &:hover {
-    border-color: darken($input-border-color, 10%);
+    border-color: va-darken($input-border-color, 10%);
   }
 
   // Disabled: stronger opacity + bg tint (Bootstrap uses $input-disabled-bg)
@@ -375,7 +375,7 @@
                 transform 0.15s ease-in-out;
 
     &:hover {
-      background-color: darken($va-primary, 8%);
+      background-color: va-darken($va-primary, 8%);
       transform: scale(1.05);
     }
 
@@ -427,7 +427,7 @@
   white-space: nowrap;
 
   &:hover {
-    background-color: darken($va-section-bg, 4%);
+    background-color: va-darken($va-section-bg, 4%);
     color: $va-near-black;
   }
 
@@ -456,7 +456,7 @@
     border-color: $va-near-black;
 
     &:hover {
-      background-color: lighten($va-near-black, 8%);
+      background-color: va-lighten($va-near-black, 8%);
       color: $va-white;
     }
   }

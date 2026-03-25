@@ -203,7 +203,7 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: $va-shadow-card-interactive-hover;
-    border-color: darken($card-border-color, 6%);
+    border-color: va-darken($card-border-color, 6%);
   }
 
   &:focus-visible {

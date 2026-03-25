@@ -91,7 +91,7 @@
     &__placeholder {
       width: 100%;
       aspect-ratio: 1;
-      background: linear-gradient(135deg, $va-badge-bg-light 0%, darken($va-badge-bg-light, 6%) 100%);
+      background: linear-gradient(135deg, $va-badge-bg-light 0%, va-darken($va-badge-bg-light, 6%) 100%);
       border-radius: $border-radius;
       display: flex;
       align-items: center;
@@ -206,8 +206,8 @@
       border-color: $va-primary;
 
       &:hover {
-        background-color: darken($va-primary, 8%);
-        border-color: darken($va-primary, 8%);
+        background-color: va-darken($va-primary, 8%);
+        border-color: va-darken($va-primary, 8%);
       }
     }
 

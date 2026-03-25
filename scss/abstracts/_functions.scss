@@ -39,6 +39,30 @@
 }
 
 // ----------------------------------------------------------------------------
+// va-darken($color, $amount)
+// Modern replacement for the deprecated `darken()` global function.
+// Uses `color.adjust()` to decrease lightness.
+// ----------------------------------------------------------------------------
+/// @param  {Color}  $color  — the base colour
+/// @param  {Number} $amount — percentage to decrease lightness (e.g. 8%)
+/// @return {Color}
+@function va-darken($color, $amount) {
+  @return color.adjust($color, $lightness: -$amount);
+}
+
+// ----------------------------------------------------------------------------
+// va-lighten($color, $amount)
+// Modern replacement for the deprecated `lighten()` global function.
+// Uses `color.adjust()` to increase lightness.
+// ----------------------------------------------------------------------------
+/// @param  {Color}  $color  — the base colour
+/// @param  {Number} $amount — percentage to increase lightness (e.g. 8%)
+/// @return {Color}
+@function va-lighten($color, $amount) {
+  @return color.adjust($color, $lightness: $amount);
+}
+
+// ----------------------------------------------------------------------------
 // va-shade($color, $percentage)
 // Darkens a colour by mixing it with black.
 // Unlike Sass `darken()`, this uses a mix-with-black approach for more

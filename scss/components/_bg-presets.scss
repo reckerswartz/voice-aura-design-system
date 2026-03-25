@@ -1,0 +1,308 @@
+// ==========================================================================
+// Voice Aura Design System — Background Presets & Composition
+// ==========================================================================
+// Composition helpers for layering multiple patterns, section presets
+// (token packs), showcase panels, and the app icon component.
+// Split from _backgrounds.scss for maintainability.
+//
+// Sections:
+//   1. Background Composition Helpers (layers, stacks, intensity)
+//   2. Section Presets (hero, feature-api, feature-dubbing, pricing, etc.)
+//   3. Signup Showcase Panel
+//   4. App Icon
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Background Composition Helpers
+// --------------------------------------------------------------------------
+// When layering multiple patterns on a single section, these helpers
+// ensure correct stacking. Apply patterns to the section and use
+// `.va-bg-layer` inside for additional pattern overlays.
+//
+// Usage:
+//   <section class="va-section va-bg-glow va-pattern-noise">
+//     <div class="va-bg-layer va-bg-layer--circuit"></div>
+//     <div class="va-container">...content...</div>
+//   </section>
+
+.va-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: $va-z-base;
+
+  &--circuit {
+    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+
+  &--rings {
+    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  &--grid {
+    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-repeat: repeat;
+    background-size: 48px 48px;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba($va-near-black, 0.3) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba($va-near-black, 0.3) 0%,
+      transparent 70%
+    );
+  }
+
+  &--mesh {
+    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--diagonal {
+    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+  }
+
+  &--crosshair {
+    background-image: url("../../assets/patterns/crosshair.svg");
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.35);
+  }
+
+  &--wave-divider {
+    background-image: url("../../assets/patterns/wave-divider.svg");
+    background-repeat: repeat-x;
+    background-size: auto 12px;
+    background-position: center bottom;
+    opacity: var(--va-pattern-opacity, 0.45);
+  }
+}
+
+.va-pattern-intensity-subtle { --va-pattern-opacity: 0.35; }
+.va-pattern-intensity-default { --va-pattern-opacity: 0.6; }
+.va-pattern-intensity-strong { --va-pattern-opacity: 0.85; }
+
+.va-pattern-crosshair {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/crosshair.svg");
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    background-position: var(--va-pattern-position, 50% 50%);
+    opacity: var(--va-pattern-opacity, 0.35);
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+.va-pattern-wave-divider {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 12px;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/wave-divider.svg");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.5);
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+.va-bg-stack {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  > .va-bg-layer {
+    z-index: $va-z-base;
+  }
+
+  > .va-bg-stack__content {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Section Presets
+// --------------------------------------------------------------------------
+// Presets are token packs intentionally designed to pair with explicit pattern
+// classes (instead of @extend-based composition) so pseudo-element ownership
+// remains predictable across templates.
+
+.va-bg-preset-hero {
+  --va-pattern-opacity: 0.72;
+  --va-glow-size: 640px;
+}
+
+.va-bg-preset-feature-api {
+  --va-pattern-opacity: 0.68;
+  --va-glow-size: 560px;
+}
+
+.va-bg-preset-feature-dubbing {
+  --va-pattern-opacity: 0.56;
+  --va-ring-size: 320px;
+}
+
+.va-bg-preset-pricing {
+  --va-pattern-opacity: 0.52;
+  --va-glow-size: 520px;
+  --va-mask-size: 70% 60%;
+}
+
+.va-bg-preset-signup {
+  --va-pattern-opacity: 0.6;
+  --va-glow-size: 480px;
+}
+
+.va-bg-preset-blog {
+  --va-pattern-opacity: 0.4;
+  --va-glow-size: 500px;
+}
+
+.va-bg-preset-footer {
+  --va-pattern-opacity: 0.3;
+}
+
+.va-bg-preset-auth {
+  --va-pattern-opacity: 0.5;
+  --va-glow-size: 400px;
+}
+
+// --------------------------------------------------------------------------
+// 3. Signup Showcase Panel
+// --------------------------------------------------------------------------
+// Gradient background treatment for the signup page left panel.
+// Reference: behance-06/12 show the showcase panel with a light-to-medium
+// grey gradient + halftone dots, creating a branded presentation area.
+//
+// Usage: <div class="va-bg-showcase">
+//          <div class="va-bg-showcase__halftone"></div>
+//          ...brand content...
+//        </div>
+
+.va-bg-showcase {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    $va-white 0%,
+    $va-section-bg 35%,
+    va-darken($va-section-bg, 3%) 100%
+  );
+
+  &__halftone {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 120% auto;
+    background-position: center 60%;
+    opacity: 0.65;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 55%,
+      rgba($va-near-black, 0.5) 0%,
+      transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 55%,
+      rgba($va-near-black, 0.5) 0%,
+      transparent 75%
+    );
+
+    @include va-media-down("md") {
+      background-size: 200% auto;
+      opacity: 0.45;
+    }
+  }
+
+  > *:not(.va-bg-showcase__halftone) {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 4. App Icon
+// --------------------------------------------------------------------------
+// Subtle breathing / pulse animation for the Voice Aura app icon element.
+// Reference: behance-05 / behance-07 show the rounded-square icon as a
+// prominent design element.
+//
+// Usage: <div class="va-app-icon va-app-icon--animate">...</div>
+
+.va-app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: $va-white;
+  border: 1px solid $va-border-color;
+  border-radius: $va-grid-unit * 3; // 24px
+  box-shadow: 0 8px 32px rgba($va-near-black, 0.08),
+              0 2px 8px rgba($va-near-black, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba($va-near-black, 0.12),
+                0 4px 12px rgba($va-near-black, 0.06);
+  }
+
+  &--lg {
+    width: 96px;
+    height: 96px;
+  }
+
+  &--sm {
+    width: 56px;
+    height: 56px;
+    border-radius: $va-grid-unit * 2;
+  }
+
+  &--animate {
+    animation: va-float 4s ease-in-out infinite;
+  }
+}

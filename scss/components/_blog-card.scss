@@ -111,7 +111,7 @@
     span + span::before {
       content: "·";
       margin-right: 0.75rem;
-      color: darken($border-color, 10%);
+      color: va-darken($border-color, 10%);
     }
   }
 
@@ -145,8 +145,8 @@
     // Category color variants
     &--product  { color: $va-primary;                          background-color: rgba($va-primary, 0.08); }
     &--design   { color: #8B5CF6;                              background-color: rgba(#8B5CF6, 0.08); }
-    &--tutorial { color: darken($va-success, 8%);              background-color: rgba($va-success, 0.08); }
-    &--news     { color: darken($va-warning, 8%);              background-color: rgba($va-warning, 0.08); }
+    &--tutorial { color: va-darken($va-success, 8%);              background-color: rgba($va-success, 0.08); }
+    &--news     { color: va-darken($va-warning, 8%);              background-color: rgba($va-warning, 0.08); }
   }
 
   // --------------------------------------------------------------------------

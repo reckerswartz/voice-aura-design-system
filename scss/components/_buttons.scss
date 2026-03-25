@@ -131,14 +131,14 @@
   color: $va-white;
 
   &:hover {
-    background-color: lighten($va-near-black, 10%);
-    border-color: lighten($va-near-black, 10%);
+    background-color: va-lighten($va-near-black, 10%);
+    border-color: va-lighten($va-near-black, 10%);
     color: $va-white;
   }
 
   &:active {
-    background-color: darken($va-near-black, 5%);
-    border-color: darken($va-near-black, 5%);
+    background-color: va-darken($va-near-black, 5%);
+    border-color: va-darken($va-near-black, 5%);
     color: $va-white;
   }
 }
@@ -157,13 +157,13 @@
 
   &:hover {
     background-color: $va-section-bg;
-    border-color: darken($border-color, 8%);
+    border-color: va-darken($border-color, 8%);
     color: $va-near-black;
   }
 
   &:active {
-    background-color: darken($va-section-bg, 3%);
-    border-color: darken($border-color, 12%);
+    background-color: va-darken($va-section-bg, 3%);
+    border-color: va-darken($border-color, 12%);
   }
 }
 
@@ -180,14 +180,14 @@
   color: $va-white;
 
   &:hover {
-    background-color: darken($va-primary, 8%);
-    border-color: darken($va-primary, 8%);
+    background-color: va-darken($va-primary, 8%);
+    border-color: va-darken($va-primary, 8%);
     color: $va-white;
   }
 
   &:active {
-    background-color: darken($va-primary, 14%);
-    border-color: darken($va-primary, 14%);
+    background-color: va-darken($va-primary, 14%);
+    border-color: va-darken($va-primary, 14%);
     color: $va-white;
   }
 }
@@ -230,12 +230,12 @@
 
   &:hover {
     background-color: transparent;
-    color: darken($va-primary, 10%);
+    color: va-darken($va-primary, 10%);
     text-decoration: none;
   }
 
   &:active {
-    color: darken($va-primary, 16%);
+    color: va-darken($va-primary, 16%);
   }
 }
 
@@ -363,7 +363,7 @@
   }
 
   &:hover {
-    color: darken($va-primary, 10%);
+    color: va-darken($va-primary, 10%);
     text-decoration: none;
 
     &::after {
@@ -378,6 +378,6 @@
   }
 
   &:active {
-    color: darken($va-primary, 16%);
+    color: va-darken($va-primary, 16%);
   }
 }

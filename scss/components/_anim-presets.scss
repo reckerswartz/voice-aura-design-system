@@ -1,0 +1,422 @@
+// ==========================================================================
+// Voice Aura Design System — Animation Presets & Responsive
+// ==========================================================================
+// Named animation composition presets, loading skeletons, pricing carousel,
+// hero/feature responsive morphs, hamburger icon, and responsive utilities.
+// Split from _animations.scss for maintainability.
+//
+// Sections:
+//   20. Named Animation Composition Presets
+//   21. Loading Skeleton Animation
+//   22. Pricing Mobile Snap-Scroll Carousel
+//   23. Hero Button Stack Morph
+//   24. Feature Row Collapse Animation
+//   25. Hamburger Icon Morph
+//   26. Responsive Pattern Fade
+//   27. Responsive Typography Scale
+//   28. Card Grid Responsive Reflow
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 20. Named Animation Composition Presets
+// --------------------------------------------------------------------------
+// Pre-built animation combos for common page sections. These bundle
+// entrance animation, delay, duration, and easing into a single class
+// so every hero / feature / card entrance is consistent.
+//
+// Usage:
+//   <h1 class="va-entrance-hero">Headline</h1>
+//   <div class="va-entrance-feature">Feature card</div>
+//   <article class="va-entrance-card">Blog card</article>
+
+// Hero: slow, dramatic fade-up for headline text
+.va-entrance-hero {
+  animation: va-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+// Hero subtitle: slightly delayed, softer entrance
+.va-entrance-hero-sub {
+  animation: va-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+// Hero CTA: delayed scale-in for action buttons
+.va-entrance-hero-cta {
+  animation: va-scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+// Feature section: medium entrance from side (adapts on mobile)
+.va-entrance-feature {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include va-media-down("md") {
+    transform: translateY(20px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// Feature visual: enters from opposite side
+.va-entrance-feature-visual {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+
+  @include va-media-down("md") {
+    transform: translateY(20px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// Card: quick fade-up for grid items (use inside .va-stagger-group)
+.va-entrance-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Badge / tag: subtle scale-in pop
+.va-entrance-badge {
+  animation: va-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+// --------------------------------------------------------------------------
+// 21. Loading Skeleton Animation
+// --------------------------------------------------------------------------
+// Shimmer / skeleton-loading placeholder for content that hasn't arrived.
+// Useful for async-loaded cards, images, and text blocks.
+//
+// Usage:
+//   <div class="va-skeleton" style="width:200px; height:24px;"></div>
+//   <div class="va-skeleton va-skeleton--circle" style="width:48px; height:48px;"></div>
+//   <div class="va-skeleton va-skeleton--text"></div>
+//   <div class="va-skeleton va-skeleton--card"></div>
+
+@keyframes va-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.va-skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba($va-near-black, 0.06) 25%,
+    rgba($va-near-black, 0.10) 37%,
+    rgba($va-near-black, 0.06) 63%
+  );
+  background-size: 200% 100%;
+  animation: va-shimmer 1.5s ease-in-out infinite;
+  border-radius: $border-radius-sm;
+
+  // Circle variant (avatars, icons)
+  &--circle {
+    border-radius: 50%;
+  }
+
+  // Text line variant (single line of text)
+  &--text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+
+  // Card variant (full card placeholder)
+  &--card {
+    height: 200px;
+    width: 100%;
+    border-radius: $border-radius;
+  }
+
+  // Image variant
+  &--image {
+    height: 160px;
+    width: 100%;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 22. Pricing Mobile Snap-Scroll Carousel
+// --------------------------------------------------------------------------
+// On mobile (< md), pricing cards become a horizontal snap-scroll carousel
+// matching behance-16 reference. On desktop, standard grid layout.
+//
+// Usage:
+//   <div class="va-pricing-scroll">
+//     <div class="va-pricing-card">...</div>
+//     <div class="va-pricing-card">...</div>
+//   </div>
+
+.va-pricing-scroll {
+  @include va-media-down("md") {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: $va-grid-unit * 2;
+    padding-bottom: $va-grid-unit * 2;
+
+    // Hide scrollbar
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
+
+    > * {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    // Peek effect: slightly reduce inactive cards
+    > *:not(:hover) {
+      opacity: 0.92;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 23. Hero Button Stack Morph
+// --------------------------------------------------------------------------
+// Smoothly transitions hero CTA buttons from inline (desktop) to stacked
+// full-width (mobile). Reference: behance-13/14 show full-width buttons
+// on mobile with stacked layout.
+//
+// Usage: <div class="va-hero-actions-morph">...</div>
+
+.va-hero-actions-morph {
+  display: flex;
+  align-items: center;
+  gap: $va-grid-unit * 1.5;
+  transition: flex-direction $va-duration-slow ease-in-out,
+              gap $va-duration-slow ease-in-out;
+
+  @include va-media-down("md") {
+    flex-direction: column;
+    width: 100%;
+    gap: $va-grid-unit;
+
+    > .va-btn,
+    > button,
+    > a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 24. Feature Row Collapse Animation
+// --------------------------------------------------------------------------
+// Smoothly collapses 2-column feature rows to single column on mobile.
+// The visual panel smoothly expands to full width while the text column
+// repositions above. Pairs with .va-feature-row in _feature-section.scss.
+//
+// Usage: <div class="va-feature-collapse">...</div>
+
+.va-feature-collapse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $va-grid-unit * 4;
+  align-items: center;
+  transition: grid-template-columns $va-duration-slow cubic-bezier(0.4, 0, 0.2, 1),
+              gap $va-duration-slow ease-in-out;
+
+  @include va-media-down("lg") {
+    grid-template-columns: 1fr;
+    gap: $va-grid-unit * 3;
+  }
+
+  // Reverse variant (visual first on desktop, text first on mobile)
+  &--reverse {
+    @include va-media-up("lg") {
+      > :first-child { order: 2; }
+      > :last-child  { order: 1; }
+    }
+  }
+
+  // Children animate their own reflow
+  > * {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease-in-out;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 25. Hamburger Icon Morph
+// --------------------------------------------------------------------------
+// Animated hamburger ☰ → ✕ transition for the mobile menu toggle.
+// Three bars morph into an X using CSS transforms.
+//
+// Usage:
+//   <button class="va-hamburger" aria-label="Menu">
+//     <span class="va-hamburger__bar"></span>
+//     <span class="va-hamburger__bar"></span>
+//     <span class="va-hamburger__bar"></span>
+//   </button>
+
+.va-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  @include va-media-down("lg") {
+    display: flex;
+  }
+
+  &__bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $va-near-black;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease-in-out;
+    transform-origin: center;
+  }
+
+  // Open state: bars morph to X
+  &.is-open {
+    .va-hamburger__bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .va-hamburger__bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .va-hamburger__bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 26. Responsive Pattern Fade
+// --------------------------------------------------------------------------
+// Smoothly fades decorative patterns at breakpoints instead of abruptly
+// hiding them. Patterns reduce opacity on mobile for better readability
+// and performance.
+//
+// Usage: <section class="va-pattern-responsive-fade va-pattern-halftone">
+
+.va-pattern-responsive-fade {
+  &::before,
+  &::after {
+    transition: opacity 0.5s ease-in-out,
+                background-size 0.5s ease-in-out;
+  }
+
+  @include va-media-down("md") {
+    &::before,
+    &::after {
+      opacity: calc(var(--va-pattern-opacity, 1) * 0.5);
+    }
+  }
+
+  @include va-media-down("sm") {
+    &::before,
+    &::after {
+      opacity: calc(var(--va-pattern-opacity, 1) * 0.3);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 27. Responsive Typography Scale
+// --------------------------------------------------------------------------
+// Smooth font-size transitions when viewport crosses breakpoints.
+// Apply to heading or text containers.
+//
+// Usage: <h1 class="va-type-responsive">Headline</h1>
+
+.va-type-responsive {
+  transition: font-size 0.3s ease-in-out,
+              line-height 0.3s ease-in-out,
+              letter-spacing 0.3s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 28. Card Grid Responsive Reflow
+// --------------------------------------------------------------------------
+// Animates card grids from multi-column to single-column on mobile.
+// Grid columns, gap, and child positions all transition smoothly.
+//
+// Usage:
+//   <div class="va-card-grid-reflow va-card-grid-reflow--3">
+//     <article>...</article>
+//   </div>
+
+.va-card-grid-reflow {
+  display: grid;
+  gap: $va-grid-unit * 3;
+  transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              gap 0.35s ease-in-out;
+
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+
+    @include va-media-down("md") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include va-media-down("lg") {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include va-media-down("md") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include va-media-down("lg") {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include va-media-down("md") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Children animate position
+  > * {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+}

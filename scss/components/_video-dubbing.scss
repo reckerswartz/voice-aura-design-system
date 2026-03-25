@@ -164,7 +164,7 @@
 
     // Placeholder gradient (when no video is loaded)
     &--placeholder {
-      background: linear-gradient(135deg, darken($va-near-black, 5%) 0%, darken($va-near-black, 12%) 100%);
+      background: linear-gradient(135deg, va-darken($va-near-black, 5%) 0%, va-darken($va-near-black, 12%) 100%);
       display: flex;
       align-items: center;
       justify-content: center;

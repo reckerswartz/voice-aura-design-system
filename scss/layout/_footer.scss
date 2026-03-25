@@ -133,7 +133,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     }
 
     &:active {
-      background-color: darken($va-primary-blue, 8%);
+      background-color: va-darken($va-primary-blue, 8%);
       transform: scale(0.95);
     }
 

@@ -1,0 +1,482 @@
+// ==========================================================================
+// Voice Aura Design System — Animation Components
+// ==========================================================================
+// Component-specific animations: waveform visualiser, mobile menu,
+// scroll-triggered helpers, reduced motion, responsive entrance,
+// stagger groups, touch-aware states, and navbar/hero morphs.
+// Split from _animations.scss for maintainability.
+//
+// Sections:
+//   7.  Audio Waveform Visualiser Animation
+//   8.  Mobile Menu Transition
+//   9.  Scroll-Triggered Animation Helpers
+//   10. Reduced Motion Support
+//   11. Responsive Entrance Animations
+//   12. Stagger Group
+//   13. Card Reflow Animation
+//   14. Touch-Aware Interaction States
+//   15. Section Morph (Background Pattern Transition)
+//   16. Responsive Container Expand/Collapse
+//   17. Scroll-Triggered Stagger with Responsive Direction
+//   18. Hero Responsive Adapt
+//   19. Navbar Morph (Desktop ↔ Mobile)
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 7. Audio Waveform Visualiser Animation
+// --------------------------------------------------------------------------
+// Animated bars for audio/voice visualisation. Used in the hero floating
+// icon badge and voice agent cards.
+//
+// Usage: <div class="va-waveform-bars">
+//          <span></span><span></span><span></span><span></span><span></span>
+//        </div>
+
+.va-waveform-bars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 24px;
+
+  span {
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: currentColor;
+    border-radius: 2px;
+    transform-origin: center center;
+    animation: va-wave-bar 1.2s ease-in-out infinite;
+
+    &:nth-child(1) { animation-delay: 0s;    height: 40%; }
+    &:nth-child(2) { animation-delay: 0.15s; height: 70%; }
+    &:nth-child(3) { animation-delay: 0.3s;  height: 100%; }
+    &:nth-child(4) { animation-delay: 0.45s; height: 60%; }
+    &:nth-child(5) { animation-delay: 0.6s;  height: 30%; }
+  }
+
+  // Static variant (no animation, just bars)
+  &--static span {
+    animation: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 8. Mobile Menu Transition
+// --------------------------------------------------------------------------
+// Smooth slide-in/out for the mobile navigation menu.
+
+.va-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 320px;
+  background-color: $va-white;
+  z-index: $va-z-overlay;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $va-shadow-mobile-menu;
+  overflow-y: auto;
+  padding: 1.5rem;
+
+  &.is-open {
+    transform: translateX(0);
+  }
+}
+
+// Overlay backdrop for mobile menu
+.va-mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($va-near-black, 0.4);
+  z-index: $va-z-overlay - 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 9. Scroll-Triggered Animation Helpers
+// --------------------------------------------------------------------------
+// These classes set up elements for scroll-triggered entrance animations.
+// Pair with a lightweight JS observer (IntersectionObserver) that adds
+// `.is-visible` when the element enters the viewport.
+//
+// Usage:
+//   <div class="va-scroll-fade-up">Content</div>
+//
+//   JS: new IntersectionObserver(entries => {
+//     entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible'));
+//   }).observe(document.querySelectorAll('[class*="va-scroll-"]'));
+
+.va-scroll-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.va-scroll-fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
+.va-scroll-scale-in {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.va-scroll-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.va-scroll-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 10. Reduced Motion Support
+// --------------------------------------------------------------------------
+// Respects the user's `prefers-reduced-motion` setting by disabling
+// all animations and transitions system-wide.
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  // Keep scroll-trigger elements visible (don't hide them)
+  [class*="va-scroll-"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 11. Responsive Entrance Animations
+// --------------------------------------------------------------------------
+// Entrance animations that adapt direction based on screen size.
+// On desktop, elements slide from left/right; on mobile, they fade up
+// to match the vertical scroll flow.
+//
+// Usage:
+//   <div class="va-responsive-fade-left">Text column</div>
+//   <div class="va-responsive-fade-right">Visual column</div>
+
+.va-responsive-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  @include va-media-down("md") {
+    transform: translateY(24px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.va-responsive-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  @include va-media-down("md") {
+    transform: translateY(24px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 12. Stagger Group
+// --------------------------------------------------------------------------
+// Automatically stagger children entrance animations. Apply to a grid or
+// flex container — each direct child gets an incremental delay.
+//
+// Usage:
+//   <div class="va-stagger-group">
+//     <div class="va-scroll-fade-up">Card 1</div>
+//     <div class="va-scroll-fade-up">Card 2</div>
+//     <div class="va-scroll-fade-up">Card 3</div>
+//   </div>
+
+.va-stagger-group {
+  > :nth-child(1) { transition-delay: 0s; }
+  > :nth-child(2) { transition-delay: 0.08s; }
+  > :nth-child(3) { transition-delay: 0.16s; }
+  > :nth-child(4) { transition-delay: 0.24s; }
+  > :nth-child(5) { transition-delay: 0.32s; }
+  > :nth-child(6) { transition-delay: 0.40s; }
+  > :nth-child(7) { transition-delay: 0.48s; }
+  > :nth-child(8) { transition-delay: 0.56s; }
+
+  // On mobile, reduce stagger gaps for faster perceived load
+  @include va-media-down("md") {
+    > :nth-child(n) {
+      transition-delay: 0s;
+    }
+    > :nth-child(2) { transition-delay: 0.06s; }
+    > :nth-child(3) { transition-delay: 0.12s; }
+    > :nth-child(4) { transition-delay: 0.18s; }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 13. Card Reflow Animation
+// --------------------------------------------------------------------------
+// Smooth card position/size transitions when grid columns change at
+// breakpoints. Apply to individual cards inside a grid.
+//
+// Usage:
+//   <div class="va-grid-3 va-grid-smooth">
+//     <div class="va-card-reflow">...</div>
+//   </div>
+
+.va-card-reflow {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease-in-out,
+              max-width 0.4s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 14. Touch-Aware Interaction States
+// --------------------------------------------------------------------------
+// On touch devices, hover doesn't exist in the same way. These classes
+// provide touch-optimized feedback (active press) while keeping hover
+// effects for pointer devices.
+//
+// Usage:
+//   <div class="va-touch-lift">Card</div>
+
+.va-touch-lift {
+  transition: transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+
+  // Pointer (mouse) devices: traditional hover lift
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $va-shadow-lg;
+    }
+  }
+
+  // Touch devices: active press feedback
+  &:active {
+    transform: scale(0.97);
+    box-shadow: $va-shadow-sm;
+  }
+}
+
+.va-touch-scale {
+  transition: transform 0.2s ease-in-out;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 15. Section Morph (Background Pattern Transition)
+// --------------------------------------------------------------------------
+// Smooth background opacity transitions when patterns change visibility
+// at breakpoints. Apply to sections with pattern overlays so the pattern
+// fades rather than pops.
+
+.va-section-morph {
+  &::before,
+  &::after {
+    transition: opacity 0.5s ease-in-out,
+                background-size 0.5s ease-in-out;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 16. Responsive Container Expand/Collapse
+// --------------------------------------------------------------------------
+// Animates container width changes at breakpoints. Useful for the main
+// content area and pricing grids.
+
+.va-container-smooth {
+  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-left 0.35s ease-in-out,
+              padding-right 0.35s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 17. Scroll-Triggered Stagger with Responsive Direction
+// --------------------------------------------------------------------------
+// Combines scroll-trigger + responsive direction + auto-stagger.
+// The ideal utility for feature grids and card collections.
+//
+// Usage:
+//   <div class="va-scroll-stagger">
+//     <article>Card 1</article>
+//     <article>Card 2</article>
+//   </div>
+
+.va-scroll-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  > :nth-child(1) { transition-delay: 0s; }
+  > :nth-child(2) { transition-delay: 0.1s; }
+  > :nth-child(3) { transition-delay: 0.2s; }
+  > :nth-child(4) { transition-delay: 0.3s; }
+  > :nth-child(5) { transition-delay: 0.4s; }
+  > :nth-child(6) { transition-delay: 0.5s; }
+
+  &.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Tighter stagger on mobile
+  @include va-media-down("md") {
+    > :nth-child(n) { transition-delay: 0s; }
+    > :nth-child(2) { transition-delay: 0.08s; }
+    > :nth-child(3) { transition-delay: 0.16s; }
+    > :nth-child(4) { transition-delay: 0.24s; }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 18. Hero Responsive Adapt
+// --------------------------------------------------------------------------
+// Smooth transitions for hero section reflow between desktop and mobile.
+
+.va-hero-adapt {
+  transition: padding 0.4s ease-in-out;
+
+  .va-hero__title {
+    transition: font-size 0.3s ease-in-out,
+                line-height 0.3s ease-in-out;
+  }
+
+  .va-hero__subtitle {
+    transition: font-size 0.25s ease-in-out;
+  }
+
+  .va-hero__actions {
+    transition: flex-direction 0.3s ease-in-out,
+                gap 0.3s ease-in-out;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 19. Navbar Morph (Desktop ↔ Mobile)
+// --------------------------------------------------------------------------
+// Smooth transitions for the navbar when crossing the lg breakpoint.
+
+.va-nav-morph {
+  transition: height 0.3s ease-in-out,
+              padding 0.3s ease-in-out,
+              background-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+
+  .va-navbar-nav {
+    transition: opacity 0.2s ease-in-out,
+                transform 0.3s ease-in-out;
+  }
+
+  .va-navbar-actions {
+    transition: opacity 0.2s ease-in-out,
+                flex-direction 0.3s ease-in-out,
+                gap 0.3s ease-in-out;
+  }
+}
+
+.va-responsive-layout-morph {
+  transition: grid-template-columns $va-duration-slow ease-in-out,
+              gap $va-duration-slow ease-in-out,
+              padding $va-duration-slow ease-in-out;
+}
+
+.va-responsive-stack-morph {
+  transition: flex-direction $va-duration-slow ease-in-out,
+              gap $va-duration-slow ease-in-out,
+              align-items $va-duration-slow ease-in-out;
+}
+
+.va-responsive-panel-morph {
+  transition: max-width $va-duration-slow ease-in-out,
+              width $va-duration-slow ease-in-out,
+              border-radius $va-duration-base ease-in-out,
+              box-shadow $va-duration-base ease-in-out;
+}
+
+.va-responsive-visibility-morph {
+  transition: opacity $va-duration-base ease-in-out,
+              transform $va-duration-base ease-in-out;
+}
+
+.va-mobile-desktop-morph {
+  .va-navbar,
+  .va-hero,
+  .va-pricing__grid,
+  .va-blog-section__grid {
+    transition: padding $va-duration-slow ease-in-out,
+                gap $va-duration-slow ease-in-out,
+                grid-template-columns $va-duration-slow ease-in-out;
+  }
+
+  .va-feature-row,
+  .va-hero__actions,
+  .va-navbar-actions {
+    transition: flex-direction $va-duration-slow ease-in-out,
+                gap $va-duration-slow ease-in-out;
+  }
+}

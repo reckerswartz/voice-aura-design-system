@@ -171,7 +171,7 @@ $va-crosshair-color: $border-color;
               transform 0.2s ease-in-out;
 
   &:hover:not(.va-pricing-card--featured) {
-    border-color: darken($border-color, 12%);
+    border-color: va-darken($border-color, 12%);
     box-shadow: $va-shadow-md;
   }
 
@@ -257,13 +257,13 @@ $va-crosshair-color: $border-color;
 
     &:hover {
       background-color: $va-section-bg;
-      border-color: darken($border-color, 8%);
+      border-color: va-darken($border-color, 8%);
       color: $va-near-black;
     }
 
     &:active {
-      background-color: darken($va-section-bg, 3%);
-      border-color: darken($border-color, 12%);
+      background-color: va-darken($va-section-bg, 3%);
+      border-color: va-darken($border-color, 12%);
       transform: scale(0.98);
     }
 
@@ -321,7 +321,7 @@ $va-crosshair-color: $border-color;
 
   &__badge--free {
     background-color: rgba($va-success, 0.08);
-    color: darken($va-success, 12%);
+    color: va-darken($va-success, 12%);
   }
 
   &__badge--creator {
@@ -331,7 +331,7 @@ $va-crosshair-color: $border-color;
 
   &__badge--business {
     background-color: rgba($va-primary, 0.06);
-    color: darken($va-primary, 8%);
+    color: va-darken($va-primary, 8%);
   }
 
   // --------------------------------------------------------------------------
@@ -356,8 +356,8 @@ $va-crosshair-color: $border-color;
       color: $va-white;
 
       &:hover {
-        background-color: lighten($va-near-black, 10%);
-        border-color: lighten($va-near-black, 10%);
+        background-color: va-lighten($va-near-black, 10%);
+        border-color: va-lighten($va-near-black, 10%);
       }
     }
 

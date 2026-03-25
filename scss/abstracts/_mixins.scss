@@ -172,7 +172,7 @@
 
 @mixin va-hover-darken($bg, $amount: 8%) {
   &:hover {
-    background-color: darken($bg, $amount);
+    background-color: va-darken($bg, $amount);
   }
 }
 

@@ -1,0 +1,644 @@
+// ==========================================================================
+// Voice Aura Design System — Background Patterns
+// ==========================================================================
+// SVG and CSS-based pattern overlays, texture layers, and decorative
+// elements. Split from _backgrounds.scss for maintainability.
+//
+// Sections:
+//   1. Halftone Dot Overlay (+ dense, light, dark variants)
+//   2. Sound-Wave Waveform Bar
+//   3. Noise / Grain Texture
+//   4. Circuit Lines Overlay
+//   5. Concentric Rings Overlay
+//   6. Grid Lines Background
+//   7. Diagonal Lines Texture
+//   8. Mesh Gradient Background
+//   9. Halftone Dots (Compact Variant)
+//  10. Sound Wave Hero SVG Overlay
+//  11. SVG-Based Grid Dots Overlay
+//  12. Radial Soft Gradient Overlay
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Halftone Dot Overlay
+// --------------------------------------------------------------------------
+// A large halftone-dot field positioned as a pseudo-element behind content.
+// Reproduces the dramatic half-tone motif from the Behance hero/feature sections.
+//
+// Usage: <div class="va-pattern-halftone">...content...</div>
+//
+// Variants:
+//   --bottom   : concentrated at bottom (hero default)
+//   --center   : radially centered
+//   --left     : concentrated on left edge (feature sections)
+//   --right    : concentrated on right edge
+
+.va-pattern-halftone {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      background-size: 200% auto;
+      background-position: center bottom;
+    }
+  }
+
+  // Ensure content sits above the pattern (except floating decorative icons)
+  > *:not(.va-hero__float) {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  // Bottom-concentrated (default hero placement)
+  &--bottom::before {
+    background-position: center bottom;
+    mask-image: linear-gradient(to top, rgba($va-near-black, 0.6) 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 0.6) 0%, transparent 70%);
+  }
+
+  // Radially centered
+  &--center::before {
+    background-position: center center;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba($va-near-black, 0.5) 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba($va-near-black, 0.5) 0%, transparent 80%);
+  }
+
+  // Left-concentrated (feature section)
+  &--left::before {
+    background-position: left center;
+    mask-image: linear-gradient(to right, rgba($va-near-black, 0.6) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to right, rgba($va-near-black, 0.6) 0%, transparent 60%);
+  }
+
+  // Right-concentrated
+  &--right::before {
+    background-position: right center;
+    mask-image: linear-gradient(to left, rgba($va-near-black, 0.6) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to left, rgba($va-near-black, 0.6) 0%, transparent 60%);
+  }
+
+  // Dense variant (full-strength mask for feature panels — behance-05 reference)
+  // Scales up SVG 200% for larger dots and uses opaque mask for prominent display.
+  &--dense::before {
+    background-size: 200% auto;
+    background-position: center 80%;
+    mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.9) 35%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.9) 35%, transparent 70%);
+  }
+
+  // Light variant (reduced opacity for lighter sections)
+  &--light::before {
+    opacity: 0.4;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Dark Halftone Variant
+// --------------------------------------------------------------------------
+// Halftone dot pattern for dark backgrounds — uses light/white dots instead
+// of dark dots.  Reference: behance-05 (feature cards split) and
+// behance-11 (pricing laptop mockup) show halftone on dark surfaces.
+//
+// Usage: <div class="va-pattern-halftone va-pattern-halftone--dark">
+//          <div class="va-bg-dark">...content...</div>
+//        </div>
+
+.va-pattern-halftone--dark {
+  &::before {
+    // Invert the halftone SVG to get white dots on dark
+    filter: invert(1);
+    opacity: var(--va-pattern-opacity, 0.7);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Sound-Wave Waveform Bar
+// --------------------------------------------------------------------------
+// Full-width waveform bar as seen spanning the hero section middle.
+//
+// Usage: <div class="va-pattern-waveform">
+//          <img src="assets/patterns/sound-wave-wide.svg" alt="" aria-hidden="true" />
+//        </div>
+// Or as a positioned pseudo-element on a parent:
+//
+// Usage: <section class="va-hero va-pattern-waveform-bg">...</section>
+
+.va-pattern-waveform {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: $va-z-base;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.va-pattern-waveform-bg {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 35%;
+    height: 80px;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/sound-wave-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      height: 50px;
+      bottom: 40%;
+      opacity: var(--va-pattern-opacity, 0.3);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 3. Noise / Grain Texture Overlay
+// --------------------------------------------------------------------------
+// Subtle film-grain texture for adding depth to flat sections.
+// Visible at very low opacity — mostly perceptible on large screens.
+//
+// Usage: <section class="va-section va-pattern-noise">...</section>
+
+.va-pattern-noise {
+  position: relative;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/noise-texture.svg");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.3);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 4. Circuit Lines Overlay
+// --------------------------------------------------------------------------
+// Abstract circuit / tech-line pattern evoking AI processing and signal
+// routing. Ideal for technology-focused sections (API, integrations).
+//
+// Usage: <section class="va-pattern-circuit">...</section>
+//
+// Variants:
+//   --light  : Reduced opacity for lighter sections
+//   --right  : Shifted right for asymmetric layouts
+
+.va-pattern-circuit {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/circuit-lines.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center center;
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      background-size: 180% auto;
+      opacity: var(--va-pattern-opacity, 0.7);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--light::before {
+    opacity: 0.5;
+  }
+
+  &--right::before {
+    background-position: 70% center;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 5. Concentric Rings Overlay
+// --------------------------------------------------------------------------
+// Radiating ripple rings suggesting voice/audio propagation. Perfect for
+// hero sections, voice-agent features, or any audio-themed content.
+//
+// Usage: <section class="va-pattern-rings">...</section>
+//
+// Variants:
+//   --left   : Offset to left (feature sections)
+//   --right  : Offset to right
+//   --small  : Smaller ring set (cards, panels)
+
+.va-pattern-rings {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: var(--va-ring-size, 600px);
+    height: var(--va-ring-size, 600px);
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/concentric-rings.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      width: var(--va-ring-size, 360px);
+      height: var(--va-ring-size, 360px);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--left::before {
+    left: 15%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--right::before {
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--small::before {
+    width: 320px;
+    height: 320px;
+
+    @include va-media-down("md") {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 6. Grid Lines Background
+// --------------------------------------------------------------------------
+// Clean perpendicular grid-line pattern for structured, technical layouts.
+// Tiles at 48px intervals (6 grid units).
+//
+// Usage: <section class="va-bg-grid-lines">...</section>
+//
+// Variants:
+//   --dense  : 24px grid (tighter)
+//   --full   : No radial fade-out mask
+
+.va-bg-grid-lines {
+  position: relative;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/grid-lines.svg");
+    background-repeat: repeat;
+    background-size: 48px 48px;
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+    mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--dense::before {
+    background-size: 24px 24px;
+  }
+
+  &--full::before {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 7. Diagonal Lines Texture
+// --------------------------------------------------------------------------
+// Subtle hatching for adding depth and visual interest to flat sections.
+//
+// Usage: <section class="va-pattern-diagonal">...</section>
+//
+// Variants:
+//   --dense  : Tighter 20px repeat
+
+.va-pattern-diagonal {
+  position: relative;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/diagonal-lines.svg");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.6);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--dense::after {
+    background-size: 20px 20px;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 8. Mesh Gradient Background
+// --------------------------------------------------------------------------
+// Soft multi-blob gradient mesh for modern ambient sections. Non-repeating.
+//
+// Usage: <section class="va-bg-mesh">...</section>
+//
+// Variants:
+//   --dark   : Inverted for dark backgrounds
+
+.va-bg-mesh {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/mesh-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.6);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--dark::before {
+    filter: invert(1);
+    opacity: 0.4;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 9. Halftone Dots (Circular / Compact Variant)
+// --------------------------------------------------------------------------
+// Uses halftone-dots.svg (circular pattern) vs halftone-wide.svg (wide field).
+// Ideal for smaller panels, cards, and compact feature sections.
+//
+// Usage: <div class="va-pattern-halftone-dots">...</div>
+
+.va-pattern-halftone-dots {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/halftone-dots.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.8);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.5);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 10. Sound Wave Hero SVG Overlay
+// --------------------------------------------------------------------------
+// Uses the hero-specific sound-wave-hero.svg (taller, more dramatic).
+// Designed for full-width hero placement as a bold decorative motif.
+//
+// Usage: <section class="va-pattern-wave-hero">...</section>
+
+.va-pattern-wave-hero {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    height: 120px;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/sound-wave-hero.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.6);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      height: 60px;
+      bottom: 25%;
+      opacity: var(--va-pattern-opacity, 0.35);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 11. SVG-Based Grid Dots Overlay
+// --------------------------------------------------------------------------
+// Uses grid-dots.svg (precise SVG dots) as an alternative to the CSS-only
+// va-bg-dots. Produces crisper dots at all zoom levels.
+//
+// Usage: <section class="va-pattern-grid-dots">...</section>
+
+.va-pattern-grid-dots {
+  position: relative;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/grid-dots.svg");
+    background-repeat: repeat;
+    background-size: 24px 24px;
+    opacity: var(--va-pattern-opacity, 0.5);
+    transition: opacity 0.3s ease-in-out;
+    mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse var(--va-mask-size, 70% 60%) at var(--va-mask-center, 50% 50%),
+      rgba($va-near-black, 0.4) 0%,
+      transparent 70%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--full::before {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 12. Radial Soft Gradient Overlay
+// --------------------------------------------------------------------------
+// A soft, non-repeating radial gradient from gradient-radial-soft.svg.
+// Creates an ambient haze effect — lighter than va-bg-glow, more organic.
+//
+// Usage: <section class="va-bg-radial-soft">...</section>
+
+.va-bg-radial-soft {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/gradient-radial-soft.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.6);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.4);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--top::before {
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
+  }
+}

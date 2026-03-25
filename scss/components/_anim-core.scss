@@ -1,0 +1,423 @@
+// ==========================================================================
+// Voice Aura Design System — Animation Core
+// ==========================================================================
+// Keyframe definitions, transition presets, entrance animations,
+// responsive layout/visibility transitions, and interaction animations.
+// Split from _animations.scss for maintainability.
+//
+// Sections:
+//   1. Keyframe Animations
+//   2. Transition Preset Utilities
+//   3. Entrance Animation Utilities
+//   4. Responsive Layout Transitions
+//   5. Responsive Visibility Transitions
+//   6. Interaction Animations
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Keyframe Animations
+// --------------------------------------------------------------------------
+
+// Fade in from transparent
+@keyframes va-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Fade in + slide up from below
+@keyframes va-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Fade in + slide down from above
+@keyframes va-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Fade in + slide from left
+@keyframes va-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Fade in + slide from right
+@keyframes va-fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Scale in from slightly smaller
+@keyframes va-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Subtle float / hover animation (looping)
+@keyframes va-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+// Subtle pulse / breathing animation (looping)
+@keyframes va-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+// Spin (for loading indicators)
+@keyframes va-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Waveform bar animation (for audio visualiser)
+@keyframes va-wave-bar {
+  0%, 100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+// Slide in mobile menu from right
+@keyframes va-slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Slide out mobile menu to right
+@keyframes va-slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Transition Preset Utilities
+// --------------------------------------------------------------------------
+// Apply these classes for consistent, standard transition behaviour.
+//
+// Bootstrap utility API equivalents (generated in _bootstrap.scss):
+//   .va-transition       → .transition-base
+//   .va-transition-fast  → .transition-fast
+//   .va-transition-slow  → .transition-slow
+//   .va-transition-bounce→ .transition-bounce
+
+.va-transition {
+  transition: $va-transition-base;
+}
+
+.va-transition-fast {
+  transition: $va-transition-fast;
+}
+
+.va-transition-slow {
+  transition: $va-transition-slow;
+}
+
+.va-transition-bounce {
+  transition: $va-transition-bounce;
+}
+
+// Property-specific transitions
+.va-transition-opacity {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.va-transition-transform {
+  transition: transform 0.2s ease-in-out;
+}
+
+.va-transition-colors {
+  transition: color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out,
+              border-color 0.2s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 3. Entrance Animation Utilities
+// --------------------------------------------------------------------------
+// Add these classes to elements for entrance animations.
+// Combine with `--delay-*` modifiers for staggered sequences.
+//
+// Usage:
+//   <div class="va-animate-fade-up">Card 1</div>
+//   <div class="va-animate-fade-up va-animate--delay-1">Card 2</div>
+//   <div class="va-animate-fade-up va-animate--delay-2">Card 3</div>
+
+.va-animate-fade-in {
+  animation: va-fade-in 0.5s ease-out both;
+}
+
+.va-animate-fade-up {
+  animation: va-fade-up 0.5s ease-out both;
+}
+
+.va-animate-fade-down {
+  animation: va-fade-down 0.5s ease-out both;
+}
+
+.va-animate-fade-left {
+  animation: va-fade-left 0.5s ease-out both;
+}
+
+.va-animate-fade-right {
+  animation: va-fade-right 0.5s ease-out both;
+}
+
+.va-animate-scale-in {
+  animation: va-scale-in 0.4s ease-out both;
+}
+
+// Looping animations
+.va-animate-float {
+  animation: va-float 3s ease-in-out infinite;
+}
+
+.va-animate-pulse {
+  animation: va-pulse 2s ease-in-out infinite;
+}
+
+.va-animate-spin {
+  animation: va-spin 1s linear infinite;
+}
+
+// Stagger delay modifiers (100ms increments)
+.va-animate--delay-1 { animation-delay: 0.1s; }
+.va-animate--delay-2 { animation-delay: 0.2s; }
+.va-animate--delay-3 { animation-delay: 0.3s; }
+.va-animate--delay-4 { animation-delay: 0.4s; }
+.va-animate--delay-5 { animation-delay: 0.5s; }
+
+// Duration modifiers
+.va-animate--fast  { animation-duration: 0.25s; }
+.va-animate--slow  { animation-duration: 0.8s; }
+
+// --------------------------------------------------------------------------
+// 4. Responsive Layout Transitions
+// --------------------------------------------------------------------------
+// These classes ensure smooth visual transitions when the viewport crosses
+// breakpoints — e.g., a 2-column layout collapsing to single-column.
+//
+// Applied to layout containers so resizing the browser (or rotating a device)
+// produces a smooth animation rather than a jarring jump.
+
+// Smooth grid column transitions (for pricing grids, feature grids, etc.)
+.va-grid-smooth {
+  transition: grid-template-columns 0.35s ease-in-out,
+              gap 0.35s ease-in-out;
+}
+
+// Smooth flex layout transitions
+.va-flex-smooth {
+  transition: flex-direction 0.35s ease-in-out,
+              gap 0.35s ease-in-out,
+              align-items 0.35s ease-in-out;
+}
+
+// Smooth width/max-width transitions (e.g., container narrowing on mobile)
+.va-width-smooth {
+  transition: width 0.35s ease-in-out,
+              max-width 0.35s ease-in-out,
+              padding 0.35s ease-in-out;
+}
+
+// Smooth padding transitions (section padding changes at breakpoints)
+.va-padding-smooth {
+  transition: padding 0.35s ease-in-out;
+}
+
+// Smooth font-size transitions (for responsive typography)
+.va-type-smooth {
+  transition: font-size 0.25s ease-in-out,
+              line-height 0.25s ease-in-out,
+              letter-spacing 0.25s ease-in-out;
+}
+
+// --------------------------------------------------------------------------
+// 5. Responsive Visibility Transitions
+// --------------------------------------------------------------------------
+// Instead of abruptly showing/hiding elements at breakpoints, these classes
+// animate the transition with a fade.
+
+// Hidden on mobile, fades in at md+
+.va-show-md {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  @include va-media-up("md") {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+// Hidden on mobile, fades in at lg+
+.va-show-lg {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  @include va-media-up("lg") {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+// Visible on mobile, hidden at md+
+.va-hide-md {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-in-out;
+
+  @include va-media-up("md") {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 6. Interaction Animations
+// --------------------------------------------------------------------------
+// Hover, focus, and press state animations for interactive elements.
+
+// Lift on hover (cards, buttons)
+.va-hover-lift {
+  transition: transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $va-shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: $va-shadow-md;
+  }
+
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: $va-shadow-lg;
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Subtle scale on hover
+.va-hover-scale {
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    transform: scale(1.03);
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Glow on hover (buttons, badges)
+.va-hover-glow {
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0 4px rgba($va-primary-blue, 0.12);
+  }
+
+  &:active {
+    box-shadow: 0 0 0 2px rgba($va-primary-blue, 0.18);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 4px rgba($va-primary-blue, 0.12);
+    outline: 2px solid $va-primary-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Arrow nudge on hover (for link arrows)
+.va-hover-arrow {
+  svg,
+  .va-icon-arrow {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    svg,
+    .va-icon-arrow {
+      transform: translateX(3px);
+    }
+  }
+}

@@ -132,12 +132,12 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 
   &:hover,
   &:focus-visible {
-    background-color: lighten($va-near-black, 14%);
+    background-color: va-lighten($va-near-black, 14%);
     transform: translateY(-1px);
   }
 
   &:active {
-    background-color: lighten($va-near-black, 8%);
+    background-color: va-lighten($va-near-black, 8%);
     transform: translateY(0);
   }
 }
@@ -168,7 +168,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   }
 
   &:active {
-    background-color: darken($va-light-grey, 4%);
+    background-color: va-darken($va-light-grey, 4%);
     transform: translateY(0);
   }
 }
@@ -283,7 +283,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
       border-color: $va-near-black;
 
       &:hover {
-        background-color: lighten($va-near-black, 10%);
+        background-color: va-lighten($va-near-black, 10%);
         color: $va-white;
       }
     }
@@ -311,7 +311,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 
     &:hover,
     &:focus-visible {
-      background-color: darken($va-primary-blue, 8%);
+      background-color: va-darken($va-primary-blue, 8%);
       transform: translateY(-1px);
     }
   }
