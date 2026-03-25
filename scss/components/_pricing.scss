@@ -89,10 +89,31 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   align-items: start;
+  transition: grid-template-columns 0.35s ease-in-out,
+              gap 0.35s ease-in-out;
 
+  // Mobile: horizontal scroll carousel (reference: behance-16)
   @include va-media-down("md") {
-    max-width: 28rem;
-    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
+
+    > .va-pricing-card {
+      flex: 0 0 85%;
+      max-width: 320px;
+      scroll-snap-align: center;
+    }
   }
 }
 

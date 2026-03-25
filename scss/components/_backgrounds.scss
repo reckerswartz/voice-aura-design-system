@@ -1011,3 +1011,293 @@
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// 17. Section Gradient Blend
+// --------------------------------------------------------------------------
+// Smooth gradient washes between adjacent sections.  The reference design
+// uses seamless transitions — white hero fading to grey trust-bar area,
+// then back to white for features, etc.  Apply these to a section to
+// create a soft edge that blends into the neighbouring section.
+//
+// Usage:
+//   <section class="va-section va-section-blend--top">...</section>
+//   <section class="va-section va-section-blend--bottom">...</section>
+//   <section class="va-section va-section-blend--both">...</section>
+
+.va-section-blend {
+  &--top {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      pointer-events: none;
+      z-index: $va-z-base;
+      background: linear-gradient(
+        to bottom,
+        $va-section-bg 0%,
+        transparent 100%
+      );
+
+      @include va-media-down("md") {
+        height: 80px;
+      }
+    }
+  }
+
+  &--bottom {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      pointer-events: none;
+      z-index: $va-z-base;
+      background: linear-gradient(
+        to top,
+        $va-section-bg 0%,
+        transparent 100%
+      );
+
+      @include va-media-down("md") {
+        height: 80px;
+      }
+    }
+  }
+
+  &--both {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      pointer-events: none;
+      z-index: $va-z-base;
+      background: linear-gradient(to bottom, $va-section-bg, transparent);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      pointer-events: none;
+      z-index: $va-z-base;
+      background: linear-gradient(to top, $va-section-bg, transparent);
+    }
+  }
+
+  // White-to-white variant (for hero → trust-bar transitions)
+  &--white-top::before {
+    background: linear-gradient(to bottom, $va-white, transparent);
+  }
+
+  &--white-bottom::after {
+    background: linear-gradient(to top, $va-white, transparent);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 18. Dark Halftone Variant
+// --------------------------------------------------------------------------
+// Halftone dot pattern for dark backgrounds — uses light/white dots instead
+// of dark dots.  Reference: behance-05 (feature cards split) and
+// behance-11 (pricing laptop mockup) show halftone on dark surfaces.
+//
+// Usage: <div class="va-pattern-halftone va-pattern-halftone--dark">
+//          <div class="va-bg-dark">...content...</div>
+//        </div>
+
+.va-pattern-halftone--dark {
+  &::before {
+    // Invert the halftone SVG to get white dots on dark
+    filter: invert(1);
+    opacity: var(--va-pattern-opacity, 0.7);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 19. Brand Text Watermark
+// --------------------------------------------------------------------------
+// Large "VOICE AURA" text as a faint decorative background element.
+// Reference: behance-05 right panel shows the brand name in large,
+// light-grey text behind the content.
+//
+// Usage: <div class="va-bg-brand-watermark">
+//          <span class="va-bg-brand-watermark__text" aria-hidden="true">VOICE AURA</span>
+//          ...content...
+//        </div>
+
+.va-bg-brand-watermark {
+  position: relative;
+  overflow: hidden;
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $va-font-heading;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba($va-near-black, 0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: $va-z-base;
+    user-select: none;
+
+    @include va-media-down("md") {
+      font-size: clamp(2.5rem, 12vw, 5rem);
+    }
+  }
+
+  > *:not(.va-bg-brand-watermark__text) {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 20. Feature Dark Grid Overlay
+// --------------------------------------------------------------------------
+// Thin perpendicular crosshair/grid lines on dark feature panels.
+// Reference: behance-05 dark card has subtle grid lines creating a
+// technical/precision aesthetic behind the voice agent card.
+//
+// Usage: <div class="va-feature-visual--dark va-bg-dark-grid">
+//          ...voice agent card...
+//        </div>
+
+.va-bg-dark-grid {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image:
+      linear-gradient(
+        to right,
+        rgba($va-white, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba($va-white, 0.04) 1px,
+        transparent 1px
+      );
+    background-size: 80px 80px;
+    mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      rgba($va-near-black, 0.6) 0%,
+      transparent 80%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      rgba($va-near-black, 0.6) 0%,
+      transparent 80%
+    );
+
+    @include va-media-down("md") {
+      background-size: 60px 60px;
+    }
+  }
+
+  > *:not([class*="va-bg-"]):not([aria-hidden]) {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 21. Signup Showcase Panel
+// --------------------------------------------------------------------------
+// Gradient background treatment for the signup page left panel.
+// Reference: behance-06/12 show the showcase panel with a light-to-medium
+// grey gradient + halftone dots, creating a branded presentation area.
+//
+// Usage: <div class="va-bg-showcase">
+//          <div class="va-bg-showcase__halftone"></div>
+//          ...brand content...
+//        </div>
+
+.va-bg-showcase {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    $va-white 0%,
+    $va-section-bg 35%,
+    darken($va-section-bg, 3%) 100%
+  );
+
+  &__halftone {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/halftone-wide.svg");
+    background-repeat: no-repeat;
+    background-size: 120% auto;
+    background-position: center 60%;
+    opacity: 0.65;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 55%,
+      rgba($va-near-black, 0.5) 0%,
+      transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 55%,
+      rgba($va-near-black, 0.5) 0%,
+      transparent 75%
+    );
+
+    @include va-media-down("md") {
+      background-size: 200% auto;
+      opacity: 0.45;
+    }
+  }
+
+  > *:not(.va-bg-showcase__halftone) {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 22. Background Preset: Signup
+// --------------------------------------------------------------------------
+
+.va-bg-preset-signup {
+  --va-pattern-opacity: 0.6;
+  --va-glow-size: 480px;
+}
+
+// --------------------------------------------------------------------------
+// 23. Background Preset: Blog Section
+// --------------------------------------------------------------------------
+
+.va-bg-preset-blog {
+  --va-pattern-opacity: 0.4;
+  --va-glow-size: 500px;
+}

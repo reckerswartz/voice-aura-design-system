@@ -30,6 +30,9 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   align-items: center;
   padding: map-get($spacers, 6) 0;
   overflow: hidden;                         // contain grid-gap measurement overflow
+  transition: grid-template-columns 0.4s ease-in-out,
+              gap 0.35s ease-in-out,
+              padding 0.35s ease-in-out;
 
   // Prevent grid children from overflowing their track
   > * {
@@ -113,6 +116,12 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
   align-items: center;
   justify-content: center;
   padding: 2.5rem;
+  transition: padding 0.35s ease-in-out,
+              border-radius 0.25s ease-in-out;
+
+  @include va-media-down("md") {
+    padding: 1.5rem;
+  }
 
   &--light {
     background: linear-gradient(145deg, $va-section-bg 0%, darken($va-section-bg, 4%) 100%);
