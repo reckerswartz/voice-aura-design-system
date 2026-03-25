@@ -60,7 +60,7 @@
         <a href="#features-api" class="va-navbar-link">Products</a>
         <a href="#features-dubbing" class="va-navbar-link">Integrations</a>
         <a href="components.html" class="va-navbar-link">API</a>
-        <a href="#pricing" class="va-navbar-link">Pricing</a>
+        <a href="#pricing" class="va-navbar-link va-navbar-link--active">Pricing</a>
       </nav>
 
       <div class="va-navbar-actions">
@@ -420,12 +420,26 @@
 <!-- ===================================================================== -->
 <!-- PRICING                                                               -->
 <!-- ===================================================================== -->
-<section id="pricing" class="va-section va-pricing-section va-bg-preset-pricing va-bg-glow va-bg-glow--neutral va-bg-mesh va-section-morph va-mobile-desktop-morph">
+<section id="pricing" class="va-section va-pricing-section va-bg-preset-pricing va-bg-glow va-bg-glow--neutral va-bg-mesh va-section-morph va-mobile-desktop-morph" style="position:relative;overflow:hidden;">
   <div class="va-pricing-section__dots va-pattern-halftone va-pattern-halftone--bottom"></div>
+
+  <!-- Floating decorative elements (reference: behance-08) -->
+  <div class="va-hero__float va-hero__float--left va-hero__float--sm" aria-hidden="true" style="top:12%;left:8%;z-index:2;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+  </div>
+  <div class="va-hero__float va-hero__float--right va-hero__float--letter" aria-hidden="true" style="top:12%;right:8%;z-index:2;">A</div>
+  <!-- Blue cursor accent (reference: behance-08 — thin vertical line on left) -->
+  <div class="va-hero__float-cursor" aria-hidden="true" style="position:absolute;left:12%;top:22%;z-index:2;"></div>
+
   <div class="va-container va-container-smooth">
+    <!-- Discount badge above title (reference: behance-08) -->
     <div class="va-section__header va-section__header--center">
+      <span class="va-discount-badge" style="margin-bottom:1rem;">
+        ANNUAL DISCOUNT
+        <span class="va-discount-badge__value">%40</span>
+      </span>
       <h2 class="va-section__title">Choose Pricing Plan</h2>
-      <p class="va-section__subtitle">Find the perfect plan for your voice creation needs &mdash; from free tools to enterprise-grade power.</p>
+      <p class="va-section__subtitle">Choose the perfect plan for your voice creation needs &mdash; from getting started to scaling your production.</p>
     </div>
 
     <!-- Pricing Tabs -->
@@ -435,10 +449,6 @@
         <button class="va-pricing__tab" type="button" role="tab" aria-selected="false">DUB</button>
         <button class="va-pricing__tab" type="button" role="tab" aria-selected="false">API</button>
       </div>
-      <span class="va-discount-badge">
-        ANNUAL DISCOUNT
-        <span class="va-discount-badge__value">%40</span>
-      </span>
     </div>
 
     <!-- Pricing Cards -->
