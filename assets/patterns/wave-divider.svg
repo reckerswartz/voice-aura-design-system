@@ -1,3 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="none">
-  <path d="M0 30 C240 5, 480 55, 720 30 S1200 5, 1440 30" stroke="#E9E9EA" stroke-width="1.5" fill="none"/>
+  <!-- Voice Aura — Audio-themed section divider
+       Dual sine waves suggesting sound/audio frequency, with a subtle
+       secondary wave offset for depth. Matches the audio-tech aesthetic. -->
+  <!-- Primary wave -->
+  <path d="M0 30 C120 10, 240 10, 360 30 S600 50, 720 30 S960 10, 1080 30 S1320 50, 1440 30" stroke="#C5C6C8" stroke-width="1.5" fill="none"/>
+  <!-- Secondary wave (offset, subtler) -->
+  <path d="M0 30 C120 42, 240 42, 360 30 S600 18, 720 30 S960 42, 1080 30 S1320 18, 1440 30" stroke="#C5C6C8" stroke-width="0.8" fill="none" opacity="0.5"/>
 </svg>
