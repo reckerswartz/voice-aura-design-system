@@ -328,15 +328,15 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 
-    @media (max-width: $_bp-xl - 0.02px) {
+    @include va-media-down("xl") {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: $_bp-lg - 0.02px) {
+    @include va-media-down("lg") {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: $_bp-sm - 0.02px) {
+    @include va-media-down("sm") {
       grid-template-columns: 1fr;
       max-width: 24rem;
       margin: 0 auto;
@@ -345,7 +345,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 }
 
 // Blog section responsive header
-@media (max-width: $_bp-md) {
+@include va-media-down("md") {
   .va-blog-section__header {
     flex-direction: column;
     align-items: flex-start;
@@ -411,7 +411,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 // 8. Responsive – Section Padding
 // ---------------------------------------------------------------------------
 
-@media (max-width: $_bp-md) {
+@include va-media-down("md") {
   .va-section {
     padding: ($va-grid-unit * 8) ($va-grid-unit * 2.5);
 

@@ -86,16 +86,11 @@
 
 .va-pricing__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   align-items: start;
 
-  @media (max-width: 991.98px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 767.98px) {
-    grid-template-columns: 1fr;
+  @include va-media-down("md") {
     max-width: 28rem;
     margin: 0 auto;
   }
@@ -105,8 +100,6 @@
 // Crosshair / Plus Corner Size Variables
 // --------------------------------------------------------------------------
 
-$va-crosshair-size: 1.5rem;
-$va-crosshair-thickness: 1px;
 $va-crosshair-color: $va-border;
 
 // --------------------------------------------------------------------------
@@ -128,121 +121,7 @@ $va-crosshair-color: $va-border;
   border: $border-width solid $va-border;
   border-radius: $va-radius;
 
-  // --------------------------------------------------------------------------
-  // Corner Crosshair Decorations
-  // --------------------------------------------------------------------------
-  // Creates "+" marks at the four corners using pseudo-elements on the card
-  // and on an inner container.
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: $va-crosshair-size;
-    height: $va-crosshair-size;
-    pointer-events: none;
-  }
-
-  // Top-left crosshair
-  &::before {
-    top: 0.75rem;
-    left: 0.75rem;
-    border-top: $va-crosshair-thickness solid $va-crosshair-color;
-    border-left: $va-crosshair-thickness solid $va-crosshair-color;
-
-    // Horizontal line
-    background: linear-gradient(
-      to bottom,
-      transparent calc(50% - #{$va-crosshair-thickness / 2}),
-      $va-crosshair-color calc(50% - #{$va-crosshair-thickness / 2}),
-      $va-crosshair-color calc(50% + #{$va-crosshair-thickness / 2}),
-      transparent calc(50% + #{$va-crosshair-thickness / 2})
-    );
-    // We layer both lines using a different approach for cleaner rendering
-    background: none;
-  }
-
-  // Top-right crosshair
-  &::after {
-    top: 0.75rem;
-    right: 0.75rem;
-  }
-
-  // --------------------------------------------------------------------------
-  // Inner crosshair elements for all four corners
-  // --------------------------------------------------------------------------
-  // We use a dedicated inner element approach for clean rendering.
-
-  &__corners {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    border-radius: inherit;
-
-    // Top-left "+"
-    &::before {
-      content: "+";
-      position: absolute;
-      top: 0.5rem;
-      left: 0.75rem;
-      font-size: 1rem;
-      font-weight: $font-weight-light;
-      line-height: 1;
-      color: $va-crosshair-color;
-    }
-
-    // Top-right "+"
-    &::after {
-      content: "+";
-      position: absolute;
-      top: 0.5rem;
-      right: 0.75rem;
-      font-size: 1rem;
-      font-weight: $font-weight-light;
-      line-height: 1;
-      color: $va-crosshair-color;
-    }
-  }
-
-  // Bottom corners via a second inner element
-  &__corners-bottom {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    border-radius: inherit;
-
-    // Bottom-left "+"
-    &::before {
-      content: "+";
-      position: absolute;
-      bottom: 0.5rem;
-      left: 0.75rem;
-      font-size: 1rem;
-      font-weight: $font-weight-light;
-      line-height: 1;
-      color: $va-crosshair-color;
-    }
-
-    // Bottom-right "+"
-    &::after {
-      content: "+";
-      position: absolute;
-      bottom: 0.5rem;
-      right: 0.75rem;
-      font-size: 1rem;
-      font-weight: $font-weight-light;
-      line-height: 1;
-      color: $va-crosshair-color;
-    }
-  }
-
-  // Reset the basic pseudo-elements since we use the corners elements
-  &::before,
-  &::after {
-    content: none;
-  }
+  @include va-crosshair-corners(".va-pricing-card__corners", ".va-pricing-card__corners-bottom", $va-crosshair-color, $va-z-raised);
 
   // --------------------------------------------------------------------------
   // Tier Badge
@@ -335,9 +214,7 @@ $va-crosshair-color: $va-border;
 
     &:disabled,
     &.is-disabled {
-      opacity: 0.5;
-      pointer-events: none;
-      cursor: not-allowed;
+      @include va-disabled-state;
     }
 
     &:focus-visible {
@@ -433,7 +310,7 @@ $va-crosshair-color: $va-border;
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: $va-z-base;
   background-image: radial-gradient(
     circle,
     rgba($va-near-black, 0.07) 1px,
@@ -442,12 +319,12 @@ $va-crosshair-color: $va-border;
   background-size: ($va-grid-unit * 3) ($va-grid-unit * 3); // 24px grid
   mask-image: radial-gradient(
     ellipse 70% 60% at 50% 50%,
-    rgba(0, 0, 0, 0.35) 0%,
+    rgba($va-near-black, 0.35) 0%,
     transparent 70%
   );
   -webkit-mask-image: radial-gradient(
     ellipse 70% 60% at 50% 50%,
-    rgba(0, 0, 0, 0.35) 0%,
+    rgba($va-near-black, 0.35) 0%,
     transparent 70%
   );
 }
@@ -459,5 +336,5 @@ $va-crosshair-color: $va-border;
 .va-pricing-section .va-pricing__grid,
 .va-pricing-section .va-discount-badge {
   position: relative;
-  z-index: 1;
+  z-index: $va-z-raised;
 }

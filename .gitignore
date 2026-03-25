@@ -17,3 +17,12 @@ Thumbs.db
 
 # Local config (secrets, personal overrides)
 .devin/config.local.json
+
+# Screenshot captures (uploaded to GitHub Releases, not tracked in git)
+screenshots/captures/
+
+# QA audit artifacts (temporary, not tracked)
+qa-*.png
+audit-screenshots/
+voice-aura-images/
+QA_REPORT_*.md

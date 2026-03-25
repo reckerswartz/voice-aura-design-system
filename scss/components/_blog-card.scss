@@ -189,6 +189,10 @@
   }
 }
 
+.va-blog-card--lift {
+  @include va-card-hover-lift;
+}
+
 // --------------------------------------------------------------------------
 // Blog Card - Horizontal Variant
 // --------------------------------------------------------------------------
@@ -209,7 +213,7 @@
     justify-content: center;
   }
 
-  @media (max-width: 767.98px) {
+  @include va-media-down("md") {
     flex-direction: column;
 
     .va-blog-card__image {

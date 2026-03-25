@@ -243,7 +243,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 // 7. Responsive
 // ---------------------------------------------------------------------------
 
-@media (max-width: $_bp-lg) {
+@include va-media-down("lg") {
   .va-footer__grid {
     grid-template-columns: 1fr 1fr;
     gap: ($va-grid-unit * 5) ($va-grid-unit * 4);
@@ -254,7 +254,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   }
 }
 
-@media (max-width: $_bp-sm) {
+@include va-media-down("sm") {
   .va-footer {
     padding-top: $va-grid-unit * 6;
   }

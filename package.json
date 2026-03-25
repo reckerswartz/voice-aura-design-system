@@ -13,7 +13,11 @@
     "build:css": "sass scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
     "build:min": "sass scss/voice-aura.scss dist/css/voice-aura.min.css --style=compressed --no-source-map",
     "build": "npm run build:css && npm run build:min",
-    "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map"
+    "watch:css": "sass --watch scss/voice-aura.scss dist/css/voice-aura.css --style=expanded --source-map",
+    "screenshots": "node bin/screenshot-capture.mjs",
+    "screenshots:quick": "node bin/screenshot-capture.mjs --breakpoints fhd,md,xs --skip-devices --concurrency 4 --pages-parallel 3",
+    "screenshots:upload": "node bin/screenshot-upload.mjs",
+    "screenshots:all": "npm run screenshots && npm run screenshots:upload"
   },
   "keywords": [
     "design-system",
@@ -29,7 +33,7 @@
   "devDependencies": {
     "bootstrap": "^5.3.8",
     "playwright": "^1.58.2",
-    "sass": "^1.98.0"
+    "sass": ">=1.98.0 <2.0.0"
   },
   "dependencies": {
     "lucide-static": "^1.0.1"

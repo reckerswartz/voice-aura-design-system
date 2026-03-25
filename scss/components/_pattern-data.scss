@@ -48,47 +48,47 @@ $va-data-mesh-gradient: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 // all layout, positioning, and masking — the modifier only overrides
 // `background-image`.
 
-.va-pattern-noise--inline::after {
-  background-image: $va-data-noise !important;
+.va-pattern-noise.va-pattern-noise--inline::after {
+  background-image: $va-data-noise;
 }
 
-.va-pattern-circuit--inline::before {
-  background-image: $va-data-circuit-lines !important;
+.va-pattern-circuit.va-pattern-circuit--inline::before {
+  background-image: $va-data-circuit-lines;
 }
 
-.va-pattern-rings--inline::before {
-  background-image: $va-data-concentric-rings !important;
+.va-pattern-rings.va-pattern-rings--inline::before {
+  background-image: $va-data-concentric-rings;
 }
 
-.va-pattern-diagonal--inline::before {
-  background-image: $va-data-diagonal-lines !important;
+.va-pattern-diagonal.va-pattern-diagonal--inline::after {
+  background-image: $va-data-diagonal-lines;
 }
 
-.va-bg-grid-lines--inline {
-  background-image: $va-data-grid-lines !important;
+.va-bg-grid-lines.va-bg-grid-lines--inline::before {
+  background-image: $va-data-grid-lines;
 }
 
-.va-bg-mesh--inline {
-  background-image: $va-data-mesh-gradient !important;
+.va-bg-mesh.va-bg-mesh--inline::before {
+  background-image: $va-data-mesh-gradient;
 }
 
 // Composition helper overrides
-.va-bg-layer--circuit-inline::before {
-  background-image: $va-data-circuit-lines !important;
+.va-bg-layer.va-bg-layer--circuit.va-bg-layer--circuit-inline {
+  background-image: $va-data-circuit-lines;
 }
 
-.va-bg-layer--rings-inline::before {
-  background-image: $va-data-concentric-rings !important;
+.va-bg-layer.va-bg-layer--rings.va-bg-layer--rings-inline {
+  background-image: $va-data-concentric-rings;
 }
 
-.va-bg-layer--grid-inline {
-  background-image: $va-data-grid-lines !important;
+.va-bg-layer.va-bg-layer--grid.va-bg-layer--grid-inline {
+  background-image: $va-data-grid-lines;
 }
 
-.va-bg-layer--mesh-inline {
-  background-image: $va-data-mesh-gradient !important;
+.va-bg-layer.va-bg-layer--mesh.va-bg-layer--mesh-inline {
+  background-image: $va-data-mesh-gradient;
 }
 
-.va-bg-layer--diagonal-inline::before {
-  background-image: $va-data-diagonal-lines !important;
+.va-bg-layer.va-bg-layer--diagonal.va-bg-layer--diagonal-inline {
+  background-image: $va-data-diagonal-lines;
 }

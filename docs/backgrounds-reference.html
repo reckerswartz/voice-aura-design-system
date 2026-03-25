@@ -72,6 +72,7 @@
     <a href="#glass">Glass &amp; Glow</a>
     <a href="#decorative">Decorative Elements</a>
     <a href="#composition">Composition Helpers</a>
+    <a href="#presets-background">Background Presets</a>
     <a href="#inline">Inline Data-URI</a>
     <a href="#entrance">Entrance Animations</a>
     <a href="#scroll">Scroll Animations</a>
@@ -216,6 +217,48 @@ Variant: va-bg-mesh--dark</div>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- 5a. BACKGROUND PRESETS                                             -->
+  <!-- ================================================================== -->
+  <section id="presets-background" class="ref-section">
+    <h2 class="ref-title">Background Presets</h2>
+    <p class="ref-subtitle">Reusable token packs for common template sections. Combine with explicit pattern classes.</p>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-preset-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-bg-glow" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Preset — Hero</div>
+          <div class="ref-card__code">class="va-bg-preset-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-bg-glow"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-preset-feature-api va-pattern-circuit va-pattern-circuit--light va-bg-glow" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Preset — Feature API</div>
+          <div class="ref-card__code">class="va-bg-preset-feature-api va-pattern-circuit va-pattern-circuit--light va-bg-glow"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-preset-feature-dubbing va-pattern-noise va-pattern-rings va-pattern-rings--small" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Preset — Feature Dubbing</div>
+          <div class="ref-card__code">class="va-bg-preset-feature-dubbing va-pattern-noise va-pattern-rings va-pattern-rings--small"</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__preview va-bg-preset-pricing va-bg-mesh va-bg-glow va-bg-glow--neutral va-pattern-halftone va-pattern-halftone--bottom" style="background:#F9FAFB;"></div>
+        <div class="ref-card__body">
+          <div class="ref-card__name">Preset — Pricing</div>
+          <div class="ref-card__code">class="va-bg-preset-pricing va-bg-mesh va-bg-glow va-bg-glow--neutral va-pattern-halftone va-pattern-halftone--bottom"</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -784,6 +827,17 @@ class="va-card-reflow"      Grid column span changes (0.3s–0.4s)</div>
 
       <div class="ref-card">
         <div class="ref-card__body">
+          <div class="ref-card__name">Mobile/Desktop Morph Helpers</div>
+          <div class="ref-card__code">class="va-responsive-layout-morph"      grid-template/gap/padding transitions
+class="va-responsive-stack-morph"       flex-direction/gap/align-items transitions
+class="va-responsive-panel-morph"       panel max-width/width/radius/shadow transitions
+class="va-responsive-visibility-morph"  opacity/transform transitions
+class="va-mobile-desktop-morph"         applies coordinated morphing to nav/hero/grids</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card__body">
           <div class="ref-card__name">Responsive Visibility</div>
           <div class="ref-card__code">class="va-show-md"    Hidden on mobile, fades in at 768px+
 class="va-show-lg"    Hidden on mobile, fades in at 992px+
@@ -873,7 +927,7 @@ class="va-scroll-stagger"
         <div class="ref-card__body">
           <div class="ref-card__name">1. Hero Section Recipe</div>
           <p class="ref-card__desc">Full hero with halftone dots, waveform bar, and scroll-triggered content.</p>
-          <div class="ref-card__code">&lt;section class="va-hero va-pattern-halftone va-pattern-waveform-bg va-bg-glow va-bg-glow--blue"&gt;
+          <div class="ref-card__code">&lt;section class="va-hero va-bg-preset-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-bg-glow va-mobile-desktop-morph"&gt;
   &lt;div class="container va-hero-adapt"&gt;
     &lt;h1 class="va-scroll-fade-up"&gt;Headline&lt;/h1&gt;
     &lt;p class="va-scroll-fade-up" data-va-scroll-delay="100"&gt;Subtext&lt;/p&gt;

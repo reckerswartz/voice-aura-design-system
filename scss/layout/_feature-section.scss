@@ -36,7 +36,7 @@ $_bp-md: map-get($va-breakpoints, "md"); // 768px
     min-width: 0;
   }
 
-  @media (max-width: $_bp-md - 1px) {
+  @include va-media-down("md") {
     grid-template-columns: 1fr;
     gap: map-get($spacers, 5);             // 3rem / 48px
     padding: map-get($spacers, 5) 0;

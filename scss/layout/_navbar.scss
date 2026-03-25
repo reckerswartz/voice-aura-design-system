@@ -200,6 +200,9 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
 // Ghost "Log in" button
 .va-navbar-btn--ghost {
+  @extend .btn;
+  @extend .btn-link;
+
   font-family: $va-font-body;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
@@ -222,6 +225,10 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 // Outlined "Log in" button — pill with visible border + arrow icon
 // Matches the reference design where "Log in →" is an outlined pill.
 .va-navbar-btn--outlined {
+  @extend .btn;
+  @extend .btn-outline-secondary;
+  @extend .rounded-pill;
+
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit * 0.75;
@@ -255,6 +262,10 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
 // Filled "Sign up" button
 .va-navbar-btn--filled {
+  @extend .btn;
+  @extend .btn-dark;
+  @extend .rounded-pill;
+
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit * 0.75;
@@ -333,7 +344,8 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   }
 
   // Open state — morphs into ✕
-  &.is-open {
+  &.is-open,
+  &.is-active {
     .va-navbar-toggle__line:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
@@ -359,7 +371,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
 // On desktop, nav links are centred in the available space while
 // the actions group is pushed to the far right.
-@media (min-width: $_bp-lg) {
+@include va-media-up("lg") {
   .va-navbar-collapse {
     justify-content: center;
   }
@@ -375,7 +387,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 // 7. Responsive
 // ---------------------------------------------------------------------------
 
-@media (max-width: ($_bp-lg - 1px)) {
+@include va-media-down("lg") {
   .va-navbar {
     flex-wrap: wrap;
     height: auto;

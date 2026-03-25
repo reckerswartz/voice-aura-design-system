@@ -1,0 +1,238 @@
+name: Capture & Upload Screenshots
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scss/**'
+      - 'assets/**'
+      - 'dist/**'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'scss/**'
+      - 'assets/**'
+      - 'dist/**'
+  workflow_dispatch:
+    inputs:
+      breakpoints:
+        description: 'Comma-separated breakpoints (e.g. fhd,md,xs). Leave empty for all.'
+        required: false
+        default: ''
+      skip_devices:
+        description: 'Skip device emulations'
+        required: false
+        type: boolean
+        default: false
+      shards:
+        description: 'Number of parallel shards (default: 4)'
+        required: false
+        default: '4'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: screenshots-${{ github.ref }}
+  cancel-in-progress: true
+
+# ─── Capture shards (run in parallel) ────────────────────────────────────────
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build
+
+      - name: Copy built CSS to docs
+        run: cp dist/css/voice-aura.css docs/css/voice-aura.css
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright deps (cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Capture screenshots (shard ${{ matrix.shard }})
+        run: |
+          TOTAL_SHARDS=${{ github.event.inputs.shards || '4' }}
+          ARGS="--shard ${{ matrix.shard }}/${TOTAL_SHARDS} --concurrency 4 --pages-parallel 2"
+          if [ -n "${{ github.event.inputs.breakpoints }}" ]; then
+            ARGS="$ARGS --breakpoints ${{ github.event.inputs.breakpoints }}"
+          fi
+          if [ "${{ github.event.inputs.skip_devices }}" = "true" ]; then
+            ARGS="$ARGS --skip-devices"
+          fi
+          node bin/screenshot-capture.mjs $ARGS
+
+      - name: Upload shard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-shard-${{ matrix.shard }}
+          path: screenshots/captures/latest/
+          retention-days: 30
+
+  # ─── Merge shards & upload release ──────────────────────────────────────────
+
+  merge:
+    needs: capture
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all shard artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: screenshots-shard-*
+          path: screenshots/merged/
+          merge-multiple: true
+
+      - name: Build merged manifest
+        run: |
+          cd screenshots/merged
+          # Combine all shard manifests into one
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+            const manifests = fs.readdirSync('.').filter(f => f === 'manifest.json');
+            if (!manifests.length) { console.error('No manifests found'); process.exit(1); }
+            const m = JSON.parse(fs.readFileSync('manifest.json', 'utf-8'));
+            m.shardsMerged = true;
+            m.totalScreenshots = 0;
+            const walk = (dir) => fs.readdirSync(dir, {withFileTypes:true}).forEach(d => {
+              if (d.isDirectory()) walk(path.join(dir, d.name));
+              else if (d.name.endsWith('.png')) m.totalScreenshots++;
+            });
+            walk('.');
+            fs.writeFileSync('manifest.json', JSON.stringify(m, null, 2));
+            console.log('Total screenshots:', m.totalScreenshots);
+          "
+
+      - name: Create archive
+        id: archive
+        run: |
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H-%M-%S)
+          TAG="screenshots-${TIMESTAMP}"
+          cd screenshots
+          tar -czf "/tmp/${TAG}.tar.gz" merged/
+          SIZE=$(du -h "/tmp/${TAG}.tar.gz" | cut -f1)
+          TOTAL=$(find merged/ -name '*.png' | wc -l)
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "timestamp=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
+          echo "size=${SIZE}" >> "$GITHUB_OUTPUT"
+          echo "total=${TOTAL}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload merged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ github.sha }}
+          path: screenshots/merged/
+          retention-days: 30
+
+      - name: Create release (push to main only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.archive.outputs.tag }}"
+          TOTAL="${{ steps.archive.outputs.total }}"
+          SIZE="${{ steps.archive.outputs.size }}"
+          COMMIT_SHA="${{ github.sha }}"
+          COMMIT_MSG=$(git log -1 --pretty=%s)
+
+          BODY=$(cat <<EOF
+          ## Screenshot Capture
+
+          - **Commit:** \`${COMMIT_SHA::7}\` — ${COMMIT_MSG}
+          - **Total screenshots:** ${TOTAL}
+          - **Archive size:** ${SIZE}
+          - **Shards:** 4 parallel jobs
+          - **Trigger:** ${{ github.event_name }}
+
+          Download the archive and extract to view all captures.
+          EOF
+          )
+
+          gh release create "${TAG}" \
+            --title "📸 Screenshots — ${{ steps.archive.outputs.timestamp }}" \
+            --notes "${BODY}" \
+            --latest=false \
+            "/tmp/${TAG}.tar.gz" \
+            screenshots/merged/manifest.json \
+          || gh release upload "${TAG}" \
+            "/tmp/${TAG}.tar.gz" \
+            screenshots/merged/manifest.json \
+            --clobber
+
+          echo "✓ Uploaded ${TOTAL} screenshots (${SIZE}) to release ${TAG}"
+
+      - name: Comment on PR with screenshot summary
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TOTAL="${{ steps.archive.outputs.total }}"
+          SIZE="${{ steps.archive.outputs.size }}"
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          BODY=$(cat <<'EOF'
+          ## 📸 Screenshot Capture Complete
+
+          | Metric | Value |
+          |--------|-------|
+          | **Total screenshots** | TOTAL_PLACEHOLDER |
+          | **Archive size** | SIZE_PLACEHOLDER |
+          | **Shards** | 4 parallel jobs |
+
+          **[View full artifacts](RUN_URL_PLACEHOLDER)** — download the `screenshots-COMMIT` artifact to inspect all breakpoints and devices.
+
+          <details>
+          <summary>Breakpoints captured</summary>
+
+          `4k` `2k` `fhd` `laptop` `xxl` `xl` `lg` `md` `sm` `xs` `xxs`
+
+          </details>
+
+          <details>
+          <summary>Devices captured</summary>
+
+          iPhone 14, iPhone 14 Pro Max, iPhone SE, Pixel 7, iPad Mini, iPad Pro 11, Galaxy S9+
+
+          </details>
+          EOF
+          )
+
+          BODY="${BODY//TOTAL_PLACEHOLDER/$TOTAL}"
+          BODY="${BODY//SIZE_PLACEHOLDER/$SIZE}"
+          BODY="${BODY//RUN_URL_PLACEHOLDER/$RUN_URL}"
+
+          gh pr comment ${{ github.event.pull_request.number }} --body "${BODY}"

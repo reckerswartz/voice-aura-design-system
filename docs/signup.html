@@ -96,7 +96,7 @@
 <header class="va-navbar va-navbar--sticky va-nav-morph">
   <div class="va-navbar-inner">
     <!-- Brand -->
-    <a href="#" class="va-navbar-brand" aria-label="Voice Aura Home">
+    <a href="sample.html" class="va-navbar-brand" aria-label="Voice Aura Home">
       <svg class="va-navbar-brand__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none" width="160" height="38">
         <circle cx="16" cy="24" r="5" fill="#0478FF"/>
         <path d="M24 14 A14 14 0 0 1 24 34" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="1.0"/>
@@ -118,19 +118,19 @@
     <div id="navbar-collapse" class="va-navbar-collapse">
       <!-- Navigation Links -->
       <nav class="va-navbar-nav" aria-label="Main Navigation">
-        <a href="#" class="va-navbar-link">Products</a>
-        <a href="#" class="va-navbar-link">Integrations</a>
-        <a href="#" class="va-navbar-link">API</a>
-        <a href="#" class="va-navbar-link">Pricing</a>
+        <a href="sample.html#features-api" class="va-navbar-link">Products</a>
+        <a href="sample.html#features-dubbing" class="va-navbar-link">Integrations</a>
+        <a href="reference.html" class="va-navbar-link">API</a>
+        <a href="sample.html#pricing" class="va-navbar-link">Pricing</a>
       </nav>
 
       <!-- Actions -->
       <div class="va-navbar-actions">
-        <a href="#" class="va-navbar-btn--outlined">
+        <a href="sample.html" class="va-navbar-btn--outlined">
           Log in
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#" class="va-navbar-btn--filled">
+        <a href="signup.html" class="va-navbar-btn--filled">
           Sign up
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -241,14 +241,14 @@
 
         <!-- Footer: Already have an account? -->
         <div class="va-auth__footer">
-          Already have an account? <a href="#">Log in</a>
+          Already have an account? <a href="sample.html">Log in</a>
         </div>
 
         <!-- Terms of Service -->
         <div class="va-auth__terms">
           By creating an account, you agree to our
-          <a href="#">Terms of Service</a> and
-          <a href="#">Privacy Policy</a>.
+          <a href="reference.html">Terms of Service</a> and
+          <a href="reference.html">Privacy Policy</a>.
         </div>
 
       </div>
@@ -263,6 +263,27 @@
 <footer class="va-page-footer">
   &copy; 2025 Voice Aura. All rights reserved.
 </footer>
+
+
+<script>
+  const navbar = document.querySelector('.va-navbar');
+  if (navbar) {
+    const onScroll = () => navbar.classList.toggle('va-navbar--scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  const toggle = document.querySelector('.va-navbar-toggle');
+  const collapse = document.querySelector('.va-navbar-collapse');
+  if (toggle && collapse) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.classList.toggle('is-active');
+      collapse.classList.toggle('is-open');
+    });
+  }
+</script>
 
 </body>
 </html>

@@ -68,7 +68,7 @@ $_container-wide:   90rem;     // 1440px — edge-to-edge features
   padding-left: $va-grid-unit * 4;                 // 32px
   padding-right: $va-grid-unit * 4;
 
-  @media (max-width: $_bp-sm) {
+  @include va-media-down("sm") {
     padding-left: $va-grid-unit * 2.5;             // 20px on small screens
     padding-right: $va-grid-unit * 2.5;
   }
@@ -167,13 +167,13 @@ $_container-wide:   90rem;     // 1440px — edge-to-edge features
 }
 
 // Collapse fixed grids on smaller screens
-@media (max-width: $_bp-md) {
+@include va-media-down("md") {
   .va-grid-2 { grid-template-columns: 1fr; }
   .va-grid-3 { grid-template-columns: 1fr; }
   .va-grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: $_bp-sm) {
+@include va-media-down("sm") {
   .va-grid-4 { grid-template-columns: 1fr; }
 }
 

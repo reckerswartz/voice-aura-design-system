@@ -41,6 +41,8 @@
 //        </div>
 
 .va-card {
+  @extend .card;
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -58,6 +60,8 @@
   // --------------------------------------------------------------------------
 
   &__header {
+    @extend .card-header;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,6 +81,8 @@
   // --------------------------------------------------------------------------
 
   &__body {
+    @extend .card-body;
+
     flex: 1 1 auto;
 
     .va-card--flush > & {
@@ -89,6 +95,8 @@
   // --------------------------------------------------------------------------
 
   &__footer {
+    @extend .card-footer;
+
     display: flex;
     align-items: center;
     padding-top: $spacer;

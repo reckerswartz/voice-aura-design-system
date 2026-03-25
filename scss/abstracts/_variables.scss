@@ -427,8 +427,9 @@ $va-focus-ring-color:  $va-primary-blue;
 $va-focus-ring-offset: 2px;
 
 // Z-index layers (complete scale)
-$va-z-base:      1;
-$va-z-raised:    2;
+$va-z-base:      0;
+$va-z-raised:    1;
+$va-z-decoration: 2;
 $va-z-sticky:    500;
 $va-z-navbar:    1030;
 $va-z-overlay:   1040;

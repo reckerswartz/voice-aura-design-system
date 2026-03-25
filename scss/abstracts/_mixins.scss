@@ -106,7 +106,7 @@
     opacity: $opacity;
     background-image: radial-gradient($color 1px, transparent 1px);
     background-size: 8px 8px;
-    z-index: 1;
+    z-index: $va-z-raised;
   }
 }
 
@@ -156,6 +156,126 @@
   box-shadow: 0 0 0 $width $color;
   border-color: $color;
   outline-offset: $offset;
+}
+
+@mixin va-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin va-disabled-state {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+@mixin va-hover-darken($bg, $amount: 8%) {
+  &:hover {
+    background-color: darken($bg, $amount);
+  }
+}
+
+@mixin va-card-hover-lift($distance: 2px) {
+  &:hover {
+    transform: translateY(-$distance);
+    box-shadow: $va-shadow-lg;
+  }
+}
+
+@mixin va-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin va-pill-tabs(
+  $active-bg: rgba($va-white, 0.15),
+  $active-text: $va-white,
+  $active-border: rgba($va-white, 0.25),
+  $border-color: rgba($va-white, 0.12)
+) {
+  &__lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    font-family: $va-font-body;
+    font-size: 0.8125rem;
+    font-weight: $font-weight-medium;
+    color: rgba($va-white, 0.6);
+    background: transparent;
+    @if $border-color == null {
+      border: none;
+    } @else {
+      border: $border-width solid $border-color;
+    }
+    border-radius: $va-radius-pill;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    white-space: nowrap;
+
+    &:hover {
+      color: rgba($va-white, 0.85);
+      border-color: rgba($va-white, 0.25);
+    }
+
+    &--active {
+      background-color: $active-bg;
+      border-color: $active-border;
+      color: $active-text;
+    }
+  }
+}
+
+@mixin va-crosshair-corners($top-selector: ".va-pricing-card__corners", $bottom-selector: ".va-pricing-card__corners-bottom", $color: $va-border-color, $z-index: $va-z-raised) {
+  #{$top-selector},
+  #{$bottom-selector} {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: $z-index;
+  }
+
+  #{$top-selector} {
+    &::before,
+    &::after {
+      content: "+";
+      position: absolute;
+      top: 0.5rem;
+      font-size: 1rem;
+      font-weight: $font-weight-light;
+      line-height: 1;
+      color: $color;
+    }
+
+    &::before { left: 0.75rem; }
+    &::after { right: 0.75rem; }
+  }
+
+  #{$bottom-selector} {
+    &::before,
+    &::after {
+      content: "+";
+      position: absolute;
+      bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: $font-weight-light;
+      line-height: 1;
+      color: $color;
+    }
+
+    &::before { left: 0.75rem; }
+    &::after { right: 0.75rem; }
+  }
 }
 
 // ----------------------------------------------------------------------------
