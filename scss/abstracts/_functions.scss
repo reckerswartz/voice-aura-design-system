@@ -109,6 +109,48 @@
 }
 
 // ----------------------------------------------------------------------------
+// va-icon-size($name)
+// Retrieves an icon size from the `$va-icon-sizes` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key (e.g. "sm", "md", "lg", "xl")
+/// @return {Length}
+@function va-icon-size($name) {
+  @if not map.has-key($va-icon-sizes, $name) {
+    @error "Voice Aura icon-size `#{$name}` not found. Available keys: #{map.keys($va-icon-sizes)}";
+  }
+
+  @return map.get($va-icon-sizes, $name);
+}
+
+// ----------------------------------------------------------------------------
+// va-tracking($name)
+// Retrieves a letter-spacing value from the `$va-letter-spacing` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key (e.g. "tight", "normal", "wide")
+/// @return {Length}
+@function va-tracking($name) {
+  @if not map.has-key($va-letter-spacing, $name) {
+    @error "Voice Aura letter-spacing `#{$name}` not found. Available keys: #{map.keys($va-letter-spacing)}";
+  }
+
+  @return map.get($va-letter-spacing, $name);
+}
+
+// ----------------------------------------------------------------------------
+// va-leading($name)
+// Retrieves a line-height value from the `$va-line-heights` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key (e.g. "tight", "normal", "relaxed", "loose")
+/// @return {Number}
+@function va-leading($name) {
+  @if not map.has-key($va-line-heights, $name) {
+    @error "Voice Aura line-height `#{$name}` not found. Available keys: #{map.keys($va-line-heights)}";
+  }
+
+  @return map.get($va-line-heights, $name);
+}
+
+// ----------------------------------------------------------------------------
 // va-darken($color, $amount)
 // Modern replacement for the deprecated `darken()` global function.
 // Uses `color.adjust()` to decrease lightness.

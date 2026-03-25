@@ -498,7 +498,7 @@ gradients — none of which have a retrieval function.
 
 ---
 
-#### M-2. Missing token maps
+#### ~~M-2. Missing token maps~~ ✅ RESOLVED
 
 Several categories of values appear repeatedly as hardcoded literals but
 have no corresponding variable or map:

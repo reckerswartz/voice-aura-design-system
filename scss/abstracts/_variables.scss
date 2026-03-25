@@ -195,6 +195,36 @@ $va-font-sizes: (
   "lg": 1.125rem,
 );
 
+// Icon size scale — common sizes used across SVG icons
+$va-icon-sizes: (
+  "xs":  12px,
+  "sm":  16px,
+  "md":  20px,
+  "lg":  24px,
+  "xl":  36px,
+  "xxl": 48px,
+);
+
+// Letter-spacing tokens — headings use tight, UI uses normal/wide
+$va-letter-spacing: (
+  "tighter": -0.03em,
+  "tight":   -0.02em,
+  "snug":    -0.01em,
+  "normal":  0,
+  "wide":    0.08em,
+  "wider":   0.1em,
+);
+
+// Line-height tokens — display/headings use tight, body uses relaxed
+$va-line-heights: (
+  "none":    1,
+  "tight":   1.1,
+  "snug":    1.25,
+  "normal":  1.5,
+  "relaxed": 1.65,
+  "loose":   1.8,
+);
+
 // ----------------------------------------------------------------------------
 // 3. SPACING
 // ----------------------------------------------------------------------------
