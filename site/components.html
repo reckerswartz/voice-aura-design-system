@@ -292,6 +292,32 @@ $font-family-mono:    'IBM Plex Mono', monospace;
           <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 80px;"></div><div class="ref-spacer-label">80px — $spacer-7 (section padding)</div></div>
           <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 96px;"></div><div class="ref-spacer-label">96px — $spacer-8</div></div>
           <div class="ref-spacer"><div class="ref-spacer-bar" style="width: 120px;"></div><div class="ref-spacer-label">120px — $spacer-9 (large section padding)</div></div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>// 8px grid unit
+$va-grid-unit: 0.5rem; // 8px
+
+// Spacer scale (Bootstrap $spacers override)
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,   //   4px
+  2: $spacer * 0.5,    //   8px  (1 grid unit)
+  3: $spacer,           //  16px
+  4: $spacer * 1.5,    //  24px
+  5: $spacer * 3,      //  48px
+  6: $spacer * 4,      //  64px
+  7: $spacer * 5,      //  80px  (section padding)
+  8: $spacer * 6,      //  96px
+  9: $spacer * 7.5,    // 120px  (large section padding)
+);
+
+// Usage — spacing function
+margin-top: va-space(3);   // 1.5rem (24px)
+padding: va-space(5);      // 2.5rem (40px)
+
+// Usage — Bootstrap utilities
+&lt;div class="mt-4 p-3"&gt;...&lt;/div&gt;
+&lt;div class="va-mt-4 va-gap-3"&gt;...&lt;/div&gt;</div>
         </section>
 
         <!-- ============================================================ -->
@@ -1224,6 +1250,32 @@ $va-shadow-xl:  0 25px 50px -12px rgba(0, 0, 0, 0.15);
               </div>
             </div>
           </div>
+
+          <h5 class="ref-subheading">Code</h5>
+<div class="ref-code"><button class="ref-code-copy">Copy</button>&lt;div class="va-blog-section"&gt;
+  &lt;div class="va-blog-section__header"&gt;
+    &lt;div class="va-blog-section__header-content"&gt;
+      &lt;h2 class="va-blog-section__title"&gt;Insights &amp; Updates&lt;/h2&gt;
+      &lt;p class="va-blog-section__subtitle"&gt;Latest news and expert insights.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="va-blog-section__action"&gt;Explore more blogs&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="va-blog-section__grid"&gt;
+    &lt;div class="va-blog-card"&gt;
+      &lt;div class="va-blog-card__image"&gt;&lt;img src="..." alt="..."&gt;&lt;/div&gt;
+      &lt;div class="va-blog-card__content"&gt;
+        &lt;div class="va-blog-card__meta"&gt;
+          &lt;span class="va-blog-card__category"&gt;AI AGENTS&lt;/span&gt;
+          &lt;span&gt;2026-01-06&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;h4 class="va-blog-card__title"&gt;Article Title&lt;/h4&gt;
+        &lt;p class="va-blog-card__excerpt"&gt;Short excerpt...&lt;/p&gt;
+        &lt;a href="#" class="va-blog-card__link"&gt;Read more&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Repeat for more cards --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
 
           <h3 class="ref-sub-section-heading" style="font-size: 1.25rem;">Discount Badge</h3>
           <p class="ref-desc">Used on pricing pages for promotional offers.</p>

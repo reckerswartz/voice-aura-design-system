@@ -455,7 +455,7 @@ only 1 inline style each.
 
 ---
 
-#### H-9. Reference page — Missing code blocks & copy buttons (deferred)
+#### ~~H-9. Reference page — Missing code blocks & copy buttons~~ ✅ RESOLVED
 
 Seven component sections (Buttons, Badges, Cards, Forms, Blog Cards,
 Voice Agent, Video Dubbing) show rendered demos but have **no
