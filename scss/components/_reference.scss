@@ -1103,3 +1103,55 @@
 .ref-mb-2 { margin-bottom: 1rem; }
 .ref-mb-3 { margin-bottom: 1.5rem; }
 .ref-mb-4 { margin-bottom: 2rem; }
+
+// Table cell padding — interactions/transitions variant (replaces style="padding: 0.625rem 0.75rem;")
+.ref-td-lg {
+  padding: 0.625rem 0.75rem;
+}
+
+// Section label — see line 12 for .ref-section-label base definition
+// The interactions-demo uses a slightly larger variant; use .ref-section-label--lg for that.
+.ref-section-label--lg {
+  font-size: 0.8125rem;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $va-muted-text;
+  margin: 0 0 1.25rem;
+}
+
+// Small code annotation (replaces style="font-size: 0.75rem; color: #4B5563;")
+.ref-annotation {
+  font-size: 0.75rem;
+  color: $va-body-text;
+}
+
+// Small muted annotation (replaces style="font-size: 0.75rem; color: #9CA3AF;")
+.ref-annotation--muted {
+  font-size: 0.75rem;
+  color: $va-muted-text;
+}
+
+// Table header cell (replaces style="text-align: left; padding: 0.75rem; font-weight: 600; color: #1A1919;")
+.ref-th {
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: $font-weight-semibold;
+  color: $va-near-black;
+}
+
+// Horizontal padding (replaces style="padding-left: 2rem; padding-right: 2rem;")
+.ref-px-4 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+// White background (replaces style="background-color: #fff;")
+.ref-bg-white {
+  background-color: $va-white;
+}
+
+// Dark background (replaces style="background-color: #1A1919;")
+.ref-bg-dark {
+  background-color: $va-near-black;
+}
