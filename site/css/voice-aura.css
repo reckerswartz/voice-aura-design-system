@@ -13456,35 +13456,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 75px;
+  height: 34px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 54px;
+  height: 21px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 60px;
+  height: 77px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 22px;
+  height: 76px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 48px;
+  height: 58px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 85px;
+  height: 78px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 28px;
+  height: 18px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 64px;
+  height: 77px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14374,6 +14374,9 @@ pre code {
   transform: translateX(3px);
 }
 
+.va-btn--primary {
+  color: #FFFFFF;
+}
 .va-btn--primary:hover {
   background-color: #343232;
   border-color: #343232;
@@ -14402,6 +14405,9 @@ pre code {
   border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
 }
 
+.va-btn--accent {
+  color: #FFFFFF;
+}
 .va-btn--accent:hover {
   background-color: rgb(0, 100.8414342629, 218.2);
   border-color: rgb(0, 100.8414342629, 218.2);

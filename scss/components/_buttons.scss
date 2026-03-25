@@ -16,8 +16,12 @@
 // │   1. `display: inline-flex` + gap (for icon alignment)             │
 // │   2. `font-size: 0.9375rem` (15px vs Bootstrap's 16px)             │
 // │   3. `line-height: 1.4` (vs Bootstrap's 1.5)                       │
-// │   4. `color: $va-near-black` (explicit default)                    │
+// │   4. `color: $va-near-black` (explicit default for unstyled btn)  │
 // │   5. `text-decoration: none` (safety for <a> elements)             │
+// │                                                                      │
+// │ IMPORTANT: --primary and --accent must explicitly set               │
+// │ `color: $va-white` because .va-btn's `color` overrides the color  │
+// │ inherited from @extend .btn-dark / .btn-primary.                   │
 // │                                                                      │
 // │ Note: $btn-white-space is set to `nowrap` in _variables.scss so    │
 // │ Bootstrap's .btn handles it natively.                               │
@@ -119,6 +123,9 @@
   @extend .btn-dark;
 
   // --- VA deltas only (base bg/border/color inherited from .btn-dark) ---
+  // Override .va-btn's default dark text — white text on dark background
+  color: $va-white;
+
   // Hover: custom shade + subtle lift (Bootstrap uses shade-color())
   &:hover {
     background-color: va-lighten($va-near-black, 10%);
@@ -170,6 +177,9 @@
   @extend .btn-primary;
 
   // --- VA deltas only (base bg/border/color inherited from .btn-primary) ---
+  // Override .va-btn's default dark text — white text on blue background
+  color: $va-white;
+
   // Hover: custom shade + subtle lift (Bootstrap uses shade-color())
   &:hover {
     background-color: va-darken($va-primary, 8%);
