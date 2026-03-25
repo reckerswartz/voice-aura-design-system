@@ -6,12 +6,14 @@ const path = require("path");
 const SOURCE = path.resolve(__dirname, "..");
 const TARGET = process.cwd();
 
-const DIRS_TO_COPY = ["scss", "assets"];
+const DIRS_TO_COPY = ["scss", "assets", "dist/css", "js", "examples"];
 const DOCS_TO_COPY = [
   "DESIGN_SYSTEM.md",
   "RAILS_INTEGRATION.md",
   "ASSET_GUIDELINES.md",
-  "AGENTS.md",
+  "ATTRIBUTIONS.md",
+  "CHANGELOG.md",
+  "LICENSE",
 ];
 
 const VENDOR_DIR = path.join(TARGET, "vendor", "voice-aura");

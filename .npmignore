@@ -1,0 +1,37 @@
+# Source & dev-only files excluded from npm package
+# (package.json "files" field is the primary whitelist;
+#  .npmignore catches anything else that slips through)
+
+# Site / demo pages (not needed by consumers)
+site/
+screenshots/
+
+# CI/CD and editor config
+.github/
+.devin/
+.windsurf/
+.cursor/
+.vscode/
+.idea/
+
+# Dev scripts (except setup.js which is in "files")
+bin/screenshot-capture.mjs
+bin/screenshot-upload.mjs
+bin/qa-docs-playwright.mjs
+bin/qa-ux-audit.mjs
+
+# Documentation not needed in package
+AGENTS.md
+ARCHITECTURE_REVIEW.md
+SKILLS.md
+QA_REPORT_*.md
+
+# Temp artifacts
+qa-*.png
+audit-screenshots/
+voice-aura-images/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
