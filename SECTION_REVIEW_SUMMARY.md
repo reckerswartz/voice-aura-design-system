@@ -85,9 +85,9 @@ Hero and navbar buttons now extend `.va-btn` + variant classes with only section
 
 This pattern repeats for `.btn-dark` (4 selectors), `.btn-outline-secondary` (4), `.h1`–`.h6` (2 each), `.form-control` (2), etc.
 
-### 2.5 App-specific SCSS ships as core (Voice Agent + Video Dubbing + Auth)
+### ~~2.5 App-specific SCSS ships as core~~ ✅ RESOLVED
 
-1,147 lines (10% of total) are brand-specific and cannot be reused by another theme. These should be in a `brands/voice-aura/` directory so consumers can exclude them.
+Voice Agent, Video Dubbing, and Auth components (~1,147 lines) moved from `scss/components/` to `scss/brands/voice-aura/`. Other brands/themes can safely exclude this directory by removing the single `@import "brands/voice-aura/index"` line.
 
 ---
 
@@ -110,7 +110,7 @@ Fixes grouped by priority — derived from the per-section audits.
 | ~~F-4~~ | ~~Navbar + Hero~~ | ~~Unify 3 button systems~~ | ✅ Done (`18fa927`) |
 | ~~F-5~~ | ~~7 files~~ | ~~Add missing BOOTSTRAP ALIGNMENT comment blocks~~ | ✅ Done (`18fa927`) |
 | ~~F-6~~ | ~~All~~ | ~~Migrate components to consume `var(--va-*)` foundation tokens~~ | ✅ Done — 15/18 sections migrated |
-| F-7 | Voice Agent, Video Dubbing, Auth | Move to `brands/voice-aura/` directory | 2 h |
+| ~~F-7~~ | ~~Voice Agent, Video Dubbing, Auth~~ | ~~Move to `brands/voice-aura/` directory~~ | ✅ Done |
 
 ### P2 — Nice to have (improves reference quality)
 
@@ -181,7 +181,7 @@ Fixes grouped by priority — derived from the per-section audits.
 | ~~3 parallel button systems~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Navbar, Hero, Buttons~~ |
 | 55 `@extend` usages | 8-selector `.btn` rule, larger CSS | Buttons, Typography, Navbar, Forms, Cards |
 | ~~7 files missing BOOTSTRAP ALIGNMENT~~ | ~~✅ Resolved (`18fa927`)~~ | ~~All 7 files~~ |
-| 1,147 lines app-specific SCSS in core | Ships to all consumers | Voice Agent, Video Dubbing, Auth |
+| ~~1,147 lines app-specific SCSS in core~~ | ~~✅ Resolved — moved to `brands/voice-aura/`~~ | ~~Voice Agent, Video Dubbing, Auth~~ |
 | ~~26 hardcoded SVG paths~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Backgrounds~~ |
 | ~~Render-blocking font import~~ | ~~✅ Resolved (`18fa927`)~~ | ~~Typography~~ |
 
@@ -214,7 +214,7 @@ All Sprint 1 items resolved: F-1 (pricing focus-visible), F-2 (asset paths), F-3
 ### Sprint 2 — Structural improvements (1 week)
 
 1. ~~**F-6:** Migrate top 8 components to consume `var(--va-*)` tokens~~ ✅ COMPLETE — 15/18 sections migrated
-2. **F-7:** Move app-specific SCSS to `brands/voice-aura/` (2 h)
+2. ~~**F-7:** Move app-specific SCSS to `brands/voice-aura/`~~ ✅ COMPLETE
 3. **F-11/F-12/F-13/F-14:** Complete variant demos in reference (3 h)
 
 ### Sprint 3 — Tooling & quality (1 week)

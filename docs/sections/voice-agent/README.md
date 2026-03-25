@@ -1,6 +1,6 @@
 # Voice Agent Card (`_voice-agent.scss`)
 
-> Component · 339 lines · `scss/components/_voice-agent.scss` · **App-specific**
+> Component · 353 lines · `scss/brands/voice-aura/_voice-agent.scss` · **App-specific**
 
 ## Overview
 

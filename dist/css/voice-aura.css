@@ -13386,35 +13386,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 52px;
+  height: 51px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 64px;
+  height: 44px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 51px;
+  height: 61px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 93px;
+  height: 79px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 95px;
+  height: 86px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 35px;
+  height: 29px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 42px;
+  height: 52px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 79px;
+  height: 24px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -15541,835 +15541,6 @@ pre code {
     min-width: auto;
     aspect-ratio: 16/10;
   }
-}
-
-.va-agent-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1.5rem;
-  background-color: var(--va-color-secondary);
-  border-radius: 0.75rem;
-  color: var(--va-color-white);
-  text-align: center;
-  overflow: hidden;
-  max-width: 280px;
-  width: 100%;
-}
-.va-agent-card__language-tabs, .va-agent-card__languages {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.1875rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 100vw;
-  margin-bottom: 1.5rem;
-  width: auto;
-}
-.va-agent-card__lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 0.75rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
-  background: transparent;
-  border: none;
-  border-radius: 50rem;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  white-space: nowrap;
-}
-.va-agent-card__lang:hover {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-.va-agent-card__lang--active {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
-}
-.va-agent-card__lang {
-  padding: 0.375rem 0.875rem;
-  border-radius: 100vw;
-}
-.va-agent-card__avatar {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  flex-shrink: 0;
-}
-.va-agent-card__avatar img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.va-agent-card__avatar__placeholder {
-  width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, #EEF2FF 0%, rgb(207.4, 218.6, 255) 100%);
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.va-agent-card__avatar--square {
-  border-radius: 0.75rem;
-}
-.va-agent-card__info {
-  margin-bottom: 1.25rem;
-}
-.va-agent-card__name {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--va-color-white);
-  margin: 0 0 0.25rem;
-}
-.va-agent-card__verified {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.125rem;
-  height: 1.125rem;
-  background-color: var(--va-color-primary);
-  color: var(--va-color-white);
-  border-radius: 50%;
-  font-size: 0.625rem;
-  flex-shrink: 0;
-}
-.va-agent-card__verified svg {
-  width: 0.75rem;
-  height: 0.75rem;
-}
-.va-agent-card__role {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.55);
-  margin: 0;
-  line-height: 1.4;
-}
-.va-agent-card__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.75rem 1.25rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--va-color-white);
-  background-color: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  text-decoration: none;
-}
-.va-agent-card__cta:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: var(--va-color-white);
-}
-.va-agent-card__cta:active {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.va-agent-card__cta:focus-visible {
-  outline: 2px solid var(--va-color-primary);
-  outline-offset: 2px;
-}
-.va-agent-card__cta:disabled, .va-agent-card__cta.is-disabled {
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.va-agent-card__cta--accent {
-  background-color: var(--va-color-primary);
-  border-color: var(--va-color-primary);
-}
-.va-agent-card__cta--accent:hover {
-  background-color: rgb(0, 100.8414342629, 218.2);
-  border-color: rgb(0, 100.8414342629, 218.2);
-}
-.va-agent-card__cta svg {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-}
-.va-agent-card__favorite, .va-agent-card__fav {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-}
-.va-agent-card__favorite:hover, .va-agent-card__fav:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: var(--va-color-white);
-}
-.va-agent-card__favorite.is-active, .va-agent-card__fav.is-active {
-  color: var(--va-color-danger);
-  background: rgba(239, 68, 68, 0.15);
-}
-.va-agent-card__favorite:active, .va-agent-card__fav:active {
-  transform: scale(0.9);
-}
-.va-agent-card__favorite:focus-visible, .va-agent-card__fav:focus-visible {
-  outline: 2px solid var(--va-color-primary);
-  outline-offset: 2px;
-}
-.va-agent-card__favorite svg, .va-agent-card__fav svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.va-agent-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 1.5rem;
-}
-
-.va-agent-card--crosshairs .va-agent-card__corners,
-.va-agent-card--crosshairs .va-agent-card__corners-bottom {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: inherit;
-  z-index: 1;
-}
-.va-agent-card--crosshairs .va-agent-card__corners::before, .va-agent-card--crosshairs .va-agent-card__corners::after {
-  content: "+";
-  position: absolute;
-  top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.2);
-}
-.va-agent-card--crosshairs .va-agent-card__corners::before {
-  left: 0.75rem;
-}
-.va-agent-card--crosshairs .va-agent-card__corners::after {
-  right: 0.75rem;
-}
-.va-agent-card--crosshairs .va-agent-card__corners-bottom::before, .va-agent-card--crosshairs .va-agent-card__corners-bottom::after {
-  content: "+";
-  position: absolute;
-  bottom: 0.5rem;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.2);
-}
-.va-agent-card--crosshairs .va-agent-card__corners-bottom::before {
-  left: 0.75rem;
-}
-.va-agent-card--crosshairs .va-agent-card__corners-bottom::after {
-  right: 0.75rem;
-}
-
-.va-agent-card--hairlines::before, .va-agent-card--hairlines::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-}
-.va-agent-card--hairlines::before {
-  top: 0.75rem;
-  left: 0.75rem;
-  right: 0.75rem;
-  height: 1px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 1rem, transparent 1rem, transparent calc(100% - 1rem), rgba(255, 255, 255, 0.12) calc(100% - 1rem));
-}
-.va-agent-card--hairlines::after {
-  bottom: 0.75rem;
-  left: 0.75rem;
-  right: 0.75rem;
-  height: 1px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 1rem, transparent 1rem, transparent calc(100% - 1rem), rgba(255, 255, 255, 0.12) calc(100% - 1rem));
-}
-
-.va-dubbing-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--va-color-secondary);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  color: var(--va-color-white);
-  max-width: 420px;
-  width: 100%;
-}
-.va-dubbing-card__languages, .va-dubbing-card__langs {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.75rem 1rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.va-dubbing-card__languages::-webkit-scrollbar, .va-dubbing-card__langs::-webkit-scrollbar {
-  display: none;
-}
-.va-dubbing-card__lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 0.75rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50rem;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  white-space: nowrap;
-}
-.va-dubbing-card__lang:hover {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-.va-dubbing-card__lang--active {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
-}
-.va-dubbing-card__lang {
-  flex-shrink: 0;
-}
-.va-dubbing-card__lang svg {
-  width: 0.875rem;
-  height: 0.875rem;
-  flex-shrink: 0;
-}
-.va-dubbing-card__lang-scroll {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-}
-.va-dubbing-card__lang-scroll:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
-}
-.va-dubbing-card__lang-scroll svg {
-  width: 0.875rem;
-  height: 0.875rem;
-}
-.va-dubbing-card__player {
-  display: flex;
-  flex-direction: column;
-}
-.va-dubbing-card__player-header {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 1rem;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-.va-dubbing-card__player-thumb {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.va-dubbing-card__player-title {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--va-color-white);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.va-dubbing-card__player-video {
-  position: relative;
-  aspect-ratio: 16/9;
-  background-color: var(--va-color-secondary);
-  overflow: hidden;
-}
-.va-dubbing-card__player-video--placeholder {
-  background: linear-gradient(135deg, rgb(13, 12.5, 12.5) 0%, hsl(0, 1.9607843137%, -2%) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.va-dubbing-card__player-video img,
-.va-dubbing-card__player-video video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.va-dubbing-card__subtitle {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 85%;
-  padding: 0.25rem 0.75rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--va-color-white);
-  background-color: rgba(26, 25, 25, 0.65);
-  border-radius: 0.25rem;
-  text-align: center;
-  margin: 0;
-  white-space: normal;
-}
-.va-dubbing-card__controls {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0.75rem;
-  background-color: rgba(26, 25, 25, 0.85);
-}
-.va-dubbing-card__control-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
-  transition: color 0.15s ease-in-out;
-}
-.va-dubbing-card__control-btn:hover {
-  color: var(--va-color-white);
-}
-.va-dubbing-card__control-btn:active {
-  transform: scale(0.92);
-}
-.va-dubbing-card__control-btn:focus-visible {
-  outline: 2px solid var(--va-color-primary);
-  outline-offset: 2px;
-}
-.va-dubbing-card__control-btn svg {
-  width: 1rem;
-  height: 1rem;
-}
-.va-dubbing-card__control-btn--cc {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  width: auto;
-  padding: 0.125rem 0.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 0.125rem;
-  color: var(--va-color-danger);
-  background-color: transparent;
-}
-.va-dubbing-card__progress {
-  flex: 1;
-  height: 0.1875rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 100vw;
-  cursor: pointer;
-  position: relative;
-}
-.va-dubbing-card__progress-bar {
-  height: 100%;
-  background-color: var(--va-color-white);
-  border-radius: 100vw;
-  width: 30%;
-  position: relative;
-}
-.va-dubbing-card__progress-bar::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -0.25rem;
-  transform: translateY(-50%);
-  width: 0.5rem;
-  height: 0.5rem;
-  background-color: var(--va-color-white);
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out;
-}
-.va-dubbing-card__progress:hover .va-dubbing-card__progress-bar::after {
-  opacity: 1;
-}
-.va-dubbing-card__time {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.va-dubbing-card__meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-}
-.va-dubbing-card__meta-icon {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.5);
-}
-.va-dubbing-card__controls-left {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-
-.va-dubbing-card--compact .va-dubbing-card__languages {
-  padding: 0.5rem 0.75rem;
-}
-.va-dubbing-card--compact .va-dubbing-card__player-header {
-  padding: 0.375rem 0.75rem;
-}
-.va-dubbing-card--compact .va-dubbing-card__subtitle {
-  font-size: 0.75rem;
-}
-
-.va-dubbing-card--crosshairs .va-dubbing-card__corners,
-.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: inherit;
-  z-index: 1;
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners::before, .va-dubbing-card--crosshairs .va-dubbing-card__corners::after {
-  content: "+";
-  position: absolute;
-  top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.2);
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners::before {
-  left: 0.75rem;
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners::after {
-  right: 0.75rem;
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::before, .va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::after {
-  content: "+";
-  position: absolute;
-  bottom: 0.5rem;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.2);
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::before {
-  left: 0.75rem;
-}
-.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::after {
-  right: 0.75rem;
-}
-
-.va-auth {
-  width: 100%;
-  max-width: 28rem;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-  background-color: var(--va-color-white);
-  border-radius: 1rem;
-  border: 1px solid var(--va-color-border);
-}
-.va-auth__header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.va-auth__header h1, .va-auth__header .h1, .va-auth__header .va-h1,
-.va-auth__header h2,
-.va-auth__header .h2,
-.va-auth__header .va-h2 {
-  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--va-color-secondary);
-  margin: 0 0 0.5rem;
-}
-.va-auth__subtitle {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--va-color-body-text);
-  margin: 0;
-}
-.va-auth__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-.va-auth__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-@media (max-width: 575.98px) {
-  .va-auth__row {
-    grid-template-columns: 1fr;
-  }
-}
-.va-auth__checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  line-height: 1.5;
-  color: var(--va-color-body-text);
-  cursor: pointer;
-  user-select: none;
-}
-.va-auth__checkbox input[type=checkbox] {
-  flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.125rem;
-  accent-color: var(--va-color-primary);
-  cursor: pointer;
-}
-.va-auth__submit {
-  display: flex;
-  width: 100%;
-  gap: 0.5rem;
-  font-size: 0.9375rem;
-  padding-top: 0.8125rem;
-  padding-bottom: 0.8125rem;
-}
-.va-auth__submit__arrow {
-  transition: transform 0.2s ease-in-out;
-}
-.va-auth__submit:hover .va-auth__submit__arrow {
-  transform: translateX(3px);
-}
-.va-auth__divider {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-  color: var(--va-color-body-text);
-}
-.va-auth__divider::before, .va-auth__divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--va-color-border);
-}
-.va-auth__divider span {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--va-color-body-text);
-  text-transform: lowercase;
-}
-.va-auth__social {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.va-auth__social-btn {
-  display: flex;
-  width: 100%;
-  gap: 0.625rem;
-  font-size: 0.9375rem;
-  padding-top: 0.6875rem;
-  padding-bottom: 0.6875rem;
-  color: var(--va-color-secondary);
-  background-color: var(--va-color-white);
-}
-.va-auth__social-btn:hover {
-  background-color: #E9E9EA;
-  color: var(--va-color-secondary);
-}
-.va-auth__social-btn img,
-.va-auth__social-btn svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  flex-shrink: 0;
-}
-.va-auth__footer {
-  text-align: center;
-  margin-top: 1.5rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.875rem;
-  color: var(--va-color-body-text);
-}
-.va-auth__footer a {
-  color: var(--va-color-primary);
-  font-weight: 500;
-  text-decoration: none;
-  transition: color var(--va-duration-fast) ease-in-out;
-}
-.va-auth__footer a:hover {
-  color: rgb(0, 96.1274900398, 208);
-  text-decoration: underline;
-}
-.va-auth__terms {
-  text-align: center;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.6;
-  color: rgb(107.974137931, 122.3706896552, 142.525862069);
-  margin-top: 1rem;
-}
-.va-auth__terms a {
-  color: var(--va-color-body-text);
-  text-decoration: underline;
-  text-decoration-color: var(--va-color-border);
-  text-underline-offset: 0.125rem;
-  transition: color var(--va-duration-fast) ease-in-out;
-}
-.va-auth__terms a:hover {
-  color: var(--va-color-secondary);
-  text-decoration-color: var(--va-color-secondary);
-}
-
-.va-auth--borderless {
-  border-color: transparent;
-  box-shadow: none;
-}
-
-.va-auth--elevated {
-  border-color: transparent;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.06);
-}
-
-.va-auth-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  width: 100%;
-}
-@media (max-width: 991.98px) {
-  .va-auth-split {
-    grid-template-columns: 1fr;
-  }
-}
-
-.va-auth-split__illustration {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  background: linear-gradient(135deg, rgb(157, 202.2908366534, 255) 0%, rgb(55, 147.4302788845, 255) 100%);
-  overflow: hidden;
-}
-@media (max-width: 991.98px) {
-  .va-auth-split__illustration {
-    display: none;
-  }
-}
-.va-auth-split__illustration img,
-.va-auth-split__illustration svg {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-.va-auth-split__form-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 2rem;
-  background-color: var(--va-color-white);
-}
-.va-auth-split__form-panel .va-auth {
-  max-width: 26rem;
-  border: none;
-  padding: 0;
-}
-
-.va-client-logos {
-  text-align: center;
-  padding: 2rem 0;
-}
-
-.va-client-logos__label {
-  display: block;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--va-color-body-text);
-  margin-bottom: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.va-client-logos__list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
-}
-
-.va-client-logos__img {
-  height: 1.5rem;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(1) opacity(0.5);
-  transition: filter 0.2s ease-in-out;
-  padding: 0 1.25rem;
-  border-right: 1px solid var(--va-color-border);
-}
-.va-client-logos__img:last-child {
-  border-right: none;
-}
-.va-client-logos__img:hover {
-  filter: grayscale(0) opacity(1);
-}
-
-.va-client-logos--no-pipes .va-client-logos__img {
-  border-right: none;
-  padding: 0 1rem;
 }
 
 .va-trust-bar {
@@ -18963,6 +18134,835 @@ pre code {
   margin-bottom: 1rem;
   color: #4B5563;
   font-size: 0.9375rem;
+}
+
+.va-auth {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  background-color: var(--va-color-white);
+  border-radius: 1rem;
+  border: 1px solid var(--va-color-border);
+}
+.va-auth__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.va-auth__header h1, .va-auth__header .h1, .va-auth__header .va-h1,
+.va-auth__header h2,
+.va-auth__header .h2,
+.va-auth__header .va-h2 {
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--va-color-secondary);
+  margin: 0 0 0.5rem;
+}
+.va-auth__subtitle {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--va-color-body-text);
+  margin: 0;
+}
+.va-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.va-auth__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 575.98px) {
+  .va-auth__row {
+    grid-template-columns: 1fr;
+  }
+}
+.va-auth__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--va-color-body-text);
+  cursor: pointer;
+  user-select: none;
+}
+.va-auth__checkbox input[type=checkbox] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.125rem;
+  accent-color: var(--va-color-primary);
+  cursor: pointer;
+}
+.va-auth__submit {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  padding-top: 0.8125rem;
+  padding-bottom: 0.8125rem;
+}
+.va-auth__submit__arrow {
+  transition: transform 0.2s ease-in-out;
+}
+.va-auth__submit:hover .va-auth__submit__arrow {
+  transform: translateX(3px);
+}
+.va-auth__divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  color: var(--va-color-body-text);
+}
+.va-auth__divider::before, .va-auth__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--va-color-border);
+}
+.va-auth__divider span {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--va-color-body-text);
+  text-transform: lowercase;
+}
+.va-auth__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.va-auth__social-btn {
+  display: flex;
+  width: 100%;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  padding-top: 0.6875rem;
+  padding-bottom: 0.6875rem;
+  color: var(--va-color-secondary);
+  background-color: var(--va-color-white);
+}
+.va-auth__social-btn:hover {
+  background-color: #E9E9EA;
+  color: var(--va-color-secondary);
+}
+.va-auth__social-btn img,
+.va-auth__social-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+.va-auth__footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  color: var(--va-color-body-text);
+}
+.va-auth__footer a {
+  color: var(--va-color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--va-duration-fast) ease-in-out;
+}
+.va-auth__footer a:hover {
+  color: rgb(0, 96.1274900398, 208);
+  text-decoration: underline;
+}
+.va-auth__terms {
+  text-align: center;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgb(107.974137931, 122.3706896552, 142.525862069);
+  margin-top: 1rem;
+}
+.va-auth__terms a {
+  color: var(--va-color-body-text);
+  text-decoration: underline;
+  text-decoration-color: var(--va-color-border);
+  text-underline-offset: 0.125rem;
+  transition: color var(--va-duration-fast) ease-in-out;
+}
+.va-auth__terms a:hover {
+  color: var(--va-color-secondary);
+  text-decoration-color: var(--va-color-secondary);
+}
+
+.va-auth--borderless {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.va-auth--elevated {
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.va-auth-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+@media (max-width: 991.98px) {
+  .va-auth-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.va-auth-split__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgb(157, 202.2908366534, 255) 0%, rgb(55, 147.4302788845, 255) 100%);
+  overflow: hidden;
+}
+@media (max-width: 991.98px) {
+  .va-auth-split__illustration {
+    display: none;
+  }
+}
+.va-auth-split__illustration img,
+.va-auth-split__illustration svg {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.va-auth-split__form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--va-color-white);
+}
+.va-auth-split__form-panel .va-auth {
+  max-width: 26rem;
+  border: none;
+  padding: 0;
+}
+
+.va-client-logos {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.va-client-logos__label {
+  display: block;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--va-color-body-text);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.va-client-logos__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.va-client-logos__img {
+  height: 1.5rem;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.5);
+  transition: filter 0.2s ease-in-out;
+  padding: 0 1.25rem;
+  border-right: 1px solid var(--va-color-border);
+}
+.va-client-logos__img:last-child {
+  border-right: none;
+}
+.va-client-logos__img:hover {
+  filter: grayscale(0) opacity(1);
+}
+
+.va-client-logos--no-pipes .va-client-logos__img {
+  border-right: none;
+  padding: 0 1rem;
+}
+
+.va-agent-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  background-color: var(--va-color-secondary);
+  border-radius: 0.75rem;
+  color: var(--va-color-white);
+  text-align: center;
+  overflow: hidden;
+  max-width: 280px;
+  width: 100%;
+}
+.va-agent-card__language-tabs, .va-agent-card__languages {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 100vw;
+  margin-bottom: 1.5rem;
+  width: auto;
+}
+.va-agent-card__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: none;
+  border-radius: 50rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+.va-agent-card__lang:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.va-agent-card__lang--active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+.va-agent-card__lang {
+  padding: 0.375rem 0.875rem;
+  border-radius: 100vw;
+}
+.va-agent-card__avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+.va-agent-card__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.va-agent-card__avatar__placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #EEF2FF 0%, rgb(207.4, 218.6, 255) 100%);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.va-agent-card__avatar--square {
+  border-radius: 0.75rem;
+}
+.va-agent-card__info {
+  margin-bottom: 1.25rem;
+}
+.va-agent-card__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--va-color-white);
+  margin: 0 0 0.25rem;
+}
+.va-agent-card__verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  background-color: var(--va-color-primary);
+  color: var(--va-color-white);
+  border-radius: 50%;
+  font-size: 0.625rem;
+  flex-shrink: 0;
+}
+.va-agent-card__verified svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.va-agent-card__role {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.4;
+}
+.va-agent-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--va-color-white);
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+}
+.va-agent-card__cta:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--va-color-white);
+}
+.va-agent-card__cta:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.va-agent-card__cta:focus-visible {
+  outline: 2px solid var(--va-color-primary);
+  outline-offset: 2px;
+}
+.va-agent-card__cta:disabled, .va-agent-card__cta.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.va-agent-card__cta--accent {
+  background-color: var(--va-color-primary);
+  border-color: var(--va-color-primary);
+}
+.va-agent-card__cta--accent:hover {
+  background-color: rgb(0, 100.8414342629, 218.2);
+  border-color: rgb(0, 100.8414342629, 218.2);
+}
+.va-agent-card__cta svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.va-agent-card__favorite, .va-agent-card__fav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.va-agent-card__favorite:hover, .va-agent-card__fav:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--va-color-white);
+}
+.va-agent-card__favorite.is-active, .va-agent-card__fav.is-active {
+  color: var(--va-color-danger);
+  background: rgba(239, 68, 68, 0.15);
+}
+.va-agent-card__favorite:active, .va-agent-card__fav:active {
+  transform: scale(0.9);
+}
+.va-agent-card__favorite:focus-visible, .va-agent-card__fav:focus-visible {
+  outline: 2px solid var(--va-color-primary);
+  outline-offset: 2px;
+}
+.va-agent-card__favorite svg, .va-agent-card__fav svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.va-agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+
+.va-agent-card--crosshairs .va-agent-card__corners,
+.va-agent-card--crosshairs .va-agent-card__corners-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 1;
+}
+.va-agent-card--crosshairs .va-agent-card__corners::before, .va-agent-card--crosshairs .va-agent-card__corners::after {
+  content: "+";
+  position: absolute;
+  top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.2);
+}
+.va-agent-card--crosshairs .va-agent-card__corners::before {
+  left: 0.75rem;
+}
+.va-agent-card--crosshairs .va-agent-card__corners::after {
+  right: 0.75rem;
+}
+.va-agent-card--crosshairs .va-agent-card__corners-bottom::before, .va-agent-card--crosshairs .va-agent-card__corners-bottom::after {
+  content: "+";
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.2);
+}
+.va-agent-card--crosshairs .va-agent-card__corners-bottom::before {
+  left: 0.75rem;
+}
+.va-agent-card--crosshairs .va-agent-card__corners-bottom::after {
+  right: 0.75rem;
+}
+
+.va-agent-card--hairlines::before, .va-agent-card--hairlines::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.va-agent-card--hairlines::before {
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 1rem, transparent 1rem, transparent calc(100% - 1rem), rgba(255, 255, 255, 0.12) calc(100% - 1rem));
+}
+.va-agent-card--hairlines::after {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 1rem, transparent 1rem, transparent calc(100% - 1rem), rgba(255, 255, 255, 0.12) calc(100% - 1rem));
+}
+
+.va-dubbing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--va-color-secondary);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  color: var(--va-color-white);
+  max-width: 420px;
+  width: 100%;
+}
+.va-dubbing-card__languages, .va-dubbing-card__langs {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.va-dubbing-card__languages::-webkit-scrollbar, .va-dubbing-card__langs::-webkit-scrollbar {
+  display: none;
+}
+.va-dubbing-card__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+.va-dubbing-card__lang:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.va-dubbing-card__lang--active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+.va-dubbing-card__lang {
+  flex-shrink: 0;
+}
+.va-dubbing-card__lang svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+.va-dubbing-card__lang-scroll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.va-dubbing-card__lang-scroll:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+.va-dubbing-card__lang-scroll svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.va-dubbing-card__player {
+  display: flex;
+  flex-direction: column;
+}
+.va-dubbing-card__player-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.va-dubbing-card__player-thumb {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.va-dubbing-card__player-title {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--va-color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.va-dubbing-card__player-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  background-color: var(--va-color-secondary);
+  overflow: hidden;
+}
+.va-dubbing-card__player-video--placeholder {
+  background: linear-gradient(135deg, rgb(13, 12.5, 12.5) 0%, hsl(0, 1.9607843137%, -2%) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.va-dubbing-card__player-video img,
+.va-dubbing-card__player-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.va-dubbing-card__subtitle {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 85%;
+  padding: 0.25rem 0.75rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--va-color-white);
+  background-color: rgba(26, 25, 25, 0.65);
+  border-radius: 0.25rem;
+  text-align: center;
+  margin: 0;
+  white-space: normal;
+}
+.va-dubbing-card__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(26, 25, 25, 0.85);
+}
+.va-dubbing-card__control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.15s ease-in-out;
+}
+.va-dubbing-card__control-btn:hover {
+  color: var(--va-color-white);
+}
+.va-dubbing-card__control-btn:active {
+  transform: scale(0.92);
+}
+.va-dubbing-card__control-btn:focus-visible {
+  outline: 2px solid var(--va-color-primary);
+  outline-offset: 2px;
+}
+.va-dubbing-card__control-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+.va-dubbing-card__control-btn--cc {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  width: auto;
+  padding: 0.125rem 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.125rem;
+  color: var(--va-color-danger);
+  background-color: transparent;
+}
+.va-dubbing-card__progress {
+  flex: 1;
+  height: 0.1875rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 100vw;
+  cursor: pointer;
+  position: relative;
+}
+.va-dubbing-card__progress-bar {
+  height: 100%;
+  background-color: var(--va-color-white);
+  border-radius: 100vw;
+  width: 30%;
+  position: relative;
+}
+.va-dubbing-card__progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -0.25rem;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--va-color-white);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+.va-dubbing-card__progress:hover .va-dubbing-card__progress-bar::after {
+  opacity: 1;
+}
+.va-dubbing-card__time {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.va-dubbing-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+.va-dubbing-card__meta-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+.va-dubbing-card__controls-left {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.va-dubbing-card--compact .va-dubbing-card__languages {
+  padding: 0.5rem 0.75rem;
+}
+.va-dubbing-card--compact .va-dubbing-card__player-header {
+  padding: 0.375rem 0.75rem;
+}
+.va-dubbing-card--compact .va-dubbing-card__subtitle {
+  font-size: 0.75rem;
+}
+
+.va-dubbing-card--crosshairs .va-dubbing-card__corners,
+.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 1;
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners::before, .va-dubbing-card--crosshairs .va-dubbing-card__corners::after {
+  content: "+";
+  position: absolute;
+  top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.2);
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners::before {
+  left: 0.75rem;
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners::after {
+  right: 0.75rem;
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::before, .va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::after {
+  content: "+";
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.2);
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::before {
+  left: 0.75rem;
+}
+.va-dubbing-card--crosshairs .va-dubbing-card__corners-bottom::after {
+  right: 0.75rem;
 }
 
 /*# sourceMappingURL=voice-aura.css.map */

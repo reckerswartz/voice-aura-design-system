@@ -46,11 +46,15 @@
 @import "components/forms";
 @import "components/pricing";
 @import "components/blog-card";
-@import "components/voice-agent";
-@import "components/video-dubbing";
-@import "components/auth";
 @import "components/trust-bar";
 @import "components/backgrounds";
 @import "components/pattern-data";
 @import "components/animations";
 @import "components/reference";
+
+// ---------------------------------------------------------------------------
+// 6. BRAND — Voice Aura app-specific components
+// ---------------------------------------------------------------------------
+// These are tightly coupled to the Voice Aura product.  Other brands/themes
+// can safely remove or comment out this import.
+@import "brands/voice-aura/index";

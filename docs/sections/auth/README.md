@@ -1,6 +1,6 @@
 # Auth (`_auth.scss`)
 
-> Component · 432 lines · `scss/components/_auth.scss` · **App-specific**
+> Component · 433 lines · `scss/brands/voice-aura/_auth.scss` · **App-specific**
 
 ## Overview
 

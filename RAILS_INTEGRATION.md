@@ -500,8 +500,10 @@ The design system follows a strict import order. Understanding each layer helps 
 │ 15. components/_forms.scss                  │  ← .va-form-*, .va-input-card
 │ 16. components/_pricing.scss                │  ← .va-pricing, .va-pricing-card
 │ 17. components/_blog-card.scss              │  ← .va-blog-card
-│ 18. components/_voice-agent.scss            │  ← .va-voice-agent
-│ 19. components/_auth.scss                   │  ← .va-auth
+├─────────────────────────────────────────────┤
+│ 18. brands/voice-aura/_auth.scss           │  ← .va-auth (app-specific)
+│ 19. brands/voice-aura/_voice-agent.scss    │  ← .va-agent-card (app-specific)
+│ 20. brands/voice-aura/_video-dubbing.scss  │  ← .va-dubbing-card (app-specific)
 └─────────────────────────────────────────────┘
 ```
 
@@ -534,7 +536,7 @@ If you only need certain parts, import layers individually instead of the full `
 @import "components/cards";
 @import "components/forms";
 // @import "components/pricing"; ← skip if not using pricing pages
-// @import "components/auth";    ← skip if using Devise views
+// @import "brands/voice-aura/auth";    ← skip if using Devise views
 ```
 
 ---

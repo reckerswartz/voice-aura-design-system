@@ -1,6 +1,6 @@
 # Video Dubbing Card (`_video-dubbing.scss`)
 
-> Component · 376 lines · `scss/components/_video-dubbing.scss` · **App-specific**
+> Component · 391 lines · `scss/brands/voice-aura/_video-dubbing.scss` · **App-specific**
 
 ## Overview
 

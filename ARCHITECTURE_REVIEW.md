@@ -97,6 +97,7 @@ Issues resolved or partially addressed since the initial review:
 | F-3 | Google Fonts `@import` render-blocking + brand-coupled | ✅ Done | `$va-google-fonts-url` variable with `@if` guard (`18fa927`) |
 | F-4 | 3 parallel button systems | ✅ Done | Hero/navbar buttons `@extend .va-btn` + deltas (`18fa927`) |
 | F-5 | 7 files missing BOOTSTRAP ALIGNMENT blocks | ✅ Done | Added to navbar, hero, footer, feature-section, section, voice-agent, video-dubbing (`18fa927`) |
+| F-7 | 1,147 lines app-specific SCSS in `components/` | ✅ Done | Moved auth, voice-agent, video-dubbing to `scss/brands/voice-aura/` with index |
 | F-8 | Grid section missing from components.html | ✅ Done | Added with auto-fit, 2/3/4-col, spacing demos + code snippet (`18fa927`) |
 
 ---

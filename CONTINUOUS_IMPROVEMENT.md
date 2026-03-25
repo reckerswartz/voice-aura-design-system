@@ -135,6 +135,12 @@ Tracking what was already fixed to avoid rework and to establish patterns for fu
 | — | Voice Agent, Video Dubbing | Migrated colors, focus-visible, accent/danger colors |
 | — | Anim Core, Anim Components | Migrated shadows, focus-visible outlines |
 
+### Fixes Applied — Brand Directory Restructure
+
+| ID | Issue | Fix |
+|----|-------|-----|
+| F-7 | 1,147 lines app-specific SCSS in `components/` | Moved `_auth.scss`, `_voice-agent.scss`, `_video-dubbing.scss` to `scss/brands/voice-aura/` with index file. Other themes exclude via single import line. |
+
 ---
 
 ## 3. Open Issues by Priority

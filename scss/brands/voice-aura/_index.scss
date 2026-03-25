@@ -1,0 +1,22 @@
+// ============================================================================
+// Voice Aura Brand — App-Specific Components
+// ============================================================================
+// These components are tightly coupled to the Voice Aura product and are NOT
+// part of the reusable core design system.  Other brands/themes can safely
+// exclude this directory.
+//
+// To include in your build:
+//   @import "brands/voice-aura";        // ← imports this index
+//
+// To exclude (e.g., for a white-label build):
+//   Simply remove or comment out the import in voice-aura.scss.
+//
+// Contents:
+//   _auth.scss          — Sign up / log in form components
+//   _voice-agent.scss   — Dark-themed agent card (photo, languages, CTA)
+//   _video-dubbing.scss — Dark-themed dubbing card (player, subtitles)
+// ============================================================================
+
+@import "auth";
+@import "voice-agent";
+@import "video-dubbing";
