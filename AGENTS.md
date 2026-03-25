@@ -21,20 +21,22 @@
 
 - **Icons**: 56 Lucide icons in `assets/icons/lucide/` (ISC license), 5 custom icons in `assets/icons/`
 - **Brand**: 3 SVGs in `assets/brand/`
-- **Images**: 4 blog-card SVGs in `assets/images/`
+- **Images**: 4 blog-card SVGs + 2 component images in `assets/images/`
 - **Patterns**: 14 SVGs in `assets/patterns/`
 - **Illustrations**: 2 SVGs in `assets/illustrations/`
-- **Total**: 86 assets — all ISC or SIL OFL 1.1 licensed
+- **Total**: 88 assets — all ISC or SIL OFL 1.1 licensed
 
 ### Asset Sourcing Quick-Reference
 
 | Need | First choice | Fallback |
 |------|-------------|----------|
-| UI icon | `assets/icons/lucide/` or [lucide.dev](https://lucide.dev/) | [Phosphor](https://phosphoricons.com/), [Tabler](https://tabler.io/icons) |
-| Decorative icon | [Flaticon](https://www.flaticon.com/) (attribution req.) | — |
-| Illustration | [unDraw](https://undraw.co/) (CC0) | [Storyset](https://storyset.com/) (attribution req.) |
-| Background pattern | `assets/patterns/` or SCSS mixins | [Hero Patterns](https://heropatterns.com/) |
+| UI icon | `assets/icons/lucide/` or [lucide.dev](https://lucide.dev/) | [Phosphor](https://phosphoricons.com/), [Iconoir](https://iconoir.com/), [Tabler](https://tabler.io/icons) |
+| Decorative icon | [Flaticon](https://www.flaticon.com/) (attribution req.) | [Remix Icon](https://remixicon.com/) |
+| Illustration | [unDraw](https://undraw.co/) (CC0) | [ManyPixels](https://www.manypixels.co/gallery), [Freepik](https://www.freepik.com/) (attribution req.) |
+| Animated illustration | [Storyset](https://storyset.com/) (attribution req.) | [Blush](https://blush.design/) |
+| Background pattern | `assets/patterns/` or SCSS mixins | [Haikei](https://haikei.app/), [Hero Patterns](https://heropatterns.com/), [SVG Backgrounds](https://www.svgbackgrounds.com/) |
 | Stock photo | [Unsplash](https://unsplash.com/) | [Pexels](https://www.pexels.com/) |
+| Self-hosted fonts | [Fontsource](https://fontsource.org/) via npm | [Google Fonts CDN](https://fonts.google.com/) |
 
 ### Asset Workflow
 

@@ -4,31 +4,79 @@
       <stop offset="0%" stop-color="#1e293b"/>
       <stop offset="100%" stop-color="#334155"/>
     </linearGradient>
+    <radialGradient id="glow4" cx="0.5" cy="0.4" r="0.4">
+      <stop offset="0%" stop-color="#475569" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
   </defs>
   <rect width="600" height="375" fill="url(#bg4)"/>
-  <!-- Waveform bars -->
-  <g transform="translate(200,130)" fill="#94a3b8" opacity="0.35">
-    <rect x="0" y="30" width="8" height="60" rx="4"/>
-    <rect x="16" y="15" width="8" height="90" rx="4"/>
-    <rect x="32" y="25" width="8" height="70" rx="4"/>
-    <rect x="48" y="5" width="8" height="110" rx="4"/>
-    <rect x="64" y="20" width="8" height="80" rx="4"/>
-    <rect x="80" y="35" width="8" height="50" rx="4"/>
-    <rect x="96" y="10" width="8" height="100" rx="4"/>
-    <rect x="112" y="25" width="8" height="70" rx="4"/>
-    <rect x="128" y="40" width="8" height="40" rx="4"/>
-    <rect x="144" y="15" width="8" height="90" rx="4"/>
-    <rect x="160" y="30" width="8" height="60" rx="4"/>
-    <rect x="176" y="20" width="8" height="80" rx="4"/>
+  <rect width="600" height="375" fill="url(#glow4)"/>
+
+  <!-- Grid overlay -->
+  <g stroke="#ffffff" stroke-width="0.3" opacity="0.04">
+    <line x1="0" y1="75" x2="600" y2="75"/><line x1="0" y1="150" x2="600" y2="150"/>
+    <line x1="0" y1="225" x2="600" y2="225"/><line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="120" y1="0" x2="120" y2="375"/><line x1="240" y1="0" x2="240" y2="375"/>
+    <line x1="360" y1="0" x2="360" y2="375"/><line x1="480" y1="0" x2="480" y2="375"/>
   </g>
-  <!-- Clone/duplicate icon -->
-  <g transform="translate(272,155)" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.3">
-    <rect x="0" y="0" width="16" height="16" rx="2"/>
-    <rect x="6" y="6" width="16" height="16" rx="2"/>
+
+  <!-- Waveform bars (original voice - left) -->
+  <g transform="translate(100,120)" fill="#94a3b8" opacity="0.3">
+    <rect x="0" y="25" width="6" height="50" rx="3"/><rect x="10" y="15" width="6" height="70" rx="3"/>
+    <rect x="20" y="5" width="6" height="90" rx="3"/><rect x="30" y="20" width="6" height="60" rx="3"/>
+    <rect x="40" y="10" width="6" height="80" rx="3"/><rect x="50" y="30" width="6" height="40" rx="3"/>
+    <rect x="60" y="0" width="6" height="100" rx="3"/><rect x="70" y="18" width="6" height="64" rx="3"/>
+    <rect x="80" y="28" width="6" height="44" rx="3"/>
   </g>
-  <!-- Person silhouette -->
-  <g transform="translate(275,250)" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.2">
-    <circle cx="12" cy="6" r="5"/>
-    <path d="M2,22 a10,10 0 0 1 20,0"/>
+
+  <!-- Clone arrow (center) -->
+  <g transform="translate(270,140)" fill="none" stroke="#94a3b8" stroke-width="2" opacity="0.3" stroke-linecap="round">
+    <line x1="0" y1="30" x2="50" y2="30"/>
+    <polyline points="40,22 50,30 40,38"/>
+  </g>
+
+  <!-- Waveform bars (cloned voice - right, slightly different) -->
+  <g transform="translate(380,120)" fill="#0478FF" opacity="0.2">
+    <rect x="0" y="25" width="6" height="50" rx="3"/><rect x="10" y="15" width="6" height="70" rx="3"/>
+    <rect x="20" y="5" width="6" height="90" rx="3"/><rect x="30" y="20" width="6" height="60" rx="3"/>
+    <rect x="40" y="10" width="6" height="80" rx="3"/><rect x="50" y="30" width="6" height="40" rx="3"/>
+    <rect x="60" y="0" width="6" height="100" rx="3"/><rect x="70" y="18" width="6" height="64" rx="3"/>
+    <rect x="80" y="28" width="6" height="44" rx="3"/>
+  </g>
+
+  <!-- DNA/helix pattern (voice fingerprint) -->
+  <g fill="none" stroke="#94a3b8" stroke-width="1" opacity="0.1">
+    <path d="M200 260 Q250 240, 300 260 T400 260" />
+    <path d="M200 280 Q250 300, 300 280 T400 280" />
+    <!-- Cross rungs -->
+    <line x1="220" y1="258" x2="220" y2="282"/><line x1="250" y1="252" x2="250" y2="288"/>
+    <line x1="280" y1="260" x2="280" y2="280"/><line x1="310" y1="252" x2="310" y2="288"/>
+    <line x1="340" y1="258" x2="340" y2="282"/><line x1="370" y1="252" x2="370" y2="288"/>
+  </g>
+
+  <!-- Person silhouettes (original + clone) -->
+  <g fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.2">
+    <!-- Original -->
+    <circle cx="180" cy="315" r="10"/>
+    <path d="M165,345 a15,12 0 0 1 30,0"/>
+    <!-- Clone -->
+    <circle cx="420" cy="315" r="10" stroke="#0478FF"/>
+    <path d="M405,345 a15,12 0 0 1 30,0" stroke="#0478FF"/>
+    <!-- Connection -->
+    <line x1="200" y1="325" x2="400" y2="325" stroke-dasharray="4 4" opacity="0.5"/>
+  </g>
+
+  <!-- Duplicate/copy icon (centered top) -->
+  <g transform="translate(278,60)" fill="none" stroke="#94a3b8" stroke-width="2" opacity="0.25">
+    <rect x="0" y="4" width="24" height="24" rx="3"/>
+    <rect x="8" y="-4" width="24" height="24" rx="3"/>
+  </g>
+
+  <!-- Corner accents -->
+  <g stroke="#94a3b8" stroke-width="1" opacity="0.15">
+    <line x1="20" y1="20" x2="50" y2="20"/><line x1="20" y1="20" x2="20" y2="50"/>
+    <line x1="580" y1="20" x2="550" y2="20"/><line x1="580" y1="20" x2="580" y2="50"/>
+    <line x1="20" y1="355" x2="50" y2="355"/><line x1="20" y1="355" x2="20" y2="325"/>
+    <line x1="580" y1="355" x2="550" y2="355"/><line x1="580" y1="355" x2="580" y2="325"/>
   </g>
 </svg>

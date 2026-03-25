@@ -4,22 +4,69 @@
       <stop offset="0%" stop-color="#7f1d1d"/>
       <stop offset="100%" stop-color="#991b1b"/>
     </linearGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.45" r="0.4">
+      <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
   </defs>
   <rect width="600" height="375" fill="url(#bg2)"/>
-  <!-- Video/play icon -->
-  <g transform="translate(265,150)" fill="none" stroke="#fca5a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-    <rect x="2" y="2" width="20" height="15" rx="2" ry="2"/>
-    <polygon points="10,7 16,11.5 10,16"/>
-    <line x1="2" y1="20" x2="22" y2="20"/>
+  <rect width="600" height="375" fill="url(#glow2)"/>
+
+  <!-- Grid overlay -->
+  <g stroke="#ffffff" stroke-width="0.3" opacity="0.04">
+    <line x1="0" y1="75" x2="600" y2="75"/><line x1="0" y1="150" x2="600" y2="150"/>
+    <line x1="0" y1="225" x2="600" y2="225"/><line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="120" y1="0" x2="120" y2="375"/><line x1="240" y1="0" x2="240" y2="375"/>
+    <line x1="360" y1="0" x2="360" y2="375"/><line x1="480" y1="0" x2="480" y2="375"/>
   </g>
-  <!-- Globe -->
-  <g transform="translate(266,148)" fill="none" stroke="#fca5a5" stroke-width="1.5" opacity="0.25">
-    <circle cx="12" cy="12" r="40"/>
-    <ellipse cx="12" cy="12" rx="16" ry="40"/>
-    <line x1="-28" y1="12" x2="52" y2="12"/>
+
+  <!-- Globe rings -->
+  <g fill="none" stroke="#fca5a5" stroke-width="1" opacity="0.12">
+    <circle cx="300" cy="165" r="60"/>
+    <ellipse cx="300" cy="165" rx="30" ry="60"/>
+    <ellipse cx="300" cy="165" rx="50" ry="60"/>
+    <line x1="240" y1="165" x2="360" y2="165"/>
+    <line x1="250" y1="135" x2="350" y2="135"/>
+    <line x1="250" y1="195" x2="350" y2="195"/>
   </g>
-  <!-- Typography hint -->
-  <g transform="translate(225,220)" opacity="0.25">
-    <text font-family="IBM Plex Sans, sans-serif" font-size="16" fill="#fca5a5" letter-spacing="0.1em">A ア 中 한</text>
+  <g fill="none" stroke="#fca5a5" stroke-width="0.8" opacity="0.08">
+    <circle cx="300" cy="165" r="90"/>
+    <circle cx="300" cy="165" r="120"/>
+  </g>
+
+  <!-- Video player frame (centered) -->
+  <g transform="translate(245,120)">
+    <rect x="0" y="0" width="110" height="75" rx="4" fill="none" stroke="#fca5a5" stroke-width="2" opacity="0.5"/>
+    <!-- Play button -->
+    <polygon points="48,30 48,50 65,40" fill="#fca5a5" opacity="0.4"/>
+    <!-- Progress bar -->
+    <rect x="8" y="65" width="94" height="3" rx="1.5" fill="#fca5a5" opacity="0.15"/>
+    <rect x="8" y="65" width="35" height="3" rx="1.5" fill="#fca5a5" opacity="0.35"/>
+  </g>
+
+  <!-- Language characters scattered -->
+  <g opacity="0.2" fill="#fca5a5" font-family="IBM Plex Sans, sans-serif">
+    <text x="120" y="130" font-size="22" opacity="0.6">En</text>
+    <text x="430" y="140" font-size="20" opacity="0.5">中</text>
+    <text x="150" y="250" font-size="18" opacity="0.4">ア</text>
+    <text x="420" y="240" font-size="20" opacity="0.5">한</text>
+    <text x="180" y="310" font-size="16" opacity="0.3">Es</text>
+    <text x="390" y="300" font-size="16" opacity="0.3">Fr</text>
+  </g>
+
+  <!-- Connection arrows between languages -->
+  <g fill="none" stroke="#fca5a5" stroke-width="1" opacity="0.1" stroke-dasharray="4 4">
+    <line x1="150" y1="130" x2="245" y2="155"/>
+    <line x1="355" y1="155" x2="430" y2="140"/>
+    <line x1="170" y1="245" x2="245" y2="185"/>
+    <line x1="355" y1="185" x2="420" y2="235"/>
+  </g>
+
+  <!-- Corner accents -->
+  <g stroke="#fca5a5" stroke-width="1" opacity="0.15">
+    <line x1="20" y1="20" x2="50" y2="20"/><line x1="20" y1="20" x2="20" y2="50"/>
+    <line x1="580" y1="20" x2="550" y2="20"/><line x1="580" y1="20" x2="580" y2="50"/>
+    <line x1="20" y1="355" x2="50" y2="355"/><line x1="20" y1="355" x2="20" y2="325"/>
+    <line x1="580" y1="355" x2="550" y2="355"/><line x1="580" y1="355" x2="580" y2="325"/>
   </g>
 </svg>

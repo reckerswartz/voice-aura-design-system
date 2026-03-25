@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Aura — Transitions & Interactions Showcase</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
+
+  <!-- Google Fonts (IBM Plex family) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Compiled Design System CSS -->
+  <link rel="stylesheet" href="css/voice-aura.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: visible !important; }
+
+    /* Showcase page layout */
+    .showcase-header {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      background: #FAFAFA;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .showcase-header h1 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1A1919;
+      margin: 0 0 0.75rem;
+    }
+    .showcase-header p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1rem;
+      color: #6B7280;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .showcase-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .showcase-section:last-child {
+      border-bottom: none;
+    }
+    .showcase-section__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0478FF;
+      background: rgba(4, 120, 255, 0.08);
+      border: 1px solid rgba(4, 120, 255, 0.18);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .showcase-section__title {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1A1919;
+      margin: 0 0 0.5rem;
+    }
+    .showcase-section__desc {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: #6B7280;
+      margin: 0 0 2rem;
+      line-height: 1.6;
+    }
+
+    /* Grid helpers */
+    .showcase-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .showcase-grid--2 { grid-template-columns: 1fr 1fr; }
+    .showcase-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .showcase-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 768px) {
+      .showcase-grid--2,
+      .showcase-grid--3,
+      .showcase-grid--4 { grid-template-columns: 1fr; }
+    }
+
+    /* Demo card wrapper */
+    .demo-card {
+      background: #FAFAFA;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .demo-card__label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    /* Button row helper */
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Transition state indicator */
+    .state-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      color: #9CA3AF;
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* Hover instruction */
+    .hover-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.75rem;
+      color: #9CA3AF;
+      margin-top: 0.5rem;
+    }
+    .hover-hint::before {
+      content: "↗";
+      font-size: 0.875rem;
+    }
+
+    /* Dark demo area */
+    .demo-dark {
+      background: #1A1919;
+      border-color: rgba(255,255,255,0.08);
+    }
+    .demo-dark .demo-card__label { color: rgba(255,255,255,0.4); }
+
+    /* Feature visual panel demo */
+    .feature-visual-demo {
+      background: linear-gradient(145deg, #F3F4F6 0%, #E5E7EB 100%);
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* App icon logo */
+    .va-app-icon {
+      width: 80px;
+      height: 80px;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .va-app-icon:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .va-app-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* Navbar demo container */
+    .navbar-demo-wrap {
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    /* Override for demo navbar to not be sticky */
+    .navbar-demo-wrap .va-navbar {
+      position: relative;
+    }
+
+    /* Scrolled navbar demo */
+    .navbar-scrolled-demo {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+      border-bottom-color: transparent;
+    }
+
+    /* Animation demo */
+    .anim-demo-box {
+      width: 60px;
+      height: 60px;
+      background: #0478FF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .anim-row {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .anim-item {
+      text-align: center;
+    }
+    .anim-item .state-label {
+      margin-top: 0.5rem;
+    }
+
+    /* Transition property showcase */
+    .transition-demo {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .transition-box {
+      flex: 1;
+      min-width: 140px;
+      padding: 1.5rem 1rem;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .transition-box:hover {
+      border-color: #0478FF;
+    }
+    .transition-box__duration {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1A1919;
+      margin-bottom: 0.25rem;
+    }
+    .transition-box__name {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.75rem;
+      color: #9CA3AF;
+    }
+
+    /* Section blend demo */
+    .blend-demo {
+      display: flex;
+      flex-direction: column;
+    }
+    .blend-demo__section {
+      padding: 2rem;
+      text-align: center;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.875rem;
+      color: #6B7280;
+    }
+    .blend-demo__section--hero {
+      background: #FFFFFF;
+      border-radius: 12px 12px 0 0;
+      border: 1px solid #E5E7EB;
+      border-bottom: none;
+    }
+    .blend-demo__section--trust {
+      background: linear-gradient(to bottom, #FFFFFF, #F9FAFB);
+      border-left: 1px solid #E5E7EB;
+      border-right: 1px solid #E5E7EB;
+    }
+    .blend-demo__section--feature {
+      background: linear-gradient(to bottom, #F9FAFB, #F3F4F6);
+      border-radius: 0 0 12px 12px;
+      border: 1px solid #E5E7EB;
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!-- HEADER                                                                 -->
+<!-- ===================================================================== -->
+<div class="showcase-header">
+  <h1>Transitions & Interactions</h1>
+  <p>A pixel-perfect reference for all transition designs, hover states, button styles, and visual effects in the Voice Aura design system.</p>
+</div>
+
+<!-- ===================================================================== -->
+<!-- 1. BUTTON TRANSITIONS                                                  -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">01</span>
+  <h2 class="showcase-section__title">Button Transitions</h2>
+  <p class="showcase-section__desc">All button variants with hover, active, focus, and disabled states. Transition: <code>color, background-color, border-color, box-shadow, transform 0.2s ease-in-out</code>.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <!-- Primary buttons -->
+    <div class="demo-card">
+      <div class="demo-card__label">Primary & Accent Variants</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+          Open Studio
+        </button>
+        <button class="va-btn va-btn--accent">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M15 3v6h6"/></svg>
+          Get API Key
+        </button>
+      </div>
+      <div class="hover-hint">Hover for lighten/darken + translateY(-1px)</div>
+    </div>
+
+    <!-- Secondary & Ghost -->
+    <div class="demo-card">
+      <div class="demo-card__label">Secondary, Ghost & Link Variants</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--secondary">
+          <svg class="va-btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          API Docs
+        </button>
+        <button class="va-btn va-btn--ghost">Log in <span class="va-btn__arrow">→</span></button>
+        <a class="va-btn va-btn--link" href="#buttons">Learn more <span class="va-btn__arrow">→</span></a>
+      </div>
+      <div class="hover-hint">Hover for bg change + arrow translateX(3px)</div>
+    </div>
+
+    <!-- Sizes -->
+    <div class="demo-card">
+      <div class="demo-card__label">Size Variants</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary va-btn--lg">Large Button</button>
+        <button class="va-btn va-btn--primary">Default</button>
+        <button class="va-btn va-btn--primary va-btn--sm">Small</button>
+      </div>
+    </div>
+
+    <!-- Disabled & Pill -->
+    <div class="demo-card">
+      <div class="demo-card__label">States & Modifiers</div>
+      <div class="btn-row">
+        <button class="va-btn va-btn--primary va-btn--pill">Pill Shape</button>
+        <button class="va-btn va-btn--primary" disabled>Disabled</button>
+        <button class="va-btn va-btn--accent va-btn--sm va-btn--pill">Compact Pill</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 2. NAVBAR TRANSITIONS                                                  -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">02</span>
+  <h2 class="showcase-section__title">Navbar Transitions</h2>
+  <p class="showcase-section__desc">Nav link hover underline animation (width: 0 → 100%, 0.2s), brand opacity transition, and scrolled-state frosted glass effect.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <!-- Default navbar -->
+    <div>
+      <div class="demo-card__label">Default State</div>
+      <div class="navbar-demo-wrap">
+        <nav class="va-navbar" style="height: auto; padding: 0.75rem 1.5rem;">
+          <a href="#" class="va-navbar-brand" style="pointer-events: none;">
+            <span class="va-navbar-brand__logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <circle cx="6" cy="16" r="3.5" fill="#0478FF"/>
+                <path d="M14 8 A10 10 0 0 1 14 24" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M19 5 A14 14 0 0 1 19 27" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+                <path d="M24 2 A18 18 0 0 1 24 30" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+            </span>
+            <span class="va-navbar-brand__text">VOICE AURA</span>
+          </a>
+          <div style="display: flex; gap: 2rem; align-items: center;">
+            <a href="#" class="va-navbar-link">Products</a>
+            <a href="#" class="va-navbar-link">Integrations</a>
+            <a href="#" class="va-navbar-link">API</a>
+            <a href="#" class="va-navbar-link va-navbar-link--active">Pricing</a>
+          </div>
+          <div class="va-navbar-actions">
+            <a href="#" class="va-navbar-btn--ghost">Log in <span class="va-btn__arrow">→</span></a>
+            <a href="#" class="va-navbar-btn--primary">Sign up <span class="va-btn__arrow">→</span></a>
+          </div>
+        </nav>
+      </div>
+      <div class="hover-hint">Hover nav links for blue underline animation</div>
+    </div>
+
+    <!-- Scrolled navbar -->
+    <div>
+      <div class="demo-card__label">Scrolled State (frosted glass)</div>
+      <div class="navbar-demo-wrap">
+        <nav class="va-navbar navbar-scrolled-demo" style="height: auto; padding: 0.75rem 1.5rem;">
+          <a href="#" class="va-navbar-brand" style="pointer-events: none;">
+            <span class="va-navbar-brand__logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <circle cx="6" cy="16" r="3.5" fill="#0478FF"/>
+                <path d="M14 8 A10 10 0 0 1 14 24" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M19 5 A14 14 0 0 1 19 27" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+                <path d="M24 2 A18 18 0 0 1 24 30" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+              </svg>
+            </span>
+            <span class="va-navbar-brand__text">VOICE AURA</span>
+          </a>
+          <div style="display: flex; gap: 2rem; align-items: center;">
+            <a href="#" class="va-navbar-link">Products</a>
+            <a href="#" class="va-navbar-link">Integrations</a>
+            <a href="#" class="va-navbar-link">API</a>
+            <a href="#" class="va-navbar-link va-navbar-link--active">Pricing</a>
+          </div>
+          <div class="va-navbar-actions">
+            <a href="#" class="va-navbar-btn--ghost">Log in <span class="va-btn__arrow">→</span></a>
+            <a href="#" class="va-navbar-btn--primary">Sign up <span class="va-btn__arrow">→</span></a>
+          </div>
+        </nav>
+      </div>
+      <div class="state-label">backdrop-filter: blur(12px) + shadow</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 3. CARD HOVER TRANSITIONS                                              -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">03</span>
+  <h2 class="showcase-section__title">Card Hover Transitions</h2>
+  <p class="showcase-section__desc">Blog cards lift + image scale on hover. Pricing cards darken border + shadow on hover. Feature link arrows nudge on hover.</p>
+
+  <div class="showcase-grid showcase-grid--3">
+    <!-- Pricing card -->
+    <div>
+      <div class="demo-card__label">Pricing Card Hover</div>
+      <div class="va-pricing-card" style="max-width: 320px;">
+        <div class="va-crosshairs"><div class="va-crosshairs__marks"></div></div>
+        <span class="va-pricing-card__badge va-pricing-card__badge--free">Free</span>
+        <div class="va-pricing-card__price">$0<span> /Month</span></div>
+        <p class="va-pricing-card__description">Perfect for trying out voice generation with basic customization.</p>
+        <a class="va-pricing-card__cta" href="#">Get Started Free</a>
+        <ul class="va-pricing-card__features">
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Access to core Text-to-Speech
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Limited monthly characters
+          </li>
+        </ul>
+        <div class="va-crosshairs"><div class="va-crosshairs__marks-bottom"></div></div>
+      </div>
+      <div class="hover-hint">Hover for border-darken + shadow</div>
+    </div>
+
+    <!-- Featured pricing card -->
+    <div>
+      <div class="demo-card__label">Featured Pricing Card</div>
+      <div class="va-pricing-card va-pricing-card--featured" style="max-width: 320px;">
+        <span class="va-pricing-card__badge">Creator</span>
+        <div class="va-pricing-card__price">$29<span> /Month</span></div>
+        <p class="va-pricing-card__description">Ideal for content creators & professionals.</p>
+        <a class="va-pricing-card__cta" href="#">Upgrade to Creator</a>
+        <ul class="va-pricing-card__features">
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Everything in Free
+          </li>
+          <li class="va-pricing-card__feature">
+            <svg class="va-pricing-card__feature-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            HD audio exports
+          </li>
+        </ul>
+      </div>
+      <div class="state-label">Featured: scale(1.02) + dark border + shadow-lg</div>
+    </div>
+
+    <!-- Blog card -->
+    <div>
+      <div class="demo-card__label">Blog Card Hover</div>
+      <article class="va-blog-card" style="max-width: 320px;">
+        <div class="va-blog-card__image">
+          <img src="../assets/images/blog-voice-agents.svg" alt="Voice agent microphone setup">
+        </div>
+        <div class="va-blog-card__content">
+          <div class="va-blog-card__meta">
+            <span class="va-blog-card__category">VOICE AGENTS</span>
+            <span>2024-12-08</span>
+            <span>3 min</span>
+          </div>
+          <h3 class="va-blog-card__title">Why Voice Agent Prompts Require a Different Approach</h3>
+          <p class="va-blog-card__excerpt">Scripting voice agents requires a different mindset than crafting prompts for text-based LLMs.</p>
+          <a class="va-blog-card__link" href="#">Read more</a>
+        </div>
+      </article>
+      <div class="hover-hint">Hover for lift(-2px) + image scale(1.03)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 4. INTERACTION UTILITIES                                               -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">04</span>
+  <h2 class="showcase-section__title">Interaction Utilities</h2>
+  <p class="showcase-section__desc">Reusable hover classes: <code>.va-hover-lift</code>, <code>.va-hover-scale</code>, <code>.va-hover-glow</code>, <code>.va-hover-arrow</code>.</p>
+
+  <div class="showcase-grid showcase-grid--4">
+    <div class="demo-card va-hover-lift" style="cursor: pointer;">
+      <div class="demo-card__label">va-hover-lift</div>
+      <div style="text-align: center; padding: 1rem 0;">
+        <div class="anim-demo-box" style="margin: 0 auto;">↑</div>
+      </div>
+      <div class="state-label">translateY(-4px) + shadow-lg</div>
+    </div>
+
+    <div class="demo-card va-hover-scale" style="cursor: pointer;">
+      <div class="demo-card__label">va-hover-scale</div>
+      <div style="text-align: center; padding: 1rem 0;">
+        <div class="anim-demo-box" style="margin: 0 auto;">⤢</div>
+      </div>
+      <div class="state-label">scale(1.03)</div>
+    </div>
+
+    <div class="demo-card va-hover-glow" style="cursor: pointer;">
+      <div class="demo-card__label">va-hover-glow</div>
+      <div style="text-align: center; padding: 1rem 0;">
+        <div class="anim-demo-box" style="margin: 0 auto;">✦</div>
+      </div>
+      <div class="state-label">box-shadow: 0 0 0 4px blue/12%</div>
+    </div>
+
+    <div class="demo-card" style="cursor: pointer;">
+      <div class="demo-card__label">va-hover-arrow</div>
+      <div style="padding: 1rem 0;">
+        <a class="va-link-arrow va-hover-arrow" href="#">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="state-label">arrow translateX(3px) + gap grow</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5. TRANSITION PRESETS                                                  -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">05</span>
+  <h2 class="showcase-section__title">Transition Presets</h2>
+  <p class="showcase-section__desc">Standard easing presets from the design system tokens.</p>
+
+  <div class="transition-demo">
+    <div class="transition-box va-transition-fast">
+      <div class="transition-box__duration">120ms</div>
+      <div class="transition-box__name">va-transition-fast</div>
+    </div>
+    <div class="transition-box va-transition">
+      <div class="transition-box__duration">200ms</div>
+      <div class="transition-box__name">va-transition (base)</div>
+    </div>
+    <div class="transition-box va-transition-slow">
+      <div class="transition-box__duration">350ms</div>
+      <div class="transition-box__name">va-transition-slow</div>
+    </div>
+    <div class="transition-box va-transition-bounce">
+      <div class="transition-box__duration">400ms</div>
+      <div class="transition-box__name">va-transition-bounce</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 6. FEATURE PANEL — APP ICON LOGO                                       -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">06</span>
+  <h2 class="showcase-section__title">Feature Visual Panel</h2>
+  <p class="showcase-section__desc">The reference design (behance-05) shows a prominent Voice Aura "app icon" logo centered in the feature visual panel. Demonstrates the light and dark feature panel variants.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <!-- Light feature panel -->
+    <div>
+      <div class="demo-card__label">Light Panel (va-feature-visual--light)</div>
+      <div class="feature-visual-demo">
+        <div class="va-app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 32 32" fill="none">
+            <circle cx="6" cy="16" r="3.5" fill="#0478FF"/>
+            <path d="M14 8 A10 10 0 0 1 14 24" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M19 5 A14 14 0 0 1 19 27" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <path d="M24 2 A18 18 0 0 1 24 30" stroke="#1A1919" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hover-hint">Hover icon for scale(1.05) + elevated shadow</div>
+    </div>
+
+    <!-- Dark feature panel -->
+    <div>
+      <div class="demo-card__label">Dark Panel (va-feature-visual--dark)</div>
+      <div class="feature-visual-demo" style="background: linear-gradient(145deg, #1A1919 0%, #111111 100%); border-color: rgba(255,255,255,0.06);">
+        <!-- VOICE AURA watermark -->
+        <div style="position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'IBM Plex Serif', serif; font-size: 0.875rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.08); text-transform: uppercase;">VOICE AURA</div>
+        <!-- Crosshair corners -->
+        <div style="position: absolute; top: 0.75rem; left: 0.75rem; color: rgba(255,255,255,0.12); font-size: 1rem; font-weight: 300;">+</div>
+        <div style="position: absolute; top: 0.75rem; right: 0.75rem; color: rgba(255,255,255,0.12); font-size: 1rem; font-weight: 300;">+</div>
+        <div style="position: absolute; bottom: 0.75rem; left: 0.75rem; color: rgba(255,255,255,0.12); font-size: 1rem; font-weight: 300;">+</div>
+        <div style="position: absolute; bottom: 0.75rem; right: 0.75rem; color: rgba(255,255,255,0.12); font-size: 1rem; font-weight: 300;">+</div>
+        <!-- Voice Agent Card preview -->
+        <div style="background: #1A1919; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; text-align: center; width: 200px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); margin: 0 auto 0.75rem; overflow: hidden;">
+            <img src="../assets/images/agent-avatar.svg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="color: #FFFFFF; font-family: 'IBM Plex Serif', serif; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem;">Yang lu wu</div>
+          <div style="color: rgba(255,255,255,0.5); font-family: 'IBM Plex Sans', sans-serif; font-size: 0.75rem;">Customer support agent</div>
+        </div>
+      </div>
+      <div class="state-label">Dark panel with watermark + crosshairs + card</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 7. SECTION BLEND TRANSITIONS                                           -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">07</span>
+  <h2 class="showcase-section__title">Section Blend Transitions</h2>
+  <p class="showcase-section__desc">Smooth gradient blends between page sections for seamless visual flow. Uses <code>va-section-blend--bottom</code> and background gradient utilities.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <div>
+      <div class="demo-card__label">Section Flow (Hero → Trust → Features)</div>
+      <div class="blend-demo">
+        <div class="blend-demo__section blend-demo__section--hero">Hero Section<br><small style="color: #9CA3AF;">background: #FFFFFF</small></div>
+        <div class="blend-demo__section blend-demo__section--trust">Trust Bar<br><small style="color: #9CA3AF;">gradient: white → #F9FAFB</small></div>
+        <div class="blend-demo__section blend-demo__section--feature">Feature Section<br><small style="color: #9CA3AF;">gradient: #F9FAFB → #F3F4F6</small></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="demo-card__label">Background Utilities Available</div>
+      <div class="demo-card" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.8125rem; line-height: 2;">
+        <div><code>.va-bg-white</code> — Pure white</div>
+        <div><code>.va-bg-alt</code> — Light grey (#F9FAFB)</div>
+        <div><code>.va-bg-dark</code> — Near-black (#1A1919)</div>
+        <div><code>.va-bg-gradient-subtle</code> — White → grey</div>
+        <div><code>.va-bg-gradient-dark</code> — Dark + blue tint</div>
+        <div><code>.va-section-blend--top</code> — Top fade</div>
+        <div><code>.va-section-blend--bottom</code> — Bottom fade</div>
+        <div><code>.va-section-separator</code> — 1px line</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 8. ENTRANCE ANIMATIONS                                                 -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">08</span>
+  <h2 class="showcase-section__title">Entrance Animations</h2>
+  <p class="showcase-section__desc">Keyframe-based entrance animations. Applied via <code>.va-animate-*</code> classes. All respect <code>prefers-reduced-motion</code>.</p>
+
+  <div class="anim-row">
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-fade-up" style="animation-duration: 0.8s; animation-iteration-count: infinite; animation-direction: alternate;">↑</div>
+      <div class="state-label">fade-up</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-fade-down" style="animation-duration: 0.8s; animation-iteration-count: infinite; animation-direction: alternate; background: #334155;">↓</div>
+      <div class="state-label">fade-down</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-fade-left" style="animation-duration: 0.8s; animation-iteration-count: infinite; animation-direction: alternate; background: #7f1d1d;">←</div>
+      <div class="state-label">fade-left</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-fade-right" style="animation-duration: 0.8s; animation-iteration-count: infinite; animation-direction: alternate; background: #0c4a6e;">→</div>
+      <div class="state-label">fade-right</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-scale-in" style="animation-duration: 0.8s; animation-iteration-count: infinite; animation-direction: alternate; background: #1e293b;">⤢</div>
+      <div class="state-label">scale-in</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-float" style="background: #0478FF;">~</div>
+      <div class="state-label">float (loop)</div>
+    </div>
+    <div class="anim-item">
+      <div class="anim-demo-box va-animate-pulse" style="background: #0478FF;">◉</div>
+      <div class="state-label">pulse (loop)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 9. PATTERN & BACKGROUND OVERLAYS                                       -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">09</span>
+  <h2 class="showcase-section__title">Pattern & Background Overlays</h2>
+  <p class="showcase-section__desc">Decorative pattern overlays with CSS custom property control via <code>--va-pattern-opacity</code>.</p>
+
+  <div class="showcase-grid showcase-grid--3">
+    <div style="border-radius: 12px; overflow: hidden; min-height: 200px; position: relative;" class="va-pattern-halftone va-pattern-halftone--bottom va-bg-alt">
+      <div style="position: relative; z-index: 2; padding: 1.5rem;">
+        <div class="demo-card__label">Halftone (bottom)</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: #9CA3AF; margin-top: 6rem;">va-pattern-halftone--bottom</div>
+      </div>
+    </div>
+
+    <div style="border-radius: 12px; overflow: hidden; min-height: 200px;" class="va-bg-dots">
+      <div style="position: relative; z-index: 2; padding: 1.5rem;">
+        <div class="demo-card__label">Dot Grid</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: #9CA3AF; margin-top: 6rem;">va-bg-dots</div>
+      </div>
+    </div>
+
+    <div style="border-radius: 12px; overflow: hidden; min-height: 200px; background: #1A1919;" class="va-bg-glow va-bg-glow--blue">
+      <div style="position: relative; z-index: 2; padding: 1.5rem;">
+        <div class="demo-card__label" style="color: rgba(255,255,255,0.4);">Radial Glow (blue)</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: rgba(255,255,255,0.3); margin-top: 6rem;">va-bg-glow--blue</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 10. FORM INPUT TRANSITIONS                                             -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">10</span>
+  <h2 class="showcase-section__title">Form Input Transitions</h2>
+  <p class="showcase-section__desc">Input focus transitions use <code>border-color 0.2s</code> + <code>box-shadow 0.2s</code>. Focus ring: <code>0 0 0 0.2rem rgba(#0478FF, 0.25)</code>. Hover darkens border.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <div class="demo-card">
+      <div class="demo-card__label">Text Input States</div>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label">Default</label>
+          <input class="va-form-input" type="text" placeholder="Click to see focus transition">
+        </div>
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label">With value</label>
+          <input class="va-form-input" type="text" value="john@example.com">
+        </div>
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label va-form-label--required">Required field</label>
+          <input class="va-form-input" type="text" placeholder="Required input" required>
+        </div>
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label">Disabled</label>
+          <input class="va-form-input" type="text" placeholder="Cannot edit" disabled>
+        </div>
+      </div>
+      <div class="hover-hint">Click inputs for blue focus ring + border transition</div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card__label">Select, Textarea & Checkbox</div>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label">Select</label>
+          <select class="va-form-select">
+            <option>YouTube</option>
+            <option>Narration</option>
+            <option>Advertisement</option>
+            <option>Podcast</option>
+          </select>
+        </div>
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-label">Textarea</label>
+          <textarea class="va-form-textarea" rows="3" placeholder="Type your text here..."></textarea>
+        </div>
+        <div class="va-form-group" style="margin-bottom: 0;">
+          <label class="va-form-checkbox">
+            <input type="checkbox" class="va-form-checkbox__input" checked>
+            <span class="va-form-checkbox__label">Send me tips, updates and offers</span>
+          </label>
+        </div>
+      </div>
+      <div class="hover-hint">All controls share consistent focus transitions</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 11. GLASSMORPHISM & GLASS EFFECTS                                      -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">11</span>
+  <h2 class="showcase-section__title">Glassmorphism Effects</h2>
+  <p class="showcase-section__desc">The <code>.va-glass</code> utility creates frosted-glass panels. Uses <code>backdrop-filter: blur(12px)</code> with semi-transparent background and subtle border.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <!-- Glass on light background -->
+    <div>
+      <div class="demo-card__label">Glass on Light Background</div>
+      <div style="position: relative; border-radius: 12px; overflow: hidden; min-height: 240px; background: linear-gradient(135deg, #E0E7FF 0%, #DBEAFE 50%, #EDE9FE 100%); display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="va-glass" style="padding: 1.5rem 2rem; max-width: 300px; text-align: center;">
+          <div style="font-family: 'IBM Plex Serif', serif; font-size: 1.125rem; font-weight: 600; color: #1A1919; margin-bottom: 0.5rem;">Glass Card</div>
+          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #6B7280; line-height: 1.6;">backdrop-filter: blur(12px)<br>background: rgba(255,255,255,0.7)<br>border: 1px solid rgba(255,255,255,0.3)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glass on dark background -->
+    <div>
+      <div class="demo-card__label">Scrolled Navbar (Glass Effect)</div>
+      <div style="position: relative; border-radius: 12px; overflow: hidden; min-height: 240px; background: linear-gradient(145deg, #1A1919 0%, #374151 100%); display: flex; flex-direction: column; padding: 0;">
+        <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="10" width="3" height="12" rx="1.5" fill="#1A1919"/>
+              <rect x="10" y="6" width="3" height="20" rx="1.5" fill="#1A1919"/>
+              <rect x="16" y="3" width="3" height="26" rx="1.5" fill="#1A1919"/>
+              <rect x="22" y="8" width="3" height="16" rx="1.5" fill="#1A1919"/>
+            </svg>
+            <span style="font-family: 'IBM Plex Serif', serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.08em; color: #1A1919;">VOICE AURA</span>
+          </div>
+          <div style="display: flex; gap: 1.5rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #6B7280;">
+            <span>Products</span><span>API</span><span style="color: #1A1919; font-weight: 600;">Pricing</span>
+          </div>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: rgba(255,255,255,0.3); text-align: center;">Page content scrolls behind<br>the frosted navbar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 12. TRUST BAR TRANSITIONS                                              -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">12</span>
+  <h2 class="showcase-section__title">Trust Bar Logo Transitions</h2>
+  <p class="showcase-section__desc">Trust bar logos display in grayscale and transition to full color on hover. Uses <code>filter: grayscale(100%) → grayscale(0%)</code> + <code>opacity 0.5 → 1</code> at 0.3s.</p>
+
+  <div class="demo-card">
+    <div class="demo-card__label">Logo Hover Effect</div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; padding: 1.5rem 0; flex-wrap: wrap;">
+      <div style="filter: grayscale(100%); opacity: 0.5; transition: filter 0.3s ease, opacity 0.3s ease; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 700; color: #1A1919;" onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.5'">AIRFRANCE <span style="color: #0478FF;">✈</span></div>
+      <div style="filter: grayscale(100%); opacity: 0.5; transition: filter 0.3s ease, opacity 0.3s ease; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: #1A1919;" onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.5'">✓ VERTIV.</div>
+      <div style="filter: grayscale(100%); opacity: 0.5; transition: filter 0.3s ease, opacity 0.3s ease; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 800; color: #1A1919;" onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.5'">Honeywell</div>
+      <div style="filter: grayscale(100%); opacity: 0.5; transition: filter 0.3s ease, opacity 0.3s ease; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: #1A1919;" onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.5'">splunk&gt;</div>
+    </div>
+    <div class="hover-hint">Hover logos for grayscale→color + opacity transition</div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 13. FOOTER LINK TRANSITIONS                                            -->
+<!-- ===================================================================== -->
+<section class="showcase-section">
+  <span class="showcase-section__label">13</span>
+  <h2 class="showcase-section__title">Footer Link Transitions</h2>
+  <p class="showcase-section__desc">Footer links use <code>color 0.2s</code> transition + a subtle underline that grows from 0 → 100% width on hover. Social icons transition <code>background-color</code> to blue on hover.</p>
+
+  <div class="showcase-grid showcase-grid--2">
+    <!-- Footer links demo -->
+    <div class="demo-card demo-dark" style="border-radius: 12px; padding: 2rem;">
+      <div class="demo-card__label">Footer Link Columns</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;">Products</div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="#" class="va-footer__link">Text to Speech</a>
+            <a href="#" class="va-footer__link">AI Dubbing</a>
+            <a href="#" class="va-footer__link">AI Voice Agent</a>
+            <a href="#" class="va-footer__link">Voice Cloning</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;">How to Create</div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="#" class="va-footer__link">E-Learning</a>
+            <a href="#" class="va-footer__link">Advertisements</a>
+            <a href="#" class="va-footer__link">Explainer Videos</a>
+            <a href="#" class="va-footer__link">Product Demos</a>
+          </div>
+        </div>
+      </div>
+      <div class="hover-hint" style="color: rgba(255,255,255,0.3);">Hover links for color + underline transition</div>
+    </div>
+
+    <!-- Social icons demo -->
+    <div class="demo-card demo-dark" style="border-radius: 12px; padding: 2rem;">
+      <div class="demo-card__label">Social Icon Transitions</div>
+      <div style="display: flex; gap: 1rem; margin: 2rem 0;">
+        <a href="#" class="va-footer__social-link" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); transition: background-color 0.2s ease, color 0.2s ease; text-decoration: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+        <a href="#" class="va-footer__social-link" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); transition: background-color 0.2s ease, color 0.2s ease; text-decoration: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="va-footer__social-link" style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); transition: background-color 0.2s ease, color 0.2s ease; text-decoration: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: rgba(255,255,255,0.3); line-height: 1.8;">
+        Default: bg rgba(white, 0.08) + color rgba(white, 0.6)<br>
+        Hover: bg #0478FF + color #FFFFFF<br>
+        Active: bg darken(#0478FF, 8%) + scale(0.95)
+      </div>
+      <div class="hover-hint" style="color: rgba(255,255,255,0.3);">Hover icons for blue background transition</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FOOTER                                                                 -->
+<!-- ===================================================================== -->
+<footer style="text-align: center; padding: 2rem; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #9CA3AF; border-top: 1px solid #E5E7EB;">
+  Voice Aura Design System — Transitions & Interactions Showcase · 13 Sections
+</footer>
+
+</body>
+</html>

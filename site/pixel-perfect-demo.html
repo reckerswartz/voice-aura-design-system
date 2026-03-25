@@ -82,7 +82,7 @@
 <!-- HERO SECTION                                                          -->
 <!-- ===================================================================== -->
 <main id="main">
-<section class="va-hero va-bg-preset-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-hero-adapt va-section-morph va-mobile-desktop-morph">
+<section class="va-hero va-bg-preset-hero va-pattern-halftone va-pattern-halftone--bottom va-pattern-waveform-bg va-hero-adapt va-section-morph va-mobile-desktop-morph" style="--va-pattern-opacity: 1.15;">
 
   <!-- Floating decorative elements (reference: behance-04 — edges of hero) -->
   <div class="va-hero__float va-hero__float--left va-hero__float--sm va-animate-float" aria-hidden="true">
@@ -211,46 +211,58 @@
         </div>
       </div>
 
-      <!-- Visual: Voice Agent Card -->
-      <div class="va-feature-visual va-feature-visual--light va-bg-brand-watermark va-scroll-fade-right va-responsive-fade-right">
-        <span class="va-bg-brand-watermark__text" aria-hidden="true">VOICE AURA</span>
-        <div class="va-agent-card va-agent-card--crosshairs">
-          <div class="va-agent-card__corners"></div>
-          <div class="va-agent-card__corners-bottom"></div>
-          <!-- Language tabs -->
-          <div class="va-agent-card__languages" role="tablist">
-            <button class="va-agent-card__lang va-agent-card__lang--active" type="button" role="tab" aria-selected="true">
-              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
-              English
-            </button>
-            <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
-              Chinese
-            </button>
-            <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
-              <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
-              Japanese
-            </button>
+      <!-- Visual: Split Panel (behance-05 reference) -->
+      <div class="va-scroll-fade-right va-responsive-fade-right" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; min-width: 0;">
+        <!-- Left: Light panel with app icon + halftone dots -->
+        <div class="va-feature-visual va-feature-visual--light va-pattern-halftone va-pattern-halftone--bottom" style="--va-pattern-opacity: 0.12; min-height: 380px;">
+          <div style="width: 96px; height: 96px; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease, box-shadow 0.3s ease; z-index: 2;" class="va-hover-lift">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="10" width="3" height="12" rx="1.5" fill="#1A1919"/>
+              <rect x="10" y="6" width="3" height="20" rx="1.5" fill="#1A1919"/>
+              <rect x="16" y="3" width="3" height="26" rx="1.5" fill="#1A1919"/>
+              <rect x="22" y="8" width="3" height="16" rx="1.5" fill="#1A1919"/>
+            </svg>
           </div>
-          <!-- Avatar -->
-          <div class="va-agent-card__avatar">
-            <div class="va-agent-card__avatar__placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <!-- Right: Dark panel with agent card + watermark + crosshairs -->
+        <div class="va-feature-visual va-feature-visual--dark va-bg-brand-watermark" style="min-height: 380px;">
+          <span class="va-bg-brand-watermark__text" aria-hidden="true">VOICE AURA</span>
+          <div class="va-agent-card va-agent-card--crosshairs">
+            <div class="va-agent-card__corners"></div>
+            <div class="va-agent-card__corners-bottom"></div>
+            <!-- Language tabs -->
+            <div class="va-agent-card__languages" role="tablist">
+              <button class="va-agent-card__lang va-agent-card__lang--active" type="button" role="tab" aria-selected="true">
+                <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 5 4-5 4Z"/></svg>
+                English
+              </button>
+              <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
+                <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+                Chinese
+              </button>
+              <button class="va-agent-card__lang" type="button" role="tab" aria-selected="false">
+                <svg class="va-icon-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+                Japanese
+              </button>
             </div>
-          </div>
-          <button class="va-agent-card__fav" type="button" aria-label="Favorite">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          </button>
-          <!-- Info -->
-          <div class="va-agent-card__info">
-            <div class="va-agent-card__name">
-              Yang lu wu
-              <svg class="va-agent-card__verified" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#0478FF"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01" fill="none" stroke="white" stroke-width="2"/></svg>
+            <!-- Avatar -->
+            <div class="va-agent-card__avatar">
+              <img src="../assets/images/agent-avatar.svg" alt="Yang lu wu - Customer support agent" loading="lazy">
             </div>
-            <span class="va-agent-card__role">Customer support agent</span>
+            <button class="va-agent-card__fav" type="button" aria-label="Favorite">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <!-- Info -->
+            <div class="va-agent-card__info">
+              <div class="va-agent-card__name">
+                Yang lu wu
+                <svg class="va-agent-card__verified" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#0478FF"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01" fill="none" stroke="white" stroke-width="2"/></svg>
+              </div>
+              <span class="va-agent-card__role">Customer support agent</span>
+            </div>
+            <!-- CTA -->
+            <button class="va-agent-card__cta" type="button">Call Wang lu</button>
           </div>
-          <!-- CTA -->
-          <button class="va-agent-card__cta" type="button">Call Wang lu</button>
         </div>
       </div>
     </div>
@@ -305,8 +317,8 @@
             </button>
           </div>
           <div class="va-dubbing-card__player">
-            <div class="va-dubbing-card__player-video va-dubbing-card__player-video--placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <div class="va-dubbing-card__player-video">
+              <img src="../assets/images/video-frame-master.svg" alt="The Master - Processing Scene" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <p class="va-dubbing-card__subtitle">like to think about that it makes me sick are you scientific in your</p>
             <div class="va-dubbing-card__controls">

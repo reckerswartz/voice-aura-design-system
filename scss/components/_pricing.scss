@@ -141,6 +141,14 @@ $va-crosshair-color: $va-border;
   background-color: $va-white;
   border: $border-width solid $va-border;
   border-radius: $va-radius;
+  transition: border-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out,
+              transform 0.2s ease-in-out;
+
+  &:hover:not(.va-pricing-card--featured) {
+    border-color: darken($va-border, 12%);
+    box-shadow: $va-shadow-md;
+  }
 
   @include va-crosshair-corners(".va-pricing-card__corners", ".va-pricing-card__corners-bottom", $va-crosshair-color, $va-z-raised);
 

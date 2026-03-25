@@ -6,7 +6,7 @@
 > selectors). Responsive behaviour verified via Playwright at 375px, 768px,
 > and 1440px viewports.
 >
-> Last updated: 2026-03-23
+> Last updated: 2026-03-25
 
 ---
 
@@ -38,21 +38,41 @@
 
 | Metric | Value |
 |--------|-------|
-| SCSS source lines | 9,185 |
-| Compiled CSS lines | 17,664 |
-| Compiled CSS selectors | ~3,963 |
+| SCSS source lines | 10,102 (+917 since initial review) |
+| Compiled CSS (expanded) | 400 KB |
+| Compiled CSS (minified) | 334 KB |
 | `!important` usages | 48 (35 in utility generators — acceptable) |
 | Hardcoded hex colors outside `_variables.scss` | 2 (`#000` / `#fff` in color-mix functions — acceptable) |
 | Hardcoded `rgba()` with literal color values | 42 (shadows, borders — should use tokens) |
-| `z-index` declarations | 42 (only 1 uses a variable) |
+| Deprecated `darken()`/`lighten()` calls | **50+** (will break in Dart Sass 3.0) |
+| `z-index` declarations | 42 (many now use `$va-z-*` tokens — partial fix) |
 | `@import` statements (deprecated in Dart Sass 3.0) | 52 |
 | `@use` statements | 10 (only in abstracts) |
 | Max nesting depth ≥ 4 | 6 files |
 | `@keyframes` definitions | 14 |
 | `transition` declarations | 101 |
 | `prefers-reduced-motion` checks | 4 (all in `_animations.scss`) |
-| Inline `style=` attributes in `reference.html` | 291 |
+| Inline `style=` attributes in `components.html` | 291 |
 | Inline `style=` attributes in other HTML files | 2 total |
+| Largest single SCSS file | `_backgrounds.scss` — **1,303 lines** |
+
+---
+
+## 1b. Progress Tracker (as of 2026-03-25)
+
+Issues resolved or partially addressed since the initial review:
+
+| ID | Issue | Status | Commit |
+|----|-------|--------|--------|
+| C-2 | Dart Sass `@import` — phase 1 (pin version) | ✅ Done | `package.json`: `"sass": ">=1.98.0 <2.0.0"` |
+| C-5 | Sticky sidebar broken | ⚠️ **Workaround only** | `8fdea19` — per-page `body { overflow-x: visible !important }` overrides. Root cause in `_reset.scss` line 188 **not fixed**. |
+| H-2 | Scattered z-index values | ⚠️ Partial | `$va-z-*` scale added to `_variables.scss` (lines 480-489). Components not yet migrated. |
+| H-4 | Cross-component pattern duplication | ⚠️ Partial | `va-crosshair-corners` and `va-pill-tabs` mixins added to `_mixins.scss`. Not yet consumed by all components. |
+| H-5 | Missing mixin extractions | ✅ Done | `va-flex-center`, `va-disabled-state`, `va-hover-darken`, `va-card-hover-lift`, `va-sr-only` added. |
+| H-7 | Accessibility gaps | ⚠️ Partial | Skip links, `autocomplete` attributes, `aria-label` on toggles added. Contrast issue (M-text `#9CA3AF`) still open. |
+| H-8 | 291 inline `style=` in reference | ❌ Open | Not yet addressed. |
+| H-9 | Missing code blocks in reference | ⚠️ Partial | 8 sections now have copyable code snippets (`8fdea19`). 13+ sections still lack them. |
+| H-10 | No scroll-spy | ✅ Done | JS scroll-spy added to `components.html` and `backgrounds.html` (`8fdea19`). |
 
 ---
 
@@ -137,42 +157,122 @@ making customisation impossible.
 
 ---
 
-#### C-5. Reference page sticky sidebar is broken
+#### C-5. `body { overflow-x: hidden }` breaks `position: sticky` globally
 
-**File:** `scss/base/_reset.scss` lines 181–183
+**File:** `scss/base/_reset.scss` lines 183–189
 
 ```scss
-html,
-body {
-  overflow-x: hidden;
-}
+html { overflow-x: clip; }     // ← This is fine
+body { overflow-x: hidden; }   // ← THIS is the problem
 ```
 
-**Problem:** Setting `overflow-x: hidden` on `<html>` creates a new scroll
-container that breaks `position: sticky` for `.ref-toc`. The sidebar scrolls
-off-screen instead of sticking at `top: 1rem`.
+**Current state:** The `html` rule was already changed to `clip` (which doesn't
+create a scroll container), but `body { overflow-x: hidden }` **still creates
+a new scroll container** that breaks `position: sticky` for any descendant.
 
-**Root cause verified via Playwright:** At `window.scrollY = 5000`, the
-`.ref-toc` nav element is at `top: -4702px` (viewport-relative). If sticky
-were working, it should be at `top: 16px`. The flex aside stretches to
-28,756px (full page height via `align-items: stretch`), so the sticky
-element's containing block is correct — the `overflow-x: hidden` on `<html>`
-is the actual blocker.
+**Current workaround:** Two reference pages (`components.html`,
+`backgrounds.html`) use `<style>body { overflow-x: visible !important; }</style>`
+to override. This is fragile — every new page with sticky elements must
+remember to add the override.
 
-**Fix (choose one):**
-- **Option A (recommended):** Replace `overflow-x: hidden` with
-  `overflow-x: clip` on `<html>` — prevents horizontal scroll without
-  creating a scroll container:
-  ```scss
-  html { overflow-x: clip; }
-  body { overflow-x: hidden; }
-  ```
-- **Option B:** Remove `overflow-x: hidden` from `html` entirely and keep
-  it only on `body`.
+**Root fix:** Change `_reset.scss` line 188:
+```scss
+// Before:
+body { overflow-x: hidden; }
+
+// After:
+body { overflow-x: clip; }
+```
+
+`overflow-x: clip` prevents horizontal scrollbar without creating a scroll
+container, preserving `position: sticky` everywhere. Then remove the
+per-page `!important` overrides.
+
+---
+
+#### C-6. 50+ deprecated `darken()` / `lighten()` global function calls
+
+**Files:** 16 SCSS files across components, layout, base, and abstracts
+
+Dart Sass has deprecated the global `darken()`, `lighten()`, `saturate()`,
+`desaturate()` functions. They will be **removed in Dart Sass 3.0**.
+
+**Top offenders:**
+| File | Calls |
+|------|-------|
+| `_buttons.scss` | 14 |
+| `_pricing.scss` | 8 |
+| `_hero.scss` | 5 |
+| `_auth.scss` | 4 |
+| `_blog-card.scss` | 4 |
+| Other files | 15+ |
+
+**Fix:** Migrate all calls to the `color` module:
+```scss
+// Before (deprecated):
+background-color: darken($va-near-black, 5%);
+
+// After:
+@use "sass:color";
+background-color: color.adjust($va-near-black, $lightness: -5%);
+
+// Or use color.scale() for proportional adjustments:
+background-color: color.scale($va-near-black, $lightness: -20%);
+```
+
+The `_variables.scss` already uses `@use "sass:color"` and `color.adjust()`
+(line 408, 502-504), proving the pattern works. Apply it project-wide.
+
+---
+
+#### C-7. Class naming split between sample page and reference
+
+**Problem:** The pixel-perfect demo (`pixel-perfect-demo.html`) and the
+reference guide (`components.html`) use **different class names** for the
+same visual elements. A developer copying from the reference will get
+non-matching HTML.
+
+| Element | pixel-perfect-demo.html | components.html | SCSS definition |
+|---------|------------------------|-----------------|----------------|
+| Blog category | `va-blog-card__tag` | `va-blog-card__category` | `&__tag` (line 107 of `_blog-card.scss`) |
+| Navbar buttons | `va-navbar-btn--outlined`, `va-navbar-btn--filled` | `va-btn va-btn--ghost`, `va-btn va-btn--primary` | Both exist in `_navbar.scss` / `_buttons.scss` |
+| Hero buttons | `va-hero__btn--primary`, `va-hero__btn--secondary` | `va-btn va-btn--primary va-btn--icon` | Both exist in `_hero.scss` / `_buttons.scss` |
+
+**Impact:** Developers will copy code from the reference, paste it into their
+app, and discover the classes don't match the sample page they're trying to
+replicate.
+
+**Fix:**
+1. Standardise blog tag class: add `&__category` as an alias for `&__tag`
+   in `_blog-card.scss`, or pick one name and update all HTML.
+2. Document the relationship between hero/navbar-specific button classes and
+   the generic `va-btn` system in the reference guide. Add a "Navbar Buttons"
+   and "Hero Buttons" section explaining when to use which.
 
 ---
 
 ### 2.2 HIGH — Should fix this sprint
+
+#### H-0. Pricing section floating elements have wrong positioning
+
+**File:** `site/pixel-perfect-demo.html` lines 429-432
+
+The pricing section reuses `.va-hero__float` for decorative microphone/letter
+elements, but their computed `position` is `relative` instead of `absolute`.
+They appear inline above the pricing header instead of floating over section
+edges.
+
+**Root cause:** The pricing section has `overflow: hidden` (via inline style)
+and the float elements have inline `style="top:12%;left:8%"` but no
+`position: absolute`. The `.va-hero__float` class sets `position: absolute`
+in the hero context, but the pricing section's parent structure doesn't
+provide the same positioning context.
+
+**Fix:** Add `position: absolute` to the inline styles on the pricing floats,
+or better — create a `.va-section-float` class that works in any section
+context (not just hero).
+
+---
 
 #### H-1. Hardcoded breakpoints in `_section.scss`
 
@@ -477,57 +577,55 @@ changes to the compiled CSS can only be caught manually.
 
 ### Phase 1 — Stability & correctness (weeks 1-2)
 
-| Task | Issue(s) | Effort |
-|------|----------|--------|
-| Fix `$btn-border-radius-lg` bug | C-3 | 5 min |
-| Fix `va-focus-ring` mixin | C-4 | 5 min |
-| Fix sticky sidebar (`overflow-x: clip` on html) | C-5 | 15 min |
-| Consolidate `.va-feature-row` into one file | C-1 | 2 h |
-| Replace hardcoded breakpoints in `_section.scss` | H-1 | 30 min |
-| Add `id` attributes to `reference.html` form inputs | H-7 | 15 min |
-| Add `aria-hidden="true"` to decorative SVGs | H-7 | 15 min |
-| Add `prefers-reduced-motion` check to `va-scroll.js` | H-7 | 30 min |
-| Pin Sass version in `package.json` | C-2 phase 1 | 5 min |
+| Task | Issue(s) | Effort | Status |
+|------|----------|--------|--------|
+| Fix `$btn-border-radius-lg` bug | C-3 | 5 min | ❌ Open |
+| Fix `va-focus-ring` mixin | C-4 | 5 min | ❌ Open |
+| Fix `body { overflow-x }` root cause in `_reset.scss` | C-5 | 15 min | ❌ Open (workaround in place) |
+| Migrate 50+ `darken()`/`lighten()` to `color.adjust()` | C-6 | 3 h | ❌ Open |
+| Fix pricing section float positioning | H-0 | 30 min | ❌ Open |
+| Standardise class names across sample and reference | C-7 | 2 h | ❌ Open |
+| Consolidate `.va-feature-row` into one file | C-1 | 2 h | ❌ Open |
+| Replace hardcoded breakpoints in `_section.scss` | H-1 | 30 min | ❌ Open |
+| Pin Sass version in `package.json` | C-2 phase 1 | 5 min | ✅ Done |
 
 ### Phase 2 — Token hardening (weeks 3-4)
 
-| Task | Issue(s) | Effort |
-|------|----------|--------|
-| Centralise z-index values into token map | H-2 | 2 h |
-| Replace `rgba(0,0,0,N)` with token-based shadows | H-3 | 3 h |
-| Add `$va-icon-sizes`, `$va-letter-spacing`, `$va-line-heights` maps | M-2 | 2 h |
-| Add accessor functions (`va-font-size`, `va-breakpoint`, etc.) | M-1 | 1.5 h |
-| Extract crosshair-corners & pill-tabs mixins | H-4 | 3 h |
-| Extract flex-centre, disabled, hover-darken, sr-only mixins | H-5 | 2 h |
-| Restructure `_pattern-data.scss` to remove `!important` | H-6 | 1 h |
-| Add missing utility extensions (opacity, z-index) | M-3 | 1 h |
+| Task | Issue(s) | Effort | Status |
+|------|----------|--------|--------|
+| Migrate remaining z-index values to `$va-z-*` tokens | H-2 | 2 h | ⚠️ Scale defined, migration pending |
+| Replace `rgba(0,0,0,N)` with token-based shadows | H-3 | 3 h | ❌ Open |
+| Add `$va-icon-sizes`, `$va-letter-spacing`, `$va-line-heights` maps | M-2 | 2 h | ❌ Open |
+| Add accessor functions (`va-font-size`, `va-breakpoint`, etc.) | M-1 | 1.5 h | ❌ Open |
+| Have components consume `va-crosshair-corners`/`va-pill-tabs` mixins | H-4 | 1 h | ⚠️ Mixins exist, not consumed |
+| Restructure `_pattern-data.scss` to remove `!important` | H-6 | 1 h | ❌ Open |
+| Add missing utility extensions (opacity, z-index) | M-3 | 1 h | ❌ Open |
 
 ### Phase 3 — Tooling & automation (weeks 5-8)
 
-| Task | Issue(s) | Effort |
-|------|----------|--------|
-| Add Stylelint + Prettier config | M-6 | 2 h |
-| Add CSS snapshot test to CI | M-7 | 3 h |
-| Add Playwright visual-regression tests | M-7 | 4 h |
-| Add axe-core a11y audit to CI | M-7 | 2 h |
-| Introduce 11ty (or similar) for HTML partials | M-4 | 4 h |
-| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h |
-| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h |
-| Add code blocks to 7 component demo sections | H-9 | 3 h |
-| Add copy-to-clipboard on all code blocks | H-9 | 1 h |
-| Implement scroll-spy active link highlighting | H-10 | 2 h |
-| Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h |
+| Task | Issue(s) | Effort | Status |
+|------|----------|--------|--------|
+| Add Stylelint + Prettier config | M-6 | 2 h | ❌ Open |
+| Add CSS snapshot test to CI | M-7 | 3 h | ❌ Open |
+| Add Playwright visual-regression tests | M-7 | 4 h | ❌ Open |
+| Add axe-core a11y audit to CI | M-7 | 2 h | ❌ Open |
+| Introduce 11ty (or similar) for HTML partials | M-4 | 4 h | ❌ Open |
+| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ❌ Open |
+| Move 291 inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ❌ Open |
+| Add code blocks to remaining 13 reference sections | H-9 | 3 h | ⚠️ 8 of 21 done |
+| Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h | ❌ Open |
+| Split `_backgrounds.scss` (1303 lines) into sub-modules | NEW | 3 h | ❌ Open |
 
 ### Phase 4 — Maturity & scale (ongoing)
 
-| Task | Issue(s) | Effort |
-|------|----------|--------|
-| Complete `@import` → `@use` migration (post-Bootstrap 6) | C-2 phase 3 | 8 h |
-| Add conditional component imports for tree-shaking | — | 3 h |
-| Publish design-token JSON (for Figma sync / multi-platform) | — | 4 h |
-| CSS custom-property layer for runtime theming | — | 8 h |
-| Add CHANGELOG.md and semver releases | — | 2 h |
-| Create component accessibility checklist in DESIGN_SYSTEM.md | — | 2 h |
+| Task | Issue(s) | Effort | Status |
+|------|----------|--------|--------|
+| Complete `@import` → `@use` migration (post-Bootstrap 6) | C-2 phase 3 | 8 h | ❌ Blocked on Bootstrap 6 |
+| Add conditional component imports for tree-shaking | — | 3 h | ❌ Open |
+| Publish design-token JSON (for Figma sync / multi-platform) | — | 4 h | ❌ Open |
+| CSS custom-property layer for runtime theming | — | 8 h | ❌ Open |
+| Create component accessibility checklist in DESIGN_SYSTEM.md | — | 2 h | ❌ Open |
+| Reduce compiled CSS size from 334 KB to < 250 KB | — | 4 h | ❌ Open |
 
 ---
 
@@ -565,19 +663,20 @@ Every change to the design system should satisfy:
 
 ### Metrics to track over time
 
-| Metric | Current | Target |
-|--------|---------|--------|
-| Compiled CSS size (gzip) | ~35 KB* | < 30 KB |
-| `!important` outside utilities | 13 | 0 |
-| Hardcoded `rgba()` with literal colours | 42 | 0 |
-| Raw `z-index` (non-variable) | 41 | 0 |
-| Max nesting depth | 4 | ≤ 3 |
-| `@import` statements | 52 | 0 (post-migration) |
-| a11y violations (axe-core) | Unknown | 0 |
-| Visual regression failures (unintentional) | N/A | 0 |
-| Inline `style=` in reference.html | 291 | < 20 |
-
-*Estimated; actual gzip size not yet measured.
+| Metric | Initial (03-23) | Current (03-25) | Target |
+|--------|-----------------|------------------|--------|
+| Compiled CSS (minified) | ~295 KB | 334 KB | < 250 KB |
+| `!important` outside utilities | 13 | 13 | 0 |
+| Hardcoded `rgba()` with literal colours | 42 | 42 | 0 |
+| Deprecated `darken()`/`lighten()` calls | 50+ | 50+ | 0 |
+| Raw `z-index` (non-variable) | 41 | ~30 | 0 |
+| `@import` statements | 52 | 52 | 0 (post-migration) |
+| a11y violations (axe-core) | Unknown | Unknown | 0 |
+| Visual regression failures | N/A | N/A | 0 |
+| Inline `style=` in reference page | 291 | 291 | < 20 |
+| Reference sections with code snippets | 0 | 8 | All |
+| Scroll-spy / sticky nav | Missing | ✅ Working | ✅ |
+| QA issues (pixel-perfect demo) | Not audited | 14 (1 high, 5 med) | 0 |
 
 ---
 
@@ -597,6 +696,189 @@ At 768px, the 3-card pricing grid becomes 2 columns, leaving the third
 card alone on a second row. Consider using
 `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` for more
 natural flow, or explicitly switching to single column at tablet.
+
+---
+
+---
+
+## 6. Architectural Improvements — Design for Continuous Refinement
+
+### 6.1 File size management
+
+The codebase has grown from 9,185 to 10,102 SCSS lines. Two files are
+disproportionately large:
+
+| File | Lines | Recommendation |
+|------|-------|----------------|
+| `_backgrounds.scss` | 1,303 | Split into `_bg-patterns.scss`, `_bg-utilities.scss`, `_bg-presets.scss` |
+| `_animations.scss` | 1,053 | Split into `_entrance-animations.scss`, `_scroll-animations.scss`, `_hover-effects.scss` |
+| `_hero.scss` | 588 | Acceptable — single component |
+| `_forms.scss` | 597 | Acceptable — covers forms + TTS input card |
+
+Keep individual files under **~400 lines**. When a file exceeds this,
+evaluate whether it contains multiple distinct concerns.
+
+### 6.2 Parallel button systems
+
+The codebase currently has **three parallel button systems**:
+
+1. **`va-btn--*`** (in `_buttons.scss`) — Generic, documented in reference
+2. **`va-hero__btn--*`** (in `_hero.scss`) — Hero-specific, larger sizing
+3. **`va-navbar-btn--*`** (in `_navbar.scss`) — Navbar-specific, pill shape
+
+All three define padding, font-size, border-radius, hover states, and
+transitions independently. This creates **~150 lines of duplicated logic**.
+
+**Recommended refactor:**
+```scss
+// Hero buttons should extend the generic system:
+.va-hero__btn--primary {
+  @extend .va-btn;
+  @extend .va-btn--primary;
+  @extend .va-btn--lg;
+  // Only hero-specific overrides below
+  font-size: 1.0625rem;
+  padding: 1rem 2rem;
+}
+```
+
+This keeps the generic system as the single source of truth.
+
+### 6.3 CSS custom properties strategy
+
+Currently, design tokens exist only as Sass variables. This means:
+- No runtime theming (dark mode, user preferences)
+- No JavaScript access to design tokens
+- No per-component overrides via CSS
+
+**Recommended approach (phased):**
+
+**Phase A — Expose foundation tokens as custom properties:**
+```scss
+:root {
+  --va-color-primary: #{$va-primary-blue};
+  --va-color-near-black: #{$va-near-black};
+  --va-radius: #{$va-radius};
+  --va-shadow: #{$va-shadow};
+  --va-font-heading: #{$va-font-heading};
+  --va-font-body: #{$va-font-body};
+}
+```
+
+**Phase B — Components reference custom properties:**
+```scss
+.va-btn--primary {
+  background-color: var(--va-color-near-black);
+  border-radius: var(--va-radius-sm);
+}
+```
+
+**Phase C — Dark mode via custom property overrides:**
+```scss
+@media (prefers-color-scheme: dark) {
+  :root {
+    --va-color-near-black: #FFFFFF;
+    --va-body-bg: #1A1919;
+  }
+}
+```
+
+This is non-breaking — Sass variables compile the initial values, custom
+properties enable runtime overrides.
+
+### 6.4 Build pipeline improvements
+
+Current build: `sass → dist/css/`. No linting, no testing, no optimization.
+
+**Recommended pipeline:**
+```
+sass compile → stylelint → postcss (autoprefixer, cssnano) → dist/
+                                                            ↓
+                                           playwright visual regression
+                                                            ↓
+                                                    axe-core a11y
+```
+
+Add to `package.json`:
+```json
+"scripts": {
+  "lint:css": "stylelint 'scss/**/*.scss'",
+  "test:visual": "playwright test --config=tests/visual.config.ts",
+  "test:a11y": "node tests/a11y-audit.mjs",
+  "test": "npm run lint:css && npm run build && npm run test:visual && npm run test:a11y"
+}
+```
+
+### 6.5 Versioning and changelog discipline
+
+`CHANGELOG.md` exists but isn't updated systematically. Adopt:
+
+1. **Semantic versioning**: `MAJOR.MINOR.PATCH`
+   - MAJOR: Breaking class name changes, removed components
+   - MINOR: New components, new utilities, new tokens
+   - PATCH: Bug fixes, pixel adjustments, documentation
+2. **Every PR** must include a CHANGELOG entry
+3. Use `npm version patch/minor/major` (already configured in `package.json`)
+
+### 6.6 Component maturity model
+
+Rate every component on a 4-level scale:
+
+| Level | Criteria | Action |
+|-------|----------|--------|
+| **Draft** | SCSS exists, basic styles | Not for production |
+| **Beta** | Responsive, accessible, documented in reference | Can be used with caution |
+| **Stable** | Visual regression tested, code snippets in reference, Bootstrap-aligned | Production-ready |
+| **Mature** | Custom properties, dark mode, multiple variants, Figma-synced | Long-term stable |
+
+Current assessment:
+
+| Component | Level | Blockers to next level |
+|-----------|-------|------------------------|
+| Buttons (`va-btn`) | **Stable** | Needs dark mode, custom properties |
+| Cards (`va-card`) | **Beta** | Missing visual regression test |
+| Navbar | **Beta** | Button system overlap with `va-btn` |
+| Hero | **Beta** | Button system overlap, float positioning |
+| Pricing | **Beta** | Float positioning bug, no dark mode |
+| Blog cards | **Beta** | Class naming inconsistency (`__tag` vs `__category`) |
+| Auth forms | **Beta** | Missing code snippets in reference |
+| Trust bar | **Stable** | — |
+| Backgrounds | **Beta** | File too large (1303 lines), needs split |
+| Animations | **Beta** | File too large (1053 lines), needs split |
+| Voice Agent card | **Draft** | App-specific, not reusable |
+| Video Dubbing card | **Draft** | App-specific, not reusable |
+
+---
+
+## 7. Continuous Refinement Process
+
+### Weekly cadence
+
+1. **Monday**: Run `npm run build` — check for new Sass deprecation warnings
+2. **Wednesday**: Review any new QA issues against the pixel-perfect demo
+3. **Friday**: Update this document's progress tracker if any issues were resolved
+
+### Per-release checklist
+
+```
+- [ ] All CRITICAL issues resolved
+- [ ] No new deprecated function calls introduced
+- [ ] No new hardcoded values (colors, z-index, breakpoints)
+- [ ] Component maturity levels reviewed and updated
+- [ ] CHANGELOG.md updated with all changes
+- [ ] Reference pages updated with code snippets for new/changed components
+- [ ] Visual regression tests pass
+- [ ] axe-core reports 0 violations
+- [ ] Compiled CSS size tracked (target: < 250 KB minified)
+```
+
+### Quarterly review
+
+1. Re-run the full quantitative audit (SCSS lines, CSS size, metric counts)
+2. Update the metrics table in this document
+3. Evaluate whether to promote components to the next maturity level
+4. Re-assess the roadmap priorities based on consumer feedback
+5. Review Dart Sass and Bootstrap release notes for migration needs
 
 ---
 

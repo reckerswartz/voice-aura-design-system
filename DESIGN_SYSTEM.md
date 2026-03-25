@@ -505,14 +505,14 @@ $va-font-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Code', monospace;
 
 ## Icons & Visual Assets
 
-The design system includes a curated set of icons, brand assets, decorative patterns, and illustration mockups. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for the full reference, and **[site/asset-gallery.html](./site/asset-gallery.html)** for a visual showcase.
+The design system includes 86 curated assets across 6 categories. See **[ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md)** for full sourcing workflows, optimization rules, and platform-specific instructions. See **[site/asset-gallery.html](./site/asset-gallery.html)** for a visual showcase.
 
-### Icon Library: Lucide
+### Icon Library: Lucide (Primary)
 
-[Lucide Icons](https://lucide.dev/) (MIT license) is the primary icon library — 1,900+ clean, stroke-based icons. 54 curated icons are pre-selected in `assets/icons/lucide/`.
+[Lucide Icons](https://lucide.dev/) (ISC/MIT) — 1,900+ clean, stroke-based icons. 54 curated icons in `assets/icons/lucide/`.
 
 ```html
-<!-- Inline SVG -->
+<!-- Inline SVG (recommended) -->
 <svg class="va-icon" width="24" height="24" viewBox="0 0 24 24"
      fill="none" stroke="currentColor" stroke-width="2"
      stroke-linecap="round" stroke-linejoin="round">
@@ -523,48 +523,145 @@ The design system includes a curated set of icons, brand assets, decorative patt
 <i data-lucide="mic" class="va-icon"></i>
 ```
 
+**Icon sizing classes:** `.va-icon--sm` (16px), `.va-icon` (24px), `.va-icon--lg` (32px), `.va-icon--xl` (48px)
+**Color classes:** `.va-icon--primary` (blue), `.va-icon--muted` (grey), `.va-icon--white`
+
+### Using Icons in Components
+
+```html
+<!-- Button with icon -->
+<button class="va-btn va-btn--primary va-btn--icon">
+  <svg class="va-icon" aria-hidden="true" ...><!-- mic paths --></svg>
+  Start Recording
+</button>
+
+<!-- Card with feature icon -->
+<div class="va-card__icon-wrapper">
+  <svg class="va-icon va-icon--lg va-icon--primary" aria-hidden="true" ...>
+    <!-- feature icon -->
+  </svg>
+</div>
+
+<!-- Icon-only button (must have aria-label) -->
+<button class="va-btn va-btn--ghost" aria-label="Settings">
+  <svg class="va-icon" aria-hidden="true" ...><!-- settings --></svg>
+</button>
+```
+
 ### Brand Assets
 
-| Asset | File | Description |
-|-------|------|-------------|
-| Logo Mark | `assets/brand/logo-icon.svg` | Sound-wave arcs icon |
-| Logo Mark (White) | `assets/brand/logo-icon-white.svg` | White variant for dark backgrounds |
-| Full Logo | `assets/brand/logo-full.svg` | Icon + "Voice Aura" wordmark |
+| Asset | File | Usage |
+|-------|------|-------|
+| Logo Mark | `assets/brand/logo-icon.svg` | Navbar (32×32), favicon |
+| Logo Mark (White) | `assets/brand/logo-icon-white.svg` | Dark backgrounds, footer |
+| Full Logo | `assets/brand/logo-full.svg` | Footer, splash screens (min width 140px) |
 
 ### Decorative Patterns
 
-| Pattern | Method | File / Mixin |
-|---------|--------|--------------|
-| Halftone Dots | CSS mixin | `@include va-halftone-overlay()` |
-| Halftone Dots | SVG tile | `assets/patterns/halftone-dots.svg` |
-| Sound Wave Bars | CSS | `.va-hero__wave` + `.va-hero__wave-bar` |
-| Sound Wave | SVG | `assets/patterns/sound-wave-hero.svg` |
-| Wave Divider | SVG | `assets/patterns/wave-divider.svg` |
-| Grid Dots | SVG tile | `assets/patterns/grid-dots.svg` |
+| Pattern | Method | File / Mixin | Used In |
+|---------|--------|--------------|---------|
+| Halftone Dots | CSS mixin | `@include va-halftone-overlay()` | Hero, feature sections |
+| Halftone Wide | SVG + SCSS class | `.va-pattern-halftone` | Hero backgrounds |
+| Sound Wave Bars | CSS animation | `.va-hero__wave` + `.va-hero__wave-bar` | Hero flanks |
+| Grid Dots | SVG tile | `assets/patterns/grid-dots.svg` | Pricing section |
+| Circuit Lines | SVG + SCSS class | `.va-bg-circuit` | Feature panels |
+| Grid Lines | SVG + SCSS class | `.va-bg-dark-grid` | Dark sections |
+| Noise/Grain | SVG + SCSS class | `.va-pattern-noise` | Subtle texture overlay |
+| Wave Divider | SVG | `assets/patterns/wave-divider.svg` | Section separators |
+
+**Adding a new pattern:**
+1. Generate at [Haikei](https://haikei.app/) or [Hero Patterns](https://heropatterns.com/) using VA colors
+2. Optimize with SVGO → save to `assets/patterns/`
+3. Add a `.va-bg-*` class in `scss/components/_backgrounds.scss` (see [ASSET_GUIDELINES.md → In-Application Integration Patterns](./ASSET_GUIDELINES.md#in-application-integration-patterns))
+
+### Illustrations
+
+```html
+<!-- In a feature row -->
+<div class="va-feature-row__visual">
+  <img src="assets/illustrations/voice-studio-mockup.svg"
+       alt="Voice Aura Studio interface"
+       class="va-illustration"
+       loading="lazy" decoding="async">
+</div>
+```
+
+Source new illustrations from unDraw (CC0), Freepik (attribution required for free), or ManyPixels. Recolor to VA palette (`#0478FF` accent, `#1A1919` dark, `#E9E9EA` light) before adding. Max size: 50 KB.
 
 ### Typography
 
-Fonts: **IBM Plex Serif**, **IBM Plex Sans**, **IBM Plex Mono** — all from [Google Fonts](https://fonts.google.com/) under the SIL Open Font License.
+| Font | Usage | Weights | SCSS Variable |
+|------|-------|---------|---------------|
+| **IBM Plex Serif** | Headings (h1–h4), display text | 400, 500, 600, 700 | `$headings-font-family` |
+| **IBM Plex Sans** | Body text, buttons, labels, navigation | 300, 400, 500, 600, 700 | `$font-family-base` |
+| **IBM Plex Mono** | Code blocks, API keys | 400, 500 | `$font-family-monospace` |
 
-### Open-Source Asset Sources
+**Loading:** Google Fonts CDN (easiest), [Fontsource](https://fontsource.org/) npm packages (best for production — GDPR-friendly, no external requests), or self-hosted WOFF2 files.
+
+### Open-Source Asset Platforms
+
+#### Icons (use in order of preference)
+
+| Priority | Platform | License | Count | Attribution |
+|----------|----------|---------|-------|-------------|
+| 1 | [Lucide](https://lucide.dev/) | ISC/MIT | 1,900+ | No |
+| 2 | [Phosphor](https://phosphoricons.com/) | MIT | 9,000+ | No |
+| 3 | [Iconoir](https://iconoir.com/) | MIT | 1,500+ | No |
+| 4 | [Heroicons](https://heroicons.com/) | MIT | 300+ | No |
+| 5 | [Tabler Icons](https://tabler.io/icons) | MIT | 5,800+ | No |
+| 6 | [Remix Icon](https://remixicon.com/) | Apache 2.0 | 2,800+ | No |
+| 7 | [Flaticon](https://www.flaticon.com/) | Free+attribution | Millions | **Yes (free)** |
+
+#### Illustrations
+
+| Priority | Platform | License | Best For | Attribution |
+|----------|----------|---------|----------|-------------|
+| 1 | [unDraw](https://undraw.co/) | CC0 | Feature illustrations, empty states | No |
+| 2 | [ManyPixels](https://www.manypixels.co/gallery) | Free | Flat/isometric illustrations | No |
+| 3 | [OpenPeeps](https://www.openpeeps.com/) | CC0 | People illustrations | No |
+| 4 | [Open Doodles](https://www.opendoodles.com/) | CC0 | Sketchy/playful illustrations | No |
+| 5 | [Freepik](https://www.freepik.com/) | Free+attribution | Polished vectors, marketing | **Yes (free)** |
+| 6 | [Storyset](https://storyset.com/) | Free+attribution | Animated illustrations | **Yes** |
+| 7 | [Blush](https://blush.design/) | Free+attribution | Consistent illustration sets | **Yes (free)** |
+
+#### Background Patterns & Generators
 
 | Platform | License | Best For | Attribution |
 |----------|---------|----------|-------------|
-| [Lucide](https://lucide.dev/) | ISC/MIT | UI icons (primary) | No |
-| [Phosphor](https://phosphoricons.com/) | MIT | Extended icon needs | No |
-| [Heroicons](https://heroicons.com/) | MIT | Alternative UI icons | No |
-| [Tabler Icons](https://tabler.io/icons) | MIT | Rare/specific icons (5,800+) | No |
-| [unDraw](https://undraw.co/) | CC0 | Feature illustrations | No |
-| [OpenPeeps](https://www.openpeeps.com/) | CC0 | People illustrations | No |
-| [Freepik](https://www.freepik.com/) | Free+attribution | Polished vectors, marketing art | **Yes (free tier)** |
-| [Flaticon](https://www.flaticon.com/) | Free+attribution | Specialized/decorative icons | **Yes (free tier)** |
-| [Storyset](https://storyset.com/) | Free+attribution | Animated illustrations | **Yes** |
-| [SVG Repo](https://svgrepo.com/) | Varies | SVG assets | Check per asset |
-| [Hero Patterns](https://heropatterns.com/) | Free | Background patterns | No |
-| [Unsplash](https://unsplash.com/) | Free | Hero/stock photos | No (appreciated) |
-| [Pexels](https://www.pexels.com/) | Free | Alternative stock photos | No (appreciated) |
+| [Haikei](https://haikei.app/) | Free | Wave dividers, blobs, gradients (SVG) | No |
+| [Hero Patterns](https://heropatterns.com/) | Free | Tileable CSS patterns | No |
+| [SVG Backgrounds](https://www.svgbackgrounds.com/) | Free | Tileable SVG data-URI patterns | No |
 
-> See [ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md) for detailed sourcing workflows, file format guidelines, naming conventions, and platform-specific usage instructions.
+#### Photos
+
+| Platform | License | Attribution |
+|----------|---------|-------------|
+| [Unsplash](https://unsplash.com/) | Free | No (appreciated) |
+| [Pexels](https://www.pexels.com/) | Free | No (appreciated) |
+
+#### Fonts
+
+| Platform | License | Best For |
+|----------|---------|----------|
+| [Google Fonts](https://fonts.google.com/) | SIL OFL 1.1 | CDN-hosted web fonts |
+| [Fontsource](https://fontsource.org/) | Per font (OFL) | Self-hosted via npm (GDPR-friendly) |
+| [IBM Plex GitHub](https://github.com/IBM/plex) | SIL OFL 1.1 | Direct WOFF2 downloads |
+
+### Component-to-Asset Quick Reference
+
+| Component | Icons | Illustrations | Patterns | Fonts |
+|-----------|-------|---------------|----------|-------|
+| **Navbar** | Brand logo + Lucide (menu, x) | — | — | Sans Medium |
+| **Hero** | Lucide (play, arrow-right) | Device mockups | Halftone, sound wave bars | Serif Bold |
+| **Feature rows** | Lucide (feature-specific) | unDraw / Freepik | Circuit, grid lines | Serif SemiBold |
+| **Pricing cards** | Lucide (check, x, zap) | — | Grid dots, crosshair corners | Sans Medium |
+| **Blog cards** | Lucide (clock, bookmark) | Blog card SVGs | Noise texture | Serif SemiBold |
+| **Forms / TTS input** | Lucide (mic, send, search) | — | — | Sans Regular |
+| **Auth forms** | Lucide (lock, mail, eye) | — | Halftone (showcase panel) | Sans Regular |
+| **Trust bar** | Custom partner logos | — | — | Sans Medium |
+| **Footer** | Lucide (github, twitter, mail) | — | — | Sans Regular |
+
+> See [ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md) for detailed sourcing workflows, file optimization rules, naming conventions, accessibility requirements, attribution registry, and in-application integration code examples.
 
 ---
 

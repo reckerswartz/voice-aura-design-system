@@ -99,10 +99,12 @@ Last audited: **2026-03-23**
 
 | Asset | License | Attribution? | Notes |
 |-------|---------|-------------|-------|
+| `agent-avatar.svg` | ISC (project) | No | Custom illustrated avatar for voice agent card |
 | `blog-video-translation.svg` | ISC (project) | No | Custom blog card illustration |
 | `blog-voice-agents.svg` | ISC (project) | No | Custom blog card illustration |
 | `blog-voice-cloning.svg` | ISC (project) | No | Custom blog card illustration |
 | `blog-voice-design.svg` | ISC (project) | No | Custom blog card illustration |
+| `video-frame-master.svg` | ISC (project) | No | Custom cinematic frame for dubbing player |
 
 ---
 
@@ -153,10 +155,11 @@ Last audited: **2026-03-23**
 | Custom icons | 5 | ISC (project) |
 | Brand assets | 3 | ISC (project) |
 | Blog images | 4 | ISC (project) |
+| Component images | 2 | ISC (project) |
 | Illustrations | 2 | ISC (project) |
 | Patterns | 14 | ISC (project) |
 | Fonts | 2 families | SIL OFL 1.1 |
-| **Total assets** | **86** | |
+| **Total assets** | **88** | |
 
 **Attribution required for current assets: None.** All current assets are either custom (ISC) or from attribution-free open-source libraries.
 

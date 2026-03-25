@@ -13414,35 +13414,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 75px;
+  height: 92px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 17px;
+  height: 95px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 21px;
+  height: 65px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 82px;
+  height: 68px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 61px;
+  height: 72px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 87px;
+  height: 52px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 41px;
+  height: 70px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 65px;
+  height: 47px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14206,10 +14206,24 @@ pre code {
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: inline-block;
+  position: relative;
+}
+.va-footer__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: width 0.2s ease-in-out;
 }
 .va-footer__link:hover, .va-footer__link:focus-visible {
   color: #FFFFFF;
   text-decoration: none;
+}
+.va-footer__link:hover::after, .va-footer__link:focus-visible::after {
+  width: 100%;
 }
 
 .va-footer__bottom {
@@ -15329,6 +15343,11 @@ pre code {
   background-color: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 0.75rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.va-pricing-card:hover:not(.va-pricing-card--featured) {
+  border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
 }
 .va-pricing-card .va-pricing-card__corners,
 .va-pricing-card .va-pricing-card__corners-bottom {

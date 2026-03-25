@@ -623,6 +623,159 @@ npm install @heroicons/react   # React
 3. Export as SVG
 4. Recolor strokes to `#1A1919` for consistency
 
+#### 10. Haikei (SVG Background Generator)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [haikei.app](https://haikei.app/) |
+| **License** | Free for commercial use (generated output is yours) |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | SVG, PNG |
+| **Best For** | Custom wave dividers, blob shapes, gradient backgrounds, layered patterns |
+
+**Best generators for Voice Aura:** Layered Waves, Blob Scene, Stacked Waves, Low Poly Grid, Circle Scatter
+
+**How to use:**
+1. Open haikei.app and choose a generator
+2. Set colors to match the VA palette: `#0478FF` (primary), `#1A1919` (dark), `#E9E9EA` (light), `#FFFFFF` (white)
+3. Adjust complexity, layers, and randomness
+4. Export as SVG
+5. Run through SVGO: `svgo --config svgo.config.js input.svg -o assets/patterns/custom-wave.svg`
+6. Reference in SCSS:
+   ```scss
+   .va-section--custom-bg::before {
+     background-image: url("#{$va-asset-base-path}/patterns/custom-wave.svg");
+   }
+   ```
+
+#### 11. Iconoir (Open-Source Icon Library)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [iconoir.com](https://iconoir.com/) |
+| **License** | MIT |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Icon Count** | 1,500+ |
+| **Format** | SVG |
+| **Best For** | Clean alternative to Lucide with slightly thicker strokes |
+
+**When to use:** Iconoir icons have a `stroke-width: 1.5` default that matches Voice Aura's preferred weight. Use when Lucide and Phosphor both lack the specific icon.
+
+```bash
+npm install iconoir-react   # React
+```
+
+#### 12. Blush.design (Customizable Illustration Collections)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [blush.design](https://blush.design/) |
+| **License** | Free tier (limited); Pro for commercial use |
+| **Attribution** | Required for free tier |
+| **Commercial Use** | Yes (Pro recommended for commercial projects) |
+| **Format** | PNG, SVG |
+| **Best For** | Consistent illustration sets for features, onboarding, error pages |
+
+**Recommended collections:** Open Peeps, Humaaans, Blobs, Fresh Folk
+
+**How to use:**
+1. Browse collections on blush.design
+2. Customize skin tones, poses, and compositions
+3. Export as PNG (free) or SVG (pro)
+4. Recolor to VA palette if needed
+5. Save to `assets/illustrations/`
+
+#### 13. Open Doodles (Sketchy Illustrations)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [opendoodles.com](https://www.opendoodles.com/) |
+| **License** | CC0 (Public Domain) |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | SVG, PNG, GIF |
+| **Best For** | Playful empty states, 404 pages, onboarding flows |
+
+#### 14. ManyPixels (Free Illustrations)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [manypixels.co/gallery](https://www.manypixels.co/gallery) |
+| **License** | Free for commercial use |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | SVG, PNG |
+| **Best For** | Flat/isometric illustrations for feature sections and marketing pages |
+
+**How to use:**
+1. Browse manypixels.co/gallery and filter by "Flat" style
+2. Set the accent color to `#0478FF`
+3. Download SVG
+4. Optimize and save to `assets/illustrations/`
+
+#### 15. Remix Icon (Neutral-Style Icon System)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [remixicon.com](https://remixicon.com/) |
+| **License** | Apache 2.0 |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Icon Count** | 2,800+ |
+| **Format** | SVG |
+| **Best For** | Icons with both line and filled variants in one consistent system |
+
+#### 16. Fontsource (Self-Hosted Web Fonts via npm)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [fontsource.org](https://fontsource.org/) |
+| **License** | Fonts retain their original license (OFL for IBM Plex) |
+| **Attribution** | Per font license |
+| **Commercial Use** | Yes |
+| **Format** | WOFF2, WOFF |
+| **Best For** | Self-hosting Google Fonts with npm packages and automatic `@font-face` |
+
+**How to use for IBM Plex:**
+```bash
+npm install @fontsource/ibm-plex-sans @fontsource/ibm-plex-serif @fontsource/ibm-plex-mono
+```
+
+```scss
+// Import specific weights only (reduces bundle size)
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-serif/600.css";
+@import "@fontsource/ibm-plex-serif/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+```
+
+**Advantages over Google Fonts CDN:**
+- No external network requests (faster initial load, GDPR-friendly)
+- Only load the weights you need
+- Works offline and in air-gapped environments
+
+#### 17. SVG Backgrounds (CSS Pattern Generator)
+
+| Property | Detail |
+|----------|--------|
+| **URL** | [svgbackgrounds.com](https://www.svgbackgrounds.com/) |
+| **License** | Free for commercial use |
+| **Attribution** | Not required |
+| **Commercial Use** | Yes |
+| **Format** | CSS (inline SVG data URI) |
+| **Best For** | Subtle tileable background patterns as CSS |
+
+**How to use:**
+1. Choose a pattern and adjust colors (`#1A1919` foreground, `#FFFFFF` background)
+2. Set opacity to 0.03–0.06
+3. Copy the CSS `background-image` value
+4. Apply in your SCSS as a custom `.va-bg-*` utility
+
 ---
 
 ## Typography & Fonts
@@ -754,21 +907,26 @@ Use these platforms in order of preference when looking for icons:
 
 | Priority | Platform | License | Icon Count | Style Match |
 |----------|----------|---------|------------|-------------|
-| 1 | **Lucide** | ISC/MIT | 1,600+ | Exact match (primary library) |
+| 1 | **Lucide** | ISC/MIT | 1,900+ | Exact match (primary library) |
 | 2 | **Phosphor** | MIT | 9,000+ | Very close (weight variants) |
-| 3 | **Heroicons** | MIT | 300+ | Close (stroke-width: 1.5) |
-| 4 | **Tabler Icons** | MIT | 5,800+ | Good (stroke-width: 2) |
-| 5 | **Flaticon** | Free+attribution | Millions | Varies — filter for outline/linear |
+| 3 | **Iconoir** | MIT | 1,500+ | Very close (stroke-width: 1.5) |
+| 4 | **Heroicons** | MIT | 300+ | Close (stroke-width: 1.5) |
+| 5 | **Tabler Icons** | MIT | 5,800+ | Good (stroke-width: 2) |
+| 6 | **Remix Icon** | Apache 2.0 | 2,800+ | Good (line + filled variants) |
+| 7 | **Flaticon** | Free+attribution | Millions | Varies — filter for outline/linear |
 
 ### Illustration Platform Hierarchy
 
 | Priority | Platform | License | Best For |
 |----------|----------|---------|----------|
 | 1 | **unDraw** | CC0 | Feature illustrations, empty states |
-| 2 | **Storyset** | Free+attribution | Animated illustrations, onboarding |
+| 2 | **ManyPixels** | Free | Flat/isometric illustrations |
 | 3 | **OpenPeeps** | CC0 | People illustrations, testimonials |
-| 4 | **Freepik** | Free+attribution | Polished vectors, marketing |
-| 5 | **SVG Repo** | Varies | Miscellaneous SVG assets |
+| 4 | **Open Doodles** | CC0 | Sketchy/playful illustrations |
+| 5 | **Storyset** | Free+attribution | Animated illustrations, onboarding |
+| 6 | **Freepik** | Free+attribution | Polished vectors, marketing |
+| 7 | **Blush** | Free+attribution | Consistent, customizable illustration sets |
+| 8 | **SVG Repo** | Varies | Miscellaneous SVG assets |
 
 ### Photo & Image Sources
 
@@ -779,6 +937,25 @@ Use these platforms in order of preference when looking for icons:
 | **Pixabay** | Free (custom) | Icons, vectors, and photos |
 
 > All three platforms allow free commercial use without attribution, but crediting the photographer is appreciated.
+
+### Background Pattern & Generator Platforms
+
+| Priority | Platform | License | Best For |
+|----------|----------|---------|----------|
+| 1 | **Built-in SCSS** | N/A | `va-halftone-overlay()` mixin, `.va-pattern-*` classes |
+| 2 | **`assets/patterns/`** | ISC (project) | 14 pre-made SVG tiles and decorations |
+| 3 | **[Haikei](https://haikei.app/)** | Free | Custom wave dividers, blobs, layered gradients |
+| 4 | **[Hero Patterns](https://heropatterns.com/)** | Free | Tileable CSS dot/line patterns |
+| 5 | **[SVG Backgrounds](https://www.svgbackgrounds.com/)** | Free | Data-URI tileable patterns |
+
+### Font Platforms
+
+| Priority | Platform | License | Best For |
+|----------|----------|---------|----------|
+| 1 | **[Google Fonts CDN](https://fonts.google.com/)** | SIL OFL 1.1 | Quick setup, no build step |
+| 2 | **[Fontsource](https://fontsource.org/)** | Per font (OFL) | Self-hosted via npm (best for production, GDPR-friendly) |
+| 3 | **[IBM Plex GitHub](https://github.com/IBM/plex)** | SIL OFL 1.1 | Direct WOFF2 file downloads |
+| 4 | **`npm install @ibm/plex`** | SIL OFL 1.1 | SCSS `@import` integration |
 
 ---
 
@@ -1245,17 +1422,25 @@ All assets in the Voice Aura design system are open-source or custom-created.
 |-------|---------|---------------------|----------------|
 | **Lucide Icons** | ISC/MIT | No | Yes |
 | **Phosphor Icons** | MIT | No | Yes |
+| **Iconoir** | MIT | No | Yes |
 | **Heroicons** | MIT | No | Yes |
 | **Tabler Icons** | MIT | No | Yes |
+| **Remix Icon** | Apache 2.0 | No | Yes |
 | **IBM Plex Fonts** | SIL OFL 1.1 | No (for use); Yes (for redistribution) | Yes |
+| **Fontsource** | Per font (OFL for IBM Plex) | Per font license | Yes |
 | **unDraw Illustrations** | CC0 1.0 | No | Yes |
+| **ManyPixels** | Free (custom) | No | Yes |
 | **OpenPeeps** | CC0 | No | Yes |
+| **Open Doodles** | CC0 | No | Yes |
+| **Haikei** | Free (generated output) | No | Yes |
 | **Hero Patterns** | Free (custom) | No | Yes |
+| **SVG Backgrounds** | Free (custom) | No | Yes |
 | **SVG Repo** | Varies (CC0/MIT) | Check per asset | Most yes |
 | **Freepik (free tier)** | Freepik License | **Yes** — link to Freepik | Yes |
 | **Freepik (premium)** | Freepik Premium | No | Yes |
 | **Flaticon (free tier)** | Flaticon License | **Yes** — link to Flaticon | Yes |
 | **Storyset** | Freepik License | **Yes** — link to Storyset | Yes |
+| **Blush (free tier)** | Blush License | **Yes** — credit artist | Yes (Pro recommended) |
 | **Unsplash** | Unsplash License | No (appreciated) | Yes |
 | **Pexels** | Pexels License | No (appreciated) | Yes |
 | **Pixabay** | Pixabay License | No (appreciated) | Yes |
@@ -1271,25 +1456,413 @@ When redistributing the design system, include:
 
 ---
 
+## In-Application Integration Patterns
+
+This section shows **how to actually use** each asset type within Voice Aura's SCSS component system. For sourcing and preparation, see the platform sections above. This section focuses on the code patterns for integration.
+
+### Icons in Components
+
+#### Buttons with Icons
+
+```html
+<!-- Primary button with leading icon -->
+<button class="va-btn va-btn--primary va-btn--icon">
+  <svg class="va-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="22"/>
+  </svg>
+  Start Recording
+</button>
+
+<!-- Icon-only button -->
+<button class="va-btn va-btn--ghost" aria-label="Settings">
+  <svg class="va-icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2">
+    <!-- settings icon paths -->
+  </svg>
+</button>
+```
+
+```scss
+// SCSS: The .va-btn--icon modifier handles icon + text spacing
+.va-btn--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: $va-grid-unit; // 8px between icon and text
+
+  .va-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+}
+```
+
+#### Icons in Navigation
+
+```html
+<nav class="va-navbar">
+  <a href="/" class="va-navbar__brand">
+    <!-- Brand logo icon from assets/brand/ -->
+    <img src="assets/brand/logo-icon.svg" alt="" width="32" height="32" aria-hidden="true">
+    <span>Voice<strong>Aura</strong></span>
+  </a>
+  <a href="/features" class="va-navbar__link">
+    <!-- Lucide icon inline -->
+    <svg class="va-icon va-icon--sm" aria-hidden="true" ...><!-- zap paths --></svg>
+    Features
+  </a>
+</nav>
+```
+
+#### Icons in Cards
+
+```html
+<div class="va-card">
+  <div class="va-card__header">
+    <!-- Feature icon: larger, colored -->
+    <div class="va-card__icon-wrapper">
+      <svg class="va-icon va-icon--lg va-icon--primary" aria-hidden="true"
+           width="32" height="32" viewBox="0 0 24 24" ...>
+        <!-- icon paths -->
+      </svg>
+    </div>
+    <h3 class="va-card__title">Voice Cloning</h3>
+  </div>
+</div>
+```
+
+```scss
+// SCSS: Icon wrapper for feature cards
+.va-card__icon-wrapper {
+  @include va-flex-center;
+  width: $va-grid-unit * 7;  // 56px
+  height: $va-grid-unit * 7;
+  border-radius: $va-radius;
+  background-color: rgba($va-primary-blue, 0.08);
+  margin-bottom: $va-grid-unit * 2; // 16px
+}
+```
+
+### Illustrations in Feature Sections
+
+```html
+<section class="va-feature-row">
+  <div class="va-feature-row__content">
+    <h2>Studio-Quality Voice Generation</h2>
+    <p>Generate natural-sounding speech in 50+ languages.</p>
+  </div>
+  <div class="va-feature-row__visual">
+    <!-- Illustration from unDraw, Freepik, or assets/illustrations/ -->
+    <img src="assets/illustrations/voice-studio-mockup.svg"
+         alt="Voice Aura Studio interface showing waveform editor"
+         class="va-illustration"
+         width="600" height="400"
+         loading="lazy"
+         decoding="async">
+  </div>
+</section>
+```
+
+```scss
+// SCSS: Illustration container styling
+.va-illustration {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: $va-radius-lg;
+
+  // Optional: subtle shadow for depth
+  &--elevated {
+    box-shadow: $va-shadow-card;
+  }
+
+  // Optional: constrained sizing for empty states
+  &--empty-state {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}
+```
+
+#### Adding a New Illustration from Freepik
+
+Step-by-step workflow for bringing a Freepik illustration into a feature section:
+
+1. **Search:** Go to [freepik.com](https://freepik.com), search "voice assistant flat illustration", filter by **Free** + **Vectors**
+2. **Download:** Get the SVG/AI file. Note the author name for attribution.
+3. **Recolor:** Open in Figma/Inkscape. Replace accent colors with `#0478FF`, dark elements with `#1A1919`, greys with `#E9E9EA`
+4. **Optimize:** Run through SVGO:
+   ```bash
+   svgo --config svgo.config.js downloaded-illustration.svg -o assets/illustrations/voice-assistant.svg
+   ```
+5. **Verify size:** Must be < 50 KB after optimization
+6. **Add to HTML:**
+   ```html
+   <div class="va-feature-row__visual">
+     <img src="assets/illustrations/voice-assistant.svg"
+          alt="AI voice assistant generating speech from text"
+          class="va-illustration"
+          loading="lazy">
+   </div>
+   ```
+7. **Attribute:** Add to `ATTRIBUTIONS.md`:
+   ```markdown
+   | `voice-assistant.svg` | Freepik Free | **Yes** | Designed by [AuthorName] / Freepik |
+   ```
+8. **Credit in footer** (required for free tier):
+   ```html
+   <p class="va-attribution">
+     Illustrations by <a href="https://www.freepik.com">Freepik</a>
+   </p>
+   ```
+
+### Patterns & Backgrounds in Sections
+
+#### Using Built-In CSS Patterns
+
+```html
+<!-- Halftone dot overlay (CSS-generated, no asset file needed) -->
+<section class="va-pattern-halftone">
+  <div class="container">
+    <h2>Pricing</h2>
+    <!-- section content -->
+  </div>
+</section>
+
+<!-- SVG pattern from assets/ -->
+<section class="va-section va-bg-circuit">
+  <div class="container"><!-- content --></div>
+</section>
+```
+
+#### Adding a New SVG Pattern from Haikei or Hero Patterns
+
+1. **Generate:** Create a wave pattern at [haikei.app](https://haikei.app) with VA colors
+2. **Save:** `assets/patterns/layered-wave.svg`
+3. **Add SCSS class** in `scss/components/_backgrounds.scss`:
+
+```scss
+// New pattern: Layered wave background
+.va-bg-layered-wave {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/layered-wave.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
+    opacity: var(--va-pattern-opacity, 0.06);
+  }
+
+  // Ensure content sits above the pattern
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+}
+```
+
+4. **Register** the new partial import if it's in a new file (existing `_backgrounds.scss` already covers this)
+5. **Use in HTML:**
+   ```html
+   <section class="va-section va-bg-layered-wave">
+     <div class="container"><!-- content --></div>
+   </section>
+   ```
+
+#### Using Noise/Grain Texture Overlay
+
+```html
+<!-- Subtle film-grain effect on a section -->
+<section class="va-pattern-noise">
+  <div class="container"><!-- content --></div>
+</section>
+```
+
+The noise texture (`assets/patterns/noise-texture.svg`) uses an SVG `feTurbulence` filter for realistic grain without a large file size.
+
+### Fonts in the Application
+
+#### Standard Font Loading (Google Fonts CDN)
+
+```html
+<!-- In <head>, before any other stylesheets -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+```
+
+#### Self-Hosted via Fontsource (Recommended for Production)
+
+```bash
+npm install @fontsource/ibm-plex-sans @fontsource/ibm-plex-serif @fontsource/ibm-plex-mono
+```
+
+```scss
+// In your SCSS entry point, BEFORE importing voice-aura.scss:
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-serif/600.css";
+@import "@fontsource/ibm-plex-serif/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+```
+
+#### Font Usage by Component Context
+
+```scss
+// Headings — IBM Plex Serif (set via $headings-font-family)
+h1, h2, h3, h4, .va-h1, .va-h2, .va-h3, .va-h4 {
+  font-family: $headings-font-family; // IBM Plex Serif
+}
+
+// Body, buttons, labels — IBM Plex Sans (set via $font-family-base)
+body, .va-btn, .va-input, .va-badge {
+  font-family: $font-family-base; // IBM Plex Sans
+}
+
+// Code blocks — IBM Plex Mono (set via $font-family-monospace)
+code, pre, .va-code, .ref-code {
+  font-family: $font-family-monospace; // IBM Plex Mono
+}
+```
+
+### Blog Card Images
+
+```html
+<article class="va-blog-card">
+  <div class="va-blog-card__image">
+    <!-- Custom SVG illustration or photo from Unsplash/Pexels -->
+    <img src="assets/images/blog-voice-agents.svg"
+         alt="Abstract illustration representing AI voice agents"
+         loading="lazy"
+         decoding="async">
+  </div>
+  <div class="va-blog-card__body">
+    <span class="va-blog-card__tag">VOICE AGENTS</span>
+    <h3 class="va-blog-card__title">Building Voice Agents with AI</h3>
+  </div>
+</article>
+```
+
+#### Creating a New Blog Card Image
+
+Blog card images follow a specific style: **abstract SVG illustrations** with a single accent color on a tinted background (see `assets/images/blog-*.svg` for reference).
+
+1. **Option A — Custom SVG:** Create a simple abstract composition in Figma using VA brand colors
+2. **Option B — Freepik/unDraw:** Download and recolor a flat illustration to fit the blog card aspect ratio (~16:10)
+3. **Option C — Unsplash photo:** Download a tech-themed photo, crop to 16:10, convert to WebP:
+   ```bash
+   cwebp -q 80 -resize 600 375 photo.jpg -o assets/images/blog-new-topic.webp
+   ```
+4. Save to `assets/images/` following naming convention: `blog-{topic-slug}.{svg|webp}`
+
+---
+
+## Component-to-Asset Mapping
+
+This table shows which design system component uses which asset type, where to source them, and how they're referenced.
+
+### Icons
+
+| Component | Asset Source | Integration Method | Example |
+|-----------|-------------|-------------------|---------|
+| **Buttons** (`.va-btn--icon`) | Lucide (`assets/icons/lucide/`) | Inline SVG with `class="va-icon"` | Send, play, arrow-right |
+| **Navbar** (`.va-navbar`) | Brand (`assets/brand/`) + Lucide | Inline SVG or `<img>` for logo | Logo mark, menu, x |
+| **Cards** (`.va-card`) | Lucide or Phosphor | Inline SVG in `.va-card__icon-wrapper` | Feature-specific icons |
+| **Pricing** (`.va-pricing-card`) | Lucide | Inline SVG for tier features | check, x, zap |
+| **Forms** (`.va-input-card`) | Lucide | Inline SVG inside input groups | search, mic, send |
+| **Footer** (`.va-footer`) | Lucide + custom | Inline SVG for social/nav links | github, twitter, mail |
+| **Blog cards** (`.va-blog-card`) | Lucide | Inline SVG for action icons | bookmark, share-2, clock |
+| **Auth forms** (`.va-auth`) | Lucide | Inline SVG in input addons | lock, mail, user, eye |
+| **Trust bar** (`.va-trust-bar`) | Custom SVGs | `<img>` tags for partner logos | Client/partner logos |
+
+### Illustrations
+
+| Component | Asset Source | Integration Method | Example |
+|-----------|-------------|-------------------|---------|
+| **Feature rows** (`.va-feature-row__visual`) | `assets/illustrations/` or unDraw/Freepik | `<img class="va-illustration">` | voice-studio-mockup.svg |
+| **Hero section** (`.va-hero`) | `assets/illustrations/` | `<img>` or inline SVG | phone-mockup.svg |
+| **Empty states** | unDraw, Open Doodles, ManyPixels | `<img class="va-illustration--empty-state">` | No results, first-time user |
+| **Error pages** (404, 500) | unDraw, Storyset | `<img>` centered with error text | Page not found |
+| **Onboarding** | Storyset, Blush | `<img>` in step cards | Setup wizard steps |
+
+### Patterns & Backgrounds
+
+| Component | Asset Source | Integration Method | Example |
+|-----------|-------------|-------------------|---------|
+| **Hero section** | `assets/patterns/halftone-wide.svg` | SCSS `.va-pattern-halftone` class | Halftone dot overlay behind hero |
+| **Feature sections** | `assets/patterns/circuit-lines.svg` | SCSS `.va-bg-circuit` class | Tech-themed feature panels |
+| **Pricing section** | `assets/patterns/grid-dots.svg` | SCSS `.va-pricing-section__dots` | Subtle dot grid behind pricing |
+| **Section dividers** | `assets/patterns/wave-divider.svg` | CSS `background-image` | Between major page sections |
+| **Dark panels** | `assets/patterns/grid-lines.svg` | SCSS `.va-bg-dark-grid` | Dark feature/API sections |
+| **Auth pages** | Generated via `va-halftone-overlay()` mixin | SCSS mixin on showcase panel | Signup page side panel |
+| **Blog section** | `assets/patterns/noise-texture.svg` | SCSS `.va-pattern-noise` | Subtle grain on blog background |
+| **Any section** | Haikei, Hero Patterns, SVG Backgrounds | New SCSS class in `_backgrounds.scss` | Custom one-off section backgrounds |
+
+### Fonts
+
+| Component | Font | Weight | SCSS Variable |
+|-----------|------|--------|---------------|
+| **Hero headlines** (h1) | IBM Plex Serif | Bold (700) | `$headings-font-family` |
+| **Section headings** (h2) | IBM Plex Serif | SemiBold (600) | `$headings-font-family` |
+| **Subheadings** (h3–h4) | IBM Plex Serif | SemiBold (600) | `$headings-font-family` |
+| **Small headings** (h5–h6) | IBM Plex Sans | SemiBold (600) | `$font-family-base` |
+| **Body text** | IBM Plex Sans | Regular (400) | `$font-family-base` |
+| **Buttons & labels** | IBM Plex Sans | Medium (500) | `$font-family-base` |
+| **Navigation links** | IBM Plex Sans | Medium (500) | `$font-family-base` |
+| **Badges & tags** | IBM Plex Sans | Medium (500) | `$font-family-base` |
+| **Code blocks** | IBM Plex Mono | Regular (400) | `$font-family-monospace` |
+| **Form inputs** | IBM Plex Sans | Regular (400) | `$font-family-base` |
+
+### Brand Assets
+
+| Component | Asset | File | Notes |
+|-----------|-------|------|-------|
+| **Navbar brand** | Logo icon + text | `assets/brand/logo-icon.svg` | 32x32 or 40x40 px |
+| **Footer brand** | Full logo | `assets/brand/logo-full.svg` | Min width 140px |
+| **Favicon** | Logo icon | `assets/brand/logo-icon.svg` | Referenced as `<link rel="icon">` |
+| **Dark backgrounds** | White logo variant | `assets/brand/logo-icon-white.svg` | Use on dark sections/footer |
+| **Loading/splash** | Logo icon | `assets/brand/logo-icon.svg` | Centered with pulse animation |
+
+---
+
 ## Quick Reference: Finding the Right Asset
 
 | I need... | Where to look |
 |-----------|---------------|
 | A UI icon (mic, play, settings) | `assets/icons/lucide/` or [lucide.dev](https://lucide.dev/) |
-| A rare/specific icon | [Phosphor](https://phosphoricons.com/) → [Heroicons](https://heroicons.com/) → [Tabler](https://tabler.io/icons) |
+| A rare/specific icon | [Phosphor](https://phosphoricons.com/) → [Iconoir](https://iconoir.com/) → [Heroicons](https://heroicons.com/) → [Tabler](https://tabler.io/icons) → [Remix Icon](https://remixicon.com/) |
 | A specialized/decorative icon | [Flaticon](https://www.flaticon.com/) (attribution required for free) |
 | The Voice Aura logo | `assets/brand/logo-*.svg` |
 | A background texture | `@include va-halftone-overlay()` or `assets/patterns/` |
+| A custom wave/blob/gradient BG | [Haikei](https://haikei.app/) → save to `assets/patterns/` |
+| A tileable CSS pattern | [Hero Patterns](https://heropatterns.com/) or [SVG Backgrounds](https://www.svgbackgrounds.com/) |
 | A section separator | `assets/patterns/wave-divider.svg` |
-| A feature illustration | [unDraw](https://undraw.co/) → `assets/illustrations/` |
+| A feature illustration | [unDraw](https://undraw.co/) → [ManyPixels](https://www.manypixels.co/gallery) → `assets/illustrations/` |
 | An animated illustration | [Storyset](https://storyset.com/) (attribution required) |
 | A polished vector illustration | [Freepik](https://www.freepik.com/) (attribution required for free) |
+| A consistent illustration set | [Blush](https://blush.design/) (Pro for commercial) |
 | People illustrations | [OpenPeeps](https://www.openpeeps.com/) → `assets/illustrations/` |
+| Sketchy/playful illustrations | [Open Doodles](https://www.opendoodles.com/) (CC0) |
 | A device mockup | `assets/illustrations/*-mockup.svg` |
 | Custom audio/voice icon | `assets/icons/waveform.svg`, `microphone.svg`, etc. |
-| Font files | Google Fonts CDN or `npm install @ibm/plex` |
-| A background pattern | [Hero Patterns](https://heropatterns.com/) |
+| Self-hosted fonts (npm) | [Fontsource](https://fontsource.org/) — `npm install @fontsource/ibm-plex-sans` |
+| Font files (CDN) | Google Fonts CDN or `npm install @ibm/plex` |
 | A hero/stock photo | [Unsplash](https://unsplash.com/) or [Pexels](https://www.pexels.com/) |
+| How to use an asset in a component | See [In-Application Integration Patterns](#in-application-integration-patterns) |
+| Which component uses which asset | See [Component-to-Asset Mapping](#component-to-asset-mapping) |
 
 ---
 

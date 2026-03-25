@@ -185,11 +185,27 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: inline-block;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: rgba($va-white, 0.4);
+    transition: width 0.2s ease-in-out;
+  }
 
   &:hover,
   &:focus-visible {
     color: $va-white;
     text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
   }
 }
 
