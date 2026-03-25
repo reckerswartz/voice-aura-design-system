@@ -288,7 +288,7 @@ replicate.
 
 ---
 
-### 2.2 HIGH — Should fix this sprint
+### 2.2 HIGH — ~~Should fix this sprint~~ ✅ ALL RESOLVED
 
 #### ~~H-0. Pricing section floating elements have wrong positioning~~ ✅ RESOLVED
 
@@ -311,7 +311,7 @@ context (not just hero).
 
 ---
 
-#### H-1. Hardcoded breakpoints in `_section.scss`
+#### ~~H-1. Hardcoded breakpoints in `_section.scss`~~ ✅ RESOLVED
 
 **File:** `scss/layout/_section.scss` lines 432-440
 
@@ -323,7 +323,7 @@ Three `@media` queries use raw pixel values (`1199.98px`, `991.98px`,
 
 ---
 
-#### H-2. Scattered `z-index` values
+#### ~~H-2. Scattered `z-index` values~~ ✅ RESOLVED
 
 29 of 30 `z-index` declarations are hardcoded magic numbers (`1`, `2`, `9999`).
 Only the navbar references the `$va-z-navbar` variable.
@@ -340,7 +340,7 @@ Only the navbar references the `$va-z-navbar` variable.
 
 ---
 
-#### H-3. `rgba()` shadows use literal `0, 0, 0` instead of tokens
+#### ~~H-3. `rgba()` shadows use literal `0, 0, 0` instead of tokens~~ ✅ RESOLVED
 
 20+ box-shadow declarations across `_cards.scss`, `_navbar.scss`, `_auth.scss`,
 `_pricing.scss`, `_blog-card.scss`, `_reset.scss` use `rgba(0, 0, 0, N)`
@@ -353,7 +353,7 @@ instead of the shadow variables defined in `_variables.scss`.
 
 ---
 
-#### H-4. Cross-component pattern duplication
+#### ~~H-4. Cross-component pattern duplication~~ ✅ RESOLVED
 
 Three distinct components duplicate a "crosshair / plus-sign corner"
 decoration pattern independently:
@@ -380,7 +380,7 @@ Two components duplicate a "language pill / tab carousel" pattern:
 
 ---
 
-#### H-5. Missing mixin extractions for repeated micro-patterns
+#### ~~H-5. Missing mixin extractions for repeated micro-patterns~~ ✅ RESOLVED
 
 The audit found 6 micro-patterns each repeated 5+ times across files:
 
@@ -405,7 +405,7 @@ The audit found 6 micro-patterns each repeated 5+ times across files:
 
 ---
 
-#### H-6. `!important` misuse in `_pattern-data.scss`
+#### ~~H-6. `!important` misuse in `_pattern-data.scss`~~ ✅ RESOLVED
 
 11 declarations use `!important` to force inline-modifier styles over
 base component styles. This is a symptom of specificity conflict, not a
@@ -422,7 +422,7 @@ solution.
 
 ---
 
-#### H-7. Accessibility gaps in HTML (partially resolved)
+#### ~~H-7. Accessibility gaps in HTML~~ ✅ PARTIALLY RESOLVED
 
 | Issue | File(s) | Impact |
 |-------|---------|--------|
@@ -436,7 +436,7 @@ solution.
 
 ---
 
-#### H-8. Reference page — 291 inline `style=` attributes
+#### H-8. Reference page — 291 inline `style=` attributes (deferred)
 
 **File:** `site/components.html`
 
@@ -455,7 +455,7 @@ only 1 inline style each.
 
 ---
 
-#### H-9. Reference page — Missing code blocks & copy buttons
+#### H-9. Reference page — Missing code blocks & copy buttons (deferred)
 
 Seven component sections (Buttons, Badges, Cards, Forms, Blog Cards,
 Voice Agent, Video Dubbing) show rendered demos but have **no
@@ -469,7 +469,7 @@ blocks (in Foundations sections) lack copy-to-clipboard buttons.
 
 ---
 
-#### H-10. Reference page — No scroll-spy active link highlighting
+#### H-10. Reference page — No scroll-spy active link highlighting (deferred)
 
 The sidebar TOC links don't highlight the currently visible section as
 the user scrolls. Implement an `IntersectionObserver` that adds an
