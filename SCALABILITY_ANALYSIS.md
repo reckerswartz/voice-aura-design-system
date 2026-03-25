@@ -32,20 +32,34 @@ design token foundation. However, several architectural decisions create
 - Scale the team beyond 1-2 developers
 - Keep the CSS bundle under performance budgets
 
-### Key Numbers
+### Key Numbers (audited 2026-03-25)
 
-| Metric | Value | Impact |
-|--------|-------|--------|
-| Compiled CSS (minified) | **334 KB** | 2× larger than ideal; ~48 KB gzipped |
-| Unused Bootstrap modules in output | **~135 selectors** (modal, tooltip, dropdown, close) | Dead CSS shipped to every user |
-| Hardcoded asset paths in SCSS | **18 `url()` references** | Breaks when consuming via npm in different project structures |
-| App-specific (non-reusable) SCSS | **1,671 lines** (16.5% of total) | Cannot be used by another brand |
-| `@extend` usages across Bootstrap | **42 instances** | Creates invisible selector coupling, hard to override |
-| HTML template duplication | **5 pages** duplicate the full navbar (~46 lines each) | Changes require 5-file edits |
-| Inline `<style>` blocks across pages | **~594 lines** total | Shadow stylesheets outside the build pipeline |
-| Dart Sass deprecation warnings | **449+** (suppressed) | Build will break on Sass 3.0 upgrade |
-| CSS custom properties (`--va-*`) | **54** (all generated, none authored) | No runtime theming capability |
-| `@layer` usage | **0** | No cascade control for theme consumers |
+| Metric | Previous | Current | Trend | Impact |
+|--------|----------|---------|-------|--------|
+| Compiled CSS (minified) | 334 KB | **354 KB** | ↑ worse | 2× larger than ideal; ~50 KB gzipped |
+| SCSS source lines | 10,102 | **11,341** | ↑ | Growing without tree-shaking |
+| SCSS partials | 22 | **33** | ↑ | File splits improved granularity |
+| Unique `.va-*` classes in output | — | **758** | — | Large API surface |
+| `@extend` usages | 42 | **52** | ↑ worse | **8 selectors per `.btn` rule** in compiled CSS |
+| Brand-coupled `$va-primary-blue` refs | 75 | **53** | ↓ better | Still in 13 files outside `_variables.scss` |
+| Brand-coupled `$va-near-black` refs | — | **159** | — | Hardest to decouple |
+| Hardcoded SVG `url()` paths | 18 | **26** | ↑ worse | `$va-asset-base-path` defined but **never used** (0 consumers) |
+| App-specific SCSS | 1,671 lines | **1,530 lines** | ↓ | Still 13.5% of total; ships to all consumers |
+| `--va-*` custom properties authored | 0 | **38** on `:root` | ✅ | But **0 components consume them** for theming |
+| Components using `var(--va-*)` | 0 | **55 refs** | ↑ | All are `--va-pattern-opacity` / grid — NOT foundation tokens |
+| Unused Bootstrap imports | 4 modules | **4 modules** | — | modal (56), dropdown (66), tooltip (13), close (6) lines |
+| Dart Sass warnings | 449+ | **343** | ↓ better | `darken()`/`lighten()` migrated; remaining are Bootstrap-internal |
+| `@layer` usage | 0 | **0** | — | No cascade control |
+| `@import` statements | 29 | **59** | ↑ | Grew with file splits; still blocks Sass 3.0 |
+| Google Fonts `@import` (render-blocking) | 1 | **1** | — | Hardcoded to IBM Plex; brand-coupled |
+| PostCSS / cssnano / autoprefixer | None | **None** | — | No build optimisation |
+| Style Dictionary / DTCG tokens | None | **None** | — | No token-to-code automation |
+| 11ty / SSG for HTML partials | None | **None** | — | Navbar still duplicated 4× |
+| Container queries | 0 | **0** | — | Components break outside viewport context |
+| Logical properties (RTL) | 4 | **0** | ↓ worse | Zero RTL readiness |
+| `prefers-color-scheme` | 0 | **0** | — | No dark mode |
+| `prefers-contrast` / `forced-colors` | 0 | **0** | — | No high-contrast support |
+| CI test pipeline | None | **None** | — | Only deploy + release + screenshots |
 
 ---
 
@@ -53,14 +67,22 @@ design token foundation. However, several architectural decisions create
 
 ### B-1. Monolithic CSS Output — No Tree-Shaking (Critical)
 
-**Current state:** Every page loads the full 334 KB stylesheet. There is no
-mechanism for a consumer to import only the components they use.
+**Current state:** Every page loads the full **354 KB** (50 KB gzipped)
+stylesheet. There is no mechanism for a consumer to import only the
+components they use. Size has **grown 6%** since the initial analysis
+due to new components (trust bar, background splits, animation splits).
 
-**Measured breakdown:**
+**Measured breakdown (2026-03-25):**
 - Bootstrap core (reboot, type, grid, containers): ~120 KB
 - Bootstrap components (buttons, cards, forms, nav, utilities): ~100 KB
-- Voice Aura custom components: ~80 KB
-- Unused Bootstrap modules (modal, tooltip, dropdown, close): ~34 KB
+- Voice Aura custom components: ~100 KB (↑ from ~80 KB)
+- Unused Bootstrap modules (modal, dropdown, tooltip, close): ~34 KB
+
+**Still imported but unused** in `_bootstrap.scss`:
+- `dropdown` — 66 CSS lines, 0 HTML usage
+- `modal` — 56 CSS lines, 0 HTML usage
+- `tooltip` — 13 CSS lines, 0 HTML usage
+- `close` — 6 CSS lines, 0 HTML usage
 
 **Why this blocks scale:** A second theme doubles the CSS. A third triples it.
 Without tree-shaking, each new theme adds 300+ KB to the global bundle.
@@ -81,20 +103,43 @@ unused Bootstrap module imports from `_bootstrap.scss`.
 
 ### B-2. Tight Brand Coupling in Component SCSS (Critical)
 
-**Current state:** 75 non-comment lines reference Voice Aura brand values
-(`$va-primary-blue`, IBM Plex fonts, `#0478FF`) inside component files. While
-colors are tokenized in `_variables.scss` (good), the **semantic meaning** is
-not abstracted.
+**Current state (2026-03-25):** Brand coupling has **partially improved** but
+remains the deepest structural issue:
+
+| Token | Direct refs outside `_variables.scss` | Files affected |
+|-------|--------------------------------------|----------------|
+| `$va-primary-blue` | **53** | 13 files |
+| `$va-near-black` | **159** | Nearly all |
+| `$va-white` | ~80 | Nearly all |
+| `$va-body-text` | ~30 | 8 files |
+| `$va-muted-text` | ~25 | 7 files |
+| IBM Plex font family | **1 hardcoded Google Fonts `@import`** | `_typography.scss` |
+
+**Improvement since initial analysis:** Components now reference Bootstrap
+variable names (`$font-family-base`, `$headings-font-family`, `$border-color`)
+instead of VA aliases for identical values — this was done in commit `a1a82bc`.
+But `$va-primary-blue` and `$va-near-black` remain heavily coupled because
+they're used for brand-specific color logic (gradients, hover states, shadows)
+that Bootstrap variables don't cover.
+
+**New finding — Google Fonts coupling:**
+```scss
+// _typography.scss line 49 — hardcoded, render-blocking, brand-specific
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:...&family=IBM+Plex+Serif:...');
+```
+A second theme with different fonts requires editing this import. It should
+be a variable or moved to HTML `<link>` tags.
 
 **Example bottleneck:** To create a "SoundWave Pro" theme with `$primary: #FF6B35`
 and `$font-heading: 'Playfair Display'`, you'd need to:
 
 1. Fork `_variables.scss` — easy, this is the intended customisation point
 2. But then discover that `_hero.scss`, `_navbar.scss`, `_buttons.scss` etc.
-   use `$va-primary-blue` directly (not `$primary`) in ~20 places
-3. And `$va-near-black` is used in 40+ places for backgrounds, borders, text
+   use `$va-primary-blue` directly (not `$primary`) in ~53 places
+3. And `$va-near-black` is used in **159 places** for backgrounds, borders, text
 4. The `$va-` prefix itself is brand-specific — "SoundWave Pro" shouldn't
    have `va-` prefixed classes
+5. The Google Fonts import in `_typography.scss` must be manually replaced
 
 **Root cause:** The design system conflates two layers:
 - **Framework layer** (reusable structure, Bootstrap integration, mixins)
@@ -121,10 +166,10 @@ Components reference `$ds-*` tokens. Swapping brands = swapping one file.
 
 ---
 
-### B-3. `@extend` Creates Invisible Coupling (High)
+### B-3. `@extend` Creates Invisible Coupling (High) — WORSENED
 
-**Current state:** 42 `@extend` statements connect VA components to Bootstrap
-selectors. For example:
+**Current state (2026-03-25):** **52** `@extend` statements (↑ from 42)
+connect VA components to Bootstrap selectors. For example:
 
 ```scss
 // _buttons.scss
@@ -149,8 +194,16 @@ selectors. For example:
 3. **Debugging difficulty:** When a `.va-btn` style doesn't look right, the
    actual CSS rule could be defined anywhere `.btn` is mentioned.
 
-**Measured impact:** The `.btn` selector group in compiled CSS has **8 selectors**
-instead of 1 — every VA class that extends it gets appended.
+**Measured impact (verified 2026-03-25):** The `.btn` selector group in
+compiled CSS has **8 selectors** instead of 1:
+```css
+.btn, .va-auth__social-btn, .va-auth__submit,
+.va-pricing-card__cta, .va-btn, .va-navbar-btn--filled,
+.va-navbar-btn--outlined, .va-navbar-btn--ghost { ... }
+```
+Every Bootstrap rule mentioning `.btn` (focus, disabled, active states) is
+duplicated with all 8 selectors. This pattern repeats for `.btn-dark` (4
+selectors), `.btn-outline-secondary` (4), `.form-control` (2), etc.
 
 **Fix — Use mixins or composition instead:**
 ```scss
@@ -167,10 +220,11 @@ letting consumers use Bootstrap classes directly (`.btn .btn-dark .rounded-pill`
 
 ---
 
-### B-4. `@import` Prevents Module Isolation (Critical)
+### B-4. `@import` Prevents Module Isolation (Critical) — WORSENED
 
-**Current state:** 29 `@import` statements + 449+ deprecation warnings.
-Sass 3.0 will remove `@import` entirely.
+**Current state (2026-03-25):** **59** `@import` statements (↑ from 29 — grew
+with file splits) + 343 deprecation warnings (↓ from 449 — `darken()`/`lighten()`
+migrated, remaining are Bootstrap-internal). Sass pinned to `>=1.98.0 <2.0.0`.
 
 **Why this blocks scale beyond one theme:**
 - `@import` dumps everything into global scope. Two themes can't coexist
@@ -199,11 +253,15 @@ Phase 3 (Bootstrap 6): vendors/ → @use
 
 ---
 
-### B-5. Hardcoded Asset Paths (High)
+### B-5. Hardcoded Asset Paths (High) — WORSENED
 
-**Current state:** 18 `url("../../assets/patterns/*.svg")` references in
-`_backgrounds.scss`. These assume a specific directory structure relative to
-the compiled CSS output location.
+**Current state (2026-03-25):** **26** `url("../../assets/...")` references
+(↑ from 18) across `_bg-patterns.scss` (14) and `_bg-presets.scss` (12).
+These assume a specific directory structure relative to the compiled CSS.
+
+**Critical finding:** The `$va-asset-base-path` variable was added to
+`_variables.scss` (line 461) with the correct `!default` pattern, but
+**zero files actually use it**. All 26 paths remain hardcoded.
 
 **Why this blocks scale:**
 - An npm consumer installing via `npm install voice-aura-design-system` gets
@@ -233,14 +291,14 @@ $va-asset-base-path: "~voice-aura-design-system/assets";
 
 ### B-6. App-Specific Components Ship as Core (Medium)
 
-**Current state:** 1,671 lines (16.5%) of the SCSS are app-specific:
+**Current state (2026-03-25):** 1,530 lines (13.5%) of the SCSS are
+app-specific (↓ from 1,671 — minor reduction from delta-only refactoring):
 
 | File | Lines | Reusable? |
 |------|-------|-----------|
-| `_voice-agent.scss` | 339 | No — Voice Aura product card |
+| `_auth.scss` | 432 | Partially — signup form is generic, but tightly styled |
 | `_video-dubbing.scss` | 376 | No — Voice Aura product card |
-| `_auth.scss` | 409 | Partially — signup form is generic, but tightly styled |
-| `_trust-bar.scss` | 164 | Yes — logo bar is a common SaaS pattern |
+| `_voice-agent.scss` | 339 | No — Voice Aura product card |
 | `_reference.scss` | 383 | No — styles for the reference documentation page |
 
 **Why this blocks scale:** Every consumer pays the CSS cost for components
@@ -269,22 +327,25 @@ scss/
 
 ### B-7. No Build Optimisation Pipeline (High)
 
-**Current state:** Build is `sass → dist/`. No PostCSS, no autoprefixer, no
-minification beyond Sass's `--compressed`, no PurgeCSS, no cssnano.
+**Current state (2026-03-25):** Build is still `sass → dist/`. No PostCSS,
+no autoprefixer, no cssnano, no PurgeCSS. Stylelint was added (✅) but
+no other tooling.
 
 | Tool | Status | Impact |
 |------|--------|--------|
-| **Autoprefixer** | Missing | No `-webkit-` prefixes for Safari (backdrop-filter needs them) |
-| **cssnano** | Missing | Sass `--compressed` doesn't deduplicate or optimize shorthand |
-| **PurgeCSS** | Missing | Can't remove unused Bootstrap utilities per-page |
-| **LightningCSS** | Missing | Modern alternative: minification + bundling + syntax lowering |
-| **Source map accuracy** | Partial | No PostCSS source maps for debugging |
+| **Stylelint** | ✅ Added | BEM-aware config, 0 errors |
+| **Autoprefixer** | ❌ Missing | No `-webkit-` prefixes for Safari (`backdrop-filter` needs them) |
+| **cssnano** | ❌ Missing | Sass `--compressed` doesn't deduplicate or optimize shorthand |
+| **PurgeCSS** | ❌ Missing | Can't remove unused Bootstrap utilities per-page |
+| **LightningCSS** | ❌ Missing | Modern alternative: minification + bundling + syntax lowering |
+| **Source map accuracy** | ⚠️ Partial | No PostCSS source maps for debugging |
 
-**Measured opportunity:**
-- Current minified: 334 KB
-- After removing unused Bootstrap modules (modal, tooltip, dropdown): est. ~295 KB
-- After cssnano optimisation: est. ~270 KB
-- After PurgeCSS per-page: est. ~80-120 KB per page
+**Measured opportunity (updated):**
+- Current minified: **354 KB** (~50 KB gzipped)
+- After removing unused Bootstrap modules: est. ~315 KB
+- After cssnano optimisation: est. ~285 KB
+- After PurgeCSS per-page: est. **80-120 KB per page**
+- With LightningCSS instead of cssnano: est. ~270 KB (better shorthand folding)
 
 **Fix:** Add PostCSS pipeline:
 ```json
@@ -297,9 +358,9 @@ minification beyond Sass's `--compressed`, no PurgeCSS, no cssnano.
 
 ### B-8. HTML Template Duplication (Medium)
 
-**Current state:** The navbar is copy-pasted across 5 HTML pages (~46 lines
-each = 230 duplicated lines). The hero section is near-identical in 2 pages.
-Inline `<style>` blocks total ~594 lines across 8 pages.
+**Current state (2026-03-25):** The navbar is copy-pasted across **4 HTML
+pages** (↓ from 5 — `app-demo.html` was removed). Inline `style=` attributes
+total **796** across all pages. No partial/include system exists.
 
 **Why this blocks scale:** When creating a second theme's demo pages, every
 section must be re-copied and modified. There's no partial/include system,
@@ -388,40 +449,41 @@ Now creating a new theme = editing a JSON file, not touching SCSS.
 
 ---
 
-### MP-3. CSS Custom Properties for Runtime Theming — Minimal
+### MP-3. CSS Custom Properties for Runtime Theming — PARTIALLY DONE
 
-**Current state:** 54 `--va-*` custom properties exist in the compiled CSS,
-but they're all auto-generated by Bootstrap's `root` module. **Zero** are
-authored intentionally by the design system for runtime theming.
+**Current state (2026-03-25):** 38 hand-authored `--va-*` custom properties
+are now defined on `:root` in `_reset.scss` (✅ Phase 1 complete). These
+cover colors, typography, spacing, radius, shadows, transitions, and z-index.
 
-**What's missing:**
+**However, the critical gap remains:** These 38 tokens are **not consumed**
+by any component for theming purposes. The 55 `var(--va-*)` references found
+in SCSS are all `--va-pattern-opacity`, `--va-ring-size`, `--va-grid-min` —
+component-internal knobs, **not foundation token consumption**.
+
+**What this means:**
+- Changing `--va-color-primary` at runtime has **zero effect** on any component
+- Dark mode via custom property override is still impossible
+- The 38 authored tokens are documentation-only, not functional
+
+**What's still missing:**
 - No `prefers-color-scheme: dark` support
 - No way to switch themes at runtime (e.g., white-label SaaS)
 - No component-level custom property API for consumer overrides
 
-**Recommendation — Phased adoption:**
-
-**Phase 1:** Expose foundation tokens:
+**Remaining work (Phase 2 — the hard part):**
 ```scss
-:root {
-  --va-color-primary: #{$va-primary-blue};
-  --va-color-surface: #{$va-white};
-  --va-color-on-surface: #{$va-near-black};
-  --va-font-display: #{$va-font-heading};
-  --va-radius: #{$va-radius};
-  --va-shadow: #{$va-shadow};
-}
-```
-
-**Phase 2:** Components consume them:
-```scss
+// Components must migrate from Sass variables to custom properties:
+// Before:
 .va-btn--primary {
-  background-color: var(--va-color-on-surface);
-  color: var(--va-color-surface);
+  background-color: $va-near-black;    // compile-time only
+}
+// After:
+.va-btn--primary {
+  background-color: var(--va-color-secondary);  // runtime-themeable
 }
 ```
 
-**Phase 3:** Dark mode becomes trivial:
+**Phase 3 — Dark mode (trivial once Phase 2 is done):**
 ```scss
 @media (prefers-color-scheme: dark) {
   :root {
@@ -456,14 +518,15 @@ placed in a sidebar or a narrower container (common in real apps).
 
 ---
 
-### MP-5. Logical Properties — Minimal (4 instances)
+### MP-5. Logical Properties — REGRESSED (0 instances)
 
 **What it is:** CSS logical properties (`margin-inline`, `padding-block`,
 `inset-inline-start`) support RTL layouts and vertical writing modes without
 separate stylesheets.
 
-**Current state:** Only 4 logical property usages in 10,000+ SCSS lines.
-Everything else uses physical properties (`margin-left`, `padding-right`).
+**Current state (2026-03-25):** **0** logical property usages in 11,341 SCSS
+lines (↓ from 4 in the initial analysis — likely removed during refactoring).
+Everything uses physical properties (`margin-left`, `padding-right`).
 
 **Why it matters:** Any SaaS platform targeting international markets needs
 RTL support. Without logical properties, you'd need a separate RTL stylesheet
@@ -486,18 +549,20 @@ border-inline-start: 2px solid blue;
 
 ### MP-6. No Automated Testing in CI (Critical for Scale)
 
-**Current CI:**
+**Current CI (2026-03-25):**
 - `deploy-pages.yml` — builds CSS + deploys to GitHub Pages
 - `release.yml` — publishes to npm on tag push
 - `screenshot-capture.yml` — captures screenshots
 
-**What's missing:**
+**What's changed:**
+- Stylelint added locally (✅) but **not wired into CI**
+- Playwright is a devDependency but **no test specs exist**
 
 | Test Type | Status | Why It Matters |
 |-----------|--------|----------------|
-| **CSS compilation test** | ❌ | Ensures `npm run build` succeeds on every PR |
-| **Stylelint** | ❌ | Enforces token-first, BEM naming, max nesting |
-| **Visual regression** | ❌ | Catches unintended visual changes (Playwright already installed) |
+| **CSS compilation test** | ❌ Not in CI | Ensures `npm run build` succeeds on every PR |
+| **Stylelint** | ✅ Local only | BEM-aware config with 0 errors — needs CI integration |
+| **Visual regression** | ❌ | Playwright installed but no test specs |
 | **Accessibility audit** | ❌ | axe-core on every HTML page |
 | **CSS bundle size budget** | ❌ | Fails CI if CSS exceeds threshold |
 | **Design token validation** | ❌ | Ensures token JSON schema matches expected format |
@@ -515,30 +580,28 @@ test:
 
 ---
 
-### MP-7. Deprecated Sass APIs Throughout (Critical)
+### MP-7. Deprecated Sass APIs Throughout (Critical) — PARTIALLY RESOLVED
 
-**Current state:**
+**Current state (2026-03-25):**
 
-| Deprecated API | Count | Replacement | Removed in |
-|----------------|-------|-------------|------------|
-| `@import` | 29 (project) + 20 (Bootstrap) | `@use` / `@forward` | Sass 3.0 |
-| `darken()` / `lighten()` | 50+ | `color.adjust()` / `color.scale()` | Sass 3.0 |
-| `if()` function syntax | 5+ (Bootstrap) | CSS `if()` syntax | Sass 3.0 |
-| `red()` / `green()` / `blue()` | 5+ (Bootstrap) | `color.red()` etc. | Sass 3.0 |
-| Global `mix()` / `unit()` | Several (Bootstrap) | `color.mix()` / `math.unit()` | Sass 3.0 |
+| Deprecated API | Previous | Current | Removed in |
+|----------------|----------|---------|------------|
+| `@import` | 29 + 20 (BS) | **59** (grew with splits) | Sass 3.0 |
+| `darken()` / `lighten()` | 50+ | **0 in VA code** ✅ | Sass 3.0 |
+| `if()` function syntax | 5+ (Bootstrap) | 5+ (Bootstrap) | Sass 3.0 |
+| `red()` / `green()` / `blue()` | 5+ (Bootstrap) | 5+ (Bootstrap) | Sass 3.0 |
+| Global `mix()` / `unit()` | Several (BS) | Several (BS) | Sass 3.0 |
 
-**Total deprecation warnings:** 449+ (most suppressed by Sass).
+**Total deprecation warnings:** 343 (↓ from 449). All remaining warnings are
+Bootstrap-internal and will be resolved by Bootstrap 6.
 
-**Build time impact:** 3.27 seconds for a single compilation — acceptable
-today, but Sass deprecation processing adds overhead that will grow.
+**What was done:** All 50+ `darken()`/`lighten()` calls migrated to
+`va-darken()`/`va-lighten()` wrapper functions using `color.adjust()` in
+commit `43ca9ce`. Sass version pinned to `>=1.98.0 <2.0.0`.
 
-**Risk:** Upgrading to Sass 3.0 (or a new Bootstrap version that requires it)
-will require **simultaneous** migration of all deprecated APIs. This is a
-high-risk, multi-file change.
-
-**Recommendation:** Migrate project-owned `darken()`/`lighten()` calls now
-(50+ instances across 16 files). Bootstrap's own deprecated calls will be
-fixed by Bootstrap 6.
+**Remaining risk:** The `@import` count grew from 29 to 59 due to file splits
+(backgrounds and animations split into sub-modules). Full `@use`/`@forward`
+migration is blocked by Bootstrap 5.3 using `@import` internally.
 
 ---
 
@@ -565,6 +628,72 @@ requirements increasingly mandate these.
 }
 ```
 
+### MP-9. Custom Property Consumption Gap — NEW FINDING (Critical)
+
+**This is the single most important finding from the 2026-03-25 re-audit.**
+
+38 `--va-*` custom properties are authored on `:root` (Phase 1 complete ✅).
+However, **no component uses them for theming**. The 55 `var(--va-*)`
+references in the codebase are all component-internal knobs:
+
+| Custom property consumed | Count | Purpose |
+|--------------------------|-------|---------|
+| `--va-pattern-opacity` | 28 | Background pattern opacity control |
+| `--va-ring-size` | 4 | Voice ripple ring dimensions |
+| `--va-mask-size` / `--va-mask-center` | 4 | Spotlight mask positioning |
+| `--va-grid-min` | 1 | Grid minimum column width |
+| `--va-pattern-position` | 1 | Pattern position override |
+| **Foundation tokens consumed** | **0** | Colors, radius, shadows, typography |
+
+**Why this is the #1 scalability bottleneck:**
+- The 38 `:root` tokens were the right first step
+- But until components reference `var(--va-color-primary)` instead of
+  `$va-primary-blue`, **runtime theming is impossible**
+- Dark mode, white-labeling, and brand switching all depend on this
+- Every hour spent on other improvements has diminished returns until
+  this gap is closed
+
+**Fix priority:** This should be the **first structural change** in the
+next sprint. Target the highest-impact components first:
+
+| Component | Themeable properties | Effort |
+|-----------|---------------------|--------|
+| `_buttons.scss` | bg, color, border, hover states | 1 h |
+| `_cards.scss` | bg, border, shadow | 30 min |
+| `_navbar.scss` | bg, color, border | 1 h |
+| `_hero.scss` | bg, title color, subtitle color | 1 h |
+| `_footer.scss` | bg, text color, link color | 30 min |
+| `_forms.scss` | border, focus ring, placeholder | 30 min |
+| `_pricing.scss` | card bg, CTA color | 1 h |
+| `_blog-card.scss` | card bg, meta color | 30 min |
+| Remaining components | Various | 2 h |
+| **Total** | | **~8 h** |
+
+---
+
+### MP-10. Google Fonts Coupling — NEW FINDING (Medium)
+
+**File:** `scss/base/_typography.scss` line 49
+
+```scss
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:...&family=IBM+Plex+Serif:...');
+```
+
+This is:
+1. **Brand-coupled** — hardcoded to IBM Plex, Voice Aura's brand font
+2. **Render-blocking** — CSS `@import` for fonts blocks first paint
+3. **Not configurable** — no variable controls which fonts are loaded
+
+**Fix options:**
+- **Option A (recommended):** Move to HTML `<link>` tags with `preconnect`,
+  controlled by a template variable in the SSG
+- **Option B:** Make the URL a Sass variable with `!default`:
+  ```scss
+  $va-google-fonts-url: 'https://fonts.googleapis.com/...' !default;
+  @if $va-google-fonts-url { @import url($va-google-fonts-url); }
+  ```
+- **Option C:** Use `@fontsource/ibm-plex-sans` npm package for self-hosting
+
 ---
 
 ## 4. Reference-to-Theme Workflow Analysis
@@ -577,22 +706,24 @@ Behance/Figma reference → Manual extraction of colors/fonts/spacing
                         → Build custom components in SCSS
                         → Create demo HTML pages manually
                         → Copy-paste navbar/footer across pages
-                        → Inline <style> for page-specific fixes
+                        → Inline style= for page-specific fixes
                         → npm run build → dist/css/
 ```
 
-### What breaks when you do this for "Brand B":
+### What breaks when you do this for "Brand B" (updated 2026-03-25):
 
 | Step | Effort for Brand A | Effort for Brand B | Why |
 |------|------|------|-----|
 | Token extraction | 4 hours | 4 hours | No Figma→token automation |
-| Variable overrides | 2 hours | 2 hours | Must fork `_variables.scss`, rename all `$va-*` |
-| Component customisation | 40 hours | 30 hours | Can reuse structure but must override brand-specific styles |
+| Variable overrides | 2 hours | 3 hours | Must fork `_variables.scss`; 159 `$va-near-black` refs + 53 `$va-primary-blue` refs to audit |
+| Font swap | 30 min | 2 hours | Google Fonts `@import` hardcoded in `_typography.scss`; font-family already uses Bootstrap vars (✅) |
+| Component customisation | 40 hours | 25 hours | Delta-only pattern (✅) reduces override work; but `@extend` coupling adds debugging |
 | App-specific components | 20 hours | 20 hours | Voice Agent / Dubbing cards are useless; must build new ones |
-| Demo pages | 16 hours | 16 hours | No partials, must copy-paste and adapt |
-| Asset paths | 2 hours | 4 hours | Must update all 18 hardcoded SVG paths |
-| Testing | Manual | Manual | No visual regression or a11y CI |
-| **Total** | **~84 hours** | **~76 hours** | **Only 10% savings** |
+| Asset path updates | 2 hours | 4 hours | Must update **26** hardcoded SVG paths (`$va-asset-base-path` exists but unused) |
+| Demo pages | 16 hours | 16 hours | No partials, must copy-paste and adapt 4 navbar copies |
+| Custom properties | 0 hours | 4 hours | Must wire 38 `:root` tokens into components for runtime theming |
+| Testing | Manual | Manual | Stylelint works (✅) but no CI, no visual regression, no a11y |
+| **Total** | **~85 hours** | **~78 hours** | **Only ~8% savings** |
 
 ### Ideal workflow (with recommended changes):
 
@@ -600,8 +731,10 @@ Behance/Figma reference → Manual extraction of colors/fonts/spacing
 Figma reference → Style Dictionary export → tokens/brand-b.json
                → npm run build:theme -- --brand=brand-b
                → Generates _variables.scss from tokens
+               → Components consume var(--ds-*) custom properties
                → Compiles with shared core + brand-specific overrides
                → 11ty builds demo pages from shared partials
+               → PostCSS optimises (autoprefixer + cssnano + PurgeCSS)
                → CI runs visual regression + a11y + size budget
 ```
 
@@ -609,12 +742,13 @@ Figma reference → Style Dictionary export → tokens/brand-b.json
 |------|--------|
 | Token extraction (Style Dictionary) | 1 hour |
 | Brand overrides (JSON) | 2 hours |
-| Component customisation | 15 hours |
+| Component customisation | 12 hours (custom props make overrides trivial) |
 | Brand-specific components | 20 hours (only new ones) |
 | Demo pages (11ty partials) | 4 hours |
+| Font swap | 30 min (variable-based Google Fonts URL) |
 | Asset paths | 0 (variable-based) |
 | Testing | Automated |
-| **Total** | **~42 hours (50% reduction)** |
+| **Total** | **~40 hours (~51% reduction)** |
 
 ---
 
@@ -692,59 +826,69 @@ stylelint + visual regression + a11y + size budget
 
 ---
 
-## 6. Implementation Priority Matrix
+## 6. Implementation Priority Matrix (updated 2026-03-25)
 
-### Tier 1 — Unblock multi-theme capability (weeks 1-3)
+### Tier 1 — Unblock multi-theme capability (weeks 1-2)
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Migrate 50+ `darken()`/`lighten()` to `color.adjust()` | 3 h | Eliminates 50+ deprecation warnings, prepares for Sass 3.0 |
-| Add `$va-asset-base-path` variable for SVG URLs | 30 min | Fixes npm consumer asset resolution |
-| Remove unused Bootstrap imports (modal, tooltip, dropdown, close) | 30 min | Saves ~34 KB from compiled CSS |
-| Separate core vs brand-specific SCSS directories | 2 h | Makes reusable components identifiable |
-| Fix `body { overflow-x: hidden }` → `clip` in `_reset.scss` | 5 min | Eliminates per-page sticky workarounds |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| ~~Migrate 50+ `darken()`/`lighten()` to `color.adjust()`~~ | 3 h | Sass 3.0 readiness | ✅ Done (`43ca9ce`) |
+| ~~Fix `body { overflow-x }` root cause~~ | 5 min | Sticky positioning | ✅ Done |
+| ~~Add `--va-*` custom properties on `:root`~~ | 4 h | Runtime theming foundation | ✅ Done (38 tokens, `d6eceeb`) |
+| ~~Add Stylelint~~ | 2 h | Code quality enforcement | ✅ Done (0 errors) |
+| ~~Split oversized SCSS files~~ | 3 h | Maintainability | ✅ Done (`43ca9ce`) |
+| Wire `$va-asset-base-path` into all 26 SVG `url()` refs | 1 h | npm consumer asset resolution | ❌ Open |
+| Remove unused Bootstrap imports (modal, tooltip, dropdown, close) | 30 min | Saves ~34 KB from compiled CSS | ❌ Open |
+| Separate core vs brand-specific SCSS directories | 2 h | Makes reusable components identifiable | ❌ Open |
+| Make Google Fonts URL configurable (variable or HTML) | 30 min | Unblocks font swaps for new themes | ❌ Open |
 
-### Tier 2 — Enable runtime theming (weeks 4-6)
+### Tier 2 — Enable runtime theming (weeks 3-5)
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Author `--va-*` custom properties for foundation tokens | 4 h | Enables runtime theming + dark mode |
-| Migrate components to consume custom properties | 8 h | Theme switching becomes CSS-only |
-| Add `@layer` wrapper around output sections | 2 h | Consumers can safely override |
-| Add `prefers-color-scheme: dark` support | 4 h | Dark mode with zero JS |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| **Migrate components to consume `var(--va-*)`** | 8 h | Theme switching becomes CSS-only | ❌ Critical gap |
+| Add `@layer` wrapper around output sections | 2 h | Consumers can safely override | ❌ Open |
+| Add `prefers-color-scheme: dark` support | 4 h | Dark mode with zero JS | ❌ Blocked on component consumption |
+| Reduce `@extend` from 52 to ~20 (use mixins) | 6 h | Eliminates selector explosion | ❌ Open |
+| Unify 3 button systems (hero/navbar → extend va-btn) | 4 h | Single source of truth | ❌ Open |
 
-### Tier 3 — Automate the workflow (weeks 7-10)
+### Tier 3 — Automate the workflow (weeks 6-8)
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Set up Style Dictionary with DTCG token format | 4 h | Token → SCSS generation automated |
-| Migrate abstracts to `@use`/`@forward` | 4 h | Module isolation, namespace safety |
-| Add PostCSS pipeline (autoprefixer + cssnano) | 2 h | Better minification + vendor prefixes |
-| Adopt 11ty for demo page generation | 4 h | Eliminates HTML duplication |
-| Replace `@extend` with mixin/composition patterns | 6 h | Eliminates selector explosion |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| Add PostCSS pipeline (autoprefixer + cssnano + PurgeCSS) | 2 h | ~40% CSS size reduction | ❌ Open |
+| Set up Style Dictionary with DTCG token format | 4 h | Token → SCSS generation automated | ❌ Open |
+| Migrate abstracts to `@use`/`@forward` | 4 h | Module isolation, namespace safety | ❌ Open |
+| Adopt 11ty for demo page generation | 4 h | Eliminates HTML duplication | ❌ Open |
+| Add CI workflow (lint + build + size budget) | 2 h | Prevents regressions | ❌ Open |
 
-### Tier 4 — CI/CD and quality gates (weeks 11-12)
+### Tier 4 — Quality gates & polish (weeks 9-12)
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Add Stylelint with BEM + token-first rules | 2 h | Prevents regressions |
-| Add CSS size budget to CI | 1 h | Prevents bloat |
-| Add Playwright visual regression tests | 4 h | Catches unintended visual changes |
-| Add axe-core accessibility audit to CI | 2 h | Ensures WCAG compliance |
-| Add container queries for component-level responsiveness | 4 h | Components work in any layout context |
-| Add logical properties for RTL readiness | 3 h | International market support |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| Add CSS size budget to CI (target < 250 KB) | 1 h | Prevents bloat | ❌ Open |
+| Add Playwright visual regression tests | 4 h | Catches unintended visual changes | ❌ Open |
+| Add axe-core accessibility audit to CI | 2 h | Ensures WCAG compliance | ❌ Open |
+| Add container queries for component-level responsiveness | 4 h | Components work in any layout context | ❌ Open |
+| Add logical properties for RTL readiness | 3 h | International market support | ❌ Open |
+| Move 796 inline `style=` to CSS classes | 4 h | Demo pages use the design system | ❌ Open |
 
 ### Tier 5 — Future-proofing (ongoing)
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Complete `@use` migration (post-Bootstrap 6) | 8 h | Full Sass 3.0 readiness |
-| Publish design tokens as standalone npm package | 4 h | Consumed by iOS/Android/Figma |
-| Add `prefers-contrast` + `forced-colors` support | 2 h | Enterprise accessibility |
-| Multi-brand CI matrix (build + test all themes in parallel) | 4 h | Confidence across brands |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| Complete `@use` migration (post-Bootstrap 6) | 8 h | Full Sass 3.0 readiness | Blocked on Bootstrap 6 |
+| Publish design tokens as standalone npm package | 4 h | Consumed by iOS/Android/Figma | ❌ Open |
+| Add `prefers-contrast` + `forced-colors` support | 2 h | Enterprise accessibility | ❌ Open |
+| Multi-brand CI matrix (build + test all themes in parallel) | 4 h | Confidence across brands | ❌ Open |
+| CSS custom property layer for brand switching | 8 h | Runtime white-labeling | ❌ Open |
 
 ---
 
-*This analysis is a companion to `ARCHITECTURE_REVIEW.md` (issue-level detail)
-and `QA_REPORT.md` (visual QA findings). Together they form the complete
-assessment of the design system's current state and path forward.*
+*This analysis is a companion to:*
+- *`ARCHITECTURE_REVIEW.md` — issue-level detail and progress tracker*
+- *`CONTINUOUS_IMPROVEMENT.md` — refinement process, component maturity, governance*
+- *`QA_AUDIT_REPORT.md` — visual QA findings from pixel-perfect demo*
+
+*Together they form the complete assessment of the design system's current
+state and path forward.*
