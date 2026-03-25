@@ -647,7 +647,7 @@ changes to the compiled CSS can only be caught manually.
 | Add Playwright visual-regression tests | M-7 | 4 h | ✅ Done |
 | Add axe-core a11y audit to CI | M-7 | 2 h | ✅ Done |
 | Introduce 11ty (or similar) for HTML partials | M-4 | 4 h | ✅ Done |
-| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ⏳ Deferred |
+| Move inline `<style>` blocks into SCSS page partials | M-5 | 3 h | ✅ Done |
 | Move inline `style=` attrs to `_reference.scss` | H-8 | 4 h | ⚠️ Partial (358→182) |
 | Add code blocks to remaining reference sections | H-9 | 3 h | ✅ Done |
 | Begin `@import` → `@use` migration for abstracts | C-2 phase 2 | 4 h | ⏳ Blocked on Bootstrap 6 |
