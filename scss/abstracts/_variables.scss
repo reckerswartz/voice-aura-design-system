@@ -227,6 +227,15 @@ $va-radius-lg:   1rem;     // 16px — large cards, modals
 $va-radius-xl:   1.5rem;   // 24px — hero cards
 $va-radius-pill: 50rem;    // pill / fully rounded
 
+// Radius map for programmatic access via `va-radius()` function
+$va-radii: (
+  "sm":   $va-radius-sm,
+  "default": $va-radius,
+  "lg":   $va-radius-lg,
+  "xl":   $va-radius-xl,
+  "pill": $va-radius-pill,
+);
+
 // Bootstrap overrides
 $border-radius:    $va-radius;
 $border-radius-sm: $va-radius-sm;
@@ -262,6 +271,19 @@ $va-shadow-tab-dark:               0 1px 3px rgba(0, 0, 0, 0.12);
 $va-shadow-tab-light:              0 1px 3px rgba(0, 0, 0, 0.08);
 $va-shadow-blog-hover:             0 4px 16px rgba(0, 0, 0, 0.06);
 $va-shadow-mobile-menu:            -8px 0 32px rgba(0, 0, 0, 0.1);
+
+// Shadow map for programmatic access via `va-shadow()` function
+$va-shadows: (
+  "sm":  $va-shadow-sm,
+  "default": $va-shadow,
+  "md":  $va-shadow-md,
+  "lg":  $va-shadow-lg,
+  "xl":  $va-shadow-xl,
+  "card": $va-shadow-card,
+  "card-hover": $va-shadow-card-hover,
+  "float": $va-shadow-float,
+  "inset": $va-shadow-inset,
+);
 
 // Bootstrap shadow overrides
 $box-shadow:    $va-shadow;
@@ -519,6 +541,19 @@ $va-z-overlay:   1040;
 $va-z-modal:     1050;
 $va-z-tooltip:   1070;
 $va-z-skip-link: 9999;
+
+// Z-index map for programmatic access via `va-z()` function
+$va-z-layers: (
+  "base":       $va-z-base,
+  "raised":     $va-z-raised,
+  "decoration": $va-z-decoration,
+  "sticky":     $va-z-sticky,
+  "navbar":     $va-z-navbar,
+  "overlay":    $va-z-overlay,
+  "modal":      $va-z-modal,
+  "tooltip":    $va-z-tooltip,
+  "skip-link":  $va-z-skip-link,
+);
 
 // Breakpoint map (mirrors Bootstrap, for use in custom mixins)
 $va-breakpoints: (

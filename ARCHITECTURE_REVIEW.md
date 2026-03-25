@@ -479,7 +479,7 @@ the user scrolls. Implement an `IntersectionObserver` that adds an
 
 ### 2.3 MEDIUM — Address within the next quarter
 
-#### M-1. Incomplete design-token function coverage
+#### ~~M-1. Incomplete design-token function coverage~~ ✅ RESOLVED
 
 `_functions.scss` defines 5 functions (`va-color`, `va-space`, `va-shade`,
 `va-tint`, `va-str-replace`), but the variable file defines maps for
@@ -514,7 +514,7 @@ have no corresponding variable or map:
 
 ---
 
-#### M-3. Missing Bootstrap utility extensions
+#### ~~M-3. Missing Bootstrap utility extensions~~ ✅ RESOLVED
 
 The Bootstrap utility API is used to generate 5 custom utilities, but
 several common needs are missing:
@@ -529,7 +529,7 @@ several common needs are missing:
 
 ---
 
-#### M-4. HTML template duplication
+#### ~~M-4. HTML template duplication~~ ✅ RESOLVED
 
 The navbar block is copy-pasted identically across `sample.html`,
 `pixel-perfect.html`, and `signup.html` (~46 lines each). The hero
@@ -562,7 +562,7 @@ shadow stylesheet that is easy to forget.
 
 ---
 
-#### M-6. No CSS linting or formatting
+#### ~~M-6. No CSS linting or formatting~~ ✅ RESOLVED
 
 There is no Stylelint or Prettier configuration. Code style is
 consistent today because one person wrote it, but will diverge with
@@ -582,7 +582,7 @@ multiple contributors.
 
 ---
 
-#### M-7. No automated tests
+#### ~~M-7. No automated tests~~ ✅ RESOLVED
 
 There are no visual-regression, snapshot, or unit tests. Breaking
 changes to the compiled CSS can only be caught manually.

@@ -39,6 +39,76 @@
 }
 
 // ----------------------------------------------------------------------------
+// va-font-size($name)
+// Retrieves a font size from the `$va-font-sizes` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key (e.g. "h1", "base", "sm", "xs", "lg")
+/// @return {Length}
+@function va-font-size($name) {
+  @if not map.has-key($va-font-sizes, $name) {
+    @error "Voice Aura font-size `#{$name}` not found. Available keys: #{map.keys($va-font-sizes)}";
+  }
+
+  @return map.get($va-font-sizes, $name);
+}
+
+// ----------------------------------------------------------------------------
+// va-shadow($level)
+// Retrieves a shadow value from the `$va-shadows` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $level — key (e.g. "sm", "default", "md", "lg", "card")
+/// @return {Shadow}
+@function va-shadow($level) {
+  @if not map.has-key($va-shadows, $level) {
+    @error "Voice Aura shadow `#{$level}` not found. Available keys: #{map.keys($va-shadows)}";
+  }
+
+  @return map.get($va-shadows, $level);
+}
+
+// ----------------------------------------------------------------------------
+// va-radius($size)
+// Retrieves a border-radius from the `$va-radii` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $size — key (e.g. "sm", "default", "lg", "xl", "pill")
+/// @return {Length}
+@function va-radius($size) {
+  @if not map.has-key($va-radii, $size) {
+    @error "Voice Aura radius `#{$size}` not found. Available keys: #{map.keys($va-radii)}";
+  }
+
+  @return map.get($va-radii, $size);
+}
+
+// ----------------------------------------------------------------------------
+// va-z($layer)
+// Retrieves a z-index value from the `$va-z-layers` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $layer — key (e.g. "base", "raised", "navbar", "modal")
+/// @return {Number}
+@function va-z($layer) {
+  @if not map.has-key($va-z-layers, $layer) {
+    @error "Voice Aura z-index layer `#{$layer}` not found. Available keys: #{map.keys($va-z-layers)}";
+  }
+
+  @return map.get($va-z-layers, $layer);
+}
+
+// ----------------------------------------------------------------------------
+// va-breakpoint($name)
+// Retrieves a breakpoint value from the `$va-breakpoints` map.
+// ----------------------------------------------------------------------------
+/// @param  {String} $name — key (e.g. "sm", "md", "lg", "xl", "xxl")
+/// @return {Length}
+@function va-breakpoint($name) {
+  @if not map.has-key($va-breakpoints, $name) {
+    @error "Voice Aura breakpoint `#{$name}` not found. Available keys: #{map.keys($va-breakpoints)}";
+  }
+
+  @return map.get($va-breakpoints, $name);
+}
+
+// ----------------------------------------------------------------------------
 // va-darken($color, $amount)
 // Modern replacement for the deprecated `darken()` global function.
 // Uses `color.adjust()` to decrease lightness.

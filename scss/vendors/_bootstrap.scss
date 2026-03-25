@@ -166,6 +166,49 @@ $utilities: map.merge(
         auto: auto,
       ),
     ),
+
+    // -- Opacity --
+    // Generates `.opacity-0` through `.opacity-100` in steps of 25,
+    // plus `.opacity-10`, `.opacity-50`, `.opacity-75` for fine control.
+    "va-opacity": (
+      property: opacity,
+      class: opacity,
+      values: (
+        0:   0,
+        10:  0.1,
+        25:  0.25,
+        50:  0.5,
+        75:  0.75,
+        100: 1,
+      ),
+    ),
+
+    // -- Z-index --
+    // Generates `.z-0` through `.z-3` plus semantic layer shortcuts.
+    "va-z-index": (
+      property: z-index,
+      class: z,
+      values: (
+        0: 0,
+        1: 1,
+        2: 2,
+        3: 3,
+        n1: -1,
+      ),
+    ),
+
+    // -- Aspect ratio --
+    // Generates `.ratio-1x1`, `.ratio-4x3`, `.ratio-16x9`, `.ratio-21x9`.
+    "va-aspect-ratio": (
+      property: aspect-ratio,
+      class: ratio,
+      values: (
+        1x1:  1,
+        4x3:  4 / 3,
+        16x9: 16 / 9,
+        21x9: 21 / 9,
+      ),
+    ),
   )
 );
 

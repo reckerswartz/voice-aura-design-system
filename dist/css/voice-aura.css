@@ -6422,6 +6422,51 @@
   .pe-auto {
     pointer-events: auto !important;
   }
+  .opacity-0 {
+    opacity: 0 !important;
+  }
+  .opacity-10 {
+    opacity: 0.1 !important;
+  }
+  .opacity-25 {
+    opacity: 0.25 !important;
+  }
+  .opacity-50 {
+    opacity: 0.5 !important;
+  }
+  .opacity-75 {
+    opacity: 0.75 !important;
+  }
+  .opacity-100 {
+    opacity: 1 !important;
+  }
+  .z-0 {
+    z-index: 0 !important;
+  }
+  .z-1 {
+    z-index: 1 !important;
+  }
+  .z-2 {
+    z-index: 2 !important;
+  }
+  .z-3 {
+    z-index: 3 !important;
+  }
+  .z-n1 {
+    z-index: -1 !important;
+  }
+  .ratio-1x1 {
+    aspect-ratio: 1 !important;
+  }
+  .ratio-4x3 {
+    aspect-ratio: 1.3333333333 !important;
+  }
+  .ratio-16x9 {
+    aspect-ratio: 1.7777777778 !important;
+  }
+  .ratio-21x9 {
+    aspect-ratio: 2.3333333333 !important;
+  }
   @media (min-width: 576px) {
     .float-sm-start {
       float: left !important;
@@ -12029,35 +12074,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 92px;
+    height: 94px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 80px;
+    height: 56px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 55px;
+    height: 61px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 29px;
+    height: 76px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 43px;
+    height: 41px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 65px;
+    height: 21px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 35px;
+    height: 21px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 90px;
+    height: 50px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
