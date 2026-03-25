@@ -467,9 +467,101 @@
   &--slow { transition-duration: 0.9s; }
 }
 
+// --------------------------------------------------------------------------
+// 8. Responsive Layout Utilities
+// --------------------------------------------------------------------------
+// General-purpose utilities for smooth mobile ↔ desktop layout transitions.
+
+// Smooth flex-row → flex-column stack at a breakpoint.
+// Apply to any flex container that should stack on mobile.
+//
+// Usage: <div class="va-responsive-stack">
+//          <div>Column 1</div>
+//          <div>Column 2</div>
+//        </div>
+//
+// Variants:
+//   --md : Stacks at md (768px) — default
+//   --lg : Stacks at lg (992px)
+//   --sm : Stacks at sm (576px)
+
+.va-responsive-stack {
+  display: flex;
+  gap: $va-grid-unit * 3;
+  transition: flex-direction 0.35s ease-in-out,
+              gap 0.35s ease-in-out,
+              align-items 0.35s ease-in-out;
+
+  @include va-media-down("md") {
+    flex-direction: column;
+    gap: $va-grid-unit * 2;
+  }
+
+  &--lg {
+    @include va-media-down("lg") {
+      flex-direction: column;
+      gap: $va-grid-unit * 2;
+    }
+  }
+
+  &--sm {
+    @include va-media-down("sm") {
+      flex-direction: column;
+      gap: $va-grid-unit * 2;
+    }
+  }
+}
+
+// Reorder elements on mobile.
+// By default, first child goes below second on mobile (visual-first pattern).
+//
+// Usage: <div class="va-responsive-order">
+//          <div>Text (shows second on mobile)</div>
+//          <div>Visual (shows first on mobile)</div>
+//        </div>
+//
+// Reference: behance-14 — feature rows stack with visual above text
+
+.va-responsive-order {
+  > :first-child {
+    transition: order 0s;
+  }
+
+  @include va-media-down("lg") {
+    > :first-child { order: 2; }
+    > :last-child  { order: 1; }
+  }
+}
+
+// Hero secondary button adapts on mobile.
+// On mobile (behance-14), the secondary CTA becomes a ghost/text-link style
+// to reduce visual weight while the primary becomes full-width.
+//
+// Usage: <div class="va-hero-actions-morph">
+//          <button class="va-btn va-btn--primary">Open Studio</button>
+//          <button class="va-btn va-btn--secondary va-hero-secondary-adapt">API Docs</button>
+//        </div>
+
+.va-hero-secondary-adapt {
+  transition: background-color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out,
+              padding 0.3s ease-in-out;
+
+  @include va-media-down("md") {
+    background-color: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 // Respect reduced motion preference
 @media (prefers-reduced-motion: reduce) {
-  .va-reveal {
+  .va-reveal,
+  .va-responsive-stack,
+  .va-responsive-order {
     opacity: 1;
     transform: none;
     transition: none;

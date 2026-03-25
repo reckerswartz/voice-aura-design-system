@@ -384,6 +384,14 @@ Circular halftone from `halftone-dots.svg`. For smaller panels and cards vs the 
 <div class="va-pattern-halftone-dots">...</div>
 ```
 
+### Halftone Band (Horizontal Mid-Section)
+
+Dramatic horizontal halftone band across the middle of a panel. Reference: behance-05 left panel.
+
+```html
+<div class="va-pattern-halftone va-pattern-halftone--band">...</div>
+```
+
 ### Sound Wave Hero SVG
 
 Taller, more dramatic hero waveform variant from `sound-wave-hero.svg`.
@@ -400,6 +408,58 @@ Crisper SVG-based dots from `grid-dots.svg` (alternative to CSS-only `va-bg-dots
 <section class="va-pattern-grid-dots">...</section>
 <section class="va-pattern-grid-dots va-pattern-grid-dots--full">...</section>
 ```
+
+### Voice Ripple Pattern
+
+Organic sound-propagation rings radiating from a central source. Distinct from the
+geometric `concentric-rings.svg` — these vary in stroke-weight and opacity to feel
+like audio expanding outward. Uses `voice-ripple.svg`.
+
+```html
+<section class="va-pattern-voice-ripple">...</section>
+<section class="va-pattern-voice-ripple va-pattern-voice-ripple--left">...</section>
+<section class="va-pattern-voice-ripple va-pattern-voice-ripple--right">...</section>
+<section class="va-pattern-voice-ripple va-pattern-voice-ripple--small">...</section>
+<section class="va-pattern-voice-ripple va-pattern-voice-ripple--subtle">...</section>
+```
+
+**Custom property**: `--va-ripple-size` (default `640px`, shrinks to `400px` on mobile)
+
+**Reference**: behance-04 hero ambient, behance-05/07 audio-tech motif
+
+### Spotlight Gradient Overlay
+
+Soft, off-center directional light wash behind content. Adds subtle depth and
+dimension matching the ambient illumination in the Behance hero and pricing sections.
+Uses `spotlight-gradient.svg`.
+
+```html
+<section class="va-bg-spotlight">...</section>                       <!-- Default: upper-left -->
+<section class="va-bg-spotlight va-bg-spotlight--top-right">...</section>
+<section class="va-bg-spotlight va-bg-spotlight--bottom-left">...</section>
+<section class="va-bg-spotlight va-bg-spotlight--center">...</section>
+```
+
+**Reference**: behance-04 (hero), behance-08 (pricing)
+
+### Feature Split Panel
+
+Two adjacent panels (light + dark) as seen in behance-05 feature cards. Smoothly
+collapses to single-column on mobile.
+
+```html
+<div class="va-feature-split">
+  <div class="va-feature-split__light va-pattern-halftone va-pattern-halftone--band">
+    <div class="va-app-icon va-app-icon--lg">...</div>
+  </div>
+  <div class="va-feature-split__dark va-bg-dark-grid va-bg-brand-watermark">
+    <span class="va-bg-brand-watermark__text" aria-hidden="true">VOICE AURA</span>
+    ...dark content...
+  </div>
+</div>
+```
+
+**Reference**: behance-05 (feature cards split)
 
 ### App Icon Component
 
@@ -514,6 +574,77 @@ Animates card grids with smooth column transitions.
 ```
 
 Variants: `--2` (2→1 at md), `--3` (3→2→1), `--4` (4→2→1)
+
+### Responsive Stack
+
+General-purpose utility that smoothly transitions any flex-row to flex-column.
+
+```html
+<div class="va-responsive-stack">        <!-- Stacks at md (768px) -->
+  <div>Column 1</div>
+  <div>Column 2</div>
+</div>
+
+<div class="va-responsive-stack va-responsive-stack--lg">  <!-- Stacks at lg (992px) -->
+  <div>Column 1</div>
+  <div>Column 2</div>
+</div>
+
+<div class="va-responsive-stack va-responsive-stack--sm">  <!-- Stacks at sm (576px) -->
+  <div>Column 1</div>
+  <div>Column 2</div>
+</div>
+```
+
+### Responsive Order (Visual-First on Mobile)
+
+Reorders children on mobile so the visual element appears above text content.
+**Reference**: behance-14 (feature rows stack with visual above text)
+
+```html
+<div class="va-responsive-stack va-responsive-stack--lg va-responsive-order">
+  <div>Text content (shows second on mobile)</div>
+  <div>Visual panel (shows first on mobile)</div>
+</div>
+```
+
+### Hero Secondary Button Mobile Adapt
+
+Transitions the secondary hero CTA to a text-link style on mobile, reducing visual
+weight while the primary button becomes full-width.
+**Reference**: behance-14 ("API Docs" becomes text-link on mobile)
+
+```html
+<div class="va-hero-actions-morph">
+  <button class="va-btn va-btn--primary">Open Studio</button>
+  <button class="va-btn va-btn--secondary va-hero-secondary-adapt">API Docs</button>
+</div>
+```
+
+### Scroll-Reveal Animations
+
+Elements start hidden and animate in when scrolling into view via IntersectionObserver.
+
+```html
+<div class="va-reveal va-reveal--up">Fades up from below</div>
+<div class="va-reveal va-reveal--down">Fades down from above</div>
+<div class="va-reveal va-reveal--left">Slides from left</div>
+<div class="va-reveal va-reveal--right">Slides from right</div>
+<div class="va-reveal va-reveal--scale">Scales in</div>
+```
+
+Stagger delays (150ms increments): `--delay-1` through `--delay-4`
+
+Speed modifiers: `--fast` (0.35s), `--slow` (0.9s)
+
+JS (minimal IntersectionObserver):
+```js
+document.querySelectorAll('.va-reveal').forEach(el => {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) e.target.classList.add('is-visible');
+  }, { threshold: 0.15 }).observe(el);
+});
+```
 
 ---
 
@@ -661,6 +792,8 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
 | 12 | Crosshair | `assets/patterns/crosshair.svg` | `.va-pattern-crosshair` | Corner decorations |
 | 13 | Wave divider | `assets/patterns/wave-divider.svg` | `.va-pattern-wave-divider` | Section bottom dividers |
 | 14 | Radial gradient | `assets/patterns/gradient-radial-soft.svg` | `.va-bg-radial-soft` | Soft ambient haze |
+| 15 | Voice ripple | `assets/patterns/voice-ripple.svg` | `.va-pattern-voice-ripple` | Audio-themed sections |
+| 16 | Spotlight gradient | `assets/patterns/spotlight-gradient.svg` | `.va-bg-spotlight` | Hero, pricing ambient light |
 
 ---
 
@@ -681,3 +814,10 @@ elements remain visible (opacity: 1, transform: none) when motion is reduced.
 | `.va-responsive-fade-left` | Slide from left | Fade up | md (768px) |
 | `.va-responsive-fade-right` | Slide from right | Fade up | md (768px) |
 | `.va-type-responsive` | Smooth font-size transition | Smooth font-size transition | Any resize |
+| `.va-responsive-stack` | Flex row | Flex column | md (768px) |
+| `.va-responsive-stack--lg` | Flex row | Flex column | lg (992px) |
+| `.va-responsive-stack--sm` | Flex row | Flex column | sm (576px) |
+| `.va-responsive-order` | Source order | Visual first, text second | lg (992px) |
+| `.va-hero-secondary-adapt` | Outlined button | Text-link style | md (768px) |
+| `.va-feature-split` | 2-column grid | Single column | lg (992px) |
+| `.va-reveal` | Hidden (opacity 0) | Animates in on scroll | IntersectionObserver |

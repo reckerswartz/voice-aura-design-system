@@ -17,6 +17,9 @@
 //  10. Sound Wave Hero SVG Overlay
 //  11. SVG-Based Grid Dots Overlay
 //  12. Radial Soft Gradient Overlay
+//  13. Voice Ripple Pattern (organic sound propagation)
+//  14. Spotlight Gradient Overlay (directional light wash)
+//  15. Feature Split Panel Backgrounds
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -100,6 +103,31 @@
     background-position: center 85%;
     mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.95) 30%, rgba($va-near-black, 0.5) 55%, transparent 75%);
     -webkit-mask-image: linear-gradient(to top, rgba($va-near-black, 1) 0%, rgba($va-near-black, 0.95) 30%, rgba($va-near-black, 0.5) 55%, transparent 75%);
+  }
+
+  // Horizontal band (feature panel — behance-05 left panel shows halftone as
+  // a dramatic horizontal band across the mid-section, not bottom-concentrated)
+  &--band::before {
+    background-size: 120% auto;
+    background-position: center 50%;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 15%,
+      rgba($va-near-black, 0.5) 30%,
+      rgba($va-near-black, 0.9) 45%,
+      rgba($va-near-black, 0.9) 55%,
+      rgba($va-near-black, 0.5) 70%,
+      transparent 85%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 15%,
+      rgba($va-near-black, 0.5) 30%,
+      rgba($va-near-black, 0.9) 45%,
+      rgba($va-near-black, 0.9) 55%,
+      rgba($va-near-black, 0.5) 70%,
+      transparent 85%
+    );
   }
 
   // Light variant (reduced opacity for lighter sections)
@@ -642,5 +670,209 @@
     background-position: center top;
     mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
     -webkit-mask-image: linear-gradient(to bottom, rgba($va-near-black, 0.7) 0%, transparent 60%);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 13. Voice Ripple Pattern (Organic Sound Propagation)
+// --------------------------------------------------------------------------
+// Radiating rings with varying stroke weight and opacity, evoking organic
+// sound-wave propagation from a central source. Distinct from the geometric
+// concentric-rings.svg — these rings feel like audio expanding outward.
+//
+// Reference: behance-04 hero ambient, behance-05/07 audio-tech motif
+//
+// Usage: <section class="va-pattern-voice-ripple">...</section>
+//
+// Variants:
+//   --left   : Source offset to left (feature sections)
+//   --right  : Source offset to right
+//   --small  : Smaller ring field (cards, compact panels)
+//   --subtle : Lower opacity for secondary usage
+
+.va-pattern-voice-ripple {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: var(--va-ripple-size, 640px);
+    height: var(--va-ripple-size, 640px);
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/voice-ripple.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: var(--va-pattern-opacity, 1);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      width: var(--va-ripple-size, 400px);
+      height: var(--va-ripple-size, 400px);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--left::before {
+    left: 20%;
+  }
+
+  &--right::before {
+    left: 80%;
+  }
+
+  &--small::before {
+    width: 320px;
+    height: 320px;
+
+    @include va-media-down("md") {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &--subtle::before {
+    opacity: var(--va-pattern-opacity, 0.5);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 14. Spotlight Gradient Overlay (Directional Light Wash)
+// --------------------------------------------------------------------------
+// Soft, off-center directional light wash behind content.  Adds subtle
+// depth and dimension matching the ambient illumination in the Behance
+// hero (behance-04) and pricing (behance-08) sections.
+//
+// Usage: <section class="va-bg-spotlight">...</section>
+//
+// Variants:
+//   --top-left     : Light source upper-left (default)
+//   --top-right    : Light source upper-right
+//   --bottom-left  : Light source lower-left
+//   --center       : Centered soft wash
+
+.va-bg-spotlight {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: $va-z-base;
+    background-image: url("../../assets/patterns/spotlight-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.8);
+    transition: opacity 0.3s ease-in-out;
+
+    @include va-media-down("md") {
+      opacity: var(--va-pattern-opacity, 0.5);
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: $va-z-raised;
+  }
+
+  &--top-right::before {
+    transform: scaleX(-1);
+  }
+
+  &--bottom-left::before {
+    transform: scaleY(-1);
+  }
+
+  &--center::before {
+    background-position: center center;
+    mask-image: radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      rgba($va-near-black, 0.6) 0%,
+      transparent 80%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      rgba($va-near-black, 0.6) 0%,
+      transparent 80%
+    );
+  }
+}
+
+// --------------------------------------------------------------------------
+// 15. Feature Split Panel Backgrounds
+// --------------------------------------------------------------------------
+// Two adjacent panels (light + dark) as seen in behance-05 feature cards.
+// The light panel gets halftone + app icon; the dark panel gets grid +
+// brand watermark. These provide ready-made background composition for
+// the standard 2-up feature row layout.
+//
+// Usage:
+//   <div class="va-feature-split">
+//     <div class="va-feature-split__light">...light content...</div>
+//     <div class="va-feature-split__dark">...dark content...</div>
+//   </div>
+
+.va-feature-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $va-grid-unit * 2;
+  transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              gap 0.35s ease-in-out;
+
+  @include va-media-down("lg") {
+    grid-template-columns: 1fr;
+    gap: $va-grid-unit * 1.5;
+  }
+
+  &__light {
+    position: relative;
+    overflow: hidden;
+    background-color: $va-section-bg;
+    border-radius: $va-radius-lg;
+    padding: $va-grid-unit * 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+
+    @include va-media-down("md") {
+      padding: $va-grid-unit * 3;
+      min-height: 240px;
+    }
+  }
+
+  &__dark {
+    position: relative;
+    overflow: hidden;
+    background-color: $va-near-black;
+    border-radius: $va-radius-lg;
+    padding: $va-grid-unit * 5;
+    color: rgba($va-white, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $va-white;
+    }
+
+    @include va-media-down("md") {
+      padding: $va-grid-unit * 3;
+      min-height: 240px;
+    }
   }
 }

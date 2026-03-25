@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <!-- Voice Aura — Directional spotlight gradient.
+       Creates a soft, off-center light wash behind content, matching the
+       subtle directional illumination visible in the Behance hero (behance-04)
+       and pricing (behance-08) sections. The light source sits upper-left,
+       fading diagonally to transparent. -->
+  <defs>
+    <radialGradient id="spot-a" cx="25%" cy="20%" r="60%" fx="20%" fy="15%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spot-b" cx="75%" cy="70%" r="45%" fx="80%" fy="75%">
+      <stop offset="0%" stop-color="#0478FF" stop-opacity="0.04"/>
+      <stop offset="50%" stop-color="#0478FF" stop-opacity="0.01"/>
+      <stop offset="100%" stop-color="#0478FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#spot-a)"/>
+  <rect width="1200" height="800" fill="url(#spot-b)"/>
+</svg>

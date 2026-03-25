@@ -13453,35 +13453,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 74px;
+  height: 23px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 21px;
+  height: 33px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 67px;
+  height: 82px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 39px;
+  height: 73px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 37px;
+  height: 73px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 51px;
+  height: 53px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 46px;
+  height: 42px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 71px;
+  height: 55px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -16653,6 +16653,12 @@ pre code {
   mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.95) 30%, rgba(26, 25, 25, 0.5) 55%, transparent 75%);
   -webkit-mask-image: linear-gradient(to top, #1a1919 0%, rgba(26, 25, 25, 0.95) 30%, rgba(26, 25, 25, 0.5) 55%, transparent 75%);
 }
+.va-pattern-halftone--band::before {
+  background-size: 120% auto;
+  background-position: center 50%;
+  mask-image: linear-gradient(to bottom, transparent 15%, rgba(26, 25, 25, 0.5) 30%, rgba(26, 25, 25, 0.9) 45%, rgba(26, 25, 25, 0.9) 55%, rgba(26, 25, 25, 0.5) 70%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 15%, rgba(26, 25, 25, 0.5) 30%, rgba(26, 25, 25, 0.9) 45%, rgba(26, 25, 25, 0.9) 55%, rgba(26, 25, 25, 0.5) 70%, transparent 85%);
+}
 .va-pattern-halftone--light::before {
   opacity: 0.4;
 }
@@ -17030,6 +17036,147 @@ pre code {
   background-position: center top;
   mask-image: linear-gradient(to bottom, rgba(26, 25, 25, 0.7) 0%, transparent 60%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(26, 25, 25, 0.7) 0%, transparent 60%);
+}
+
+.va-pattern-voice-ripple {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+}
+.va-pattern-voice-ripple::before {
+  content: "";
+  position: absolute;
+  width: var(--va-ripple-size, 640px);
+  height: var(--va-ripple-size, 640px);
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("../../assets/patterns/voice-ripple.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: var(--va-pattern-opacity, 1);
+  transition: opacity 0.3s ease-in-out;
+}
+@media (max-width: 767.98px) {
+  .va-pattern-voice-ripple::before {
+    width: var(--va-ripple-size, 400px);
+    height: var(--va-ripple-size, 400px);
+  }
+}
+.va-pattern-voice-ripple > * {
+  position: relative;
+  z-index: 1;
+}
+.va-pattern-voice-ripple--left::before {
+  left: 20%;
+}
+.va-pattern-voice-ripple--right::before {
+  left: 80%;
+}
+.va-pattern-voice-ripple--small::before {
+  width: 320px;
+  height: 320px;
+}
+@media (max-width: 767.98px) {
+  .va-pattern-voice-ripple--small::before {
+    width: 200px;
+    height: 200px;
+  }
+}
+.va-pattern-voice-ripple--subtle::before {
+  opacity: var(--va-pattern-opacity, 0.5);
+}
+
+.va-bg-spotlight {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+}
+.va-bg-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("../../assets/patterns/spotlight-gradient.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: var(--va-pattern-opacity, 0.8);
+  transition: opacity 0.3s ease-in-out;
+}
+@media (max-width: 767.98px) {
+  .va-bg-spotlight::before {
+    opacity: var(--va-pattern-opacity, 0.5);
+  }
+}
+.va-bg-spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+.va-bg-spotlight--top-right::before {
+  transform: scaleX(-1);
+}
+.va-bg-spotlight--bottom-left::before {
+  transform: scaleY(-1);
+}
+.va-bg-spotlight--center::before {
+  background-position: center center;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(26, 25, 25, 0.6) 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(26, 25, 25, 0.6) 0%, transparent 80%);
+}
+
+.va-feature-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1), gap 0.35s ease-in-out;
+}
+@media (max-width: 991.98px) {
+  .va-feature-split {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+.va-feature-split__light {
+  position: relative;
+  overflow: hidden;
+  background-color: #F7F7F8;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+@media (max-width: 767.98px) {
+  .va-feature-split__light {
+    padding: 1.5rem;
+    min-height: 240px;
+  }
+}
+.va-feature-split__dark {
+  position: relative;
+  overflow: hidden;
+  background-color: #1A1919;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+.va-feature-split__dark h1, .va-feature-split__dark .h1, .va-feature-split__dark .va-h1, .va-feature-split__dark h2, .va-feature-split__dark .h2, .va-feature-split__dark .va-h2, .va-feature-split__dark h3, .va-feature-split__dark .h3, .va-feature-split__dark .va-h3, .va-feature-split__dark h4, .va-feature-split__dark .h4, .va-feature-split__dark .va-h4, .va-feature-split__dark h5, .va-feature-split__dark .h5, .va-feature-split__dark .va-h5, .va-feature-split__dark h6, .va-feature-split__dark .h6, .va-feature-split__dark .va-h6 {
+  color: #FFFFFF;
+}
+@media (max-width: 767.98px) {
+  .va-feature-split__dark {
+    padding: 1.5rem;
+    min-height: 240px;
+  }
 }
 
 .va-bg-glow {
@@ -17433,6 +17580,20 @@ pre code {
   background-size: auto 12px;
   background-position: center bottom;
   opacity: var(--va-pattern-opacity, 0.45);
+}
+.va-bg-layer--voice-ripple {
+  background-image: url("../../assets/patterns/voice-ripple.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: var(--va-pattern-opacity, 0.8);
+}
+.va-bg-layer--spotlight {
+  background-image: url("../../assets/patterns/spotlight-gradient.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: var(--va-pattern-opacity, 0.7);
 }
 
 .va-pattern-intensity-subtle {
@@ -18012,8 +18173,60 @@ pre code {
   transition-duration: 0.9s;
 }
 
+.va-responsive-stack {
+  display: flex;
+  gap: 1.5rem;
+  transition: flex-direction 0.35s ease-in-out, gap 0.35s ease-in-out, align-items 0.35s ease-in-out;
+}
+@media (max-width: 767.98px) {
+  .va-responsive-stack {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .va-responsive-stack--lg {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .va-responsive-stack--sm {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.va-responsive-order > :first-child {
+  transition: order 0s;
+}
+@media (max-width: 991.98px) {
+  .va-responsive-order > :first-child {
+    order: 2;
+  }
+  .va-responsive-order > :last-child {
+    order: 1;
+  }
+}
+
+.va-hero-secondary-adapt {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+@media (max-width: 767.98px) {
+  .va-hero-secondary-adapt {
+    background-color: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .va-reveal {
+  .va-reveal,
+  .va-responsive-stack,
+  .va-responsive-order {
     opacity: 1;
     transform: none;
     transition: none;

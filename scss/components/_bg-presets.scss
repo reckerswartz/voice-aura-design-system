@@ -89,6 +89,22 @@
     background-position: center bottom;
     opacity: var(--va-pattern-opacity, 0.45);
   }
+
+  &--voice-ripple {
+    background-image: url("../../assets/patterns/voice-ripple.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.8);
+  }
+
+  &--spotlight {
+    background-image: url("../../assets/patterns/spotlight-gradient.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: var(--va-pattern-opacity, 0.7);
+  }
 }
 
 .va-pattern-intensity-subtle { --va-pattern-opacity: 0.35; }
