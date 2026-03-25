@@ -170,6 +170,14 @@ The live demo site is deployed automatically via GitHub Actions on every push to
 
 ISC
 
-## Credits
+## Credits & Inspiration
 
-Design extracted from the Voice Aura AI Voice Generator & Text-to-Speech Website Design by Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, and Design Dynamix.
+This design system is inspired by and extracted from the original Behance project:
+
+> **[AI Voice Generator & Text to Speech Website Design](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design)**
+> by [Rah Man](https://www.behance.net/uirahman92), [UI Farid Hossain](https://www.behance.net/uifaridhossain), [UXify Studio](https://www.behance.net/uxifystudio), [Murad Hossain](https://www.behance.net/muradhossain20), and [Design Dynamix](https://www.behance.net/designdynamix)
+> Tool: Adobe XD
+
+Reference design images from the original project are stored in [`assets/reference/`](./assets/reference/) for comparison and future improvement. These images are © their respective authors and are **not** included in the npm package.
+
+See [`ATTRIBUTIONS.md`](./ATTRIBUTIONS.md) for the full attribution registry.

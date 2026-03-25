@@ -16,7 +16,11 @@
   "files": [
     "dist/css/",
     "scss/",
-    "assets/",
+    "assets/brand/",
+    "assets/icons/",
+    "assets/illustrations/",
+    "assets/images/",
+    "assets/patterns/",
     "js/",
     "examples/",
     "bin/setup.js",

@@ -164,4 +164,19 @@ Last audited: **2026-03-23**
 
 ---
 
+## Reference / Inspiration Images (`assets/reference/`)
+
+Design reference images from the original Behance project. These are **not** redistributed in the npm package — they are kept locally for design comparison only.
+
+| Asset | Authors | License | Source |
+|-------|---------|---------|--------|
+| `behance-voice-aura-cover.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+| `behance-voice-aura-hero-overview.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+| `behance-voice-aura-full-page-design.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+
+**Original project:** [AI Voice Generator & Text to Speech Website Design](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design)
+**Lead designer contact:** [uirahman92@gmail.com](mailto:uirahman92@gmail.com) · [Behance](https://www.behance.net/uirahman92) · [Dribbble](https://dribbble.com/uirahman92)
+
+---
+
 *Part of the Voice Aura Design System. See [ASSET_GUIDELINES.md](./ASSET_GUIDELINES.md) for the full asset policy.*

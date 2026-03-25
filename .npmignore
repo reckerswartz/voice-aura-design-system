@@ -6,6 +6,9 @@
 site/
 screenshots/
 
+# Reference/inspiration images (© original authors, not for redistribution)
+assets/reference/
+
 # CI/CD and editor config
 .github/
 .devin/
