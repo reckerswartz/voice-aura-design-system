@@ -178,14 +178,13 @@ table {
 // ---------------------------------------------------------------------------
 
 // Prevent overflow from breaking layouts
-// Use `clip` on html to avoid creating a scroll container
-// (which breaks position: sticky), and `hidden` on body for compat.
-html {
-  overflow-x: clip;
-}
-
+// Use `clip` on both html and body to prevent horizontal overflow
+// without creating a new scroll container (which breaks position: sticky).
+// Note: `overflow-x: hidden` was the previous body value but it created
+// a scroll context that broke sticky navbars and sidebars on every page.
+html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 // Remove default fieldset styles
