@@ -107,30 +107,29 @@ Zero code blocks on the entire page. Each section describes transition CSS value
 
 ---
 
-## 5. app-demo.html — Sample Landing Page
+## 5. Page Consolidation (completed)
 
-### ✅ Working Well
-- Complete landing page with all sections
-- Navbar hamburger works on mobile
-- Feature sections stack on mobile
-- Pricing horizontal scroll on mobile
-- All links functional, zero console errors
-- Footer renders correctly
+**Removed duplicates:**
+- `app-demo.html` — duplicate of `pixel-perfect-demo.html` (older brand logo)
+- `navbar-demo.html` — subset of pixel-perfect-demo (navbar + hero only)
 
-### 🟡 Minor Issues
-- Feature API section uses agent card directly inside feature visual (different from pixel-perfect split panel) — both are valid variants but relationship not documented
-- No "view source" or class annotation to help developers understand which classes create the layout
+**Added:**
+- `login-demo.html` — dedicated log-in page (was missing; all "Log in" links pointed to signup)
+
+**Current pages (7):**
+`pixel-perfect-demo.html`, `signup-demo.html`, `login-demo.html`, `components.html`, `backgrounds.html`, `transitions-showcase.html`, `asset-gallery.html`, `index.html`
 
 ---
 
-## 6. signup-demo.html, navbar-demo.html, asset-gallery.html, index.html
+## 6. signup-demo.html, login-demo.html, asset-gallery.html, index.html
 
 ### ✅ All Working Well
 - Zero console errors across all pages
 - Signup form autocomplete attributes present
-- Navbar demo shows brand correctly
+- Brand logos updated to waveform bars (consistent with pixel-perfect-demo)
+- Login page properly interlinked with signup
 - Asset gallery comprehensive with licensing table
-- Index page links all functional
+- Index page links to all 7 pages
 
 ---
 
@@ -140,7 +139,7 @@ Zero code blocks on the entire page. Each section describes transition CSS value
 
 | Section | Issue | Recommendation |
 |---------|-------|----------------|
-| **Sample Landing Page** (#sample) | Just a link to app-demo.html — not a component | Move to top as a "See it in action" link, not a sidebar section |
+| **Sample Landing Page** (#sample) | Just a link to pixel-perfect-demo.html — not a component | Move to top as a "See it in action" link, not a sidebar section |
 | **File Structure** (#file-structure) | Architecture info, not a component | Move to a separate "Getting Started" section or footer |
 | **Bootstrap Alignment** (#bootstrap-alignment) | Useful guide but not a visual component | Move to a collapsible/tabbed appendix to reduce sidebar noise |
 | **Blog Section Layout** vs **Blog Cards** | Overlap — blog-section shows the same cards in a section wrapper | Merge into single "Blog" section with both card and layout sub-sections |
