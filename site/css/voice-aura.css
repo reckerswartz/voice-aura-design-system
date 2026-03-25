@@ -12827,6 +12827,9 @@ pre code {
 .va-navbar--scrolled {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
   border-bottom-color: transparent;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .va-navbar--transparent {
   background-color: transparent;
@@ -13385,35 +13388,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 74px;
+  height: 89px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 65px;
+  height: 66px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 23px;
+  height: 56px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 93px;
+  height: 81px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 36px;
+  height: 17px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 82px;
+  height: 18px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 73px;
+  height: 86px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 71px;
+  height: 35px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -15450,6 +15453,9 @@ pre code {
 }
 .va-pricing-card--featured {
   border-color: #1A1919;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transform: scale(1.02);
+  z-index: 1;
 }
 .va-pricing-card--featured .va-pricing-card__badge {
   background-color: #1A1919;
@@ -15463,6 +15469,11 @@ pre code {
 .va-pricing-card--featured .va-pricing-card__cta:hover {
   background-color: #343232;
   border-color: #343232;
+}
+@media (max-width: 767.98px) {
+  .va-pricing-card--featured {
+    transform: none;
+  }
 }
 
 .va-pricing-section {
@@ -16538,11 +16549,11 @@ pre code {
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.55;
-  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 .va-trust-bar__logo:hover {
-  opacity: 0.85;
-  filter: grayscale(50%);
+  opacity: 1;
+  filter: grayscale(0%);
 }
 @media (max-width: 575.98px) {
   .va-trust-bar__logo {

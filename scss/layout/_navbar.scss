@@ -48,10 +48,13 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
     top: 0;
   }
 
-  // Scrolled state — subtle shadow appears after scrolling
+  // Scrolled state — subtle shadow + frosted backdrop appears after scrolling
   &--scrolled {
     box-shadow: $va-shadow-nav-scrolled;
     border-bottom-color: transparent;
+    background-color: rgba($va-white, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   // Transparent variant (for use over hero images)

@@ -103,11 +103,11 @@ $_font-size-xs: map-get($va-font-sizes, "xs");
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.55;
-  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
 
   &:hover {
-    opacity: 0.85;
-    filter: grayscale(50%);
+    opacity: 1;
+    filter: grayscale(0%);
   }
 
   @include va-media-down("sm") {

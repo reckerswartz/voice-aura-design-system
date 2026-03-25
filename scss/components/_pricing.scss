@@ -312,6 +312,9 @@ $va-crosshair-color: $va-border;
 
   &--featured {
     border-color: $va-near-black;
+    box-shadow: $va-shadow-lg;
+    transform: scale(1.02);
+    z-index: $va-z-raised;
 
     .va-pricing-card__badge {
       background-color: $va-near-black;
@@ -327,6 +330,10 @@ $va-crosshair-color: $va-border;
         background-color: lighten($va-near-black, 10%);
         border-color: lighten($va-near-black, 10%);
       }
+    }
+
+    @include va-media-down("md") {
+      transform: none;
     }
   }
 }
