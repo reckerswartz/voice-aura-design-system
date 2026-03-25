@@ -162,7 +162,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 .va-footer__heading,
 .va-footer__col-title {
   font-family: $font-family-base;
-  font-size: $_font-size-sm;
+  font-size: 1rem;                                  // 16px — matches Behance reference
   font-weight: $font-weight-semibold;
   color: $va-white;
   text-transform: uppercase;
