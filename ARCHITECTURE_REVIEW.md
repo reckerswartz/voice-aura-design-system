@@ -422,7 +422,7 @@ solution.
 
 ---
 
-#### H-7. Accessibility gaps in HTML
+#### H-7. Accessibility gaps in HTML (partially resolved)
 
 | Issue | File(s) | Impact |
 |-------|---------|--------|

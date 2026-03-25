@@ -99,7 +99,7 @@
   &.is-invalid {
     border-color: $danger;
 
-    &:focus {
+    &:focus-visible {
       box-shadow: 0 0 0 3px rgba($danger, 0.15);
     }
   }
@@ -107,7 +107,7 @@
   &.is-valid {
     border-color: $success;
 
-    &:focus {
+    &:focus-visible {
       box-shadow: 0 0 0 3px rgba($success, 0.15);
     }
   }

@@ -12029,35 +12029,35 @@
     opacity: 0.35;
   }
   .va-hero__wave-bar:nth-child(1) {
-    height: 41px;
+    height: 92px;
     animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(2) {
-    height: 76px;
+    height: 80px;
     animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(3) {
-    height: 68px;
+    height: 55px;
     animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(4) {
-    height: 25px;
+    height: 29px;
     animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(5) {
-    height: 71px;
+    height: 43px;
     animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(6) {
-    height: 23px;
+    height: 65px;
     animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(7) {
-    height: 69px;
+    height: 35px;
     animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
   }
   .va-hero__wave-bar:nth-child(8) {
-    height: 31px;
+    height: 90px;
     animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
   }
   @keyframes va-wave-pulse {
@@ -13293,13 +13293,13 @@
   .va-form-input.is-invalid {
     border-color: #EF4444;
   }
-  .va-form-input.is-invalid:focus {
+  .va-form-input.is-invalid:focus-visible {
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
   }
   .va-form-input.is-valid {
     border-color: #10B981;
   }
-  .va-form-input.is-valid:focus {
+  .va-form-input.is-valid:focus-visible {
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
   }
   .va-form-textarea:hover {
@@ -13312,13 +13312,13 @@
   .va-form-textarea.is-invalid {
     border-color: #EF4444;
   }
-  .va-form-textarea.is-invalid:focus {
+  .va-form-textarea.is-invalid:focus-visible {
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
   }
   .va-form-textarea.is-valid {
     border-color: #10B981;
   }
-  .va-form-textarea.is-valid:focus {
+  .va-form-textarea.is-valid:focus-visible {
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
   }
   .va-form-textarea {
@@ -13335,13 +13335,13 @@
   .va-form-select.is-invalid {
     border-color: #EF4444;
   }
-  .va-form-select.is-invalid:focus {
+  .va-form-select.is-invalid:focus-visible {
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
   }
   .va-form-select.is-valid {
     border-color: #10B981;
   }
-  .va-form-select.is-valid:focus {
+  .va-form-select.is-valid:focus-visible {
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
   }
   .va-form-select {

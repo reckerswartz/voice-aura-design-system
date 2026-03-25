@@ -124,8 +124,13 @@
 
       opts = mergeOpts(DEFAULTS, options);
 
-      if (!('IntersectionObserver' in window)) {
-        // Fallback: make everything visible immediately
+      // Respect prefers-reduced-motion: skip scroll animations entirely
+      var prefersReducedMotion =
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+        // Fallback: make everything visible immediately (no animations)
         var els = document.querySelectorAll(opts.selector);
         for (var i = 0; i < els.length; i++) {
           els[i].classList.add(opts.visibleClass);
