@@ -5,17 +5,22 @@
 // Requires $va-* variables from _variables.scss.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT                                                 │
+// │ BOOTSTRAP ALIGNMENT — DELTA-ONLY APPROACH                           │
 // │                                                                      │
-// │ Bootstrap's `.btn` system is themed via $btn-* variable overrides   │
-// │ in _variables.scss (padding, font-weight, border-radius, transition │
-// │ focus ring).  The `.va-btn` class intentionally differs from `.btn` │
-// │ in two ways:                                                        │
-// │   1. Uses `display: inline-flex` (for icon alignment via gap)       │
-// │   2. Uses 15px font / 1.4 line-height (vs Bootstrap's 16px / 1.5)  │
+// │ `.va-btn` extends `.btn`.  ALL shared properties (padding,          │
+// │ font-weight, border, border-radius, background, transition,         │
+// │ cursor, user-select, text-align, vertical-align) are INHERITED      │
+// │ from Bootstrap via @extend — they are NOT redeclared here.          │
 // │                                                                      │
-// │ All other shared properties reference Bootstrap's Sass variables    │
-// │ so they stay in sync if design tokens change.                       │
+// │ Only VA-specific DELTAS are declared:                               │
+// │   1. `display: inline-flex` + gap (for icon alignment)             │
+// │   2. `font-size: 0.9375rem` (15px vs Bootstrap's 16px)             │
+// │   3. `line-height: 1.4` (vs Bootstrap's 1.5)                       │
+// │   4. `color: $va-near-black` (explicit default)                    │
+// │   5. `text-decoration: none` (safety for <a> elements)             │
+// │                                                                      │
+// │ Note: $btn-white-space is set to `nowrap` in _variables.scss so    │
+// │ Bootstrap's .btn handles it natively.                               │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-btn--primary (dark) ≈ .btn.btn-dark                           │
@@ -42,33 +47,21 @@
 .va-btn {
   @extend .btn;
 
-  // Layout — intentionally inline-flex (vs Bootstrap's inline-block) for icon/gap alignment
+  // --- VA deltas only (all other properties inherited from .btn) ---
+
+  // Layout: inline-flex for icon + text alignment (Bootstrap uses inline-block)
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 
-  // Sizing — shared with Bootstrap via $btn-* variables
-  padding: $btn-padding-y $btn-padding-x;
-
-  // Typography — intentionally smaller than Bootstrap (15px vs 16px)
-  font-family: $font-family-base;
+  // Typography: intentionally 15px / 1.4 (Bootstrap uses $btn-font-size 16px / $btn-line-height 1.5)
   font-size: 0.9375rem;
-  font-weight: $btn-font-weight;
   line-height: 1.4;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
+  text-decoration: none; // Safety for <a> elements used as buttons
 
-  // Borders & shape — shared with Bootstrap
-  border: $border-width solid transparent;
-  border-radius: $btn-border-radius;
-  background-color: transparent;
+  // Default text colour for unstyled .va-btn
   color: $va-near-black;
-  transition: $btn-transition;
 
   &:focus-visible {
     outline: 2px solid $va-primary;
@@ -77,9 +70,8 @@
 
   &:disabled,
   &.is-disabled {
-    opacity: 0.5;
+    opacity: $btn-disabled-opacity;
     pointer-events: none;
-    cursor: not-allowed;
   }
 
   // --------------------------------------------------------------------------
@@ -126,13 +118,8 @@
 .va-btn--primary {
   @extend .btn-dark;
 
-  background-color: $va-near-black;
-  border-color: $va-near-black;
-  color: $va-white;
-  transition: $btn-transition,
-              transform 0.2s ease-in-out,
-              box-shadow 0.2s ease-in-out;
-
+  // --- VA deltas only (base bg/border/color inherited from .btn-dark) ---
+  // Hover: custom shade + subtle lift (Bootstrap uses shade-color())
   &:hover {
     background-color: va-lighten($va-near-black, 10%);
     border-color: va-lighten($va-near-black, 10%);
@@ -158,9 +145,9 @@
 .va-btn--secondary {
   @extend .btn-outline-secondary;
 
-  background-color: transparent;
+  // --- VA deltas only (base inherited from .btn-outline-secondary) ---
+  // Override: use $border-color for a lighter outline than Bootstrap's default
   border-color: $border-color;
-  color: $va-near-black;
 
   &:hover {
     background-color: $va-section-bg;
@@ -182,13 +169,8 @@
 .va-btn--accent {
   @extend .btn-primary;
 
-  background-color: $va-primary;
-  border-color: $va-primary;
-  color: $va-white;
-  transition: $btn-transition,
-              transform 0.2s ease-in-out,
-              box-shadow 0.2s ease-in-out;
-
+  // --- VA deltas only (base bg/border/color inherited from .btn-primary) ---
+  // Hover: custom shade + subtle lift (Bootstrap uses shade-color())
   &:hover {
     background-color: va-darken($va-primary, 8%);
     border-color: va-darken($va-primary, 8%);
@@ -214,8 +196,8 @@
 .va-btn--ghost {
   @extend .btn-link;
 
-  background-color: transparent;
-  border-color: transparent;
+  // --- VA deltas only (base inherited from .btn-link) ---
+  // Override: dark text + subtle bg hover (Bootstrap .btn-link uses $primary + no bg)
   color: $va-near-black;
 
   &:hover {
@@ -257,13 +239,13 @@
 // Size: Large
 // --------------------------------------------------------------------------
 
-// Note: va-btn sizes are intentionally proportional to the va-btn base
-// (15px/1.4) rather than Bootstrap's btn base (16px/1.5), so these values
-// differ slightly from $btn-padding-y-lg / $btn-font-size-lg.
+// VA sizes are proportional to the va-btn base (15px/1.4) rather than
+// Bootstrap's btn base (16px/1.5), so these values differ slightly.
 .va-btn--lg {
   @extend .btn-lg;
 
-  padding: 0.9375rem $btn-padding-x-lg;   // 15px 32px
+  // --- VA deltas only (base sizing inherited from .btn-lg) ---
+  padding: 0.9375rem $btn-padding-x-lg;   // 15px 32px (vs Bootstrap 16px)
   font-size: 1.0625rem;                   // 17px (vs Bootstrap 18px)
   border-radius: 0.625rem;                // 10px — proportional to va-btn
 }
@@ -275,7 +257,7 @@
 .va-btn--sm {
   @extend .btn-sm;
 
-  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  // --- VA deltas only (base sizing inherited from .btn-sm) ---
   font-size: 0.8125rem;                   // 13px (vs Bootstrap 14px)
   gap: 0.375rem;
 }
@@ -298,8 +280,7 @@
 
 .va-btn--pill {
   @extend .rounded-pill;
-
-  border-radius: $border-radius-pill;
+  // border-radius inherited from .rounded-pill — no delta needed
 }
 
 // --------------------------------------------------------------------------

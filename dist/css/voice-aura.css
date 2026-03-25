@@ -82,14 +82,14 @@
   --bs-body-color-rgb: 26, 25, 25;
   --bs-body-bg: #FFFFFF;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-emphasis-color: #000;
-  --bs-emphasis-color-rgb: 0, 0, 0;
-  --bs-secondary-color: rgba(26, 25, 25, 0.75);
-  --bs-secondary-color-rgb: 26, 25, 25;
+  --bs-emphasis-color: #1A1919;
+  --bs-emphasis-color-rgb: 26, 25, 25;
+  --bs-secondary-color: #4B5563;
+  --bs-secondary-color-rgb: 75, 85, 99;
   --bs-secondary-bg: #e9ecef;
   --bs-secondary-bg-rgb: 233, 236, 239;
-  --bs-tertiary-color: rgba(26, 25, 25, 0.5);
-  --bs-tertiary-color-rgb: 26, 25, 25;
+  --bs-tertiary-color: #9CA3AF;
+  --bs-tertiary-color-rgb: 156, 163, 175;
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: #1A1919;
@@ -2008,6 +2008,7 @@ progress {
   line-height: var(--bs-btn-line-height);
   color: var(--bs-btn-color);
   text-align: center;
+  white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
@@ -2729,7 +2730,8 @@ progress {
   opacity: 1;
 }
 .form-control:disabled, .va-form-textarea:disabled, .va-form-input:disabled {
-  background-color: var(--bs-secondary-bg);
+  background-color: #F7F7F8;
+  border-color: #E5E7EB;
   opacity: 1;
 }
 .form-control::file-selector-button, .va-form-textarea::file-selector-button, .va-form-input::file-selector-button {
@@ -2865,7 +2867,8 @@ textarea.form-control-lg {
   background-image: none;
 }
 .form-select:disabled, .va-form-select:disabled {
-  background-color: var(--bs-secondary-bg);
+  background-color: #F7F7F8;
+  border-color: #E5E7EB;
 }
 .form-select:-moz-focusring, .va-form-select:-moz-focusring {
   color: transparent;
@@ -3185,7 +3188,7 @@ textarea.form-control-lg {
   border-radius: 0.5rem;
 }
 .form-floating > textarea:disabled ~ label::after {
-  background-color: var(--bs-secondary-bg);
+  background-color: #F7F7F8;
 }
 .form-floating > .form-control-plaintext ~ label {
   border-width: var(--bs-border-width) 0;
@@ -13453,35 +13456,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 23px;
+  height: 75px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 33px;
+  height: 54px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 82px;
+  height: 60px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 73px;
+  height: 22px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 73px;
+  height: 48px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 53px;
+  height: 85px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 42px;
+  height: 28px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 55px;
+  height: 64px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14337,22 +14340,10 @@ pre code {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
-  font-weight: 500;
   line-height: 1.4;
-  text-align: center;
   text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
-  background-color: transparent;
   color: #1A1919;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 .va-btn:focus-visible {
   outline: 2px solid #0478FF;
@@ -14361,7 +14352,6 @@ pre code {
 .va-btn:disabled, .va-btn.is-disabled {
   opacity: 0.5;
   pointer-events: none;
-  cursor: not-allowed;
 }
 .va-btn__icon {
   display: inline-flex;
@@ -14384,12 +14374,6 @@ pre code {
   transform: translateX(3px);
 }
 
-.va-btn--primary {
-  background-color: #1A1919;
-  border-color: #1A1919;
-  color: #FFFFFF;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
 .va-btn--primary:hover {
   background-color: #343232;
   border-color: #343232;
@@ -14406,9 +14390,7 @@ pre code {
 }
 
 .va-btn--secondary {
-  background-color: transparent;
   border-color: #E5E7EB;
-  color: #1A1919;
 }
 .va-btn--secondary:hover {
   background-color: #F7F7F8;
@@ -14420,12 +14402,6 @@ pre code {
   border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
 }
 
-.va-btn--accent {
-  background-color: #0478FF;
-  border-color: #0478FF;
-  color: #FFFFFF;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
 .va-btn--accent:hover {
   background-color: rgb(0, 100.8414342629, 218.2);
   border-color: rgb(0, 100.8414342629, 218.2);
@@ -14442,8 +14418,6 @@ pre code {
 }
 
 .va-btn--ghost {
-  background-color: transparent;
-  border-color: transparent;
   color: #1A1919;
 }
 .va-btn--ghost:hover {
@@ -14477,7 +14451,6 @@ pre code {
 }
 
 .va-btn--sm {
-  padding: 0.5rem 1rem;
   font-size: 0.8125rem;
   gap: 0.375rem;
 }
@@ -14487,10 +14460,6 @@ pre code {
 }
 .va-btn--icon .va-btn__icon {
   margin-right: 0;
-}
-
-.va-btn--pill {
-  border-radius: 50rem;
 }
 
 .va-btn--block {
@@ -14554,14 +14523,7 @@ pre code {
 }
 
 .va-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.75rem;
   padding: 1.5rem;
-  word-wrap: break-word;
   overflow: hidden;
 }
 .va-card__header {
@@ -14570,14 +14532,10 @@ pre code {
   justify-content: space-between;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #E5E7EB;
 }
 .va-card--flush > .va-card__header {
   padding: 1.25rem 1.5rem;
   margin-bottom: 0;
-}
-.va-card__body {
-  flex: 1 1 auto;
 }
 .va-card--flush > .va-card__body {
   padding: 1.5rem;
@@ -14587,7 +14545,6 @@ pre code {
   align-items: center;
   padding-top: 1rem;
   margin-top: auto;
-  border-top: 1px solid #E5E7EB;
 }
 .va-card--flush > .va-card__footer {
   padding: 1.25rem 1.5rem;
@@ -14613,18 +14570,11 @@ pre code {
   order: 999;
 }
 .va-card__title {
-  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: #1A1919;
   margin: 0 0 0.5rem;
 }
 .va-card__text {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
-  line-height: 1.6;
-  color: #1A1919;
   margin: 0;
 }
 .va-card__text + .va-card__text {
@@ -14835,11 +14785,7 @@ pre code {
 }
 
 .va-form-label {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
   line-height: 1.4;
-  color: #1A1919;
 }
 .va-form-label--required::after {
   content: " *";
@@ -14851,7 +14797,6 @@ pre code {
 }
 .va-form-input:disabled {
   opacity: 0.5;
-  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-input.is-invalid {
@@ -14872,7 +14817,6 @@ pre code {
 }
 .va-form-textarea:disabled {
   opacity: 0.5;
-  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-textarea.is-invalid {
@@ -14897,7 +14841,6 @@ pre code {
 }
 .va-form-select:disabled {
   opacity: 0.5;
-  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-select.is-invalid {
@@ -14980,12 +14923,10 @@ pre code {
 .va-form-error {
   display: block;
   font-size: 0.8125rem;
-  color: #EF4444;
 }
 
 .va-form-hint {
   font-size: 0.8125rem;
-  color: #4B5563;
 }
 
 .va-input-card {

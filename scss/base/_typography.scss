@@ -272,9 +272,15 @@ pre {
 // ---------------------------------------------------------------------------
 // 13. Text Colour Utilities
 // ---------------------------------------------------------------------------
-// Quick text-color helpers using design-system tokens.
-// Bootstrap generates `.text-primary`, `.text-secondary`, etc. from
-// $theme-colors.  These `.va-text-*` variants use the VA palette directly.
+// @deprecated — Use Bootstrap equivalents instead.  These aliases exist only
+// for backward-compatibility.  Bootstrap generates the same colours from
+// $theme-colors and $body-*-color variable overrides in _variables.scss.
+//
+//   @deprecated  .va-text-primary  →  .text-primary
+//   @deprecated  .va-text-dark     →  .text-dark  (or .text-body-emphasis)
+//   @deprecated  .va-text-muted    →  .text-body-tertiary
+//   @deprecated  .va-text-body     →  .text-body-secondary
+//   @deprecated  .va-text-white    →  .text-white
 
 .va-text-primary { color: $va-primary-blue !important; }
 .va-text-dark    { color: $va-near-black !important; }

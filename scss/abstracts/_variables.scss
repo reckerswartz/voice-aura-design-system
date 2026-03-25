@@ -60,6 +60,12 @@ $dark:      $va-near-black;
 $body-bg:    $va-white;
 $body-color: $va-near-black;        // Primary reading colour; $va-body-text is for secondary copy
 
+// Secondary / tertiary body colours — makes Bootstrap's .text-body-secondary
+// and .text-body-tertiary match VA palette out-of-the-box.
+$body-secondary-color: $va-body-text;
+$body-tertiary-color:  $va-muted-text;
+$body-emphasis-color:  $va-near-black;
+
 // Theme colour map — extended with Voice Aura semantic colours so that
 // Bootstrap utility classes like `.bg-section-bg`, `.text-muted-text`
 // are generated automatically via the utility API.
@@ -91,6 +97,9 @@ $theme-colors: (
 //   $success                  ← $va-success        #10B981
 //   $warning                  ← $va-warning        #F59E0B
 //   $danger                   ← $va-danger         #EF4444
+//   $body-secondary-color     ← $va-body-text      #4B5563
+//   $body-tertiary-color      ← $va-muted-text     #9CA3AF
+//   $body-emphasis-color      ← $va-near-black     #1A1919
 //   $font-family-base         ← $va-font-body      IBM Plex Sans…
 //   $headings-font-family     ← $va-font-heading   IBM Plex Serif…
 //   $font-family-monospace    ← $va-font-mono      IBM Plex Mono…
@@ -104,6 +113,10 @@ $theme-colors: (
 //   $box-shadow-sm            ← $va-shadow-sm      (single-layer)
 //   $box-shadow-lg            ← $va-shadow-lg      (multi-layer)
 //   $transition-base          ← $va-transition-base all 0.2s ease-in-out
+//   $btn-white-space          ←                    nowrap
+//   $input-disabled-bg        ← $va-section-bg     #F7F7F8
+//   $input-disabled-border-color ← $va-border-color #E5E7EB
+//   $card-inner-border-radius ←                    calc($va-radius - 1px)
 // ---------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
@@ -291,6 +304,10 @@ $btn-transition: color 0.2s ease-in-out,
                  box-shadow 0.2s ease-in-out,
                  transform 0.2s ease-in-out;
 
+// White-space — Bootstrap defaults to null (no white-space set).
+// VA buttons should not wrap text.
+$btn-white-space: nowrap;
+
 // Disabled state
 $btn-disabled-opacity: 0.5;
 
@@ -317,6 +334,10 @@ $input-focus-color:        $va-near-black;
 
 $input-transition: border-color 0.2s ease-in-out,
                    box-shadow 0.2s ease-in-out;
+
+// Disabled input — match VA's section-bg for disabled state
+$input-disabled-bg:           $va-section-bg;
+$input-disabled-border-color: $va-border-color;
 
 $form-label-font-weight:  $font-weight-medium;
 $form-label-margin-bottom: 0.5rem;
@@ -363,7 +384,8 @@ $card-spacer-y:      1.5rem;
 $card-spacer-x:      1.5rem;
 $card-cap-padding-y: 1.25rem;
 $card-cap-padding-x: 1.5rem;
-$card-cap-bg:        transparent;
+$card-cap-bg:            transparent;
+$card-inner-border-radius: calc($va-radius - $border-width);
 
 // ----------------------------------------------------------------------------
 // 11. MODALS

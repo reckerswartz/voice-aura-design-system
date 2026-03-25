@@ -4,10 +4,17 @@
 // Badge, pill, tag, and section-label components.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT                                                 │
+// │ BOOTSTRAP ALIGNMENT — DELTA-ONLY APPROACH                           │
 // │                                                                      │
-// │ Bootstrap ships `.badge` with colour variants via `.bg-*`.          │
-// │ $badge-* variables are overridden in _variables.scss.               │
+// │ `.va-badge` extends `.badge`.  Font-size and font-weight are        │
+// │ inherited from Bootstrap via $badge-* variable overrides.           │
+// │                                                                      │
+// │ VA-specific DELTAS (vs Bootstrap's .badge):                         │
+// │   • `display: inline-flex` + gap (for icon alignment)              │
+// │   • Custom padding (wider than $badge-padding-*)                    │
+// │   • Neutral default (light-grey bg, dark text)                     │
+// │   • `border-radius: 0.25rem` (overrides $badge-border-radius pill) │
+// │   • `border` (transparent base for outline variant)                │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-badge            ≈ .badge .bg-light .text-dark                │

@@ -4,12 +4,16 @@
 // Form controls, inputs, and the TTS input card component.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT                                                 │
+// │ BOOTSTRAP ALIGNMENT — DELTA-ONLY APPROACH                           │
 // │                                                                      │
 // │ Bootstrap's form system is themed via $input-*, $form-label-*,      │
 // │ $form-select-*, and $form-check-* variable overrides in             │
-// │ _variables.scss.  The va-input-base mixin now references those      │
-// │ tokens so both systems stay in sync.                                │
+// │ _variables.scss.  VA form classes extend Bootstrap equivalents and  │
+// │ declare only the delta properties that differ.                      │
+// │                                                                      │
+// │ Variables newly added to _variables.scss for alignment:             │
+// │   $input-disabled-bg:           $va-section-bg                      │
+// │   $input-disabled-border-color: $va-border-color                    │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-form-group    ≈ .mb-3 (Bootstrap form spacing)               │
@@ -56,16 +60,14 @@
 .va-form-label {
   @extend .form-label;
 
-  font-family: $font-family-base;
-  font-size: $form-label-font-size;
-  font-weight: $form-label-font-weight;
-  line-height: 1.4;
-  color: $form-label-color;
+  // --- VA delta only (font-size, font-weight, color inherited from .form-label
+  //     via $form-label-* variable overrides in _variables.scss) ---
+  line-height: 1.4;  // Tighter than Bootstrap's default
 
-  // Required indicator
+  // Required indicator (VA-unique)
   &--required::after {
     content: " *";
-    color: $va-danger;
+    color: $danger;
   }
 }
 
@@ -77,16 +79,18 @@
 // Base styling (padding, font, border, border-radius, transition, placeholder,
 // focus ring) is already handled by .form-control via $input-* variable
 // overrides in _variables.scss.  This mixin adds only VA-specific deltas.
+//
+// Note: $input-disabled-bg and $input-disabled-border-color are now set in
+// _variables.scss, so Bootstrap's native :disabled styling matches VA.
 @mixin va-input-base {
   // Hover: darken border (Bootstrap .form-control has no hover state)
   &:hover {
     border-color: va-darken($input-border-color, 10%);
   }
 
-  // Disabled: stronger opacity + bg tint (Bootstrap uses $input-disabled-bg)
+  // Disabled: opacity + cursor (bg handled by $input-disabled-bg variable)
   &:disabled {
     opacity: $btn-disabled-opacity;
-    background-color: $va-section-bg;
     cursor: not-allowed;
   }
 
@@ -223,19 +227,18 @@
 .va-form-error {
   @extend .invalid-feedback;
 
-  // Delta: always visible (Bootstrap's .invalid-feedback is hidden until
+  // --- VA deltas only (base inherited from .invalid-feedback) ---
+  // Always visible (Bootstrap's .invalid-feedback is hidden until
   // .was-validated or sibling .is-invalid).  VA shows errors via JS toggle.
   display: block;
   font-size: 0.8125rem;
-  color: $danger;
 }
 
 .va-form-hint {
   @extend .form-text;
 
-  // Delta: slightly smaller font than Bootstrap's default
+  // --- VA delta only (color inherited from .form-text via $body-secondary-color) ---
   font-size: 0.8125rem;
-  color: $va-body-text;
 }
 
 // ==========================================================================

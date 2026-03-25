@@ -4,13 +4,18 @@
 // Generic card components for the Voice Aura platform.
 //
 // ┌──────────────────────────────────────────────────────────────────────┐
-// │ BOOTSTRAP ALIGNMENT                                                 │
+// │ BOOTSTRAP ALIGNMENT — DELTA-ONLY APPROACH                           │
 // │                                                                      │
-// │ Bootstrap's `.card` system is themed via $card-* variable overrides │
-// │ in _variables.scss ($card-bg, $card-border-*, $card-spacer-*, etc.) │
-// │ The `.va-card` class intentionally mirrors Bootstrap's `.card` with │
-// │ the same tokens.  All shared properties reference Bootstrap's Sass  │
-// │ variables so they stay in sync.                                     │
+// │ `.va-card` extends `.card`.  ALL shared properties (display,         │
+// │ flex-direction, position, background, border, border-radius,         │
+// │ word-wrap) are INHERITED from Bootstrap via @extend.                │
+// │                                                                      │
+// │ Only VA-specific DELTAS are declared:                               │
+// │   1. `padding: $va-card-padding` (Bootstrap puts padding on body)  │
+// │   2. `overflow: hidden` (Bootstrap's .card doesn't clip)            │
+// │                                                                      │
+// │ Sub-elements extend Bootstrap equivalents and add only layout       │
+// │ deltas (flex alignment on header/footer).                           │
 // │                                                                      │
 // │ Approximate equivalences:                                           │
 // │   .va-card             ≈ .card                                      │
@@ -43,17 +48,10 @@
 .va-card {
   @extend .card;
 
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  // Appearance — shared with Bootstrap via $card-* variables
-  background-color: $card-bg;
-  border: $card-border-width solid $card-border-color;
-  border-radius: $card-border-radius;
-  padding: $va-card-padding;
-  word-wrap: break-word;
-  overflow: hidden;
+  // --- VA deltas only (position, display, flex-direction, background,
+  //     border, border-radius, word-wrap inherited from .card) ---
+  padding: $va-card-padding;    // VA applies padding at card level (Bootstrap uses .card-body)
+  overflow: hidden;             // Clip overflowing child content (Bootstrap doesn't set this)
 
   // --------------------------------------------------------------------------
   // Card Header
@@ -62,12 +60,12 @@
   &__header {
     @extend .card-header;
 
+    // --- VA deltas (base inherited from .card-header) ---
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: $spacer;
     margin-bottom: $spacer;
-    border-bottom: $card-border-width solid $card-border-color;
 
     // When card has no padding, let header carry its own
     .va-card--flush > & {
@@ -82,8 +80,7 @@
 
   &__body {
     @extend .card-body;
-
-    flex: 1 1 auto;
+    // flex: 1 1 auto inherited from .card-body
 
     .va-card--flush > & {
       padding: $va-card-padding;
@@ -97,11 +94,11 @@
   &__footer {
     @extend .card-footer;
 
+    // --- VA deltas (base inherited from .card-footer) ---
     display: flex;
     align-items: center;
     padding-top: $spacer;
     margin-top: auto;
-    border-top: $card-border-width solid $card-border-color;
 
     .va-card--flush > & {
       padding: $card-cap-padding-y $card-cap-padding-x;
@@ -144,11 +141,8 @@
   // --------------------------------------------------------------------------
 
   &__title {
-    font-family: $headings-font-family;
+    // font-family, font-weight, line-height, color inherited from heading defaults
     font-size: $h4-font-size;
-    font-weight: $headings-font-weight;
-    line-height: $headings-line-height;
-    color: $headings-color;
     margin: 0 0 $va-grid-unit;
   }
 
@@ -157,10 +151,8 @@
   // --------------------------------------------------------------------------
 
   &__text {
-    font-family: $font-family-base;
+    // font-family, line-height, color inherited from body defaults
     font-size: 0.9375rem;
-    line-height: $line-height-base;
-    color: $body-color;
     margin: 0;
 
     + .va-card__text {
