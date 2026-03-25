@@ -2,6 +2,22 @@
 // Voice Aura Design System - Blog Card
 // ==========================================================================
 // Blog / article card for the Voice Aura blog and resources section.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ The blog card is structurally a `.card` with a specific layout for  │
+// │ blog/article content.  Shared properties reference Bootstrap's Sass │
+// │ variables ($border-width, $border-color, $border-radius,            │
+// │ $font-family-base, $headings-font-family, $font-weight-*) to stay  │
+// │ in sync with the design system.                                     │
+// │                                                                      │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-blog-card             — card with image zoom, hover lift       │
+// │   .va-blog-card__category   — coloured dot + tinted category tag     │
+// │   .va-blog-card__link       — animated arrow read-more link          │
+// │   .va-blog-card--horizontal — side-by-side featured layout            │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -27,8 +43,8 @@
   display: flex;
   flex-direction: column;
   background-color: $va-white;
-  border: $border-width solid $va-border;
-  border-radius: $va-radius;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
   overflow: hidden;
   transition: transform 0.2s ease-in-out,
               box-shadow 0.2s ease-in-out;
@@ -95,7 +111,7 @@
     span + span::before {
       content: "·";
       margin-right: 0.75rem;
-      color: darken($va-border, 10%);
+      color: darken($border-color, 10%);
     }
   }
 

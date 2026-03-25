@@ -241,7 +241,7 @@ pre {
 code {
   padding: 2px 6px;
   background-color: $va-light-grey;
-  border-radius: $va-radius-sm;
+  border-radius: $border-radius-sm;
   color: $va-near-black;
 }
 
@@ -249,7 +249,7 @@ pre {
   padding: $va-grid-unit * 3;
   background-color: $va-near-black;
   color: $va-white;
-  border-radius: $va-radius;
+  border-radius: $border-radius;
   overflow-x: auto;
 
   code {

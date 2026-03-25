@@ -73,55 +73,38 @@
 // Shared input styles (mixin)
 // --------------------------------------------------------------------------
 
+// Delta-only mixin: properties that differ from Bootstrap's .form-control.
+// Base styling (padding, font, border, border-radius, transition, placeholder,
+// focus ring) is already handled by .form-control via $input-* variable
+// overrides in _variables.scss.  This mixin adds only VA-specific deltas.
 @mixin va-input-base {
-  display: block;
-  width: 100%;
-  padding: $input-padding-y $input-padding-x;
-  font-family: $font-family-base;
-  font-size: $input-font-size;
-  font-weight: $font-weight-normal;
-  line-height: 1.5;
-  color: $input-color;
-  background-color: $input-bg;
-  border: $input-border-width solid $input-border-color;
-  border-radius: $input-border-radius;
-  transition: $input-transition;
-  appearance: none;
-
-  &::placeholder {
-    color: $input-placeholder-color;
-  }
-
+  // Hover: darken border (Bootstrap .form-control has no hover state)
   &:hover {
     border-color: darken($input-border-color, 10%);
   }
 
-  &:focus {
-    outline: none;
-    border-color: $input-focus-border-color;
-    box-shadow: $input-focus-box-shadow;
-  }
-
+  // Disabled: stronger opacity + bg tint (Bootstrap uses $input-disabled-bg)
   &:disabled {
-    opacity: 0.5;
-    background-color: $va-bg-alt;
+    opacity: $btn-disabled-opacity;
+    background-color: $va-section-bg;
     cursor: not-allowed;
   }
 
-  // Validation states
+  // Validation states — VA uses `.is-invalid` / `.is-valid` class names
+  // matching Bootstrap's validation pattern, with a custom focus ring colour.
   &.is-invalid {
-    border-color: $va-danger;
+    border-color: $danger;
 
     &:focus {
-      box-shadow: 0 0 0 3px rgba($va-danger, 0.15);
+      box-shadow: 0 0 0 3px rgba($danger, 0.15);
     }
   }
 
   &.is-valid {
-    border-color: $va-success;
+    border-color: $success;
 
     &:focus {
-      box-shadow: 0 0 0 3px rgba($va-success, 0.15);
+      box-shadow: 0 0 0 3px rgba($success, 0.15);
     }
   }
 }
@@ -238,17 +221,21 @@
 // --------------------------------------------------------------------------
 
 .va-form-error {
-  font-family: $font-family-base;
+  @extend .invalid-feedback;
+
+  // Delta: always visible (Bootstrap's .invalid-feedback is hidden until
+  // .was-validated or sibling .is-invalid).  VA shows errors via JS toggle.
+  display: block;
   font-size: 0.8125rem;
-  color: $va-danger;
-  margin-top: 0.25rem;
+  color: $danger;
 }
 
 .va-form-hint {
-  font-family: $font-family-base;
+  @extend .form-text;
+
+  // Delta: slightly smaller font than Bootstrap's default
   font-size: 0.8125rem;
   color: $va-body-text;
-  margin-top: 0.25rem;
 }
 
 // ==========================================================================
@@ -432,7 +419,7 @@
   font-size: 0.8125rem;
   font-weight: $font-weight-medium;
   color: $va-body-text;
-  background-color: $va-bg-alt;
+  background-color: $va-section-bg;
   border: $border-width solid transparent;
   border-radius: $border-radius-pill;
   cursor: pointer;
@@ -440,7 +427,7 @@
   white-space: nowrap;
 
   &:hover {
-    background-color: darken($va-bg-alt, 4%);
+    background-color: darken($va-section-bg, 4%);
     color: $va-near-black;
   }
 
@@ -573,7 +560,7 @@
     padding: 0;
     background: transparent;
     border: none;
-    border-radius: $va-radius-sm;
+    border-radius: $border-radius-sm;
     cursor: pointer;
     color: $va-body-text;
     transition: color 0.15s ease-in-out,

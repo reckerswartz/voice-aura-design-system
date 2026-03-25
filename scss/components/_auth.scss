@@ -2,6 +2,29 @@
 // Voice Aura Design System - Authentication
 // ==========================================================================
 // Sign up, log in, and related authentication form components.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ Auth submit button extends `.btn .btn-dark` and social login button │
+// │ extends `.btn .btn-outline-secondary` so that padding, radius,      │
+// │ focus ring, disabled state, and hover colours are all inherited     │
+// │ from the variable-driven Bootstrap system.                           │
+// │                                                                      │
+// │ Shared properties reference Bootstrap Sass variables:               │
+// │   $border-width, $border-color, $border-radius-lg,                  │
+// │   $font-family-base, $headings-font-family, $font-weight-*          │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-auth__submit     ≈ .btn .btn-dark .w-100                     │
+// │   .va-auth__social-btn ≈ .btn .btn-outline-secondary .w-100        │
+// │   .va-auth              ≈ .card (borderless/elevated variants)      │
+// │                                                                      │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-auth__divider     — or-separator line                         │
+// │   .va-auth-split        — two-panel illustration + form layout      │
+// │   .va-client-logos      — greyscale trust logos row                 │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -22,8 +45,8 @@
   margin: 0 auto;
   padding: 2.5rem 2rem;
   background-color: $va-white;
-  border-radius: $va-radius-lg;
-  border: $border-width solid $va-border;
+  border-radius: $border-radius-lg;
+  border: $border-width solid $border-color;
 
   // --------------------------------------------------------------------------
   // Header
@@ -151,7 +174,7 @@
       content: "";
       flex: 1;
       height: 1px;
-      background-color: $va-border;
+      background-color: $border-color;
     }
 
     span {
@@ -250,7 +273,7 @@
     a {
       color: $va-body-text;
       text-decoration: underline;
-      text-decoration-color: $va-border;
+      text-decoration-color: $border-color;
       text-underline-offset: 0.125rem;
       transition: color 0.15s ease-in-out;
 
@@ -389,7 +412,7 @@
   transition: filter 0.2s ease-in-out;
   padding: 0 1.25rem;
   // Pipe separator via border-right on every logo except last
-  border-right: $border-width solid $va-border;
+  border-right: $border-width solid $border-color;
 
   &:last-child {
     border-right: none;

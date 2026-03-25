@@ -3,6 +3,31 @@
 // ==========================================================================
 // Pricing section with tab selector, pricing grid, and pricing cards
 // featuring distinctive crosshair/plus corner decorations.
+//
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │ BOOTSTRAP ALIGNMENT                                                 │
+// │                                                                      │
+// │ The pricing card is structurally similar to Bootstrap's `.card` but │
+// │ is purpose-built for the pricing layout (crosshair corners, tier    │
+// │ badges, feature lists).  Shared properties reference Bootstrap's    │
+// │ Sass variables ($border-width, $border-color, $border-radius,      │
+// │ $border-radius-sm, $font-family-base, $headings-font-family, etc.) │
+// │ to stay in sync with the design system.                             │
+// │                                                                      │
+// │ The pricing CTA extends Bootstrap's `.btn` + `.btn-outline-secondary`│
+// │ for base button styling; only VA-specific deltas are declared.      │
+// │                                                                      │
+// │ Approximate equivalences:                                           │
+// │   .va-pricing-card          ≈ .card (but with crosshair corners)   │
+// │   .va-pricing-card__cta     ≈ .btn .btn-outline-secondary .w-100   │
+// │   .va-pricing-card--featured cta ≈ .btn .btn-dark .w-100           │
+// │   .va-pricing__tabs         ≈ .nav .nav-pills (custom pill shape)  │
+// │                                                                      │
+// │ Unique VA components (no Bootstrap equivalent):                     │
+// │   .va-pricing-card__badge   — tier label (Free/Creator/Business)   │
+// │   .va-pricing-card__price   — large price display                  │
+// │   .va-pricing-section__dots — background dot grid                  │
+// └──────────────────────────────────────────────────────────────────────┘
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -121,7 +146,7 @@
 // Crosshair / Plus Corner Size Variables
 // --------------------------------------------------------------------------
 
-$va-crosshair-color: $va-border;
+$va-crosshair-color: $border-color;
 
 // --------------------------------------------------------------------------
 // Pricing Card
@@ -139,14 +164,14 @@ $va-crosshair-color: $va-border;
   flex-direction: column;
   padding: 2rem;
   background-color: $va-white;
-  border: $border-width solid $va-border;
-  border-radius: $va-radius;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
   transition: border-color 0.2s ease-in-out,
               box-shadow 0.2s ease-in-out,
               transform 0.2s ease-in-out;
 
   &:hover:not(.va-pricing-card--featured) {
-    border-color: darken($va-border, 12%);
+    border-color: darken($border-color, 12%);
     box-shadow: $va-shadow-md;
   }
 
@@ -213,42 +238,38 @@ $va-crosshair-color: $va-border;
   // Outlined by default, filled dark for the featured/Creator card.
 
   &__cta {
+    @extend .btn;
+    @extend .btn-outline-secondary;
+
+    // Delta from Bootstrap's .btn.btn-outline-secondary:
+    // - always full-width (w-100)
+    // - 15px font (matches va-btn system)
+    // - custom hover bg colour
+    // - margin-bottom for card spacing
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    font-family: $font-family-base;
     font-size: 0.9375rem;
-    font-weight: $font-weight-medium;
-    text-decoration: none;
-    border: $border-width solid $va-border;
-    border-radius: $va-radius-sm;
-    background-color: transparent;
+    border-color: $border-color;
     color: $va-near-black;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
     margin-bottom: 1.5rem;
 
     &:hover {
-      background-color: $va-bg-alt;
-      border-color: darken($va-border, 8%);
+      background-color: $va-section-bg;
+      border-color: darken($border-color, 8%);
+      color: $va-near-black;
     }
 
     &:active {
-      background-color: darken($va-bg-alt, 3%);
-      border-color: darken($va-border, 12%);
+      background-color: darken($va-section-bg, 3%);
+      border-color: darken($border-color, 12%);
       transform: scale(0.98);
     }
 
     &:disabled,
     &.is-disabled {
       @include va-disabled-state;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $va-primary-blue;
-      outline-offset: 2px;
     }
   }
 

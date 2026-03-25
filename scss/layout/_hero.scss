@@ -7,8 +7,8 @@
 //
 // Depends on: $va-near-black, $va-primary-blue, $va-body-text,
 //   $va-muted-text, $va-light-grey, $va-border-color, $va-font-heading,
-//   $va-font-body, $va-grid-unit, $va-radius, $va-radius-lg,
-//   $va-radius-pill, $va-shadow-lg, $va-breakpoints, $va-font-sizes,
+//   $va-font-body, $va-grid-unit, $border-radius, $border-radius-lg,
+//   $border-radius-pill, $va-shadow-lg, $va-breakpoints, $va-font-sizes,
 //   $font-size-base.
 // ==========================================================================
 
@@ -60,7 +60,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   color: $va-primary-blue;
   background-color: rgba($va-primary-blue, 0.08);
   border: $border-width solid rgba($va-primary-blue, 0.18);
-  border-radius: $va-radius-pill;
+  border-radius: $border-radius-pill;
   line-height: 1;
 
   // Optional leading icon
@@ -124,7 +124,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   color: $va-white;
   background-color: $va-near-black;
   padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4); // 12px 32px
-  border-radius: $va-radius-pill;
+  border-radius: $border-radius-pill;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out,
@@ -153,7 +153,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   color: $va-near-black;
   background-color: transparent;
   padding: ($va-grid-unit * 1.5) ($va-grid-unit * 4);
-  border-radius: $va-radius-pill;
+  border-radius: $border-radius-pill;
   border: 1.5px solid $va-border-color;
   cursor: pointer;
   transition: border-color 0.2s ease-in-out,
@@ -185,7 +185,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   max-width: 780px;
   background-color: $va-white;
   border: $border-width solid $va-border-color;
-  border-radius: $va-radius-lg;
+  border-radius: $border-radius-lg;
   box-shadow: $va-shadow-lg;
   padding: $va-grid-unit * 4;                      // 32px
   z-index: $va-z-raised;
@@ -207,7 +207,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     background: none;
     border: none;
     padding: $va-grid-unit ($va-grid-unit * 2);
-    border-radius: $va-radius;
+    border-radius: $border-radius;
     cursor: pointer;
     transition: color 0.2s ease-in-out,
                 background-color 0.2s ease-in-out;
@@ -233,7 +233,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     line-height: 1.6;
     color: $va-near-black;
     border: $border-width solid $va-border-color;
-    border-radius: $va-radius;
+    border-radius: $border-radius;
     padding: $va-grid-unit * 2;
     resize: vertical;
     transition: border-color 0.2s ease-in-out,
@@ -265,7 +265,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     color: $va-body-text;
     background-color: $va-light-grey;
     border: $border-width solid transparent;
-    border-radius: $va-radius-pill;
+    border-radius: $border-radius-pill;
     padding: ($va-grid-unit * 0.5) ($va-grid-unit * 1.5); // 4px 12px
     cursor: pointer;
     transition: border-color 0.2s ease-in-out,
@@ -304,7 +304,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     color: $va-white;
     background-color: $va-primary-blue;
     border: none;
-    border-radius: $va-radius-pill;
+    border-radius: $border-radius-pill;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out,
                 transform 0.2s ease-in-out;
@@ -433,7 +433,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     height: 48px;
     background-color: $va-white;
     border: $border-width solid $va-border-color;
-    border-radius: $va-radius;
+    border-radius: $border-radius;
     box-shadow: $va-shadow;
 
     svg {
@@ -511,7 +511,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     height: 36px;
     background-color: $va-white;
     border: $border-width solid $va-border-color;
-    border-radius: $va-radius;
+    border-radius: $border-radius;
     box-shadow: $va-shadow;
 
     svg {
@@ -527,7 +527,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     height: 48px;
     background-color: $va-white;
     border: $border-width solid $va-border-color;
-    border-radius: $va-radius;
+    border-radius: $border-radius;
     box-shadow: $va-shadow;
     font-family: $headings-font-family;
     font-size: 1.25rem;

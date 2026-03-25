@@ -152,18 +152,18 @@
   @extend .btn-outline-secondary;
 
   background-color: transparent;
-  border-color: $va-border;
+  border-color: $border-color;
   color: $va-near-black;
 
   &:hover {
-    background-color: $va-bg-alt;
-    border-color: darken($va-border, 8%);
+    background-color: $va-section-bg;
+    border-color: darken($border-color, 8%);
     color: $va-near-black;
   }
 
   &:active {
-    background-color: darken($va-bg-alt, 3%);
-    border-color: darken($va-border, 12%);
+    background-color: darken($va-section-bg, 3%);
+    border-color: darken($border-color, 12%);
   }
 }
 
@@ -320,13 +320,13 @@
     }
 
     &:first-child {
-      border-top-left-radius: $va-radius-sm;
-      border-bottom-left-radius: $va-radius-sm;
+      border-top-left-radius: $border-radius-sm;
+      border-bottom-left-radius: $border-radius-sm;
     }
 
     &:last-child {
-      border-top-right-radius: $va-radius-sm;
-      border-bottom-right-radius: $va-radius-sm;
+      border-top-right-radius: $border-radius-sm;
+      border-bottom-right-radius: $border-radius-sm;
     }
 
     // Ensure active/focused button sits on top so its border is fully visible

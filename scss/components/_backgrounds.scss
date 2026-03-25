@@ -308,22 +308,26 @@
 // └────────────────────────────────────────────────────────────────────┘
 
 // Pure white background (default)
-// Bootstrap equivalent: .bg-white
+// Bootstrap equivalent: .bg-white — prefer .bg-white in new code.
 .va-bg-white {
-  background-color: $va-white;
+  @extend .bg-white;
 }
 
 // Light grey alternate section background
 // Bootstrap equivalent: .bg-section-bg (via extended $theme-colors)
+// Prefer .bg-section-bg in new code.
 .va-bg-alt {
   background-color: $va-section-bg;
 }
 
 // Near-black dark background (for feature/CTA sections)
 // Bootstrap equivalent: .bg-dark .text-white-50
-// (VA version also recolors headings — use this for section-level dark bg.)
+// Delta: VA version also recolors all headings — use this for section-level
+// dark backgrounds.  For simple dark bg without heading override, use
+// Bootstrap's .bg-dark .text-white instead.
 .va-bg-dark {
-  background-color: $va-near-black;
+  @extend .bg-dark;
+
   color: rgba($va-white, 0.85);
 
   h1, h2, h3, h4, h5, h6 {

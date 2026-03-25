@@ -36,7 +36,7 @@
   align-items: center;
   padding: 2rem 1.5rem;
   background-color: $va-near-black;
-  border-radius: $va-radius;
+  border-radius: $border-radius;
   color: $va-white;
   text-align: center;
   overflow: hidden;
@@ -92,7 +92,7 @@
       width: 100%;
       aspect-ratio: 1;
       background: linear-gradient(135deg, $va-badge-bg-light 0%, darken($va-badge-bg-light, 6%) 100%);
-      border-radius: $va-radius;
+      border-radius: $border-radius;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -100,7 +100,7 @@
 
     // Rounded square variant
     &--square {
-      border-radius: $va-radius;
+      border-radius: $border-radius;
     }
   }
 
@@ -175,7 +175,7 @@
     color: $va-white;
     background-color: rgba($va-white, 0.12);
     border: $border-width solid rgba($va-white, 0.15);
-    border-radius: $va-radius-sm;
+    border-radius: $border-radius-sm;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
     text-decoration: none;

@@ -1984,7 +1984,7 @@ progress {
     --bs-gutter-y: 7.5rem;
   }
 }
-.btn, .va-auth__social-btn, .va-auth__submit, .va-btn, .va-navbar-btn--filled, .va-navbar-btn--outlined, .va-navbar-btn--ghost {
+.btn, .va-auth__social-btn, .va-auth__submit, .va-pricing-card__cta, .va-btn, .va-navbar-btn--filled, .va-navbar-btn--outlined, .va-navbar-btn--ghost {
   --bs-btn-padding-x: 1.5rem;
   --bs-btn-padding-y: 0.75rem;
   --bs-btn-font-family: ;
@@ -2017,45 +2017,45 @@ progress {
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn, .va-auth__social-btn, .va-auth__submit, .va-btn, .va-navbar-btn--filled, .va-navbar-btn--outlined, .va-navbar-btn--ghost {
+  .btn, .va-auth__social-btn, .va-auth__submit, .va-pricing-card__cta, .va-btn, .va-navbar-btn--filled, .va-navbar-btn--outlined, .va-navbar-btn--ghost {
     transition: none;
   }
 }
-.btn:hover, .va-auth__social-btn:hover, .va-auth__submit:hover, .va-btn:hover, .va-navbar-btn--filled:hover, .va-navbar-btn--outlined:hover, .va-navbar-btn--ghost:hover {
+.btn:hover, .va-auth__social-btn:hover, .va-auth__submit:hover, .va-pricing-card__cta:hover, .va-btn:hover, .va-navbar-btn--filled:hover, .va-navbar-btn--outlined:hover, .va-navbar-btn--ghost:hover {
   color: var(--bs-btn-hover-color);
   text-decoration: none;
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
 }
-.btn-check + .btn:hover, .btn-check + .va-auth__social-btn:hover, .btn-check + .va-auth__submit:hover, .btn-check + .va-btn:hover, .btn-check + .va-navbar-btn--filled:hover, .btn-check + .va-navbar-btn--outlined:hover, .btn-check + .va-navbar-btn--ghost:hover {
+.btn-check + .btn:hover, .btn-check + .va-auth__social-btn:hover, .btn-check + .va-auth__submit:hover, .btn-check + .va-pricing-card__cta:hover, .btn-check + .va-btn:hover, .btn-check + .va-navbar-btn--filled:hover, .btn-check + .va-navbar-btn--outlined:hover, .btn-check + .va-navbar-btn--ghost:hover {
   color: var(--bs-btn-color);
   background-color: var(--bs-btn-bg);
   border-color: var(--bs-btn-border-color);
 }
-.btn:focus-visible, .va-auth__social-btn:focus-visible, .va-auth__submit:focus-visible, .va-btn:focus-visible, .va-navbar-btn--filled:focus-visible, .va-navbar-btn--outlined:focus-visible, .va-navbar-btn--ghost:focus-visible {
+.btn:focus-visible, .va-auth__social-btn:focus-visible, .va-auth__submit:focus-visible, .va-pricing-card__cta:focus-visible, .va-btn:focus-visible, .va-navbar-btn--filled:focus-visible, .va-navbar-btn--outlined:focus-visible, .va-navbar-btn--ghost:focus-visible {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn, .btn-check:focus-visible + .va-auth__social-btn, .btn-check:focus-visible + .va-auth__submit, .btn-check:focus-visible + .va-btn, .btn-check:focus-visible + .va-navbar-btn--filled, .btn-check:focus-visible + .va-navbar-btn--outlined, .btn-check:focus-visible + .va-navbar-btn--ghost {
+.btn-check:focus-visible + .btn, .btn-check:focus-visible + .va-auth__social-btn, .btn-check:focus-visible + .va-auth__submit, .btn-check:focus-visible + .va-pricing-card__cta, .btn-check:focus-visible + .va-btn, .btn-check:focus-visible + .va-navbar-btn--filled, .btn-check:focus-visible + .va-navbar-btn--outlined, .btn-check:focus-visible + .va-navbar-btn--ghost {
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, .btn-check:checked + .va-auth__social-btn, .btn-check:checked + .va-auth__submit, .btn-check:checked + .va-btn, .btn-check:checked + .va-navbar-btn--filled, .btn-check:checked + .va-navbar-btn--outlined, .btn-check:checked + .va-navbar-btn--ghost, :not(.btn-check) + .btn:active, :not(.btn-check) + .va-auth__social-btn:active, :not(.btn-check) + .va-auth__submit:active, :not(.btn-check) + .va-btn:active, :not(.btn-check) + .va-navbar-btn--filled:active, :not(.btn-check) + .va-navbar-btn--outlined:active, :not(.btn-check) + .va-navbar-btn--ghost:active, .btn:first-child:active, .va-auth__social-btn:first-child:active, .va-auth__submit:first-child:active, .va-btn:first-child:active, .va-navbar-btn--filled:first-child:active, .va-navbar-btn--outlined:first-child:active, .va-navbar-btn--ghost:first-child:active, .btn.active, .active.va-auth__social-btn, .active.va-auth__submit, .active.va-btn, .active.va-navbar-btn--filled, .active.va-navbar-btn--outlined, .active.va-navbar-btn--ghost, .btn.show, .show.va-auth__social-btn, .show.va-auth__submit, .show.va-btn, .show.va-navbar-btn--filled, .show.va-navbar-btn--outlined, .show.va-navbar-btn--ghost {
+.btn-check:checked + .btn, .btn-check:checked + .va-auth__social-btn, .btn-check:checked + .va-auth__submit, .btn-check:checked + .va-pricing-card__cta, .btn-check:checked + .va-btn, .btn-check:checked + .va-navbar-btn--filled, .btn-check:checked + .va-navbar-btn--outlined, .btn-check:checked + .va-navbar-btn--ghost, :not(.btn-check) + .btn:active, :not(.btn-check) + .va-auth__social-btn:active, :not(.btn-check) + .va-auth__submit:active, :not(.btn-check) + .va-pricing-card__cta:active, :not(.btn-check) + .va-btn:active, :not(.btn-check) + .va-navbar-btn--filled:active, :not(.btn-check) + .va-navbar-btn--outlined:active, :not(.btn-check) + .va-navbar-btn--ghost:active, .btn:first-child:active, .va-auth__social-btn:first-child:active, .va-auth__submit:first-child:active, .va-pricing-card__cta:first-child:active, .va-btn:first-child:active, .va-navbar-btn--filled:first-child:active, .va-navbar-btn--outlined:first-child:active, .va-navbar-btn--ghost:first-child:active, .btn.active, .active.va-auth__social-btn, .active.va-auth__submit, .active.va-pricing-card__cta, .active.va-btn, .active.va-navbar-btn--filled, .active.va-navbar-btn--outlined, .active.va-navbar-btn--ghost, .btn.show, .show.va-auth__social-btn, .show.va-auth__submit, .show.va-pricing-card__cta, .show.va-btn, .show.va-navbar-btn--filled, .show.va-navbar-btn--outlined, .show.va-navbar-btn--ghost {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: var(--bs-btn-active-border-color);
 }
-.btn-check:checked + .btn:focus-visible, .btn-check:checked + .va-auth__social-btn:focus-visible, .btn-check:checked + .va-auth__submit:focus-visible, .btn-check:checked + .va-btn:focus-visible, .btn-check:checked + .va-navbar-btn--filled:focus-visible, .btn-check:checked + .va-navbar-btn--outlined:focus-visible, .btn-check:checked + .va-navbar-btn--ghost:focus-visible, :not(.btn-check) + .btn:active:focus-visible, :not(.btn-check) + .va-auth__social-btn:active:focus-visible, :not(.btn-check) + .va-auth__submit:active:focus-visible, :not(.btn-check) + .va-btn:active:focus-visible, :not(.btn-check) + .va-navbar-btn--filled:active:focus-visible, :not(.btn-check) + .va-navbar-btn--outlined:active:focus-visible, :not(.btn-check) + .va-navbar-btn--ghost:active:focus-visible, .btn:first-child:active:focus-visible, .va-auth__social-btn:first-child:active:focus-visible, .va-auth__submit:first-child:active:focus-visible, .va-btn:first-child:active:focus-visible, .va-navbar-btn--filled:first-child:active:focus-visible, .va-navbar-btn--outlined:first-child:active:focus-visible, .va-navbar-btn--ghost:first-child:active:focus-visible, .btn.active:focus-visible, .active.va-auth__social-btn:focus-visible, .active.va-auth__submit:focus-visible, .active.va-btn:focus-visible, .active.va-navbar-btn--filled:focus-visible, .active.va-navbar-btn--outlined:focus-visible, .active.va-navbar-btn--ghost:focus-visible, .btn.show:focus-visible, .show.va-auth__social-btn:focus-visible, .show.va-auth__submit:focus-visible, .show.va-btn:focus-visible, .show.va-navbar-btn--filled:focus-visible, .show.va-navbar-btn--outlined:focus-visible, .show.va-navbar-btn--ghost:focus-visible {
+.btn-check:checked + .btn:focus-visible, .btn-check:checked + .va-auth__social-btn:focus-visible, .btn-check:checked + .va-auth__submit:focus-visible, .btn-check:checked + .va-pricing-card__cta:focus-visible, .btn-check:checked + .va-btn:focus-visible, .btn-check:checked + .va-navbar-btn--filled:focus-visible, .btn-check:checked + .va-navbar-btn--outlined:focus-visible, .btn-check:checked + .va-navbar-btn--ghost:focus-visible, :not(.btn-check) + .btn:active:focus-visible, :not(.btn-check) + .va-auth__social-btn:active:focus-visible, :not(.btn-check) + .va-auth__submit:active:focus-visible, :not(.btn-check) + .va-pricing-card__cta:active:focus-visible, :not(.btn-check) + .va-btn:active:focus-visible, :not(.btn-check) + .va-navbar-btn--filled:active:focus-visible, :not(.btn-check) + .va-navbar-btn--outlined:active:focus-visible, :not(.btn-check) + .va-navbar-btn--ghost:active:focus-visible, .btn:first-child:active:focus-visible, .va-auth__social-btn:first-child:active:focus-visible, .va-auth__submit:first-child:active:focus-visible, .va-pricing-card__cta:first-child:active:focus-visible, .va-btn:first-child:active:focus-visible, .va-navbar-btn--filled:first-child:active:focus-visible, .va-navbar-btn--outlined:first-child:active:focus-visible, .va-navbar-btn--ghost:first-child:active:focus-visible, .btn.active:focus-visible, .active.va-auth__social-btn:focus-visible, .active.va-auth__submit:focus-visible, .active.va-pricing-card__cta:focus-visible, .active.va-btn:focus-visible, .active.va-navbar-btn--filled:focus-visible, .active.va-navbar-btn--outlined:focus-visible, .active.va-navbar-btn--ghost:focus-visible, .btn.show:focus-visible, .show.va-auth__social-btn:focus-visible, .show.va-auth__submit:focus-visible, .show.va-pricing-card__cta:focus-visible, .show.va-btn:focus-visible, .show.va-navbar-btn--filled:focus-visible, .show.va-navbar-btn--outlined:focus-visible, .show.va-navbar-btn--ghost:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked:focus-visible + .btn, .btn-check:checked:focus-visible + .va-auth__social-btn, .btn-check:checked:focus-visible + .va-auth__submit, .btn-check:checked:focus-visible + .va-btn, .btn-check:checked:focus-visible + .va-navbar-btn--filled, .btn-check:checked:focus-visible + .va-navbar-btn--outlined, .btn-check:checked:focus-visible + .va-navbar-btn--ghost {
+.btn-check:checked:focus-visible + .btn, .btn-check:checked:focus-visible + .va-auth__social-btn, .btn-check:checked:focus-visible + .va-auth__submit, .btn-check:checked:focus-visible + .va-pricing-card__cta, .btn-check:checked:focus-visible + .va-btn, .btn-check:checked:focus-visible + .va-navbar-btn--filled, .btn-check:checked:focus-visible + .va-navbar-btn--outlined, .btn-check:checked:focus-visible + .va-navbar-btn--ghost {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn:disabled, .va-auth__social-btn:disabled, .va-auth__submit:disabled, .va-btn:disabled, .va-navbar-btn--filled:disabled, .va-navbar-btn--outlined:disabled, .va-navbar-btn--ghost:disabled, .btn.disabled, .disabled.va-auth__social-btn, .disabled.va-auth__submit, .disabled.va-btn, .disabled.va-navbar-btn--filled, .disabled.va-navbar-btn--outlined, .disabled.va-navbar-btn--ghost, fieldset:disabled .btn, fieldset:disabled .va-auth__social-btn, fieldset:disabled .va-auth__submit, fieldset:disabled .va-btn, fieldset:disabled .va-navbar-btn--filled, fieldset:disabled .va-navbar-btn--outlined, fieldset:disabled .va-navbar-btn--ghost {
+.btn:disabled, .va-auth__social-btn:disabled, .va-auth__submit:disabled, .va-pricing-card__cta:disabled, .va-btn:disabled, .va-navbar-btn--filled:disabled, .va-navbar-btn--outlined:disabled, .va-navbar-btn--ghost:disabled, .btn.disabled, .disabled.va-auth__social-btn, .disabled.va-auth__submit, .disabled.va-pricing-card__cta, .disabled.va-btn, .disabled.va-navbar-btn--filled, .disabled.va-navbar-btn--outlined, .disabled.va-navbar-btn--ghost, fieldset:disabled .btn, fieldset:disabled .va-auth__social-btn, fieldset:disabled .va-auth__submit, fieldset:disabled .va-pricing-card__cta, fieldset:disabled .va-btn, fieldset:disabled .va-navbar-btn--filled, fieldset:disabled .va-navbar-btn--outlined, fieldset:disabled .va-navbar-btn--ghost {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
   background-color: var(--bs-btn-disabled-bg);
@@ -2250,7 +2250,7 @@ progress {
   --bs-gradient: none;
 }
 
-.btn-outline-secondary, .va-auth__social-btn, .va-btn--secondary, .va-navbar-btn--outlined {
+.btn-outline-secondary, .va-auth__social-btn, .va-pricing-card__cta, .va-btn--secondary, .va-navbar-btn--outlined {
   --bs-btn-color: #1A1919;
   --bs-btn-border-color: #1A1919;
   --bs-btn-hover-color: #fff;
@@ -2676,7 +2676,7 @@ progress {
   font-size: 0.875rem;
 }
 
-.form-text {
+.form-text, .va-form-hint {
   margin-top: 0.25rem;
   font-size: 0.875em;
   color: var(--bs-secondary-color);
@@ -3012,7 +3012,7 @@ textarea.form-control-lg {
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-.btn-check[disabled] + .btn, .btn-check[disabled] + .va-auth__social-btn, .btn-check[disabled] + .va-auth__submit, .btn-check[disabled] + .va-btn, .btn-check[disabled] + .va-navbar-btn--filled, .btn-check[disabled] + .va-navbar-btn--outlined, .btn-check[disabled] + .va-navbar-btn--ghost, .btn-check:disabled + .btn, .btn-check:disabled + .va-auth__social-btn, .btn-check:disabled + .va-auth__submit, .btn-check:disabled + .va-btn, .btn-check:disabled + .va-navbar-btn--filled, .btn-check:disabled + .va-navbar-btn--outlined, .btn-check:disabled + .va-navbar-btn--ghost {
+.btn-check[disabled] + .btn, .btn-check[disabled] + .va-auth__social-btn, .btn-check[disabled] + .va-auth__submit, .btn-check[disabled] + .va-pricing-card__cta, .btn-check[disabled] + .va-btn, .btn-check[disabled] + .va-navbar-btn--filled, .btn-check[disabled] + .va-navbar-btn--outlined, .btn-check[disabled] + .va-navbar-btn--ghost, .btn-check:disabled + .btn, .btn-check:disabled + .va-auth__social-btn, .btn-check:disabled + .va-auth__submit, .btn-check:disabled + .va-pricing-card__cta, .btn-check:disabled + .va-btn, .btn-check:disabled + .va-navbar-btn--filled, .btn-check:disabled + .va-navbar-btn--outlined, .btn-check:disabled + .va-navbar-btn--ghost {
   pointer-events: none;
   filter: none;
   opacity: 0.5;
@@ -3217,11 +3217,11 @@ textarea.form-control-lg {
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
-.input-group .btn, .input-group .va-auth__social-btn, .input-group .va-auth__submit, .input-group .va-btn, .input-group .va-navbar-btn--filled, .input-group .va-navbar-btn--outlined, .input-group .va-navbar-btn--ghost {
+.input-group .btn, .input-group .va-auth__social-btn, .input-group .va-auth__submit, .input-group .va-pricing-card__cta, .input-group .va-btn, .input-group .va-navbar-btn--filled, .input-group .va-navbar-btn--outlined, .input-group .va-navbar-btn--ghost {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus, .input-group .va-auth__social-btn:focus, .input-group .va-auth__submit:focus, .input-group .va-btn:focus, .input-group .va-navbar-btn--filled:focus, .input-group .va-navbar-btn--outlined:focus, .input-group .va-navbar-btn--ghost:focus {
+.input-group .btn:focus, .input-group .va-auth__social-btn:focus, .input-group .va-auth__submit:focus, .input-group .va-pricing-card__cta:focus, .input-group .va-btn:focus, .input-group .va-navbar-btn--filled:focus, .input-group .va-navbar-btn--outlined:focus, .input-group .va-navbar-btn--ghost:focus {
   z-index: 5;
 }
 
@@ -3247,6 +3247,7 @@ textarea.form-control-lg {
 .input-group-lg > .btn,
 .input-group-lg > .va-auth__social-btn,
 .input-group-lg > .va-auth__submit,
+.input-group-lg > .va-pricing-card__cta,
 .input-group-lg > .va-btn,
 .input-group-lg > .va-navbar-btn--filled,
 .input-group-lg > .va-navbar-btn--outlined,
@@ -3263,6 +3264,7 @@ textarea.form-control-lg {
 .input-group-sm > .btn,
 .input-group-sm > .va-auth__social-btn,
 .input-group-sm > .va-auth__submit,
+.input-group-sm > .va-pricing-card__cta,
 .input-group-sm > .va-btn,
 .input-group-sm > .va-navbar-btn--filled,
 .input-group-sm > .va-navbar-btn--outlined,
@@ -3298,7 +3300,7 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback):not(.va-form-error) {
   margin-left: calc(-1 * var(--bs-border-width));
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -3402,7 +3404,7 @@ textarea.form-control-lg {
   z-index: 3;
 }
 
-.invalid-feedback {
+.invalid-feedback, .va-form-error {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
@@ -3424,9 +3426,10 @@ textarea.form-control-lg {
   border-radius: 0.5rem;
 }
 
-.was-validated :invalid ~ .invalid-feedback,
+.was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .va-form-error,
 .was-validated :invalid ~ .invalid-tooltip,
 .is-invalid ~ .invalid-feedback,
+.is-invalid ~ .va-form-error,
 .is-invalid ~ .invalid-tooltip {
   display: block;
 }
@@ -3480,7 +3483,7 @@ textarea.form-control-lg {
   color: var(--bs-form-invalid-color);
 }
 
-.form-check-inline .form-check-input ~ .invalid-feedback {
+.form-check-inline .form-check-input ~ .invalid-feedback, .form-check-inline .form-check-input ~ .va-form-error {
   margin-left: 0.5em;
 }
 
@@ -4058,7 +4061,7 @@ textarea.form-control-lg {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.badge {
+.badge, .va-badge {
   --bs-badge-padding-x: 0.65em;
   --bs-badge-padding-y: 0.35em;
   --bs-badge-font-size: 0.75rem;
@@ -4076,11 +4079,11 @@ textarea.form-control-lg {
   vertical-align: baseline;
   border-radius: var(--bs-badge-border-radius);
 }
-.badge:empty {
+.badge:empty, .va-badge:empty {
   display: none;
 }
 
-.btn .badge, .va-auth__social-btn .badge, .va-auth__submit .badge, .va-btn .badge, .va-navbar-btn--filled .badge, .va-navbar-btn--outlined .badge, .va-navbar-btn--ghost .badge {
+.btn .badge, .va-auth__social-btn .badge, .va-auth__submit .badge, .va-pricing-card__cta .badge, .btn .va-badge, .va-auth__social-btn .va-badge, .va-auth__submit .va-badge, .va-pricing-card__cta .va-badge, .va-btn .badge, .va-btn .va-badge, .va-navbar-btn--filled .badge, .va-navbar-btn--filled .va-badge, .va-navbar-btn--outlined .badge, .va-navbar-btn--outlined .va-badge, .va-navbar-btn--ghost .badge, .va-navbar-btn--ghost .va-badge {
   position: relative;
   top: -1px;
 }
@@ -7186,7 +7189,7 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
-.bg-dark {
+.bg-dark, .va-bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -7211,7 +7214,7 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
 }
 
-.bg-white {
+.bg-white, .va-bg-white {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -13414,35 +13417,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 78px;
+  height: 38px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 66px;
+  height: 60px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 18px;
+  height: 40px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 45px;
+  height: 33px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 38px;
+  height: 51px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 22px;
+  height: 49px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 94px;
+  height: 20px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 27px;
+  height: 47px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14367,12 +14370,12 @@ pre code {
   color: #1A1919;
 }
 .va-btn--secondary:hover {
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   border-color: rgb(205.9391304348, 209.7130434783, 217.2608695652);
   color: #1A1919;
 }
 .va-btn--secondary:active {
-  background-color: rgb(225.1720930233, 225.1720930233, 226.5279069767);
+  background-color: rgb(238.84, 238.84, 240.86);
   border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
 }
 
@@ -14620,16 +14623,11 @@ pre code {
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
   line-height: 1.4;
   color: #1A1919;
   background-color: #E9E9EA;
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  white-space: nowrap;
-  vertical-align: middle;
 }
 .va-badge__icon {
   display: inline-flex;
@@ -14654,7 +14652,7 @@ pre code {
 }
 
 .va-badge--light {
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   color: #4B5563;
 }
 
@@ -14698,7 +14696,7 @@ pre code {
   color: #FFFFFF;
 }
 .va-tag--light {
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   color: #4B5563;
 }
 .va-tag--success {
@@ -14728,7 +14726,7 @@ pre code {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #4B5563;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   border: 1px solid #E5E7EB;
   border-radius: 50rem;
 }
@@ -14760,7 +14758,7 @@ pre code {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #4B5563;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   border: 1px solid #E5E7EB;
   border-radius: 50rem;
 }
@@ -14802,35 +14800,12 @@ pre code {
   color: #EF4444;
 }
 
-.va-form-input {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #1A1919;
-  background-color: #FFFFFF;
-  border: var(--bs-border-width) solid #E5E7EB;
-  border-radius: 0.5rem;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  appearance: none;
-}
-.va-form-input::placeholder {
-  color: #9CA3AF;
-}
 .va-form-input:hover {
   border-color: rgb(200.1739130435, 204.3913043478, 212.8260869565);
 }
-.va-form-input:focus {
-  outline: none;
-  border-color: #0478FF;
-  box-shadow: 0 0 0 0.2rem rgba(4, 120, 255, 0.25);
-}
 .va-form-input:disabled {
   opacity: 0.5;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-input.is-invalid {
@@ -14846,35 +14821,12 @@ pre code {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
-.va-form-textarea {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #1A1919;
-  background-color: #FFFFFF;
-  border: var(--bs-border-width) solid #E5E7EB;
-  border-radius: 0.5rem;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  appearance: none;
-}
-.va-form-textarea::placeholder {
-  color: #9CA3AF;
-}
 .va-form-textarea:hover {
   border-color: rgb(200.1739130435, 204.3913043478, 212.8260869565);
 }
-.va-form-textarea:focus {
-  outline: none;
-  border-color: #0478FF;
-  box-shadow: 0 0 0 0.2rem rgba(4, 120, 255, 0.25);
-}
 .va-form-textarea:disabled {
   opacity: 0.5;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-textarea.is-invalid {
@@ -14894,35 +14846,12 @@ pre code {
   resize: vertical;
 }
 
-.va-form-select {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #1A1919;
-  background-color: #FFFFFF;
-  border: var(--bs-border-width) solid #E5E7EB;
-  border-radius: 0.5rem;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  appearance: none;
-}
-.va-form-select::placeholder {
-  color: #9CA3AF;
-}
 .va-form-select:hover {
   border-color: rgb(200.1739130435, 204.3913043478, 212.8260869565);
 }
-.va-form-select:focus {
-  outline: none;
-  border-color: #0478FF;
-  box-shadow: 0 0 0 0.2rem rgba(4, 120, 255, 0.25);
-}
 .va-form-select:disabled {
   opacity: 0.5;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   cursor: not-allowed;
 }
 .va-form-select.is-invalid {
@@ -15003,17 +14932,14 @@ pre code {
 }
 
 .va-form-error {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: block;
   font-size: 0.8125rem;
   color: #EF4444;
-  margin-top: 0.25rem;
 }
 
 .va-form-hint {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.8125rem;
   color: #4B5563;
-  margin-top: 0.25rem;
 }
 
 .va-input-card {
@@ -15144,7 +15070,7 @@ pre code {
   font-size: 0.8125rem;
   font-weight: 500;
   color: #4B5563;
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   border: 1px solid transparent;
   border-radius: 50rem;
   cursor: pointer;
@@ -15152,7 +15078,7 @@ pre code {
   white-space: nowrap;
 }
 .va-category-pill:hover {
-  background-color: rgb(222.5627906977, 222.5627906977, 224.0372093023);
+  background-color: rgb(236.12, 236.12, 238.48);
   color: #1A1919;
 }
 .va-category-pill:focus-visible {
@@ -15429,25 +15355,18 @@ pre code {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.75rem 1.5rem;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.5rem;
-  background-color: transparent;
+  border-color: #E5E7EB;
   color: #1A1919;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
   margin-bottom: 1.5rem;
 }
 .va-pricing-card__cta:hover {
-  background-color: #E9E9EA;
+  background-color: #F7F7F8;
   border-color: rgb(205.9391304348, 209.7130434783, 217.2608695652);
+  color: #1A1919;
 }
 .va-pricing-card__cta:active {
-  background-color: rgb(225.1720930233, 225.1720930233, 226.5279069767);
+  background-color: rgb(238.84, 238.84, 240.86);
   border-color: rgb(194.4086956522, 199.0695652174, 208.3913043478);
   transform: scale(0.98);
 }
@@ -15455,10 +15374,6 @@ pre code {
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
-}
-.va-pricing-card__cta:focus-visible {
-  outline: 2px solid #0478FF;
-  outline-offset: 2px;
 }
 .va-pricing-card__features {
   list-style: none;
@@ -16810,16 +16725,11 @@ pre code {
   transform: none;
 }
 
-.va-bg-white {
-  background-color: #FFFFFF;
-}
-
 .va-bg-alt {
   background-color: #F7F7F8;
 }
 
 .va-bg-dark {
-  background-color: #1A1919;
   color: rgba(255, 255, 255, 0.85);
 }
 .va-bg-dark h1, .va-bg-dark .h1, .va-bg-dark .va-h1, .va-bg-dark h2, .va-bg-dark .h2, .va-bg-dark .va-h2, .va-bg-dark h3, .va-bg-dark .h3, .va-bg-dark .va-h3, .va-bg-dark h4, .va-bg-dark .h4, .va-bg-dark .va-h4, .va-bg-dark h5, .va-bg-dark .h5, .va-bg-dark .va-h5, .va-bg-dark h6, .va-bg-dark .h6, .va-bg-dark .va-h6 {
