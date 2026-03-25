@@ -168,11 +168,13 @@ Last audited: **2026-03-23**
 
 Design reference images from the original Behance project. These are **not** redistributed in the npm package — they are kept locally for design comparison only.
 
-| Asset | Authors | License | Source |
-|-------|---------|---------|--------|
-| `behance-voice-aura-cover.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
-| `behance-voice-aura-hero-overview.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
-| `behance-voice-aura-full-page-design.jpg` | Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+| Asset | License | Source |
+|-------|---------|--------|
+| `behance-voice-aura-hero-overview.jpg` | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+| `behance-01-hero-tablet-mockup.jpg` through `behance-16-mobile-pricing-phones.jpg` (16 sliced sections) | © Authors (reference use only) | [Behance](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design) |
+
+**Authors:** Rah Man, UI Farid Hossain, UXify Studio, Murad Hossain, Design Dynamix
+**Total files:** 17 (1 standalone + 16 sliced sections). See [`assets/reference/README.md`](./assets/reference/README.md) for the full inventory.
 
 **Original project:** [AI Voice Generator & Text to Speech Website Design](https://www.behance.net/gallery/245235243/AI-Voice-Generator-Text-to-Speech-Website-Design)
 **Lead designer contact:** [uirahman92@gmail.com](mailto:uirahman92@gmail.com) · [Behance](https://www.behance.net/uirahman92) · [Dribbble](https://dribbble.com/uirahman92)
