@@ -473,7 +473,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     }
   }
 
-  // Position variants
+  // Position variants (specific)
   &--left-top {
     left: 8%;
     top: 35%;
@@ -492,6 +492,47 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   &--right-mid {
     right: 5%;
     top: 55%;
+  }
+
+  // Position aliases (general — reference: behance-04)
+  &--left {
+    left: 6%;
+    top: 40%;
+  }
+
+  &--right {
+    right: 6%;
+    top: 40%;
+  }
+
+  // Small variant (applied directly to float element)
+  &--sm {
+    width: 36px;
+    height: 36px;
+    background-color: $va-white;
+    border: $border-width solid $va-border-color;
+    border-radius: $va-radius;
+    box-shadow: $va-shadow;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: $va-near-black;
+    }
+  }
+
+  // Letter variant (applied directly to float element — shows "A" text)
+  &--letter {
+    width: 48px;
+    height: 48px;
+    background-color: $va-white;
+    border: $border-width solid $va-border-color;
+    border-radius: $va-radius;
+    box-shadow: $va-shadow;
+    font-family: $va-font-heading;
+    font-size: 1.25rem;
+    font-weight: $font-weight-semibold;
+    color: $va-near-black;
   }
 
   // Blue cursor line (thin vertical accent)

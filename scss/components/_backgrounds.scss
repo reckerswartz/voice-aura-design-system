@@ -65,8 +65,8 @@
     }
   }
 
-  // Ensure content sits above the pattern
-  > * {
+  // Ensure content sits above the pattern (except floating decorative icons)
+  > *:not(.va-hero__float) {
     position: relative;
     z-index: $va-z-raised;
   }

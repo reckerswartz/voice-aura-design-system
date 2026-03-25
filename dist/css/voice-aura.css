@@ -13191,35 +13191,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 89px;
+  height: 40px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 31px;
+  height: 63px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 90px;
+  height: 33px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 31px;
+  height: 71px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 70px;
+  height: 46px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 72px;
+  height: 65px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 84px;
+  height: 33px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 47px;
+  height: 67px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -13314,6 +13314,39 @@ pre code {
 .va-hero__float--right-mid {
   right: 5%;
   top: 55%;
+}
+.va-hero__float--left {
+  left: 6%;
+  top: 40%;
+}
+.va-hero__float--right {
+  right: 6%;
+  top: 40%;
+}
+.va-hero__float--sm {
+  width: 36px;
+  height: 36px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+.va-hero__float--sm svg {
+  width: 16px;
+  height: 16px;
+  color: #1A1919;
+}
+.va-hero__float--letter {
+  width: 48px;
+  height: 48px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1919;
 }
 .va-hero__float-cursor {
   width: 2px;
@@ -16388,7 +16421,7 @@ pre code {
     background-position: center bottom;
   }
 }
-.va-pattern-halftone > * {
+.va-pattern-halftone > *:not(.va-hero__float) {
   position: relative;
   z-index: 1;
 }
