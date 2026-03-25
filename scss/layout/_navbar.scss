@@ -117,7 +117,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
   // "VOICE AURA" text
   &__text {
-    font-family: $va-font-heading;
+    font-family: $headings-font-family;
     font-size: 1.125rem;                           // 18px
     font-weight: $font-weight-bold;
     letter-spacing: 0.08em;
@@ -145,7 +145,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
 
 // Individual nav link
 .va-navbar-link {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   color: $va-body-text;
@@ -203,7 +203,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   @extend .btn;
   @extend .btn-link;
 
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   color: $va-near-black;
@@ -232,7 +232,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit * 0.75;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-sm;
   font-weight: $font-weight-medium;
   color: $va-near-black;
@@ -269,7 +269,7 @@ $_font-size-sm: map-get($va-font-sizes, "sm"); // 0.875rem
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit * 0.75;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-sm;
   font-weight: $font-weight-medium;
   color: $va-white;

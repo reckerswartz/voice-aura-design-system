@@ -52,7 +52,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   gap: $va-grid-unit;                              // 8px
   padding: ($va-grid-unit * 0.75) ($va-grid-unit * 2); // 6px 16px
   margin-bottom: $va-grid-unit * 3;                // 24px
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-xs;                       // 12px
   font-weight: $font-weight-semibold;
   letter-spacing: 0.1em;
@@ -76,7 +76,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 // ---------------------------------------------------------------------------
 
 .va-hero__title {
-  font-family: $va-font-heading;
+  font-family: $headings-font-family;
   font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);   // Fluid 40px → 72px
   font-weight: $font-weight-bold;
   line-height: 1.1;
@@ -91,7 +91,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 // ---------------------------------------------------------------------------
 
 .va-hero__subtitle {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-lg;                       // 18px
   font-weight: $font-weight-normal;
   line-height: 1.65;
@@ -118,7 +118,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $va-white;
@@ -147,7 +147,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   display: inline-flex;
   align-items: center;
   gap: $va-grid-unit;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $va-near-black;
@@ -200,7 +200,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   }
 
   &-tab {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: $_font-size-sm;
     font-weight: $font-weight-medium;
     color: $va-muted-text;
@@ -228,7 +228,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   &-textarea {
     width: 100%;
     min-height: 120px;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: 1.6;
     color: $va-near-black;
@@ -259,7 +259,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
   }
 
   &-pill {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: $_font-size-xs;
     font-weight: $font-weight-medium;
     color: $va-body-text;
@@ -298,7 +298,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     width: 100%;
     margin-top: $va-grid-unit * 3;
     padding: ($va-grid-unit * 1.5) ($va-grid-unit * 3);
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
     color: $va-white;
@@ -466,7 +466,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
 
     // Letter variant (shows "A" or similar text)
     &--letter {
-      font-family: $va-font-heading;
+      font-family: $headings-font-family;
       font-size: 1.25rem;
       font-weight: $font-weight-semibold;
       color: $va-near-black;
@@ -529,7 +529,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem  / 12px
     border: $border-width solid $va-border-color;
     border-radius: $va-radius;
     box-shadow: $va-shadow;
-    font-family: $va-font-heading;
+    font-family: $headings-font-family;
     font-size: 1.25rem;
     font-weight: $font-weight-semibold;
     color: $va-near-black;

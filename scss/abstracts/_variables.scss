@@ -72,7 +72,39 @@ $theme-colors: (
   "light":      $light,
   "dark":       $dark,
   "section-bg": $va-section-bg,
+  "body-text":  $va-body-text,
+  "muted-text": $va-muted-text,
 );
+
+// ---------------------------------------------------------------------------
+// VA ↔ Bootstrap Variable Equivalences
+// ---------------------------------------------------------------------------
+// The following VA tokens are aliased to Bootstrap variables in this file.
+// Components should prefer the Bootstrap variable name (left column) to keep
+// a single source of truth.  VA aliases remain for backward-compatibility.
+//
+//   Bootstrap variable        ← VA alias           Value
+//   ─────────────────────────────────────────────────────────
+//   $primary                  ← $va-primary-blue   #0478FF
+//   $secondary / $dark        ← $va-near-black     #1A1919
+//   $light                    ← $va-light-grey     #E9E9EA
+//   $success                  ← $va-success        #10B981
+//   $warning                  ← $va-warning        #F59E0B
+//   $danger                   ← $va-danger         #EF4444
+//   $font-family-base         ← $va-font-body      IBM Plex Sans…
+//   $headings-font-family     ← $va-font-heading   IBM Plex Serif…
+//   $font-family-monospace    ← $va-font-mono      IBM Plex Mono…
+//   $border-color             ← $va-border-color   #E5E7EB
+//   $border-radius            ← $va-radius         0.75rem
+//   $border-radius-sm         ← $va-radius-sm      0.5rem
+//   $border-radius-lg         ← $va-radius-lg      1rem
+//   $border-radius-xl         ← $va-radius-xl      1.5rem
+//   $border-radius-pill       ← $va-radius-pill    50rem
+//   $box-shadow               ← $va-shadow         (multi-layer)
+//   $box-shadow-sm            ← $va-shadow-sm      (single-layer)
+//   $box-shadow-lg            ← $va-shadow-lg      (multi-layer)
+//   $transition-base          ← $va-transition-base all 0.2s ease-in-out
+// ---------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
 // 2. TYPOGRAPHY
@@ -259,6 +291,9 @@ $btn-transition: color 0.2s ease-in-out,
                  box-shadow 0.2s ease-in-out,
                  transform 0.2s ease-in-out;
 
+// Disabled state
+$btn-disabled-opacity: 0.5;
+
 // Focus
 $btn-focus-width:     0.2rem;
 $btn-focus-box-shadow: 0 0 0 0.2rem rgba($va-primary-blue, 0.25);
@@ -309,6 +344,13 @@ $navbar-light-hover-color:   $va-near-black;
 $navbar-light-active-color:  $va-primary-blue;
 $navbar-light-toggler-border-color: $va-border-color;
 
+// Nav links (Bootstrap 5.3)
+$nav-link-color:             $va-body-text;
+$nav-link-hover-color:       $va-near-black;
+$nav-link-font-size:         0.9375rem;
+$nav-link-font-weight:       $font-weight-medium;
+$nav-link-transition:        color 0.2s ease-in-out;
+
 // ----------------------------------------------------------------------------
 // 10. CARDS
 // ----------------------------------------------------------------------------
@@ -347,6 +389,15 @@ $badge-border-radius: $va-radius-pill;
 // ----------------------------------------------------------------------------
 
 $transition-base: all 0.2s ease-in-out;
+
+// Component active state
+$component-active-bg:    $va-primary-blue;
+$component-active-color: $va-white;
+
+// Focus ring (Bootstrap 5.3)
+$focus-ring-width:   0.2rem;
+$focus-ring-opacity: 0.25;
+$focus-ring-color:   rgba($va-primary-blue, $focus-ring-opacity);
 
 // ----------------------------------------------------------------------------
 // 14. LINKS

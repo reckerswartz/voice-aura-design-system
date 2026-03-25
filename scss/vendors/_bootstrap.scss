@@ -126,6 +126,46 @@ $utilities: map.merge(
         wide:   90rem,      // 1440px — same as $_container-wide
       ),
     ),
+
+    // -- Cursor --
+    // Generates `.cursor-pointer`, `.cursor-default`, `.cursor-not-allowed`.
+    // Avoids hand-rolling cursor declarations in component SCSS.
+    "va-cursor": (
+      property: cursor,
+      class: cursor,
+      values: (
+        pointer:     pointer,
+        default:     default,
+        not-allowed: not-allowed,
+        grab:        grab,
+      ),
+    ),
+
+    // -- Object-fit --
+    // Generates `.object-cover`, `.object-contain`, `.object-fill`.
+    // Useful for image containers; Bootstrap 5.3 ships these natively
+    // but earlier 5.x versions don't.
+    "va-object-fit": (
+      property: object-fit,
+      class: object,
+      values: (
+        cover:   cover,
+        contain: contain,
+        fill:    fill,
+        none:    none,
+      ),
+    ),
+
+    // -- Pointer-events --
+    // Generates `.pe-none`, `.pe-auto` — useful for decorative overlays.
+    "va-pointer-events": (
+      property: pointer-events,
+      class: pe,
+      values: (
+        none: none,
+        auto: auto,
+      ),
+    ),
   )
 );
 

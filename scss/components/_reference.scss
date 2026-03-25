@@ -10,7 +10,7 @@
 // ---------------------------------------------------------------------------
 
 .ref-section-label {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 0.75rem;
   font-weight: $font-weight-semibold;
   text-transform: uppercase;
@@ -20,7 +20,7 @@
 }
 
 .ref-section-title {
-  font-family: $va-font-heading;
+  font-family: $headings-font-family;
   font-weight: $font-weight-bold;
   font-size: 2rem;
   color: $va-near-black;
@@ -28,7 +28,7 @@
 }
 
 .ref-section-desc {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 1rem;
   color: $va-body-text;
   line-height: 1.6;
@@ -41,7 +41,7 @@
 // ---------------------------------------------------------------------------
 
 .ref-subheading {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-weight: $font-weight-semibold;
   font-size: 1rem;
   color: $va-near-black;
@@ -208,7 +208,7 @@
 // ---------------------------------------------------------------------------
 
 .ref-body-text {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 1rem;
   color: $va-body-text;
   line-height: 1.6;
@@ -220,7 +220,7 @@
 // ---------------------------------------------------------------------------
 
 .ref-serif-heading {
-  font-family: $va-font-heading;
+  font-family: $headings-font-family;
   font-weight: $font-weight-bold;
   font-size: 2.5rem;
   color: $va-near-black;

@@ -86,7 +86,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     color: $va-body-text;
     margin-bottom: 0.75rem;
@@ -138,7 +138,7 @@
   // --------------------------------------------------------------------------
 
   &__title {
-    font-family: $va-font-heading;
+    font-family: $headings-font-family;
     font-size: 1.25rem;
     font-weight: $font-weight-semibold;
     line-height: 1.35;
@@ -157,7 +157,7 @@
   // --------------------------------------------------------------------------
 
   &__excerpt {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.9375rem;
     line-height: 1.6;
     color: $va-body-text;
@@ -179,7 +179,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.875rem;
     font-weight: $font-weight-medium;
     color: $va-near-black;

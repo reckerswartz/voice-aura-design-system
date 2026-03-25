@@ -500,7 +500,7 @@
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 1rem;
     font-weight: $font-weight-light;
     line-height: 1;
@@ -513,7 +513,7 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 1rem;
     font-weight: $font-weight-light;
     line-height: 1;
@@ -533,7 +533,7 @@
     position: absolute;
     bottom: 0.75rem;
     left: 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 1rem;
     font-weight: $font-weight-light;
     line-height: 1;
@@ -545,7 +545,7 @@
     position: absolute;
     bottom: 0.75rem;
     right: 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 1rem;
     font-weight: $font-weight-light;
     line-height: 1;
@@ -1152,7 +1152,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: $va-font-heading;
+    font-family: $headings-font-family;
     font-size: clamp(4rem, 10vw, 8rem);
     font-weight: $font-weight-bold;
     letter-spacing: 0.12em;

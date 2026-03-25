@@ -63,7 +63,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs");
 // --------------------------------------------------------------------------
 
 .va-trust-bar__text {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-sm;                      // 14px
   font-weight: $font-weight-medium;
   color: $va-body-text;

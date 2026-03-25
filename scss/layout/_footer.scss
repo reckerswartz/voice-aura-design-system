@@ -28,7 +28,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
   background-color: $va-near-black;
   color: rgba($va-white, 0.75);
   padding-top: $va-grid-unit * 10;                 // 80px
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-sm;                       // 14px
 
   // Light variant (white bg)
@@ -91,7 +91,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 }
 
 .va-footer__brand-text {
-  font-family: $va-font-heading;
+  font-family: $headings-font-family;
   font-size: 1.125rem;
   font-weight: $font-weight-bold;
   letter-spacing: 0.08em;
@@ -161,7 +161,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs"); // 0.75rem
 
 .va-footer__heading,
 .va-footer__col-title {
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: $_font-size-sm;
   font-weight: $font-weight-semibold;
   color: $va-white;

@@ -33,7 +33,7 @@
 // ----------------------------------------------------------------------------
 /// @param {Number} $weight [$font-weight-bold] — font weight
 @mixin va-heading-serif($weight: $font-weight-bold) {
-  font-family: $va-font-heading;
+  font-family: $headings-font-family;
   font-weight: $weight;
   line-height: $headings-line-height;
   color: $headings-color;
@@ -206,7 +206,7 @@
     align-items: center;
     gap: 0.375rem;
     padding: 0.375rem 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     font-weight: $font-weight-medium;
     color: rgba($va-white, 0.6);

@@ -35,7 +35,7 @@
 
     h1,
     h2 {
-      font-family: $va-font-heading;
+      font-family: $headings-font-family;
       font-size: 1.75rem;
       font-weight: $font-weight-semibold;
       line-height: 1.25;
@@ -49,7 +49,7 @@
   // --------------------------------------------------------------------------
 
   &__subtitle {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.9375rem;
     line-height: 1.5;
     color: $va-body-text;
@@ -88,7 +88,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.625rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     line-height: 1.5;
     color: $va-body-text;
@@ -109,40 +109,20 @@
   // Submit Button (dark filled, full width)
   // --------------------------------------------------------------------------
 
+  // Submit button — extends Bootstrap's .btn + .btn-dark so that padding,
+  // border-radius, focus ring, disabled state, and hover colours are all
+  // inherited from the variable-driven Bootstrap system.  Only VA-specific
+  // deltas are declared here (width, font-size, gap, arrow animation).
   &__submit {
+    @extend .btn;
+    @extend .btn-dark;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
     width: 100%;
-    padding: 0.8125rem 1.5rem;
-    font-family: $va-font-body;
-    font-size: 0.9375rem;
-    font-weight: $font-weight-medium;
-    color: $va-white;
-    background-color: $va-near-black;
-    border: $border-width solid $va-near-black;
-    border-radius: $va-radius-sm;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background-color: lighten($va-near-black, 10%);
-    }
-
-    &:active {
-      background-color: darken($va-near-black, 5%);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $va-primary-blue;
-      outline-offset: 2px;
-    }
+    gap: 0.5rem;
+    font-size: 0.9375rem;           // 15px — VA brand size
+    padding-top: 0.8125rem;         // 13px — slightly taller than default
+    padding-bottom: 0.8125rem;
 
     // Arrow icon in submit button
     &__arrow {
@@ -175,7 +155,7 @@
     }
 
     span {
-      font-family: $va-font-body;
+      font-family: $font-family-base;
       font-size: 0.8125rem;
       font-weight: $font-weight-normal;
       color: $va-body-text;
@@ -202,32 +182,25 @@
   //          Continue with Google
   //        </button>
 
+  // Social login button — extends Bootstrap's .btn + .btn-outline-secondary
+  // so border, radius, focus ring, and hover are inherited.  Only the
+  // VA-specific deltas are declared (width, gap, icon sizing).
   &__social-btn {
+    @extend .btn;
+    @extend .btn-outline-secondary;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.625rem;
     width: 100%;
-    padding: 0.6875rem 1.25rem;
-    font-family: $va-font-body;
-    font-size: 0.9375rem;
-    font-weight: $font-weight-medium;
+    gap: 0.625rem;
+    font-size: 0.9375rem;           // 15px — VA brand size
+    padding-top: 0.6875rem;         // 11px — slightly shorter
+    padding-bottom: 0.6875rem;
     color: $va-near-black;
     background-color: $va-white;
-    border: $border-width solid $va-border;
-    border-radius: $va-radius-sm;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out;
 
     &:hover {
-      background-color: $va-bg-alt;
-      border-color: darken($va-border, 8%);
-    }
-
-    &:active {
-      background-color: darken($va-bg-alt, 3%);
+      background-color: $light;
+      color: $va-near-black;
     }
 
     img,
@@ -245,7 +218,7 @@
   &__footer {
     text-align: center;
     margin-top: 1.5rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.875rem;
     color: $va-body-text;
 
@@ -268,7 +241,7 @@
 
   &__terms {
     text-align: center;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.75rem;
     line-height: 1.6;
     color: lighten($va-body-text, 15%);
@@ -391,7 +364,7 @@
 
 .va-client-logos__label {
   display: block;
-  font-family: $va-font-body;
+  font-family: $font-family-base;
   font-size: 0.8125rem;
   font-weight: $font-weight-normal;
   color: $va-body-text;

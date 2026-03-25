@@ -143,7 +143,7 @@
   }
 
   &__player-title {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     font-weight: $font-weight-medium;
     color: $va-white;
@@ -190,7 +190,7 @@
     transform: translateX(-50%);
     max-width: 85%;
     padding: 0.25rem 0.75rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     font-weight: $font-weight-normal;
     line-height: 1.5;
@@ -248,7 +248,7 @@
 
     // CC button styled differently
     &--cc {
-      font-family: $va-font-body;
+      font-family: $font-family-base;
       font-size: 0.625rem;
       font-weight: $font-weight-bold;
       letter-spacing: 0.02em;
@@ -306,7 +306,7 @@
   // --------------------------------------------------------------------------
 
   &__time {
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.6875rem;
     font-weight: $font-weight-normal;
     color: rgba($va-white, 0.6);
@@ -323,7 +323,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    font-family: $va-font-body;
+    font-family: $font-family-base;
     font-size: 0.8125rem;
     font-weight: $font-weight-normal;
     color: rgba($va-white, 0.7);
