@@ -287,6 +287,19 @@
 // --------------------------------------------------------------------------
 // Modifier: Pill (fully rounded)
 // --------------------------------------------------------------------------
+// SHAPE CONVENTION:
+//   Default .va-btn uses $border-radius (0.75rem / 12px) — rounded rectangle.
+//   .va-btn--pill uses $border-radius-pill (50rem) — fully rounded capsule.
+//
+//   Context-specific shapes (intentional):
+//     Hero CTAs     → pill  (via .va-hero__btn--primary/--secondary)
+//     Navbar buttons → pill  (via .va-navbar-btn--outlined/--filled)
+//     In-page CTAs  → rounded-rect (default .va-btn)
+//     Form submits  → rounded-rect (default .va-btn)
+//     Button groups → rounded-rect with collapsed internal radii
+//
+//   The pill shape signals primary navigation/conversion actions (hero, navbar).
+//   Rounded-rect signals in-context actions (forms, cards, inline CTAs).
 
 .va-btn--pill {
   @extend .rounded-pill;

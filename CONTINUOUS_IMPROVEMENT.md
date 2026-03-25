@@ -267,7 +267,7 @@ test('pixel-perfect-demo desktop', async ({ page }) => {
 | ~~L-3~~ | ~~No `prefers-contrast` support~~ | ✅ `@media (prefers-contrast: more)` + `@media (forced-colors: active)` in `_reset.scss` |
 | ~~L-4~~ | ~~Missing `$va-font-sizes` entry~~ | ✅ `"md": 0.9375rem` added to `$va-font-sizes` map |
 | ~~L-5~~ | ~~No version banner in CSS~~ | ✅ `/*! Voice Aura Design System v1.0.0 */` in `voice-aura.scss` line 25 |
-| L-6 | Button shape undocumented | Pill vs. rounded-rect distinction intentional but unexplained |
+| ~~L-6~~ | ~~Button shape undocumented~~ | ✅ Shape convention documented in `_buttons.scss` — pill = nav/conversion, rounded-rect = in-context |
 
 ---
 
