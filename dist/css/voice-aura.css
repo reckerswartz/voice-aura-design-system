@@ -13386,35 +13386,35 @@ pre code {
   opacity: 0.35;
 }
 .va-hero__wave-bar:nth-child(1) {
-  height: 68px;
+  height: 24px;
   animation: va-wave-pulse 1.4s ease-in-out 0.12s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(2) {
-  height: 42px;
+  height: 35px;
   animation: va-wave-pulse 1.4s ease-in-out 0.24s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(3) {
-  height: 17px;
+  height: 41px;
   animation: va-wave-pulse 1.4s ease-in-out 0.36s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(4) {
-  height: 46px;
+  height: 70px;
   animation: va-wave-pulse 1.4s ease-in-out 0.48s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(5) {
-  height: 89px;
+  height: 50px;
   animation: va-wave-pulse 1.4s ease-in-out 0.6s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(6) {
-  height: 67px;
+  height: 90px;
   animation: va-wave-pulse 1.4s ease-in-out 0.72s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(7) {
-  height: 60px;
+  height: 51px;
   animation: va-wave-pulse 1.4s ease-in-out 0.84s infinite alternate;
 }
 .va-hero__wave-bar:nth-child(8) {
-  height: 87px;
+  height: 60px;
   animation: va-wave-pulse 1.4s ease-in-out 0.96s infinite alternate;
 }
 
@@ -14022,33 +14022,33 @@ pre code {
 
 .va-footer {
   position: relative;
-  background-color: #1A1919;
+  background-color: var(--va-color-secondary);
   color: rgba(255, 255, 255, 0.75);
   padding-top: 5rem;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
 }
 .va-footer--light {
-  background-color: #FFFFFF;
-  color: #4B5563;
-  border-top: 1px solid #E5E7EB;
+  background-color: var(--va-color-white);
+  color: var(--va-color-body-text);
+  border-top: 1px solid var(--va-color-border);
 }
 .va-footer--light .va-footer__brand-text {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-footer--light .va-footer__heading,
 .va-footer--light .va-footer__col-title {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-footer--light .va-footer__link {
-  color: #4B5563;
+  color: var(--va-color-body-text);
 }
 .va-footer--light .va-footer__link:hover {
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 .va-footer--light .va-footer__bottom {
-  border-top-color: #E5E7EB;
-  color: #6B7280;
+  border-top-color: var(--va-color-border);
+  color: var(--va-color-muted-text);
 }
 
 .va-footer__inner {
@@ -14087,7 +14087,7 @@ pre code {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--va-color-white);
   line-height: 1;
 }
 
@@ -14115,15 +14115,15 @@ pre code {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 .va-footer__social-link:hover {
-  background-color: #0478FF;
-  color: #FFFFFF;
+  background-color: var(--va-color-primary);
+  color: var(--va-color-white);
 }
 .va-footer__social-link:active {
   background-color: rgb(0, 100.8414342629, 218.2);
   transform: scale(0.95);
 }
 .va-footer__social-link:focus-visible {
-  outline: 2px solid #0478FF;
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 .va-footer__social-link svg {
@@ -14142,7 +14142,7 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--va-color-white);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 1.25rem;
@@ -14161,7 +14161,7 @@ pre code {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: color var(--va-duration-base) ease-in-out;
   display: inline-block;
   position: relative;
 }
@@ -14173,7 +14173,7 @@ pre code {
   width: 0;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.4);
-  transition: width 0.2s ease-in-out;
+  transition: width var(--va-duration-base) ease-in-out;
 }
 .va-footer__link:hover, .va-footer__link:focus-visible {
   color: #FFFFFF;
@@ -15377,11 +15377,11 @@ pre code {
 .va-blog-card {
   display: flex;
   flex-direction: column;
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.75rem;
+  background-color: var(--va-color-white);
+  border: 1px solid var(--va-color-border);
+  border-radius: var(--va-radius);
   overflow: hidden;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform var(--va-duration-base) ease-in-out, box-shadow var(--va-duration-base) ease-in-out;
 }
 .va-blog-card:hover {
   transform: translateY(-2px);
@@ -15395,7 +15395,7 @@ pre code {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16/10;
-  background-color: #E9E9EA;
+  background-color: var(--va-color-light-grey);
 }
 .va-blog-card__image img {
   display: block;
@@ -15419,7 +15419,7 @@ pre code {
   gap: 0.75rem;
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.8125rem;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   margin-bottom: 0.75rem;
 }
 .va-blog-card__meta span + span::before {
@@ -15434,7 +15434,7 @@ pre code {
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #0478FF;
+  color: var(--va-color-primary);
   background-color: rgba(4, 120, 255, 0.08);
   border-radius: 0.25rem;
 }
@@ -15468,7 +15468,7 @@ pre code {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.35;
-  color: #1A1919;
+  color: var(--va-color-secondary);
   margin: 0 0 0.625rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -15479,7 +15479,7 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   margin: 0 0 1rem;
   flex: 1;
   display: -webkit-box;
@@ -15494,23 +15494,23 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #1A1919;
+  color: var(--va-color-secondary);
   text-decoration: none;
-  transition: color 0.15s ease-in-out, gap 0.15s ease-in-out;
+  transition: color var(--va-duration-fast) ease-in-out, gap var(--va-duration-fast) ease-in-out;
 }
 .va-blog-card__link::after {
   content: "→";
   transition: transform 0.15s ease-in-out;
 }
 .va-blog-card__link:hover {
-  color: #0478FF;
+  color: var(--va-color-primary);
 }
 .va-blog-card__link:hover::after {
   transform: translateX(3px);
 }
 .va-blog-card__link:focus-visible {
-  color: #0478FF;
-  outline: 2px solid #0478FF;
+  color: var(--va-color-primary);
+  outline: 2px solid var(--va-color-primary);
   outline-offset: 2px;
 }
 
@@ -16384,7 +16384,7 @@ pre code {
   margin: 0 auto;
 }
 .va-trust-bar--bordered {
-  border-top: 1px solid #E5E7EB;
+  border-top: 1px solid var(--va-color-border);
   padding-top: 2.5rem;
 }
 
@@ -16392,13 +16392,13 @@ pre code {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #4B5563;
+  color: var(--va-color-body-text);
   letter-spacing: 0.01em;
   margin: 0;
 }
 .va-trust-bar__text strong {
   font-weight: 700;
-  color: #1A1919;
+  color: var(--va-color-secondary);
 }
 
 .va-trust-bar__logos {
@@ -16435,7 +16435,7 @@ pre code {
 
 .va-trust-bar__logos--separated .va-trust-bar__logo {
   padding-right: 2.5rem;
-  border-right: 1px solid #E5E7EB;
+  border-right: 1px solid var(--va-color-border);
 }
 .va-trust-bar__logos--separated .va-trust-bar__logo:last-child {
   padding-right: 0;

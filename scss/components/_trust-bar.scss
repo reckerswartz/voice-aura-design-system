@@ -53,7 +53,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs");
 
   // With top border divider
   &--bordered {
-    border-top: $border-width solid $va-border-color;
+    border-top: $border-width solid var(--va-color-border);
     padding-top: $va-grid-unit * 5;               // 40px
   }
 }
@@ -66,13 +66,13 @@ $_font-size-xs: map-get($va-font-sizes, "xs");
   font-family: $font-family-base;
   font-size: $_font-size-sm;                      // 14px
   font-weight: $font-weight-medium;
-  color: $va-body-text;
+  color: var(--va-color-body-text);
   letter-spacing: 0.01em;
   margin: 0;
 
   strong {
     font-weight: $font-weight-bold;
-    color: $va-near-black;
+    color: var(--va-color-secondary);
   }
 }
 
@@ -122,7 +122,7 @@ $_font-size-xs: map-get($va-font-sizes, "xs");
 .va-trust-bar__logos--separated {
   .va-trust-bar__logo {
     padding-right: $va-grid-unit * 5;             // 40px
-    border-right: $border-width solid $va-border-color;
+    border-right: $border-width solid var(--va-color-border);
 
     &:last-child {
       padding-right: 0;
